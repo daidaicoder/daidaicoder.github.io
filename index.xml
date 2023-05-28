@@ -1,0 +1,1656 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>My New Hugo Site</title>
+        <link>http://example.org/</link>
+        <description>Recent content on My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 26 May 2023 18:01:54 +0800</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>git代码提交规范</title>
+        <link>http://example.org/post/20230511_0930git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/</link>
+        <pubDate>Fri, 26 May 2023 18:01:54 +0800</pubDate>
+        
+        <guid>http://example.org/post/20230511_0930git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/</guid>
+        <description>&lt;h1 id=&#34;20230511_0930git代码提交规范&#34;&gt;20230511_0930git代码提交规范&lt;/h1&gt;
+&lt;h2 id=&#34;一描述&#34;&gt;一、描述&lt;/h2&gt;
+&lt;h3 id=&#34;说明&#34;&gt;说明&lt;/h3&gt;
+&lt;p&gt;为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。&lt;/p&gt;
+&lt;p&gt;本次安装过程：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;npm install -g commitizen
+npm install -g cz-conventional-changelog
+echo &amp;#39;{ &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; }&amp;#39; &amp;gt; .czrc
+npx commitizen init cz-conventional-changelog --save-dev --save-exact
+npx commitizen init cz-conventional-changelog --save-dev --save-exact --force
+npm install -g conventional-changelog-cli
+npm ls -g -depth=0
+
+# 为了Git Bash命令行中也可以使用上下箭头选择git type，安装下面这个。
+npm install -g git-cz
+
+#下面是changlog
+#追加
+conventional-changelog -p angular -i CHANGELOG.md -s
+#全量生成
+conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;windows命令行环境&#34;&gt;windows命令行环境&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreybutler/nvm-windows&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;nvm-windows)&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/snakeclub/DevStandards/blob/master/docs/git/commitizen-windows.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;commitizen-windows.md&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;type&#34;&gt;Type&lt;/h3&gt;
+&lt;p&gt;提交类型：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;1.feat: 新功能（feature）
+2.fix: Bug修复
+3,.docs: 文档更新（documentation）
+4.style: 代码的格式，标点符号的更新（不影响代码运行的变动）
+5.refactor: 代码重构（即不是新增功能，也不是修改bug的代码变动）
+6.perf: 性能优化
+7.test: 测试更新
+8.build: 构建系统或者包依赖更新
+9.ci: CI 配置，脚本文件等更新
+10.chore: 非src或者测试文件的更新【构建过程或辅助工具的变动】
+11.revert: commit 回退
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;说明一下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 主要type
+feat:     增加新功能
+fix:      修复bug
+
+# 特殊type
+ docs:    只改动了文档相关的内容
+style:    不影响代码含义的改动，例如去掉空格、改变缩进、增删分号
+build:    构造工具的或者外部依赖的改动，例如webpack，npm
+refactor:  代码重构时使用
+revert:   执行git revert打印的message
+
+# 暂不使用type
+test:     添加测试或者修改现有测试
+perf:     提高性能的改动
+ci:       与CI（持续集成服务）有关的改动
+chore:    不修改src或者test的其余修改，例如构建过程或辅助工具的变动
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;scope&#34;&gt;Scope&lt;/h3&gt;
+&lt;p&gt;用来说明本次Commit影响的范围，即简要说明修改会涉及的部分。这个本来是选填项，但从AngularJS实际项目中可以看出基本上也成了必填项了。&lt;/p&gt;
+&lt;h3 id=&#34;subject&#34;&gt;Subject&lt;/h3&gt;
+&lt;p&gt;用来简要描述本次改动，概述就好了，因为后面还会在Body里给出具体信息。并且最好遵循下面三条:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;以动词开头，使用第一人称现在时，比如change，而不是changed或changes&lt;/li&gt;
+&lt;li&gt;首字母不要大写&lt;/li&gt;
+&lt;li&gt;结尾不用句号(.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;body&#34;&gt;Body&lt;/h3&gt;
+&lt;p&gt;里的内容是对上面subject里内容的展开，在此做更加详尽的描述，内容里应该包含修改动机和修改前后的对比。&lt;/p&gt;
+&lt;h3 id=&#34;footer&#34;&gt;Footer&lt;/h3&gt;
+&lt;p&gt;footer里的主要放置不兼容变更和Issue关闭的信息。&lt;/p&gt;
+&lt;h3 id=&#34;revert&#34;&gt;Revert&lt;/h3&gt;
+&lt;p&gt;此外如果需要撤销之前的Commit，那么本次Commit Message中必须以revert：开头，后面紧跟前面描述的Header部分，格式不变。并且，Body部分的格式也是固定的，必须要记录撤销前Commit的SHA值。&lt;/p&gt;
+&lt;h2 id=&#34;过程精简&#34;&gt;过程精简&lt;/h2&gt;
+&lt;h3 id=&#34;commitizen规范&#34;&gt;Commitizen规范&lt;/h3&gt;
+&lt;p&gt;1.全局安装commitizen &amp;amp; cz-conventional-changelog&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;# 安装，安装完成之后可以使用git cz命令来取代git commit
+npm install -g commitizen cz-conventional-changelog conventional-changelog-cli
+
+#适配器
+#如果需要在项目中使用commitizen生成符合AngularJS规范的提交说明，初始化cz-conventional-changelog适配器
+commitizen init cz-conventional-changelog --save --save-exact
+npx commitizen init cz-conventional-changelog --save-dev --save-exact --force
+#上面初始化适配器主要进行了3件事情：
+#1.在项目中安装cz-conventional-changelog 适配器依赖
+#2.将适配器依赖保存到package.json的devDependencies字段信息
+#3.在package.json中新增config.commitizen字段信息，主要用于配置cz工具的适配器路径
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;commitizen校验&#34;&gt;Commitizen校验&lt;/h3&gt;
+&lt;p&gt;2.项目内安装commitlint &amp;amp; husky&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;#安装
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
+#添加规范
+echo &amp;#34;module.exports = {extends: [&amp;#39;@commitlint/config-conventional&amp;#39;]};&amp;#34; &amp;gt; commitlint.config.js
+#即在项目根目录下`D:\code\gbcom_gitlab\SH_JC_Android\commitlint.config.js`添加如下内容。
+module.exports = {
+  extends: [&amp;#39;@commitlint/config-conventional&amp;#39;]
+};
+
+#安装git钩子工具
+npm install husky --save-dev
+#在项目根目录下的package.json中配置git commit提交时的校验钩子`D:\code\gbcom_gitlab\SH_JC_Android\package.json`
+&amp;#34;husky&amp;#34;: {
+  &amp;#34;hooks&amp;#34;: {
+    &amp;#34;commit-msg&amp;#34;: &amp;#34;commitlint -E HUSKY_GIT_PARAMS&amp;#34;
+  }
+}
+#上面的commit-msg代表对 commit message 进行 hook，hook 的时候执行后面的命令 commitlint -E HUSKY_GIT_PARAMS 进行检查。
+#安装husky后在package.json中添加脚本
+{
+	&amp;#34;devDependencies&amp;#34;: {
+		&amp;#34;@commitlint/cli&amp;#34;: &amp;#34;^17.6.3&amp;#34;,
+		&amp;#34;@commitlint/config-conventional&amp;#34;: &amp;#34;^17.6.3&amp;#34;,
+		&amp;#34;commitlint-config-cz&amp;#34;: &amp;#34;^0.13.3&amp;#34;,
+		&amp;#34;commitlint-config-git-commit-emoji&amp;#34;: &amp;#34;^1.0.0&amp;#34;,
+		&amp;#34;cz-customizable&amp;#34;: &amp;#34;^7.0.0&amp;#34;,
+		&amp;#34;husky&amp;#34;: &amp;#34;^7.0.1&amp;#34;
+	},
+	&amp;#34;scripts&amp;#34;: {
++		&amp;#34;prepare&amp;#34;: &amp;#34;husky install&amp;#34;,
+		&amp;#34;changelog&amp;#34;: &amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s&amp;#34;,
+		&amp;#34;changelogs&amp;#34;: &amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&amp;#34;,
+		&amp;#34;commit&amp;#34;: &amp;#34;cz-customizable&amp;#34;
+	}
+}
+#添加 commit-msg 钩子,执行信息校验，其实就是在.husky/commit-msg文件中添加【npx --no-install commitlint --edit &amp;#34;$1&amp;#34;】
+npx husky add .husky/commit-msg &amp;#39;npx --no-install commitlint --edit &amp;#34;$1&amp;#34;&amp;#39;
+
+
+# validate-commit-msg
+# 除了使用commitlint校验工具，也可以使用validate-commit-msg校验工具对cz提交说明是否符合Angular规范进行校验。
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;安装的依赖&#34;&gt;安装的依赖&lt;/h3&gt;
+&lt;p&gt;C:\Users\daizelai\AppData\Roaming\npm\node_modules&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users\daizelai\AppData\Roaming\npm\node_modules&amp;gt;dir
+ 驱动器 C 中的卷没有标签。
+ 卷的序列号是 1A38-870C
+
+ C:\Users\daizelai\AppData\Roaming\npm\node_modules 的目录
+
+2023/05/11  14:04    &amp;lt;DIR&amp;gt;          .
+2023/05/11  14:04    &amp;lt;DIR&amp;gt;          ..
+2023/05/11  09:37    &amp;lt;DIR&amp;gt;          commitizen
+2023/05/04  16:54    &amp;lt;DIR&amp;gt;          conventional-changelog
+2023/05/11  14:04    &amp;lt;DIR&amp;gt;          conventional-changelog-cli
+2023/05/11  09:48    &amp;lt;DIR&amp;gt;          cz-conventional-changelog
+2023/05/11  10:47    &amp;lt;DIR&amp;gt;          git-cz
+               0 个文件              0 字节
+               7 个目录  3,261,562,880 可用字节
+
+C:\Users\daizelai\AppData\Roaming\npm\node_modules&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;安装可自定义的cz适配器&#34;&gt;安装可自定义的cz适配器&lt;/h3&gt;
+&lt;p&gt;因为commitizen只支持英文，如果我想要支持中文指令和emoji，那么就必须安装可自定义的cz适配器了&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;npm i -D commitlint-config-cz  cz-customizable commitlint-config-git-commit-emoji
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;配置项目根目录的&lt;code&gt;.cz-config.js&lt;/code&gt;文件内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;module.exports&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;types:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:sparkles:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;feat&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;✨&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;feat:&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;新功能&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:bug:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;fix&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;🐛&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;fix:&lt;/span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;修复bug&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:package:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;build&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;📦️&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;build:&lt;/span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;打包&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:zap:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;perf&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;⚡️&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;perf:&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;性能优化&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:tada:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;release&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;🎉&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;release:&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;发布正式版&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:lipstick:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;style&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;💄&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;style:&lt;/span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;代码的样式美化&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:recycle:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;refactor&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;♻️&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;refactor:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;重构&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:pencil2:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;docs&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;✏️&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;docs:&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;文档变更&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:white_check_mark:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;test&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;✅&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;test:&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;测试&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:rewind:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;revert&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;⏪️&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;revert:&lt;/span&gt;   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;回退&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:rocket:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;chore&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;🚀&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;chore:&lt;/span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;构建/工程依赖/工具&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:construction_worker:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;ci&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;👷&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;ci:&lt;/span&gt;       &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;CI&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;related&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;changes&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;messages:&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;type:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请选择提交类型(必填)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;customScope:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请输入文件修改范围(可选)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;subject:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请简要描述提交(必填)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;body:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请输入详细描述(可选)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;breaking:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;列出任何BREAKING&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;CHANGES(可选)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;footer:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请输入要关闭的issue(可选)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;confirmCommit:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;确定提交此说明吗？&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;allowCustomScopes:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 跳过问题
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;skipQuestions:&lt;/span&gt; [&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;body&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;footer&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;subjectLimit:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;72&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将cz-customizable脚本添加到您的&lt;code&gt;package.json&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//#npm set-script commit &amp;#34;git add . &amp;amp;&amp;amp; cz-customizable&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/cli&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/config-conventional&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitlint-config-cz&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^0.13.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitlint-config-git-commit-emoji&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^1.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;cz-customizable&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^7.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^7.0.1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prepare&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;husky install&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelogs&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commit&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cz-customizable&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;commitizen&#34;&gt;commitizen&lt;/h2&gt;
+&lt;p&gt;当你使用commitizen进行代码提交（gitcommit）时，commitizen会提交你在提交时填写所有必需的提交字段&lt;/p&gt;
+&lt;p&gt;commitizen是一个撰写合格commit message的工具，用于代替git commit 指令，而cz-conventional-changelog适配器提供conventional-changelog标准（约定式提交标准）。&lt;/p&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;h3 id=&#34;安装commitizen&#34;&gt;安装commitizen&lt;/h3&gt;
+&lt;p&gt;首先要全局安装commitizen&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;npm i -g commitizen@4.2.4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后安装插件&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;npm i cz-customizable@6.3.0 --save-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;也可以直接全局安装commitizen &amp;amp; cz-conventional-changelog&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;npm install -g commitizen cz-conventional-changelog
+echo &amp;#39;{ &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; }&amp;#39; &amp;gt; ~/.czrc
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;正式安装&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;来的安装过程：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;PS C:\Users\daizelai&amp;gt; npm -v
+9.5.1
+PS C:\Users\daizelai&amp;gt; date
+
+2023年5月11日 9:36:43
+
+
+PS C:\Users\daizelai&amp;gt; npm install -g commitizen
+
+added 191 packages in 1m
+
+24 packages are looking for funding
+  run `npm fund` for details
+PS C:\Users\daizelai&amp;gt; npm fund
+daizelai
+
+PS C:\Users\daizelai&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;全局安装适配器&#34;&gt;全局安装适配器&lt;/h3&gt;
+&lt;p&gt;cz-customizable和cz-conventional-changelog一样，也是commitizen的adapter，不过支持一定程度上的自定义。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;npm install -g cz-conventional-changelog
+# 有的是安装下面这个，来没有这么安装
+npm install -g conventional-changelog
+npm install -g conventional-changelog-cli
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;来的安装过程：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;PS C:\Users\daizelai&amp;gt; npm install -g cz-conventional-changelog
+
+added 191 packages in 28s
+
+24 packages are looking for funding
+  run `npm fund` for details
+PS C:\Users\daizelai&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;检验上面的工具是否安装成功，可以输入以下&lt;code&gt;npm ls -g -depth=0&lt;/code&gt;命令。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm ls -g -depth=0
+C:\Users\daizelai\AppData\Roaming\npm
++-- commitizen@4.3.0
++-- conventional-changelog@3.1.25
++-- cz-conventional-changelog@3.3.0
+`-- git-cz@4.9.0
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;来后来又安装了一下，下面的命令安装&lt;code&gt;cz-conventional-changelog&lt;/code&gt;, 并且初始化&lt;code&gt;cz-conventional-changelog&lt;/code&gt;。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;C:\Users\daizelai&amp;gt;npx commitizen init cz-conventional-changelog --save-dev --save-exact
+Attempting to initialize using the npm package cz-conventional-changelog
+Error: Error: A previous adapter is already configured. Use --force to override
+    adapterConfig.path: cz-conventional-changelog
+    repoPath: C:\Users\daizelai
+    CLI_PATH: C:\Users\daizelai\AppData\Roaming\npm\node_modules\commitizen\
+    installAdapterCommand: npm install cz-conventional-changelog --save-dev
+    adapterNpmName: cz-conventional-changelog
+
+
+C:\Users\daizelai&amp;gt;npx commitizen init cz-conventional-changelog --save-dev --save-exact --force
+Attempting to initialize using the npm package cz-conventional-changelog
+npm WARN using --force Recommended protections disabled.
+
+C:\Users\daizelai&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;配置&#34;&gt;配置&lt;/h3&gt;
+&lt;p&gt;如果你是mac用户，运行下面这条命令，它会在你的home目录下，创建一个.czrc文件。路径指向刚才全局安装的适配器。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo &amp;#39;{ &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; }&amp;#39; &amp;gt; ~/.czrc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果你是windows用户，请把下面这条命令中的&lt;code&gt;C:\Users\daizelai&lt;/code&gt;更换成你自己电脑上的&lt;code&gt;\Users\username&lt;/code&gt;目录再运行。这条命令的本质其实就是在&lt;code&gt;Users\username&lt;/code&gt;目录下创建一个内容为&lt;code&gt;{ &amp;quot;path&amp;quot;: &amp;quot;cz-conventional-changelog&amp;quot; }&lt;/code&gt;的&lt;code&gt;.czrc&lt;/code&gt;文件。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo { &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; } &amp;gt; C:\Users\daizelai\.czrc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;来的操作过程：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;daizelai@GBCOM-20210524I MINGW64 ~
+$ date
+Thu May 11 09:45:44     2023
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ pwd
+/c/Users/daizelai
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ ls -l .czrc
+ls: cannot access &amp;#39;.czrc&amp;#39;: No such file or directory
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ echo &amp;#39;{ &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; }&amp;#39; &amp;gt; .czrc
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ ls -l .czrc
+-rw-r--r-- 1 daizelai 197121 36 May 11 09:46 .czrc
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ cat .czrc
+{ path: cz-conventional-changelog }
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一定要检查一下.czrc的文件内容：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-czrc&#34; data-lang=&#34;czrc&#34;&gt;{ &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;将这个.czrc文件转换为utf8格式，因为Git-bash只认utf8格式的该文件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当然，也可以直接配置json，不生成.czrc文件&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;config&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;: &lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitizen&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt; &lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cz-conventional-changelog&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;    &lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;已经完成了Commitizen的全局安装！你可以在任何一个git仓库中使用git cz，而不是git commit。另外，你可以在git cz上使用git commit的所有参数，比如git cz -a。如果项目和全局都安装过Commitizen，那么会使用项目中的Commitizen适配器，而不是全局的。&lt;/p&gt;
+&lt;h3 id=&#34;使用&#34;&gt;使用&lt;/h3&gt;
+&lt;p&gt;下面是通过&lt;code&gt;Git Bash&lt;/code&gt;中执行&lt;code&gt;git cz&lt;/code&gt;命令后，无法使用键盘的上下箭头来选择提交类型，不过可以直接输入类型关键字就可以了，如输入&lt;code&gt;fix&lt;/code&gt;后回车，后面有介绍说可以重新安装一个&lt;code&gt;git-cz&lt;/code&gt;来解决此问题。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git cz
+cz-cli@4.3.0, cz-conventional-changelog@3.3.0
+
+// 这次提交的类型是什么
+? Select the type of change that you&amp;#39;re committing: (Use arrow keys)
+&amp;gt; feat:     A new feature // 新增特性（feature)
+  fix:      A bug fix // 修复bug(bug fix)
+  docs:     Documentation only changes // 修改文档
+  style:    Changes that do not affect the meaning of the code (white-space,
+formatting, missing semi-colons, etc) // 代码格式修改
+  refactor: A code change that neither fixes a bug nor adds a feature // 代码重构
+  perf:     A code change that improves performance // 改善性能
+  test:     Adding missing tests or correcting existing tests  // 测试
+  build:    Changes that affect the build system or external dependencies (example
+scopes: gulp, broccoli, npm) // 变更项目构建或外部依赖（例如 scopes:webpack、gulp、npm等）
+  ci:       Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs
+) // 更改持续集成软件的配置文件和package中的script 命令
+  chore:    Other changes that don&amp;#39;t modify src or test files // 变更构建流程或辅助工具（比如更改测试环境）
+  revert:   Reverts a previous commit // 代码回退
+(Move up and down to reveal more choices)
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是通过windows的终端命令行中，使用&lt;code&gt;git cz&lt;/code&gt;命令就可以使用键盘的上下箭头来选择提交类型。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-git&#34; data-lang=&#34;git&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 13:28:11.28
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;git status
+On branch master
+Your branch is up to date with &amp;#39;origin/master&amp;#39;.
+
+Changes to be committed:
+  (use &amp;#34;git restore --staged &amp;lt;file&amp;gt;...&amp;#34; to unstage)
+        modified:   zte/app/build.gradle
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;git cz
+? Select the type of change that you&amp;#39;re committing: 🐛  fix:        A bug fix
+? Write a short, imperative mood description of the change:
+  [-------------------------------------------------------------] 56 chars left
+   fix: 修复了通话时没有声音的BUG
+? Provide a longer description of the change:
+  通过修复通话的业务代码，修复了组呼通话时没有声音的BUG。
+? List any breaking changes // 选择是否有不兼容改造点breaking，如果有输入不兼容改造点描述：
+  BREAKING CHANGE:
+? Issues this commit closes, e.g #123: #110 // 选择是否有问题解决issues，如果有输入解决的问题清单
+[master 972ecce] fix: 🐛 修复了通话时没有声音的BUG
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;git log -n 1
+commit 972ecce6e508a62d5c8ecbc0000ab04838b7250f (HEAD -&amp;gt; master)
+Author: daizelai &amp;lt;daizelai@gbcom.com.cn&amp;gt;
+Date:   Thu May 11 13:28:51 2023 +0800
+
+    fix: 🐛 修复了通话时没有声音的BUG
+
+    通过修复通话的业务代码，修复了组呼通话时没有声音的BUG。
+
+    ✅ Closes: #110
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;git reflog -n 1
+972ecce (HEAD -&amp;gt; master) HEAD@{0}: commit: fix: 🐛 修复了通话时没有声音的BUG
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;http://example.org/images/cmd_git_cz_20230511_1329.gif&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装git-cz&#34;&gt;安装git-cz&lt;/h3&gt;
+&lt;p&gt;在window系统下的&lt;code&gt;Git Bash&lt;/code&gt;会有一个问题，window系统下使用&lt;code&gt;git cz&lt;/code&gt;后无法上下选择本次提交的类型，这里给大家介绍一个工具，在你&lt;code&gt;git cz&lt;/code&gt;前面加上“winpty”，即可实现上下选择。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;npm install -g git-cz
+git-cz
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用时输入如下命令即可。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;winpty git cz
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面是来的安装过程记录：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users\daizelai&amp;gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+C:\Users\daizelai&amp;gt;npm install -g git-cz
+npm ERR! code EEXIST
+npm ERR! path C:\Users\daizelai\AppData\Roaming\npm\git-cz
+npm ERR! EEXIST: file already exists
+npm ERR! File exists: C:\Users\daizelai\AppData\Roaming\npm\git-cz
+npm ERR! Remove the existing file and try again, or run npm
+npm ERR! with --force to overwrite files recklessly.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\daizelai\AppData\Local\npm-cache\_logs\2023-05-11T02_46_00_443Z-debug-0.log
+
+C:\Users\daizelai&amp;gt;npm install -g git-cz --force
+npm WARN using --force Recommended protections disabled.
+
+added 1 package in 54s
+
+C:\Users\daizelai&amp;gt;git-cz
+Command failed: git diff --cached --no-ext-diff --name-only
+error: unknown option `cached&amp;#39;
+usage: git diff --no-index [&amp;lt;options&amp;gt;] &amp;lt;path&amp;gt; &amp;lt;path&amp;gt;
+
+Diff output format options
+    -p, --patch           generate patch
+    -s, --no-patch        suppress diff output
+    -u                    generate patch
+    -U, --unified[=&amp;lt;n&amp;gt;]   generate diffs with &amp;lt;n&amp;gt; lines context
+    -W, --function-context
+                          generate diffs with &amp;lt;n&amp;gt; lines context
+    --raw                 generate the diff in raw format
+    --patch-with-raw      synonym for &amp;#39;-p --raw&amp;#39;
+    --patch-with-stat     synonym for &amp;#39;-p --stat&amp;#39;
+    --numstat             machine friendly --stat
+    --shortstat           output only the last line of --stat
+    -X, --dirstat[=&amp;lt;param1,param2&amp;gt;...]
+                          output the distribution of relative amount of changes for each sub-directory
+    --cumulative          synonym for --dirstat=cumulative
+    --dirstat-by-file[=&amp;lt;param1,param2&amp;gt;...]
+                          synonym for --dirstat=files,param1,param2...
+    --check               warn if changes introduce conflict markers or whitespace errors
+    --summary             condensed summary such as creations, renames and mode changes
+    --name-only           show only names of changed files
+    --name-status         show only names and status of changed files
+    --stat[=&amp;lt;width&amp;gt;[,&amp;lt;name-width&amp;gt;[,&amp;lt;count&amp;gt;]]]
+                          generate diffstat
+    --stat-width &amp;lt;width&amp;gt;  generate diffstat with a given width
+    --stat-name-width &amp;lt;width&amp;gt;
+                          generate diffstat with a given name width
+    --stat-graph-width &amp;lt;width&amp;gt;
+                          generate diffstat with a given graph width
+    --stat-count &amp;lt;count&amp;gt;  generate diffstat with limited lines
+    --compact-summary     generate compact summary in diffstat
+    --binary              output a binary diff that can be applied
+    --full-index          show full pre- and post-image object names on the &amp;#34;index&amp;#34; lines
+    --color[=&amp;lt;when&amp;gt;]      show colored diff
+    --ws-error-highlight &amp;lt;kind&amp;gt;
+                          highlight whitespace errors in the &amp;#39;context&amp;#39;, &amp;#39;old&amp;#39; or &amp;#39;new&amp;#39; lines in the diff
+    -z                    do not munge pathnames and use NULs as output field terminators in --raw or --numstat
+    --abbrev[=&amp;lt;n&amp;gt;]        use &amp;lt;n&amp;gt; digits to display object names
+    --src-prefix &amp;lt;prefix&amp;gt;
+                          show the given source prefix instead of &amp;#34;a/&amp;#34;
+    --dst-prefix &amp;lt;prefix&amp;gt;
+                          show the given destination prefix instead of &amp;#34;b/&amp;#34;
+    --line-prefix &amp;lt;prefix&amp;gt;
+                          prepend an additional prefix to every line of output
+    --no-prefix           do not show any source or destination prefix
+    --inter-hunk-context &amp;lt;n&amp;gt;
+                          show context between diff hunks up to the specified number of lines
+    --output-indicator-new &amp;lt;char&amp;gt;
+                          specify the character to indicate a new line instead of &amp;#39;+&amp;#39;
+    --output-indicator-old &amp;lt;char&amp;gt;
+                          specify the character to indicate an old line instead of &amp;#39;-&amp;#39;
+    --output-indicator-context &amp;lt;char&amp;gt;
+                          specify the character to indicate a context instead of &amp;#39; &amp;#39;
+
+Diff rename options
+    -B, --break-rewrites[=&amp;lt;n&amp;gt;[/&amp;lt;m&amp;gt;]]
+                          break complete rewrite changes into pairs of delete and create
+    -M, --find-renames[=&amp;lt;n&amp;gt;]
+                          detect renames
+    -D, --irreversible-delete
+                          omit the preimage for deletes
+    -C, --find-copies[=&amp;lt;n&amp;gt;]
+                          detect copies
+    --find-copies-harder  use unmodified files as source to find copies
+    --no-renames          disable rename detection
+    --rename-empty        use empty blobs as rename source
+    --follow              continue listing the history of a file beyond renames
+    -l &amp;lt;n&amp;gt;                prevent rename/copy detection if the number of rename/copy targets exceeds given limit
+
+Diff algorithm options
+    --minimal             produce the smallest possible diff
+    -w, --ignore-all-space
+                          ignore whitespace when comparing lines
+    -b, --ignore-space-change
+                          ignore changes in amount of whitespace
+    --ignore-space-at-eol
+                          ignore changes in whitespace at EOL
+    --ignore-cr-at-eol    ignore carrier-return at the end of line
+    --ignore-blank-lines  ignore changes whose lines are all blank
+    -I, --ignore-matching-lines &amp;lt;regex&amp;gt;
+                          ignore changes whose all lines match &amp;lt;regex&amp;gt;
+    --indent-heuristic    heuristic to shift diff hunk boundaries for easy reading
+    --patience            generate diff using the &amp;#34;patience diff&amp;#34; algorithm
+    --histogram           generate diff using the &amp;#34;histogram diff&amp;#34; algorithm
+    --diff-algorithm &amp;lt;algorithm&amp;gt;
+                          choose a diff algorithm
+    --anchored &amp;lt;text&amp;gt;     generate diff using the &amp;#34;anchored diff&amp;#34; algorithm
+    --word-diff[=&amp;lt;mode&amp;gt;]  show word diff, using &amp;lt;mode&amp;gt; to delimit changed words
+    --word-diff-regex &amp;lt;regex&amp;gt;
+                          use &amp;lt;regex&amp;gt; to decide what a word is
+    --color-words[=&amp;lt;regex&amp;gt;]
+                          equivalent to --word-diff=color --word-diff-regex=&amp;lt;regex&amp;gt;
+    --color-moved[=&amp;lt;mode&amp;gt;]
+                          moved lines of code are colored differently
+    --color-moved-ws &amp;lt;mode&amp;gt;
+                          how white spaces are ignored in --color-moved
+
+Other diff options
+    --relative[=&amp;lt;prefix&amp;gt;]
+                          when run from subdir, exclude changes outside and show relative paths
+    -a, --text            treat all files as text
+    -R                    swap two inputs, reverse the diff
+    --exit-code           exit with 1 if there were differences, 0 otherwise
+    --quiet               disable all output of the program
+    --ext-diff            allow an external diff helper to be executed
+    --textconv            run external text conversion filters when comparing binary files
+    --ignore-submodules[=&amp;lt;when&amp;gt;]
+                          ignore changes to submodules in the diff generation
+    --submodule[=&amp;lt;format&amp;gt;]
+                          specify how differences in submodules are shown
+    --ita-invisible-in-index
+                          hide &amp;#39;git add -N&amp;#39; entries from the index
+    --ita-visible-in-index
+                          treat &amp;#39;git add -N&amp;#39; entries as real in the index
+    -S &amp;lt;string&amp;gt;           look for differences that change the number of occurrences of the specified string
+    -G &amp;lt;regex&amp;gt;            look for differences that change the number of occurrences of the specified regex
+    --pickaxe-all         show all changes in the changeset with -S or -G
+    --pickaxe-regex       treat &amp;lt;string&amp;gt; in -S as extended POSIX regular expression
+    -O &amp;lt;file&amp;gt;             control the order in which files appear in the output
+    --rotate-to &amp;lt;path&amp;gt;    show the change in the specified path first
+    --skip-to &amp;lt;path&amp;gt;      skip the output to the specified path
+    --find-object &amp;lt;object-id&amp;gt;
+                          look for differences that change the number of occurrences of the specified object
+    --diff-filter [(A|C|D|M|R|T|U|X|B)...[*]]
+                          select files by diff type
+    --output &amp;lt;file&amp;gt;       Output to a specific file
+
+
+
+C:\Users\daizelai&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;http://example.org/images/git_cz_20230511_1103.gif&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;使用记录&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ date
+Thu May 11 11:02:11     2023
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git status
+On branch master
+Your branch is up to date with &amp;#39;origin/master&amp;#39;.
+
+Changes to be committed:
+  (use &amp;#34;git restore --staged &amp;lt;file&amp;gt;...&amp;#34; to unstage)
+        modified:   zte/app/build.gradle
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ winpty git cz
+? Select the type of change that you&amp;#39;re committing: �  fix:        A bug fix
+? Write a short, imperative mood description of the change:
+  [-------------------------------------------------------------] 56 chars left
+   fix: 修复了通话时没有声音的BUG
+? Provide a longer description of the change:
+  通过修改通话代码，修复了组呼通话时没有声音的BUG。
+? List any breaking changes
+  BREAKING CHANGE:
+? Issues this commit closes, e.g #123: #110
+[master 9963cd1] fix: � 修复了通话时没有声音的BUG
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git status
+On branch master
+Your branch is ahead of &amp;#39;origin/master&amp;#39; by 1 commit.
+  (use &amp;#34;git push&amp;#34; to publish your local commits)
+
+nothing to commit, working tree clean
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git log -n 1
+commit 9963cd10bfb62826384c22d6d9ec580ee5edb05c (HEAD -&amp;gt; master)
+Author: daizelai &amp;lt;daizelai@gbcom.com.cn&amp;gt;
+Date:   Thu May 11 11:02:50 2023 +0800
+
+    fix: 🐛 修复了通话时没有声音的BUG
+
+    通过修改通话代码，修复了组呼通话时没有声音的BUG。
+
+    ✅ Closes: #110
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git reflog -n 1
+9963cd1 (HEAD -&amp;gt; master) HEAD@{0}: commit: fix: 🐛 修复了通话时没有声音的BUG
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;安装可自定义的cz适配器-1&#34;&gt;安装可自定义的cz适配器&lt;/h3&gt;
+&lt;p&gt;因为commitizen只支持英文，如果我想要支持中文指令和emoji，那么就必须安装可自定义的cz适配器了&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;npm i -D commitlint-config-cz  cz-customizable commitlint-config-git-commit-emoji
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;来后来又安装了。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;date
+当前日期: 2023/05/12 周五
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm i -D commitlint-config-cz  cz-customizable
+
+added 52 packages, and audited 254 packages in 10s
+
+30 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 10:42:30.03
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在项目根目录创建.cz-config.js文件&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;echo &amp;gt; .cz-config.js
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;配置.cz-config.js文件内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;module.exports&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;types:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:sparkles:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;feat&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;✨&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;feat:&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;新功能&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:bug:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;fix&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;🐛&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;fix:&lt;/span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;修复bug&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:package:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;build&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;📦️&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;build:&lt;/span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;打包&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:zap:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;perf&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;⚡️&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;perf:&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;性能优化&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:tada:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;release&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;🎉&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;release:&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;发布正式版&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:lipstick:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;style&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;💄&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;style:&lt;/span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;代码的样式美化&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:recycle:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;refactor&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;♻️&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;refactor:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;重构&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:pencil2:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;docs&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;✏️&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;docs:&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;文档变更&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:white_check_mark:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;test&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;✅&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;test:&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;测试&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:rewind:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;revert&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;⏪️&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;revert:&lt;/span&gt;   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;回退&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:rocket:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;chore&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;🚀&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;chore:&lt;/span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;构建/工程依赖/工具&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;value:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;:construction_worker:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;ci&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;name:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;👷&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;ci:&lt;/span&gt;       &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;CI&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;related&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;changes&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;messages:&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;type:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请选择提交类型(必填)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;customScope:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请输入文件修改范围(可选)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;subject:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请简要描述提交(必填)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;body:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请输入详细描述(可选)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;breaking:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;列出任何BREAKING&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;CHANGES(可选)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;footer:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;请输入要关闭的issue(可选)&amp;#39;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;confirmCommit:&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;确定提交此说明吗？&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;allowCustomScopes:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 跳过问题
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;skipQuestions:&lt;/span&gt; [&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;body&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;footer&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;subjectLimit:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;72&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将cz-customizable脚本添加到您的 package.json&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//#npm set-script commit &amp;#34;git add . &amp;amp;&amp;amp; cz-customizable&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/cli&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/config-conventional&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitlint-config-cz&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^0.13.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitlint-config-git-commit-emoji&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^1.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;cz-customizable&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^7.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^7.0.1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prepare&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;husky install&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelogs&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;		&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commit&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cz-customizable&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面就可以在命令行输入&lt;code&gt;npm run commit&lt;/code&gt;了。
+安装emoji插件，来实际使用中中文的表情显示都是乱码，使用notepad++修改&lt;code&gt;.cz-config.js&lt;/code&gt;文件里的内容格式为UTF8无BOM就可以了。如果发现中文显示正常，但表情是乱码，请注意一下.cz-config.js文件内容中的表情是否就是乱码，只要在.cz-config.js文件为UTF8的格式下重新拷贝上面的json内容到.cz-config.js文件中就可以了。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm i -D  commitlint-config-git-commit-emoji
+
+added 1 package, and audited 255 packages in 1s
+
+30 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;date
+当前日期: 2023/05/12 周五
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 10:57:56.93
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面是安装后的使用。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt; date
+
+2023年5月12日 11:19:16
+
+
+PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt; npm run commit
+
+&amp;gt; cz-customizable
+
+cz-customizable standalone version
+All lines except first will be wrapped after 100 characters.
+? 请选择提交类型(必填) (Use arrow keys)
+&amp;gt; ✨ feat:     新功能
+  🐛 fix:      修复bug
+  📦️ build:    打包
+  ⚡️ perf:     性能优化
+  🎉 release:  发布正式版
+  💄 style:    代码的样式美化
+  ♻️  refactor: 重构
+(Move up and down to reveal more choices)
+PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;关于chagelog&#34;&gt;关于chagelog&lt;/h3&gt;
+&lt;p&gt;changelog使用，在项目第一层目录执行如下命令：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#追加
+conventional-changelog -p angular -i CHANGELOG.md -s
+#全量生成
+conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;-p 指定风格*&lt;/li&gt;
+&lt;li&gt;-i CHANGELOG.md 指定输出的文件名称&lt;/li&gt;
+&lt;li&gt;-s 输出到infile，这样就不需要指定与outfile相同的文件&lt;/li&gt;
+&lt;li&gt;-r 从最新的版本生成多少个版本。如果为0，则整个更改日志将被重新生成，输出文件将被覆盖。默认值:1&lt;/li&gt;
+&lt;li&gt;-n ./changelog-option.js 指定自定义配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;成功后将在项目生成 CHANGELOG.md 文件，在git lab上即可直观的展示git的提交记录。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;conventional-changelog -p angular -i CHANGELOG.md -s
+&amp;#39;conventional-changelog&amp;#39; 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 13:51:19.65
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm install -g conventional-changelog-cli
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+
+added 168 packages in 14m
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 14:05:51.15
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;conventional-changelog -p angular -i CHANGELOG.md -s
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面是生成的changelog文件内容：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#  (2023-05-11)
+
+
+### Bug Fixes
+
+* 🐛 修复了通话时没有声音的BUG ([972ecce](https://gitlab.gbcom.com.cn/metro-system/sh_jc/commit/972ecce6e508a62d5c8ecbc0000ab04838b7250f)), closes [#110](https://gitlab.gbcom.com.cn/metro-system/sh_jc/issues/110)
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;集成命令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;路径：D:\code\gbcom_gitlab\SH_JC_Android\package.json&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/cli&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/config-conventional&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^7.0.1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prepare&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;husky install&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;	&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelogs&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;lint-staged&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;src/**/*.{js,vue}&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;eslint --fix&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;git add&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在命令行就可以执行命令了&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm run changelog
+
+&amp;gt; changelog
+&amp;gt; conventional-changelog -p angular -i CHANGELOG.md -s
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm run changelogs
+
+&amp;gt; changelogs
+&amp;gt; conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;查看工具安装情况&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 14:26:22.09
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm ls -g -depth=0
+C:\Users\daizelai\AppData\Roaming\npm
++-- commitizen@4.3.0
++-- conventional-changelog-cli@2.2.2
++-- conventional-changelog@3.1.25
++-- cz-conventional-changelog@3.3.0
+`-- git-cz@4.9.0
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;提交规范校验&#34;&gt;提交规范校验&lt;/h2&gt;
+&lt;h3 id=&#34;描述&#34;&gt;描述&lt;/h3&gt;
+&lt;p&gt;程序员如果忘记执行&lt;code&gt;git cz&lt;/code&gt;命令怎么办？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.conventionalcommits.org/zh-hans/v1.0.0/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;约定式提交规范&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/commitizen/cz-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;commitizen&lt;/a&gt;：git 提交规范化工具&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/conventional-changelog/commitlint&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;commitlint&lt;/a&gt;：用于检查提交信息&lt;/li&gt;
+&lt;li&gt;pre-commit： git hooks 钩子&lt;/li&gt;
+&lt;li&gt;lint-staged：只检查本次修改更新的代码，并在出现错误的时候，自动修复并且推送&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用 husky + commitlint 检查提交描述是否符合规范要求&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;commitlint：用于检查提交信息&lt;/li&gt;
+&lt;li&gt;husky：是git hooks工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意：npm 需要在 7.x 以上版本！！！！！&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;安装commitlint&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1、npm install &amp;ndash;save-dev @commitlint/config-conventional@12.1.4 @commitlint/cli@12.1.4
+2、创建 commitlint.config.js 文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;说明&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;@commitlint/cli: commitlint 的 CLI 工具&lt;/li&gt;
+&lt;li&gt;@commitlint/config-conventional: commitlint 的 conventional 规范配置方案，这是一个从 config-angular 衍生出的一个分支&lt;/li&gt;
+&lt;li&gt;husky: 一款 git hook 工具，可以 hook git 的命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;安装校验工具&#34;&gt;安装校验工具&lt;/h3&gt;
+&lt;p&gt;校验提交说明是否符合规范，安装校验工具&lt;code&gt;commitlint&lt;/code&gt;。
+安装符合Angular风格的校验规则&lt;code&gt;@commitlint/config-conventional&lt;/code&gt;。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;#安装
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
+#添加规范
+echo &amp;#34;module.exports = {extends: [&amp;#39;@commitlint/config-conventional&amp;#39;]};&amp;#34; &amp;gt; commitlint.config.js
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面是命令执行过程：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 15:27:31.51
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm install --save-dev @commitlint/config-conventional @commitlint/cli
+
+added 200 packages in 11m
+
+28 packages are looking for funding
+  run `npm fund` for details
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 15:40:22.36
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在项目中新建commitlint.config.js文件并设置校验规则。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android 的目录
+
+2023/05/11  15:38    &amp;lt;DIR&amp;gt;          .
+2023/05/11  15:38    &amp;lt;DIR&amp;gt;          ..
+2022/11/04  18:43               247 .gitignore
+2023/05/08  18:57    &amp;lt;DIR&amp;gt;          .gitlab
+2023/05/11  14:24               262 CHANGELOG.md
+2023/05/09  10:35    &amp;lt;DIR&amp;gt;          doc
+2023/05/11  15:38    &amp;lt;DIR&amp;gt;          node_modules
+2023/05/11  15:38            81,136 package-lock.json
+2023/05/11  15:38               114 package.json
+2023/05/08  19:07               129 README.md
+2023/05/09  10:21    &amp;lt;DIR&amp;gt;          td
+2023/05/09  09:25    &amp;lt;DIR&amp;gt;          zte
+               5 个文件         81,888 字节
+               7 个目录 42,581,184,512 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;echo &amp;#34;module.exports = {extends: [&amp;#39;@commitlint/config-conventional&amp;#39;]};&amp;#34; &amp;gt; commitlint.config.js
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android 的目录
+
+2023/05/11  15:44    &amp;lt;DIR&amp;gt;          .
+2023/05/11  15:44    &amp;lt;DIR&amp;gt;          ..
+2022/11/04  18:43               247 .gitignore
+2023/05/08  18:57    &amp;lt;DIR&amp;gt;          .gitlab
+2023/05/11  14:24               262 CHANGELOG.md
+2023/05/11  15:44                69 commitlint.config.js
+2023/05/09  10:35    &amp;lt;DIR&amp;gt;          doc
+2023/05/11  15:38    &amp;lt;DIR&amp;gt;          node_modules
+2023/05/11  15:38            81,136 package-lock.json
+2023/05/11  15:38               114 package.json
+2023/05/08  19:07               129 README.md
+2023/05/09  10:21    &amp;lt;DIR&amp;gt;          td
+2023/05/09  09:25    &amp;lt;DIR&amp;gt;          zte
+               6 个文件         81,957 字节
+               7 个目录 42,581,118,976 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;文件内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;module&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;exports&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;@commitlint/config-conventional&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意：确保保存为 UTF-8 的编码格式，否则可能报错&lt;/p&gt;
+&lt;h3 id=&#34;安装husky&#34;&gt;安装husky&lt;/h3&gt;
+&lt;h4 id=&#34;安装依赖&#34;&gt;安装依赖&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;time
+当前时间: 15:53:35.59
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm install husky@7.0.1 --save-dev
+
+added 1 package, and audited 202 packages in 4s
+
+29 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;启动hooks&#34;&gt;启动hooks&lt;/h4&gt;
+&lt;p&gt;启动hooks，生成 .husky 文件夹&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android 的目录
+
+2023/05/11  15:44    &amp;lt;DIR&amp;gt;          .
+2023/05/11  15:44    &amp;lt;DIR&amp;gt;          ..
+2022/11/04  18:43               247 .gitignore
+2023/05/08  18:57    &amp;lt;DIR&amp;gt;          .gitlab
+2023/05/11  14:24               262 CHANGELOG.md
+2023/05/11  15:44                69 commitlint.config.js
+2023/05/09  10:35    &amp;lt;DIR&amp;gt;          doc
+2023/05/11  15:53    &amp;lt;DIR&amp;gt;          node_modules
+2023/05/11  15:53            81,619 package-lock.json
+2023/05/11  15:53               137 package.json
+2023/05/08  19:07               129 README.md
+2023/05/09  10:21    &amp;lt;DIR&amp;gt;          td
+2023/05/09  09:25    &amp;lt;DIR&amp;gt;          zte
+               6 个文件         82,463 字节
+               7 个目录 42,580,422,656 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npx husky install
+husky - Git hooks installed
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android 的目录
+
+2023/05/11  15:55    &amp;lt;DIR&amp;gt;          .
+2023/05/11  15:55    &amp;lt;DIR&amp;gt;          ..
+2022/11/04  18:43               247 .gitignore
+2023/05/08  18:57    &amp;lt;DIR&amp;gt;          .gitlab
+2023/05/11  15:55    &amp;lt;DIR&amp;gt;          .husky
+2023/05/11  14:24               262 CHANGELOG.md
+2023/05/11  15:44                69 commitlint.config.js
+2023/05/09  10:35    &amp;lt;DIR&amp;gt;          doc
+2023/05/11  15:53    &amp;lt;DIR&amp;gt;          node_modules
+2023/05/11  15:53            81,619 package-lock.json
+2023/05/11  15:53               137 package.json
+2023/05/08  19:07               129 README.md
+2023/05/09  10:21    &amp;lt;DIR&amp;gt;          td
+2023/05/09  09:25    &amp;lt;DIR&amp;gt;          zte
+               6 个文件         82,463 字节
+               8 个目录 42,580,422,656 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;生成prepare指令&#34;&gt;生成prepare指令&lt;/h4&gt;
+&lt;p&gt;在&lt;code&gt;package.json&lt;/code&gt;中生成&lt;code&gt;prepare&lt;/code&gt;指令（需要 npm &amp;gt; 7.0 版本 ），这里一直失败，一直失败，一直失败。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm set-script prepare &amp;#34;husky install&amp;#34;
+Unknown command: &amp;#34;set-script&amp;#34;
+
+Did you mean this?
+    npm run-script # Run arbitrary package scripts
+
+To see a list of supported npm commands, run:
+  npm help
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里直接在json文件中配置一下也可以。
+路径：D:\code\gbcom_gitlab\SH_JC_Android\package.json&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/cli&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/config-conventional&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^7.0.1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prepare&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;husky install&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后在项目根目录下的&lt;code&gt;package.json&lt;/code&gt;就添加了一行&lt;code&gt;&amp;quot;husky&amp;quot;: &amp;quot;^7.0.1&amp;quot;&lt;/code&gt;。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+  &amp;#34;devDependencies&amp;#34;: {
+    &amp;#34;@commitlint/cli&amp;#34;: &amp;#34;^17.6.3&amp;#34;,
+    &amp;#34;@commitlint/config-conventional&amp;#34;: &amp;#34;^17.6.3&amp;#34;,
+    &amp;#34;husky&amp;#34;: &amp;#34;^7.0.1&amp;#34;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行 prepare 指令&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npm run prepare
+npm ERR! Missing script: &amp;#34;prepare&amp;#34;
+npm ERR!
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\daizelai\AppData\Local\npm-cache\_logs\2023-05-11T08_09_04_751Z-debug-0.log
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2023/05/11 16:51手动在p中添加配置：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+  &amp;#34;devDependencies&amp;#34;: {
+    &amp;#34;@commitlint/cli&amp;#34;: &amp;#34;^17.6.3&amp;#34;,
+    &amp;#34;@commitlint/config-conventional&amp;#34;: &amp;#34;^17.6.3&amp;#34;,
+    &amp;#34;husky&amp;#34;: &amp;#34;^7.0.1&amp;#34;
+  },
++  &amp;#34;scripts&amp;#34;: {
++    &amp;#34;prepare&amp;#34;: &amp;#34;husky install&amp;#34;
++  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;再执行&lt;code&gt;npm run prepare&lt;/code&gt;命令。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt; npm run prepare
+
+&amp;gt; prepare
+&amp;gt; echo &amp;#34;在npm i之前会自动执行&amp;#34;
+
+&amp;#34;在npm i之前会自动执行&amp;#34;
+PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;添加commitlint的hook到husky中&#34;&gt;添加commitlint的hook到husky中&lt;/h4&gt;
+&lt;p&gt;添加 commitlint 的 hook 到 husky中，并指令在 commit-msg 的 hooks 下执行 npx &amp;ndash;no-install commitlint &amp;ndash;edit &amp;ldquo;$1&amp;rdquo; 指令&lt;/p&gt;
+&lt;p&gt;下面是在cmd命令行执行，没有成功。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;npx husky add .husky/commit-msg &amp;#39;npx --no-install commitlint --edit &amp;#34;$1&amp;#34;&amp;#39;
+Usage:
+  husky install [dir] (default: .husky)
+  husky uninstall
+  husky set|add &amp;lt;file&amp;gt; [cmd]
+
+D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面是在以管理员权限打开的Windows PowerShell中执行成功的。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt; npx husky add .husky/commit-msg &amp;#39;npx --no-install commitlint --edit &amp;#34;$1&amp;#34;&amp;#39;
+husky - created .husky/commit-msg
+PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;文件结构&#34;&gt;文件结构&lt;/h4&gt;
+&lt;p&gt;目录结构如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt; dir .husky
+
+
+    目录: D:\code\gbcom_gitlab\SH_JC_Android\.husky
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2023/5/11     15:55                _
+-a----         2023/5/11     16:15             80 commit-msg
+
+
+PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;commit-msg文件的内容如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/sh
+. &amp;#34;$(dirname &amp;#34;$0&amp;#34;)/_/husky.sh&amp;#34;
+
+npx --no-install commitlint --edit $1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此时，不符合规范的commit交不再可提交&lt;/p&gt;
+&lt;h4 id=&#34;测试提交&#34;&gt;测试提交&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git status
+On branch master
+Your branch is up to date with &amp;#39;origin/master&amp;#39;.
+
+Changes to be committed:
+  (use &amp;#34;git restore --staged &amp;lt;file&amp;gt;...&amp;#34; to unstage)
+        modified:   zte/app/build.gradle
+
+Untracked files:
+  (use &amp;#34;git add &amp;lt;file&amp;gt;...&amp;#34; to include in what will be committed)
+        .husky/
+        CHANGELOG.md
+        commitlint.config.js
+        node_modules/
+        package-lock.json
+        package.json
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git commit -m &amp;#34;aa&amp;#34;
+⧗   input: aa
+✖   Please add rules to your `commitlint.config.js`
+    - Getting started guide: https://commitlint.js.org/#/?id=getting-started
+    - Example config: https://github.com/conventional-changelog/commitlint/blob/master/%40commitlint/config-conventional/index.js [empty-rules]
+
+✖   found 1 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+husky - commit-msg hook exited with code 1 (error)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git status
+On branch master
+Your branch is up to date with &amp;#39;origin/master&amp;#39;.
+
+Changes to be committed:
+  (use &amp;#34;git restore --staged &amp;lt;file&amp;gt;...&amp;#34; to unstage)
+        modified:   zte/app/build.gradle
+
+Untracked files:
+  (use &amp;#34;git add &amp;lt;file&amp;gt;...&amp;#34; to include in what will be committed)
+        .husky/
+        CHANGELOG.md
+        commitlint.config.js
+        node_modules/
+        package-lock.json
+        package.json
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ date
+Thu May 11 16:19:28     2023
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;通过-pre-commit-检测提交时代码规范&#34;&gt;通过 pre-commit 检测提交时代码规范&lt;/h3&gt;
+&lt;h4 id=&#34;描述-1&#34;&gt;描述&lt;/h4&gt;
+&lt;p&gt;通过 husky 监测 pre-commit 钩子，在该钩子下执行 npx eslint &amp;ndash;ext .js,.vue src 指令来去进行相关检测&lt;/p&gt;
+&lt;h4 id=&#34;配置pre-commit&#34;&gt;配置pre-commit&lt;/h4&gt;
+&lt;p&gt;执行 npx husky add .husky/pre-commit &amp;ldquo;npx eslint &amp;ndash;ext .js,.vue src&amp;rdquo; 添加 commit 时的 hook （npx eslint &amp;ndash;ext .js,.vue src 会在执行到该 hook 时运行）&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;npx husky add .husky/pre-commit &amp;#34;npx eslint --ext .js,.vue src&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;来在【管理员：Windows PowerShell】的执行命令记录如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt; date
+
+2023年5月11日 18:51:56
+
+
+PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt; npx husky add .husky/pre-commit &amp;#34;npx eslint --ext .js,.vue src&amp;#34;
+husky - created .husky/pre-commit
+PS D:\code\gbcom_gitlab\SH_JC_Android&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;该操作会生成对应文件 pre-commit：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;D:\code\gbcom_gitlab\SH_JC_Android\.husky&amp;gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android\.husky 的目录
+
+2023/05/11  18:52    &amp;lt;DIR&amp;gt;          .
+2023/05/11  18:52    &amp;lt;DIR&amp;gt;          ..
+2023/05/11  16:15                80 commit-msg
+2023/05/11  18:52                72 pre-commit
+2023/05/11  15:55    &amp;lt;DIR&amp;gt;          _
+               2 个文件            152 字节
+               3 个目录 42,560,450,560 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android\.husky&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;pre-commit&lt;/code&gt;的内容如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/sh
+. &amp;#34;$(dirname &amp;#34;$0&amp;#34;)/_/husky.sh&amp;#34;
+
+npx eslint --ext .js,.vue src
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;lint-staged-自动修复格式错误&#34;&gt;lint-staged 自动修复格式错误&lt;/h3&gt;
+&lt;h4 id=&#34;描述-2&#34;&gt;描述&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;lint-staged 可以让你当前的代码检查 只检查本次修改更新的代码，并在出现错误的时候，自动修复并且推送&lt;/li&gt;
+&lt;li&gt;lint-staged 无需单独安装，我们生成项目时，vue-cli 已经帮助我们安装过了，所以我们直接使用就可以了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;修改-packagejson-配置&#34;&gt;修改 package.json 配置&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/cli&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/config-conventional&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^7.0.1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prepare&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;husky install&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;lint-staged&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;src/**/*.{js,vue}&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;eslint --fix&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;git add&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;说明-1&#34;&gt;说明&lt;/h4&gt;
+&lt;p&gt;如上配置，每次它只会在你本地 commit 之前，校验你提交的内容是否符合你本地配置的 eslint规则(这个见文档&lt;a class=&#34;link&#34; href=&#34;https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/eslint.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ESLint&lt;/a&gt;)，校验会出现两种结果：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果符合规则：则会提交成功。&lt;/li&gt;
+&lt;li&gt;如果不符合规则：它会自动执行 eslint &amp;ndash;fix 尝试帮你自动修复，如果修复成功则会帮你把修复好的代码提交，如果失败，则会提示你错误，让你修好这个错误之后才能允许你提交代码。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;修改huskypre-commit文件&#34;&gt;修改.husky/pre-commit文件&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;#!/bin/sh
+. &amp;#34;$(dirname &amp;#34;$0&amp;#34;)/_/husky.sh&amp;#34;
+
+npx eslint --ext .js,.vue src
++ npx lint-staged
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;再次执行提交代码，发现 暂存区中 不符合 ESlint 的内容，被自动修复。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在项目的package.json中添加commit钩子(设置校验规则)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;hooks&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commit-msg&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;commitlint -E HUSKY_GIT_PARAMS&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;commit-msg 代表对 commit message 进行 hook，hook 的时候执行后面的命令 commitlint -E HUSKY_GIT_PARAMS 进行检查。&lt;/p&gt;
+&lt;h3 id=&#34;husky&#34;&gt;Husky&lt;/h3&gt;
+&lt;p&gt;对于husky用户，在package.json中添加下列配置：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;husky&amp;#34;: {
+  &amp;#34;hooks&amp;#34;: {
+    &amp;#34;prepare-commit-msg&amp;#34;: &amp;#34;exec &amp;lt; /dev/tty &amp;amp;&amp;amp; npx cz --hook || true&amp;#34;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;新git项目的使用&#34;&gt;新git项目的使用&lt;/h2&gt;
+&lt;h3 id=&#34;描述-3&#34;&gt;描述&lt;/h3&gt;
+&lt;p&gt;今天准备使用git提交深圳14号线的代码，记录一下使用过程。
+git项目使用git提交规范。&lt;/p&gt;
+&lt;h3 id=&#34;安装husky-1&#34;&gt;安装husky&lt;/h3&gt;
+&lt;p&gt;1.先初始话cz-conventional-changelog&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; git cz
+×  error     No files staged!
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; date
+
+2023年5月12日 14:51:38
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; commitizen init cz-conventional-changelog --save --save-exact
+commitizen : 无法加载文件 C:\Users\daizelai\AppData\Roaming\npm\commitizen.ps1，因为在此系统上禁止运行脚本。有关详细信
+息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
+所在位置 行:1 字符: 1
++ commitizen init cz-conventional-changelog --save --save-exact
++ ~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) []，PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; npx commitizen init cz-conventional-changelog --save-dev --save-exact
+Attempting to initialize using the npm package cz-conventional-changelog
+Error: Error: A previous adapter is already configured. Use --force to override
+    adapterConfig.path: cz-conventional-changelog
+    repoPath: D:\code\gbcom_gitlab\SZ14_Android_APP
+    CLI_PATH: C:\Users\daizelai\AppData\Roaming\npm\node_modules\commitizen\
+    installAdapterCommand: npm install cz-conventional-changelog --save-dev
+    adapterNpmName: cz-conventional-changelog
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; npx commitizen init cz-conventional-changelog --save-dev --save-exact --force
+Attempting to initialize using the npm package cz-conventional-changelog
+npm WARN using --force Recommended protections disabled.
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行上面的命令后，会生成如下文件和目录。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;package.json&lt;/li&gt;
+&lt;li&gt;package-lock.json&lt;/li&gt;
+&lt;li&gt;node_modules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此时json文件如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;cz-conventional-changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^3.3.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;config&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitizen&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./node_modules/cz-conventional-changelog&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2.安装husky&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; date
+
+2023年5月12日 14:58:38
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; npm install husky --save-dev 【此命令执行完后在json中添加（&amp;#34;husky&amp;#34;: &amp;#34;^8.0.3&amp;#34;）】
+
+added 1 package, and audited 193 packages in 3s
+
+25 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; npx husky install
+husky - Git hooks installed
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行&lt;code&gt;npx husky install&lt;/code&gt;后在项目根目录下生成了&lt;code&gt;.husky&lt;/code&gt;目录。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;cz-conventional-changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^3.3.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^8.0.3&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;config&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitizen&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./node_modules/cz-conventional-changelog&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;3.添加 husky install 到 package.json scripts 中&lt;/p&gt;
+&lt;p&gt;为了让其他人在此项目中安装依赖后也能自动创建.husky目录并指定该目录为git hooks所在的目录，我们需要在package.json里面添加一条脚本命令&amp;quot;prepare&amp;quot;: &amp;ldquo;husky install&amp;rdquo;，然后执行npm run prepare&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;cz-conventional-changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^3.3.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^8.0.3&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prepare&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;husky install&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelogs&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;config&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitizen&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./node_modules/cz-conventional-changelog&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装好husky之后，需要配置检测规则。&lt;/p&gt;
+&lt;h3 id=&#34;commitlint&#34;&gt;Commitlint&lt;/h3&gt;
+&lt;p&gt;4.安装Commitlint&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;该工具用于帮助我们规范提交信息&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-linux&#34; data-lang=&#34;linux&#34;&gt;PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; date
+
+2023年5月12日 15:09:14
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; npm install @commitlint/config-conventional @commitlint/cli --save-dev
+
+added 116 packages, and audited 309 packages in 20s
+
+43 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面的操作修改了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;devDependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/cli&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;+&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;@commitlint/config-conventional&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^17.6.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;cz-conventional-changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^3.3.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;husky&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^8.0.3&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;prepare&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;husky install&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelog&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelogs&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;config&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;commitizen&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./node_modules/cz-conventional-changelog&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;5.在项目根目录创建commitlint.config.js文件&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WH19-MetroSystem (develop)
+$ echo &amp;#34;&amp;#34;&amp;gt;commitlint.config.js
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;module&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;exports&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 忽略部分
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;ignores&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [(&lt;span style=&#34;color:#a6e22e&#34;&gt;commit&lt;/span&gt;) =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;commit&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;includes&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;init&amp;#34;&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 继承的规则
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@commitlint/config-conventional&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 定义规则类型
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;rules&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;body-leading-blank&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;always&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;footer-leading-blank&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;always&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;header-max-length&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;always&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;108&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;subject-empty&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;never&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;type-empty&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;never&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// type 类型定义，表示 git 提交的 type 必须在以下类型范围内
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;type-enum&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;always&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;feat&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 新增feature
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;fix&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 修复bug
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;perf&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 优化相关，比如性能、体验的提升
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;style&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;docs&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;//  仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 测试用例，包括单元测试、集成测试等
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;refactor&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 代码重构，没有加新功能或者修复bug
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;build&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ci&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;chore&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 改变构建流程、或者增加依赖库、工具等
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;revert&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 回滚到上一个版本
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;wip&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;workflow&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;types&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;release&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;6.使用 commit-msg 钩子规范化提交信息&lt;/p&gt;
+&lt;p&gt;使用以下命令快速创建git hooks的commit-msg钩子，这样每次commit的时候都会由 commitlint对commit信息进行一次检验。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; date
+
+2023年5月12日 15:13:17
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; npx husky add .husky/commit-msg &amp;#39;npx --no-install commitlint --edit &amp;#34;$1&amp;#34;&amp;#39;
+husky - created .husky/commit-msg
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面的操作创建了&lt;code&gt;D:\code\gbcom_gitlab\SZ14_Android_APP\.husky\commit-msg&lt;/code&gt;文件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/env sh
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;. &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;dirname -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$0&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/_/husky.sh&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npx --no-install commitlint --edit $1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;7.提交git commit 测试&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-git&#34; data-lang=&#34;git&#34;&gt;daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ date
+Fri May 12 15:16:00     2023
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ git status
+On branch develop
+Your branch is up to date with &amp;#39;origin/develop&amp;#39;.
+
+Changes not staged for commit:
+  (use &amp;#34;git add &amp;lt;file&amp;gt;...&amp;#34; to update what will be committed)
+  (use &amp;#34;git restore &amp;lt;file&amp;gt;...&amp;#34; to discard changes in working directory)
+        modified:   app/src/main/java/com/gbcom/subwaysystem/activity/TrainActivity.java
+        modified:   app/src/main/java/com/gbcom/subwaysystem/adapter/DisListAdapter.java
+
+Untracked files:
+  (use &amp;#34;git add &amp;lt;file&amp;gt;...&amp;#34; to include in what will be committed)
+        .husky/
+        commitlint.config.js
+        node_modules/
+        package-lock.json
+        package.json
+
+no changes added to commit (use &amp;#34;git add&amp;#34; and/or &amp;#34;git commit -a&amp;#34;)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ git add app/src/main/java/com/gbcom/subwaysystem/activity/TrainActivity.java app/src/main/java/com/gbcom/subwaysystem/adapter/DisListAdapter.java
+warning: LF will be replaced by CRLF in app/src/main/java/com/gbcom/subwaysystem/adapter/DisListAdapter.java.
+The file will have its original line endings in your working directory
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ git status
+On branch develop
+Your branch is up to date with &amp;#39;origin/develop&amp;#39;.
+
+Changes to be committed:
+  (use &amp;#34;git restore --staged &amp;lt;file&amp;gt;...&amp;#34; to unstage)
+        modified:   app/src/main/java/com/gbcom/subwaysystem/activity/TrainActivity.java
+        modified:   app/src/main/java/com/gbcom/subwaysystem/adapter/DisListAdapter.java
+
+Untracked files:
+  (use &amp;#34;git add &amp;lt;file&amp;gt;...&amp;#34; to include in what will be committed)
+        .husky/
+        commitlint.config.js
+        node_modules/
+        package-lock.json
+        package.json
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ git commit -m &amp;#34;工程车请呼修改提交&amp;#34;
+⧗   input: 工程车请呼修改提交
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+husky - commit-msg hook exited with code 1 (error)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在使用&lt;code&gt;git cz&lt;/code&gt;试试。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-git&#34; data-lang=&#34;git&#34;&gt;PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; date
+
+2023年5月12日 15:21:28
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; git cz
+? Select the type of change that you&amp;#39;re committing: 🎸  feat:       A new feature
+? Write a short, imperative mood description of the change:
+  [-------------------------------------------------------------] 55 chars left
+   feat: 车载台工程车请呼时需要弹出可选择的调度台列表
+? Provide a longer description of the change:
+  如果是工程车，发起请呼时，弹出调度台列表给用户选择
+? List any breaking changes
+  BREAKING CHANGE:
+? Issues this commit closes, e.g #123: #26
+[develop 1def850] feat: 🎸 车载台工程车请呼时需要弹出可选择的调度台列表
+ 2 files changed, 31 insertions(+), 14 deletions(-)
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt; git log -n 1
+commit 1def850b055da0a07915b41d092d70b89f18cc0f (HEAD -&amp;gt; develop)
+Author: daizelai &amp;lt;daizelai@gbcom.com.cn&amp;gt;
+Date:   Fri May 12 15:24:50 2023 +0800
+
+    feat: 🎸 车载台工程车请呼时需要弹出可选择的调度台列表
+
+    如果是工程车，发起请呼时，弹出调度台列表给用户选择
+
+    ✅ Closes: #26
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+        </item>
+        <item>
+        <title>Blog</title>
+        <link>http://example.org/post/blog/</link>
+        <pubDate>Fri, 26 May 2023 17:48:54 +0800</pubDate>
+        
+        <guid>http://example.org/post/blog/</guid>
+        <description>&lt;h2 id=&#34;描述&#34;&gt;描述&lt;/h2&gt;
+&lt;p&gt;我是描述&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

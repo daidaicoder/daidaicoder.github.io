@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://example.org/post/20230511_0930git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/</loc>
+    <lastmod>2023-05-26T18:01:54+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/</loc>
+    <lastmod>2023-05-26T18:01:54+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/post/</loc>
+    <lastmod>2023-05-26T18:01:54+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/post/blog/</loc>
+    <lastmod>2023-05-26T17:48:54+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/categories/</loc>
+  </url><url>
+    <loc>http://example.org/tags/</loc>
+  </url>
+</urlset>

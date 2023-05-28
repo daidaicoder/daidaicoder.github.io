@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='20230511_0930git代码提交规范 一、描述 说明 为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。
+本次安装过程：
+npm install -g commitizennpm install -g cz-conventional-changelogecho &amp;#39;{ &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; }&amp;#39; &amp;gt; .czrcnpx commitizen init cz-conventional-changelog --save-dev --save-exactnpx commitizen init cz-conventional-changelog --save-dev --save-exact --forcenpm install -g conventional-changelog-clinpm ls -g -depth=0# 为了Git Bash命令行中也可以使用上下箭头选择git type，安装下面这个。npm install -g git-cz#下面是changlog#追加conventional-changelog -p angular -i CHANGELOG.md -s#全量生成conventional-changelog -p angular -i CHANGELOG.md -s -r 0 windows命令行环境 nvm-windows) commitizen-windows.'>
+<title>git代码提交规范</title>
+
+<link rel='canonical' href='http://example.org/post/20230511_0930git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='git代码提交规范'>
+<meta property='og:description' content='20230511_0930git代码提交规范 一、描述 说明 为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。
+本次安装过程：
+npm install -g commitizennpm install -g cz-conventional-changelogecho &amp;#39;{ &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; }&amp;#39; &amp;gt; .czrcnpx commitizen init cz-conventional-changelog --save-dev --save-exactnpx commitizen init cz-conventional-changelog --save-dev --save-exact --forcenpm install -g conventional-changelog-clinpm ls -g -depth=0# 为了Git Bash命令行中也可以使用上下箭头选择git type，安装下面这个。npm install -g git-cz#下面是changlog#追加conventional-changelog -p angular -i CHANGELOG.md -s#全量生成conventional-changelog -p angular -i CHANGELOG.md -s -r 0 windows命令行环境 nvm-windows) commitizen-windows.'>
+<meta property='og:url' content='http://example.org/post/20230511_0930git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/'>
+<meta property='og:site_name' content='My New Hugo Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-05-26T18:01:54&#43;08:00'/><meta property='article:modified_time' content='2023-05-26T18:01:54&#43;08:00'/>
+<meta name="twitter:title" content="git代码提交规范">
+<meta name="twitter:description" content="20230511_0930git代码提交规范 一、描述 说明 为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。
+本次安装过程：
+npm install -g commitizennpm install -g cz-conventional-changelogecho &amp;#39;{ &amp;#34;path&amp;#34;: &amp;#34;cz-conventional-changelog&amp;#34; }&amp;#39; &amp;gt; .czrcnpx commitizen init cz-conventional-changelog --save-dev --save-exactnpx commitizen init cz-conventional-changelog --save-dev --save-exact --forcenpm install -g conventional-changelog-clinpm ls -g -depth=0# 为了Git Bash命令行中也可以使用上下箭头选择git type，安装下面这个。npm install -g git-cz#下面是changlog#追加conventional-changelog -p angular -i CHANGELOG.md -s#全量生成conventional-changelog -p angular -i CHANGELOG.md -s -r 0 windows命令行环境 nvm-windows) commitizen-windows.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">My New Hugo Site</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/20230511_0930git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/">git代码提交规范</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 26, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    23 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="20230511_0930git代码提交规范">20230511_0930git代码提交规范</h1>
+<h2 id="一描述">一、描述</h2>
+<h3 id="说明">说明</h3>
+<p>为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。</p>
+<p>本次安装过程：</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">npm install -g commitizen
+npm install -g cz-conventional-changelog
+echo &#39;{ &#34;path&#34;: &#34;cz-conventional-changelog&#34; }&#39; &gt; .czrc
+npx commitizen init cz-conventional-changelog --save-dev --save-exact
+npx commitizen init cz-conventional-changelog --save-dev --save-exact --force
+npm install -g conventional-changelog-cli
+npm ls -g -depth=0
+
+# 为了Git Bash命令行中也可以使用上下箭头选择git type，安装下面这个。
+npm install -g git-cz
+
+#下面是changlog
+#追加
+conventional-changelog -p angular -i CHANGELOG.md -s
+#全量生成
+conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+</code></pre><h3 id="windows命令行环境">windows命令行环境</h3>
+<p><a class="link" href="https://github.com/coreybutler/nvm-windows"  target="_blank" rel="noopener"
+    >nvm-windows)</a>
+<a class="link" href="https://github.com/snakeclub/DevStandards/blob/master/docs/git/commitizen-windows.md"  target="_blank" rel="noopener"
+    >commitizen-windows.md</a></p>
+<h3 id="type">Type</h3>
+<p>提交类型：</p>
+<pre tabindex="0"><code>1.feat: 新功能（feature）
+2.fix: Bug修复
+3,.docs: 文档更新（documentation）
+4.style: 代码的格式，标点符号的更新（不影响代码运行的变动）
+5.refactor: 代码重构（即不是新增功能，也不是修改bug的代码变动）
+6.perf: 性能优化
+7.test: 测试更新
+8.build: 构建系统或者包依赖更新
+9.ci: CI 配置，脚本文件等更新
+10.chore: 非src或者测试文件的更新【构建过程或辅助工具的变动】
+11.revert: commit 回退
+</code></pre><p>说明一下：</p>
+<pre tabindex="0"><code># 主要type
+feat:     增加新功能
+fix:      修复bug
+
+# 特殊type
+ docs:    只改动了文档相关的内容
+style:    不影响代码含义的改动，例如去掉空格、改变缩进、增删分号
+build:    构造工具的或者外部依赖的改动，例如webpack，npm
+refactor:  代码重构时使用
+revert:   执行git revert打印的message
+
+# 暂不使用type
+test:     添加测试或者修改现有测试
+perf:     提高性能的改动
+ci:       与CI（持续集成服务）有关的改动
+chore:    不修改src或者test的其余修改，例如构建过程或辅助工具的变动
+</code></pre><h3 id="scope">Scope</h3>
+<p>用来说明本次Commit影响的范围，即简要说明修改会涉及的部分。这个本来是选填项，但从AngularJS实际项目中可以看出基本上也成了必填项了。</p>
+<h3 id="subject">Subject</h3>
+<p>用来简要描述本次改动，概述就好了，因为后面还会在Body里给出具体信息。并且最好遵循下面三条:</p>
+<ul>
+<li>以动词开头，使用第一人称现在时，比如change，而不是changed或changes</li>
+<li>首字母不要大写</li>
+<li>结尾不用句号(.)</li>
+</ul>
+<h3 id="body">Body</h3>
+<p>里的内容是对上面subject里内容的展开，在此做更加详尽的描述，内容里应该包含修改动机和修改前后的对比。</p>
+<h3 id="footer">Footer</h3>
+<p>footer里的主要放置不兼容变更和Issue关闭的信息。</p>
+<h3 id="revert">Revert</h3>
+<p>此外如果需要撤销之前的Commit，那么本次Commit Message中必须以revert：开头，后面紧跟前面描述的Header部分，格式不变。并且，Body部分的格式也是固定的，必须要记录撤销前Commit的SHA值。</p>
+<h2 id="过程精简">过程精简</h2>
+<h3 id="commitizen规范">Commitizen规范</h3>
+<p>1.全局安装commitizen &amp; cz-conventional-changelog</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># 安装，安装完成之后可以使用git cz命令来取代git commit
+npm install -g commitizen cz-conventional-changelog conventional-changelog-cli
+
+#适配器
+#如果需要在项目中使用commitizen生成符合AngularJS规范的提交说明，初始化cz-conventional-changelog适配器
+commitizen init cz-conventional-changelog --save --save-exact
+npx commitizen init cz-conventional-changelog --save-dev --save-exact --force
+#上面初始化适配器主要进行了3件事情：
+#1.在项目中安装cz-conventional-changelog 适配器依赖
+#2.将适配器依赖保存到package.json的devDependencies字段信息
+#3.在package.json中新增config.commitizen字段信息，主要用于配置cz工具的适配器路径
+</code></pre><h3 id="commitizen校验">Commitizen校验</h3>
+<p>2.项目内安装commitlint &amp; husky</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">#安装
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
+#添加规范
+echo &#34;module.exports = {extends: [&#39;@commitlint/config-conventional&#39;]};&#34; &gt; commitlint.config.js
+#即在项目根目录下`D:\code\gbcom_gitlab\SH_JC_Android\commitlint.config.js`添加如下内容。
+module.exports = {
+  extends: [&#39;@commitlint/config-conventional&#39;]
+};
+
+#安装git钩子工具
+npm install husky --save-dev
+#在项目根目录下的package.json中配置git commit提交时的校验钩子`D:\code\gbcom_gitlab\SH_JC_Android\package.json`
+&#34;husky&#34;: {
+  &#34;hooks&#34;: {
+    &#34;commit-msg&#34;: &#34;commitlint -E HUSKY_GIT_PARAMS&#34;
+  }
+}
+#上面的commit-msg代表对 commit message 进行 hook，hook 的时候执行后面的命令 commitlint -E HUSKY_GIT_PARAMS 进行检查。
+#安装husky后在package.json中添加脚本
+{
+	&#34;devDependencies&#34;: {
+		&#34;@commitlint/cli&#34;: &#34;^17.6.3&#34;,
+		&#34;@commitlint/config-conventional&#34;: &#34;^17.6.3&#34;,
+		&#34;commitlint-config-cz&#34;: &#34;^0.13.3&#34;,
+		&#34;commitlint-config-git-commit-emoji&#34;: &#34;^1.0.0&#34;,
+		&#34;cz-customizable&#34;: &#34;^7.0.0&#34;,
+		&#34;husky&#34;: &#34;^7.0.1&#34;
+	},
+	&#34;scripts&#34;: {
++		&#34;prepare&#34;: &#34;husky install&#34;,
+		&#34;changelog&#34;: &#34;conventional-changelog -p angular -i CHANGELOG.md -s&#34;,
+		&#34;changelogs&#34;: &#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&#34;,
+		&#34;commit&#34;: &#34;cz-customizable&#34;
+	}
+}
+#添加 commit-msg 钩子,执行信息校验，其实就是在.husky/commit-msg文件中添加【npx --no-install commitlint --edit &#34;$1&#34;】
+npx husky add .husky/commit-msg &#39;npx --no-install commitlint --edit &#34;$1&#34;&#39;
+
+
+# validate-commit-msg
+# 除了使用commitlint校验工具，也可以使用validate-commit-msg校验工具对cz提交说明是否符合Angular规范进行校验。
+</code></pre><h3 id="安装的依赖">安装的依赖</h3>
+<p>C:\Users\daizelai\AppData\Roaming\npm\node_modules</p>
+<pre tabindex="0"><code>C:\Users\daizelai\AppData\Roaming\npm\node_modules&gt;dir
+ 驱动器 C 中的卷没有标签。
+ 卷的序列号是 1A38-870C
+
+ C:\Users\daizelai\AppData\Roaming\npm\node_modules 的目录
+
+2023/05/11  14:04    &lt;DIR&gt;          .
+2023/05/11  14:04    &lt;DIR&gt;          ..
+2023/05/11  09:37    &lt;DIR&gt;          commitizen
+2023/05/04  16:54    &lt;DIR&gt;          conventional-changelog
+2023/05/11  14:04    &lt;DIR&gt;          conventional-changelog-cli
+2023/05/11  09:48    &lt;DIR&gt;          cz-conventional-changelog
+2023/05/11  10:47    &lt;DIR&gt;          git-cz
+               0 个文件              0 字节
+               7 个目录  3,261,562,880 可用字节
+
+C:\Users\daizelai\AppData\Roaming\npm\node_modules&gt;
+</code></pre><h3 id="安装可自定义的cz适配器">安装可自定义的cz适配器</h3>
+<p>因为commitizen只支持英文，如果我想要支持中文指令和emoji，那么就必须安装可自定义的cz适配器了</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">npm i -D commitlint-config-cz  cz-customizable commitlint-config-git-commit-emoji
+</code></pre><p>配置项目根目录的<code>.cz-config.js</code>文件内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">module.exports</span> <span style="color:#960050;background-color:#1e0010">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">types:</span> <span style="color:#960050;background-color:#1e0010">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:sparkles:</span> <span style="color:#960050;background-color:#1e0010">feat&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;✨</span> <span style="color:#960050;background-color:#1e0010">feat:</span>     <span style="color:#960050;background-color:#1e0010">新功能&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:bug:</span> <span style="color:#960050;background-color:#1e0010">fix&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;🐛</span> <span style="color:#960050;background-color:#1e0010">fix:</span>      <span style="color:#960050;background-color:#1e0010">修复bug&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:package:</span> <span style="color:#960050;background-color:#1e0010">build&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;📦️</span> <span style="color:#960050;background-color:#1e0010">build:</span>    <span style="color:#960050;background-color:#1e0010">打包&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:zap:</span> <span style="color:#960050;background-color:#1e0010">perf&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;⚡️</span> <span style="color:#960050;background-color:#1e0010">perf:</span>     <span style="color:#960050;background-color:#1e0010">性能优化&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:tada:</span> <span style="color:#960050;background-color:#1e0010">release&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;🎉</span> <span style="color:#960050;background-color:#1e0010">release:</span>  <span style="color:#960050;background-color:#1e0010">发布正式版&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:lipstick:</span> <span style="color:#960050;background-color:#1e0010">style&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;💄</span> <span style="color:#960050;background-color:#1e0010">style:</span>    <span style="color:#960050;background-color:#1e0010">代码的样式美化&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:recycle:</span> <span style="color:#960050;background-color:#1e0010">refactor&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;♻️</span>  <span style="color:#960050;background-color:#1e0010">refactor:</span> <span style="color:#960050;background-color:#1e0010">重构&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:pencil2:</span> <span style="color:#960050;background-color:#1e0010">docs&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;✏️</span>  <span style="color:#960050;background-color:#1e0010">docs:</span>     <span style="color:#960050;background-color:#1e0010">文档变更&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:white_check_mark:</span> <span style="color:#960050;background-color:#1e0010">test&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;✅</span> <span style="color:#960050;background-color:#1e0010">test:</span>     <span style="color:#960050;background-color:#1e0010">测试&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:rewind:</span> <span style="color:#960050;background-color:#1e0010">revert&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;⏪️</span> <span style="color:#960050;background-color:#1e0010">revert:</span>   <span style="color:#960050;background-color:#1e0010">回退&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:rocket:</span> <span style="color:#960050;background-color:#1e0010">chore&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;🚀</span> <span style="color:#960050;background-color:#1e0010">chore:</span>    <span style="color:#960050;background-color:#1e0010">构建/工程依赖/工具&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:construction_worker:</span> <span style="color:#960050;background-color:#1e0010">ci&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;👷</span> <span style="color:#960050;background-color:#1e0010">ci:</span>       <span style="color:#960050;background-color:#1e0010">CI</span> <span style="color:#960050;background-color:#1e0010">related</span> <span style="color:#960050;background-color:#1e0010">changes&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">messages:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">type:</span> <span style="color:#960050;background-color:#1e0010">&#39;请选择提交类型(必填)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">customScope:</span> <span style="color:#960050;background-color:#1e0010">&#39;请输入文件修改范围(可选)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">subject:</span> <span style="color:#960050;background-color:#1e0010">&#39;请简要描述提交(必填)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">body:</span> <span style="color:#960050;background-color:#1e0010">&#39;请输入详细描述(可选)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">breaking:</span> <span style="color:#960050;background-color:#1e0010">&#39;列出任何BREAKING</span> <span style="color:#960050;background-color:#1e0010">CHANGES(可选)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">footer:</span> <span style="color:#960050;background-color:#1e0010">&#39;请输入要关闭的issue(可选)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">confirmCommit:</span> <span style="color:#960050;background-color:#1e0010">&#39;确定提交此说明吗？&#39;</span>
+</span></span><span style="display:flex;"><span>  }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">allowCustomScopes:</span> <span style="color:#66d9ef">true</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 跳过问题
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#960050;background-color:#1e0010">skipQuestions:</span> [<span style="color:#960050;background-color:#1e0010">&#39;body&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;footer&#39;</span>]<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">subjectLimit:</span> <span style="color:#ae81ff">72</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>将cz-customizable脚本添加到您的<code>package.json</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">//#npm set-script commit &#34;git add . &amp;&amp; cz-customizable&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;@commitlint/cli&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;@commitlint/config-conventional&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;commitlint-config-cz&#34;</span>: <span style="color:#e6db74">&#34;^0.13.3&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;commitlint-config-git-commit-emoji&#34;</span>: <span style="color:#e6db74">&#34;^1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;cz-customizable&#34;</span>: <span style="color:#e6db74">&#34;^7.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;husky&#34;</span>: <span style="color:#e6db74">&#34;^7.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;prepare&#34;</span>: <span style="color:#e6db74">&#34;husky install&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;changelog&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;changelogs&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>		<span style="color:#f92672">&#34;commit&#34;</span>: <span style="color:#e6db74">&#34;cz-customizable&#34;</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="commitizen">commitizen</h2>
+<p>当你使用commitizen进行代码提交（gitcommit）时，commitizen会提交你在提交时填写所有必需的提交字段</p>
+<p>commitizen是一个撰写合格commit message的工具，用于代替git commit 指令，而cz-conventional-changelog适配器提供conventional-changelog标准（约定式提交标准）。</p>
+<h2 id="安装">安装</h2>
+<h3 id="安装commitizen">安装commitizen</h3>
+<p>首先要全局安装commitizen</p>
+<pre tabindex="0"><code>npm i -g commitizen@4.2.4
+</code></pre><p>然后安装插件</p>
+<pre tabindex="0"><code>npm i cz-customizable@6.3.0 --save-dev
+</code></pre><p>也可以直接全局安装commitizen &amp; cz-conventional-changelog</p>
+<pre tabindex="0"><code>npm install -g commitizen cz-conventional-changelog
+echo &#39;{ &#34;path&#34;: &#34;cz-conventional-changelog&#34; }&#39; &gt; ~/.czrc
+</code></pre><blockquote>
+<p>正式安装</p>
+</blockquote>
+<p>来的安装过程：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">PS C:\Users\daizelai&gt; npm -v
+9.5.1
+PS C:\Users\daizelai&gt; date
+
+2023年5月11日 9:36:43
+
+
+PS C:\Users\daizelai&gt; npm install -g commitizen
+
+added 191 packages in 1m
+
+24 packages are looking for funding
+  run `npm fund` for details
+PS C:\Users\daizelai&gt; npm fund
+daizelai
+
+PS C:\Users\daizelai&gt;
+</code></pre><h3 id="全局安装适配器">全局安装适配器</h3>
+<p>cz-customizable和cz-conventional-changelog一样，也是commitizen的adapter，不过支持一定程度上的自定义。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">npm install -g cz-conventional-changelog
+# 有的是安装下面这个，来没有这么安装
+npm install -g conventional-changelog
+npm install -g conventional-changelog-cli
+</code></pre><p>来的安装过程：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">PS C:\Users\daizelai&gt; npm install -g cz-conventional-changelog
+
+added 191 packages in 28s
+
+24 packages are looking for funding
+  run `npm fund` for details
+PS C:\Users\daizelai&gt;
+</code></pre><p>检验上面的工具是否安装成功，可以输入以下<code>npm ls -g -depth=0</code>命令。</p>
+<pre tabindex="0"><code>D:\code\gbcom_gitlab\SH_JC_Android&gt;npm ls -g -depth=0
+C:\Users\daizelai\AppData\Roaming\npm
++-- commitizen@4.3.0
++-- conventional-changelog@3.1.25
++-- cz-conventional-changelog@3.3.0
+`-- git-cz@4.9.0
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>来后来又安装了一下，下面的命令安装<code>cz-conventional-changelog</code>, 并且初始化<code>cz-conventional-changelog</code>。</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">C:\Users\daizelai&gt;npx commitizen init cz-conventional-changelog --save-dev --save-exact
+Attempting to initialize using the npm package cz-conventional-changelog
+Error: Error: A previous adapter is already configured. Use --force to override
+    adapterConfig.path: cz-conventional-changelog
+    repoPath: C:\Users\daizelai
+    CLI_PATH: C:\Users\daizelai\AppData\Roaming\npm\node_modules\commitizen\
+    installAdapterCommand: npm install cz-conventional-changelog --save-dev
+    adapterNpmName: cz-conventional-changelog
+
+
+C:\Users\daizelai&gt;npx commitizen init cz-conventional-changelog --save-dev --save-exact --force
+Attempting to initialize using the npm package cz-conventional-changelog
+npm WARN using --force Recommended protections disabled.
+
+C:\Users\daizelai&gt;
+</code></pre><h3 id="配置">配置</h3>
+<p>如果你是mac用户，运行下面这条命令，它会在你的home目录下，创建一个.czrc文件。路径指向刚才全局安装的适配器。</p>
+<pre tabindex="0"><code>echo &#39;{ &#34;path&#34;: &#34;cz-conventional-changelog&#34; }&#39; &gt; ~/.czrc
+</code></pre><p>如果你是windows用户，请把下面这条命令中的<code>C:\Users\daizelai</code>更换成你自己电脑上的<code>\Users\username</code>目录再运行。这条命令的本质其实就是在<code>Users\username</code>目录下创建一个内容为<code>{ &quot;path&quot;: &quot;cz-conventional-changelog&quot; }</code>的<code>.czrc</code>文件。</p>
+<pre tabindex="0"><code>echo { &#34;path&#34;: &#34;cz-conventional-changelog&#34; } &gt; C:\Users\daizelai\.czrc
+</code></pre><p>来的操作过程：</p>
+<pre tabindex="0"><code>daizelai@GBCOM-20210524I MINGW64 ~
+$ date
+Thu May 11 09:45:44     2023
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ pwd
+/c/Users/daizelai
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ ls -l .czrc
+ls: cannot access &#39;.czrc&#39;: No such file or directory
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ echo &#39;{ &#34;path&#34;: &#34;cz-conventional-changelog&#34; }&#39; &gt; .czrc
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ ls -l .czrc
+-rw-r--r-- 1 daizelai 197121 36 May 11 09:46 .czrc
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$ cat .czrc
+{ path: cz-conventional-changelog }
+
+daizelai@GBCOM-20210524I MINGW64 ~
+$
+</code></pre><p>一定要检查一下.czrc的文件内容：</p>
+<pre tabindex="0"><code class="language-czrc" data-lang="czrc">{ &#34;path&#34;: &#34;cz-conventional-changelog&#34; }
+</code></pre><p>将这个.czrc文件转换为utf8格式，因为Git-bash只认utf8格式的该文件。</p>
+<p><strong>当然，也可以直接配置json，不生成.czrc文件</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;config&#34;</span><span style="color:#960050;background-color:#1e0010">: </span>{
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    </span><span style="color:#f92672">&#34;commitizen&#34;</span>:<span style="color:#960050;background-color:#1e0010"> </span>{
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">      </span><span style="color:#f92672">&#34;path&#34;</span>:<span style="color:#960050;background-color:#1e0010"> </span><span style="color:#e6db74">&#34;cz-conventional-changelog&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    </span>}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>已经完成了Commitizen的全局安装！你可以在任何一个git仓库中使用git cz，而不是git commit。另外，你可以在git cz上使用git commit的所有参数，比如git cz -a。如果项目和全局都安装过Commitizen，那么会使用项目中的Commitizen适配器，而不是全局的。</p>
+<h3 id="使用">使用</h3>
+<p>下面是通过<code>Git Bash</code>中执行<code>git cz</code>命令后，无法使用键盘的上下箭头来选择提交类型，不过可以直接输入类型关键字就可以了，如输入<code>fix</code>后回车，后面有介绍说可以重新安装一个<code>git-cz</code>来解决此问题。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git cz
+cz-cli@4.3.0, cz-conventional-changelog@3.3.0
+
+// 这次提交的类型是什么
+? Select the type of change that you&#39;re committing: (Use arrow keys)
+&gt; feat:     A new feature // 新增特性（feature)
+  fix:      A bug fix // 修复bug(bug fix)
+  docs:     Documentation only changes // 修改文档
+  style:    Changes that do not affect the meaning of the code (white-space,
+formatting, missing semi-colons, etc) // 代码格式修改
+  refactor: A code change that neither fixes a bug nor adds a feature // 代码重构
+  perf:     A code change that improves performance // 改善性能
+  test:     Adding missing tests or correcting existing tests  // 测试
+  build:    Changes that affect the build system or external dependencies (example
+scopes: gulp, broccoli, npm) // 变更项目构建或外部依赖（例如 scopes:webpack、gulp、npm等）
+  ci:       Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs
+) // 更改持续集成软件的配置文件和package中的script 命令
+  chore:    Other changes that don&#39;t modify src or test files // 变更构建流程或辅助工具（比如更改测试环境）
+  revert:   Reverts a previous commit // 代码回退
+(Move up and down to reveal more choices)
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$
+</code></pre><p>但是通过windows的终端命令行中，使用<code>git cz</code>命令就可以使用键盘的上下箭头来选择提交类型。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">D:\code\gbcom_gitlab\SH_JC_Android&gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 13:28:11.28
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;git status
+On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        modified:   zte/app/build.gradle
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;git cz
+? Select the type of change that you&#39;re committing: 🐛  fix:        A bug fix
+? Write a short, imperative mood description of the change:
+  [-------------------------------------------------------------] 56 chars left
+   fix: 修复了通话时没有声音的BUG
+? Provide a longer description of the change:
+  通过修复通话的业务代码，修复了组呼通话时没有声音的BUG。
+? List any breaking changes // 选择是否有不兼容改造点breaking，如果有输入不兼容改造点描述：
+  BREAKING CHANGE:
+? Issues this commit closes, e.g #123: #110 // 选择是否有问题解决issues，如果有输入解决的问题清单
+[master 972ecce] fix: 🐛 修复了通话时没有声音的BUG
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;git log -n 1
+commit 972ecce6e508a62d5c8ecbc0000ab04838b7250f (HEAD -&gt; master)
+Author: daizelai &lt;daizelai@gbcom.com.cn&gt;
+Date:   Thu May 11 13:28:51 2023 +0800
+
+    fix: 🐛 修复了通话时没有声音的BUG
+
+    通过修复通话的业务代码，修复了组呼通话时没有声音的BUG。
+
+    ✅ Closes: #110
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;git reflog -n 1
+972ecce (HEAD -&gt; master) HEAD@{0}: commit: fix: 🐛 修复了通话时没有声音的BUG
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p><img src="/images/cmd_git_cz_20230511_1329.gif"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h3 id="安装git-cz">安装git-cz</h3>
+<p>在window系统下的<code>Git Bash</code>会有一个问题，window系统下使用<code>git cz</code>后无法上下选择本次提交的类型，这里给大家介绍一个工具，在你<code>git cz</code>前面加上“winpty”，即可实现上下选择。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">npm install -g git-cz
+git-cz
+</code></pre><p>使用时输入如下命令即可。</p>
+<pre tabindex="0"><code>winpty git cz
+</code></pre><p>下面是来的安装过程记录：</p>
+<pre tabindex="0"><code>C:\Users\daizelai&gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+C:\Users\daizelai&gt;npm install -g git-cz
+npm ERR! code EEXIST
+npm ERR! path C:\Users\daizelai\AppData\Roaming\npm\git-cz
+npm ERR! EEXIST: file already exists
+npm ERR! File exists: C:\Users\daizelai\AppData\Roaming\npm\git-cz
+npm ERR! Remove the existing file and try again, or run npm
+npm ERR! with --force to overwrite files recklessly.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\daizelai\AppData\Local\npm-cache\_logs\2023-05-11T02_46_00_443Z-debug-0.log
+
+C:\Users\daizelai&gt;npm install -g git-cz --force
+npm WARN using --force Recommended protections disabled.
+
+added 1 package in 54s
+
+C:\Users\daizelai&gt;git-cz
+Command failed: git diff --cached --no-ext-diff --name-only
+error: unknown option `cached&#39;
+usage: git diff --no-index [&lt;options&gt;] &lt;path&gt; &lt;path&gt;
+
+Diff output format options
+    -p, --patch           generate patch
+    -s, --no-patch        suppress diff output
+    -u                    generate patch
+    -U, --unified[=&lt;n&gt;]   generate diffs with &lt;n&gt; lines context
+    -W, --function-context
+                          generate diffs with &lt;n&gt; lines context
+    --raw                 generate the diff in raw format
+    --patch-with-raw      synonym for &#39;-p --raw&#39;
+    --patch-with-stat     synonym for &#39;-p --stat&#39;
+    --numstat             machine friendly --stat
+    --shortstat           output only the last line of --stat
+    -X, --dirstat[=&lt;param1,param2&gt;...]
+                          output the distribution of relative amount of changes for each sub-directory
+    --cumulative          synonym for --dirstat=cumulative
+    --dirstat-by-file[=&lt;param1,param2&gt;...]
+                          synonym for --dirstat=files,param1,param2...
+    --check               warn if changes introduce conflict markers or whitespace errors
+    --summary             condensed summary such as creations, renames and mode changes
+    --name-only           show only names of changed files
+    --name-status         show only names and status of changed files
+    --stat[=&lt;width&gt;[,&lt;name-width&gt;[,&lt;count&gt;]]]
+                          generate diffstat
+    --stat-width &lt;width&gt;  generate diffstat with a given width
+    --stat-name-width &lt;width&gt;
+                          generate diffstat with a given name width
+    --stat-graph-width &lt;width&gt;
+                          generate diffstat with a given graph width
+    --stat-count &lt;count&gt;  generate diffstat with limited lines
+    --compact-summary     generate compact summary in diffstat
+    --binary              output a binary diff that can be applied
+    --full-index          show full pre- and post-image object names on the &#34;index&#34; lines
+    --color[=&lt;when&gt;]      show colored diff
+    --ws-error-highlight &lt;kind&gt;
+                          highlight whitespace errors in the &#39;context&#39;, &#39;old&#39; or &#39;new&#39; lines in the diff
+    -z                    do not munge pathnames and use NULs as output field terminators in --raw or --numstat
+    --abbrev[=&lt;n&gt;]        use &lt;n&gt; digits to display object names
+    --src-prefix &lt;prefix&gt;
+                          show the given source prefix instead of &#34;a/&#34;
+    --dst-prefix &lt;prefix&gt;
+                          show the given destination prefix instead of &#34;b/&#34;
+    --line-prefix &lt;prefix&gt;
+                          prepend an additional prefix to every line of output
+    --no-prefix           do not show any source or destination prefix
+    --inter-hunk-context &lt;n&gt;
+                          show context between diff hunks up to the specified number of lines
+    --output-indicator-new &lt;char&gt;
+                          specify the character to indicate a new line instead of &#39;+&#39;
+    --output-indicator-old &lt;char&gt;
+                          specify the character to indicate an old line instead of &#39;-&#39;
+    --output-indicator-context &lt;char&gt;
+                          specify the character to indicate a context instead of &#39; &#39;
+
+Diff rename options
+    -B, --break-rewrites[=&lt;n&gt;[/&lt;m&gt;]]
+                          break complete rewrite changes into pairs of delete and create
+    -M, --find-renames[=&lt;n&gt;]
+                          detect renames
+    -D, --irreversible-delete
+                          omit the preimage for deletes
+    -C, --find-copies[=&lt;n&gt;]
+                          detect copies
+    --find-copies-harder  use unmodified files as source to find copies
+    --no-renames          disable rename detection
+    --rename-empty        use empty blobs as rename source
+    --follow              continue listing the history of a file beyond renames
+    -l &lt;n&gt;                prevent rename/copy detection if the number of rename/copy targets exceeds given limit
+
+Diff algorithm options
+    --minimal             produce the smallest possible diff
+    -w, --ignore-all-space
+                          ignore whitespace when comparing lines
+    -b, --ignore-space-change
+                          ignore changes in amount of whitespace
+    --ignore-space-at-eol
+                          ignore changes in whitespace at EOL
+    --ignore-cr-at-eol    ignore carrier-return at the end of line
+    --ignore-blank-lines  ignore changes whose lines are all blank
+    -I, --ignore-matching-lines &lt;regex&gt;
+                          ignore changes whose all lines match &lt;regex&gt;
+    --indent-heuristic    heuristic to shift diff hunk boundaries for easy reading
+    --patience            generate diff using the &#34;patience diff&#34; algorithm
+    --histogram           generate diff using the &#34;histogram diff&#34; algorithm
+    --diff-algorithm &lt;algorithm&gt;
+                          choose a diff algorithm
+    --anchored &lt;text&gt;     generate diff using the &#34;anchored diff&#34; algorithm
+    --word-diff[=&lt;mode&gt;]  show word diff, using &lt;mode&gt; to delimit changed words
+    --word-diff-regex &lt;regex&gt;
+                          use &lt;regex&gt; to decide what a word is
+    --color-words[=&lt;regex&gt;]
+                          equivalent to --word-diff=color --word-diff-regex=&lt;regex&gt;
+    --color-moved[=&lt;mode&gt;]
+                          moved lines of code are colored differently
+    --color-moved-ws &lt;mode&gt;
+                          how white spaces are ignored in --color-moved
+
+Other diff options
+    --relative[=&lt;prefix&gt;]
+                          when run from subdir, exclude changes outside and show relative paths
+    -a, --text            treat all files as text
+    -R                    swap two inputs, reverse the diff
+    --exit-code           exit with 1 if there were differences, 0 otherwise
+    --quiet               disable all output of the program
+    --ext-diff            allow an external diff helper to be executed
+    --textconv            run external text conversion filters when comparing binary files
+    --ignore-submodules[=&lt;when&gt;]
+                          ignore changes to submodules in the diff generation
+    --submodule[=&lt;format&gt;]
+                          specify how differences in submodules are shown
+    --ita-invisible-in-index
+                          hide &#39;git add -N&#39; entries from the index
+    --ita-visible-in-index
+                          treat &#39;git add -N&#39; entries as real in the index
+    -S &lt;string&gt;           look for differences that change the number of occurrences of the specified string
+    -G &lt;regex&gt;            look for differences that change the number of occurrences of the specified regex
+    --pickaxe-all         show all changes in the changeset with -S or -G
+    --pickaxe-regex       treat &lt;string&gt; in -S as extended POSIX regular expression
+    -O &lt;file&gt;             control the order in which files appear in the output
+    --rotate-to &lt;path&gt;    show the change in the specified path first
+    --skip-to &lt;path&gt;      skip the output to the specified path
+    --find-object &lt;object-id&gt;
+                          look for differences that change the number of occurrences of the specified object
+    --diff-filter [(A|C|D|M|R|T|U|X|B)...[*]]
+                          select files by diff type
+    --output &lt;file&gt;       Output to a specific file
+
+
+
+C:\Users\daizelai&gt;
+</code></pre><p><img src="/images/git_cz_20230511_1103.gif"
+	
+	
+	
+	loading="lazy"
+	
+		alt="使用记录"
+	
+	
+></p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ date
+Thu May 11 11:02:11     2023
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git status
+On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        modified:   zte/app/build.gradle
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ winpty git cz
+? Select the type of change that you&#39;re committing: �  fix:        A bug fix
+? Write a short, imperative mood description of the change:
+  [-------------------------------------------------------------] 56 chars left
+   fix: 修复了通话时没有声音的BUG
+? Provide a longer description of the change:
+  通过修改通话代码，修复了组呼通话时没有声音的BUG。
+? List any breaking changes
+  BREAKING CHANGE:
+? Issues this commit closes, e.g #123: #110
+[master 9963cd1] fix: � 修复了通话时没有声音的BUG
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git status
+On branch master
+Your branch is ahead of &#39;origin/master&#39; by 1 commit.
+  (use &#34;git push&#34; to publish your local commits)
+
+nothing to commit, working tree clean
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git log -n 1
+commit 9963cd10bfb62826384c22d6d9ec580ee5edb05c (HEAD -&gt; master)
+Author: daizelai &lt;daizelai@gbcom.com.cn&gt;
+Date:   Thu May 11 11:02:50 2023 +0800
+
+    fix: 🐛 修复了通话时没有声音的BUG
+
+    通过修改通话代码，修复了组呼通话时没有声音的BUG。
+
+    ✅ Closes: #110
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git reflog -n 1
+9963cd1 (HEAD -&gt; master) HEAD@{0}: commit: fix: 🐛 修复了通话时没有声音的BUG
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$
+</code></pre><h3 id="安装可自定义的cz适配器-1">安装可自定义的cz适配器</h3>
+<p>因为commitizen只支持英文，如果我想要支持中文指令和emoji，那么就必须安装可自定义的cz适配器了</p>
+<pre tabindex="0"><code>npm i -D commitlint-config-cz  cz-customizable commitlint-config-git-commit-emoji
+</code></pre><p>来后来又安装了。</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">D:\code\gbcom_gitlab\SH_JC_Android&gt;date
+当前日期: 2023/05/12 周五
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;npm i -D commitlint-config-cz  cz-customizable
+
+added 52 packages, and audited 254 packages in 10s
+
+30 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 10:42:30.03
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>在项目根目录创建.cz-config.js文件</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">echo &gt; .cz-config.js
+</code></pre><p>配置.cz-config.js文件内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">module.exports</span> <span style="color:#960050;background-color:#1e0010">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">types:</span> <span style="color:#960050;background-color:#1e0010">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:sparkles:</span> <span style="color:#960050;background-color:#1e0010">feat&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;✨</span> <span style="color:#960050;background-color:#1e0010">feat:</span>     <span style="color:#960050;background-color:#1e0010">新功能&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:bug:</span> <span style="color:#960050;background-color:#1e0010">fix&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;🐛</span> <span style="color:#960050;background-color:#1e0010">fix:</span>      <span style="color:#960050;background-color:#1e0010">修复bug&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:package:</span> <span style="color:#960050;background-color:#1e0010">build&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;📦️</span> <span style="color:#960050;background-color:#1e0010">build:</span>    <span style="color:#960050;background-color:#1e0010">打包&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:zap:</span> <span style="color:#960050;background-color:#1e0010">perf&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;⚡️</span> <span style="color:#960050;background-color:#1e0010">perf:</span>     <span style="color:#960050;background-color:#1e0010">性能优化&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:tada:</span> <span style="color:#960050;background-color:#1e0010">release&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;🎉</span> <span style="color:#960050;background-color:#1e0010">release:</span>  <span style="color:#960050;background-color:#1e0010">发布正式版&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:lipstick:</span> <span style="color:#960050;background-color:#1e0010">style&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;💄</span> <span style="color:#960050;background-color:#1e0010">style:</span>    <span style="color:#960050;background-color:#1e0010">代码的样式美化&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:recycle:</span> <span style="color:#960050;background-color:#1e0010">refactor&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;♻️</span>  <span style="color:#960050;background-color:#1e0010">refactor:</span> <span style="color:#960050;background-color:#1e0010">重构&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:pencil2:</span> <span style="color:#960050;background-color:#1e0010">docs&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;✏️</span>  <span style="color:#960050;background-color:#1e0010">docs:</span>     <span style="color:#960050;background-color:#1e0010">文档变更&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:white_check_mark:</span> <span style="color:#960050;background-color:#1e0010">test&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;✅</span> <span style="color:#960050;background-color:#1e0010">test:</span>     <span style="color:#960050;background-color:#1e0010">测试&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:rewind:</span> <span style="color:#960050;background-color:#1e0010">revert&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;⏪️</span> <span style="color:#960050;background-color:#1e0010">revert:</span>   <span style="color:#960050;background-color:#1e0010">回退&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:rocket:</span> <span style="color:#960050;background-color:#1e0010">chore&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;🚀</span> <span style="color:#960050;background-color:#1e0010">chore:</span>    <span style="color:#960050;background-color:#1e0010">构建/工程依赖/工具&#39;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">value:</span> <span style="color:#960050;background-color:#1e0010">&#39;:construction_worker:</span> <span style="color:#960050;background-color:#1e0010">ci&#39;,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;👷</span> <span style="color:#960050;background-color:#1e0010">ci:</span>       <span style="color:#960050;background-color:#1e0010">CI</span> <span style="color:#960050;background-color:#1e0010">related</span> <span style="color:#960050;background-color:#1e0010">changes&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">messages:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">type:</span> <span style="color:#960050;background-color:#1e0010">&#39;请选择提交类型(必填)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">customScope:</span> <span style="color:#960050;background-color:#1e0010">&#39;请输入文件修改范围(可选)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">subject:</span> <span style="color:#960050;background-color:#1e0010">&#39;请简要描述提交(必填)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">body:</span> <span style="color:#960050;background-color:#1e0010">&#39;请输入详细描述(可选)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">breaking:</span> <span style="color:#960050;background-color:#1e0010">&#39;列出任何BREAKING</span> <span style="color:#960050;background-color:#1e0010">CHANGES(可选)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">footer:</span> <span style="color:#960050;background-color:#1e0010">&#39;请输入要关闭的issue(可选)&#39;,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">confirmCommit:</span> <span style="color:#960050;background-color:#1e0010">&#39;确定提交此说明吗？&#39;</span>
+</span></span><span style="display:flex;"><span>  }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">allowCustomScopes:</span> <span style="color:#66d9ef">true</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 跳过问题
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#960050;background-color:#1e0010">skipQuestions:</span> [<span style="color:#960050;background-color:#1e0010">&#39;body&#39;</span>, <span style="color:#960050;background-color:#1e0010">&#39;footer&#39;</span>]<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">subjectLimit:</span> <span style="color:#ae81ff">72</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>将cz-customizable脚本添加到您的 package.json</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">//#npm set-script commit &#34;git add . &amp;&amp; cz-customizable&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;@commitlint/cli&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;@commitlint/config-conventional&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;commitlint-config-cz&#34;</span>: <span style="color:#e6db74">&#34;^0.13.3&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;commitlint-config-git-commit-emoji&#34;</span>: <span style="color:#e6db74">&#34;^1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;cz-customizable&#34;</span>: <span style="color:#e6db74">&#34;^7.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;husky&#34;</span>: <span style="color:#e6db74">&#34;^7.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;prepare&#34;</span>: <span style="color:#e6db74">&#34;husky install&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;changelog&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&#34;changelogs&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>		<span style="color:#f92672">&#34;commit&#34;</span>: <span style="color:#e6db74">&#34;cz-customizable&#34;</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上面就可以在命令行输入<code>npm run commit</code>了。
+安装emoji插件，来实际使用中中文的表情显示都是乱码，使用notepad++修改<code>.cz-config.js</code>文件里的内容格式为UTF8无BOM就可以了。如果发现中文显示正常，但表情是乱码，请注意一下.cz-config.js文件内容中的表情是否就是乱码，只要在.cz-config.js文件为UTF8的格式下重新拷贝上面的json内容到.cz-config.js文件中就可以了。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\code\gbcom_gitlab\SH_JC_Android&gt;npm i -D  commitlint-config-git-commit-emoji
+
+added 1 package, and audited 255 packages in 1s
+
+30 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+D:\code\gbcom_gitlab\SH_JC_Android&gt;date
+当前日期: 2023/05/12 周五
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 10:57:56.93
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>下面是安装后的使用。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">PS D:\code\gbcom_gitlab\SH_JC_Android&gt; date
+
+2023年5月12日 11:19:16
+
+
+PS D:\code\gbcom_gitlab\SH_JC_Android&gt;
+PS D:\code\gbcom_gitlab\SH_JC_Android&gt; npm run commit
+
+&gt; cz-customizable
+
+cz-customizable standalone version
+All lines except first will be wrapped after 100 characters.
+? 请选择提交类型(必填) (Use arrow keys)
+&gt; ✨ feat:     新功能
+  🐛 fix:      修复bug
+  📦️ build:    打包
+  ⚡️ perf:     性能优化
+  🎉 release:  发布正式版
+  💄 style:    代码的样式美化
+  ♻️  refactor: 重构
+(Move up and down to reveal more choices)
+PS D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><h3 id="关于chagelog">关于chagelog</h3>
+<p>changelog使用，在项目第一层目录执行如下命令：</p>
+<pre tabindex="0"><code>#追加
+conventional-changelog -p angular -i CHANGELOG.md -s
+#全量生成
+conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+</code></pre><ul>
+<li>-p 指定风格*</li>
+<li>-i CHANGELOG.md 指定输出的文件名称</li>
+<li>-s 输出到infile，这样就不需要指定与outfile相同的文件</li>
+<li>-r 从最新的版本生成多少个版本。如果为0，则整个更改日志将被重新生成，输出文件将被覆盖。默认值:1</li>
+<li>-n ./changelog-option.js 指定自定义配置</li>
+</ul>
+<p>成功后将在项目生成 CHANGELOG.md 文件，在git lab上即可直观的展示git的提交记录。</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">D:\code\gbcom_gitlab\SH_JC_Android&gt;conventional-changelog -p angular -i CHANGELOG.md -s
+&#39;conventional-changelog&#39; 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+D:\code\gbcom_gitlab\SH_JC_Android&gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 13:51:19.65
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;npm install -g conventional-changelog-cli
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+
+added 168 packages in 14m
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 14:05:51.15
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;conventional-changelog -p angular -i CHANGELOG.md -s
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>下面是生成的changelog文件内容：</p>
+<pre tabindex="0"><code>#  (2023-05-11)
+
+
+### Bug Fixes
+
+* 🐛 修复了通话时没有声音的BUG ([972ecce](https://gitlab.gbcom.com.cn/metro-system/sh_jc/commit/972ecce6e508a62d5c8ecbc0000ab04838b7250f)), closes [#110](https://gitlab.gbcom.com.cn/metro-system/sh_jc/issues/110)
+</code></pre><blockquote>
+<p>集成命令</p>
+</blockquote>
+<p>路径：D:\code\gbcom_gitlab\SH_JC_Android\package.json</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;@commitlint/cli&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;@commitlint/config-conventional&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;husky&#34;</span>: <span style="color:#e6db74">&#34;^7.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;prepare&#34;</span>: <span style="color:#e6db74">&#34;husky install&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>	<span style="color:#f92672">&#34;changelog&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>	<span style="color:#f92672">&#34;changelogs&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;lint-staged&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;src/**/*.{js,vue}&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;eslint --fix&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;git add&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在命令行就可以执行命令了</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">D:\code\gbcom_gitlab\SH_JC_Android&gt;npm run changelog
+
+&gt; changelog
+&gt; conventional-changelog -p angular -i CHANGELOG.md -s
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;npm run changelogs
+
+&gt; changelogs
+&gt; conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><blockquote>
+<p>查看工具安装情况</p>
+</blockquote>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">D:\code\gbcom_gitlab\SH_JC_Android&gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 14:26:22.09
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+D:\code\gbcom_gitlab\SH_JC_Android&gt;npm ls -g -depth=0
+C:\Users\daizelai\AppData\Roaming\npm
++-- commitizen@4.3.0
++-- conventional-changelog-cli@2.2.2
++-- conventional-changelog@3.1.25
++-- cz-conventional-changelog@3.3.0
+`-- git-cz@4.9.0
+
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><h2 id="提交规范校验">提交规范校验</h2>
+<h3 id="描述">描述</h3>
+<p>程序员如果忘记执行<code>git cz</code>命令怎么办？</p>
+<ul>
+<li><a class="link" href="https://www.conventionalcommits.org/zh-hans/v1.0.0/"  target="_blank" rel="noopener"
+    >约定式提交规范</a></li>
+<li><a class="link" href="https://github.com/commitizen/cz-cli"  target="_blank" rel="noopener"
+    >commitizen</a>：git 提交规范化工具</li>
+<li><a class="link" href="https://github.com/conventional-changelog/commitlint"  target="_blank" rel="noopener"
+    >commitlint</a>：用于检查提交信息</li>
+<li>pre-commit： git hooks 钩子</li>
+<li>lint-staged：只检查本次修改更新的代码，并在出现错误的时候，自动修复并且推送</li>
+</ul>
+<p>使用 husky + commitlint 检查提交描述是否符合规范要求</p>
+<ul>
+<li>commitlint：用于检查提交信息</li>
+<li>husky：是git hooks工具</li>
+</ul>
+<p>注意：npm 需要在 7.x 以上版本！！！！！</p>
+<blockquote>
+<p>安装commitlint</p>
+</blockquote>
+<p>1、npm install &ndash;save-dev @commitlint/config-conventional@12.1.4 @commitlint/cli@12.1.4
+2、创建 commitlint.config.js 文件</p>
+<blockquote>
+<p>说明</p>
+</blockquote>
+<ul>
+<li>@commitlint/cli: commitlint 的 CLI 工具</li>
+<li>@commitlint/config-conventional: commitlint 的 conventional 规范配置方案，这是一个从 config-angular 衍生出的一个分支</li>
+<li>husky: 一款 git hook 工具，可以 hook git 的命令</li>
+</ul>
+<h3 id="安装校验工具">安装校验工具</h3>
+<p>校验提交说明是否符合规范，安装校验工具<code>commitlint</code>。
+安装符合Angular风格的校验规则<code>@commitlint/config-conventional</code>。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">#安装
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
+#添加规范
+echo &#34;module.exports = {extends: [&#39;@commitlint/config-conventional&#39;]};&#34; &gt; commitlint.config.js
+</code></pre><p>下面是命令执行过程：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\code\gbcom_gitlab\SH_JC_Android&gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 15:27:31.51
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;npm install --save-dev @commitlint/config-conventional @commitlint/cli
+
+added 200 packages in 11m
+
+28 packages are looking for funding
+  run `npm fund` for details
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+D:\code\gbcom_gitlab\SH_JC_Android&gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 15:40:22.36
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>在项目中新建commitlint.config.js文件并设置校验规则。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\code\gbcom_gitlab\SH_JC_Android&gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android 的目录
+
+2023/05/11  15:38    &lt;DIR&gt;          .
+2023/05/11  15:38    &lt;DIR&gt;          ..
+2022/11/04  18:43               247 .gitignore
+2023/05/08  18:57    &lt;DIR&gt;          .gitlab
+2023/05/11  14:24               262 CHANGELOG.md
+2023/05/09  10:35    &lt;DIR&gt;          doc
+2023/05/11  15:38    &lt;DIR&gt;          node_modules
+2023/05/11  15:38            81,136 package-lock.json
+2023/05/11  15:38               114 package.json
+2023/05/08  19:07               129 README.md
+2023/05/09  10:21    &lt;DIR&gt;          td
+2023/05/09  09:25    &lt;DIR&gt;          zte
+               5 个文件         81,888 字节
+               7 个目录 42,581,184,512 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;echo &#34;module.exports = {extends: [&#39;@commitlint/config-conventional&#39;]};&#34; &gt; commitlint.config.js
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android 的目录
+
+2023/05/11  15:44    &lt;DIR&gt;          .
+2023/05/11  15:44    &lt;DIR&gt;          ..
+2022/11/04  18:43               247 .gitignore
+2023/05/08  18:57    &lt;DIR&gt;          .gitlab
+2023/05/11  14:24               262 CHANGELOG.md
+2023/05/11  15:44                69 commitlint.config.js
+2023/05/09  10:35    &lt;DIR&gt;          doc
+2023/05/11  15:38    &lt;DIR&gt;          node_modules
+2023/05/11  15:38            81,136 package-lock.json
+2023/05/11  15:38               114 package.json
+2023/05/08  19:07               129 README.md
+2023/05/09  10:21    &lt;DIR&gt;          td
+2023/05/09  09:25    &lt;DIR&gt;          zte
+               6 个文件         81,957 字节
+               7 个目录 42,581,118,976 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>文件内容如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span><span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">extends</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;@commitlint/config-conventional&#39;</span>]
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>注意：确保保存为 UTF-8 的编码格式，否则可能报错</p>
+<h3 id="安装husky">安装husky</h3>
+<h4 id="安装依赖">安装依赖</h4>
+<pre tabindex="0"><code>D:\code\gbcom_gitlab\SH_JC_Android&gt;date
+当前日期: 2023/05/11 周四
+输入新日期: (年月日)
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;time
+当前时间: 15:53:35.59
+输入新时间:
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;npm install husky@7.0.1 --save-dev
+
+added 1 package, and audited 202 packages in 4s
+
+29 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><h4 id="启动hooks">启动hooks</h4>
+<p>启动hooks，生成 .husky 文件夹</p>
+<pre tabindex="0"><code>D:\code\gbcom_gitlab\SH_JC_Android&gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android 的目录
+
+2023/05/11  15:44    &lt;DIR&gt;          .
+2023/05/11  15:44    &lt;DIR&gt;          ..
+2022/11/04  18:43               247 .gitignore
+2023/05/08  18:57    &lt;DIR&gt;          .gitlab
+2023/05/11  14:24               262 CHANGELOG.md
+2023/05/11  15:44                69 commitlint.config.js
+2023/05/09  10:35    &lt;DIR&gt;          doc
+2023/05/11  15:53    &lt;DIR&gt;          node_modules
+2023/05/11  15:53            81,619 package-lock.json
+2023/05/11  15:53               137 package.json
+2023/05/08  19:07               129 README.md
+2023/05/09  10:21    &lt;DIR&gt;          td
+2023/05/09  09:25    &lt;DIR&gt;          zte
+               6 个文件         82,463 字节
+               7 个目录 42,580,422,656 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;npx husky install
+husky - Git hooks installed
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android 的目录
+
+2023/05/11  15:55    &lt;DIR&gt;          .
+2023/05/11  15:55    &lt;DIR&gt;          ..
+2022/11/04  18:43               247 .gitignore
+2023/05/08  18:57    &lt;DIR&gt;          .gitlab
+2023/05/11  15:55    &lt;DIR&gt;          .husky
+2023/05/11  14:24               262 CHANGELOG.md
+2023/05/11  15:44                69 commitlint.config.js
+2023/05/09  10:35    &lt;DIR&gt;          doc
+2023/05/11  15:53    &lt;DIR&gt;          node_modules
+2023/05/11  15:53            81,619 package-lock.json
+2023/05/11  15:53               137 package.json
+2023/05/08  19:07               129 README.md
+2023/05/09  10:21    &lt;DIR&gt;          td
+2023/05/09  09:25    &lt;DIR&gt;          zte
+               6 个文件         82,463 字节
+               8 个目录 42,580,422,656 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><h4 id="生成prepare指令">生成prepare指令</h4>
+<p>在<code>package.json</code>中生成<code>prepare</code>指令（需要 npm &gt; 7.0 版本 ），这里一直失败，一直失败，一直失败。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\code\gbcom_gitlab\SH_JC_Android&gt;npm set-script prepare &#34;husky install&#34;
+Unknown command: &#34;set-script&#34;
+
+Did you mean this?
+    npm run-script # Run arbitrary package scripts
+
+To see a list of supported npm commands, run:
+  npm help
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>这里直接在json文件中配置一下也可以。
+路径：D:\code\gbcom_gitlab\SH_JC_Android\package.json</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;@commitlint/cli&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;@commitlint/config-conventional&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;husky&#34;</span>: <span style="color:#e6db74">&#34;^7.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>    <span style="color:#f92672">&#34;prepare&#34;</span>: <span style="color:#e6db74">&#34;husky install&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后在项目根目录下的<code>package.json</code>就添加了一行<code>&quot;husky&quot;: &quot;^7.0.1&quot;</code>。</p>
+<pre tabindex="0"><code>{
+  &#34;devDependencies&#34;: {
+    &#34;@commitlint/cli&#34;: &#34;^17.6.3&#34;,
+    &#34;@commitlint/config-conventional&#34;: &#34;^17.6.3&#34;,
+    &#34;husky&#34;: &#34;^7.0.1&#34;
+  }
+}
+</code></pre><p>执行 prepare 指令</p>
+<pre tabindex="0"><code>D:\code\gbcom_gitlab\SH_JC_Android&gt;npm run prepare
+npm ERR! Missing script: &#34;prepare&#34;
+npm ERR!
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\daizelai\AppData\Local\npm-cache\_logs\2023-05-11T08_09_04_751Z-debug-0.log
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>2023/05/11 16:51手动在p中添加配置：</p>
+<pre tabindex="0"><code>{
+  &#34;devDependencies&#34;: {
+    &#34;@commitlint/cli&#34;: &#34;^17.6.3&#34;,
+    &#34;@commitlint/config-conventional&#34;: &#34;^17.6.3&#34;,
+    &#34;husky&#34;: &#34;^7.0.1&#34;
+  },
++  &#34;scripts&#34;: {
++    &#34;prepare&#34;: &#34;husky install&#34;
++  }
+}
+</code></pre><p>再执行<code>npm run prepare</code>命令。</p>
+<pre tabindex="0"><code>PS D:\code\gbcom_gitlab\SH_JC_Android&gt; npm run prepare
+
+&gt; prepare
+&gt; echo &#34;在npm i之前会自动执行&#34;
+
+&#34;在npm i之前会自动执行&#34;
+PS D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><h4 id="添加commitlint的hook到husky中">添加commitlint的hook到husky中</h4>
+<p>添加 commitlint 的 hook 到 husky中，并指令在 commit-msg 的 hooks 下执行 npx &ndash;no-install commitlint &ndash;edit &ldquo;$1&rdquo; 指令</p>
+<p>下面是在cmd命令行执行，没有成功。</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">D:\code\gbcom_gitlab\SH_JC_Android&gt;npx husky add .husky/commit-msg &#39;npx --no-install commitlint --edit &#34;$1&#34;&#39;
+Usage:
+  husky install [dir] (default: .husky)
+  husky uninstall
+  husky set|add &lt;file&gt; [cmd]
+
+D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>下面是在以管理员权限打开的Windows PowerShell中执行成功的。</p>
+<pre tabindex="0"><code>PS D:\code\gbcom_gitlab\SH_JC_Android&gt; npx husky add .husky/commit-msg &#39;npx --no-install commitlint --edit &#34;$1&#34;&#39;
+husky - created .husky/commit-msg
+PS D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><h4 id="文件结构">文件结构</h4>
+<p>目录结构如下：</p>
+<pre tabindex="0"><code>PS D:\code\gbcom_gitlab\SH_JC_Android&gt; dir .husky
+
+
+    目录: D:\code\gbcom_gitlab\SH_JC_Android\.husky
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2023/5/11     15:55                _
+-a----         2023/5/11     16:15             80 commit-msg
+
+
+PS D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>commit-msg文件的内容如下：</p>
+<pre tabindex="0"><code>#!/bin/sh
+. &#34;$(dirname &#34;$0&#34;)/_/husky.sh&#34;
+
+npx --no-install commitlint --edit $1
+</code></pre><p>此时，不符合规范的commit交不再可提交</p>
+<h4 id="测试提交">测试提交</h4>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git status
+On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        modified:   zte/app/build.gradle
+
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        .husky/
+        CHANGELOG.md
+        commitlint.config.js
+        node_modules/
+        package-lock.json
+        package.json
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git commit -m &#34;aa&#34;
+⧗   input: aa
+✖   Please add rules to your `commitlint.config.js`
+    - Getting started guide: https://commitlint.js.org/#/?id=getting-started
+    - Example config: https://github.com/conventional-changelog/commitlint/blob/master/%40commitlint/config-conventional/index.js [empty-rules]
+
+✖   found 1 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+husky - commit-msg hook exited with code 1 (error)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ git status
+On branch master
+Your branch is up to date with &#39;origin/master&#39;.
+
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        modified:   zte/app/build.gradle
+
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        .husky/
+        CHANGELOG.md
+        commitlint.config.js
+        node_modules/
+        package-lock.json
+        package.json
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$ date
+Thu May 11 16:19:28     2023
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SH_JC_Android (master)
+$
+</code></pre><h3 id="通过-pre-commit-检测提交时代码规范">通过 pre-commit 检测提交时代码规范</h3>
+<h4 id="描述-1">描述</h4>
+<p>通过 husky 监测 pre-commit 钩子，在该钩子下执行 npx eslint &ndash;ext .js,.vue src 指令来去进行相关检测</p>
+<h4 id="配置pre-commit">配置pre-commit</h4>
+<p>执行 npx husky add .husky/pre-commit &ldquo;npx eslint &ndash;ext .js,.vue src&rdquo; 添加 commit 时的 hook （npx eslint &ndash;ext .js,.vue src 会在执行到该 hook 时运行）</p>
+<pre tabindex="0"><code>npx husky add .husky/pre-commit &#34;npx eslint --ext .js,.vue src&#34;
+</code></pre><p>来在【管理员：Windows PowerShell】的执行命令记录如下：</p>
+<pre tabindex="0"><code>PS D:\code\gbcom_gitlab\SH_JC_Android&gt; date
+
+2023年5月11日 18:51:56
+
+
+PS D:\code\gbcom_gitlab\SH_JC_Android&gt; npx husky add .husky/pre-commit &#34;npx eslint --ext .js,.vue src&#34;
+husky - created .husky/pre-commit
+PS D:\code\gbcom_gitlab\SH_JC_Android&gt;
+</code></pre><p>该操作会生成对应文件 pre-commit：</p>
+<pre tabindex="0"><code>D:\code\gbcom_gitlab\SH_JC_Android\.husky&gt;dir
+ 驱动器 D 中的卷是 新加卷
+ 卷的序列号是 8AC9-706C
+
+ D:\code\gbcom_gitlab\SH_JC_Android\.husky 的目录
+
+2023/05/11  18:52    &lt;DIR&gt;          .
+2023/05/11  18:52    &lt;DIR&gt;          ..
+2023/05/11  16:15                80 commit-msg
+2023/05/11  18:52                72 pre-commit
+2023/05/11  15:55    &lt;DIR&gt;          _
+               2 个文件            152 字节
+               3 个目录 42,560,450,560 可用字节
+
+D:\code\gbcom_gitlab\SH_JC_Android\.husky&gt;
+</code></pre><p><code>pre-commit</code>的内容如下：</p>
+<pre tabindex="0"><code>#!/bin/sh
+. &#34;$(dirname &#34;$0&#34;)/_/husky.sh&#34;
+
+npx eslint --ext .js,.vue src
+</code></pre><h3 id="lint-staged-自动修复格式错误">lint-staged 自动修复格式错误</h3>
+<h4 id="描述-2">描述</h4>
+<ul>
+<li>lint-staged 可以让你当前的代码检查 只检查本次修改更新的代码，并在出现错误的时候，自动修复并且推送</li>
+<li>lint-staged 无需单独安装，我们生成项目时，vue-cli 已经帮助我们安装过了，所以我们直接使用就可以了</li>
+</ul>
+<h4 id="修改-packagejson-配置">修改 package.json 配置</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;@commitlint/cli&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;@commitlint/config-conventional&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;husky&#34;</span>: <span style="color:#e6db74">&#34;^7.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;prepare&#34;</span>: <span style="color:#e6db74">&#34;husky install&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>  <span style="color:#f92672">&#34;lint-staged&#34;</span>: {
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>    <span style="color:#f92672">&#34;src/**/*.{js,vue}&#34;</span>: [
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>      <span style="color:#e6db74">&#34;eslint --fix&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>      <span style="color:#e6db74">&#34;git add&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>    ]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="说明-1">说明</h4>
+<p>如上配置，每次它只会在你本地 commit 之前，校验你提交的内容是否符合你本地配置的 eslint规则(这个见文档<a class="link" href="https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/eslint.html"  target="_blank" rel="noopener"
+    >ESLint</a>)，校验会出现两种结果：</p>
+<ol>
+<li>如果符合规则：则会提交成功。</li>
+<li>如果不符合规则：它会自动执行 eslint &ndash;fix 尝试帮你自动修复，如果修复成功则会帮你把修复好的代码提交，如果失败，则会提示你错误，让你修好这个错误之后才能允许你提交代码。</li>
+</ol>
+<h4 id="修改huskypre-commit文件">修改.husky/pre-commit文件</h4>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">#!/bin/sh
+. &#34;$(dirname &#34;$0&#34;)/_/husky.sh&#34;
+
+npx eslint --ext .js,.vue src
++ npx lint-staged
+</code></pre><p>再次执行提交代码，发现 暂存区中 不符合 ESlint 的内容，被自动修复。</p>
+<hr>
+<p>在项目的package.json中添加commit钩子(设置校验规则)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;husky&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;hooks&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;commit-msg&#34;</span>: <span style="color:#e6db74">&#34;commitlint -E HUSKY_GIT_PARAMS&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>commit-msg 代表对 commit message 进行 hook，hook 的时候执行后面的命令 commitlint -E HUSKY_GIT_PARAMS 进行检查。</p>
+<h3 id="husky">Husky</h3>
+<p>对于husky用户，在package.json中添加下列配置：</p>
+<pre tabindex="0"><code>&#34;husky&#34;: {
+  &#34;hooks&#34;: {
+    &#34;prepare-commit-msg&#34;: &#34;exec &lt; /dev/tty &amp;&amp; npx cz --hook || true&#34;
+  }
+}
+</code></pre><h2 id="新git项目的使用">新git项目的使用</h2>
+<h3 id="描述-3">描述</h3>
+<p>今天准备使用git提交深圳14号线的代码，记录一下使用过程。
+git项目使用git提交规范。</p>
+<h3 id="安装husky-1">安装husky</h3>
+<p>1.先初始话cz-conventional-changelog</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; git cz
+×  error     No files staged!
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; date
+
+2023年5月12日 14:51:38
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; commitizen init cz-conventional-changelog --save --save-exact
+commitizen : 无法加载文件 C:\Users\daizelai\AppData\Roaming\npm\commitizen.ps1，因为在此系统上禁止运行脚本。有关详细信
+息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
+所在位置 行:1 字符: 1
++ commitizen init cz-conventional-changelog --save --save-exact
++ ~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) []，PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; npx commitizen init cz-conventional-changelog --save-dev --save-exact
+Attempting to initialize using the npm package cz-conventional-changelog
+Error: Error: A previous adapter is already configured. Use --force to override
+    adapterConfig.path: cz-conventional-changelog
+    repoPath: D:\code\gbcom_gitlab\SZ14_Android_APP
+    CLI_PATH: C:\Users\daizelai\AppData\Roaming\npm\node_modules\commitizen\
+    installAdapterCommand: npm install cz-conventional-changelog --save-dev
+    adapterNpmName: cz-conventional-changelog
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; npx commitizen init cz-conventional-changelog --save-dev --save-exact --force
+Attempting to initialize using the npm package cz-conventional-changelog
+npm WARN using --force Recommended protections disabled.
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt;
+</code></pre><p>执行上面的命令后，会生成如下文件和目录。</p>
+<ul>
+<li>package.json</li>
+<li>package-lock.json</li>
+<li>node_modules</li>
+</ul>
+<p>此时json文件如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;cz-conventional-changelog&#34;</span>: <span style="color:#e6db74">&#34;^3.3.0&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commitizen&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;./node_modules/cz-conventional-changelog&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>2.安装husky</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; date
+
+2023年5月12日 14:58:38
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; npm install husky --save-dev 【此命令执行完后在json中添加（&#34;husky&#34;: &#34;^8.0.3&#34;）】
+
+added 1 package, and audited 193 packages in 3s
+
+25 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; npx husky install
+husky - Git hooks installed
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt;
+</code></pre><p>执行<code>npx husky install</code>后在项目根目录下生成了<code>.husky</code>目录。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;cz-conventional-changelog&#34;</span>: <span style="color:#e6db74">&#34;^3.3.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;husky&#34;</span>: <span style="color:#e6db74">&#34;^8.0.3&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commitizen&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;./node_modules/cz-conventional-changelog&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>3.添加 husky install 到 package.json scripts 中</p>
+<p>为了让其他人在此项目中安装依赖后也能自动创建.husky目录并指定该目录为git hooks所在的目录，我们需要在package.json里面添加一条脚本命令&quot;prepare&quot;: &ldquo;husky install&rdquo;，然后执行npm run prepare</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;cz-conventional-changelog&#34;</span>: <span style="color:#e6db74">&#34;^3.3.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;husky&#34;</span>: <span style="color:#e6db74">&#34;^8.0.3&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>    <span style="color:#f92672">&#34;prepare&#34;</span>: <span style="color:#e6db74">&#34;husky install&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;changelog&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;changelogs&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commitizen&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;./node_modules/cz-conventional-changelog&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>安装好husky之后，需要配置检测规则。</p>
+<h3 id="commitlint">Commitlint</h3>
+<p>4.安装Commitlint</p>
+<blockquote>
+<p>该工具用于帮助我们规范提交信息</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; date
+
+2023年5月12日 15:09:14
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; npm install @commitlint/config-conventional @commitlint/cli --save-dev
+
+added 116 packages, and audited 309 packages in 20s
+
+43 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt;
+</code></pre><p>上面的操作修改了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>    <span style="color:#f92672">&#34;@commitlint/cli&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+</span>    <span style="color:#f92672">&#34;@commitlint/config-conventional&#34;</span>: <span style="color:#e6db74">&#34;^17.6.3&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;cz-conventional-changelog&#34;</span>: <span style="color:#e6db74">&#34;^3.3.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;husky&#34;</span>: <span style="color:#e6db74">&#34;^8.0.3&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;prepare&#34;</span>: <span style="color:#e6db74">&#34;husky install&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;changelog&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;changelogs&#34;</span>: <span style="color:#e6db74">&#34;conventional-changelog -p angular -i CHANGELOG.md -s -r 0&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commitizen&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;./node_modules/cz-conventional-changelog&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>5.在项目根目录创建commitlint.config.js文件</p>
+<pre tabindex="0"><code>daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WH19-MetroSystem (develop)
+$ echo &#34;&#34;&gt;commitlint.config.js
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 忽略部分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ignores</span><span style="color:#f92672">:</span> [(<span style="color:#a6e22e">commit</span>) =&gt; <span style="color:#a6e22e">commit</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;init&#34;</span>)],
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 继承的规则
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">extends</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;@commitlint/config-conventional&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 定义规则类型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;body-leading-blank&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;always&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;footer-leading-blank&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;always&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;header-max-length&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;always&#34;</span>, <span style="color:#ae81ff">108</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;subject-empty&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;never&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;type-empty&#34;</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;never&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// type 类型定义，表示 git 提交的 type 必须在以下类型范围内
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;type-enum&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;always&#34;</span>,
+</span></span><span style="display:flex;"><span>      [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;feat&#34;</span>, <span style="color:#75715e">// 新增feature
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;fix&#34;</span>, <span style="color:#75715e">// 修复bug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;perf&#34;</span>, <span style="color:#75715e">// 优化相关，比如性能、体验的提升
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;style&#34;</span>, <span style="color:#75715e">// 仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;docs&#34;</span>, <span style="color:#75715e">//  仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#75715e">// 测试用例，包括单元测试、集成测试等
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;refactor&#34;</span>, <span style="color:#75715e">// 代码重构，没有加新功能或者修复bug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;build&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ci&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;chore&#34;</span>, <span style="color:#75715e">// 改变构建流程、或者增加依赖库、工具等
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;revert&#34;</span>, <span style="color:#75715e">// 回滚到上一个版本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;wip&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;workflow&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;types&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;release&#34;</span>,
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>6.使用 commit-msg 钩子规范化提交信息</p>
+<p>使用以下命令快速创建git hooks的commit-msg钩子，这样每次commit的时候都会由 commitlint对commit信息进行一次检验。</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; date
+
+2023年5月12日 15:13:17
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; npx husky add .husky/commit-msg &#39;npx --no-install commitlint --edit &#34;$1&#34;&#39;
+husky - created .husky/commit-msg
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt;
+</code></pre><p>上面的操作创建了<code>D:\code\gbcom_gitlab\SZ14_Android_APP\.husky\commit-msg</code>文件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>. <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>dirname -- <span style="color:#e6db74">&#34;</span>$0<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">/_/husky.sh&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>npx --no-install commitlint --edit $1
+</span></span></code></pre></div><p>7.提交git commit 测试</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ date
+Fri May 12 15:16:00     2023
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ git status
+On branch develop
+Your branch is up to date with &#39;origin/develop&#39;.
+
+Changes not staged for commit:
+  (use &#34;git add &lt;file&gt;...&#34; to update what will be committed)
+  (use &#34;git restore &lt;file&gt;...&#34; to discard changes in working directory)
+        modified:   app/src/main/java/com/gbcom/subwaysystem/activity/TrainActivity.java
+        modified:   app/src/main/java/com/gbcom/subwaysystem/adapter/DisListAdapter.java
+
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        .husky/
+        commitlint.config.js
+        node_modules/
+        package-lock.json
+        package.json
+
+no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ git add app/src/main/java/com/gbcom/subwaysystem/activity/TrainActivity.java app/src/main/java/com/gbcom/subwaysystem/adapter/DisListAdapter.java
+warning: LF will be replaced by CRLF in app/src/main/java/com/gbcom/subwaysystem/adapter/DisListAdapter.java.
+The file will have its original line endings in your working directory
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ git status
+On branch develop
+Your branch is up to date with &#39;origin/develop&#39;.
+
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        modified:   app/src/main/java/com/gbcom/subwaysystem/activity/TrainActivity.java
+        modified:   app/src/main/java/com/gbcom/subwaysystem/adapter/DisListAdapter.java
+
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        .husky/
+        commitlint.config.js
+        node_modules/
+        package-lock.json
+        package.json
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$ git commit -m &#34;工程车请呼修改提交&#34;
+⧗   input: 工程车请呼修改提交
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+husky - commit-msg hook exited with code 1 (error)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/SZ14_Android_APP (develop)
+$
+</code></pre><p>现在使用<code>git cz</code>试试。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; date
+
+2023年5月12日 15:21:28
+
+
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; git cz
+? Select the type of change that you&#39;re committing: 🎸  feat:       A new feature
+? Write a short, imperative mood description of the change:
+  [-------------------------------------------------------------] 55 chars left
+   feat: 车载台工程车请呼时需要弹出可选择的调度台列表
+? Provide a longer description of the change:
+  如果是工程车，发起请呼时，弹出调度台列表给用户选择
+? List any breaking changes
+  BREAKING CHANGE:
+? Issues this commit closes, e.g #123: #26
+[develop 1def850] feat: 🎸 车载台工程车请呼时需要弹出可选择的调度台列表
+ 2 files changed, 31 insertions(+), 14 deletions(-)
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt; git log -n 1
+commit 1def850b055da0a07915b41d092d70b89f18cc0f (HEAD -&gt; develop)
+Author: daizelai &lt;daizelai@gbcom.com.cn&gt;
+Date:   Fri May 12 15:24:50 2023 +0800
+
+    feat: 🎸 车载台工程车请呼时需要弹出可选择的调度台列表
+
+    如果是工程车，发起请呼时，弹出调度台列表给用户选择
+
+    ✅ Closes: #26
+PS D:\code\gbcom_gitlab\SZ14_Android_APP&gt;
+</code></pre>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My New Hugo Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="SC60,制作安装包,OTA版本包,OTA升级包,制作升级包," />
+  
+
+  
+    <meta name="description" content="小天的小窝，记录学习笔记和走过的点点滴滴！" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>制作OTA升级包二 [ 小天的小窝 ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小天的小窝" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/static/avatar/avatar.png">
+    <span class="title">小天的小窝</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        制作OTA升级包二
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2021-06-07T01:50:27.000Z">
+        2021-06-07
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OTA%E5%8D%87%E7%BA%A7%E5%8C%85/" rel="tag">OTA升级包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OTA%E7%89%88%E6%9C%AC%E5%8C%85/" rel="tag">OTA版本包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SC60/" rel="tag">SC60</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%B6%E4%BD%9C%E5%8D%87%E7%BA%A7%E5%8C%85/" rel="tag">制作升级包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%B6%E4%BD%9C%E5%AE%89%E8%A3%85%E5%8C%85/" rel="tag">制作安装包</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 22 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h1 id="6-制作OTA升级包二"><a href="#6-制作OTA升级包二" class="headerlink" title="6. 制作OTA升级包二"></a>6. 制作OTA升级包二</h1><h2 id="一、描述"><a href="#一、描述" class="headerlink" title="一、描述"></a>一、描述</h2><p>本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。</p>
+<p><strong>关键字：</strong><br>制作update包，制作update.zip包，编译update包，编译update.zip包。<br>SC60制作update包，制作update升级包，制作update.zip升级包,SC60系统OTA包。</p>
+<span id="more"></span>
+
+<h2 id="二、编译前工作"><a href="#二、编译前工作" class="headerlink" title="二、编译前工作"></a>二、编译前工作</h2><p>制作OTA升级包之前，需要全编译系统。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd</span><br><span class="line">/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、编译OTA升级包"><a href="#三、编译OTA升级包" class="headerlink" title="三、编译OTA升级包"></a>三、编译OTA升级包</h2><h3 id="3-1-编译OTA版本"><a href="#3-1-编译OTA版本" class="headerlink" title="3.1.编译OTA版本"></a>3.1.编译OTA版本</h3><p>其实通过命令<code>make dist -j 20</code>编译出来下面的路径中的文件就是OTA升级包，可以直接拿去系统升级。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">using prebuilt boot.img from IMAGES...</span><br><span class="line">   boot size (28646696) is 42.69% of limit (67108864)</span><br><span class="line">Loading radio filesmap...</span><br><span class="line">Loading radio target...</span><br><span class="line">warning radio-update: no radio images in input target_files</span><br><span class="line">  running:  openssl pkcs8 -in build/target/product/security/testkey.pk8 -inform DER -nocrypt</span><br><span class="line">  running:  java -Xmx2048m -Djava.library.path=out/host/linux-x86/lib64 -jar out/host/linux-x86/framework/signapk.jar -w build/target/product/security/testkey.x509.pem build/target/product/security/testkey.pk8 /tmp/tmpzfnbJo out/target/product/msm8953_64/msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line">done.</span><br><span class="line">[100% 10243/10243] Dist: out/dist/msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line"></span><br><span class="line">#### make completed successfully (23:44 (mm:ss)) ####</span><br><span class="line"></span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$</span><br></pre></td></tr></table></figure>
+
+<p>最终会生成如下两个文件，都可以直接使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -alh ./out/target/product/msm8953_64/msm8953_64-ota-eng.android_SC20.zip </span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 757M Jun  7 09:50 ./out/target/product/msm8953_64/msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -alh ./out/dist/msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 757M Jun  7 09:50 ./out/dist/msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-编译OTA版本"><a href="#3-2-编译OTA版本" class="headerlink" title="3.2.编译OTA版本"></a>3.2.编译OTA版本</h3><p>除了上面的升级包使用名，也可以用msm8953_64-target_files-eng.android_SC20.zip制作整包：</p>
+<p>查看编译出来的文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd</span><br><span class="line">/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -alh ./out/dist/</span><br><span class="line">total 4.5G</span><br><span class="line">drwxrwxr-x 3 android_SC20 android_SC20 4.0K Jun  7 09:50 .</span><br><span class="line">drwxrwxr-x 5 android_SC20 android_SC20  20K Jun  7 09:39 ..</span><br><span class="line">-rwxrwxr-x 1 android_SC20 android_SC20  13M Jun  7 09:30 adb</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20   14 Jun  7 09:30 android-info.txt</span><br><span class="line">-rw-r--r-- 1 android_SC20 android_SC20 9.6K Jun  7 09:34 build.prop</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 5.0K Jun  7 09:30 com.android.qti.qpay.jar</span><br><span class="line">-rwxrwxr-x 1 android_SC20 android_SC20 8.2M Jun  7 09:30 fastboot</span><br><span class="line">-rwxrwxr-x 1 android_SC20 android_SC20 3.6K Jun  7 09:30 filesmap</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20  52M Jun  7 09:31 gpl_source.tgz</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 364K Jun  7 09:35 installed-files.txt</span><br><span class="line">-rwxrwxr-x 1 android_SC20 android_SC20 8.1M Jun  7 09:29 libconscrypt_openjdk_jni.so</span><br><span class="line">-rwxrwxr-x 1 android_SC20 android_SC20 340K Jun  7 09:30 libf2fs_fmt_host_dyn.so</span><br><span class="line">drwxrwxr-x 3 android_SC20 android_SC20 4.0K Jun  7 09:30 logs</span><br><span class="line">-rwxrwxr-x 1 android_SC20 android_SC20  32K Jun  7 09:30 mkbootfs</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 143M Jun  7 09:40 msm8953_64-apps-eng.android_SC20.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 774M Jun  7 09:46 msm8953_64-img-eng.android_SC20.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 757M Jun  7 09:50 msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 1.3G Jun  7 09:44 msm8953_64-symbols-eng.android_SC20.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 1.6G Jun  7 09:44 msm8953_64-target_files-eng.android_SC20.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20  30M Jun  7 09:34 otatools.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 141K Jun  7 09:34 package-stats.txt</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 2.0M Jun  7 09:30 ramdisk.img</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 2.0M Jun  7 09:29 signapk.jar</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 102K Jun  7 09:34 wigig_manager.jar</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$</span><br></pre></td></tr></table></figure>
+
+<p>执行命令列表：</p>
+<ul>
+<li>删除旧update.zip：<code>ls -lh update.zip</code></li>
+<li>删除旧版本包：<code>ls msm8953_64-target_files-eng.android_SC20.zip</code></li>
+<li>查看版本包：<code>ls -lh out/target/product/msm8953_64/obj/PACKAGING/target_files_intermediates/msm8953_64-target_files-eng.android_SC20.zip</code></li>
+<li>复制版本包：<code>cp out/target/product/msm8953_64/obj/PACKAGING/target_files_intermediates/msm8953_64-target_files-eng.android_SC20.zip .</code></li>
+<li>编译update.zip：<code>./build/tools/releasetools/ota_from_target_files -v --block -p out/host/linux-x86 -k ./build/target/product/security/testkey -v msm8953_64-target_files-eng.android_SC20.zip update.zip</code></li>
+</ul>
+<blockquote>
+<p>开始手动编译OTA升级包。</p>
+</blockquote>
+<ol>
+<li>复制文件</li>
+</ol>
+<p>先复制<code>make dist -j 20</code>命令编译出来的<code>out/target/product/msm8953_64/obj/PACKAGING/target_files_intermediates/msm8953_64-target_files-eng.android_SC20.zip</code>文件到源码根目录下<code>ota</code>目录。</p>
+<p>这里查看一下ota目录下有没有同名文件，如果有请删除。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls msm8953_64-target_files-eng.android_SC20.zip</span><br><span class="line">ls: cannot access msm8953_64-target_files-eng.android_SC20.zip: No such file or directory</span><br><span class="line"></span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -lh out/target/product/msm8953_64/obj/PACKAGING/target_files_intermediates/msm8953_64-target_files-eng.android_SC20.zip </span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 1.6G Jun  7 09:44 out/target/product/msm8953_64/obj/PACKAGING/target_files_intermediates/msm8953_64-target_files-eng.android_SC20.zip</span><br></pre></td></tr></table></figure>
+
+<p>复制<code>msm8953_64-target_files-eng.android_SC20.zip</code>到源码根目录下<code>ota</code>目录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ cp out/target/product/msm8953_64/obj/PACKAGING/target_files_intermediates/msm8953_64-target_files-eng.android_SC20.zip .     </span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -lh msm8953_64-target_files-eng.android_SC20.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 1.6G Jun  7 10:03 msm8953_64-target_files-eng.android_SC20.zip</span><br></pre></td></tr></table></figure>
+
+<p>再来看一下ota目录下有没有将要生成的同名的update.zip包，有则删除。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -lh update.zip</span><br><span class="line">ls: cannot access update.zip: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>制作OTA升级包</li>
+</ol>
+<p>记住命令需要在源码根目录下执行，然后msm8953_64-target_files-eng.android_SC20.zip以后要是.&#x2F;ota&#x2F;msm8953_64-target_files-eng.android_SC20.zip，update.zip以后生成时就是.&#x2F;ota&#x2F;update.zip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-b 过时，不再使用</span><br><span class="line">-k 签名时使用的密钥</span><br><span class="line">-v 冗余模式，让脚本打印出执行的命令</span><br><span class="line">-p 定义脚本用到的一些可执行文件的路径</span><br><span class="line">-i 生成增量OTA包时用于定义对比包</span><br><span class="line">-w 是否清除userdata分区</span><br><span class="line">-n 是否在升级时不检查时间戳，缺省情况下只能基于老的版本升级。</span><br><span class="line">-e 定义额外运行的脚本</span><br><span class="line">-m 定义采用的脚本格式，目前有两种，amend &amp; edify，其中amend为较老的格式。对应的，升级时会采用不同的解释器，缺省情况下，ota_from_target_files会同时生成两个脚本，这里提供了最大灵活性。</span><br><span class="line">-s 定义额外运行的脚本路径</span><br><span class="line">-x 定义额外运行的脚本可能用到的键值对。</span><br></pre></td></tr></table></figure>
+
+<p>下面是某次命令执行过程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ./build/tools/releasetools/ota_from_target_files -v --block -p out/host/linux-x86 -k ./build/target/product/security/testkey -v msm8953_64-target_files-eng.android_SC20.zip update.zip</span><br><span class="line">unzipping target target-files...</span><br><span class="line">  running:  unzip -o -q msm8953_64-target_files-eng.android_SC20.zip -d /tmp/targetfiles-6EhoyJ</span><br><span class="line">--- target info ---</span><br><span class="line">blockimgdiff_versions     = (str) 1,2,3,4</span><br><span class="line">blocksize                 = (int) 131072</span><br><span class="line">boot_signer               = (str) true</span><br><span class="line">boot_size                 = (int) 67108864</span><br><span class="line">build.prop                = (dict) &#123;&#x27;debug.enable.gamed&#x27;: &#x27;0&#x27;, &#x27;audio.offload.video&#x27;: &#x27;true&#x27;, &#x27;persist.audio.fluence.speaker&#x27;: &#x27;true&#x27;, &#x27;bluetooth.hfp.client&#x27;: &#x27;1&#x27;, &#x27;audio.safx.pbe.enabled&#x27;: &#x27;true&#x27;, &#x27;dalvik.vm.isa.arm.variant&#x27;: &#x27;cortex-a53&#x27;, &#x27;ro.product.cpu.abilist&#x27;: &#x27;arm64-v8a,armeabi-v7a,armeabi&#x27;, &#x27;persist.nfc.smartcard.config&#x27;: &#x27;SIM1,eSE1&#x27;, &#x27;debug.enable.sglscale&#x27;: &#x27;1&#x27;, &#x27;ro.build.product&#x27;: &#x27;msm8953_64&#x27;, &#x27;ro.build.id&#x27;: &#x27;N2G47H&#x27;, &#x27;ro.hwui.gradient_cache_size&#x27;: &#x27;1&#x27;, &#x27;dalvik.vm.stack-trace-file&#x27;: &#x27;/data/anr/traces.txt&#x27;, &#x27;ro.product.cpu.abilist32&#x27;: &#x27;armeabi-v7a,armeabi&#x27;, &#x27;ro.sys.fw.bservice_limit&#x27;: &#x27;5&#x27;, &#x27;ro.frp.pst&#x27;: &#x27;/dev/block/bootdevice/by-name/config&#x27;, &#x27;persist.env.contacts.autosync&#x27;: &#x27;true&#x27;, &#x27;ro.qualcomm.cabl&#x27;: &#x27;2&#x27;, &#x27;persist.timed.enable&#x27;: &#x27;true&#x27;, &#x27;ro.sys.fw.trim_empty_percent&#x27;: &#x27;100&#x27;, &#x27;dalvik.vm.heapmaxfree&#x27;: &#x27;8m&#x27;, &#x27;dalvik.vm.isa.arm.features&#x27;: &#x27;default&#x27;, &#x27;service.adb.tcp.port&#x27;: &#x27;5555&#x27;, &#x27;ro.build.fingerprint&#x27;: &#x27;Android/msm8953_64/msm8953_64:7.1.2/N2G47H/android06061919:userdebug/test-keys&#x27;, &#x27;ro.config.ringtone&#x27;: &#x27;Ring_Synth_04.ogg&#x27;, &#x27;ro.product.manufacturer&#x27;: &#x27;QUALCOMM&#x27;, &#x27;ro.quectel.bootfast_nokg&#x27;: &#x27;false&#x27;, &#x27;dalvik.vm.isa.arm64.features&#x27;: &#x27;default&#x27;, &#x27;audio.offload.pcm.24bit.enable&#x27;: &#x27;true&#x27;, &#x27;use.qti.sw.ape.decoder&#x27;: &#x27;true&#x27;, &#x27;ro.hwui.layer_cache_size&#x27;: &#x27;48&#x27;, &#x27;ro.build.description&#x27;: &#x27;msm8953_64-userdebug 7.1.2 N2G47H eng.android.20220606.191913 test-keys&#x27;, &#x27;ro.expect.recovery_id&#x27;: &#x27;0xde1e27258c12b26ede418d497688a97e1701cea8000000000000000000000000&#x27;, &#x27;dalvik.vm.heapstartsize&#x27;: &#x27;16m&#x27;, &#x27;voice.record.conc.disabled&#x27;: &#x27;false&#x27;, &#x27;ro.sys.fw.dex2oat_thread_count&#x27;: &#x27;4&#x27;, &#x27;persist.speaker.prot.enable&#x27;: &#x27;false&#x27;, &#x27;ro.product.brand&#x27;: &#x27;Android&#x27;, &#x27;ro.emmc_size&#x27;: &#x27;16GB&#x27;, &#x27;ro.product.model&#x27;: &#x27;BT-TX300&#x27;, &#x27;persist.fuse_sdcard&#x27;: &#x27;true&#x27;, &#x27;persist.debug.coresight.config&#x27;: &#x27;stm-events&#x27;, &#x27;dalvik.vm.heapsize&#x27;: &#x27;512m&#x27;, &#x27;persist.audio.fluence.voicecall&#x27;: &#x27;true&#x27;, &#x27;vidc.disable.split.mode&#x27;: &#x27;1&#x27;, &#x27;ro.sys.fw.empty_app_percent&#x27;: &#x27;50&#x27;, &#x27;persist.sys.timezone&#x27;: &#x27;Asia/Shanghai&#x27;, &#x27;persist.cne.feature&#x27;: &#x27;1&#x27;, &#x27;vidc.enc.disable_bframes&#x27;: &#x27;1&#x27;, &#x27;dalvik.vm.heaptargetutilization&#x27;: &#x27;0.75&#x27;, &#x27;media.msm8956hw&#x27;: &#x27;0&#x27;, &#x27;audio.offload.multiple.enabled&#x27;: &#x27;false&#x27;, &#x27;persist.demo.hdmirotationlock&#x27;: &#x27;false&#x27;, &#x27;ro.build.host&#x27;: &#x27;localhost.localdomain&#x27;, &#x27;ro.com.android.dataroaming&#x27;: &#x27;true&#x27;, &#x27;ro.build.version.security_patch&#x27;: &#x27;2018-01-01&#x27;, &#x27;telephony.lteOnCdmaDevice&#x27;: &#x27;1&#x27;, &#x27;ro.quectel.bootfast&#x27;: &#x27;false&#x27;, &#x27;persist.sys.country&#x27;: &#x27;CN&#x27;, &#x27;persist.debug.wfd.enable&#x27;: &#x27;1&#x27;, &#x27;ro.quectel.bootwithaudio&#x27;: &#x27;1&#x27;, &#x27;ro.product.locale&#x27;: &#x27;en-US&#x27;, &#x27;persist.mm.sta.enable&#x27;: &#x27;0&#x27;, &#x27;ro.core_ctl_min_cpu&#x27;: &#x27;2&#x27;, &#x27;audio.offload.min.duration.secs&#x27;: &#x27;30&#x27;, &#x27;audio.offload.passthrough&#x27;: &#x27;false&#x27;, &#x27;persist.audio.fluence.voicerec&#x27;: &#x27;false&#x27;, &#x27;audio.dolby.ds2.hardbypass&#x27;: &#x27;true&#x27;, &#x27;dalvik.vm.heapminfree&#x27;: &#x27;4m&#x27;, &#x27;dalvik.vm.isa.arm64.variant&#x27;: &#x27;generic&#x27;, &#x27;ro.config.zram&#x27;: &#x27;true&#x27;, &#x27;camera.display.lmax&#x27;: &#x27;1280x720&#x27;, &#x27;mmp.enable.3g2&#x27;: &#x27;true&#x27;, &#x27;ro.board.platform&#x27;: &#x27;msm8953&#x27;, &#x27;audio.playback.mch.downsample&#x27;: &#x27;true&#x27;, &#x27;voice.playback.conc.disabled&#x27;: &#x27;true&#x27;, &#x27;vidc.enc.dcvs.extra-buff-count&#x27;: &#x27;2&#x27;, &#x27;persist.sys.usb.config&#x27;: &#x27;diag,serial_smd,rmnet_ipa,adb&#x27;, &#x27;ro.product.cpu.abilist64&#x27;: &#x27;arm64-v8a&#x27;, &#x27;ro.vendor.gt_library&#x27;: &#x27;libqti-gt.so&#x27;, &#x27;ro.am.reschedule_service&#x27;: &#x27;true&#x27;, &#x27;persist.radio.calls.on.ims&#x27;: &#x27;0&#x27;, &#x27;ro.vendor.extension_library&#x27;: &#x27;libqti-perfd-client.so&#x27;, &#x27;mm.enable.qcom_parser&#x27;: &#x27;1048575&#x27;, &#x27;persist.qfp&#x27;: &#x27;false&#x27;, &#x27;persist.rild.nitz_long_ons_3&#x27;: &#x27;&#x27;, &#x27;persist.rild.nitz_long_ons_2&#x27;: &#x27;&#x27;, &#x27;persist.rild.nitz_long_ons_1&#x27;: &#x27;&#x27;, &#x27;persist.rild.nitz_long_ons_0&#x27;: &#x27;&#x27;, &#x27;ro.build.flavor&#x27;: &#x27;msm8953_64-userdebug&#x27;, &#x27;ro.qc.sdk.audio.fluencetype&#x27;: &#x27;none&#x27;, &#x27;audio.deep_buffer.media&#x27;: &#x27;true&#x27;, &#x27;rild.libargs&#x27;: &#x27;-d /dev/smd0&#x27;, &#x27;tunnel.audio.encode&#x27;: &#x27;false&#x27;, &#x27;persist.rild.nitz_short_ons_0&#x27;: &#x27;&#x27;, &#x27;ro.build.version.release&#x27;: &#x27;7.1.2&#x27;, &#x27;vidc.enc.disable.pq&#x27;: &#x27;true&#x27;, &#x27;ro.build.version.codename&#x27;: &#x27;REL&#x27;, &#x27;DEVICE_PROVISIONED&#x27;: &#x27;1&#x27;, &#x27;net.bt.name&#x27;: &#x27;Android&#x27;, &#x27;vidc.dec.downscalar_height&#x27;: &#x27;1088&#x27;, &#x27;persist.data.netmgrd.qos.enable&#x27;: &#x27;true&#x27;, &#x27;ro.hwui.text_large_cache_width&#x27;: &#x27;2048&#x27;, &#x27;ro.config.alarm_alert&#x27;: &#x27;Alarm_Classic.ogg&#x27;, &#x27;audio.offload.multiaac.enable&#x27;: &#x27;true&#x27;, &#x27;ro.opengles.version&#x27;: &#x27;196610&#x27;, &#x27;ro.quec_code_branch&#x27;: &#x27;msm8953&#x27;, &#x27;use.voice.path.for.pcm.voip&#x27;: &#x27;true&#x27;, &#x27;persist.rild.nitz_plmn&#x27;: &#x27;&#x27;, &#x27;ro.hwui.text_small_cache_height&#x27;: &#x27;1024&#x27;, &#x27;ro.build.quectelversion.release&#x27;: &#x27;01.&#x27;, &#x27;ro.build.display.id&#x27;: &#x27;TX300-ANDROID-7.1-R0016&#x27;, &#x27;audio.offload.pcm.16bit.enable&#x27;: &#x27;true&#x27;, &#x27;persist.console.silent.config&#x27;: &#x27;1&#x27;, &#x27;persist.hwc.enable_vds&#x27;: &#x27;1&#x27;, &#x27;persist.env.contacts.autosync &#x27;: &#x27;true&#x27;, &#x27;ro.vendor.at_library&#x27;: &#x27;libqti-at.so&#x27;, &#x27;debug.egl.hw&#x27;: &#x27;0&#x27;, &#x27;use.qti.sw.alac.decoder&#x27;: &#x27;true&#x27;, &#x27;ro.carrier&#x27;: &#x27;unknown&#x27;, &#x27;ro.product.board&#x27;: &#x27;msm8953&#x27;, &#x27;ro.build.version.preview_sdk&#x27;: &#x27;0&#x27;, &#x27;camera.aux.packagelist&#x27;: &#x27;org.codeaurora.snapcam&#x27;, &#x27;audio.parser.ip.buffer.size&#x27;: &#x27;262144&#x27;, &#x27;ro.quec_code_project&#x27;: &#x27;SC60_30_36_Android7.1_R02_r27006&#x27;, &#x27;ro.sys.fw.bservice_age&#x27;: &#x27;5000&#x27;, &#x27;camera.hal1.packagelist&#x27;: &#x27;com.skype.raider,com.google.android.talk&#x27;, &#x27;ro.build.date&#x27;: &#x27;Mon Jun  6 19:19:13 CST 2022&#x27;, &#x27;af.fast_track_multiplier&#x27;: &#x27;1&#x27;, &#x27;ro.use_data_netmgrd&#x27;: &#x27;true&#x27;, &#x27;persist.radio.sib16_support&#x27;: &#x27;1&#x27;, &#x27;audio.pp.asphere.enabled&#x27;: &#x27;false&#x27;, &#x27;ro.build.date.utc&#x27;: &#x27;1654514353&#x27;, &#x27;audio.offload.buffer.size.kb&#x27;: &#x27;64&#x27;, &#x27;keyguard.no_require_sim&#x27;: &#x27;true&#x27;, &#x27;ro.quectel.bootfast_nowp&#x27;: &#x27;false&#x27;, &#x27;ro.sys.fw.use_trim_settings&#x27;: &#x27;true&#x27;, &#x27;ro.sys.fw.trim_enable_memory&#x27;: &#x27;2147483648&#x27;, &#x27;ro.qc.sdk.audio.ssr&#x27;: &#x27;false&#x27;, &#x27;voice.conc.fallbackpath&#x27;: &#x27;deep-buffer&#x27;, &#x27;ro.build.version.all_codenames&#x27;: &#x27;REL&#x27;, &#x27;mm.enable.smoothstreaming&#x27;: &#x27;true&#x27;, &#x27;dalvik.vm.lockprof.threshold&#x27;: &#x27;500&#x27;, &#x27;debug.gralloc.enable_fb_ubwc&#x27;: &#x27;1&#x27;, &#x27;qcom.hw.aac.encoder&#x27;: &#x27;true&#x27;, &#x27;dev.pm.dyn_samplingrate&#x27;: &#x27;1&#x27;, &#x27;ro.memperf.lib&#x27;: &#x27;libmemperf.so&#x27;, &#x27;persist.sys.language&#x27;: &#x27;zh&#x27;, &#x27;ro.product.cpu.abi&#x27;: &#x27;arm64-v8a&#x27;, &#x27;sdm.composition_simulation&#x27;: &#x27;8192&#x27;, &#x27;camera.display.umax&#x27;: &#x27;1920x1080&#x27;, &#x27;ro.product.name&#x27;: &#x27;msm8953_64&#x27;, &#x27;ro.hwui.drop_shadow_cache_size&#x27;: &#x27;6&#x27;, &#x27;ro.core_ctl_max_cpu&#x27;: &#x27;4&#x27;, &#x27;ro.build.version.base_os&#x27;: &#x27;&#x27;, &#x27;voice.voip.conc.disabled&#x27;: &#x27;true&#x27;, &#x27;persist.data.mode&#x27;: &#x27;concurrent&#x27;, &#x27;persist.demo.hdmirotates&#x27;: &#x27;true&#x27;, &#x27;ro.telephony.default_network&#x27;: &#x27;22,20&#x27;, &#x27;ro.wifi.channels&#x27;: &#x27;&#x27;, &#x27;ro.hwui.r_buffer_cache_size&#x27;: &#x27;8&#x27;, &#x27;ro.build.characteristics&#x27;: &#x27;nosdcard&#x27;, &#x27;debug.mdpcomp.logs&#x27;: &#x27;0&#x27;, &#x27;ro.build.type&#x27;: &#x27;userdebug&#x27;, &#x27;persist.radio.csvt.enabled&#x27;: &#x27;false&#x27;, &#x27;dalvik.vm.heapgrowthlimit&#x27;: &#x27;192m&#x27;, &#x27;ro.fm.transmitter&#x27;: &#x27;false&#x27;, &#x27;ro.build.version.incremental&#x27;: &#x27;eng.android.20220606.191913&#x27;, &#x27;ro.hwui.text_large_cache_height&#x27;: &#x27;1024&#x27;, &#x27;rild.libpath&#x27;: &#x27;/vendor/lib64/libril-qc-qmi-1.so&#x27;, &#x27;ro.build.tags&#x27;: &#x27;test-keys&#x27;, &#x27;persist.radio.multisim.config&#x27;: &#x27;dsds&#x27;, &#x27;av.debug.disable.pers.cache&#x27;: &#x27;1&#x27;, &#x27;ro.build.version.sdk&#x27;: &#x27;25&#x27;, &#x27;ro.sys.fw.bservice_enable&#x27;: &#x27;true&#x27;, &#x27;audio.dolby.ds2.enabled&#x27;: &#x27;true&#x27;, &#x27;audio.heap.size.multiplier&#x27;: &#x27;7&#x27;, &#x27;ro.sys.usb.default.config&#x27;: &#x27;diag,serial_smd,rmnet_ipa,adb&#x27;, &#x27;ril.subscription.types&#x27;: &#x27;NV,RUIM&#x27;, &#x27;persist.radio.mt_sms_ack&#x27;: &#x27;20&#x27;, &#x27;ro.memperf.enable&#x27;: &#x27;false&#x27;, &#x27;ro.build.user&#x27;: &#x27;android_SC20&#x27;, &#x27;ro.product.locale.language&#x27;: &#x27;zh&#x27;, &#x27;ro.hwui.path_cache_size&#x27;: &#x27;32&#x27;, &#x27;ro.sys.fw.trim_cache_percent&#x27;: &#x27;100&#x27;, &#x27;ro.product.device&#x27;: &#x27;msm8953_64&#x27;, &#x27;debug.sf.hw&#x27;: &#x27;0&#x27;, &#x27;persist.rild.nitz_short_ons_1&#x27;: &#x27;&#x27;, &#x27;persist.rild.nitz_short_ons_2&#x27;: &#x27;&#x27;, &#x27;persist.rild.nitz_short_ons_3&#x27;: &#x27;&#x27;, &#x27;persist.radio.rat_on&#x27;: &#x27;combine&#x27;, &#x27;camera.lowpower.record.enable&#x27;: &#x27;1&#x27;, &#x27;ro.hwui.texture_cache_flushrate&#x27;: &#x27;0.4&#x27;, &#x27;ro.product.locale.region&#x27;: &#x27;CN&#x27;, &#x27;ro.hwui.texture_cache_size&#x27;: &#x27;72&#x27;, &#x27;persist.sys.dalvik.vm.lib.2&#x27;: &#x27;libart.so&#x27;, &#x27;ro.cutoff_voltage_mv&#x27;: &#x27;3300&#x27;, &#x27;audio.offload.gapless.enabled&#x27;: &#x27;true&#x27;, &#x27;audio_hal.period_size&#x27;: &#x27;192&#x27;, &#x27;flac.sw.decoder.24bit.support&#x27;: &#x27;true&#x27;, &#x27;persist.radio.apm_sim_not_pwdn&#x27;: &#x27;1&#x27;, &#x27;vidc.dec.downscalar_width&#x27;: &#x27;1920&#x27;, &#x27;ro.mdtp.package_name2&#x27;: &#x27;com.qualcomm.qti.securemsm.mdtp.MdtpDemo&#x27;, &#x27;persist.hwc.mdpcomp.enable&#x27;: &#x27;true&#x27;, &#x27;persist.radio.custom_ecc&#x27;: &#x27;1&#x27;, &#x27;persist.radio.jbims&#x27;: &#x27;0&#x27;, &#x27;ro.config.notification_sound&#x27;: &#x27;pixiedust.ogg&#x27;, &#x27;audio.offload.track.enable&#x27;: &#x27;true&#x27;, &#x27;ro.hwui.text_small_cache_width&#x27;: &#x27;1024&#x27;, &#x27;media.aac_51_output_enabled&#x27;: &#x27;true&#x27;, &#x27;vidc.enc.disable_pframes&#x27;: &#x27;1&#x27;&#125;</span><br><span class="line">cache_fs_type             = (str) ext4</span><br><span class="line">cache_size                = (int) 268435456</span><br><span class="line">default_system_dev_certificate = (str) build/target/product/security/testkey</span><br><span class="line">extfs_sparse_flag         = (str) -s</span><br><span class="line">fs_type                   = (str) ext4</span><br><span class="line">fstab                     = (dict) &#123;&#x27;/sdcard&#x27;: &lt;common.Partition object at 0x7f44c7706390&gt;, &#x27;/cache&#x27;: &lt;common.Partition object at 0x7f44c77061d0&gt;, &#x27;/data&#x27;: &lt;common.Partition object at 0x7f44c7706450&gt;, &#x27;/system&#x27;: &lt;common.Partition object at 0x7f44c7706610&gt;, &#x27;/usb_storage&#x27;: &lt;common.Partition object at 0x7f44c7706590&gt;, &#x27;/recovery&#x27;: &lt;common.Partition object at 0x7f44c77065d0&gt;, &#x27;/custom&#x27;: &lt;common.Partition object at 0x7f44c7706710&gt;, &#x27;/boot&#x27;: &lt;common.Partition object at 0x7f44c7706490&gt;, &#x27;/misc&#x27;: &lt;common.Partition object at 0x7f44c77064d0&gt;&#125;</span><br><span class="line">fstab_version             = (int) 2</span><br><span class="line">mkbootimg_args            = (str) </span><br><span class="line">mkbootimg_version_args    = (str) --os_version 7.1.2 --os_patch_level 2018-01-01</span><br><span class="line">multistage_support        = (str) 1</span><br><span class="line">oem_size                  = (str) 268435456</span><br><span class="line">recovery_api_version      = (int) 3</span><br><span class="line">recovery_as_boot          = (str) </span><br><span class="line">recovery_mount_options    = (str) ext4=max_batch_time=0,commit=1,data=ordered,barrier=1,errors=panic,nodelalloc</span><br><span class="line">recovery_size             = (int) 67108864</span><br><span class="line">selinux_fc                = (str) /tmp/targetfiles-6EhoyJ/META/file_contexts.bin</span><br><span class="line">squashfs_sparse_flag      = (str) -s</span><br><span class="line">system_size               = (int) 3221225472</span><br><span class="line">system_verity_block_device = (str) /dev/block/bootdevice/by-name/system</span><br><span class="line">tool_extensions           = (str) device/qcom/msm8953_64/../common</span><br><span class="line">update_rename_support     = (str) 1</span><br><span class="line">use_set_metadata          = (str) 1</span><br><span class="line">userdata_size             = (int) 49166130176</span><br><span class="line">verity                    = (str) true</span><br><span class="line">verity_fec                = (str) true</span><br><span class="line">verity_key                = (str) build/target/product/security/verity</span><br><span class="line">verity_signer_cmd         = (str) verity_signer</span><br><span class="line">(using device-specific extensions from target_files)</span><br><span class="line">loaded device-specific extensions from /tmp/targetfiles-6EhoyJ/META/releasetools.py</span><br><span class="line">using prebuilt recovery.img from IMAGES...</span><br><span class="line">using system.img from target-files</span><br><span class="line">Total of 786432 4096-byte output blocks in 13423 input chunks.</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">74127 774129 774131 774133-774139 774141 774143-774149 774151 774153 774155-786431</span><br><span class="line">max stashed blocks: 0  (0 bytes), limit: 214748364 bytes (0.00%)</span><br><span class="line"></span><br><span class="line">using prebuilt boot.img from IMAGES...</span><br><span class="line">   boot size (28646696) is 42.69% of limit (67108864)</span><br><span class="line">Loading radio filesmap...</span><br><span class="line">Loading radio target...</span><br><span class="line">warning radio-update: no radio images in input target_files</span><br><span class="line">  running:  openssl pkcs8 -in ./build/target/product/security/testkey.pk8 -inform DER -nocrypt</span><br><span class="line">  running:  java -Xmx2048m -Djava.library.path=out/host/linux-x86/lib64 -jar out/host/linux-x86/framework/signapk.jar -w ./build/target/product/security/testkey.x509.pem ./build/target/product/security/testkey.pk8 /tmp/tmpgAPiIe update.zip</span><br><span class="line">done.</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>得到update.zip升级包</li>
+</ol>
+<p>可以看到源码根目录下的.&#x2F;ota&#x2F;update.zip文件就是刚刚生成的OTA升级包。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -lah update.zip </span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 757M Jun  7 10:20 update.zip</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$</span><br></pre></td></tr></table></figure>
+
+<p>我们再来看一下手动生成的OTA包和命令生成的文件包的大小，发现是一样大的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -alh ./out/target/product/msm8953_64/msm8953_64-ota-eng.android_SC20.zip </span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 757M Jun  7 09:50 ./out/target/product/msm8953_64/msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -alh ./out/dist/msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 757M Jun  7 09:50 ./out/dist/msm8953_64-ota-eng.android_SC20.zip</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -lah update.zip </span><br><span class="line">-rw-rw-r-- 1 android_SC20 android_SC20 757M Jun  7 10:20 update.zip</span><br><span class="line">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、安装版本"><a href="#四、安装版本" class="headerlink" title="四、安装版本"></a>四、安装版本</h2><p>升级版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">adb root</span><br><span class="line">adb push update.zip /data/update.zip</span><br><span class="line">adb shell</span><br><span class="line">echo &quot;--update_package=/data/update.zip&quot; &gt; /cache/recovery/command</span><br><span class="line">sync</span><br><span class="line">reboot recovery</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div>全文完。</div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%88%B6%E4%BD%9COTA%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C"><span class="toc-text">6. 制作OTA升级包二</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%8F%8F%E8%BF%B0"><span class="toc-text">一、描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E8%AF%91%E5%89%8D%E5%B7%A5%E4%BD%9C"><span class="toc-text">二、编译前工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%BC%96%E8%AF%91OTA%E5%8D%87%E7%BA%A7%E5%8C%85"><span class="toc-text">三、编译OTA升级包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E7%BC%96%E8%AF%91OTA%E7%89%88%E6%9C%AC"><span class="toc-text">3.1.编译OTA版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E7%BC%96%E8%AF%91OTA%E7%89%88%E6%9C%AC"><span class="toc-text">3.2.编译OTA版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E8%A3%85%E7%89%88%E6%9C%AC"><span class="toc-text">四、安装版本</span></a></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share" style="width: 100%;">
+  <img src="/static/qrcode/qrcode_wwwitcsscn_20221008_0909.png" alt="Running Geek" style="margin: auto; display: block;"/>
+
+  <div style="margin: auto; text-align: center; font-size: 0.8em; color: grey;">老铁们关注走一走，不迷路</div>
+  
+</div>
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2021/06/01/sc60/5.%20%E5%88%B6%E4%BD%9COTA%E5%8D%87%E7%BA%A7%E5%8C%85/" rel="next" title="制作OTA升级包">
+          制作OTA升级包
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2021/08/11/sc60/SC60%E7%89%88%E6%9C%AC%E5%8C%85%E5%8D%87%E7%BA%A7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" rel="prev" title="版本包升级注意事项">
+            版本包升级注意事项
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" target="_blank" rel="noopener" href="https://www.itcss.cn">首页</a> |
+        <a class="bottom-item" href="https://www.itcss.cn" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/itcss" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

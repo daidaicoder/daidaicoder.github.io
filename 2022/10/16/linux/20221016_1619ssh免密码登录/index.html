@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="原创,ssh,免密码登录ssh,远程登录," />
+  
+
+  
+    <meta name="description" content="小天的小窝，记录学习笔记和走过的点点滴滴！" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>ssh免密码登录 [ 小天的小窝 ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小天的小窝" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/static/avatar/avatar.png">
+    <span class="title">小天的小窝</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        ssh免密码登录
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2022-10-16T08:40:00.000Z">
+        2022-10-16
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95ssh/" rel="tag">免密码登录ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" rel="tag">远程登录</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 16 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h1 id="20221016-1619ssh免密码登录"><a href="#20221016-1619ssh免密码登录" class="headerlink" title="20221016_1619ssh免密码登录"></a>20221016_1619ssh免密码登录</h1><p>[TOC]</p>
+<h2 id="一、描述"><a href="#一、描述" class="headerlink" title="一、描述"></a>一、描述</h2><h3 id="1-1-前言"><a href="#1-1-前言" class="headerlink" title="1.1.前言"></a>1.1.前言</h3><p>by daizelai 2022&#x2F;10&#x2F;16 16:20<br>本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh</p>
+<h3 id="1-2-介绍"><a href="#1-2-介绍" class="headerlink" title="1.2.介绍"></a>1.2.介绍</h3><p>A免密登录B的两种方式</p>
+<p>比如A本地台式机电脑上远程登录linux系统的B服务器</p>
+<h4 id="1-2-1-方式一，上传A的pub公钥到B服务器"><a href="#1-2-1-方式一，上传A的pub公钥到B服务器" class="headerlink" title="1.2.1.方式一，上传A的pub公钥到B服务器"></a>1.2.1.方式一，上传A的pub公钥到B服务器</h4><p>把A的公钥pub文件，放在B的<code>~/authorized_keys</code>文件中<br>打开A的<code>id_isa.pub</code>的文件，复制并粘贴到B的<code>~/authorized_keys</code>文件的最下方，不要带多余的空格和其他符号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim  ~/authorized_keys   #插入B服务器的的内容底部</span><br></pre></td></tr></table></figure>
+
+<p><code>authorized_keys</code>文件里保存了其他人的公钥列表，代表这些服务器可以直接登录自己。</p>
+<p>命令执行过程：A会用自己的<code>.ssh/</code>目录下的私钥文件，例如<code>id_rds</code>进行加密登录。而B会用自己<code>authorized_keys</code>保存的公钥内容进行解密，如果解密成功，就认为A是合法用户，让A免密登录。</p>
+<p><strong>注：</strong> 所以A的目录下必须有<code>id_rsa</code>文件。</p>
+<h4 id="1-2-2-方式二、下载B的私钥文件，生成pem文件"><a href="#1-2-2-方式二、下载B的私钥文件，生成pem文件" class="headerlink" title="1.2.2.方式二、下载B的私钥文件，生成pem文件"></a>1.2.2.方式二、下载B的私钥文件，生成pem文件</h4><p>新建一个pem文件，把B的private内容粘贴进去</p>
+<p>利用ssh命令即可登录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i b的私钥.pem文件 root@B的ip地址</span><br></pre></td></tr></table></figure>
+
+<p>B的私钥文件（原本只能B自己知道）给了A，证明B足够信任A，A可以直接登录B<br>命令执行过程：A会用<br>-i指定的私钥文件（这里就是B的私钥文件）加密，B在自己的authorized_keys中用自己的公钥文件解密。如果成功，就认为A是合法用户，让A免密登录。</p>
+<h2 id="二、免密码SSH登录"><a href="#二、免密码SSH登录" class="headerlink" title="二、免密码SSH登录"></a>二、免密码SSH登录</h2><h3 id="2-1-生成密钥"><a href="#2-1-生成密钥" class="headerlink" title="2.1.生成密钥"></a>2.1.生成密钥</h3><p>密钥生成说明</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">Users</span>\你的用户名&gt;<span class="title">ssh</span>-<span class="title">keygen</span> -<span class="title">t</span> <span class="title">rsa</span> -<span class="title">b</span> 2048   </span></span><br><span class="line"><span class="function">【上面一行的-<span class="title">t</span>参数代表类型<span class="title">type</span>，表示用<span class="title">rsa</span>方式加密；-<span class="title">b</span>参数，这里表示生成2048位的公钥】</span></span><br><span class="line"><span class="function">【输完<span class="title">ssh</span>-<span class="title">keygen</span> -<span class="title">t</span> <span class="title">rsa</span> -<span class="title">b</span> 2048后回车，生成公钥-私钥对总共只用到这一个命令，以下是配置部分】</span></span><br><span class="line"><span class="function"><span class="title">Generating</span> <span class="title">public</span>/<span class="title">private</span> <span class="title">rsa</span> <span class="title">key</span> <span class="title">pair</span>.</span></span><br><span class="line"><span class="function"><span class="title">Enter</span> <span class="title">file</span> <span class="title">in</span> <span class="title">which</span> <span class="title">to</span> <span class="title">save</span> <span class="title">the</span> <span class="title">key</span> (/<span class="title">cygdrive</span>/<span class="title">c</span>/<span class="title">Users</span>/你的用户名/.<span class="title">ssh</span>/<span class="title">id_rsa</span>): </span></span><br><span class="line"><span class="function">【在上一行的冒号后输入保存私钥的文件名。默认是在<span class="title">C</span>:\<span class="title">Users</span>\你的用户名\.<span class="title">ssh</span>\ 这个路径下，生成名为<span class="title">id_rsa</span>的文件。】</span></span><br><span class="line"><span class="function">【另外在该路径下还会自动生成<span class="title">id_rsa.pub</span>文件，用来保存公钥。】</span></span><br><span class="line"><span class="function"><span class="title">Enter</span> <span class="title">passphrase</span> (<span class="title">empty</span> <span class="title">for</span> <span class="title">no</span> <span class="title">passphrase</span>):【在这里输入私钥密码】</span></span><br><span class="line"><span class="function"><span class="title">Enter</span> <span class="title">same</span> <span class="title">passphrase</span> <span class="title">again</span>:【重复输入私钥密码】</span></span><br><span class="line"><span class="function"><span class="title">Your</span> <span class="title">identification</span> <span class="title">has</span> <span class="title">been</span> <span class="title">saved</span> <span class="title">in</span> <span class="title">c</span>/<span class="title">Users</span>/你的用户名/.<span class="title">ssh</span>/<span class="title">id_rsa</span>.</span></span><br><span class="line"><span class="function"><span class="title">Your</span> <span class="title">public</span> <span class="title">key</span> <span class="title">has</span> <span class="title">been</span> <span class="title">saved</span> <span class="title">in</span> <span class="title">c</span>/<span class="title">Users</span>/你的用户名/.<span class="title">ssh</span>/<span class="title">id_rsa.pub</span>.</span></span><br><span class="line"><span class="function">【上面两行说明了你私钥、公钥的保存位置】</span></span><br><span class="line"><span class="function"><span class="title">The</span> <span class="title">key</span> <span class="title">fingerprint</span> <span class="title">is</span>:</span></span><br><span class="line"><span class="function"><span class="title">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span></span></span><br></pre></td></tr></table></figure>
+
+<p>在lai的windows台式机上面也就是A电脑上面生成密钥。</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\daizelai\.ssh&gt; <span class="built_in">dir</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    目录: C:\Users\daizelai\.ssh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Mode</span>                 LastWriteTime         Length Name</span><br><span class="line">----                 -------------         ------ ----</span><br><span class="line">-a----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">3</span>     <span class="number">15</span>:<span class="number">11</span>            <span class="number">800</span> config</span><br><span class="line">-a----         <span class="number">2022</span>/<span class="number">5</span>/<span class="number">12</span>     <span class="number">15</span>:<span class="number">59</span>           <span class="number">2610</span> id_rsa</span><br><span class="line">-a----         <span class="number">2022</span>/<span class="number">5</span>/<span class="number">12</span>     <span class="number">15</span>:<span class="number">59</span>            <span class="number">575</span> id_rsa.pub</span><br><span class="line">-a----         <span class="number">2022</span>/<span class="number">9</span>/<span class="number">27</span>     <span class="number">14</span>:<span class="number">03</span>           <span class="number">2655</span> id_rsa_itcss_gitlab</span><br><span class="line">-a----         <span class="number">2022</span>/<span class="number">9</span>/<span class="number">27</span>     <span class="number">14</span>:<span class="number">03</span>            <span class="number">572</span> id_rsa_itcss_gitlab.pub</span><br><span class="line">-a----         <span class="number">2022</span>/<span class="number">9</span>/<span class="number">27</span>     <span class="number">14</span>:<span class="number">24</span>           <span class="number">1323</span> known_hosts</span><br><span class="line">-a----         <span class="number">2021</span>/<span class="number">6</span>/<span class="number">21</span>     <span class="number">10</span>:<span class="number">27</span>            <span class="number">101</span> known_hosts.old</span><br><span class="line"></span><br><span class="line">PS C:\Users\daizelai\.ssh&gt; <span class="built_in">date</span></span><br><span class="line"></span><br><span class="line"><span class="number">2022</span>年<span class="number">10</span>月<span class="number">16</span>日 <span class="number">14</span>:<span class="number">03</span>:<span class="number">33</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS C:\Users\daizelai\.ssh&gt; ssh-keygen -t rsa -f C:/Users/daizelai/.ssh/id_rsa_centos79</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): #这里我没有输入密码</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> C:/Users/daizelai/.ssh/id_rsa_centos79.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> C:/Users/daizelai/.ssh/id_rsa_centos79.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line"><span class="function">SHA256:<span class="title">zt84eZ7ml</span>+45<span class="title">laBc9I</span>/<span class="title">DL</span>+4<span class="title">aw72RAHP5brmWJ1X</span>/<span class="title">Qic</span> <span class="title">daizelai</span>@<span class="title">GBCOM</span>-20210524<span class="title">I</span></span></span><br><span class="line"><span class="function"><span class="title">The</span> <span class="title">key</span>&#x27;<span class="title">s</span> <span class="title">randomart</span> <span class="title">image</span> <span class="title">is</span>:</span></span><br><span class="line"><span class="function">+---[<span class="title">RSA</span> 3072]----+</span></span><br><span class="line"><span class="function">|                 |</span></span><br><span class="line"><span class="function">|             <span class="title">o</span>   |</span></span><br><span class="line"><span class="function">|          <span class="title">o</span> + .  |</span></span><br><span class="line"><span class="function">|           + + ..|</span></span><br><span class="line"><span class="function">|        <span class="title">S</span> . +.<span class="title">o</span>.=|</span></span><br><span class="line"><span class="function">|       <span class="title">o</span>   + +<span class="title">E</span>+*|</span></span><br><span class="line"><span class="function">|        <span class="title">o</span>  .+.<span class="title">BX</span>.|</span></span><br><span class="line"><span class="function">|         .<span class="title">ooo</span>=<span class="title">X</span>=+|</span></span><br><span class="line"><span class="function">|          <span class="title">o</span>**<span class="title">OO</span>* |</span></span><br><span class="line"><span class="function">+----[<span class="title">SHA256</span>]-----+</span></span><br><span class="line"><span class="function"><span class="title">PS</span> <span class="title">C</span>:\<span class="title">Users</span>\<span class="title">daizelai</span>\.<span class="title">ssh</span>&gt; <span class="title">dir</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    目录: <span class="title">C</span>:\<span class="title">Users</span>\<span class="title">daizelai</span>\.<span class="title">ssh</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Mode</span>                 <span class="title">LastWriteTime</span>         <span class="title">Length</span> <span class="title">Name</span></span></span><br><span class="line"><span class="function">----                 -------------         ------ ----</span></span><br><span class="line"><span class="function">-<span class="title">a</span>----         2022/10/3     15:11            800 <span class="title">config</span></span></span><br><span class="line"><span class="function">-<span class="title">a</span>----         2022/5/12     15:59           2610 <span class="title">id_rsa</span></span></span><br><span class="line"><span class="function">-<span class="title">a</span>----         2022/5/12     15:59            575 <span class="title">id_rsa.pub</span></span></span><br><span class="line"><span class="function">-<span class="title">a</span>----        2022/10/16     14:04           2610 <span class="title">id_rsa_centos79</span></span></span><br><span class="line"><span class="function">-<span class="title">a</span>----        2022/10/16     14:04            579 <span class="title">id_rsa_centos79.pub</span></span></span><br><span class="line"><span class="function">-<span class="title">a</span>----         2022/9/27     14:03           2655 <span class="title">id_rsa_itcss_gitlab</span></span></span><br><span class="line"><span class="function">-<span class="title">a</span>----         2022/9/27     14:03            572 <span class="title">id_rsa_itcss_gitlab.pub</span></span></span><br><span class="line"><span class="function">-<span class="title">a</span>----         2022/9/27     14:24           1323 <span class="title">known_hosts</span></span></span><br><span class="line"><span class="function">-<span class="title">a</span>----         2021/6/21     10:27            101 <span class="title">known_hosts.old</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">PS</span> <span class="title">C</span>:\<span class="title">Users</span>\<span class="title">daizelai</span>\.<span class="title">ssh</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-复制公钥到B服务器"><a href="#2-2-复制公钥到B服务器" class="headerlink" title="2.2.复制公钥到B服务器"></a>2.2.复制公钥到B服务器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[daizelai@0883a4966fee ~]$ date</span><br><span class="line">Sun Oct 16 08:27:22 UTC 2022</span><br><span class="line">[daizelai@0883a4966fee ~]$ whoami</span><br><span class="line">daizelai</span><br><span class="line">[daizelai@0883a4966fee ~]$ pwd</span><br><span class="line">/home/daizelai</span><br><span class="line">[daizelai@0883a4966fee ~]$ ls -lah</span><br><span class="line">total 36K</span><br><span class="line">drwx------ 4 daizelai daizelai 4.0K Oct 16 07:26 .</span><br><span class="line">drwxr-xr-x 1 root     root     4.0K Oct 13 09:58 ..</span><br><span class="line">drwxrwxr-x 2 daizelai daizelai 4.0K Oct 14 01:36 aaa</span><br><span class="line">-rw-rw-r-- 1 daizelai daizelai    4 Oct 14 01:03 a.txt</span><br><span class="line">-rw------- 1 daizelai daizelai  226 Oct 14 07:22 .bash_history</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai   18 Apr  1  2020 .bash_logout</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai  193 Apr  1  2020 .bash_profile</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai  231 Apr  1  2020 .bashrc</span><br><span class="line">drwx------ 2 daizelai daizelai 4.0K Oct 16 07:53 .ssh</span><br><span class="line">[daizelai@0883a4966fee ~]$ cat .ssh/autherized_keys</span><br><span class="line">cat: .ssh/autherized_keys: No such file or directory</span><br><span class="line">[daizelai@0883a4966fee ~]$</span><br><span class="line">[daizelai@0883a4966fee ~]$ echo &quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/+0+SWT/18/qrClf49vZ8L4HQ2p3ZSkoEQC82UpuuuDf0IPMK5kqKISFTn9QzB+5R0GQ1gXiYQeNhFSvuWi8R5sdDtJbVphaLh/FGxJhah8SAE7w+Y4i7XKsMMuOdFD60IQuvm3qDnlT4B3DMVr31FoThzLdAGWF6DN7l9aKWUPDkWp0YExEYdUJTusdgXe8X6JP4qnb5AiQeOpyopl+VNAf6I7rSFD41IjiaetQpc6cdrMu7nh8yQWM0jr0i7PmzlHMws8k5zvDf52LOKOqfcq1ml9hINB1LsoFoOOpIjoDj/TbXLWCRH3J8s+jPgT50IvDM8wCsEBH0PqY7sJvU2/GRIP7iFZqrb+YFvq9+dStUpnXEfU7hg8D5CFjJAA3svoniyFG9aYCNez/W0kNDW40CZ6ABHEwMkOkee3/hbuX/eP58+zdjbjZ4O8DOLZWz7y7W2ok4BGk2T4PTsNTWk9KgpeiK7OlzAO5SlMEVqz51RBgKMBZMGpSU/kWbK6M= daizelai@GBCOM-20210524I&quot; &gt; .ssh/autherized_keys</span><br><span class="line">[daizelai@0883a4966fee ~]$ cat .ssh/authorized_keys </span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/+0+SWT/18/qrClf49vZ8L4HQ2p3ZSkoEQC82UpuuuDf0IPMK5kqKISFTn9QzB+5R0GQ1gXiYQeNhFSvuWi8R5sdDtJbVphaLh/FGxJhah8SAE7w+Y4i7XKsMMuOdFD60IQuvm3qDnlT4B3DMVr31FoThzLdAGWF6DN7l9aKWUPDkWp0YExEYdUJTusdgXe8X6JP4qnb5AiQeOpyopl+VNAf6I7rSFD41IjiaetQpc6cdrMu7nh8yQWM0jr0i7PmzlHMws8k5zvDf52LOKOqfcq1ml9hINB1LsoFoOOpIjoDj/TbXLWCRH3J8s+jPgT50IvDM8wCsEBH0PqY7sJvU2/GRIP7iFZqrb+YFvq9+dStUpnXEfU7hg8D5CFjJAA3svoniyFG9aYCNez/W0kNDW40CZ6ABHEwMkOkee3/hbuX/eP58+zdjbjZ4O8DOLZWz7y7W2ok4BGk2T4PTsNTWk9KgpeiK7OlzAO5SlMEVqz51RBgKMBZMGpSU/kWbK6M= daizelai@GBCOM-20210524I</span><br><span class="line">[daizelai@0883a4966fee ~]$</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-配置ssh"><a href="#2-3-配置ssh" class="headerlink" title="2.3.配置ssh"></a>2.3.配置ssh</h3><p>这里是用root账号登录B服务器电脑里，对sshd进行配置的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@0883a4966fee ~]# vi /etc/ssh/sshd_config</span><br><span class="line">PermitRootLogin yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line">AuthorizedKeysFile      .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-配置root账号authorized-keys"><a href="#2-4-配置root账号authorized-keys" class="headerlink" title="2.4.配置root账号authorized_keys"></a>2.4.配置root账号authorized_keys</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[daizelai@0883a4966fee ~]$ su - root</span><br><span class="line">Password: </span><br><span class="line">Last login: Sun Oct 16 07:58:58 UTC 2022 from gateway on pts/2</span><br><span class="line">Last failed login: Sun Oct 16 08:22:36 UTC 2022 from gateway on ssh:notty</span><br><span class="line">There were 4 failed login attempts since the last successful login.</span><br><span class="line">[root@0883a4966fee ~]# date</span><br><span class="line">Sun Oct 16 08:32:49 UTC 2022</span><br><span class="line">[root@0883a4966fee ~]# ls -lah </span><br><span class="line">total 68K</span><br><span class="line">dr-xr-x---  1 root root 4.0K Oct 16 07:48 .</span><br><span class="line">drwxr-xr-x  1 root root 4.0K Oct  4 06:49 ..</span><br><span class="line">-rw-------  1 root root 3.4K Nov 13  2020 anaconda-ks.cfg</span><br><span class="line">drwxr-xr-x  4 root root 4.0K Oct  6 01:50 .android</span><br><span class="line">-rw-------  1 root root 2.4K Oct 16 08:03 .bash_history</span><br><span class="line">-rw-r--r--  1 root root   18 Dec 29  2013 .bash_logout</span><br><span class="line">-rw-r--r--  1 root root  176 Dec 29  2013 .bash_profile</span><br><span class="line">-rw-r--r--  1 root root  176 Dec 29  2013 .bashrc</span><br><span class="line">drwxr-xr-x  3 root root 4.0K Oct  4 06:35 .cache</span><br><span class="line">-rw-r--r--  1 root root  100 Dec 29  2013 .cshrc</span><br><span class="line">drwxr-xr-x 10 root root 4.0K Oct  6 02:15 .gradle</span><br><span class="line">drwxr-xr-x  3 root root 4.0K Oct  4 06:20 .groovy</span><br><span class="line">drwxr-xr-x  3 root root 4.0K Oct  4 06:09 .java</span><br><span class="line">drwxr-xr-x  3 root root 4.0K Oct  5 06:32 .kotlin</span><br><span class="line">-rw-------  1 root root  126 Oct 14 07:21 .mysql_history</span><br><span class="line">drwxr-xr-x  2 root root 4.0K Oct 16 07:51 .ssh</span><br><span class="line">-rw-r--r--  1 root root  129 Dec 29  2013 .tcshrc</span><br><span class="line">[root@0883a4966fee ~]# ls -lah .ssh/</span><br><span class="line">total 12K</span><br><span class="line">drwxr-xr-x 2 root root 4.0K Oct 16 07:51 .</span><br><span class="line">dr-xr-x--- 1 root root 4.0K Oct 16 07:48 ..</span><br><span class="line">-rw-r--r-- 1 root root  578 Oct 16 07:49 authorized_keys</span><br><span class="line">[root@0883a4966fee ~]#</span><br><span class="line">[root@0883a4966fee ~]# cat .ssh/authorized_keys </span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/+0+SWT/18/qrClf49vZ8L4HQ2p3ZSkoEQC82UpuuuDf0IPMK5kqKISFTn9QzB+5R0GQ1gXiYQeNhFSvuWi8R5sdDtJbVphaLh/FGxJhah8SAE7w+Y4i7XKsMMuOdFD60IQuvm3qDnlT4B3DMVr31FoThzLdAGWF6DN7l9aKWUPDkWp0YExEYdUJTusdgXe8X6JP4qnb5AiQeOpyopl+VNAf6I7rSFD41IjiaetQpc6cdrMu7nh8yQWM0jr0i7PmzlHMws8k5zvDf52LOKOqfcq1ml9hINB1LsoFoOOpIjoDj/TbXLWCRH3J8s+jPgT50IvDM8wCsEBH0PqY7sJvU2/GRIP7iFZqrb+YFvq9+dStUpnXEfU7hg8D5CFjJAA3svoniyFG9aYCNez/W0kNDW40CZ6ABHEwMkOkee3/hbuX/eP58+zdjbjZ4O8DOLZWz7y7W2ok4BGk2T4PTsNTWk9KgpeiK7OlzAO5SlMEVqz51RBgKMBZMGpSU/kWbK6M= daizelai@GBCOM-20210524I</span><br><span class="line">[root@0883a4966fee ~]#</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-配置普通账号daizelai登录"><a href="#2-5-配置普通账号daizelai登录" class="headerlink" title="2.5.配置普通账号daizelai登录"></a>2.5.配置普通账号daizelai登录</h3><p>下面是设置非root账号daizelai的免密码登录。</p>
+<p><strong>特别注意</strong>：<code>.ssh</code>目录的权限为<code>700</code>，其下文件<code>authorized_keys</code>和私钥的权限为<code>600</code>，否则会因为权限问题导致无法免密码登录。zelai就是因为这个问题一开始怎么也登录不了，后面就如下设置权限就可以登录了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">[daizelai@0883a4966fee .ssh]$ date</span><br><span class="line">Sun Oct 16 08:14:44 UTC 2022</span><br><span class="line">[daizelai@0883a4966fee .ssh]$ whoami</span><br><span class="line">daizelai</span><br><span class="line">[daizelai@0883a4966fee .ssh]$ pwd</span><br><span class="line">/home/daizelai/.ssh</span><br><span class="line">[daizelai@0883a4966fee .ssh]$</span><br><span class="line">[daizelai@0883a4966fee .ssh]$ cd ..</span><br><span class="line">[daizelai@0883a4966fee ~]$ ls -lah</span><br><span class="line">total 36K</span><br><span class="line">drwx------ 4 daizelai daizelai 4.0K Oct 16 07:26 .</span><br><span class="line">drwxr-xr-x 1 root     root     4.0K Oct 13 09:58 ..</span><br><span class="line">drwxrwxr-x 2 daizelai daizelai 4.0K Oct 14 01:36 aaa</span><br><span class="line">-rw-rw-r-- 1 daizelai daizelai    4 Oct 14 01:03 a.txt</span><br><span class="line">-rw------- 1 daizelai daizelai  226 Oct 14 07:22 .bash_history</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai   18 Apr  1  2020 .bash_logout</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai  193 Apr  1  2020 .bash_profile</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai  231 Apr  1  2020 .bashrc</span><br><span class="line">drwxrwxr-x 2 daizelai daizelai 4.0K Oct 16 07:53 .ssh</span><br><span class="line">[daizelai@0883a4966fee ~]$ chmod 700 .ssh</span><br><span class="line">[daizelai@0883a4966fee ~]$ ls -lah</span><br><span class="line">total 36K</span><br><span class="line">drwx------ 4 daizelai daizelai 4.0K Oct 16 07:26 .</span><br><span class="line">drwxr-xr-x 1 root     root     4.0K Oct 13 09:58 ..</span><br><span class="line">drwxrwxr-x 2 daizelai daizelai 4.0K Oct 14 01:36 aaa</span><br><span class="line">-rw-rw-r-- 1 daizelai daizelai    4 Oct 14 01:03 a.txt</span><br><span class="line">-rw------- 1 daizelai daizelai  226 Oct 14 07:22 .bash_history</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai   18 Apr  1  2020 .bash_logout</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai  193 Apr  1  2020 .bash_profile</span><br><span class="line">-rw-r--r-- 1 daizelai daizelai  231 Apr  1  2020 .bashrc</span><br><span class="line">drwx------ 2 daizelai daizelai 4.0K Oct 16 07:53 .ssh</span><br><span class="line">[daizelai@0883a4966fee ~]$ cd .ssh</span><br><span class="line">[daizelai@0883a4966fee .ssh]$ ls -l</span><br><span class="line">total 4</span><br><span class="line">-rwxrwxrwx 1 daizelai daizelai 578 Oct 16 06:08 authorized_keys</span><br><span class="line">[daizelai@0883a4966fee .ssh]$ chmod 600 authorized_keys </span><br><span class="line">[daizelai@0883a4966fee .ssh]$ ls -l</span><br><span class="line">total 4</span><br><span class="line">-rw------- 1 daizelai daizelai 578 Oct 16 06:08 authorized_keys</span><br><span class="line">[daizelai@0883a4966fee ~]$ cd</span><br><span class="line">[daizelai@0883a4966fee ~]$ pwd</span><br><span class="line">/home/daizelai</span><br><span class="line">[daizelai@0883a4966fee ~]$ cat .ssh/authorized_keys </span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/+0+SWT/18/qrClf49vZ8L4HQ2p3ZSkoEQC82UpuuuDf0IPMK5kqKISFTn9QzB+5R0GQ1gXiYQeNhFSvuWi8R5sdDtJbVphaLh/FGxJhah8SAE7w+Y4i7XKsMMuOdFD60IQuvm3qDnlT4B3DMVr31FoThzLdAGWF6DN7l9aKWUPDkWp0YExEYdUJTusdgXe8X6JP4qnb5AiQeOpyopl+VNAf6I7rSFD41IjiaetQpc6cdrMu7nh8yQWM0jr0i7PmzlHMws8k5zvDf52LOKOqfcq1ml9hINB1LsoFoOOpIjoDj/TbXLWCRH3J8s+jPgT50IvDM8wCsEBH0PqY7sJvU2/GRIP7iFZqrb+YFvq9+dStUpnXEfU7hg8D5CFjJAA3svoniyFG9aYCNez/W0kNDW40CZ6ABHEwMkOkee3/hbuX/eP58+zdjbjZ4O8DOLZWz7y7W2ok4BGk2T4PTsNTWk9KgpeiK7OlzAO5SlMEVqz51RBgKMBZMGpSU/kWbK6M= daizelai@GBCOM-20210524I</span><br><span class="line">[daizelai@0883a4966fee ~]$</span><br></pre></td></tr></table></figure>
+
+<p>最好重启ssh服务生效。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[daizelai@0883a4966fee .ssh]$ /bin/systemctl restart sshd.service</span><br><span class="line">==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===</span><br><span class="line">Authentication is required to manage system services or units.</span><br><span class="line">Authenticating as: root</span><br><span class="line">Password: </span><br><span class="line">==== AUTHENTICATION COMPLETE ===</span><br><span class="line">[daizelai@0883a4966fee .ssh]$</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-客户端登录效果"><a href="#2-6-客户端登录效果" class="headerlink" title="2.6.客户端登录效果"></a>2.6.客户端登录效果</h3><p>下面是在我的台式机客户端上面使用WindTerm配置密钥登录B服务器。</p>
+<p>新增ssh连接会话</p>
+<p><img src="/2022/10/16/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/images/ssh_no_password_login_2022-10-16_165340.png" alt="新增ssh连接会话"></p>
+<p>配置密钥登录</p>
+<p><img src="/2022/10/16/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/images/ssh_no_password_login_2022-10-16_164849.png" alt="配置密钥登录"></p>
+<p>下面是使用WindTerm登录效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Last login: Sun Oct 16 08:12:48 2022 from gateway</span><br><span class="line">[daizelai@0883a4966fee ~]$ </span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div>全文完。</div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#20221016-1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-text">20221016_1619ssh免密码登录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%8F%8F%E8%BF%B0"><span class="toc-text">一、描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%89%8D%E8%A8%80"><span class="toc-text">1.1.前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.2.介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%8C%E4%B8%8A%E4%BC%A0A%E7%9A%84pub%E5%85%AC%E9%92%A5%E5%88%B0B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">1.2.1.方式一，上传A的pub公钥到B服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E6%96%B9%E5%BC%8F%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BDB%E7%9A%84%E7%A7%81%E9%92%A5%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%9F%E6%88%90pem%E6%96%87%E4%BB%B6"><span class="toc-text">1.2.2.方式二、下载B的私钥文件，生成pem文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%8D%E5%AF%86%E7%A0%81SSH%E7%99%BB%E5%BD%95"><span class="toc-text">二、免密码SSH登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5"><span class="toc-text">2.1.生成密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%A4%8D%E5%88%B6%E5%85%AC%E9%92%A5%E5%88%B0B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">2.2.复制公钥到B服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E9%85%8D%E7%BD%AEssh"><span class="toc-text">2.3.配置ssh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E9%85%8D%E7%BD%AEroot%E8%B4%A6%E5%8F%B7authorized-keys"><span class="toc-text">2.4.配置root账号authorized_keys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E9%85%8D%E7%BD%AE%E6%99%AE%E9%80%9A%E8%B4%A6%E5%8F%B7daizelai%E7%99%BB%E5%BD%95"><span class="toc-text">2.5.配置普通账号daizelai登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%99%BB%E5%BD%95%E6%95%88%E6%9E%9C"><span class="toc-text">2.6.客户端登录效果</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share" style="width: 100%;">
+  <img src="/static/qrcode/qrcode_wwwitcsscn_20221008_0909.png" alt="Running Geek" style="margin: auto; display: block;"/>
+
+  <div style="margin: auto; text-align: center; font-size: 0.8em; color: grey;">老铁们关注走一走，不迷路</div>
+  
+</div>
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2022/10/10/wzs2/20221010_1750%E6%B8%A9%E5%B7%9ES2%E5%8F%B7%E7%BA%BF%E5%9B%BA%E5%AE%9A%E5%8F%B0%E7%AB%99%E9%80%89%E5%8C%BA%E5%B9%BF%E6%92%AD%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/" rel="next" title="温州S2号线固定台站选区广播调试记录">
+          温州S2号线固定台站选区广播调试记录
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2022/10/26/android/20221025_2016windows10%E4%B8%8Adocker%E4%B8%ADcentos7.9%E5%AE%89%E8%A3%85android%E7%8E%AF%E5%A2%83%E9%87%8D%E6%96%B0%E8%AE%B0%E5%BD%95%E7%89%88/" rel="prev" title="windows10上docker中centos7.9安装android环境重新记录版">
+            windows10上docker中centos7.9安装android环境重新记录版
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" target="_blank" rel="noopener" href="https://www.itcss.cn">首页</a> |
+        <a class="bottom-item" href="https://www.itcss.cn" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/itcss" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

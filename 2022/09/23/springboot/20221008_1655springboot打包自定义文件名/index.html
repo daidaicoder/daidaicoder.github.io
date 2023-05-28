@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="springboot,springboot项目打包,java,maven,maven打包," />
+  
+
+  
+    <meta name="description" content="小天的小窝，记录学习笔记和走过的点点滴滴！" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>springboot打包自定义文件名 [ 小天的小窝 ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小天的小窝" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/static/avatar/avatar.png">
+    <span class="title">小天的小窝</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        springboot打包自定义文件名
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2022-09-23T07:05:00.000Z">
+        2022-09-23
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven%E6%89%93%E5%8C%85/" rel="tag">maven打包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" rel="tag">springboot项目打包</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 18 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h1 id="20221008-1655springboot打包自定义文件名"><a href="#20221008-1655springboot打包自定义文件名" class="headerlink" title="20221008_1655springboot打包自定义文件名"></a>20221008_1655springboot打包自定义文件名</h1><p>[TOC]</p>
+<h2 id="一、描述"><a href="#一、描述" class="headerlink" title="一、描述"></a>一、描述</h2><h3 id="1-1-引言"><a href="#1-1-引言" class="headerlink" title="1.1.引言"></a>1.1.引言</h3><p>by daizelai on 2022&#x2F;10&#x2F;08 16:59<br>本文记录一下在对springboot项目进行打包的时候，如何修改生成的文件名称。</p>
+<h3 id="1-2-默认打包"><a href="#1-2-默认打包" class="headerlink" title="1.2.默认打包"></a>1.2.默认打包</h3><p>在springboot项目的根目录下，使用maven打包命令<code>mvn clean package</code>对项目进行打包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt; mvn clean <span class="keyword">package</span></span><br><span class="line">[INFO] Scanning <span class="keyword">for</span> projects...</span><br><span class="line">Downloading from central: https:<span class="comment">//repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.1.3.RELEASE/spring-boot-starter-parent-2.1.3.RELEASE.pom</span></span><br><span class="line">Downloaded from central: https:<span class="comment">//repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.1.3.RELEASE/spring-boot-starter-parent-2.1.3.RELEASE.pom (12 kB at 10 kB/s)</span></span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">[INFO] Replacing main artifact with repackaged archive</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD SUCCESS</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time:  <span class="number">01</span>:<span class="number">45</span> min</span><br><span class="line">[INFO] Finished at: <span class="number">2022</span>-<span class="number">10</span>-08T16:<span class="number">31</span>:<span class="number">28</span>+08:<span class="number">00</span></span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt;</span><br></pre></td></tr></table></figure>
+
+<p>打包完成之后，生成如下文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">D:\code\IdeaProjects\springbootdemo\target&gt;dir</span><br><span class="line"> 驱动器 D 中的卷是 新加卷</span><br><span class="line"> 卷的序列号是 8AC9-706C</span><br><span class="line"></span><br><span class="line"> D:\code\IdeaProjects\springbootdemo\target 的目录</span><br><span class="line"></span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>    &lt;DIR&gt;          .</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>    &lt;DIR&gt;          ..</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>    &lt;DIR&gt;          classes</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>    &lt;DIR&gt;          generated-sources</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>    &lt;DIR&gt;          generated-test-sources</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>    &lt;DIR&gt;          maven-archiver</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>    &lt;DIR&gt;          maven-status</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>        <span class="number">39</span>,<span class="number">623</span>,<span class="number">979</span> springbootdemo-<span class="number">0.0</span><span class="number">.1</span>-SNAPSHOT.jar</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>            <span class="number">30</span>,<span class="number">305</span> springbootdemo-<span class="number">0.0</span><span class="number">.1</span>-SNAPSHOT.jar.original</span><br><span class="line"><span class="number">2022</span>/<span class="number">10</span>/08  <span class="number">16</span>:<span class="number">51</span>    &lt;DIR&gt;          test-classes</span><br><span class="line">               <span class="number">2</span> 个文件     <span class="number">39</span>,<span class="number">654</span>,<span class="number">284</span> 字节</span><br><span class="line">               <span class="number">8</span> 个目录 <span class="number">14</span>,<span class="number">321</span>,<span class="number">639</span>,<span class="number">424</span> 可用字节</span><br><span class="line"></span><br><span class="line">D:\code\IdeaProjects\springbootdemo\target&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、自定义打包文件名"><a href="#二、自定义打包文件名" class="headerlink" title="二、自定义打包文件名"></a>二、自定义打包文件名</h2><h3 id="2-1-配置打包文件名"><a href="#2-1-配置打包文件名" class="headerlink" title="2.1.配置打包文件名"></a>2.1.配置打包文件名</h3><p>在build节点下增加finalName节点，内容就是文件名称。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">+        <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>wzs2_station_broadcast_v0.0.2<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span><span class="comment">&lt;!-- 跳过单元测试 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">skipTests</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skipTests</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-打包"><a href="#2-2-打包" class="headerlink" title="2.2.打包"></a>2.2.打包</h3><p>再次编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt; mvn clean package</span><br><span class="line">[INFO] Scanning for projects...</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] -----------------&lt; cn.itcss.springboot:springbootdemo &gt;-----------------</span><br><span class="line">[INFO] Building springbootdemo 0.0.1-SNAPSHOT</span><br><span class="line">[INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ springbootdemo ---</span><br><span class="line">[INFO] Deleting D:\code\IdeaProjects\springbootdemo\target</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ springbootdemo ---</span><br><span class="line">[INFO] Using &#x27;UTF-8&#x27; encoding to copy filtered resources.</span><br><span class="line">[INFO] Copying 4 resources</span><br><span class="line">[INFO] Copying 2 resources</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ springbootdemo ---</span><br><span class="line">[INFO] Changes detected - recompiling the module!</span><br><span class="line">[INFO] Compiling 25 source files to D:\code\IdeaProjects\springbootdemo\target\classes</span><br><span class="line">[INFO] /D:/code/IdeaProjects/springbootdemo/src/main/java/cn/itcss/springboot/filter/FilterConfig.java: D:\code\IdeaProjects\springbootdemo\src\main\java\cn\itcss\springboot\filter\FilterConfig.java使用了未经检查或不安全的操作。</span><br><span class="line">[INFO] /D:/code/IdeaProjects/springbootdemo/src/main/java/cn/itcss/springboot/filter/FilterConfig.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ springbootdemo ---</span><br><span class="line">[INFO] Using &#x27;UTF-8&#x27; encoding to copy filtered resources.</span><br><span class="line">[INFO] skip non existing resourceDirectory D:\code\IdeaProjects\springbootdemo\src\test\resources</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ springbootdemo ---</span><br><span class="line">[INFO] Changes detected - recompiling the module!</span><br><span class="line">[INFO] Compiling 1 source file to D:\code\IdeaProjects\springbootdemo\target\test-classes</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-surefire-plugin:2.22.1:test (default-test) @ springbootdemo ---</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-jar-plugin:3.1.1:jar (default-jar) @ springbootdemo ---</span><br><span class="line">[INFO] Building jar: D:\code\IdeaProjects\springbootdemo\target\wzs2_station_broadcast_v0.0.2.jar</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- spring-boot-maven-plugin:2.1.3.RELEASE:repackage (repackage) @ springbootdemo ---</span><br><span class="line">[INFO] Replacing main artifact with repackaged archive</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD SUCCESS</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time:  2.298 s</span><br><span class="line">[INFO] Finished at: 2022-10-08T16:52:12+08:00</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-打包的文件名"><a href="#2-4-打包的文件名" class="headerlink" title="2.4.打包的文件名"></a>2.4.打包的文件名</h3><p>我们再来看一下打包的文件，文件名称已经修改成<code>wzs2_station_broadcast_v0.0.2.jar</code>了。</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt; <span class="built_in">dir</span> target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    目录: D:\code\IdeaProjects\springbootdemo\target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Mode</span>                 LastWriteTime         Length Name</span><br><span class="line">----                 -------------         ------ ----</span><br><span class="line">d-----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">8</span>     <span class="number">16</span>:<span class="number">52</span>                classes</span><br><span class="line">d-----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">8</span>     <span class="number">16</span>:<span class="number">52</span>                generated-sources</span><br><span class="line">d-----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">8</span>     <span class="number">16</span>:<span class="number">52</span>                generated-test-sources</span><br><span class="line">d-----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">8</span>     <span class="number">16</span>:<span class="number">52</span>                maven-archiver</span><br><span class="line">d-----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">8</span>     <span class="number">16</span>:<span class="number">52</span>                maven-status</span><br><span class="line">d-----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">8</span>     <span class="number">16</span>:<span class="number">52</span>                test-classes</span><br><span class="line">-a----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">8</span>     <span class="number">16</span>:<span class="number">52</span>       <span class="number">39624014</span> wzs2_station_broadcast_v0.<span class="number">0</span>.<span class="number">2</span>.jar</span><br><span class="line">-a----         <span class="number">2022</span>/<span class="number">10</span>/<span class="number">8</span>     <span class="number">16</span>:<span class="number">52</span>          <span class="number">30340</span> wzs2_station_broadcast_v0.<span class="number">0</span>.<span class="number">2</span>.jar.original</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、渠道打包"><a href="#三、渠道打包" class="headerlink" title="三、渠道打包"></a>三、渠道打包</h2><h3 id="3-1-修改配置"><a href="#3-1-修改配置" class="headerlink" title="3.1.修改配置"></a>3.1.修改配置</h3><ul>
+<li>修改pom.xml配置</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag"> <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">+    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">+        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">+            <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">+            <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">+                <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">+            <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">+            <span class="comment">&lt;!-- 是否默认,true表示默认 --&gt;</span></span><br><span class="line">+            <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">+                <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">+            <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">+        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">+        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">+            <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">+            <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">+                <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>test<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">+            <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">+        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">+    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    ......</span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">+        <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>wzs2_station_broadcast_v0.0.2_-$&#123;package.environment&#125;<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span><span class="comment">&lt;!-- 跳过单元测试 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">skipTests</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skipTests</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改yml配置</li>
+</ul>
+<p>此处用@标签@，中间的标签位置就是pom文件中包围名称的标签</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发环境</span></span><br><span class="line"></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8086</span></span><br><span class="line">  <span class="attr">tomcat:</span></span><br><span class="line">    <span class="attr">uri-encoding:</span> <span class="string">utf-8</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://192.168.13.177:3306/giedu</span></span><br><span class="line">    <span class="comment">#    url: jdbc:mysql://127.0.0.1:3306/giedu</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">springboot</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">show-sql:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">database-platform:</span> <span class="string">org.hibernate.dialect.MySQL5InnoDBDialect</span></span><br><span class="line">    <span class="attr">hibernate:</span></span><br><span class="line">      <span class="attr">ddl-auto:</span> <span class="string">update</span></span><br><span class="line"><span class="string">+</span>  <span class="attr">profiles:</span></span><br><span class="line"><span class="string">+</span>    <span class="attr">active:</span> <span class="string">@package.environment@</span></span><br><span class="line"><span class="attr">boy:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">lai</span></span><br><span class="line">  <span class="attr">sex:</span> <span class="string">male</span></span><br><span class="line">  <span class="attr">age:</span> <span class="number">18</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-打包"><a href="#3-2-打包" class="headerlink" title="3.2.打包"></a>3.2.打包</h3><p>使用命令<code>mvn clean package -Pdev</code>进行打包。<br>在打包时使用<code>mvn clean package -Pdev</code>即指定打包dev配置文件的项目，生成包的名称应为：项目名-服务名-dev</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt; date</span><br><span class="line"></span><br><span class="line"><span class="number">2022</span>年<span class="number">10</span>月<span class="number">8</span>日 <span class="number">17</span>:<span class="number">06</span>:<span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt; mvn clean <span class="keyword">package</span> -Pdev</span><br><span class="line">[INFO] Scanning <span class="keyword">for</span> projects...</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] -----------------&lt; cn.itcss.springboot:springbootdemo &gt;-----------------</span><br><span class="line">[INFO] Building springbootdemo <span class="number">0.0</span><span class="number">.1</span>-SNAPSHOT                                  </span><br><span class="line">[INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-clean-plugin:<span class="number">3.1</span><span class="number">.0</span>:clean (<span class="keyword">default</span>-clean) @ springbootdemo ---</span><br><span class="line">[INFO] Deleting D:\code\IdeaProjects\springbootdemo\target</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-resources-plugin:<span class="number">3.1</span><span class="number">.0</span>:resources (<span class="keyword">default</span>-resources) @ springbootdemo ---</span><br><span class="line">[INFO] Using <span class="string">&#x27;UTF-8&#x27;</span> encoding to copy filtered resources.</span><br><span class="line">[INFO] Copying <span class="number">4</span> resources</span><br><span class="line">[INFO] Copying <span class="number">2</span> resources</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-compiler-plugin:<span class="number">3.8</span><span class="number">.0</span>:compile (<span class="keyword">default</span>-compile) @ springbootdemo ---</span><br><span class="line">[INFO] Changes detected - recompiling the <span class="keyword">module</span>!</span><br><span class="line">[INFO] Compiling <span class="number">25</span> source files to D:\code\IdeaProjects\springbootdemo\target\classes</span><br><span class="line">[INFO] /D:/code/IdeaProjects/springbootdemo/src/main/java/cn/itcss/springboot/filter/FilterConfig.java: D:\code\IdeaProjects\springbootdemo\src\main\java\cn\itcss\springboot\filter\FilterConfig.java使用了未经检查或不安全的操作。</span><br><span class="line">[INFO] /D:/code/IdeaProjects/springbootdemo/src/main/java/cn/itcss/springboot/filter/FilterConfig.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-resources-plugin:<span class="number">3.1</span><span class="number">.0</span>:testResources (<span class="keyword">default</span>-testResources) @ springbootdemo ---</span><br><span class="line">[INFO] Using <span class="string">&#x27;UTF-8&#x27;</span> encoding to copy filtered resources.</span><br><span class="line">[INFO] skip non existing resourceDirectory D:\code\IdeaProjects\springbootdemo\src\test\resources</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-compiler-plugin:<span class="number">3.8</span><span class="number">.0</span>:testCompile (<span class="keyword">default</span>-testCompile) @ springbootdemo ---</span><br><span class="line">[INFO] Changes detected - recompiling the <span class="keyword">module</span>!</span><br><span class="line">[INFO] Compiling <span class="number">1</span> source file to D:\code\IdeaProjects\springbootdemo\target\test-classes</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-surefire-plugin:<span class="number">2.22</span><span class="number">.1</span>:test (<span class="keyword">default</span>-test) @ springbootdemo ---</span><br><span class="line">[INFO] Tests are skipped.</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-jar-plugin:<span class="number">3.1</span><span class="number">.1</span>:jar (<span class="keyword">default</span>-jar) @ springbootdemo ---</span><br><span class="line">[INFO] Building jar: D:\code\IdeaProjects\springbootdemo\target\wzs2_station_broadcast_v0<span class="number">.0</span>.2_-dev.jar</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- spring-boot-maven-plugin:<span class="number">2.1</span><span class="number">.3</span>.RELEASE:repackage (repackage) @ springbootdemo ---</span><br><span class="line">[INFO] Replacing main artifact with repackaged archive</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD SUCCESS</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time:  <span class="number">2.472</span> s</span><br><span class="line">[INFO] Finished at: <span class="number">2022</span>-<span class="number">10</span>-08T17:<span class="number">06</span>:<span class="number">24</span>+08:<span class="number">00</span></span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-打包的文件"><a href="#3-3-打包的文件" class="headerlink" title="3.3.打包的文件"></a>3.3.打包的文件</h3><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Microsoft Windows [版本 <span class="number">10</span>.<span class="number">0</span>.<span class="number">19044</span>.<span class="number">2006</span>]</span><br><span class="line">(c) Microsoft Corporation。保留所有权利。</span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">D:\<span class="title">code</span>\<span class="title">IdeaProjects</span>\<span class="title">springbootdemo</span>\<span class="title">target</span>&gt;<span class="title">date</span></span></span><br><span class="line"><span class="function">当前日期: 2022/10/08 周六</span></span><br><span class="line"><span class="function">输入新日期: (年月日)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">D</span>:\<span class="title">code</span>\<span class="title">IdeaProjects</span>\<span class="title">springbootdemo</span>\<span class="title">target</span>&gt;<span class="title">dir</span></span></span><br><span class="line"><span class="function"> 驱动器 <span class="title">D</span> 中的卷是 新加卷</span></span><br><span class="line"><span class="function"> 卷的序列号是 8<span class="title">AC9</span>-706<span class="title">C</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"> <span class="title">D</span>:\<span class="title">code</span>\<span class="title">IdeaProjects</span>\<span class="title">springbootdemo</span>\<span class="title">target</span> 的目录</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">2022/10/08  17:06    &lt;<span class="title">DIR</span>&gt;          .</span></span><br><span class="line"><span class="function">2022/10/08  17:06    &lt;<span class="title">DIR</span>&gt;          ..</span></span><br><span class="line"><span class="function">2022/10/08  17:06    &lt;<span class="title">DIR</span>&gt;          <span class="title">classes</span></span></span><br><span class="line"><span class="function">2022/10/08  17:06    &lt;<span class="title">DIR</span>&gt;          <span class="title">generated</span>-<span class="title">sources</span></span></span><br><span class="line"><span class="function">2022/10/08  17:06    &lt;<span class="title">DIR</span>&gt;          <span class="title">generated</span>-<span class="title">test</span>-<span class="title">sources</span></span></span><br><span class="line"><span class="function">2022/10/08  17:06    &lt;<span class="title">DIR</span>&gt;          <span class="title">maven</span>-<span class="title">archiver</span></span></span><br><span class="line"><span class="function">2022/10/08  17:06    &lt;<span class="title">DIR</span>&gt;          <span class="title">maven</span>-<span class="title">status</span></span></span><br><span class="line"><span class="function">2022/10/08  17:06    &lt;<span class="title">DIR</span>&gt;          <span class="title">test</span>-<span class="title">classes</span></span></span><br><span class="line"><span class="function">2022/10/08  17:06        39,624,168 <span class="title">wzs2_station_broadcast_v0</span>.0.2<span class="title">_</span>-<span class="title">dev.jar</span></span></span><br><span class="line"><span class="function">2022/10/08  17:06            30,494 <span class="title">wzs2_station_broadcast_v0</span>.0.2<span class="title">_</span>-<span class="title">dev.jar.original</span></span></span><br><span class="line"><span class="function">               2 个文件     39,654,662 字节</span></span><br><span class="line"><span class="function">               8 个目录 14,319,632,384 可用字节</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">D</span>:\<span class="title">code</span>\<span class="title">IdeaProjects</span>\<span class="title">springbootdemo</span>\<span class="title">target</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、打包时的FAILURE问题"><a href="#四、打包时的FAILURE问题" class="headerlink" title="四、打包时的FAILURE问题"></a>四、打包时的FAILURE问题</h2><h3 id="4-1-mvn打包遇到FAILURE"><a href="#4-1-mvn打包遇到FAILURE" class="headerlink" title="4.1.mvn打包遇到FAILURE"></a>4.1.mvn打包遇到FAILURE</h3><p>FAILURE错误如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt; mvn clean package -Pprod</span><br><span class="line">[INFO] Scanning for projects...</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] -----------------&lt; cn.itcss.springboot:springbootdemo &gt;-----------------</span><br><span class="line">[INFO] Building springbootdemo 0.0.1-SNAPSHOT                                  </span><br><span class="line">[INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ springbootdemo ---</span><br><span class="line">[INFO] Deleting D:\code\IdeaProjects\springbootdemo\target</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD FAILURE</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time:  1.648 s</span><br><span class="line">[INFO] Finished at: 2022-10-08T18:12:38+08:00</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[WARNING] The requested profile &quot;prod&quot; could not be activated because it does not exist.</span><br><span class="line">[ERROR] Failed to execute goal org.apache.maven.plugins:maven-clean-plugin:3.1.0:clean (default-clean) on project springbootdemo: Failed to clean project: Failed to delete D:\code\IdeaProjects\springbootdemo\target -&gt; [Help 1]</span><br><span class="line">[ERROR]</span><br><span class="line">[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.</span><br><span class="line">[ERROR] Re-run Maven using the -X switch to enable full debug logging.</span><br><span class="line">[ERROR]</span><br><span class="line">[ERROR] For more information about the errors and possible solutions, please read the following articles:</span><br><span class="line">[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException</span><br><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-问题解决"><a href="#4-2-问题解决" class="headerlink" title="4.2.问题解决"></a>4.2.问题解决</h3><p>cmd命令行占用target目录，这样的话，使用mvn命令打包时会失败。</p>
+<p><img src="/2022/09/23/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/images/mvn_package_failure_2022-10-08_181313.png" alt="cmd命令行占用target目录"></p>
+<p>解决办法很简单，关闭此cmd窗口就可以了。</p>
+<h3 id="4-3-打包成功"><a href="#4-3-打包成功" class="headerlink" title="4.3.打包成功"></a>4.3.打包成功</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt; mvn clean package -Pprod</span><br><span class="line">[INFO] Scanning for projects...</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] -----------------&lt; cn.itcss.springboot:springbootdemo &gt;-----------------</span><br><span class="line">[INFO] Building springbootdemo 0.0.1-SNAPSHOT</span><br><span class="line">[INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ springbootdemo ---</span><br><span class="line">[INFO] Deleting D:\code\IdeaProjects\springbootdemo\target</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ springbootdemo ---</span><br><span class="line">[INFO] Using &#x27;UTF-8&#x27; encoding to copy filtered resources.</span><br><span class="line">[INFO] Copying 4 resources</span><br><span class="line">[INFO] Copying 2 resources</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ springbootdemo ---</span><br><span class="line">[INFO] Changes detected - recompiling the module!</span><br><span class="line">[INFO] Compiling 25 source files to D:\code\IdeaProjects\springbootdemo\target\classes</span><br><span class="line">[INFO] /D:/code/IdeaProjects/springbootdemo/src/main/java/cn/itcss/springboot/filter/FilterConfig.java: D:\code\IdeaProjects\springbootdemo\src\main\java\cn\itcss\springboot\filter\FilterConfig.java使用了未经检查或不安全的操作。</span><br><span class="line">[INFO] /D:/code/IdeaProjects/springbootdemo/src/main/java/cn/itcss/springboot/filter/FilterConfig.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ springbootdemo ---</span><br><span class="line">[INFO] Using &#x27;UTF-8&#x27; encoding to copy filtered resources.</span><br><span class="line">[INFO] skip non existing resourceDirectory D:\code\IdeaProjects\springbootdemo\src\test\resources</span><br><span class="line">[INFO]</span><br><span class="line">[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ springbootdemo ---</span><br><span class="line">[INFO] Changes detected - recompiling the module!</span><br><span class="line">[INFO] Compiling 1 source file to D:\code\IdeaProjects\springbootdemo\target\test-classes</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-surefire-plugin:2.22.1:test (default-test) @ springbootdemo ---</span><br><span class="line">[INFO] Tests are skipped.</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-jar-plugin:3.1.1:jar (default-jar) @ springbootdemo ---</span><br><span class="line">[INFO] Building jar: D:\code\IdeaProjects\springbootdemo\target\wzs2_station_broadcast_v0.0.2_-dev.jar</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- spring-boot-maven-plugin:2.1.3.RELEASE:repackage (repackage) @ springbootdemo ---</span><br><span class="line">[INFO] Replacing main artifact with repackaged archive</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD SUCCESS</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time:  2.379 s</span><br><span class="line">[INFO] Finished at: 2022-10-08T18:13:46+08:00</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[WARNING] The requested profile &quot;prod&quot; could not be activated because it does not exist.</span><br><span class="line">PS D:\code\IdeaProjects\springbootdemo&gt; </span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div>全文完。</div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#20221008-1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">20221008_1655springboot打包自定义文件名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%8F%8F%E8%BF%B0"><span class="toc-text">一、描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%BC%95%E8%A8%80"><span class="toc-text">1.1.引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%BB%98%E8%AE%A4%E6%89%93%E5%8C%85"><span class="toc-text">1.2.默认打包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">二、自定义打包文件名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%85%8D%E7%BD%AE%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">2.1.配置打包文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%89%93%E5%8C%85"><span class="toc-text">2.2.打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%89%93%E5%8C%85%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">2.4.打包的文件名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85"><span class="toc-text">三、渠道打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-text">3.1.修改配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%89%93%E5%8C%85"><span class="toc-text">3.2.打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%89%93%E5%8C%85%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-text">3.3.打包的文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%89%93%E5%8C%85%E6%97%B6%E7%9A%84FAILURE%E9%97%AE%E9%A2%98"><span class="toc-text">四、打包时的FAILURE问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-mvn%E6%89%93%E5%8C%85%E9%81%87%E5%88%B0FAILURE"><span class="toc-text">4.1.mvn打包遇到FAILURE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">4.2.问题解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%89%93%E5%8C%85%E6%88%90%E5%8A%9F"><span class="toc-text">4.3.打包成功</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share" style="width: 100%;">
+  <img src="/static/qrcode/qrcode_wwwitcsscn_20221008_0909.png" alt="Running Geek" style="margin: auto; display: block;"/>
+
+  <div style="margin: auto; text-align: center; font-size: 0.8em; color: grey;">老铁们关注走一走，不迷路</div>
+  
+</div>
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2022/09/16/sc60/20220916_1316SC60%E5%B1%8F%E5%B9%95%E9%BB%91%E5%B1%8F%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="next" title="屏幕黑屏问题记录">
+          屏幕黑屏问题记录
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2022/09/23/room/20220929_1505%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3room%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%A1%A8SQL%E8%AF%AD%E5%8F%A5%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/" rel="prev" title="快速解决room升级数据库添加新表SQL语句冲突问题">
+            快速解决room升级数据库添加新表SQL语句冲突问题
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" target="_blank" rel="noopener" href="https://www.itcss.cn">首页</a> |
+        <a class="bottom-item" href="https://www.itcss.cn" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/itcss" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+diff --git a/app/build.gradle b/app/build.gradle
+index 572dd01..9a1dcd0 100644
+--- a/app/build.gradle
++++ b/app/build.gradle
+@@ -25,8 +25,8 @@ android {
+     compileSdkVersion 28
+     defaultConfig {
+         applicationId "com.gbcom.subwaysystem"
+-        minSdkVersion 23//22
+-        targetSdkVersion 23
++        minSdkVersion 19//22
++        targetSdkVersion 28
+         versionCode project.APP_VERSION_CODE as int
+         versionName "${getAppVersionName(project.APP_MODE as int, project.APP_TRAIN_VERSION_NAME, project.APP_FIXED_VERSION_NAME)}"//"TX200-APK-2.0.1.35" // 【注意注意注意】【车载台固定台切换】这是车载台使用:2.1.0.0
+ //        versionName "TX300-APK-3.0.1.11" // 【注意注意注意】【车载台固定台切换】这是固定台使用，做版本的话AndroidManifest.xml中也要修改
+@@ -113,6 +113,7 @@ android {
+ 
+             ndk {
+                 abiFilters "armeabi-v7a"
++                abiFilters "arm64-v8a"
+             }
+         }
+         // 在release配置了signingConfig后，然后Build Variants也配置release后，点击运行就带系统签名了
+@@ -137,6 +138,7 @@ android {
+ 
+             ndk {
+                 abiFilters "armeabi-v7a"
++                abiFilters "arm64-v8a"
+             }
+         }
+     }
+@@ -178,8 +180,21 @@ android {
+     dexOptions {
+         javaMaxHeapSize "4g"
+     }
++
++    configurations.all {
++        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
++            def requested = details.requested
++            if (requested.group == 'com.android.support') {
++                if (!requested.name.startsWith("multidex")) {
++                    details.useVersion "28.0.0-rc01" //这里是版本号 例如：28.0.0
++                }
++            }
++        }
++    }
+ }
+ 
++
++
+ dependencies {
+     def lifecycle_version = "1.1.1"
+     //【framework】如果引入framework.jar需要使用
+@@ -187,14 +202,23 @@ dependencies {
+ 
+     //【framework】如果引入framework.jar需要使用 | 将某个目录下所有符合扩展名aar的文件作为依赖
+     implementation fileTree(include: ['hyxell-sh-common-1.4.5.jar', 'hyxell-sh-core-1.2.3.jar', 'xstream-1.4.11.1-java7.jar', '*.aar'], dir: 'libs')
+-    implementation 'com.android.support:appcompat-v7:28.0.0'
+-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
++//    implementation 'com.android.support:appcompat-v7:28.0.0'
++    implementation 'androidx.appcompat:appcompat:1.2.0'
++//    implementation 'androidx.appcompat:appcompat:1.3.0'
++//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
++    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+     testImplementation 'junit:junit:4.12'
+-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
++//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
++//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
++//    androidTestImplementation 'androidx.test:runner:1.4.0'
++//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
++
++
+     // 使用到NavigationView，所有添加这个依赖
+-    implementation 'com.android.support:design:28.0.0'
+-    implementation 'com.android.support:recyclerview-v7:28.0.0'
++//    implementation 'com.android.support:design:28.0.0'
++    implementation 'com.google.android.material:material:1.4.0'
++//    implementation 'com.android.support:recyclerview-v7:28.0.0'
++    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+     implementation 'com.github.bumptech.glide:glide:4.7.1'
+     // ViewModel and LiveData: ViewModelProviders.of(this).get(MainViewModel.class)中的ViewModelProviders必须使用gradle-4.6-all.zip，使用gradle-4.10.2-bin.zip就找不到了爆发一片红；
+     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+@@ -225,7 +249,7 @@ dependencies {
+     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+     implementation 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.2'
+ //    implementation 'com.android.support:multidex:1.0.3'
+-    implementation 'androidx.multidex:multidex:2.0.1'
++//    implementation 'androidx.multidex:multidex:2.0.1'
+     //implementation 'com.alibaba:fastjson:1.2.56'
+     // 注：1.2.60之前有重大漏洞：包含"\x"转义符出现OOM。
+     implementation 'com.alibaba:fastjson:1.2.60'
+@@ -252,6 +276,9 @@ dependencies {
+     implementation 'org.projectlombok:lombok:1.16.8'
+     // java注解
+     implementation 'org.glassfish:javax.annotation:10.0-b28'
++
++    implementation 'androidx.fragment:fragment:1.4.0'
++
+ }
+ // 【framework】如果引入framework.jar需要使用
+ preBuild {
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+index 09a1bc4..3dfa520 100644
+--- a/app/src/main/AndroidManifest.xml
++++ b/app/src/main/AndroidManifest.xml
+@@ -7,16 +7,10 @@
+ 
+     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+-
+-
+     <uses-permission android:name="android.permission.REBOOT" tools:ignore="ProtectedPermissions" />
+ 
+     <!-- 终端与平板的切换，共三点：1、AndroidManifest.xml配置是否系统签名；2、app:build.gradle中的系统签名显示与注释掉。3、BootActivity.java中initApp()方法中NdkJniUtils的所在行全部注释； -->
+-
+-
+     <!-- android:sharedUserId="android.uid.system" -->
+-
+-
+     <!-- <uses-permission android:name="android.permission.STATUS_BAR" /> -->
+     <!-- <permission android:name="android.permission.STATUS_BAR" /> -->
+ 
+@@ -160,13 +154,14 @@
+         android:allowBackup="false"
+         android:icon="@drawable/logo"
+         android:label="${APP_NAME}"
++        android:appComponentFactory="sss"
+         android:persistent="true"
+         android:largeHeap="true"
+         android:resizeableActivity="false"
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/TrainTheme"
+-        tools:replace="android:allowBackup,android:icon,android:label,android:theme,android:name">
++        tools:replace="android:allowBackup,android:icon,android:label,android:theme,android:name,android:appComponentFactory">
+         <activity
+             android:name=".activity.BootActivity"
+             android:theme="@style/ThemeSplash">
+@@ -228,7 +223,7 @@
+         </receiver>
+ 
+         <provider
+-            android:name="android.support.v4.content.FileProvider"
++            android:name="androidx.core.content.FileProvider"
+             android:authorities="${applicationId}.fileProvider"
+             android:exported="false"
+             android:grantUriPermissions="true"
+diff --git a/build.gradle b/build.gradle
+index 9fd97a3..ce035eb 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -7,6 +7,7 @@ buildscript {
+         jcenter()
+ //        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
+ //        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
++        maven { url "https://maven.google.com" }
+         maven { url 'http://central.maven.org/maven2/' }
+     }
+     dependencies {
+@@ -22,6 +23,7 @@ allprojects {
+     repositories {
+         google()
+         jcenter()
++        maven { url "https://maven.google.com" }
+ //        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
+ //        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+         maven { url 'https://jitpack.io' }
+diff --git a/gradle.properties b/gradle.properties
+index 2c56e80..bee5682 100644
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -24,4 +24,7 @@ APP_VERSION_CODE=1
+ #APP_FIXED_VERSION_NAME=TX300-APK-3.0.1.25
+ #SIM\u5E94\u7528\u7248\u672C\u540D\u79F0=TX300-APK-2.0.1-SZ14-RXXXX=FX300-APK-3.0.1-SZ14-RXXXX
+ APP_TRAIN_VERSION_NAME=TX300-APK-2.0.1-SZ14-R60071.060
+-APP_FIXED_VERSION_NAME=FX300-APK-3.0.1-SZ14-R60071.060
+\ No newline at end of file
++APP_FIXED_VERSION_NAME=FX300-APK-3.0.1-SZ14-R60071.060
++# \u8FC1\u79FBandroidx
++#android.useAndroidX=true
++#android.enableJetifier=true
+\ No newline at end of file

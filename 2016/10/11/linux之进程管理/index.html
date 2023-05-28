@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="原创,linux,进程管理," />
+  
+
+  
+    <meta name="description" content="小天的小窝，记录学习笔记和走过的点点滴滴！" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>linux之进程管理 [ 小天的小窝 ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小天的小窝" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/static/avatar/avatar.png">
+    <span class="title">小天的小窝</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        linux之进程管理
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2016-10-11T00:43:25.000Z">
+        2016-10-11
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="tag">进程管理</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 14 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h2 id="一、查看进程"><a href="#一、查看进程" class="headerlink" title="一、查看进程"></a>一、查看进程</h2><h3 id="1-1-ps之aux查看所有进程"><a href="#1-1-ps之aux查看所有进程" class="headerlink" title="1.1.ps之aux查看所有进程"></a>1.1.ps之aux查看所有进程</h3><p>在这里直接使用<code>ps aux</code>查看当前系统中所有的进程情况，当然<code>ps -ef</code>也是可以使用的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# ps aux</span><br><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root         1  0.0  0.3  43904  2672 ?        Ss   08:58   0:01 /usr/lib/systemd/systemd --switched-root --system --</span><br><span class="line">root         2  0.0  0.0      0     0 ?        S    08:58   0:00 [kthreadd]</span><br><span class="line">root         3  0.0  0.0      0     0 ?        S    08:58   0:00 [ksoftirqd/0]</span><br><span class="line">root         6  0.0  0.0      0     0 ?        S    08:58   0:00 [kworker/u2:0]</span><br><span class="line">root         7  0.0  0.0      0     0 ?        S    08:58   0:00 [migration/0]</span><br><span class="line">root         8  0.0  0.0      0     0 ?        S    08:58   0:00 [rcu_bh]</span><br><span class="line">root         9  0.0  0.0      0     0 ?        S    08:58   0:00 [rcuob/0]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-ps之aux只查看httpd进程"><a href="#1-2-ps之aux只查看httpd进程" class="headerlink" title="1.2.ps之aux只查看httpd进程"></a>1.2.ps之aux只查看httpd进程</h3><p>使用如下命令查看httpd的进程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# ps aux | grep httpd</span><br><span class="line">root       690  0.0  0.0 341176   652 ?        Ss   08:58   0:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     691  0.0  0.2 341312  2044 ?        S    08:58   0:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     692  0.0  0.2 341312  2216 ?        S    08:58   0:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     693  0.0  0.0 341176   300 ?        S    08:58   0:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     694  0.0  0.0 341176   300 ?        S    08:58   0:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     695  0.0  0.0 341176   300 ?        S    08:58   0:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2362  0.0  0.2 341176  2144 ?        S    09:34   0:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">root      2378  0.0  0.1 112664   976 pts/0    R+   09:36   0:00 grep --color=auto httpd</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-ps之ef只查看httpd进程"><a href="#1-3-ps之ef只查看httpd进程" class="headerlink" title="1.3.ps之ef只查看httpd进程"></a>1.3.ps之ef只查看httpd进程</h3><p>使用-ef参数同样可以查看指定的进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# ps -ef | grep httpd</span><br><span class="line">root       690     1  0 08:58 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     691   690  0 08:58 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     692   690  0 08:58 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     693   690  0 08:58 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     694   690  0 08:58 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon     695   690  0 08:58 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2362   690  0 09:34 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">root      2376  2303  0 09:36 pts/0    00:00:00 grep --color=auto httpd</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-pgrep命令查看httpd的PID"><a href="#1-4-pgrep命令查看httpd的PID" class="headerlink" title="1.4.pgrep命令查看httpd的PID"></a>1.4.pgrep命令查看httpd的PID</h3><p>如果只是想查看某个进程的PID，可以使用pgrep命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# pgrep httpd</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">2362</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-使用pidof查看进程PID"><a href="#1-5-使用pidof查看进程PID" class="headerlink" title="1.5.使用pidof查看进程PID"></a>1.5.使用pidof查看进程PID</h3><p>还有pidof也是可以查看进程的PID的，怎么样，是不是感觉linux命令很强大。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# pidof httpd</span><br><span class="line">2362 695 694 693 692 691 690</span><br></pre></td></tr></table></figure>
+
+<p>pidof &#x3D; pid of xx，字面意思翻译过来就是xx的PID。<br>和pgrep相比稍显不足的是，pidof必须给出进程的全名。</p>
+<h2 id="二、杀死进程"><a href="#二、杀死进程" class="headerlink" title="二、杀死进程"></a>二、杀死进程</h2><h3 id="2-1-使用kill杀进程"><a href="#2-1-使用kill杀进程" class="headerlink" title="2.1.使用kill杀进程"></a>2.1.使用kill杀进程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -s 9 691</span><br></pre></td></tr></table></figure>
+<p>其中-s 9 制定了传递给进程的信号是９，即强制、尽快终止进程。</p>
+<h3 id="2-2-kill和awk组合使用"><a href="#2-2-kill和awk组合使用" class="headerlink" title="2.2.kill和awk组合使用"></a>2.2.kill和awk组合使用</h3><p>当然，还可以把查看出来的PID直接作为<code>kill</code>的参数来使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# ps -ef | grep httpd</span><br><span class="line">root      2826     1  0 10:26 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2827  2826  0 10:26 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2828  2826  0 10:26 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2829  2826  0 10:26 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2830  2826  0 10:26 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2831  2826  0 10:26 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">root      2833  2303  0 10:26 pts/0    00:00:00 grep --color=auto httpd</span><br><span class="line">[root@localhost lai]# kill -s 9 `ps aux | grep httpd | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">-bash: kill: (2640) - 没有那个进程</span><br><span class="line">[root@localhost lai]# ps -ef | grep httpd                               </span><br><span class="line">root      2644  2303  0 10:00 pts/0    00:00:00 grep --color=auto httpd</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-kill和pgrep组合使用"><a href="#2-3-kill和pgrep组合使用" class="headerlink" title="2.3.kill和pgrep组合使用"></a>2.3.kill和pgrep组合使用</h3><p>当然使用<code>pgrep</code>也是可以的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# pgrep httpd</span><br><span class="line">2678</span><br><span class="line">2679</span><br><span class="line">2680</span><br><span class="line">2681</span><br><span class="line">2682</span><br><span class="line">2683</span><br><span class="line">[root@localhost lai]# kill -s 9 `pgrep httpd`</span><br><span class="line">[root@localhost lai]# pgrep httpd </span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-组合命令xargs-kill杀进程"><a href="#2-4-组合命令xargs-kill杀进程" class="headerlink" title="2.4.组合命令xargs kill杀进程"></a>2.4.组合命令xargs kill杀进程</h3><p>上面的相对来讲简单，这里来一个稍微复杂点的组合命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# ps -ef | grep httpd | grep -v grep | cut -c 9-15</span><br><span class="line">   690 </span><br><span class="line">   691 </span><br><span class="line">   692 </span><br><span class="line">   693 </span><br><span class="line">   694 </span><br><span class="line">   695 </span><br><span class="line">  2362 </span><br><span class="line">[root@localhost lai]# ps -ef | grep httpd | grep -v grep | cut -c 9-15 | xargs kill -s 9</span><br><span class="line">[root@localhost lai]# ps -ef | grep httpd</span><br><span class="line">root      2412  2303  0 09:44 pts/0    00:00:00 grep --color=auto httpd</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“grep firefox” 的意思为，所有含有关键字“firefox”的进程。</span><br><span class="line">“grep -v grep” 的意思为，在列出的进程中去除含有关键字“grep”的进程。</span><br><span class="line">“cut -c 9-15” 的意思为，截取输入行的第9个字符到第15个字符，而这正好是进程号PID。</span><br><span class="line">“xargs kill -s 9” 中的xargs命令是用来把前面命令的输出结果（PID）作为“kill -s 9”命令的参数，并执行该命令。“kill -s 9”会强行杀掉指定进程。</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-pgrep配置组合命令xargs-kill杀进程"><a href="#2-5-pgrep配置组合命令xargs-kill杀进程" class="headerlink" title="2.5.pgrep配置组合命令xargs kill杀进程"></a>2.5.pgrep配置组合命令xargs kill杀进程</h3><p>使用pgrep直接杀死进程，是不是更简单呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# pgrep httpd                    </span><br><span class="line">2477</span><br><span class="line">2478</span><br><span class="line">2479</span><br><span class="line">2480</span><br><span class="line">2481</span><br><span class="line">2482</span><br><span class="line">[root@localhost lai]# pgrep httpd | xargs kill -s 9</span><br><span class="line">[root@localhost lai]# pgrep httpd</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-使用awk配合xargs-kill杀死进程"><a href="#2-6-使用awk配合xargs-kill杀死进程" class="headerlink" title="2.6.使用awk配合xargs kill杀死进程"></a>2.6.使用awk配合xargs kill杀死进程</h3><p>还可以使用强大的awk配置xargs来杀死进程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# ps -ef | grep httpd            </span><br><span class="line">root      2598     1  0 09:55 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2599  2598  0 09:55 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2600  2598  0 09:55 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2601  2598  0 09:55 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2602  2598  0 09:55 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">daemon    2603  2598  0 09:55 ?        00:00:00 /usr/local/apache/bin/httpd -k start</span><br><span class="line">root      2605  2303  0 09:55 pts/0    00:00:00 grep --color=auto httpd</span><br><span class="line">[root@localhost lai]# ps -ef | grep httpd | awk &#x27;&#123;print $2&#125;&#x27; | xargs kill -9</span><br><span class="line">kill: 向 2607 发送信号失败: 没有那个进程</span><br></pre></td></tr></table></figure>
+<p>下面那个提示<strong>向 2607 发送信号失败: 没有那个进程</strong>，是因为<code>grep httpd</code>时有一个进程，每次<code>grep httpd</code>产生的PID是不一样的，而且该进程本身是没有的，所以有那个提示，这个只是lai自己的见解，^_^。</p>
+<h3 id="2-7-使用改进版的pkill来杀死所有进程"><a href="#2-7-使用改进版的pkill来杀死所有进程" class="headerlink" title="2.7.使用改进版的pkill来杀死所有进程"></a>2.7.使用改进版的pkill来杀死所有进程</h3><p>pkill可以理解为pgrep+kill。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# pgrep httpd</span><br><span class="line">2702</span><br><span class="line">2703</span><br><span class="line">2704</span><br><span class="line">2705</span><br><span class="line">2706</span><br><span class="line">2707</span><br><span class="line">[root@localhost lai]# pkill -9 httpd</span><br><span class="line">[root@localhost lai]# pgrep httpd </span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;-9&quot; 即发送的信号是9。</span><br><span class="line">pkill与kill在这点的差别是：pkill无须 “ｓ”，终止信号等级直接跟在 “-“ 后面。</span><br><span class="line">pkill或者pgrep只要给出进程名的一部分就可以终止进程。如：</span><br><span class="line">[root@localhost lai]# pkill -9 http</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-使用更好的killall来杀死进程"><a href="#2-8-使用更好的killall来杀死进程" class="headerlink" title="2.8.使用更好的killall来杀死进程"></a>2.8.使用更好的killall来杀死进程</h3><p><code>killall</code>和<code>pkill</code>是相似的,不过如果给出的进程名不完整，<code>killall</code>会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# pgrep httpd     </span><br><span class="line">2750</span><br><span class="line">2751</span><br><span class="line">2752</span><br><span class="line">2753</span><br><span class="line">2754</span><br><span class="line">2755</span><br><span class="line">[root@localhost lai]# killall -9 httpd</span><br><span class="line">[root@localhost lai]# pgrep httpd</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、killall-未找到命令"><a href="#三、killall-未找到命令" class="headerlink" title="三、killall: 未找到命令"></a>三、killall: 未找到命令</h2><h3 id="3-1-如果提示killall-未找到命令则需要安装killall命令："><a href="#3-1-如果提示killall-未找到命令则需要安装killall命令：" class="headerlink" title="3.1.如果提示killall: 未找到命令则需要安装killall命令："></a>3.1.如果提示<code>killall: 未找到命令</code>则需要安装<code>killall</code>命令：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# kill</span><br><span class="line">kill: 用法:kill [-s 信号声明 | -n 信号编号 | -信号声明] 进程号 | 任务声明 ... 或 kill -l [信号声明]</span><br><span class="line">[root@localhost lai]# killall</span><br><span class="line">-bash: killall: 未找到命令</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-安装killall命令"><a href="#3-2-安装killall命令" class="headerlink" title="3.2.安装killall命令"></a>3.2.安装killall命令</h3><blockquote>
+<p>centos或、rhel系统下</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# yum install psmisc</span><br><span class="line">Running transaction</span><br><span class="line">  正在安装    : psmisc-22.20-9.el7.x86_64                                                                                       1/1 </span><br><span class="line">  验证中      : psmisc-22.20-9.el7.x86_64                                                                                       1/1 </span><br><span class="line"></span><br><span class="line">已安装:</span><br><span class="line">  psmisc.x86_64 0:22.20-9.el7                                                                                                       </span><br><span class="line"></span><br><span class="line">完毕！</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>debian、ubuntu系统下</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# apt-get install psmisc</span><br></pre></td></tr></table></figure>
+
+<p>安装好以后，可以看到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# killall</span><br><span class="line">Usage: killall [-Z 上下文] [-u 用户名] [ -eIgiqrvw ] [ -信号 ] 程序名...</span><br><span class="line">       killall -l, --list</span><br><span class="line">       killall -V, --version</span><br><span class="line"></span><br><span class="line">  -e,--exact          require exact match for very long names</span><br><span class="line">  -I,--ignore-case    case insensitive process name match</span><br><span class="line">  -g,--process-group  kill process group instead of process</span><br><span class="line">  -y,--younger-than   kill processes younger than TIME</span><br><span class="line">  -o,--older-than     kill processes older than TIME</span><br><span class="line">  -i,--interactive    ask for confirmation before killing</span><br><span class="line">  -l,--list           list all known signal names</span><br><span class="line">  -q,--quiet          don&#x27;t print complaints</span><br><span class="line">  -r,--regexp         interpret NAME as an extended regular expression</span><br><span class="line">  -s,--signal SIGNAL  send this signal instead of SIGTERM</span><br><span class="line">  -u,--user USER      kill only process(es) running as USER</span><br><span class="line">  -v,--verbose        report if the signal was successfully sent</span><br><span class="line">  -V,--version        display version information</span><br><span class="line">  -w,--wait           wait for processes to die</span><br><span class="line">  -Z,--context 正则表达式 仅杀死含有指定上下文的进程</span><br><span class="line">                          (必须在其他参数前使用)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div>全文完。</div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B"><span class="toc-text">一、查看进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-ps%E4%B9%8Baux%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E8%BF%9B%E7%A8%8B"><span class="toc-text">1.1.ps之aux查看所有进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-ps%E4%B9%8Baux%E5%8F%AA%E6%9F%A5%E7%9C%8Bhttpd%E8%BF%9B%E7%A8%8B"><span class="toc-text">1.2.ps之aux只查看httpd进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-ps%E4%B9%8Bef%E5%8F%AA%E6%9F%A5%E7%9C%8Bhttpd%E8%BF%9B%E7%A8%8B"><span class="toc-text">1.3.ps之ef只查看httpd进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-pgrep%E5%91%BD%E4%BB%A4%E6%9F%A5%E7%9C%8Bhttpd%E7%9A%84PID"><span class="toc-text">1.4.pgrep命令查看httpd的PID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E4%BD%BF%E7%94%A8pidof%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8BPID"><span class="toc-text">1.5.使用pidof查看进程PID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B"><span class="toc-text">二、杀死进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BD%BF%E7%94%A8kill%E6%9D%80%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.1.使用kill杀进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-kill%E5%92%8Cawk%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">2.2.kill和awk组合使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-kill%E5%92%8Cpgrep%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">2.3.kill和pgrep组合使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E7%BB%84%E5%90%88%E5%91%BD%E4%BB%A4xargs-kill%E6%9D%80%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.4.组合命令xargs kill杀进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-pgrep%E9%85%8D%E7%BD%AE%E7%BB%84%E5%90%88%E5%91%BD%E4%BB%A4xargs-kill%E6%9D%80%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.5.pgrep配置组合命令xargs kill杀进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E4%BD%BF%E7%94%A8awk%E9%85%8D%E5%90%88xargs-kill%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.6.使用awk配合xargs kill杀死进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E4%BD%BF%E7%94%A8%E6%94%B9%E8%BF%9B%E7%89%88%E7%9A%84pkill%E6%9D%A5%E6%9D%80%E6%AD%BB%E6%89%80%E6%9C%89%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.7.使用改进版的pkill来杀死所有进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-%E4%BD%BF%E7%94%A8%E6%9B%B4%E5%A5%BD%E7%9A%84killall%E6%9D%A5%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B"><span class="toc-text">2.8.使用更好的killall来杀死进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81killall-%E6%9C%AA%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4"><span class="toc-text">三、killall: 未找到命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%A6%82%E6%9E%9C%E6%8F%90%E7%A4%BAkillall-%E6%9C%AA%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4%E5%88%99%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85killall%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-text">3.1.如果提示killall: 未找到命令则需要安装killall命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AE%89%E8%A3%85killall%E5%91%BD%E4%BB%A4"><span class="toc-text">3.2.安装killall命令</span></a></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share" style="width: 100%;">
+  <img src="/static/qrcode/qrcode_wwwitcsscn_20221008_0909.png" alt="Running Geek" style="margin: auto; display: block;"/>
+
+  <div style="margin: auto; text-align: center; font-size: 0.8em; color: grey;">老铁们关注走一走，不迷路</div>
+  
+</div>
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2016/10/10/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B02%E4%B9%8Bping%E5%A4%96%E7%BD%91%E7%BD%91%E9%97%AE%E9%A2%98/" rel="next" title="厂园网关使用手记2之ping外网问题">
+          厂园网关使用手记2之ping外网问题
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2016/10/11/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B03%E4%B8%8A%E7%BA%BF%E9%85%8D%E7%BD%AE/" rel="prev" title="厂园网关使用手记3上线配置">
+            厂园网关使用手记3上线配置
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" target="_blank" rel="noopener" href="https://www.itcss.cn">首页</a> |
+        <a class="bottom-item" href="https://www.itcss.cn" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/itcss" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="原创,vm virtualbox,虚拟机," />
+  
+
+  
+    <meta name="description" content="小天的小窝，记录学习笔记和走过的点点滴滴！" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>vmbox扩容 [ 小天的小窝 ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小天的小窝" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/static/avatar/avatar.png">
+    <span class="title">小天的小窝</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        vmbox扩容
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2016-10-27T07:42:51.000Z">
+        2016-10-27
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vm-virtualbox/" rel="tag">vm virtualbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 14 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h1 id="windows下面命令扩容虚拟机容量（这一招没用）"><a href="#windows下面命令扩容虚拟机容量（这一招没用）" class="headerlink" title="windows下面命令扩容虚拟机容量（这一招没用）"></a>windows下面命令扩容虚拟机容量（这一招没用）</h1><p>使用VM VirtualBox安装的CentOS最近空间满了， 想要添加一些空间。使用VBoxManage命令来添加空间。</p>
+<p>首先cmd来到VirtualBox的安装目录，发现有VBoxManage.exe命令文件，就可以按下面的命令来操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F:\soft\VBox\App\VirtualBox&gt;VBoxManage modifyhd F:\PortableApps\VirtualBoxPortab</span><br><span class="line">le\VMs\centos_7\centos_7.vdi --resize 19000</span><br><span class="line">0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%</span><br></pre></td></tr></table></figure>
+
+<p>扩容失败问题如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">F:\soft\VBox\App\VirtualBox&gt;VBoxManage modifyhd F:\PortableApps\VirtualBoxPortab</span><br><span class="line">le\VMs\centos_7\centos_7.vdi --resize 16000</span><br><span class="line">0%...</span><br><span class="line">Progress state: VBOX_E_NOT_SUPPORTED</span><br><span class="line">VBoxManage.exe: error: Resize medium operation for this format is not implemente</span><br><span class="line">d yet!</span><br></pre></td></tr></table></figure>
+<p>首先虚拟系统的扩展名必须为vdi，如果是vmdk的话，需要转换为vdi，我这里就是vdi就不管了。</p>
+<p>我这里的错误是因为我的虚拟机的空间就是16G，所以当然扩容不成功了。<br><img src="/images/vmvirtualbox_disksize16.jpg" alt="扩容前的空间大小为16G" title="扩容前的空间大小为16G"></p>
+<p>通过VBoxManage list hdds就可以看到我们克隆的文件了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">F:\soft\VBox\App\VirtualBox&gt;VBoxManage list hdds</span><br><span class="line">UUID:           56600bb8-bb8d-4ec4-97ff-10e11f4fac22</span><br><span class="line">Parent UUID:    base</span><br><span class="line">State:          locked read</span><br><span class="line">Type:           normal (base)</span><br><span class="line">Location:       F:\PortableApps\VirtualBoxPortable\VMs\centos_7\centos_7.vdi</span><br><span class="line">Storage format: VDI</span><br><span class="line">Capacity:       19000 MBytes</span><br><span class="line">Encryption:     disabled</span><br><span class="line"></span><br><span class="line">UUID:           d0f331ec-eff9-4bc5-8691-e05cfa36d0b4</span><br><span class="line">Parent UUID:    56600bb8-bb8d-4ec4-97ff-10e11f4fac22</span><br><span class="line">State:          created</span><br><span class="line">Type:           normal (differencing)</span><br><span class="line">Location:       F:\PortableApps\VirtualBoxPortable\VMs\centos_7\Snapshots/&#123;d0f33</span><br><span class="line">1ec-eff9-4bc5-8691-e05cfa36d0b4&#125;.vdi</span><br><span class="line">Storage format: VDI</span><br><span class="line">Capacity:       8192 MBytes</span><br><span class="line">Encryption:     disabled</span><br><span class="line"></span><br><span class="line">UUID:           8c4dee1d-d0eb-41d5-8033-23c484ec89ae</span><br><span class="line">Parent UUID:    56600bb8-bb8d-4ec4-97ff-10e11f4fac22</span><br><span class="line">State:          locked read</span><br><span class="line">Type:           normal (differencing)</span><br><span class="line">Location:       F:\PortableApps\VirtualBoxPortable\VMs\centos_7\Snapshots/&#123;8c4de</span><br><span class="line">e1d-d0eb-41d5-8033-23c484ec89ae&#125;.vdi</span><br><span class="line">Storage format: VDI</span><br><span class="line">Capacity:       8192 MBytes</span><br><span class="line">Encryption:     disabled</span><br><span class="line"></span><br><span class="line">UUID:           1794a92b-b5d9-49cb-a02d-8eff36216b3b</span><br><span class="line">Parent UUID:    8c4dee1d-d0eb-41d5-8033-23c484ec89ae</span><br><span class="line">State:          locked write</span><br><span class="line">Type:           normal (differencing)</span><br><span class="line">Location:       F:\PortableApps\VirtualBoxPortable\VMs\centos_7\Snapshots\&#123;1794a</span><br><span class="line">92b-b5d9-49cb-a02d-8eff36216b3b&#125;.vdi</span><br><span class="line">Storage format: VDI</span><br><span class="line">Capacity:       8192 MBytes</span><br><span class="line">Encryption:     disabled</span><br></pre></td></tr></table></figure>
+
+<h1 id="添加磁盘（直接添加新虚拟盘成功）"><a href="#添加磁盘（直接添加新虚拟盘成功）" class="headerlink" title="添加磁盘（直接添加新虚拟盘成功）"></a>添加磁盘（直接添加新虚拟盘成功）</h1><p>在打开虚拟机–选个系统–右击–设置–存储–控制器SATA–右边的添加虚拟硬盘–选择克隆的文件就行了。<br>我这里<strong>选择使用现有的虚拟盘</strong>，然后手动选择本身虚拟系统<strong>centos_7.vdi</strong>，不另外添加文件时，后面通过fdisk &#x2F;dev&#x2F;sda分区时<strong>报错No free sectors available</strong>。</p>
+<p>然后我这里就选择<strong>创建新的虚拟盘</strong></p>
+<p><img src="/images/vmvirtualbox_disksize16_1.jpg" alt="添加虚拟盘" title="添加虚拟盘"></p>
+<p>确定后我们可以看到空间已经增大。</p>
+<p><img src="/images/vmvirtualbox_disksize16_3.jpg" alt="添加虚拟盘后效果" title="添加虚拟盘后效果"></p>
+<h1 id="挂载新磁盘，通过LVM来扩展分区"><a href="#挂载新磁盘，通过LVM来扩展分区" class="headerlink" title="挂载新磁盘，通过LVM来扩展分区"></a>挂载新磁盘，通过LVM来扩展分区</h1><p>进入系统后发现，空间还是以前一样大。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# df -h</span><br><span class="line">文件系统                 容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/centos-root  6.7G  4.8G  2.0G   72% /</span><br><span class="line">devtmpfs                 361M     0  361M    0% /dev</span><br><span class="line">tmpfs                    371M     0  371M    0% /dev/shm</span><br><span class="line">tmpfs                    371M  5.0M  366M    2% /run</span><br><span class="line">tmpfs                    371M     0  371M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1                497M  164M  334M   33% /boot</span><br><span class="line">tmpfs                     75M     0   75M    0% /run/user/0</span><br></pre></td></tr></table></figure>
+
+<p>使用fdisk -l查看系统分区情况。<br>可以看到我们已经创建的分区，sda1 sda2的什么，也可以ls &#x2F;dev&#x2F;来查看。如果有第二块硬盘会看到sdb</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# fdisk -l</span><br><span class="line"></span><br><span class="line">磁盘 /dev/sda：8589 MB, 8589934592 字节，16777216 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line">磁盘标签类型：dos</span><br><span class="line">磁盘标识符：0x000bf8c7</span><br><span class="line"></span><br><span class="line">   设备 Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/sda1   *        2048     1026047      512000   83  Linux</span><br><span class="line">/dev/sda2         1026048    16777215     7875584   83  Linux</span><br><span class="line"></span><br><span class="line">磁盘 /dev/mapper/centos-root：7159 MB, 7159676928 字节，13983744 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">磁盘 /dev/mapper/centos-swap：859 MB, 859832320 字节，1679360 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">磁盘 /dev/mapper/centos-docker--poolmeta：8 MB, 8388608 字节，16384 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">磁盘 /dev/mapper/docker-253:0-13774-pool：107.4 GB, 107374182400 字节，209715200 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：65536 字节 / 65536 字节</span><br></pre></td></tr></table></figure>
+
+<p>下面创建将扩展的空间，创建新分区</p>
+<p>使用<code>fdisk -l</code>可以看到新添加的sdb硬盘的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# fdisk -l</span><br><span class="line"></span><br><span class="line">磁盘 /dev/sda：8589 MB, 8589934592 字节，16777216 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line">磁盘标签类型：dos</span><br><span class="line">磁盘标识符：0x000bf8c7</span><br><span class="line"></span><br><span class="line">   设备 Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/sda1   *        2048     1026047      512000   83  Linux</span><br><span class="line">/dev/sda2         1026048    16777215     7875584   83  Linux</span><br><span class="line"></span><br><span class="line">磁盘 /dev/sdb：8589 MB, 8589934592 字节，16777216 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br></pre></td></tr></table></figure>
+
+<p>可以直接通过<code>ll /dev/sd*</code>查看设备文件，可以看到有一个<code>sdb</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll /dev/sd*</span><br><span class="line">brw-rw----. 1 root disk 8,  0 10月 27 15:07 /dev/sda</span><br><span class="line">brw-rw----. 1 root disk 8,  1 10月 27 15:07 /dev/sda1</span><br><span class="line">brw-rw----. 1 root disk 8,  2 10月 27 15:07 /dev/sda2</span><br><span class="line">brw-rw----. 1 root disk 8, 16 10月 27 15:07 /dev/sdb</span><br></pre></td></tr></table></figure>
+
+<p>创建分区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# fdisk /dev/sdb</span><br><span class="line">欢迎使用 fdisk (util-linux 2.23.2)。</span><br><span class="line"></span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line">Device does not contain a recognized partition table</span><br><span class="line">使用磁盘标识符 0x97e7506c 创建新的 DOS 磁盘标签。</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：n</span><br><span class="line">Partition type:</span><br><span class="line">   p   primary (0 primary, 0 extended, 4 free)</span><br><span class="line">   e   extended</span><br><span class="line">Select (default p): p</span><br><span class="line">分区号 (1-4，默认 1)：</span><br><span class="line">起始 扇区 (2048-16777215，默认为 2048)：</span><br><span class="line">将使用默认值 2048</span><br><span class="line">Last 扇区, +扇区 or +size&#123;K,M,G&#125; (2048-16777215，默认为 16777215)：</span><br><span class="line">将使用默认值 16777215</span><br><span class="line">分区 1 已设置为 Linux 类型，大小设为 8 GiB</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：q</span><br></pre></td></tr></table></figure>
+
+<h1 id="格式分区"><a href="#格式分区" class="headerlink" title="格式分区"></a>格式分区</h1><p>用命令mke2fs为sdb1主分区创建文件系统<br>mke2fs -t ext4 &#x2F;dev&#x2F;sdb1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkfs.ext4 /dev/sdb</span><br><span class="line">mke2fs 1.42.9 (28-Dec-2013)</span><br><span class="line">/dev/sdb is entire device, not just one partition!</span><br><span class="line">无论如何也要继续? (y,n) y</span><br><span class="line">文件系统标签=</span><br><span class="line">OS type: Linux</span><br><span class="line">块大小=4096 (log=2)</span><br><span class="line">分块大小=4096 (log=2)</span><br><span class="line">Stride=0 blocks, Stripe width=0 blocks</span><br><span class="line">524288 inodes, 2097152 blocks</span><br><span class="line">104857 blocks (5.00%) reserved for the super user</span><br><span class="line">第一个数据块=0</span><br><span class="line">Maximum filesystem blocks=2147483648</span><br><span class="line">64 block groups</span><br><span class="line">32768 blocks per group, 32768 fragments per group</span><br><span class="line">8192 inodes per group</span><br><span class="line">Superblock backups stored on blocks: </span><br><span class="line">        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632</span><br><span class="line"></span><br><span class="line">Allocating group tables: 完成                            </span><br><span class="line">正在写入inode表: 完成                            </span><br><span class="line">Creating journal (32768 blocks): 完成</span><br><span class="line">Writing superblocks and filesystem accounting information: 完成</span><br></pre></td></tr></table></figure>
+
+<h1 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h1><!-- sudo vgdisplay //主要是查看卷组名，我这里是VolGroup，记着下面要用 -->
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /newdata</span><br><span class="line">[root@localhost ~]# mount /dev/sdb /newdata</span><br><span class="line">[root@localhost ~]# df -h</span><br><span class="line">文件系统                 容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/centos-root  6.7G  4.8G  2.0G   72% /</span><br><span class="line">devtmpfs                 361M     0  361M    0% /dev</span><br><span class="line">tmpfs                    371M     0  371M    0% /dev/shm</span><br><span class="line">tmpfs                    371M  5.0M  366M    2% /run</span><br><span class="line">tmpfs                    371M     0  371M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1                497M  164M  334M   33% /boot</span><br><span class="line">tmpfs                     75M     0   75M    0% /run/user/0</span><br><span class="line">/dev/sdb                 7.8G   36M  7.3G    1% /newdata</span><br></pre></td></tr></table></figure>
+
+<p>刚刚只是手动的挂载了一下，当系统重启后，就没有了，下面来个自动挂载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /etc/fstab </span><br><span class="line">#</span><br><span class="line"># /etc/fstab</span><br><span class="line"># Created by anaconda on Mon Sep  5 16:25:20 2016</span><br><span class="line">#</span><br><span class="line"># Accessible filesystems, by reference, are maintained under &#x27;/dev/disk&#x27;</span><br><span class="line"># See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info</span><br><span class="line">#</span><br><span class="line">/dev/mapper/centos-root /                       xfs     defaults        0 0</span><br><span class="line">UUID=08c3cda7-d97d-47e9-8ecb-bbc074e8cc96 /boot                   xfs     defaults        0 0</span><br><span class="line">/dev/mapper/centos-swap swap                    swap    defaults        0 0</span><br><span class="line">/dev/sdb /newdata                    ext4    defaults        0 0</span><br></pre></td></tr></table></figure>
+
+<p>重启系统后一样是有的。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# df -h</span><br><span class="line">文件系统                 容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/centos-root  6.7G  4.8G  1.9G   72% /</span><br><span class="line">devtmpfs                 361M     0  361M    0% /dev</span><br><span class="line">tmpfs                    371M     0  371M    0% /dev/shm</span><br><span class="line">tmpfs                    371M  5.1M  366M    2% /run</span><br><span class="line">tmpfs                    371M     0  371M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sdb                 7.8G   36M  7.3G    1% /newdata</span><br><span class="line">/dev/sda1                497M  164M  334M   33% /boot</span><br><span class="line">tmpfs                     75M     0   75M    0% /run/user/0</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    <div>全文完。</div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#windows%E4%B8%8B%E9%9D%A2%E5%91%BD%E4%BB%A4%E6%89%A9%E5%AE%B9%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%B9%E9%87%8F%EF%BC%88%E8%BF%99%E4%B8%80%E6%8B%9B%E6%B2%A1%E7%94%A8%EF%BC%89"><span class="toc-text">windows下面命令扩容虚拟机容量（这一招没用）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%A3%81%E7%9B%98%EF%BC%88%E7%9B%B4%E6%8E%A5%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%99%9A%E6%8B%9F%E7%9B%98%E6%88%90%E5%8A%9F%EF%BC%89"><span class="toc-text">添加磁盘（直接添加新虚拟盘成功）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E6%96%B0%E7%A3%81%E7%9B%98%EF%BC%8C%E9%80%9A%E8%BF%87LVM%E6%9D%A5%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA"><span class="toc-text">挂载新磁盘，通过LVM来扩展分区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%88%86%E5%8C%BA"><span class="toc-text">格式分区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD"><span class="toc-text">挂载</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share" style="width: 100%;">
+  <img src="/static/qrcode/qrcode_wwwitcsscn_20221008_0909.png" alt="Running Geek" style="margin: auto; display: block;"/>
+
+  <div style="margin: auto; text-align: center; font-size: 0.8em; color: grey;">老铁们关注走一走，不迷路</div>
+  
+</div>
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2016/10/19/linux%E4%B9%8Blsof%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="linux之lsof的使用">
+          linux之lsof的使用
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2016/10/28/mysql%E4%B9%B1%E7%A0%81/" rel="prev" title="mysql乱码">
+            mysql乱码
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" target="_blank" rel="noopener" href="https://www.itcss.cn">首页</a> |
+        <a class="bottom-item" href="https://www.itcss.cn" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/itcss" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

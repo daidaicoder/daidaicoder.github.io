@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="车载台,固定台,取日志,抓包,EV751," />
+  
+
+  
+    <meta name="description" content="小天的小窝，记录学习笔记和走过的点点滴滴！" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>车载台固定台问题排查取证方法 [ 小天的小窝 ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小天的小窝" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/static/avatar/avatar.png">
+    <span class="title">小天的小窝</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        车载台固定台问题排查取证方法
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2022-09-13T04:31:05.000Z">
+        2022-09-13
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EV751/" rel="tag">EV751</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%96%E6%97%A5%E5%BF%97/" rel="tag">取日志</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BA%E5%AE%9A%E5%8F%B0/" rel="tag">固定台</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%93%E5%8C%85/" rel="tag">抓包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%A6%E8%BD%BD%E5%8F%B0/" rel="tag">车载台</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 4 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h1 id="车载台固定台问题排查取证方法"><a href="#车载台固定台问题排查取证方法" class="headerlink" title="车载台固定台问题排查取证方法"></a>车载台固定台问题排查取证方法</h1><h2 id="一、版本修改记录"><a href="#一、版本修改记录" class="headerlink" title="一、版本修改记录"></a>一、版本修改记录</h2><table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th align="center">版本</th>
+<th align="left">修改点</th>
+<th align="center">时间</th>
+<th align="center">作者</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">v0.1</td>
+<td align="left">创建文档</td>
+<td align="center">2022&#x2F;09&#x2F;10</td>
+<td align="center">daizelai</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">v0.2</td>
+<td align="left">完善文档、增加详细说明</td>
+<td align="center">2022&#x2F;09&#x2F;10</td>
+<td align="center">daizelai</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">v0.3</td>
+<td align="left">增加取APP配置文件、文档格式修改</td>
+<td align="center">2022&#x2F;09&#x2F;12</td>
+<td align="center">daizelai</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">v0.4</td>
+<td align="left">修改车载台终端抓包命令为可用</td>
+<td align="center">2022&#x2F;09&#x2F;12</td>
+<td align="center">daizelai</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">v0.5</td>
+<td align="left">增加深圳主机日志路径、增加上海18号线日志获取路径</td>
+<td align="center">2022&#x2F;09&#x2F;21</td>
+<td align="center">daizelai</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h2 id="二、拍现场照"><a href="#二、拍现场照" class="headerlink" title="二、拍现场照"></a>二、拍现场照</h2><ol>
+<li>开局配置中所有配置拍照保存。</li>
+</ol>
+<p><strong>说明：</strong> 上车后不要做任务配置操作，然后拍照开局配置，包括每一项配置都要。</p>
+<ol start="2">
+<li>自检界面拍照保存。</li>
+</ol>
+<p><strong>说明：</strong> 设置页的自检界面拍照，特别是自检不过项都要拍照。</p>
+<ol start="3">
+<li>版本号拍照保存。</li>
+</ol>
+<p><strong>说明：</strong> 包括APP当前版本号、终端系统的版本号、主机的版本号。</p>
+<ol start="4">
+<li>记录拍照当时的时间点。</li>
+</ol>
+<p><strong>说明：</strong> 拍照有时间水印更好</p>
+<h2 id="三、取日志"><a href="#三、取日志" class="headerlink" title="三、取日志"></a>三、取日志</h2><h3 id="3-1-EV751日志"><a href="#3-1-EV751日志" class="headerlink" title="3.1.EV751日志"></a>3.1.EV751日志</h3><ol>
+<li><p><strong>751</strong>：onekeylog</p>
+</li>
+<li><p><strong>751</strong>：OTAlog</p>
+</li>
+</ol>
+<p><strong>说明：</strong> 在EV751 demo或车载台APP的维测界面点击生成日志，等一会即可取出OTAlog</p>
+<h3 id="3-2-车载台终端日志"><a href="#3-2-车载台终端日志" class="headerlink" title="3.2.车载台终端日志"></a>3.2.车载台终端日志</h3><h4 id="3-2-1-深圳14车载台终端"><a href="#3-2-1-深圳14车载台终端" class="headerlink" title="3.2.1.深圳14车载台终端"></a>3.2.1.深圳14车载台终端</h4><ol>
+<li><strong>终端app日志</strong>：&#x2F;custom&#x2F;metro&#x2F;log&#x2F;behavior</li>
+</ol>
+<p><strong>说明</strong>：取最近三天左右时间的日志</p>
+<ol start="2">
+<li><strong>终端app异常日志</strong>：&#x2F;custom&#x2F;metro&#x2F;log&#x2F;exception</li>
+</ol>
+<p><strong>说明</strong>：取最近三天左右时间的日志</p>
+<ol start="3">
+<li><strong>终端老版本app</strong>：&#x2F;sdcard&#x2F;train&#x2F;</li>
+</ol>
+<p><strong>说明：</strong> v050之前的老版本的路径在这里。</p>
+<ol start="4">
+<li><strong>终端app数据库</strong>: &#x2F;custom&#x2F;metro&#x2F;config</li>
+</ol>
+<p><strong>说明：</strong> 全部取出来，直接压缩config目录。</p>
+<ol start="5">
+<li><strong>终端APP配置</strong>：&#x2F;data&#x2F;data&#x2F;com.gbcom.subwaysystem&#x2F;shared_prefs</li>
+</ol>
+<p><strong>说明：</strong> 此目录体积很小，直接把shared_prefs目录给导出来。</p>
+<ol start="6">
+<li><strong>终端751日志</strong>：&#x2F;sdcard&#x2F;Android&#x2F;data&#x2F;com.gbcom.subwaysystem&#x2F;files&#x2F;log</li>
+</ol>
+<p> <strong>说明</strong>：全部取出来</p>
+<h4 id="3-2-2-上海18车载台终端"><a href="#3-2-2-上海18车载台终端" class="headerlink" title="3.2.2.上海18车载台终端"></a>3.2.2.上海18车载台终端</h4><ol>
+<li><strong>终端app日志</strong>：&#x2F;storage&#x2F;SD_PATH&#x2F;&#x2F;train&#x2F;log&#x2F;behavior</li>
+</ol>
+<p><strong>说明</strong>：取最近三天左右时间的日志</p>
+<ol start="2">
+<li><strong>终端app异常日志</strong>：&#x2F;storage&#x2F;SD_PATH&#x2F;&#x2F;train&#x2F;log&#x2F;exception</li>
+</ol>
+<p><strong>说明</strong>：取最近三天左右时间的日志</p>
+<ol start="3">
+<li><strong>终端751日志</strong>：&#x2F;sdcard&#x2F;Android&#x2F;data&#x2F;com.gbcom.subwaysystem&#x2F;files&#x2F;log</li>
+</ol>
+<p> <strong>说明</strong>：全部取出来</p>
+<h3 id="3-3-主机日志"><a href="#3-3-主机日志" class="headerlink" title="3.3.主机日志"></a>3.3.主机日志</h3><ol>
+<li><strong>深圳14主机</strong>取日志。</li>
+</ol>
+<ul>
+<li>主机sa日志：&#x2F;mnt&#x2F;emmc&#x2F;logsave&#x2F;sa.log</li>
+<li>主机dba日志：&#x2F;mnt&#x2F;emmc&#x2F;logsave&#x2F;dba.log</li>
+</ul>
+<h3 id="3-4-抓包"><a href="#3-4-抓包" class="headerlink" title="3.4.抓包"></a>3.4.抓包</h3><h4 id="3-4-1-终端抓包"><a href="#3-4-1-终端抓包" class="headerlink" title="3.4.1.终端抓包"></a>3.4.1.终端抓包</h4><ol>
+<li><p><strong>SC60终端抓包</strong>：tcpdump -i any -nnXS -C 100 -w &#x2F;sdcard&#x2F;tcpdump1.pcap</p>
+</li>
+<li><p><strong>SC20终端抓包</strong>：tcpdump -i eth0 -vv -C 100 -w &#x2F;sdcard&#x2F;tcpdump2.pcap</p>
+</li>
+</ol>
+<h4 id="3-4-2-主机抓包"><a href="#3-4-2-主机抓包" class="headerlink" title="3.4.2.主机抓包"></a>3.4.2.主机抓包</h4><ol>
+<li><strong>深圳14主机抓包</strong>：tcpdump -i 网口名 udp –vvv –s 0 –w log.pcap</li>
+</ol>
+
+    </div>
+
+    <div>全文完。</div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%A6%E8%BD%BD%E5%8F%B0%E5%9B%BA%E5%AE%9A%E5%8F%B0%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E5%8F%96%E8%AF%81%E6%96%B9%E6%B3%95"><span class="toc-text">车载台固定台问题排查取证方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%89%88%E6%9C%AC%E4%BF%AE%E6%94%B9%E8%AE%B0%E5%BD%95"><span class="toc-text">一、版本修改记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8B%8D%E7%8E%B0%E5%9C%BA%E7%85%A7"><span class="toc-text">二、拍现场照</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8F%96%E6%97%A5%E5%BF%97"><span class="toc-text">三、取日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-EV751%E6%97%A5%E5%BF%97"><span class="toc-text">3.1.EV751日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%BD%A6%E8%BD%BD%E5%8F%B0%E7%BB%88%E7%AB%AF%E6%97%A5%E5%BF%97"><span class="toc-text">3.2.车载台终端日志</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E6%B7%B1%E5%9C%B314%E8%BD%A6%E8%BD%BD%E5%8F%B0%E7%BB%88%E7%AB%AF"><span class="toc-text">3.2.1.深圳14车载台终端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E4%B8%8A%E6%B5%B718%E8%BD%A6%E8%BD%BD%E5%8F%B0%E7%BB%88%E7%AB%AF"><span class="toc-text">3.2.2.上海18车载台终端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%B8%BB%E6%9C%BA%E6%97%A5%E5%BF%97"><span class="toc-text">3.3.主机日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%8A%93%E5%8C%85"><span class="toc-text">3.4.抓包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-%E7%BB%88%E7%AB%AF%E6%8A%93%E5%8C%85"><span class="toc-text">3.4.1.终端抓包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-%E4%B8%BB%E6%9C%BA%E6%8A%93%E5%8C%85"><span class="toc-text">3.4.2.主机抓包</span></a></li></ol></li></ol></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share" style="width: 100%;">
+  <img src="/static/qrcode/qrcode_wwwitcsscn_20221008_0909.png" alt="Running Geek" style="margin: auto; display: block;"/>
+
+  <div style="margin: auto; text-align: center; font-size: 0.8em; color: grey;">老铁们关注走一走，不迷路</div>
+  
+</div>
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2022/08/19/linux/%E6%90%9C%E7%B4%A2%E6%9F%A5%E6%89%BE%E8%AE%B0%E5%BD%95/" rel="next" title="搜索查找记录">
+          搜索查找记录
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2022/09/14/wzs2/20220914_1646%E6%B8%A9%E5%B7%9ES2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8EDIS%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/" rel="prev" title="温州S2号线车载台与DIS等连接一会好一会断的问题">
+            温州S2号线车载台与DIS等连接一会好一会断的问题
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" target="_blank" rel="noopener" href="https://www.itcss.cn">首页</a> |
+        <a class="bottom-item" href="https://www.itcss.cn" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/itcss" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

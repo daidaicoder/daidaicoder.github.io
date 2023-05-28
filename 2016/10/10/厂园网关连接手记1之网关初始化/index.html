@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="原创,linux,网关,大网关,CGW3000T,网络配置," />
+  
+
+  
+    <meta name="description" content="小天的小窝，记录学习笔记和走过的点点滴滴！" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>厂园网关连接手记1之网关初始化 [ 小天的小窝 ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小天的小窝" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/static/avatar/avatar.png">
+    <span class="title">小天的小窝</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        厂园网关连接手记1之网关初始化
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2016-10-10T03:39:04.000Z">
+        2016-10-10
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CGW3000T/" rel="tag">CGW3000T</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag">原创</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E7%BD%91%E5%85%B3/" rel="tag">大网关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E5%85%B3/" rel="tag">网关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" rel="tag">网络配置</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 22 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h2 id="一、获取厂园网关IP地址"><a href="#一、获取厂园网关IP地址" class="headerlink" title="一、获取厂园网关IP地址"></a>一、获取厂园网关IP地址</h2><h3 id="1-1-使用串口连接网关"><a href="#1-1-使用串口连接网关" class="headerlink" title="1.1.使用串口连接网关"></a>1.1.使用串口连接网关</h3><p>通常情况下可以这样连接，一根网线连接网关的WLAN接口，另一头连接网络，另一根网线连接网关网口，另一头连接到笔记本，此时得到IP后，就可以通过<code>SSH</code>连接网关访问了。</p>
+<p>因为这里查询后，还是不不知道IP地址，不能通过<code>SSH</code>直接连接大网关，所以使用串口连接网关，CGW3000T网关正面最左边第一个网口是串口，第二个网口是<code>WLAN</code>外网接口。<br>使用串口线把网线口接入第一个网口，然后另一端接口连接台式机，并在win7系统的管理工具中查看使用的是哪个com端口。</p>
+<span id="more"></span>
+
+<p><img src="/images/gwifi_chuankou.jpg" alt="查看com端口" title="查看com端口"></p>
+<p>使用SSH连接时，<code>Protocol</code>就不能选择<code>SSH2了</code> ,选择<code>Serial</code>，然后看下在图片连接。</p>
+<p><img src="/images/gwifi_chuankou_ssh.jpg" alt="使用串口SSH连接大网关" title="使用串口SSH连接大网关"></p>
+<h3 id="1-2-查看所有网卡"><a href="#1-2-查看所有网卡" class="headerlink" title="1.2.查看所有网卡"></a>1.2.查看所有网卡</h3><p>首先查看所有的网卡情况，把未激活的全部激活</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# ifconfig -a</span><br><span class="line">-bash-4.1# ifconfig eth6 up // 激活eth6</span><br><span class="line">-bash-4.1# ifconfig eth7 up // 激活eth7</span><br><span class="line">-bash-4.1# ifconfig eth2.200 down // 禁用eth2.200</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-找到正在使用的RUNNING口"><a href="#1-3-找到正在使用的RUNNING口" class="headerlink" title="1.3.找到正在使用的RUNNING口"></a>1.3.找到正在使用的RUNNING口</h3><p>想要正常访问大网关CGW3000T的话，必须给它设置一个IP，设置IP时需要给RUNNING口设置，下面先找到正在使用的<code>RUNNING</code>口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# ifconfig -a</span><br><span class="line">br0       Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  </span><br><span class="line">          inet addr:172.16.1.1  Bcast:172.16.255.255  Mask:255.255.0.0</span><br><span class="line">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:0 </span><br><span class="line">          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)</span><br><span class="line"></span><br><span class="line">br1       Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  </span><br><span class="line">          inet addr:172.17.1.1  Bcast:172.17.255.255  Mask:255.255.0.0</span><br><span class="line">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:0 </span><br><span class="line">          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)</span><br><span class="line"></span><br><span class="line">eth7      Link encap:Ethernet  HWaddr 28:51:32:10:91:E2  </span><br><span class="line">          inet addr:192.168.0.1  Bcast:10.60.255.255  Mask:255.255.0.0</span><br><span class="line">          inet6 addr: fe80::2a51:32ff:fe10:91e2/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:58986 errors:0 dropped:1014 overruns:0 frame:0</span><br><span class="line">          TX packets:5185 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:6381303 (6.0 MiB)  TX bytes:804263 (785.4 KiB)</span><br><span class="line">          Interrupt:16 Memory:dfe00000-dfe20000 </span><br><span class="line"></span><br><span class="line">eth6      Link encap:Ethernet  HWaddr 28:51:32:10:91:E5  </span><br><span class="line">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)</span><br><span class="line">          Interrupt:19 Memory:dfb00000-dfb20000 </span><br><span class="line"></span><br><span class="line">eth5      Link encap:Ethernet  HWaddr 28:51:32:10:91:E5  </span><br><span class="line">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)</span><br><span class="line">          Interrupt:19 Memory:dfb00000-dfb20000 </span><br><span class="line"></span><br><span class="line">eth4      Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  </span><br><span class="line">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)</span><br><span class="line">          Interrupt:17 Memory:dfd00000-dfd20000 </span><br></pre></td></tr></table></figure>
+
+<p>上面的结果看到，正在使用的<code>RUNNING</code>口为<code>eth7</code>。</p>
+<h3 id="1-4-获取IP及端口"><a href="#1-4-获取IP及端口" class="headerlink" title="1.4.获取IP及端口"></a>1.4.获取IP及端口</h3><p>此时eth7的IP是不对的，下面使用命令<code>dhclient eth7</code>来获取eth7的地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# dhclient eth7 // 获取地址</span><br><span class="line">/sbin/dhclient-script: line 450: /*如果不是eth0，则不添加默认路由，add@2015.06.15*/: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>查看eth7的IP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth7 // 查看IP</span><br></pre></td></tr></table></figure>
+
+<p>查看端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# netstat -anp | grep boa</span><br><span class="line">tcp        0      0 0.0.0.0:88                  0.0.0.0:*                   LISTEN      2036/boa</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、修改eth对应关系"><a href="#二、修改eth对应关系" class="headerlink" title="二、修改eth对应关系"></a>二、修改eth对应关系</h2><h3 id="2-1-web配置IP"><a href="#2-1-web配置IP" class="headerlink" title="2.1.web配置IP"></a>2.1.web配置IP</h3><p>使用刚刚获取的IP地址10.60.0.158:88访问web，进行端口配置。</p>
+<p><img src="/images/gwifi_ui.jpg" alt="厂园网关端口配置" title="厂园网关端口配置"></p>
+<p>可以看到端口是从端口1、端口2、端口3、端口4来的，而ifconfig可以看到是从eth4、eth5、eth6、eth7来的，而设置时是从eth0开始对应，这样的话，就永远不会生效了。下面来修改一下eth的对应关系</p>
+<h3 id="2-2-查看一下是否有eth0。"><a href="#2-2-查看一下是否有eth0。" class="headerlink" title="2.2.查看一下是否有eth0。"></a>2.2.查看一下是否有eth0。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# ls /etc/sysconfig/network-scripts/</span><br><span class="line">ifcfg-lo     ifdown-ppp     ifup-ippp    ifup-sit</span><br><span class="line">ifdown       ifdown-routes  ifup-ipv6    ifup-tunnel</span><br><span class="line">ifdown-bnep  ifdown-sit     ifup-isdn    ifup-wireless</span><br><span class="line">ifdown-eth   ifdown-tunnel  ifup-plip    init.ipv6-global</span><br><span class="line">ifdown-ippp  ifup           ifup-plusb   net.hotplug</span><br><span class="line">ifdown-ipv6  ifup-aliases   ifup-post    network-functions</span><br><span class="line">ifdown-isdn  ifup-bnep      ifup-ppp     network-functions-ipv6</span><br><span class="line">ifdown-post  ifup-eth       ifup-routes</span><br></pre></td></tr></table></figure>
+
+<p>没有，那么进行手动修改对应关系，下面是修改后的结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# vi /etc/udev/rules.d/70-persistent-net.rules</span><br><span class="line">-bash-4.1# </span><br><span class="line"># This file was automatically generated by the /lib/udev/write_net_rules</span><br><span class="line"># program, run by the persistent-net-generator.rules rules file.</span><br><span class="line">#</span><br><span class="line"># You can modify it, as long as you keep each rule on a single</span><br><span class="line"># line, and change only the value of the NAME= key.</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x150c (e1000e)</span><br><span class="line">#SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;address&#125;==&quot;28:51:32:0e:42::</span><br><span class="line">0d&quot;, ATTR&#123;type&#125;==&quot;1&quot;, KERNEL==&quot;eth*&quot;, NAME=&quot;eth2&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x150c (e1000e)</span><br><span class="line">#SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;address&#125;==&quot;28:51:32:0e:42::</span><br><span class="line">0c&quot;, ATTR&#123;type&#125;==&quot;1&quot;, KERNEL==&quot;eth*&quot;, NAME=&quot;eth1&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x150c (e1000e)</span><br><span class="line">#SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;address&#125;==&quot;28:51:32:0e:42::</span><br><span class="line">0b&quot;, ATTR&#123;type&#125;==&quot;1&quot;, KERNEL==&quot;eth*&quot;, NAME=&quot;eth0&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x150c (e1000e)</span><br><span class="line">#SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;address&#125;==&quot;28:51:32:0e:42::</span><br><span class="line">0e&quot;, ATTR&#123;type&#125;==&quot;1&quot;, KERNEL==&quot;eth*&quot;, NAME=&quot;eth3&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x150c (e1000e)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;address&#125;==&quot;28:51:32:10:91:ee</span><br><span class="line">4&quot;, ATTR&#123;type&#125;==&quot;1&quot;, KERNEL==&quot;eth*&quot;, NAME=&quot;eth3&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x150c (e1000e)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;address&#125;==&quot;28:51:32:10:91:ee</span><br><span class="line">3&quot;, ATTR&#123;type&#125;==&quot;1&quot;, KERNEL==&quot;eth*&quot;, NAME=&quot;eth2&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x150c (e1000e)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;address&#125;==&quot;28:51:32:10:91:ee</span><br><span class="line">5&quot;, ATTR&#123;type&#125;==&quot;1&quot;, KERNEL==&quot;eth*&quot;, NAME=&quot;eth1&quot;</span><br><span class="line"></span><br><span class="line"># PCI device 0x8086:0x150c (e1000e)</span><br><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, DRIVERS==&quot;?*&quot;, ATTR&#123;address&#125;==&quot;28:51:32:10:91:ee</span><br><span class="line">2&quot;, ATTR&#123;type&#125;==&quot;1&quot;, KERNEL==&quot;eth*&quot;, NAME=&quot;eth0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>如果已经有了eth0的话，把禁用掉，因为从大网关硬件后面的接口看了下，接口是坏的。此时就需要把其它口修改为eth0，使用它们能够对应上。</p>
+<p>查看RUNNING MULTICAST</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# ifconfig</span><br><span class="line">br0       Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  </span><br><span class="line">          inet addr:172.16.1.1  Bcast:172.16.255.255  Mask:255.255.0.0</span><br><span class="line">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:0 </span><br><span class="line">          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)</span><br><span class="line"></span><br><span class="line">br1       Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  </span><br><span class="line">          inet addr:172.17.1.1  Bcast:172.17.255.255  Mask:255.255.0.0</span><br><span class="line">          UP BROADCAST MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:0 </span><br><span class="line">          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)</span><br><span class="line"></span><br><span class="line">eth0      Link encap:Ethernet  HWaddr 28:51:32:10:91:E2  </span><br><span class="line">          inet addr:10.60.0.158  Bcast:10.60.255.255  Mask:255.255.0.0</span><br><span class="line">          inet6 addr: fe80::2a51:32ff:fe10:91e2/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:69642 errors:0 dropped:10 overruns:0 frame:0</span><br><span class="line">          TX packets:36430 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:64719805 (61.7 MiB)  TX bytes:3252114 (3.1 MiB)</span><br><span class="line">          Interrupt:16 Memory:dfe00000-dfe20000 </span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-设置网关使用DHCP获取IP"><a href="#2-3-设置网关使用DHCP获取IP" class="headerlink" title="2.3.设置网关使用DHCP获取IP"></a>2.3.设置网关使用DHCP获取IP</h3><p><img src="/images/gwifi_set_wan.jpg" alt="设置网关使用DHCP获取IP" title="设置网关使用DHCP获取IP"></p>
+<p>设置使用DHCP后重启后IP地址还是不对，下面把IP设置为静态IP后，重启后可以了，注意这里的数据是从网关上使用<code>ifconfig eth0</code>查看获取的。</p>
+<p><img src="/images/gwifi_set_statuc_ip.jpg" alt="设置网关IP为静态IP" title="设置网关IP为静态IP"></p>
+<p>点击配置按钮后重启网关生效。</p>
+<h2 id="三、查看eth0的IP时错误问题解决"><a href="#三、查看eth0的IP时错误问题解决" class="headerlink" title="三、查看eth0的IP时错误问题解决"></a>三、查看eth0的IP时错误问题解决</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# dhclient eth0</span><br><span class="line">/sbin/dhclient-script: line 450: /*如果不是eth0，则不添加默认路由，add@2015.06.15*/: No such file or directory</span><br><span class="line">-bash-4.1# ifconfig eth0</span><br><span class="line">eth0      Link encap:Ethernet  HWaddr 28:51:32:10:91:E2  </span><br><span class="line">          inet addr:192.168.0.1  Bcast:192.168.0.255  Mask:255.255.255.0</span><br><span class="line">          inet6 addr: fe80::2a51:32ff:fe10:91e2/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:2315 errors:0 dropped:10 overruns:0 frame:0</span><br><span class="line">          TX packets:1641 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:2595946 (2.4 MiB)  TX bytes:128111 (125.1 KiB)</span><br><span class="line">          Interrupt:16 Memory:dfe00000-dfe20000 </span><br><span class="line"></span><br><span class="line">-bash-4.1# [   69.748621] bpctl[2836]: segfault at 656c6961 ip 656c6961 sp bf9d4d10 error 4</span><br><span class="line"></span><br><span class="line">-bash-4.1# ip addr show eth0</span><br><span class="line">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000</span><br><span class="line">    link/ether 28:51:32:10:91:e2 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.0.1/24 brd 192.168.0.255 scope global eth0</span><br><span class="line">    inet 10.60.0.158/16 brd 10.60.255.255 scope global eth0</span><br><span class="line">    inet6 fe80::2a51:32ff:fe10:91e2/64 scope link </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+
+<p>这里会发现IP有一个192.168.0.1和10.60.0.158这样的错误，解决方法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1# ifconfig eth0 0</span><br><span class="line">-bash-4.1# dhclient eth0</span><br><span class="line">/sbin/dhclient-script: line 450: /*如果不是eth0，则不添加默认路由，add@2015.06.15*/: No such file or directory</span><br><span class="line">-bash-4.1# ifconfig eth0</span><br><span class="line">eth0      Link encap:Ethernet  HWaddr 28:51:32:10:91:E2  </span><br><span class="line">          inet addr:10.60.0.158  Bcast:10.60.255.255  Mask:255.255.0.0</span><br><span class="line">          inet6 addr: fe80::2a51:32ff:fe10:91e2/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:15228 errors:0 dropped:10 overruns:0 frame:0</span><br><span class="line">          TX packets:12945 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:21840821 (20.8 MiB)  TX bytes:1073306 (1.0 MiB)</span><br><span class="line">          Interrupt:16 Memory:dfe00000-dfe20000</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、网桥配置命令brctl"><a href="#四、网桥配置命令brctl" class="headerlink" title="四、网桥配置命令brctl"></a>四、网桥配置命令brctl</h2><p>网桥是一种在链路层实现中继，对帧进行转发的技术，根据MAC分区块，可隔离碰撞，将网络的多个网段在数据链路层连接起来的网络设备。</p>
+<h3 id="4-1-网桥安装"><a href="#4-1-网桥安装" class="headerlink" title="4.1.网桥安装"></a>4.1.网桥安装</h3><p>安装bridge-utils软件包，并加载bridge模块和开启内核转发。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># apt-get install bridge-utils</span><br><span class="line"># modprobe bridge</span><br><span class="line"># echo &quot;1&quot;&gt;/proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1-常用命令"><a href="#4-1-常用命令" class="headerlink" title="4.1.常用命令"></a>4.1.常用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T htdocs]# brctl addif br0 eth0 // 让eth0成为br0的一个端口</span><br><span class="line">[root@CGW3000T htdocs]# ifconfig br0 192.168.1.1 // 给br0的虚拟网卡配置IP：192.168.1.1。那样就能远程管理网桥。</span><br><span class="line">[root@CGW3000T htdocs]# brctl --help // 帮助</span><br><span class="line">[root@CGW3000T htdocs]# brctl addbr br0 // 增加网桥</span><br><span class="line">[root@CGW3000T htdocs]# brctl delif br0 eth0 eth1 // 删除网桥</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-查看"><a href="#4-2-查看" class="headerlink" title="4.2.查看"></a>4.2.查看</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T htdocs]# brctl show</span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">br0             8000.2851321091e3       no              eth1</span><br><span class="line">                                                        eth2</span><br><span class="line">                                                        eth3</span><br><span class="line">br1             8000.2851321091e3       no              eth1.200</span><br><span class="line">                                                        eth2.200</span><br><span class="line">                                                        eth3.200</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-关闭网桥命令"><a href="#4-3-关闭网桥命令" class="headerlink" title="4.3.关闭网桥命令"></a>4.3.关闭网桥命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># brctl delif ena eth1;</span><br><span class="line"># brctl delif ena eth0;</span><br><span class="line"># ifconfig ena down;</span><br><span class="line"># brctl delbr ena;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、其它使用"><a href="#五、其它使用" class="headerlink" title="五、其它使用"></a>五、其它使用</h2><h3 id="5-1-查看网关的版本"><a href="#5-1-查看网关的版本" class="headerlink" title="5.1.查看网关的版本"></a>5.1.查看网关的版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T ~]# vlist</span><br><span class="line"> Version  : 1.3.3.3</span><br><span class="line"> Revision : 5403</span><br><span class="line"> BuildTime: 2016-03-03 10:53:07</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-在网关中查看系统中的配置"><a href="#5-2-在网关中查看系统中的配置" class="headerlink" title="5.2.在网关中查看系统中的配置"></a>5.2.在网关中查看系统中的配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T ~]# nvramcli show | grep eth</span><br><span class="line">eth_speed=0</span><br><span class="line">eth_duplex_mode=0</span><br><span class="line">eth_arp_time=300</span><br><span class="line">real_wan_1_ip_method=0</span><br><span class="line">real_wan_2_ip_method=0</span><br><span class="line">real_wan_3_ip_method=0</span><br><span class="line">real_wan_1_interface_name=eth1</span><br><span class="line">real_wan_2_interface_name=eth2</span><br><span class="line">real_wan_3_interface_name=eth3</span><br><span class="line">vap_32_ssid_name=eth0</span><br><span class="line">vap_32_vap_name=eth0</span><br><span class="line">vap_33_ssid_name=eth1</span><br><span class="line">vap_33_vap_name=eth1</span><br><span class="line">vap_34_ssid_name=eth2</span><br><span class="line">vap_34_vap_name=eth2</span><br><span class="line">vap_35_ssid_name=eth3</span><br><span class="line">vap_35_vap_name=eth3</span><br><span class="line">vrrp_interface=eth2</span><br><span class="line">eth0_mode=0</span><br><span class="line">eth1_mode=1</span><br><span class="line">eth2_mode=1</span><br><span class="line">eth3_mode=1</span><br><span class="line">real_wan_0_interface_name=eth0</span><br><span class="line">real_wan_0_ip_method=0</span><br><span class="line">eth0_trunk_mode=0</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-查看eth0的IP地址"><a href="#5-3-查看eth0的IP地址" class="headerlink" title="5.3.查看eth0的IP地址"></a>5.3.查看eth0的IP地址</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T ~]# ip addr show eth0</span><br><span class="line">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000</span><br><span class="line">    link/ether 28:51:32:10:91:e2 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.60.0.158/16 brd 10.60.255.255 scope global eth0</span><br><span class="line">    inet6 fe80::2a51:32ff:fe10:91e2/64 scope link </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-查看进程ID"><a href="#5-4-查看进程ID" class="headerlink" title="5.4.查看进程ID"></a>5.4.查看进程ID</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T ~]# pidof dhcpd</span><br><span class="line">2168</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5-查看路由列表"><a href="#5-5-查看路由列表" class="headerlink" title="5.5.查看路由列表"></a>5.5.查看路由列表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T ~]# route -n</span><br><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">10.60.0.0       0.0.0.0         255.255.0.0     U     0      0        0 eth0</span><br><span class="line">172.16.0.0      0.0.0.0         255.255.0.0     U     0      0        0 br0</span><br><span class="line">172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 br1</span><br><span class="line">192.168.0.0     0.0.0.0         255.255.255.0   U     0      0        0 eth3</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-6-网关云平台下沉路径"><a href="#5-6-网关云平台下沉路径" class="headerlink" title="5.6.网关云平台下沉路径"></a>5.6.网关云平台下沉路径</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T ~]# cd /mnt/sd/www/htdocs/ // 真实地址</span><br><span class="line">[root@CGW3000T ~]# ll /appfs/web/webpages/cmps // 这个其实是软件的地址</span><br><span class="line">total 1</span><br><span class="line">drwxr-xr-x 5 root root 1024 Mar 22  2016 static</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-7-查看日志"><a href="#5-7-查看日志" class="headerlink" title="5.7.查看日志"></a>5.7.查看日志</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@CGW3000T htdocs]# tail -n 100 /var/log/messages</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-8-配置eth0的IP地址，-同时激活该设备"><a href="#5-8-配置eth0的IP地址，-同时激活该设备" class="headerlink" title="5.8.配置eth0的IP地址， 同时激活该设备"></a>5.8.配置eth0的IP地址， 同时激活该设备</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ifconfig eth0 192.168.1.10 netmask 255.255.255.0 up // up激活</span><br><span class="line">sudo ifconfig eth0 200.200.222.222 netmask 255.255.0.0 // 设置eth0的IP和子网掩码不激活</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-9-添加默认网关"><a href="#5-9-添加默认网关" class="headerlink" title="5.9.添加默认网关"></a>5.9.添加默认网关</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo route add default gw 192.168.1.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-10-配置DNS"><a href="#5-10-配置DNS" class="headerlink" title="5.10.配置DNS"></a>5.10.配置DNS</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/resolv.conf</span><br><span class="line">nameserver 202.96.134.133</span><br><span class="line">nameserver 202.96.128.68</span><br><span class="line">nameserver 202.96.128.166</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-11-确定网口位置—工具ethtool"><a href="#5-11-确定网口位置—工具ethtool" class="headerlink" title="5.11.确定网口位置—工具ethtool"></a>5.11.确定网口位置—工具ethtool</h3><p>1）、查看相应设备名称对应的设备信息 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# ethtool enp0s8</span><br><span class="line">Settings for enp0s8:</span><br><span class="line">        Supported ports: [ TP ]</span><br><span class="line">        Supported link modes:   10baseT/Half 10baseT/Full </span><br><span class="line">                                100baseT/Half 100baseT/Full </span><br><span class="line">                                1000baseT/Full </span><br><span class="line">        Supported pause frame use: No</span><br><span class="line">        Supports auto-negotiation: Yes</span><br><span class="line">        Advertised link modes:  10baseT/Half 10baseT/Full </span><br><span class="line">                                100baseT/Half 100baseT/Full </span><br><span class="line">                                1000baseT/Full </span><br><span class="line">        Advertised pause frame use: No</span><br><span class="line">        Advertised auto-negotiation: Yes</span><br><span class="line">        Speed: 1000Mb/s</span><br><span class="line">        Duplex: Full</span><br><span class="line">        Port: Twisted Pair</span><br><span class="line">        PHYAD: 0</span><br><span class="line">        Transceiver: internal</span><br><span class="line">        Auto-negotiation: on</span><br><span class="line">        MDI-X: off (auto)</span><br><span class="line">        Supports Wake-on: umbg</span><br><span class="line">        Wake-on: d</span><br><span class="line">        Current message level: 0x00000007 (7)</span><br><span class="line">                               drv probe link</span><br><span class="line">        Link detected: yes</span><br></pre></td></tr></table></figure>
+<p>最后一行会显示Link detected: yes&#x2F;no</p>
+<p>2）、查看相应设备名称对应的设备位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost lai]# ethtool -p enp0s8</span><br></pre></td></tr></table></figure>
+
+<p>回车后与eth0 相对应的网卡接口旁边的指示灯就会闪烁，这样你就能很快确定eth0 网口的位置啦。</p>
+
+    </div>
+
+    <div>全文完。</div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%8E%B7%E5%8F%96%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3IP%E5%9C%B0%E5%9D%80"><span class="toc-text">一、获取厂园网关IP地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BD%BF%E7%94%A8%E4%B8%B2%E5%8F%A3%E8%BF%9E%E6%8E%A5%E7%BD%91%E5%85%B3"><span class="toc-text">1.1.使用串口连接网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E7%BD%91%E5%8D%A1"><span class="toc-text">1.2.查看所有网卡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%89%BE%E5%88%B0%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E7%9A%84RUNNING%E5%8F%A3"><span class="toc-text">1.3.找到正在使用的RUNNING口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E8%8E%B7%E5%8F%96IP%E5%8F%8A%E7%AB%AF%E5%8F%A3"><span class="toc-text">1.4.获取IP及端口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9eth%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-text">二、修改eth对应关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-web%E9%85%8D%E7%BD%AEIP"><span class="toc-text">2.1.web配置IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%9F%A5%E7%9C%8B%E4%B8%80%E4%B8%8B%E6%98%AF%E5%90%A6%E6%9C%89eth0%E3%80%82"><span class="toc-text">2.2.查看一下是否有eth0。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%AE%BE%E7%BD%AE%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8DHCP%E8%8E%B7%E5%8F%96IP"><span class="toc-text">2.3.设置网关使用DHCP获取IP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9F%A5%E7%9C%8Beth0%E7%9A%84IP%E6%97%B6%E9%94%99%E8%AF%AF%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">三、查看eth0的IP时错误问题解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%BD%91%E6%A1%A5%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4brctl"><span class="toc-text">四、网桥配置命令brctl</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E7%BD%91%E6%A1%A5%E5%AE%89%E8%A3%85"><span class="toc-text">4.1.网桥安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">4.1.常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%9F%A5%E7%9C%8B"><span class="toc-text">4.2.查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%85%B3%E9%97%AD%E7%BD%91%E6%A1%A5%E5%91%BD%E4%BB%A4"><span class="toc-text">4.3.关闭网桥命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B6%E5%AE%83%E4%BD%BF%E7%94%A8"><span class="toc-text">五、其它使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%9F%A5%E7%9C%8B%E7%BD%91%E5%85%B3%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-text">5.1.查看网关的版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%9C%A8%E7%BD%91%E5%85%B3%E4%B8%AD%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">5.2.在网关中查看系统中的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E6%9F%A5%E7%9C%8Beth0%E7%9A%84IP%E5%9C%B0%E5%9D%80"><span class="toc-text">5.3.查看eth0的IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8BID"><span class="toc-text">5.4.查看进程ID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-%E6%9F%A5%E7%9C%8B%E8%B7%AF%E7%94%B1%E5%88%97%E8%A1%A8"><span class="toc-text">5.5.查看路由列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-%E7%BD%91%E5%85%B3%E4%BA%91%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%B2%89%E8%B7%AF%E5%BE%84"><span class="toc-text">5.6.网关云平台下沉路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97"><span class="toc-text">5.7.查看日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8-%E9%85%8D%E7%BD%AEeth0%E7%9A%84IP%E5%9C%B0%E5%9D%80%EF%BC%8C-%E5%90%8C%E6%97%B6%E6%BF%80%E6%B4%BB%E8%AF%A5%E8%AE%BE%E5%A4%87"><span class="toc-text">5.8.配置eth0的IP地址， 同时激活该设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-9-%E6%B7%BB%E5%8A%A0%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3"><span class="toc-text">5.9.添加默认网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-10-%E9%85%8D%E7%BD%AEDNS"><span class="toc-text">5.10.配置DNS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-11-%E7%A1%AE%E5%AE%9A%E7%BD%91%E5%8F%A3%E4%BD%8D%E7%BD%AE%E2%80%94%E5%B7%A5%E5%85%B7ethtool"><span class="toc-text">5.11.确定网口位置—工具ethtool</span></a></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share" style="width: 100%;">
+  <img src="/static/qrcode/qrcode_wwwitcsscn_20221008_0909.png" alt="Running Geek" style="margin: auto; display: block;"/>
+
+  <div style="margin: auto; text-align: center; font-size: 0.8em; color: grey;">老铁们关注走一走，不迷路</div>
+  
+</div>
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2016/10/09/mysql%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" rel="next" title="mysql之存储过程">
+          mysql之存储过程
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2016/10/10/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B02%E4%B9%8Bping%E5%A4%96%E7%BD%91%E7%BD%91%E9%97%AE%E9%A2%98/" rel="prev" title="厂园网关使用手记2之ping外网问题">
+            厂园网关使用手记2之ping外网问题
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" target="_blank" rel="noopener" href="https://www.itcss.cn">首页</a> |
+        <a class="bottom-item" href="https://www.itcss.cn" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/itcss" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

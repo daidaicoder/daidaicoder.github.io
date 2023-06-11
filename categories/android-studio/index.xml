@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>android studio - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/android-studio/</link>
+    <description>android studio - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 31 Mar 2019 12:08:21 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/android-studio/" rel="self" type="application/rss+xml" /><item>
+  <title>as默认打开上一次的状态</title>
+  <link>https://daizelai.github.io/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/as/</link>
+  <pubDate>Sun, 31 Mar 2019 12:08:21 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/as/</guid>
+  <description><![CDATA[20220930_1207as默认打开上一次的状态 一、描述 by daizelai on 2022/09/30 12:08 as默认打开上一次的状态，但是如果你是复制一个项目为另一个新项目，这样使用as打开这两个项目时，会发现，as打开的上一次状态都是一样的。
+本文主要讲述了如何各自打开各自的上一次状态。
+二、开始 2.1.配置打开上一次状态 File Settings&hellip; Appearance &amp; Behavior System Settings Startup/Shutdown Reopen last project on startup 2.2.修改各自上一次状态 打开AndroidStudio的project视图方式，找到workspace.xml然后删除。
+然后关闭Android Studio后，重启Android Studio，这样就能把工作状态保存了。
+这样即使是直接把项目复制成新的项目，然后再打开新的项目，布局也是自己上次打开的状态了。]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>快速解决room升级数据库添加新表SQL语句冲突问题 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="快速解决room升级数据库添加新表SQL语句冲突问题" /><meta name="keywords" content='原创, room, 数据库, 数据库升级' /><meta itemprop="name" content="快速解决room升级数据库添加新表SQL语句冲突问题">
+<meta itemprop="description" content="快速解决room升级数据库添加新表SQL语句冲突问题"><meta itemprop="datePublished" content="2019-03-31T12:54:26+08:00" />
+<meta itemprop="dateModified" content="2019-03-31T12:54:26+08:00" />
+<meta itemprop="wordCount" content="1780">
+<meta itemprop="keywords" content="原创,room,数据库,数据库升级," /><meta property="og:title" content="快速解决room升级数据库添加新表SQL语句冲突问题" />
+<meta property="og:description" content="快速解决room升级数据库添加新表SQL语句冲突问题" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/room/20220929_1505%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3room%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%A1%A8sql%E8%AF%AD%E5%8F%A5%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/room/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-03-31T12:54:26+08:00" />
+<meta property="article:modified_time" content="2019-03-31T12:54:26+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="快速解决room升级数据库添加新表SQL语句冲突问题"/>
+<meta name="twitter:description" content="快速解决room升级数据库添加新表SQL语句冲突问题"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/room/20220929_1505%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3room%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%A1%A8sql%E8%AF%AD%E5%8F%A5%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/room/" /><link rel="prev" href="https://daizelai.github.io/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/as/" /><link rel="next" href="https://daizelai.github.io/posts/winddows/excel/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "快速解决room升级数据库添加新表SQL语句冲突问题",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/room\/20220929_1505%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3room%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%A1%A8sql%E8%AF%AD%E5%8F%A5%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98\/room\/"
+    },"genre": "posts","keywords": "原创, room, 数据库, 数据库升级","wordcount":  1780 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/room\/20220929_1505%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3room%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%A1%A8sql%E8%AF%AD%E5%8F%A5%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98\/room\/","datePublished": "2019-03-31T12:54:26+08:00","dateModified": "2019-03-31T12:54:26+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "作者"
+      },"description": "快速解决room升级数据库添加新表SQL语句冲突问题"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>快速解决room升级数据库添加新表SQL语句冲突问题</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Anonymous</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/room/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> room</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2019-03-31 12:54:26"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2019-03-31">2019-03-31</time></span>&nbsp;<span title="更新于 2019-03-31 12:54:26"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2019-03-31">2019-03-31</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1780 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 9 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a>
+      <ul>
+        <li><a href="#11前言">1.1.前言</a></li>
+        <li><a href="#12表实体类">1.2.表实体类</a></li>
+      </ul>
+    </li>
+    <li><a href="#二升级数据库">二、升级数据库</a>
+      <ul>
+        <li><a href="#21卸载设备apk">2.1.卸载设备APK</a></li>
+        <li><a href="#22清除数据">2.2.清除数据</a></li>
+        <li><a href="#23使用上一个数据库版本">2.3.使用上一个数据库版本</a></li>
+        <li><a href="#24拿到sql">2.4.拿到SQL</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>创建一张ROOM新表在升级数据库解决冲突问题。</p>
+<h3 id="12表实体类">1.2.表实体类</h3>
+<p>调度命令DispatchOrder表实体类。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.gbcom.library_base.db
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> androidx.room.ColumnInfo
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> androidx.room.Entity
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> androidx.room.PrimaryKey
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 调度命令表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2022/09/29 13:45
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Entity</span><span style="color:#f92672">(</span>tableName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;metro_dispatch_order&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>data <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DispatchOrder</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 主键
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@PrimaryKey</span><span style="color:#f92672">(</span>autoGenerate <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    val id<span style="color:#f92672">:</span> Long <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 发令处所编号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sender_id&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var senderID<span style="color:#f92672">:</span> Int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 发令人姓名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sender&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var sender<span style="color:#f92672">:</span> String<span style="color:#f92672">?</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 调度命令内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;order_info&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var orderInfo<span style="color:#f92672">:</span> String<span style="color:#f92672">?</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 调度命令编号,不到6位时后面补空格
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;order_no&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var orderNo<span style="color:#f92672">:</span> Int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 总包数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;total_pkg_num&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var totalPkgNum<span style="color:#f92672">:</span> Int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 本包号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pkg_index&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var pkgIndex<span style="color:#f92672">:</span> Int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 消息类型：默认为0为工单调度命令
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var type<span style="color:#f92672">:</span> Int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 置顶:默认
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 0不置顶，1已置顶
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;to_top&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var toTop<span style="color:#f92672">:</span> Int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 创建时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;create_time&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var createTime<span style="color:#f92672">:</span> Long <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 浏览状态：先放上来，后面看需求是否需要实现，0未读，1已读，2回执状态，工单才有回执状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;status&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var status<span style="color:#f92672">:</span> Int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 确保唯一性，每台设备的登录用户只看到这个IdentityID的那些记录 // @Ignore表示不想持久化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@ColumnInfo</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;identity_id&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    var identityID<span style="color:#f92672">:</span> String <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    override fun <span style="color:#a6e22e">toString</span><span style="color:#f92672">():</span> String <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;DispatchOrder(id=$id, senderID=$senderID, sender=$sender, orderInfo=$orderInfo, orderNo=$orderNo, totalPkgNum=$totalPkgNum, pkgIndex=$pkgIndex, type=$type, toTop=$toTop, createTime=$createTime, status=$status, identityID=&#39;$identityID&#39;)&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="二升级数据库">二、升级数据库</h2>
+<h3 id="21卸载设备apk">2.1.卸载设备APK</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-adb" data-lang="adb"><span style="display:flex;"><span>PS C:<span style="color:#960050;background-color:#1e0010">\</span>Users<span style="color:#960050;background-color:#1e0010">\</span>daizelai<span style="color:#f92672">&gt;</span> adb uninstall com.gbcom.metrosystem
+</span></span><span style="display:flex;"><span>Success
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#960050;background-color:#1e0010">\</span>Users<span style="color:#960050;background-color:#1e0010">\</span>daizelai<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><h3 id="22清除数据">2.2.清除数据</h3>
+<p>手动在设备中，设置应用中找到中兴车台Demo，停止应用，清除数据。</p>
+<h3 id="23使用上一个数据库版本">2.3.使用上一个数据库版本</h3>
+<h4 id="231版本号回退上一个版本">2.3.1.版本号回退上一个版本</h4>
+<p>如果当前想要添加一个调度命令表，那么数据库就要进行升级，数据库版本号由7修改为8，但由于冲突，先让version版本号保持在未升级前的7。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.gbcom.library_base.db
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 项目数据表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2021/10/26 13:28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Database</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    entities <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>AppConfig<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Ats<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> StationAts<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> DisCfg<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> PredefinedSMS<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> TrainBrdGroup<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> TrainPos<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Station<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> StationBrdZone<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Call<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Message<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> SelfTest<span style="color:#f92672">::</span>
+</span></span><span style="display:flex;"><span>    class<span style="color:#f92672">,</span> Log<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> FileInfo<span style="color:#f92672">::</span>class<span style="color:#f92672">],</span>
+</span></span><span style="display:flex;"><span>    version <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>    exportSchema <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppDatabase</span> <span style="color:#f92672">:</span> RoomDatabase<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>**当应用清除数据库，把新添加的表实体类配置进来，然后运行APP，这个时候运行APP后，新添加的表就已经创建好了。**后面可以把APP的数据库导出去，通过Navicat等工具导出SQL。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.gbcom.library_base.db
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 项目数据表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2021/10/26 13:28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Database</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    entities <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>AppConfig<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Ats<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> StationAts<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> DisCfg<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> PredefinedSMS<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> TrainBrdGroup<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> TrainPos<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Station<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> StationBrdZone<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Call<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Message<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> SelfTest<span style="color:#f92672">::</span>
+</span></span><span style="display:flex;"><span>    class<span style="color:#f92672">,</span> Log<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> FileInfo<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> DispatchOrder<span style="color:#f92672">::</span>class<span style="color:#f92672">],</span>
+</span></span><span style="display:flex;"><span>    version <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>    exportSchema <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppDatabase</span> <span style="color:#f92672">:</span> RoomDatabase<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="232注释刚刚写好的升级语句">2.3.2.注释刚刚写好的升级语句</h4>
+<p>如果已经写好了数据加升级语句</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 调度命令
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @date 2022/09/29 15:30
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//    abstract fun dispatchOrderDao(): DispatchOrderDao
+</span></span></span></code></pre></div><h4 id="233注释调用此dao的地方">2.3.3.注释调用此Dao的地方</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.gbcom.library_base.udp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 与主机API接口交互类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author daizelai
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2021/12/01 11:35
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MasterApiReceive</span> <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">constructor</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * DBA转发APP调度命令
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @date 2022/09/28 19:12
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> fun <span style="color:#a6e22e">parseCirSendDispatchOrderData</span><span style="color:#f92672">(</span>data<span style="color:#f92672">:</span> String<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            val moshi<span style="color:#f92672">:</span> Moshi <span style="color:#f92672">=</span> Moshi<span style="color:#f92672">.</span><span style="color:#a6e22e">Builder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">build</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>            val jsonAdapter <span style="color:#f92672">=</span> moshi<span style="color:#f92672">.</span><span style="color:#a6e22e">adapter</span><span style="color:#f92672">(</span>MasterCirDispatchOrder<span style="color:#f92672">::</span>class<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            val mMasterData <span style="color:#f92672">=</span> jsonAdapter<span style="color:#f92672">.</span><span style="color:#a6e22e">fromJson</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&#34;&#34;$data&#34;&#34;&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            mMasterData<span style="color:#f92672">?.</span><span style="color:#a6e22e">let</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                Log<span style="color:#f92672">.</span><span style="color:#a6e22e">d</span><span style="color:#f92672">(</span>TAG<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;parseCirSendDispatchOrderData: data=&#34;</span> <span style="color:#f92672">+</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">msgInfo</span><span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">())</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            val dispatchOrder <span style="color:#f92672">=</span> DispatchOrder<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            mMasterData<span style="color:#f92672">?.</span><span style="color:#a6e22e">msgInfo</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">let</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">senderID</span> <span style="color:#f92672">=</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">senderID</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span> <span style="color:#f92672">=</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">orderInfo</span> <span style="color:#f92672">=</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">orderInfo</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">orderNo</span> <span style="color:#f92672">=</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">orderNo</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">totalPkgNum</span> <span style="color:#f92672">=</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">totalPkgNum</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">pkgIndex</span> <span style="color:#f92672">=</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">pkgIndex</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">toTop</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">createTime</span> <span style="color:#f92672">=</span> DateUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">getCurrentTimeMillis</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 默认为未回执
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">identityID</span> <span style="color:#f92672">=</span> ZTEUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">getUserId</span><span style="color:#f92672">()!!</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Log<span style="color:#f92672">.</span><span style="color:#a6e22e">d</span><span style="color:#f92672">(</span>TAG<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;parseCirSendDispatchOrderData: dispatchOrder == $dispatchOrder&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// TODO: 2022/9/28 跟DIS一样，这里直接入库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>dispatchOrder <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 自动签收
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                UdpMasterRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">INSTANCE</span><span style="color:#f92672">.</span><span style="color:#a6e22e">cirAutoRecvDispatchOrderReq</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>                    dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">senderID</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                    dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">orderNo</span><span style="color:#f92672">!!,</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                    dispatchOrder<span style="color:#f92672">.</span><span style="color:#a6e22e">pkgIndex</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#75715e">// 数据入库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>                val dispatchOrderDao<span style="color:#f92672">:</span> DispatchOrderDao <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                    AppDatabase<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span>BaseApp<span style="color:#f92672">.</span><span style="color:#a6e22e">instance</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">dispatchOrderDao</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                dispatchOrderDao<span style="color:#f92672">.</span><span style="color:#a6e22e">insertDispatchOrder</span><span style="color:#f92672">(</span>dispatchOrder<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">//                // 数据入库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                val dispatchOrderDao: DispatchOrderDao =
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                    AppDatabase.getInstance(BaseApp.instance()).dispatchOrderDao()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                dispatchOrderDao.insertDispatchOrder(dispatchOrder)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>e<span style="color:#f92672">:</span> Exception<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            Log<span style="color:#f92672">.</span><span style="color:#a6e22e">d</span><span style="color:#f92672">(</span>TAG<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;parseCirSendDispatchOrderData: e=${e.message}&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>注释</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.gbcom.message.mvvm.viewmodel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DispatchOrderViewModel</span><span style="color:#f92672">(</span>application<span style="color:#f92672">:</span> Application<span style="color:#f92672">)</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    BaseViewModel<span style="color:#f92672">(</span>application<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#66d9ef">private</span> val mDispatchOrderDao by lazy <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        AppDatabase<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span>application<span style="color:#f92672">).</span><span style="color:#a6e22e">dispatchOrderDao</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#66d9ef">private</span> val mDispatchOrderRepository by lazy <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        DispatchOrderRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            mDispatchOrderDao
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    val flow <span style="color:#f92672">=</span> Pager<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-        PagingConfig(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            // 每页显示的数据的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            pageSize = 60,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            // 开启占位符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            enablePlaceholders = true,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            // 预刷新的距离，距离最后一个 item 多远时加载数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            prefetchDistance = 3,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            //初始化加载数量，默认为 pageSize * 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            initialLoadSize = 60,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            //一次应在内存中保存的最大数据,这个数字将会触发，滑动加载更多的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-            maxSize = 200
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-        )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-         */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        config <span style="color:#f92672">=</span> PagingConfig<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#75715e">// 每页显示的数据的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>            pageSize <span style="color:#f92672">=</span> BaseConstant<span style="color:#f92672">.</span><span style="color:#a6e22e">MSG_LIST_PAGE_SIZE</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#75715e">// 开启占位符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>            enablePlaceholders <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#75715e">// 预刷新的距离，距离最后一个 item 多远时加载数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>            prefetchDistance <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#75715e">// 初始化加载数量，默认为 pageSize * 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>            initialLoadSize <span style="color:#f92672">=</span> BaseConstant<span style="color:#f92672">.</span><span style="color:#a6e22e">MSG_LIST_PAGE_SIZE</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#75715e">// 一次应在内存中保存的最大数据,这个数字将会触发，滑动加载更多的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>            <span style="color:#75715e">//maxSize = 200
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>        <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#75715e">//remoteMediator = CallRemoteMediator(AppDatabase.getInstance(application))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>    <span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#75715e">//AppDatabase.getInstance(application).callDao().pagingSource(&#34;7136&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>        <span style="color:#75715e">//MessagePagingSource(AppDatabase.getInstance(application), ZTEUtils.getUserId()!!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>        <span style="color:#75715e">// 下面这个也可以
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>        <span style="color:#75715e">//MessagePagingSource(this, ZTEUtils.getUserId()!!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>        mDispatchOrderRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">pagingSource</span><span style="color:#f92672">(</span>ZTEUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">getUserId</span><span style="color:#f92672">()!!)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#f92672">}.</span><span style="color:#a6e22e">flow</span><span style="color:#f92672">.</span><span style="color:#a6e22e">cachedIn</span><span style="color:#f92672">(</span>viewModelScope<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * 信息搜索
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @date 2022/09/29 15:28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @param searchStr 搜索的关键字
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @param second 搜索的时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    fun <span style="color:#a6e22e">searchMessage</span><span style="color:#f92672">(</span>name<span style="color:#f92672">:</span> String<span style="color:#f92672">,</span> second<span style="color:#f92672">:</span> Long<span style="color:#f92672">):</span> Flow<span style="color:#f92672">&lt;</span>PagingData<span style="color:#f92672">&lt;</span>DispatchOrder<span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#66d9ef">return</span> Pager<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            config <span style="color:#f92672">=</span> PagingConfig<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#75715e">// 每页显示的数据的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>                pageSize <span style="color:#f92672">=</span> BaseConstant<span style="color:#f92672">.</span><span style="color:#a6e22e">MSG_LIST_PAGE_SIZE</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#75715e">// 开启占位符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>                enablePlaceholders <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#75715e">// 预刷新的距离，距离最后一个 item 多远时加载数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>                prefetchDistance <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#75715e">// 初始化加载数量，默认为 pageSize * 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>                initialLoadSize <span style="color:#f92672">=</span> BaseConstant<span style="color:#f92672">.</span><span style="color:#a6e22e">MSG_LIST_PAGE_SIZE</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#75715e">// 一次应在内存中保存的最大数据,这个数字将会触发，滑动加载更多的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>                <span style="color:#75715e">//maxSize = 200
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>            <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            mDispatchOrderRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">pagingSource</span><span style="color:#f92672">(</span>ZTEUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">getUserId</span><span style="color:#f92672">()!!,</span> name<span style="color:#f92672">,</span> second<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">}.</span><span style="color:#a6e22e">flow</span><span style="color:#f92672">.</span><span style="color:#a6e22e">cachedIn</span><span style="color:#f92672">(</span>viewModelScope<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * 手动回执
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @date 2022/09/29 17:18
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    fun <span style="color:#a6e22e">doDispatchOrderReceipt</span><span style="color:#f92672">(</span>id<span style="color:#f92672">:</span> Long<span style="color:#f92672">,</span> status<span style="color:#f92672">:</span> Int<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        viewModelScope<span style="color:#f92672">.</span><span style="color:#a6e22e">launch</span><span style="color:#f92672">(</span>Dispatchers<span style="color:#f92672">.</span><span style="color:#a6e22e">IO</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            mDispatchOrderRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">updateReceiptById</span><span style="color:#f92672">(</span>id<span style="color:#f92672">,</span> status<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * 更新本地回执状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @date 2022/09/29 17:15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    fun <span style="color:#a6e22e">updateReceiptById</span><span style="color:#f92672">(</span>id<span style="color:#f92672">:</span> Long<span style="color:#f92672">,</span> status<span style="color:#f92672">:</span> Int<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        viewModelScope<span style="color:#f92672">.</span><span style="color:#a6e22e">launch</span><span style="color:#f92672">(</span>Dispatchers<span style="color:#f92672">.</span><span style="color:#a6e22e">IO</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            mDispatchOrderRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">updateReceiptById</span><span style="color:#f92672">(</span>id<span style="color:#f92672">,</span> status<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span> <span style="color:#75715e">//    private val mDispatchOrderDao by lazy {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        AppDatabase.getInstance(application).dispatchOrderDao()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    private val mDispatchOrderRepository by lazy {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        DispatchOrderRepository.getInstance(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            mDispatchOrderDao
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    val flow = Pager(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        /*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        PagingConfig(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            // 每页显示的数据的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            pageSize = 60,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            // 开启占位符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            enablePlaceholders = true,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            // 预刷新的距离，距离最后一个 item 多远时加载数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            prefetchDistance = 3,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            //初始化加载数量，默认为 pageSize * 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            initialLoadSize = 60,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            //一次应在内存中保存的最大数据,这个数字将会触发，滑动加载更多的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            maxSize = 200
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//         */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        config = PagingConfig(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            // 每页显示的数据的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            pageSize = BaseConstant.MSG_LIST_PAGE_SIZE,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            // 开启占位符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            enablePlaceholders = true,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            // 预刷新的距离，距离最后一个 item 多远时加载数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            prefetchDistance = 2,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            // 初始化加载数量，默认为 pageSize * 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            initialLoadSize = BaseConstant.MSG_LIST_PAGE_SIZE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            // 一次应在内存中保存的最大数据,这个数字将会触发，滑动加载更多的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            //maxSize = 200
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        //remoteMediator = CallRemoteMediator(AppDatabase.getInstance(application))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    ) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        //AppDatabase.getInstance(application).callDao().pagingSource(&#34;7136&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        //MessagePagingSource(AppDatabase.getInstance(application), ZTEUtils.getUserId()!!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        // 下面这个也可以
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        //MessagePagingSource(this, ZTEUtils.getUserId()!!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        mDispatchOrderRepository.pagingSource(ZTEUtils.getUserId()!!)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    }.flow.cachedIn(viewModelScope)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    /**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * 信息搜索
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * @date 2022/09/29 15:28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * @param searchStr 搜索的关键字
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * @param second 搜索的时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    fun searchMessage(name: String, second: Long): Flow&lt;PagingData&lt;DispatchOrder&gt;&gt; {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        return Pager(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            config = PagingConfig(
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                // 每页显示的数据的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                pageSize = BaseConstant.MSG_LIST_PAGE_SIZE,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                // 开启占位符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                enablePlaceholders = true,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                // 预刷新的距离，距离最后一个 item 多远时加载数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                prefetchDistance = 2,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                // 初始化加载数量，默认为 pageSize * 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                initialLoadSize = BaseConstant.MSG_LIST_PAGE_SIZE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                // 一次应在内存中保存的最大数据,这个数字将会触发，滑动加载更多的数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                //maxSize = 200
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        ) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            mDispatchOrderRepository.pagingSource(ZTEUtils.getUserId()!!, name, second)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        }.flow.cachedIn(viewModelScope)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    /**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * 手动回执
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * @date 2022/09/29 17:18
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    fun doDispatchOrderReceipt(id: Long, status: Int) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        viewModelScope.launch(Dispatchers.IO) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            mDispatchOrderRepository.updateReceiptById(id, status)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    /**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * 更新本地回执状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     * @date 2022/09/29 17:15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//     */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    fun updateReceiptById(id: Long, status: Int) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        viewModelScope.launch(Dispatchers.IO) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            mDispatchOrderRepository.updateReceiptById(id, status)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>注释页面调用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.gbcom.message.mvvm.view
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 调度命令
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2022/09/29 15:09
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DispatchOrderFragment</span> <span style="color:#f92672">:</span> BaseFragment<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">layout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">dispatch_order_fragment</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> fun <span style="color:#a6e22e">initData</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        viewLifecycleOwner<span style="color:#f92672">.</span><span style="color:#a6e22e">lifecycleScope</span><span style="color:#f92672">.</span><span style="color:#a6e22e">launch</span><span style="color:#f92672">(</span>Dispatchers<span style="color:#f92672">.</span><span style="color:#a6e22e">IO</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#75715e">// 注意：这里需要用 collectLatest，只用 collect 的话筛选会不生效
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>            mViewModel<span style="color:#f92672">.</span><span style="color:#a6e22e">flow</span><span style="color:#f92672">?.</span><span style="color:#a6e22e">collectLatest</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                mDispatchOrderAdapter<span style="color:#f92672">.</span><span style="color:#a6e22e">submitData</span><span style="color:#f92672">(</span>it<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">//        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//            // 注意：这里需要用 collectLatest，只用 collect 的话筛选会不生效
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//            mViewModel.flow?.collectLatest {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                mDispatchOrderAdapter.submitData(it)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        mDispatchOrderAdapter<span style="color:#f92672">?.</span><span style="color:#a6e22e">onReceiptClickListener</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span> it<span style="color:#f92672">:</span> DispatchOrder<span style="color:#f92672">?,</span> view<span style="color:#f92672">:</span> View <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            doDispatchOrderReceipt<span style="color:#f92672">(</span>it<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span> <span style="color:#75715e">//        mDispatchOrderAdapter?.onReceiptClickListener = { it: DispatchOrder?, view: View -&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            doDispatchOrderReceipt(it)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 数据搜索
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @date 2022/09/29 15:44
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> fun <span style="color:#a6e22e">search</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 按钮点击事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>        message_search_btn<span style="color:#f92672">.</span><span style="color:#a6e22e">click</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            lifecycleScope<span style="color:#f92672">.</span><span style="color:#a6e22e">launch</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                var second<span style="color:#f92672">:</span> Long <span style="color:#f92672">=</span> getCheckedSearchTime<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                mViewModel<span style="color:#f92672">.</span><span style="color:#a6e22e">searchMessage</span><span style="color:#f92672">(</span>message_et<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(),</span> second<span style="color:#f92672">).</span><span style="color:#a6e22e">collect</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                    Log<span style="color:#f92672">.</span><span style="color:#a6e22e">d</span><span style="color:#f92672">(</span>TAG<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;search: searchMessage: id=----it=$it, second=$second&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                    mDispatchOrderAdapter<span style="color:#f92672">.</span><span style="color:#a6e22e">submitData</span><span style="color:#f92672">(</span>it<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span> <span style="color:#75715e">//        message_search_btn.click {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            lifecycleScope.launch {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                var second: Long = getCheckedSearchTime()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                mViewModel.searchMessage(message_et.text.toString(), second).collect {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                    Log.d(TAG, &#34;search: searchMessage: id=----it=$it, second=$second&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                    mDispatchOrderAdapter.submitData(it)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//                }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span> <span style="color:#75715e">//        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * 调度命令回执
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     * @date 2022/09/29 17:03
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-     */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#66d9ef">private</span> fun <span style="color:#a6e22e">doDispatchOrderReceipt</span><span style="color:#f92672">(</span>it<span style="color:#f92672">:</span> DispatchOrder<span style="color:#f92672">?)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>it <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">makeText</span><span style="color:#f92672">(</span>mContext<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;数据错误！&#34;</span><span style="color:#f92672">,</span> Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">LENGTH_SHORT</span><span style="color:#f92672">).</span><span style="color:#a6e22e">show</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            it<span style="color:#f92672">?.</span><span style="color:#a6e22e">let</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#75715e">// 发送回执消息到DBA
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>                mViewModel<span style="color:#f92672">.</span><span style="color:#a6e22e">cirManuAckDispatchOrderReq</span><span style="color:#f92672">(</span>it<span style="color:#f92672">.</span><span style="color:#a6e22e">senderID</span><span style="color:#f92672">,</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">orderNo</span><span style="color:#f92672">!!,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> it<span style="color:#f92672">.</span><span style="color:#a6e22e">totalPkgNum</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                <span style="color:#75715e">// 更新数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">-</span>                mViewModel<span style="color:#f92672">.</span><span style="color:#a6e22e">updateReceiptById</span><span style="color:#f92672">(</span>it<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">makeText</span><span style="color:#f92672">(</span>mContext<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;回执操作成功！&#34;</span><span style="color:#f92672">,</span> Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">LENGTH_SHORT</span><span style="color:#f92672">).</span><span style="color:#a6e22e">show</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">//    /**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//     * 调度命令回执
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//     * @date 2022/09/29 17:03
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//     */
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//    private fun doDispatchOrderReceipt(it: DispatchOrder?) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//        if (it == null) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//            Toast.makeText(mContext, &#34;数据错误！&#34;, Toast.LENGTH_SHORT).show()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//        } else {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//            it?.let {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                // 发送回执消息到DBA
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                mViewModel.cirManuAckDispatchOrderReq(it.senderID, it.orderNo!!, &#34;&#34;, it.totalPkgNum)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                // 更新数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                mViewModel.updateReceiptById(it.id, 2)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//                Toast.makeText(mContext, &#34;回执操作成功！&#34;, Toast.LENGTH_SHORT).show()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#75715e">//    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="24拿到sql">2.4.拿到SQL</h3>
+<p>导出数据库，比如使用Navicat打开，并导出新增加的表的SQL语句。</p>
+<p><img loading="lazy" src="./images/sqlite_create_table_pro_2022-09-29_145730.png" srcset="./images/sqlite_create_table_pro_2022-09-29_145730.png, ./images/sqlite_create_table_pro_2022-09-29_145730.png 1.5x, ./images/sqlite_create_table_pro_2022-09-29_145730.png 2x" sizes="auto" data-title="获取到SQL语句" data-alt="获取到SQL语句" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>此时，把SQL语句直接赋值到APP项目中使用就可以了，ROOM版本号修改7为8，<code>MIGATION_6_7</code>后面增加<code>MIGATION_7_8</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.gbcom.library_base.db
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 项目数据表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2021/10/26 13:28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Database</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    entities <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>AppConfig<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Ats<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> StationAts<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> DisCfg<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> PredefinedSMS<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> TrainBrdGroup<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> TrainPos<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Station<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> StationBrdZone<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Call<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> Message<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> SelfTest<span style="color:#f92672">::</span>
+</span></span><span style="display:flex;"><span>    class<span style="color:#f92672">,</span> Log<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> FileInfo<span style="color:#f92672">::</span>class<span style="color:#f92672">,</span> DispatchOrder<span style="color:#f92672">::</span>class<span style="color:#f92672">],</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>    version <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>    version <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>    exportSchema <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppDatabase</span> <span style="color:#f92672">:</span> RoomDatabase<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 调度命令
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @date 2022/09/29 15:30
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>    <span style="color:#66d9ef">abstract</span> fun <span style="color:#a6e22e">dispatchOrderDao</span><span style="color:#f92672">():</span> DispatchOrderDao
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    companion object <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@Volatile</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> var INSTANCE<span style="color:#f92672">:</span> AppDatabase<span style="color:#f92672">?</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">......</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">         * 创建调度命令表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">         * @author daizelai@gbcom.com.cn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">         * @date 2022/09/29 14:18
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">         */</span>
+</span></span><span style="display:flex;"><span>        var MIGATION_7_8<span style="color:#f92672">:</span> Migration <span style="color:#f92672">=</span> object <span style="color:#f92672">:</span> Migration<span style="color:#f92672">(</span><span style="color:#ae81ff">7</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">8</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            override fun <span style="color:#a6e22e">migrate</span><span style="color:#f92672">(</span>database<span style="color:#f92672">:</span> SupportSQLiteDatabase<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                database<span style="color:#f92672">.</span><span style="color:#a6e22e">execSQL</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                    <span style="color:#e6db74">&#34;CREATE TABLE `metro_dispatch_order` (&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`sender_id` INTEGER NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`sender` TEXT, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`order_info` TEXT, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`order_no` TEXT, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`total_pkg_num` INTEGER NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`pkg_index` INTEGER NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`type` INTEGER NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`to_top` INTEGER NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`create_time` INTEGER NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`status` INTEGER NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`receipt` INTEGER NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`identity_id` TEXT NOT NULL, &#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                            <span style="color:#e6db74">&#34;`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        fun <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span>context<span style="color:#f92672">:</span> Context<span style="color:#f92672">):</span> AppDatabase <span style="color:#f92672">=</span> INSTANCE <span style="color:#f92672">?:</span> <span style="color:#66d9ef">synchronized</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            INSTANCE <span style="color:#f92672">?:</span> buildDatabase<span style="color:#f92672">(</span>context<span style="color:#f92672">).</span><span style="color:#a6e22e">also</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                INSTANCE <span style="color:#f92672">=</span> it
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> fun <span style="color:#a6e22e">buildDatabase</span><span style="color:#f92672">(</span>context<span style="color:#f92672">:</span> Context<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>            Room<span style="color:#f92672">.</span><span style="color:#a6e22e">databaseBuilder</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>                context<span style="color:#f92672">.</span><span style="color:#a6e22e">applicationContext</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                AppDatabase<span style="color:#f92672">::</span>class<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Metro.db&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 5.增加Migrations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">.</span><span style="color:#a6e22e">addMigrations</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>                    MIGATION_1_2<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                    MIGATION_2_3<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                    MIGATION_3_4<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                    MIGATION_4_5<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>                    MIGATION_5_6<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>                    MIGATION_6_7
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                    MIGATION_6_7<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>                    MIGATION_7_8
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 出现异常问题 重建数据表，同时数据也会丢失。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// .fallbackToDestructiveMigration()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2019-03-31 12:54:26">更新于 2019-03-31&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/room/' class="post-tag">room</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8D%87%E7%BA%A7/' class="post-tag">数据库升级</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/as/" class="post-nav-item" rel="prev" title="as默认打开上一次的状态"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>as默认打开上一次的状态</a>
+      <a href="/posts/winddows/excel/" class="post-nav-item" rel="next" title="设置excel单元格下拉框">设置excel单元格下拉框<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.112.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

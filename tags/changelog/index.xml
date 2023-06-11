@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>changelog - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/changelog/</link>
+    <description>changelog - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 28 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/tags/changelog/" rel="self" type="application/rss+xml" /><item>
+  <title>git代码提交规范</title>
+  <link>https://daizelai.github.io/posts/git/gitcommit/</link>
+  <pubDate>Sun, 28 May 2023 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/gitcommit/</guid>
+  <description><![CDATA[一、描述 说明 为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。
+本次安装过程：
+npm install -g commitizennpm install -g cz-conventional-changelogecho &#39;{ &#34;path&#34;: &#34;cz-conventional-changelog&#34; }&#39; &gt; .czrcnpx commitizen init cz-conventional-changelog --save-dev --save-exactnpx commitizen init cz-conventional-changelog --save-dev --save-exact --forcenpm install -g conventional-changelog-clinpm ls -g -depth=0# 为了Git Bash命令行中也可以使用上下箭头选择git type，安装下面这个。npm install -g git-cz#下面是changlog#追加conventional-changelog -p angular -i CHANGELOG.md -s#全量生成conventional-changelog -p angular -i CHANGELOG.md -s -r 0 windows命令行环境 nvm-windows commitizen-windows.md]]></description>
+</item>
+</channel>
+</rss>

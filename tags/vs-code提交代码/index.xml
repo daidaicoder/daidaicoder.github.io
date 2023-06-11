@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>vs code提交代码 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/vs-code%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/</link>
+    <description>vs code提交代码 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 23 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/tags/vs-code%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/" rel="self" type="application/rss+xml" /><item>
+  <title>vscode提交代码交合并分支</title>
+  <link>https://daizelai.github.io/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/</link>
+  <pubDate>Tue, 23 May 2023 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/</guid>
+  <description><![CDATA[20230523_1540使用vscode提交代码交合并分支 一、描述 使用Visual Studio Code对代码进行提交和分支合并。
+二、提交 2.1.添加到暂存区 选把feature分支修改的代码添加到暂存区，点击Changes下文件后面的加号就可以把需要commit的文件添加到暂存区Staged Chages，实际执行的是git add 文件名命令。
+2.2.提交代码 三、合并分支 3.1.切换到devlop分支 要把在开发分支feature的修改代码合并到develop分支的话，需要先切换到develop分支。
+3.2.pull最新代码到本地 合并之前选择执行pull命令，让本地的develop分支代码保持最新。
+3.3.选择合并分支 选择合并分支菜单。
+选择要合并的分支，我们要把feature分支的代码合并到develop分支，所以这里选择feature分支。
+合并成功，可以看到本地的develop分支代码已经更新了。
+推送到远程 本地的develop分支推送到远程的develop分支。]]></description>
+</item>
+</channel>
+</rss>

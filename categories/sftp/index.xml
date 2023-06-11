@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>sftp - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/sftp/</link>
+    <description>sftp - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 08 Oct 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/categories/sftp/" rel="self" type="application/rss+xml" /><item>
+  <title>Linux之sftp使用</title>
+  <link>https://daizelai.github.io/posts/linux/sftp/</link>
+  <pubDate>Sat, 08 Oct 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/sftp/</guid>
+  <description><![CDATA[<h2 id="一下载文件">一、下载文件</h2>
+<blockquote>
+<p>将从远程主机的 <code>/var/www/layne/</code> 目录下将 <code>index.php</code> 下载到本地 <code>/home/layne/</code> 目录下。</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">sftp&gt; get /var/www/layne/index.php  /home/layne/
+</code></pre>]]></description>
+</item>
+</channel>
+</rss>

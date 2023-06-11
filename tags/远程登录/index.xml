@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>远程登录 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/</link>
+    <description>远程登录 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" rel="self" type="application/rss+xml" /><item>
+  <title>ssh免密码登录</title>
+  <link>https://daizelai.github.io/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/ssh/</link>
+  <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/ssh/</guid>
+  <description><![CDATA[20221016_1619ssh免密码登录 [TOC]
+一、描述 1.1.前言 by daizelai 2022/10/16 16:20 本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh
+1.2.介绍 A免密登录B的两种方式
+比如A本地台式机电脑上远程登录linux系统的B服务器
+1.2.1.方式一，上传A的pub公钥到B服务器 把A的公钥pub文件，放在B的~/authorized_keys文件中 打开A的id_isa.pub的文件，复制并粘贴到B的~/authorized_keys文件的最下方，不要带多余的空格和其他符号
+vim ~/authorized_keys #插入B服务器的的内容底部 authorized_keys文件里保存了其他人的公钥列表，代表这些服务器可以直接登录自己。
+命令执行过程：A会用自己的.ssh/目录下的私钥文件，例如id_rds进行加密登录。而B会用自己authorized_keys保存的公钥内容进行解密，如果解密成功，就认为A是合法用户，让A免密登录。
+注： 所以A的目录下必须有id_rsa文件。
+1.2.2.方式二、下载B的私钥文件，生成pem文件 新建一个pem文件，把B的private内容粘贴进去
+利用ssh命令即可登录
+ssh -i b的私钥.pem文件 root@B的ip地址 B的私钥文件（原本只能B自己知道）给了A，证明B足够信任A，A可以直接登录B 命令执行过程：A会用 -i指定的私钥文件（这里就是B的私钥文件）加密，B在自己的authorized_keys中用自己的公钥文件解密。如果成功，就认为A是合法用户，让A免密登录。
+二、免密码SSH登录 2.1.生成密钥 密钥生成说明
+C:\Users\你的用户名&gt;ssh-keygen -t rsa -b 2048 【上面一行的-t参数代表类型type，表示用rsa方式加密；-b参数，这里表示生成2048位的公钥】【输完ssh-keygen -t rsa -b 2048后回车，生成公钥-私钥对总共只用到这一个命令，以下是配置部分】Generating public/private rsa key pair.Enter file in which to save the key (/cygdrive/c/Users/你的用户名/.ssh/id_rsa): 【在上一行的冒号后输入保存私钥的文件名。默认是在C:\Users\你的用户名\.ssh\ 这个路径下，生成名为id_rsa的文件。】【另外在该路径下还会自动生成id_rsa.pub文件，用来保存公钥。】Enter passphrase (empty for no passphrase):【在这里输入私钥密码】Enter same passphrase again:【重复输入私钥密码】Your identification has been saved in c/Users/你的用户名/.]]></description>
+</item>
+</channel>
+</rss>

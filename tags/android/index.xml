@@ -1,0 +1,45 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>android - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/android/</link>
+    <description>android - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 30 May 2023 14:13:30 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/android/" rel="self" type="application/rss+xml" /><item>
+  <title>android开发中统计方法执行时间</title>
+  <link>https://daizelai.github.io/posts/android/methodexecution/</link>
+  <pubDate>Tue, 30 May 2023 14:13:30 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/methodexecution/</guid>
+  <description><![CDATA[一、android开发中统计方法执行时间 在Android开发中，可以使用以下方法来统计方法的执行时间：
+1.1.System.currentTimeMillis() 使用System.currentTimeMillis()方法： 在方法的开始处使用long startTime = System.currentTimeMillis();记录开始时间，在方法的结束处使用long endTime = System.currentTimeMillis();记录结束时间。然后可以通过计算差值long executionTime = endTime - startTime;来得到方法的执行时间。
+示例代码：
+long startTime = System.currentTimeMillis(); // 执行需要统计时间的方法 long endTime = System.currentTimeMillis(); long executionTime = endTime - startTime; Log.d(&#34;ExecutionTime&#34;, &#34;Method execution time: &#34; + executionTime + &#34;ms&#34;); 1.2.System.nanoTime() 使用System.nanoTime()方法： System.nanoTime()方法提供了更高精度的时间单位，可以用于测量方法的执行时间。用法与System.currentTimeMillis()类似。
+示例代码：
+long startTime = System.nanoTime(); // 执行需要统计时间的方法 long endTime = System.nanoTime(); long executionTime = endTime - startTime; Log.d(&#34;ExecutionTime&#34;, &#34;Method execution time: &#34; + executionTime + &#34;ns&#34;); 注意：以上方法只能统计方法的总体执行时间，不适用于需要分析方法内部细节的时间消耗。对于更复杂的性能分析和优化需求，可以考虑使用Android Profiler工具或第三方性能分析库，如Tracer等。]]></description>
+</item>
+<item>
+  <title>BottomNavigationView菜单调整高度和间距</title>
+  <link>https://daizelai.github.io/posts/android/navigationview/bottomnavigationview/</link>
+  <pubDate>Fri, 30 Sep 2022 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/navigationview/bottomnavigationview/</guid>
+  <description><![CDATA[20220930_1657BottomNavigationView菜单调整高度和间距 一、描述 by daizelai on 2022/09/30 16:58 关键字：菜单栏间距,温州S2号线菜单调整,BottomNavigationView菜单调整
+之前一直困扰许久的问题，BottomNavigationView菜单文件和图片的间距调整不好，然后调度还不知道怎么调整。
+今天终于搞定了。
+二、BottomNavigationView菜单 菜单布局 activity_main.xml 路径：\SH-CityRailway-ZTE\library_main\src\main\res\layout\activity_main.xml
+- &lt;com.google.android.material.bottomnavigation.BottomNavigationView - android:id=&#34;@+id/nav_menu_view&#34; - android:layout_width=&#34;450dp&#34; - android:layout_height=&#34;100dp&#34; - android:background=&#34;#cccccc&#34; - android:visibility=&#34;gone&#34; - android:padding=&#34;3dp&#34; - app:elevation=&#34;500dp&#34; - app:itemIconSize=&#34;35dp&#34; - app:itemTextColor=&#34;@color/main_bottom_item_text_selector&#34; - app:labelVisibilityMode=&#34;labeled&#34; - app:menu=&#34;@menu/main_menu&#34; /&gt; &lt;com.google.android.material.bottomnavigation.BottomNavigationView android:id=&#34;@+id/nav_menu_view&#34; android:layout_width=&#34;600dp&#34; android:layout_height=&#34;wrap_content&#34; android:padding=&#34;10dp&#34; app:itemIconSize=&#34;45dp&#34; android:background=&#34;#cccccc&#34; app:itemTextAppearanceActive=&#34;@style/bottom_tab_title_active&#34; app:itemTextAppearanceInactive=&#34;@style/bottom_tab_title_inactive&#34; app:itemTextColor=&#34;@color/main_bottom_item_text_selector&#34; app:labelVisibilityMode=&#34;labeled&#34; app:menu=&#34;@menu/main_menu&#34; /&gt; 菜单设置 这里还是和温州S2号线APP一样，没有改变。 路径：\SH-CityRailway-ZTE\library_main\src\main\res\menu\main_menu.xml
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;menu xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34; xmlns:app=&#34;http://schemas.android.com/apk/res-auto&#34;&gt; &lt;!-- 设置了android:icon=&#34;@drawable/bottom_png_list&#34;，就不需要BottomNavigationView设置 itemIconTint和itemTextColor 颜色 --&gt; &lt;item android:id=&#34;@+id/toRirstFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_index_item_selector&#34; android:title=&#34;主页&#34; app:showAsAction=&#34;never&#34; /&gt; &lt;item android:id=&#34;@+id/toSecondFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_call_item_selector&#34; android:title=&#34;通话&#34; app:showAsAction=&#34;always&#34; /&gt; &lt;item android:id=&#34;@+id/toThirdFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_message_item_selector&#34; android:title=&#34;消息&#34; app:showAsAction=&#34;collapseActionView&#34; /&gt; &lt;item android:id=&#34;@+id/toFiveFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_message_item_selector&#34; android:title=&#34;调度命令&#34; app:showAsAction=&#34;withText&#34; /&gt; &lt;item android:id=&#34;@+id/toFourthFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_setting_item_selector&#34; android:title=&#34;我的&#34; app:showAsAction=&#34;ifRoom&#34; /&gt; &lt;/menu&gt; main_menu_index_item_selector.]]></description>
+</item>
+<item>
+  <title>as默认打开上一次的状态</title>
+  <link>https://daizelai.github.io/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/as/</link>
+  <pubDate>Sun, 31 Mar 2019 12:08:21 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/as/</guid>
+  <description><![CDATA[20220930_1207as默认打开上一次的状态 一、描述 by daizelai on 2022/09/30 12:08 as默认打开上一次的状态，但是如果你是复制一个项目为另一个新项目，这样使用as打开这两个项目时，会发现，as打开的上一次状态都是一样的。
+本文主要讲述了如何各自打开各自的上一次状态。
+二、开始 2.1.配置打开上一次状态 File Settings&hellip; Appearance &amp; Behavior System Settings Startup/Shutdown Reopen last project on startup 2.2.修改各自上一次状态 打开AndroidStudio的project视图方式，找到workspace.xml然后删除。
+然后关闭Android Studio后，重启Android Studio，这样就能把工作状态保存了。
+这样即使是直接把项目复制成新的项目，然后再打开新的项目，布局也是自己上次打开的状态了。]]></description>
+</item>
+</channel>
+</rss>

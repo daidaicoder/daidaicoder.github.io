@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>gitflow记录 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="gitflow记录" /><meta name="keywords" content='原创, git, gitflow, git工作流, git命令行, git提交' /><meta itemprop="name" content="gitflow记录">
+<meta itemprop="description" content="gitflow记录"><meta itemprop="datePublished" content="2023-04-14T16:11:56+00:00" />
+<meta itemprop="dateModified" content="2023-04-14T16:11:56+00:00" />
+<meta itemprop="wordCount" content="633">
+<meta itemprop="keywords" content="原创,git,gitflow,git工作流,git命令行,git提交," /><meta property="og:title" content="gitflow记录" />
+<meta property="og:description" content="gitflow记录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-14T16:11:56+00:00" />
+<meta property="article:modified_time" content="2023-04-14T16:11:56+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="gitflow记录"/>
+<meta name="twitter:description" content="gitflow记录"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/ssh/" /><link rel="next" href="https://daizelai.github.io/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "gitflow记录",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/git\/20230414_1304gitflow%E8%AE%B0%E5%BD%95\/gitflow\/"
+    },"genre": "posts","keywords": "原创, git, gitflow, git工作流, git命令行, git提交","wordcount":  633 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/git\/20230414_1304gitflow%E8%AE%B0%E5%BD%95\/gitflow\/","datePublished": "2023-04-14T16:11:56+00:00","dateModified": "2023-04-14T16:11:56+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "作者"
+      },"description": "gitflow记录"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>gitflow记录</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Anonymous</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/git/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> git</a>&ensp;<a href="/categories/gitflow/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> gitflow</a>&ensp;<a href="/categories/git%E6%8F%90%E4%BA%A4/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> git提交</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-04-14 16:11:56"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-04-14">2023-04-14</time></span>&nbsp;<span title="更新于 2023-04-14 16:11:56"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-04-14">2023-04-14</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 633 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a>
+      <ul>
+        <li><a href="#12总结">1.2.总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#二常用分支git命令">二、常用分支git命令</a>
+      <ul>
+        <li><a href="#21新开分支">2.1.新开分支</a></li>
+        <li><a href="#22切换到另一个分支">2.2.切换到另一个分支</a></li>
+        <li><a href="#23新开分支并切换到新分支">2.3.新开分支并切换到新分支</a></li>
+        <li><a href="#24查看分支列表">2.4.查看分支列表</a></li>
+        <li><a href="#25查看远程分支列表">2.5.查看远程分支列表</a></li>
+        <li><a href="#26向远程仓库提交本地新开的分支">2.6.向远程仓库提交本地新开的分支</a></li>
+        <li><a href="#27删除远程分支">2.7.删除远程分支</a></li>
+        <li><a href="#28删除本地分支">2.8.删除本地分支</a></li>
+        <li><a href="#29更新分支列表信息">2.9.更新分支列表信息</a></li>
+      </ul>
+    </li>
+    <li><a href="#三git-flow">三、git flow</a>
+      <ul>
+        <li><a href="#31git-flow完整流程示意">3.1.git flow完整流程示意</a></li>
+        <li><a href="#32主要分支介绍">3.2.主要分支介绍</a></li>
+        <li><a href="#33创建develop分支">3.3.创建develop分支</a></li>
+        <li><a href="#34辅助分支介绍">3.4.辅助分支介绍</a></li>
+        <li><a href="#35feature-branches功能分支">3.5.Feature branches（功能分支）</a></li>
+        <li><a href="#36release-branches预发布分支">3.6.Release branches（预发布分支）</a></li>
+        <li><a href="#37hotfix-branches热修复分支">3.7.Hotfix branches（热修复分支）</a></li>
+        <li><a href="#38删除远程分支">3.8.删除远程分支</a></li>
+        <li><a href="#39远程有分支本地无分支">3.9.远程有分支本地无分支</a></li>
+        <li><a href="#310本地有分支远程无分支">3.10.本地有分支远程无分支</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>记录git flow的使用</p>
+<h3 id="12总结">1.2.总结</h3>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">1.dev-开发分支是从master分支派生的。
+2.feature-特性分支是从dev-开发分支派生的，feature只是本地分支，不会被上传远端，特殊环境例外。
+3.feature-特性分支完成时，它被合并到dev-开发分支中。
+4.feature-特性分支合并完成后删除。
+4.release-发布分支是从dev-开发分支派生的。
+5.release-发布分支发布完成时，它被合并到master分支和dev-开发分支中（前提是保证版本的稳定性后再合并到master分支上）。
+6.release-发布分支合并完成后删除。
+7.版本出现问题时候则通过master分支派生出hotfixes-紧急分支进行修复，修复完成后将它合并到master分支和dev-开发分支中。
+8.hotfixes-紧急分支合并完成后删除。
+</code></pre><h2 id="二常用分支git命令">二、常用分支git命令</h2>
+<h3 id="21新开分支">2.1.新开分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git branch 新分支名
+#新建分支 develop
+$ git branch develop
+</code></pre><h3 id="22切换到另一个分支">2.2.切换到另一个分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git checkout 分支名
+#切换到 develop 分支
+$ git checkout develop
+</code></pre><h3 id="23新开分支并切换到新分支">2.3.新开分支并切换到新分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git checkout -b 新分支名
+#新开 develop 分支，并切换到此分支
+$ git checkout -b develop
+</code></pre><h3 id="24查看分支列表">2.4.查看分支列表</h3>
+<p>头部带 remotes/origin 的，表示远程分支</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git branch -a
+</code></pre><h3 id="25查看远程分支列表">2.5.查看远程分支列表</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git branch -r
+</code></pre><pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git branch -r
+  origin/HEAD -&gt; origin/master
+  origin/develop
+  origin/master
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+</code></pre><p>下面是查看所有分支：</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git branch -a
+* develop
+  master
+  msg
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/develop
+  remotes/origin/master
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+</code></pre><h3 id="26向远程仓库提交本地新开的分支">2.6.向远程仓库提交本地新开的分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git push origin 新开分支名
+#提交新建的 develop 分支
+$ git push origin develop
+</code></pre><h3 id="27删除远程分支">2.7.删除远程分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git push origin --delete 远程分支名
+#删除远程仓库中的 develop 分支
+$ git push origin --delete develop
+</code></pre><h3 id="28删除本地分支">2.8.删除本地分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git branch -d 分支名
+#删除本地的 develop 分支
+$ git branch -d develop
+</code></pre><h3 id="29更新分支列表信息">2.9.更新分支列表信息</h3>
+<p>用于协作时，项目队友添加或删除了远程分支的分支，可以通过这种方式来刷新分支列表信息</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git fetch -p
+</code></pre><h2 id="三git-flow">三、git flow</h2>
+<h3 id="31git-flow完整流程示意">3.1.git flow完整流程示意</h3>
+<p>Git 开发模式本质上是一套流程，团队每个成员遵守这套流程以确保完成可控的软件开发过程。</p>
+<p><figure><a class="lightgallery" href="../images/git_flow_study_2023-04-14_132840.png" data-thumbnail="../images/git_flow_study_2023-04-14_132840.png" data-sub-html="<h2>git flow完整流程示意</h2><p>git flow完整流程示意</p>"><img loading="lazy" src="../images/git_flow_study_2023-04-14_132840.png" srcset="../images/git_flow_study_2023-04-14_132840.png, ../images/git_flow_study_2023-04-14_132840.png 1.5x, ../images/git_flow_study_2023-04-14_132840.png 2x" sizes="auto" data-title="git flow完整流程示意" data-alt="git flow完整流程示意" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">git flow完整流程示意</figcaption>
+  </figure></p>
+<p>所有在Master分支上的Commit应该Tag。</p>
+<p><figure><a class="lightgallery" href="../images/git_flow_2023-04-14_161258.png" data-thumbnail="../images/git_flow_2023-04-14_161258.png" data-sub-html="<h2>master的commit</h2><p>master的commit</p>"><img loading="lazy" src="../images/git_flow_2023-04-14_161258.png" srcset="../images/git_flow_2023-04-14_161258.png, ../images/git_flow_2023-04-14_161258.png 1.5x, ../images/git_flow_2023-04-14_161258.png 2x" sizes="auto" data-title="master的commit" data-alt="master的commit" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">master的commit</figcaption>
+  </figure></p>
+<h3 id="32主要分支介绍">3.2.主要分支介绍</h3>
+<p>主要分支分为<code>develop分支</code>和<code>master分支</code>，下图是它们之间的关系。</p>
+<p><figure><a class="lightgallery" href="../images/git_flow_master_and_develop_2023-04-14_133028.png" data-thumbnail="../images/git_flow_master_and_develop_2023-04-14_133028.png" data-sub-html="<h2>master与develop之间的关系</h2><p>master与develop之间的关系</p>"><img loading="lazy" src="../images/git_flow_master_and_develop_2023-04-14_133028.png" srcset="../images/git_flow_master_and_develop_2023-04-14_133028.png, ../images/git_flow_master_and_develop_2023-04-14_133028.png 1.5x, ../images/git_flow_master_and_develop_2023-04-14_133028.png 2x" sizes="auto" data-title="master与develop之间的关系" data-alt="master与develop之间的关系" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">master与develop之间的关系</figcaption>
+  </figure></p>
+<blockquote>
+<p>master 分支（origin/master）</p>
+</blockquote>
+<p>代码仓库中有且仅有的一条主分支，默认为 master ，在创建版本库时会自动创建。所有提供给用户使用的正式版本的源码，都会在这个分支上发布。也就是说主分支 master 用来发布重大版本。</p>
+<blockquote>
+<p>develop 分支（origin/develop）</p>
+</blockquote>
+<p>日常开发工作都会在 develop 分支上面完成。develop 分支可以用来生成代码的最新隔夜版本（nightly builds）。</p>
+<h3 id="33创建develop分支">3.3.创建develop分支</h3>
+<p>基于master分支创建一个develop分支。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git checkout -b develop master
+#push develop 到远程仓库
+$ git push origin develop
+$ git push -u origin develop
+</code></pre><p>当我们在develop上完成了新版本的功能，最终会把所有的修改 merge 到 master 分支。针对每次 master 的修改都会打一个 Tag 作为可发布产品的版本号。</p>
+<h3 id="34辅助分支介绍">3.4.辅助分支介绍</h3>
+<p>开发过程中不可能项目人所有都在一个 develop 分支中开发，版本管理会很混乱。所以除了主要分支外，我们还需要一些辅助分支来协助团队成员间的并行开发。</p>
+<p>所用到的辅助分支大体分三类：</p>
+<ul>
+<li>Feature branches（功能分支）</li>
+<li>Release branches（预发布分支）</li>
+<li>Hotfix branches（热修复分支）</li>
+</ul>
+<h3 id="35feature-branches功能分支">3.5.Feature branches（功能分支）</h3>
+<h4 id="351应用场景">3.5.1.应用场景</h4>
+<p>当要开始一个新功能的开发时，我门可以创建一个 Feature branche 。等待这个新功能开发完成并确定应用到新版本中就合并回 develop，那么如果不是就会被很遗憾的丢弃。。。</p>
+<p><figure><a class="lightgallery" href="../images/git_flow_feature_2023-04-14_133858.png" data-thumbnail="../images/git_flow_feature_2023-04-14_133858.png" data-sub-html="<h2>Feature branches分支</h2><p>Feature branches分支</p>"><img loading="lazy" src="../images/git_flow_feature_2023-04-14_133858.png" srcset="../images/git_flow_feature_2023-04-14_133858.png, ../images/git_flow_feature_2023-04-14_133858.png 1.5x, ../images/git_flow_feature_2023-04-14_133858.png 2x" sizes="auto" data-title="Feature branches分支" data-alt="Feature branches分支" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">Feature branches分支</figcaption>
+  </figure></p>
+<h4 id="352应用规则">3.5.2.应用规则</h4>
+<ol>
+<li>从 develop 分支创建，最终合并回 develop 分支;</li>
+<li>分支名：feature／＊;</li>
+</ol>
+<p><strong>Tips：</strong> 这里很多地方说用<code>feature-*</code>的方式命名，也可以使用<code>feature/*</code>方式，其实意思是一样的。</p>
+<h4 id="353creat-a-feature-branch">3.5.3.Creat a feature branch</h4>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 基于develop分支创建feature功能分支，当然这里也可以先【git push -u origin feature/name_v1.0.0】
+$ git checkout -b feature/name_v1.0.0 develop
+</code></pre><p>创建<code>name_v1.0.0</code>分支之后，就可以开始开发了。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">git status
+git add fiel...
+git commit -m &#34;submit&#34;
+</code></pre><p>开发完成之后，<code>push</code>到远程，<code>push</code>本地<code>feature/name_v1.0.0</code>到远处代码库。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 将feature分支推送到远程【可选，如果这个需求有其他人参与开发的话】对应`git flow publish feature name`命令，拉取`git flow feature track feature name`。
+$ git push origin feature/name_v1.0.0
+$ git push -u origin 分支名称
+</code></pre><h4 id="354切换到develop合并featurename_v100">3.5.4.切换到develop合并feature/name_v1.0.0</h4>
+<p>完成feature分支的开发之后， 先切换到develop分支。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 拉取远端最新develop分支并切换到develop【这是为了后面合并feature分支的工作】
+$ git pull origin develop &amp;&amp; git checkout develop
+# develop合资feature分支的修改
+$ git merge --no-ff feature/name_v1.0.0
+# 提交feature的更改到远程develop分支
+$ git push origin develop
+</code></pre><p><strong>&quot;- -no-ff&quot;</strong> 的作用是创建一个新的&quot;commit&quot;对象用于当前合并操作。这样既可以避免丢失该功能分支的历史存在信息，又可以集中该功能分支所有历史提交。并且如果想回退版本也会比较方便。</p>
+<p>下面是<code>git merge --no-ff</code>图示：</p>
+<p><figure><a class="lightgallery" href="../images/git_flow_feature_2023-04-14_131631.png" data-thumbnail="../images/git_flow_feature_2023-04-14_131631.png" data-sub-html="<h2>git merge &amp;ndash;no-ff 图示</h2><p>git merge --no-ff 图示</p>"><img loading="lazy" src="../images/git_flow_feature_2023-04-14_131631.png" srcset="../images/git_flow_feature_2023-04-14_131631.png, ../images/git_flow_feature_2023-04-14_131631.png 1.5x, ../images/git_flow_feature_2023-04-14_131631.png 2x" sizes="auto" data-title="git merge --no-ff 图示" data-alt="git merge &amp;ndash;no-ff 图示" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">git merge &ndash;no-ff 图示</figcaption>
+  </figure></p>
+<h4 id="355移除本地和远程仓库的featurename_v100分支">3.5.5.移除本地和远程仓库的feature/name_v1.0.0分支</h4>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 删除本地分支feature/name_v1.0.0
+$ git branch -d feature/name_v1.0.0
+# 删除远程分支，如果远程存在这个分支的话
+$ git push origin --delete feature/name_v1.0.0
+</code></pre><h3 id="36release-branches预发布分支">3.6.Release branches（预发布分支）</h3>
+<h4 id="361应用场景">3.6.1.应用场景</h4>
+<p>&ldquo;Release branches&rdquo; 用来做新版本发布前的准备工作，在上面可以做一些小的 bug 修复、准备发布版本号等等和发布有关的小改动，其实已经是一个比较成熟的版本了。另外这样我们既可以在预发布分支上做一些发布前准备，也不会影响 &ldquo;develop&rdquo; 分支上下一版本的新功能开发。</p>
+<h4 id="362应用规则">3.6.2.应用规则</h4>
+<p>从<code>develop</code>分支创建，最终合并回<code>develop</code>和<code>master</code>;</p>
+<p>分支名：<code>release-＊</code>;</p>
+<h4 id="363creat-a-release-branch">3.6.3.Creat a release branch</h4>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 从develop分支创建release分支
+$ git checkout -b release-1.1 develop
+#push 到远程仓库（可选）
+$ git push origin release-1.1
+</code></pre><p>现在可以在这个<code>release-1.1</code>分支中开始开发了。</p>
+<h4 id="364切换到-develop-合并-release-11">3.6.4.切换到 develop 合并 release-1.1</h4>
+<p>预发布分支所做的修改同时也要合并回 develop</p>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 完成release分支开发之后，获取最新develop分支内容，并且切换到develop分支。
+$ git pull origin develop &amp;&amp; git checkout develop
+# 合并release-1.1分支到develop分支
+$ git merge --no-ff release-1.1
+# 提交到远程develop分支
+$ git push origin develop
+</code></pre><h4 id="365切换到-master-合并-release-11">3.6.5.切换到 master 合并 release-1.1</h4>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 完成release分支开发之后，获取最新master分支，并切换到master分支
+$ git pull origin master &amp;&amp; git checkout master
+# 合并release-1.1修改到master分支
+$ git merge --no-ff release-1.1
+# 把本地master分支的修改推送到远程服务器
+$ git push origin master
+# 给版本打tag，【git tag -a v1.1 master】
+$ git tag -a v1.1 -m &#39;my version 1.1&#39;
+# 推送tag到远程服务器，也可以`git push --tags`提交所有包括tag
+$ git push origin v1.1
+</code></pre><p>当我们的 release-1.1 的 Review 完成，也就预示着我们可以发布了。打上相应的版本号，再 push 到远程仓库。</p>
+<h4 id="366移除本地和远程仓库的-release-11">3.6.6.移除本地和远程仓库的 release-1.1</h4>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 删除本地release-1.1分支
+$ git branch -d release-1.1
+# 删除远程release-1.1分支
+$ git push origin --delete release-1.1
+</code></pre><h3 id="37hotfix-branches热修复分支">3.7.Hotfix branches（热修复分支）</h3>
+<h4 id="371应用场景">3.7.1.应用场景</h4>
+<p>&ldquo;Hotfix branches&rdquo; 主要用于处理线上版本出现的一些需要立刻修复的 bug 情况.</p>
+<p>下面是示意图：</p>
+<p><figure><a class="lightgallery" href="../images/git_flow_hotfixes_2023-04-14_132342.png" data-thumbnail="../images/git_flow_hotfixes_2023-04-14_132342.png" data-sub-html="<h2>../images/git_flow_hotfixes_2023-04-14_132342.png</h2><p>示意图</p>"><img loading="lazy" src="../images/git_flow_hotfixes_2023-04-14_132342.png" srcset="../images/git_flow_hotfixes_2023-04-14_132342.png, ../images/git_flow_hotfixes_2023-04-14_132342.png 1.5x, ../images/git_flow_hotfixes_2023-04-14_132342.png 2x" sizes="auto" data-title="示意图" data-alt="../images/git_flow_hotfixes_2023-04-14_132342.png" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption"></figcaption>
+  </figure></p>
+<h4 id="372应用规则">3.7.2.应用规则</h4>
+<p>从<code>master</code>分支上当前版本号的<code>tag</code>处切出，也就是从最新的<code>master</code>上创建，最终合并回<code>develop</code>和<code>master</code>;</p>
+<p>分支名：<code>hotfix-＊</code>;</p>
+<h4 id="373creat-a-fixbug-branch">3.7.3.Creat a fixbug branch</h4>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git checkout -b fixbug-1.1.1 master
+# push 到远程仓库（可选）
+$ git push origin fixbug-1.1.1
+</code></pre><p>现在可以修改BUG了。</p>
+<h4 id="374切换到develop合并fixbug111">3.7.4.切换到develop合并fixbug－1.1.1</h4>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 更新develop为最新，并切换到develop分支
+$ git pull origin develop &amp;&amp; git checkout develop
+# 合并fixbug-1.1.1到develop分支。
+$ git merge --no-ff fixbug-1.1.1
+# 推送最新修改到远程develop分支
+$ git push origin develop
+</code></pre><h4 id="375切换到master合并fixbug-111">3.7.5.切换到master合并fixbug-1.1.1</h4>
+<p>bug修复完成，合并回<code>master</code>并打上版本号；</p>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 从远程服务器获取最新master代码，并切换到master分支
+$ git pull origin master &amp;&amp; git checkout master
+# 合并fixbug-1.1.1的修改到master分支
+$ git merge --no-ff fixbug-1.1.1
+# 推送master到远程服务器
+$ git push origin master
+# 给版本打tag
+$ git tag -a v1.1.1 -m &#39;my version 1.1.1&#39;
+# 推送tag到远程服务器，也可以`git push --tags`提交所有包括tag
+$ git push origin v1.1.1
+</code></pre><h4 id="376移除本地和远程仓库的-fixbug-111">3.7.6.移除本地和远程仓库的 fixbug-1.1.1</h4>
+<pre tabindex="0"><code class="language-git" data-lang="git"># 删除本地fixbug-1.1.1分支
+$ git branch -d fixbug-1.1.1
+# 删除远程fixbug-1.1.1分支
+$ git push origin --delete fixbug-1.1.1
+</code></pre><h3 id="38删除远程分支">3.8.删除远程分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git branch -r -d origin/branch-name &amp;&amp; git push origin :branch-name
+</code></pre><h3 id="39远程有分支本地无分支">3.9.远程有分支本地无分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git checkout --track origin/branch-name
+</code></pre><h3 id="310本地有分支远程无分支">3.10.本地有分支远程无分支</h3>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git push --set-upstream origin branch-name
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-04-14 16:11:56">更新于 2023-04-14&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/git/' class="post-tag">git</a><a href='/tags/gitflow/' class="post-tag">gitflow</a><a href='/tags/git%E5%B7%A5%E4%BD%9C%E6%B5%81/' class="post-tag">git工作流</a><a href='/tags/git%E5%91%BD%E4%BB%A4%E8%A1%8C/' class="post-tag">git命令行</a><a href='/tags/git%E6%8F%90%E4%BA%A4/' class="post-tag">git提交</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/ssh/" class="post-nav-item" rel="prev" title="ssh免密码登录"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>ssh免密码登录</a>
+      <a href="/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/" class="post-nav-item" rel="next" title="vscode提交代码交合并分支">vscode提交代码交合并分支<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.112.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

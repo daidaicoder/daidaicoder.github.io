@@ -1,0 +1,90 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>mysql - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/mysql/</link>
+    <description>mysql - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 28 Oct 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/tags/mysql/" rel="self" type="application/rss+xml" /><item>
+  <title>mysql乱码</title>
+  <link>https://daizelai.github.io/posts/mysql/character/</link>
+  <pubDate>Fri, 28 Oct 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/character/</guid>
+  <description><![CDATA[一、查看mysql服务端情况 1.查看mysql默认的编码配置
+mysql&gt; show variables like &#39;char%&#39;; mysql&gt; SHOW VARIABLES LIKE &#39;character%&#39;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | latin1 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | latin1 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 8 rows in set (0.00 sec) 2.查看某(we7)数据库的编码格式
+mysql&gt; show create database we7; +----------+--------------------------------------------------------------+ | Database | Create Database | +----------+--------------------------------------------------------------+ | we7 | CREATE DATABASE `we7` /*!]]></description>
+</item>
+<item>
+  <title>mysql之存储过程</title>
+  <link>https://daizelai.github.io/posts/mysql/procedure/</link>
+  <pubDate>Sun, 09 Oct 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/procedure/</guid>
+  <description><![CDATA[ 查看存储过程 mysql&gt; show procedure status; 查看存储过程内容 查看某一个存储过程的内容
+mysql&gt; show create procedure updateHotspot_pro; ]]></description>
+</item>
+<item>
+  <title>mysql数据库导入导出</title>
+  <link>https://daizelai.github.io/posts/mysql/mysqldump/</link>
+  <pubDate>Sat, 08 Oct 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/mysqldump/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一数据库导入导出">一、数据库导入导出</h2>
+<h3 id="1导出数据库">1.导出数据库</h3>
+<blockquote>
+<p># mysqldump -u root -p 数据库名&gt;文件名.sql</p>
+</blockquote>]]></description>
+</item>
+<item>
+  <title>mysql创建utf8字符集数据库</title>
+  <link>https://daizelai.github.io/posts/mysql/mysql/</link>
+  <pubDate>Wed, 07 Sep 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/mysql/</guid>
+  <description><![CDATA[ 一、MySQL新建数据库语法 CREATE DATABASE 的语法： CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name [create_specification [, create_specification] ...] create_specification: [DEFAULT] CHARACTER SET charset_name | [DEFAULT] COLLATE collation_name 二、新建数据使用示例 CREATE DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 三、更改数据库的字符编码 ALTER DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ]]></description>
+</item>
+<item>
+  <title>mysql导入数据库后乱码的问题</title>
+  <link>https://daizelai.github.io/posts/mysql/mysql%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/mysqlchar/</link>
+  <pubDate>Tue, 06 Sep 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/mysql%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/mysqlchar/</guid>
+  <description><![CDATA[ Mysql导入数据库后乱码问题 一、Web乱码 在容器中install好les项目后，打开Web却发现菜单是乱码
+数据乱码 二、修改Mysql配置 1）、修改mysql配置 找到数据库的配置文件，增加**[client]配置编码utf8**，[mysqld]中同时增加init_connect=&lsquo;SET NAMES utf8&rsquo;，修改如下：
+[root@les /]# vim /etc/my.cnf [client] default-character-set=utf8 [mysqld] character_set_server=utf8 init_connect=&#39;SET NAMES utf8&#39; datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock user=mysql # Disabling symbolic-links is recommended to prevent assorted security risks symbolic-links=0 [mysqld_safe] log-error=/var/log/mysqld.log pid-file=/var/run/mysqld/mysqld.pid 2）、重启服务
+/etc/init.d/mysqld restart /etc/init.d/httpd restart 三、解决乱码 1.这个时候刷新Web发现还是乱码，那就是数据源有问题了，说明导入到数据库里的数据就是乱码，打开数据库一看果然如此，接着往下走。
+2.卸载掉les项目，重新安装。
+./gbc100_v1.1.bin uninstall lebds_UI /var/www/html lebds ./gbc100_v1.1.bin install lebds_UI /var/www/html lebds 3.打开Web页面，发现问题已解决。
+数据乱码 ]]></description>
+</item>
+<item>
+  <title>MySql服务突然没有了</title>
+  <link>https://daizelai.github.io/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/</link>
+  <pubDate>Mon, 05 Sep 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/</guid>
+  <description><![CDATA[一、打开Web界面发现如下错误 看下图的意思是sql连接的错误，后面会单独连接MySql试试看。
+MySql连接不上了 二、使用命令连接不上了，如下图： 1.截图如下：
+MySql连接不上了 2.代码如下：
+D:\server\mysql5714\bin&gt;mysql -h127.0.0.1 -uroot -p Enter password: ****** ERROR 2003 (HY000): Can&#39;t connect to MySQL server on &#39;127.0.0.1&#39; (10061) D:\server\mysql5714\bin&gt;net start mysql 服务名无效。 请键入 NET HELPMSG 2185 以获得更多的帮助。 D:\server\mysql5714\bin&gt;net mysql start 此命令的语法是: NET [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP | HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START | STATISTICS | STOP | TIME | USE | USER | VIEW ] 三、计算机服务中去看，也没有MySql服务 服务中看不到MySql 四、解决办法 1.]]></description>
+</item>
+<item>
+  <title>mysql之密码学</title>
+  <link>https://daizelai.github.io/posts/mysql/mysqlpassword/</link>
+  <pubDate>Tue, 09 Aug 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/mysqlpassword/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一mysql命令行重置密码">一、mysql命令行重置密码</h2>
+<h3 id="11首先需要连接进入mysql">1.1.首先需要连接进入mysql</h3>
+<pre tabindex="0"><code>mysql&gt; select user();  
++---------------+  
+| user()        |  
++---------------+  
+| root@localhost |  
++---------------+  
+1 row in set (0.00 sec) 
+</code></pre>]]></description>
+</item>
+</channel>
+</rss>

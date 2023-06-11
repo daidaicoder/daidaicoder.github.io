@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>方法耗时 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E6%96%B9%E6%B3%95%E8%80%97%E6%97%B6/</link>
+    <description>方法耗时 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 30 May 2023 14:13:30 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E6%96%B9%E6%B3%95%E8%80%97%E6%97%B6/" rel="self" type="application/rss+xml" /><item>
+  <title>android开发中统计方法执行时间</title>
+  <link>https://daizelai.github.io/posts/android/methodexecution/</link>
+  <pubDate>Tue, 30 May 2023 14:13:30 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/methodexecution/</guid>
+  <description><![CDATA[一、android开发中统计方法执行时间 在Android开发中，可以使用以下方法来统计方法的执行时间：
+1.1.System.currentTimeMillis() 使用System.currentTimeMillis()方法： 在方法的开始处使用long startTime = System.currentTimeMillis();记录开始时间，在方法的结束处使用long endTime = System.currentTimeMillis();记录结束时间。然后可以通过计算差值long executionTime = endTime - startTime;来得到方法的执行时间。
+示例代码：
+long startTime = System.currentTimeMillis(); // 执行需要统计时间的方法 long endTime = System.currentTimeMillis(); long executionTime = endTime - startTime; Log.d(&#34;ExecutionTime&#34;, &#34;Method execution time: &#34; + executionTime + &#34;ms&#34;); 1.2.System.nanoTime() 使用System.nanoTime()方法： System.nanoTime()方法提供了更高精度的时间单位，可以用于测量方法的执行时间。用法与System.currentTimeMillis()类似。
+示例代码：
+long startTime = System.nanoTime(); // 执行需要统计时间的方法 long endTime = System.nanoTime(); long executionTime = endTime - startTime; Log.d(&#34;ExecutionTime&#34;, &#34;Method execution time: &#34; + executionTime + &#34;ns&#34;); 注意：以上方法只能统计方法的总体执行时间，不适用于需要分析方法内部细节的时间消耗。对于更复杂的性能分析和优化需求，可以考虑使用Android Profiler工具或第三方性能分析库，如Tracer等。]]></description>
+</item>
+</channel>
+</rss>

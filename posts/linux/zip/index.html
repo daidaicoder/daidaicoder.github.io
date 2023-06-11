@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux之zip和unzip的使用 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="Linux之zip、unzip文件的使用手记。" /><meta name="keywords" content='原创, linux, zip, unzip' /><meta itemprop="name" content="Linux之zip和unzip的使用">
+<meta itemprop="description" content="Linux之zip、unzip文件的使用手记。"><meta itemprop="datePublished" content="2015-08-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-08-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="400">
+<meta itemprop="keywords" content="原创,linux,zip,unzip," /><meta property="og:title" content="Linux之zip和unzip的使用" />
+<meta property="og:description" content="Linux之zip、unzip文件的使用手记。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/zip/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2015-08-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-08-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux之zip和unzip的使用"/>
+<meta name="twitter:description" content="Linux之zip、unzip文件的使用手记。"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/zip/" /><link rel="next" href="https://daizelai.github.io/posts/mysql/mysqlpassword/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux之zip和unzip的使用",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/zip\/"
+    },"genre": "posts","keywords": "原创, linux, zip, unzip","wordcount":  400 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/zip\/","datePublished": "2015-08-08T00:00:00+00:00","dateModified": "2015-08-08T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "作者"
+      },"description": "Linux之zip、unzip文件的使用手记。"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Linux之zip和unzip的使用</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Anonymous</span></span>
+          <span class="post-category">收录于 <a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/zip/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> zip</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2015-08-08 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2015-08-08">2015-08-08</time></span>&nbsp;<span title="更新于 2015-08-08 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2015-08-08">2015-08-08</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 400 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一zipunzip命令说明">一、zip/unzip命令说明</a>
+      <ul>
+        <li><a href="#11功能说明">1.1.功能说明</a></li>
+        <li><a href="#12zip选项含义">1.2.zip选项含义</a></li>
+        <li><a href="#13unzip选项含义">1.3.unzip选项含义</a></li>
+      </ul>
+    </li>
+    <li><a href="#二示例">二、示例</a>
+      <ul>
+        <li><a href="#21将lai目录下所有的文件和目录压缩压缩级别为最高压缩的文件保存到rootlaizip">2.1.将lai目录下所有的文件和目录压缩，压缩级别为最高，压缩的文件保存到/root/lai.zip。</a></li>
+        <li><a href="#22将lai目录下所有的文件和子目录压缩除了txt的文件压缩的文件保存到rootlaizip">2.2.将lai目录下所有的文件和子目录压缩，除了“*.txt”的文件，压缩的文件保存到/root/lai.zip。</a></li>
+        <li><a href="#23将laizip压缩文件中的">2.3.将lai.zip压缩文件中的</a></li>
+        <li><a href="#24把修改后的indexphp文件更新到rootlaizip压缩文件">2.4.把修改后的index.php文件更新到/root/lai.zip压缩文件。</a></li>
+        <li><a href="#25根据要求解压缩文件">2.5.根据要求解压缩文件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h2 id="一zipunzip命令说明">一、zip/unzip命令说明</h2>
+<h3 id="11功能说明">1.1.功能说明</h3>
+<p>将一般的文件或者目录进行压缩或者解压，默认生成以“.zip”为后缀的压缩包。zip命令类似于Windows中的winzip压缩程序。其格式如下：</p>
+<pre tabindex="0"><code>zip [选项] 压缩文件名 需要压缩的文档列表
+unzip [选项] 压缩文件名
+</code></pre><h3 id="12zip选项含义">1.2.zip选项含义</h3>
+<p>zip选项含义</p>
+<pre tabindex="0"><code>-r 递归压缩，将指定目录下的所有文件以及子目录全部压缩
+-d 从压缩文件内删除指定的文件
+-i “文件列表” 只压缩文件列表中的文件
+-x “文件列表” 压缩时排除文件列表中指定的文件
+-u 更新文件到压缩文件中
+-m 将文件加入压缩文件压缩后，删除原始文件，即把文件移到压缩文件中
+-F 尝试修复损坏的压缩文件
+-T 检查压缩文件内的每个文件是否正确无误
+- 压缩级别 压缩级别是一个1～9的数字
+</code></pre><h3 id="13unzip选项含义">1.3.unzip选项含义</h3>
+<p>unzip选项含义</p>
+<pre tabindex="0"><code>-x &#34;文件列表&#34; 解压文件，但不包含文件列表中指定的文件
+-t 测试压缩文件有无损坏，并不解压
+-v 查看压缩文件的详细信息，具体包括压缩文件中包含的文件大小、文件名和压缩比等，并不解压
+-n 解压时不覆盖已经存在的文件
+-o 解压时覆盖已经存在的文件，并且不要求用户确认
+-d 目录名 把压缩文件解压到指定目录下
+</code></pre><h2 id="二示例">二、示例</h2>
+<h3 id="21将lai目录下所有的文件和目录压缩压缩级别为最高压缩的文件保存到rootlaizip">2.1.将lai目录下所有的文件和目录压缩，压缩级别为最高，压缩的文件保存到/root/lai.zip。</h3>
+<pre tabindex="0"><code>[root@localhost lai]# pwd
+/root/lai
+[root@localhost lai]# ll
+总用量 1024
+-rwxr--r--. 1 root root      0 10月 18 11:35 index.php
+drwxr-xr-x. 2 root root     22 10月 18 11:36 lai_test
+drwxr-xr-x. 2 root root     33 10月 18 11:37 lai_test2
+-rwxr--r--. 1 root root 112563 10月 18 11:35 memcache-3.0.8.zip
+-rwxr--r--. 1 root root 931437 10月 18 11:35 mhash-0.9.9.9.tar.gz
+-rwxr--r--. 1 root root      0 10月 18 11:35 test.txt
+[root@localhost ~]# cd /root
+[root@localhost ~]# zip -9r /root/lai.zip /root/lai
+  adding: root/lai/ (stored 0%)
+  adding: root/lai/mhash-0.9.9.9.tar.gz (deflated 1%)
+  adding: root/lai/memcache-3.0.8.zip (deflated 13%)
+  adding: root/lai/index.php (stored 0%)
+  adding: root/lai/test.txt (stored 0%)
+  adding: root/lai/lai_test/ (stored 0%)
+  adding: root/lai/lai_test/test1.log (deflated 39%)
+  adding: root/lai/lai_test2/ (stored 0%)
+  adding: root/lai/lai_test2/my.cnf (deflated 44%)
+  adding: root/lai/lai_test2/crontab (deflated 41%)
+</code></pre><p>通过上面这种指定压缩绝对路径压缩出来的文件，也携带有目录结构的，也就是说解压出来第一级是root，下面才是lai目录。</p>
+<p>直接压缩当前目录下的lai目录，解压后也就这一层目录。</p>
+<pre tabindex="0"><code>[root@localhost ~]# zip -9r /root/lai.zip lai
+  adding: lai/ (stored 0%)
+  adding: lai/mhash-0.9.9.9.tar.gz (deflated 1%)
+  adding: lai/memcache-3.0.8.zip (deflated 13%)
+  adding: lai/index.php (stored 0%)
+  adding: lai/test.txt (stored 0%)
+  adding: lai/lai_test/ (stored 0%)
+  adding: lai/lai_test/test1.log (deflated 39%)
+  adding: lai/lai_test2/ (stored 0%)
+  adding: lai/lai_test2/my.cnf (deflated 44%)
+  adding: lai/lai_test2/crontab (deflated 41%)
+</code></pre><h3 id="22将lai目录下所有的文件和子目录压缩除了txt的文件压缩的文件保存到rootlaizip">2.2.将lai目录下所有的文件和子目录压缩，除了“*.txt”的文件，压缩的文件保存到/root/lai.zip。</h3>
+<pre tabindex="0"><code>[root@localhost ~]# zip -r /root/lai.zip /root/lai -x &#34;*.txt&#34;
+  adding: root/lai/ (stored 0%)
+  adding: root/lai/mhash-0.9.9.9.tar.gz (deflated 1%)
+  adding: root/lai/memcache-3.0.8.zip (stored 0%)
+  adding: root/lai/index.php (stored 0%)
+  adding: root/lai/lai_test/ (stored 0%)
+  adding: root/lai/lai_test/test1.log (deflated 39%)
+  adding: root/lai/lai_test2/ (stored 0%)
+  adding: root/lai/lai_test2/my.cnf (deflated 44%)
+  adding: root/lai/lai_test2/crontab (deflated 41%)
+</code></pre><h3 id="23将laizip压缩文件中的">2.3.将lai.zip压缩文件中的</h3>
+<p>不知道为什么，这里我虽然这样操作了，但把zip解压后，文件还是存在，现在放在这里吧。</p>
+<pre tabindex="0"><code>[root@localhost ~]# cd test/
+[root@localhost test]# zip /root/lai.zip -d /root/lai/memcache-3.0.8.zip
+deleting: root/lai/memcache-3.0.8.zip
+</code></pre><h3 id="24把修改后的indexphp文件更新到rootlaizip压缩文件">2.4.把修改后的index.php文件更新到/root/lai.zip压缩文件。</h3>
+<pre tabindex="0"><code>[root@localhost test]# cat lai/index.php 
+&lt;?php
+phpinfo();
+echo &#34;ok&#34;;
+[root@localhost test]# zip -u lai.zip lai/index.php
+updating: lai/index.php (stored 0%)
+</code></pre><p>如果/lai目录下很多文件进行了修改或者增加了很多文件，就需要把/lai目录下的全部信息更新到/root/lai.zip文件。可以使用以下命令：</p>
+<pre tabindex="0"><code>[root@localhost test]# zip –u lai.zip /lai/*
+</code></pre><p>或者使用</p>
+<pre tabindex="0"><code>[root@localhost test]# zip –ru lai.zip /lai
+</code></pre><p>其实“/lai/*”就代表了/lai目录下的所有文件以及子目录，而这刚好是zip命令“-r”选项完成的功能。</p>
+<h3 id="25根据要求解压缩文件">2.5.根据要求解压缩文件</h3>
+<p>将/root/lai.zip压缩文件除了lai/index.php文件，全部解压到/root/test目录下，并且在解压过程中如果出现相同的文件就直接进行覆盖，不需要用户确认。可以使用以下命令：</p>
+<pre tabindex="0"><code>[root@localhost test]# unzip -o /root/test/lai.zip -x lai/index.php -d /root/test
+Archive:  /root/test/lai.zip
+   creating: /root/test/lai/
+  inflating: /root/test/lai/mhash-0.9.9.9.tar.gz  
+ extracting: /root/test/lai/memcache-3.0.8.zip  
+   creating: /root/test/lai/lai_test/
+  inflating: /root/test/lai/lai_test/test1.log  
+  inflating: /root/test/lai/lai_test/qq.txt  
+   creating: /root/test/lai/lai_test2/
+  inflating: /root/test/lai/lai_test2/my.cnf  
+  inflating: /root/test/lai/lai_test2/crontab  
+ extracting: /root/test/lai/test2.txt  
+ extracting: /root/test/lai/test.txt  
+[root@localhost test]# ll lai
+总用量 1032
+drwxr-xr-x. 2 root root     35 10月 18 13:47 lai_test
+drwxr-xr-x. 2 root root     33 10月 18 11:37 lai_test2
+-rwxr--r--. 1 root root 112563 10月 18 11:35 memcache-3.0.8.zip
+-rwxr--r--. 1 root root 931437 10月 18 11:35 mhash-0.9.9.9.tar.gz
+-rw-r--r--. 1 root root      9 10月 18 13:47 test2.txt
+-rwxr--r--. 1 root root     16 10月 18 13:47 test.txt
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2015-08-08 00:00:00">更新于 2015-08-08&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/zip/' class="post-tag">zip</a><a href='/tags/unzip/' class="post-tag">unzip</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav">
+      <a href="/posts/mysql/mysqlpassword/" class="post-nav-item" rel="next" title="mysql之密码学">mysql之密码学<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.112.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

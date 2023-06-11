@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>mysqldump - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/mysqldump/</link>
+    <description>mysqldump - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 08 Oct 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/categories/mysqldump/" rel="self" type="application/rss+xml" /><item>
+  <title>mysql数据库导入导出</title>
+  <link>https://daizelai.github.io/posts/mysql/mysqldump/</link>
+  <pubDate>Sat, 08 Oct 2016 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/mysqldump/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一数据库导入导出">一、数据库导入导出</h2>
+<h3 id="1导出数据库">1.导出数据库</h3>
+<blockquote>
+<p># mysqldump -u root -p 数据库名&gt;文件名.sql</p>
+</blockquote>]]></description>
+</item>
+</channel>
+</rss>

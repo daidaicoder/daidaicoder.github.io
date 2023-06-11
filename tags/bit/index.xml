@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>bit - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/bit/</link>
+    <description>bit - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 20 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/tags/bit/" rel="self" type="application/rss+xml" /><item>
+  <title>Java位运算</title>
+  <link>https://daizelai.github.io/posts/java/javabit/</link>
+  <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/java/javabit/</guid>
+  <description><![CDATA[Java位运算（按位与、按位或、异或） 一、位运算 1.1.描述 位即二进制位或bit位
+所有运算到计算中底层中都会变成位运算，位运算可以提高程序的效率,而且我们在研究JDK或者某个框架的源码时，会发现很多地方都用到了位运算！
+例如我们在对数组进行排序时会大量用到交换两个数的值，如何提高排序效率呢
+1.2.用第三者 /** * 通过第三个变量交换 */ public static void exchangeNumByTemp(int num1, int num2){ // 创建第三个临时变量 int temp = num1; num1 = num2; num2 = temp; } 1.3.用按位异或 /** * 通过按位异或交换 */ public static void exchangeNumByXor(int num1, int num2){ num1 = num1 ^ num2; num2 = num1 ^ num2; num1 = num1 ^ num2; } 用按位异或的效率要高于前者。
+二、位运算符的种类 2.2.运算符列表 1.&amp;：按位与 2.|：按位或 3.^：按位异或 4.~：按位取反 5.&laquo;：左移 6.&raquo;：右移 7.&raquo;&gt;：无符号右移
+三、常用位运算解析 3.]]></description>
+</item>
+</channel>
+</rss>

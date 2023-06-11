@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>vscode提交代码交合并分支 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="20230523_1540使用vscode提交代码交合并分支 一、描述 使用Visual Studio Code对代码进行提交和分支合并。
+二、提交 2.1.添加到暂存区 选把feature分支修改的代码添加到暂存区，点击Changes下文件后面的加号就可以把需要commit的文件添加到暂存区Staged Chages，实际执行的是git add 文件名命令。
+2.2.提交代码 三、合并分支 3.1.切换到devlop分支 要把在开发分支feature的修改代码合并到develop分支的话，需要先切换到develop分支。
+3.2.pull最新代码到本地 合并之前选择执行pull命令，让本地的develop分支代码保持最新。
+3.3.选择合并分支 选择合并分支菜单。
+选择要合并的分支，我们要把feature分支的代码合并到develop分支，所以这里选择feature分支。
+合并成功，可以看到本地的develop分支代码已经更新了。
+推送到远程 本地的develop分支推送到远程的develop分支。" /><meta name="keywords" content='git, git提交, vs code提交代码' /><meta itemprop="name" content="vscode提交代码交合并分支">
+<meta itemprop="description" content="20230523_1540使用vscode提交代码交合并分支 一、描述 使用Visual Studio Code对代码进行提交和分支合并。
+二、提交 2.1.添加到暂存区 选把feature分支修改的代码添加到暂存区，点击Changes下文件后面的加号就可以把需要commit的文件添加到暂存区Staged Chages，实际执行的是git add 文件名命令。
+2.2.提交代码 三、合并分支 3.1.切换到devlop分支 要把在开发分支feature的修改代码合并到develop分支的话，需要先切换到develop分支。
+3.2.pull最新代码到本地 合并之前选择执行pull命令，让本地的develop分支代码保持最新。
+3.3.选择合并分支 选择合并分支菜单。
+选择要合并的分支，我们要把feature分支的代码合并到develop分支，所以这里选择feature分支。
+合并成功，可以看到本地的develop分支代码已经更新了。
+推送到远程 本地的develop分支推送到远程的develop分支。"><meta itemprop="datePublished" content="2023-05-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-05-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="23">
+<meta itemprop="keywords" content="git,git提交,vs code提交代码," /><meta property="og:title" content="vscode提交代码交合并分支" />
+<meta property="og:description" content="20230523_1540使用vscode提交代码交合并分支 一、描述 使用Visual Studio Code对代码进行提交和分支合并。
+二、提交 2.1.添加到暂存区 选把feature分支修改的代码添加到暂存区，点击Changes下文件后面的加号就可以把需要commit的文件添加到暂存区Staged Chages，实际执行的是git add 文件名命令。
+2.2.提交代码 三、合并分支 3.1.切换到devlop分支 要把在开发分支feature的修改代码合并到develop分支的话，需要先切换到develop分支。
+3.2.pull最新代码到本地 合并之前选择执行pull命令，让本地的develop分支代码保持最新。
+3.3.选择合并分支 选择合并分支菜单。
+选择要合并的分支，我们要把feature分支的代码合并到develop分支，所以这里选择feature分支。
+合并成功，可以看到本地的develop分支代码已经更新了。
+推送到远程 本地的develop分支推送到远程的develop分支。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="vscode提交代码交合并分支"/>
+<meta name="twitter:description" content="20230523_1540使用vscode提交代码交合并分支 一、描述 使用Visual Studio Code对代码进行提交和分支合并。
+二、提交 2.1.添加到暂存区 选把feature分支修改的代码添加到暂存区，点击Changes下文件后面的加号就可以把需要commit的文件添加到暂存区Staged Chages，实际执行的是git add 文件名命令。
+2.2.提交代码 三、合并分支 3.1.切换到devlop分支 要把在开发分支feature的修改代码合并到develop分支的话，需要先切换到develop分支。
+3.2.pull最新代码到本地 合并之前选择执行pull命令，让本地的develop分支代码保持最新。
+3.3.选择合并分支 选择合并分支菜单。
+选择要合并的分支，我们要把feature分支的代码合并到develop分支，所以这里选择feature分支。
+合并成功，可以看到本地的develop分支代码已经更新了。
+推送到远程 本地的develop分支推送到远程的develop分支。"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/" /><link rel="prev" href="https://daizelai.github.io/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/" /><link rel="next" href="https://daizelai.github.io/posts/git/gitcommit/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "vscode提交代码交合并分支",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/git\/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF\/gitvscode\/"
+    },"genre": "posts","keywords": "git, git提交, vs code提交代码","wordcount":  23 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/git\/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF\/gitvscode\/","datePublished": "2023-05-23T00:00:00+00:00","dateModified": "2023-05-23T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "作者"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>vscode提交代码交合并分支</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Anonymous</span></span>
+          <span class="post-category">收录于 <a href="/categories/git/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> git</a>&ensp;<a href="/categories/vs-code/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> vs code</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-05-23 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-05-23">2023-05-23</time></span>&nbsp;<span title="更新于 2023-05-23 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-05-23">2023-05-23</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 23 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 1 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二提交">二、提交</a>
+      <ul>
+        <li><a href="#21添加到暂存区">2.1.添加到暂存区</a></li>
+        <li><a href="#22提交代码">2.2.提交代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#三合并分支">三、合并分支</a>
+      <ul>
+        <li><a href="#31切换到devlop分支">3.1.切换到devlop分支</a></li>
+        <li><a href="#32pull最新代码到本地">3.2.pull最新代码到本地</a></li>
+        <li><a href="#33选择合并分支">3.3.选择合并分支</a></li>
+        <li><a href="#推送到远程">推送到远程</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20230523_1540使用vscode提交代码交合并分支">20230523_1540使用vscode提交代码交合并分支</h1>
+<h2 id="一描述">一、描述</h2>
+<p>使用Visual Studio Code对代码进行提交和分支合并。</p>
+<h2 id="二提交">二、提交</h2>
+<h3 id="21添加到暂存区">2.1.添加到暂存区</h3>
+<p>选把feature分支修改的代码添加到暂存区，点击<code>Changes</code>下文件后面的加号就可以把需要commit的文件添加到暂存区<code>Staged Chages</code>，实际执行的是<code>git add 文件名</code>命令。</p>
+<p><img loading="lazy" src="../images/vs_code_commit_file_2023-05-23_144047.png" srcset="../images/vs_code_commit_file_2023-05-23_144047.png, ../images/vs_code_commit_file_2023-05-23_144047.png 1.5x, ../images/vs_code_commit_file_2023-05-23_144047.png 2x" sizes="auto" data-title="添加文件到暂存区" data-alt="添加文件到暂存区" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="22提交代码">2.2.提交代码</h3>
+<h2 id="三合并分支">三、合并分支</h2>
+<h3 id="31切换到devlop分支">3.1.切换到devlop分支</h3>
+<p>要把在开发分支<code>feature</code>的修改代码合并到develop分支的话，需要先切换到<code>develop</code>分支。</p>
+<p><img loading="lazy" src="../images/vs_code_checkout_to_develop2023-05-23_150016.png" srcset="../images/vs_code_checkout_to_develop2023-05-23_150016.png, ../images/vs_code_checkout_to_develop2023-05-23_150016.png 1.5x, ../images/vs_code_checkout_to_develop2023-05-23_150016.png 2x" sizes="auto" data-title="先切换到develop分支" data-alt="先切换到develop分支" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="32pull最新代码到本地">3.2.pull最新代码到本地</h3>
+<p>合并之前选择执行pull命令，让本地的develop分支代码保持最新。</p>
+<p><img loading="lazy" src="../images/vs_code_merge_code_pull_2023-05-23_151712.png" srcset="../images/vs_code_merge_code_pull_2023-05-23_151712.png, ../images/vs_code_merge_code_pull_2023-05-23_151712.png 1.5x, ../images/vs_code_merge_code_pull_2023-05-23_151712.png 2x" sizes="auto" data-title="pull最新代码到本地" data-alt="pull最新代码到本地" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="33选择合并分支">3.3.选择合并分支</h3>
+<p>选择合并分支菜单。</p>
+<p><img loading="lazy" src="../images/vs_code_git_merge_branch_code_2023-05-23_151806.png" srcset="../images/vs_code_git_merge_branch_code_2023-05-23_151806.png, ../images/vs_code_git_merge_branch_code_2023-05-23_151806.png 1.5x, ../images/vs_code_git_merge_branch_code_2023-05-23_151806.png 2x" sizes="auto" data-title="选择合并分支" data-alt="选择合并分支" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>选择要合并的分支，我们要把<code>feature</code>分支的代码合并到<code>develop</code>分支，所以这里选择<code>feature</code>分支。</p>
+<p><img loading="lazy" src="../images/vs_code_git_merge_select_branch_2023-05-23_151839.png" srcset="../images/vs_code_git_merge_select_branch_2023-05-23_151839.png, ../images/vs_code_git_merge_select_branch_2023-05-23_151839.png 1.5x, ../images/vs_code_git_merge_select_branch_2023-05-23_151839.png 2x" sizes="auto" data-title="选择feature分支。" data-alt="选择feature分支。" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>合并成功，可以看到本地的develop分支代码已经更新了。</p>
+<p><img loading="lazy" src="../images/vs_code_merge_code_success_2023-05-23_152128.png" srcset="../images/vs_code_merge_code_success_2023-05-23_152128.png, ../images/vs_code_merge_code_success_2023-05-23_152128.png 1.5x, ../images/vs_code_merge_code_success_2023-05-23_152128.png 2x" sizes="auto" data-title="合并成功" data-alt="合并成功" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="推送到远程">推送到远程</h3>
+<p>本地的<code>develop</code>分支推送到远程的<code>develop</code>分支。</p>
+<p><img loading="lazy" src="../images/vs_code_push_code_2023-05-23_153225.png" srcset="../images/vs_code_push_code_2023-05-23_153225.png, ../images/vs_code_push_code_2023-05-23_153225.png 1.5x, ../images/vs_code_push_code_2023-05-23_153225.png 2x" sizes="auto" data-title="推送到远程" data-alt="推送到远程" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-05-23 00:00:00">更新于 2023-05-23&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/git/' class="post-tag">git</a><a href='/tags/git%E6%8F%90%E4%BA%A4/' class="post-tag">git提交</a><a href='/tags/vs-code%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/' class="post-tag">vs code提交代码</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/" class="post-nav-item" rel="prev" title="gitflow记录"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>gitflow记录</a>
+      <a href="/posts/git/gitcommit/" class="post-nav-item" rel="next" title="git代码提交规范">git代码提交规范<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.112.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

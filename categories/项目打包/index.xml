@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>项目打包 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/</link>
+    <description>项目打包 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 23 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/categories/%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" rel="self" type="application/rss+xml" /><item>
+  <title>springboot打包自定义文件名</title>
+  <link>https://daizelai.github.io/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/</link>
+  <pubDate>Fri, 23 Sep 2022 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/</guid>
+  <description><![CDATA[一、描述 1.1.引言 by daizelai on 2022/10/08 16:59 本文记录一下在对springboot项目进行打包的时候，如何修改生成的文件名称。
+1.2.默认打包 在springboot项目的根目录下，使用maven打包命令mvn clean package对项目进行打包。
+PS D:\code\IdeaProjects\springbootdemo&gt; mvn clean package [INFO] Scanning for projects... Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.1.3.RELEASE/spring-boot-starter-parent-2.1.3.RELEASE.pom Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.1.3.RELEASE/spring-boot-starter-parent-2.1.3.RELEASE.pom (12 kB at 10 kB/s) ...... [INFO] Replacing main artifact with repackaged archive [INFO] ------------------------------------------------------------------------ [INFO] BUILD SUCCESS [INFO] ------------------------------------------------------------------------ [INFO] Total time: 01:45 min [INFO] Finished at: 2022-10-08T16:31:28+08:00 [INFO] ------------------------------------------------------------------------ PS D:\code\IdeaProjects\springbootdemo&gt; 打包完成之后，生成如下文件：
+D:\code\IdeaProjects\springbootdemo\target&gt;dir 驱动器 D 中的卷是 新加卷 卷的序列号是 8AC9-706C D:\code\IdeaProjects\springbootdemo\target 的目录 2022/10/08 16:51 &lt;DIR&gt; .]]></description>
+</item>
+</channel>
+</rss>

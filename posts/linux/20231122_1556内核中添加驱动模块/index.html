@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>内核中添加驱动模块 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="在linux内核中添加驱动模块" /><meta name="keywords" content='日志, 原创, 内核添加模块, 驱动模块' /><meta itemprop="name" content="内核中添加驱动模块">
+<meta itemprop="description" content="在linux内核中添加驱动模块"><meta itemprop="datePublished" content="2023-11-22T15:56:00+08:00" />
+<meta itemprop="dateModified" content="2023-11-22T15:56:00+08:00" />
+<meta itemprop="wordCount" content="4433">
+<meta itemprop="keywords" content="原创,android,内核添加模块,驱动模块," /><meta property="og:title" content="内核中添加驱动模块" />
+<meta property="og:description" content="在linux内核中添加驱动模块" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-22T15:56:00+08:00" />
+<meta property="article:modified_time" content="2023-11-22T15:56:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="内核中添加驱动模块"/>
+<meta name="twitter:description" content="在linux内核中添加驱动模块"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" /><link rel="prev" href="https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "内核中添加驱动模块",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97\/"
+    },"genre": "posts","keywords": "原创, android, 内核添加模块, 驱动模块","wordcount":  4433 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97\/","datePublished": "2023-11-22T15:56:00+08:00","dateModified": "2023-11-22T15:56:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "作者"
+      },"description": "在linux内核中添加驱动模块"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>内核中添加驱动模块</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Anonymous</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E5%86%85%E6%A0%B8%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9D%97/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 内核添加模块</a>&ensp;<a href="/categories/%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 驱动模块</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-11-22 15:56:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-22">2023-11-22</time></span>&nbsp;<span title="更新于 2023-11-22 15:56:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-22">2023-11-22</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 4433 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 21 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二创建模块">二、创建模块</a></li>
+    <li><a href="#三编译c文件">三、编译c文件</a></li>
+    <li><a href="#四编写makefile文件">四、编写Makefile文件</a></li>
+    <li><a href="#五修改上层makefile">五、修改上层Makefile</a></li>
+    <li><a href="#六修改上层kconfig文件">六、修改上层Kconfig文件</a></li>
+    <li><a href="#七重新配置内核">七、重新配置内核</a></li>
+    <li><a href="#八签名">八、签名</a>
+      <ul>
+        <li><a href="#81拷贝编译的产物">8.1.拷贝编译的产物</a></li>
+        <li><a href="#82查看hexdump">8.2.查看hexdump</a></li>
+        <li><a href="#83签名">8.3.签名</a></li>
+        <li><a href="#84终端tx350的使用">8.4.终端TX350的使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#九问题">九、问题</a>
+      <ul>
+        <li><a href="#91exec-format-error">9.1.Exec format error</a></li>
+      </ul>
+    </li>
+    <li><a href="#十驱动读写配置文件">十、驱动读写配置文件</a>
+      <ul>
+        <li><a href="#101文件一">10.1.文件一</a></li>
+        <li><a href="#102文件二">10.2.文件二</a></li>
+        <li><a href="#103vfs的介绍">10.3.VFS的介绍</a></li>
+        <li><a href="#104测试效果">10.4.测试效果</a></li>
+      </ul>
+    </li>
+    <li><a href="#十一编译问题">十一、编译问题</a>
+      <ul>
+        <li><a href="#111operation-not-permitted">11.1.Operation not permitted</a></li>
+        <li><a href="#112iso-c90-forbids-mixed-declarations">11.2.ISO C90 forbids mixed declarations</a></li>
+        <li><a href="#113c99-or-c11-mode">11.3.C99 or C11 mode</a></li>
+        <li><a href="#114iso-c90-forbids-mixed-declarations">11.4.ISO C90 forbids mixed declarations</a></li>
+        <li><a href="#115passing-argument-1-of-strim">11.5.passing argument 1 of &lsquo;strim&rsquo;</a></li>
+        <li><a href="#116implicit-declaration">11.6.implicit declaration</a></li>
+        <li><a href="#117expects-argument">11.7.expects argument</a></li>
+        <li><a href="#118继续expects-argument">11.8.继续expects argument</a></li>
+        <li><a href="#119继续expects-argument">11.9.继续expects argument</a></li>
+        <li><a href="#1110remove_whitespace">11.10.remove_whitespace</a></li>
+        <li><a href="#1111passing-argument-1-of-strlen">11.11.passing argument 1 of &lsquo;strlen&rsquo;</a></li>
+      </ul>
+    </li>
+    <li><a href="#十二整个流程记录">十二、整个流程记录</a></li>
+    <li><a href="#十三完整版本的读写配置功能代码">十三、完整版本的读写配置功能代码</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20231122_1556内核中添加驱动模块">20231122_1556内核中添加驱动模块</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2023/11/22 15:56
+成功在内核中添加一个模块。</p>
+<p>设备树目录在 arch/arm/boot/dts目录。
+设备树插件目录在 arch/arm/boot/dts/overlays 目录
+驱动目录在kernel/drivers下</p>
+<p>在drivers中我们将在这个目录下添加新的驱动模块， 在char目录下新建hello目录，并在hello目录下新建 hello.c 以及Makefile文件</p>
+<h2 id="二创建模块">二、创建模块</h2>
+<p>在肉松驱动目录<code>/kernel/msm-3.18/drivers</code>中创建一个模块<code>hellotmp</code>目录。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost drivers]$ date
+Wed Nov 22 15:58:54 CST 2023
+[android_SC20@localhost drivers]$ pwd
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers
+[android_SC20@localhost drivers]$ tree hellotmp/
+hellotmp/
+├── Android.mk
+├── hellotmp.c
+├── hellotmp.h
+├── Kconfig
+└── Makefile
+
+0 directories, 5 files
+[android_SC20@localhost drivers]$
+</code></pre><h2 id="三编译c文件">三、编译c文件</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/module.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/init.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/kernel.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">int</span> __init <span style="color:#c0f">hello_init</span>(<span style="color:#078;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(KERN_EMERG <span style="color:#c30">&#34;[ KERN_EMERG ]  Hello  Module Init</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>( <span style="color:#c30">&#34;[ default ]  Hello  Module Init</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">void</span> __exit <span style="color:#c0f">hello_exit</span>(<span style="color:#078;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;[ default ]   Hello  Module Exit</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_init</span>(hello_init);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_exit</span>(hello_exit);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_LICENSE</span>(<span style="color:#c30">&#34;GPL2&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_AUTHOR</span>(<span style="color:#c30">&#34;uplooking &#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_DESCRIPTION</span>(<span style="color:#c30">&#34;hello world module&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_ALIAS</span>(<span style="color:#c30">&#34;test_module&#34;</span>);
+</span></span></code></pre></div><h2 id="四编写makefile文件">四、编写Makefile文件</h2>
+<p>makefile文件内容如下</p>
+<pre tabindex="0"><code>obj-$(CONFIG_HELLO_MODULE) := hello.o
+</code></pre><h2 id="五修改上层makefile">五、修改上层Makefile</h2>
+<p>除了hello/Makefile文件之外还需要修改上一层Makefile的文件的内容， 不然编译的时候不会去编译新添加的模块了。</p>
+<p>添加内容如下。
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/Makefile</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#033">obj-y</span>  <span style="color:#555">+=</span> gpioclk/
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span><span style="color:#033">obj-y</span>  <span style="color:#555">+=</span> hello/
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span><span style="color:#033">obj-y</span>  <span style="color:#555">+=</span> hellotmp/
+</span></span></code></pre></div><h2 id="六修改上层kconfig文件">六、修改上层Kconfig文件</h2>
+<p>添加kconfig文件内容如下</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">source &#34;drivers/bif/Kconfig&#34;
+
++// 方法一
++source &#34;drivers/hellotmp/Kconfig&#34;
+
++// 方法二
++config HELLO
++    tristate &#34;hello world&#34;
+
+endmenu
+</code></pre><h2 id="七重新配置内核">七、重新配置内核</h2>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/kernel$ make menuconfig 
+</code></pre><p>可以勾选<strong>hello world</strong>，然后编译的时候就会编译进去了。</p>
+<p>不过，编译<code>hellotmp</code>时没有这么做。</p>
+<h2 id="八签名">八、签名</h2>
+<h3 id="81拷贝编译的产物">8.1.拷贝编译的产物</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost daizelai]$ date
+Wed Nov 22 18:25:20 CST 2023
+[android_SC20@localhost daizelai]$ pwd
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/daizelai
+[android_SC20@localhost daizelai]$ cp  ../out/target/product/msm8953_64/obj/kernel/msm-3.18/drivers/hellotmp/hellotmp.o hellotmp.o
+[android_SC20@localhost daizelai]$ 
+[android_SC20@localhost daizelai]$ 
+[android_SC20@localhost daizelai]$ ls -l
+total 116
+-rw-rw-r-- 1 android_SC20 android_SC20 116344 Nov 22 18:24 hellotmp.o
+[android_SC20@localhost daizelai]$ hexdump -C hellotmp.o | tail
+0001c5f0  00 00 00 00 00 00 00 00  01 00 00 00 02 00 00 00  |................|
+0001c600  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+0001c610  20 eb 00 00 00 00 00 00  f0 06 00 00 00 00 00 00  | ...............|
+0001c620  1f 00 00 00 41 00 00 00  08 00 00 00 00 00 00 00  |....A...........|
+0001c630  18 00 00 00 00 00 00 00  09 00 00 00 03 00 00 00  |................|
+0001c640  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+0001c650  10 f2 00 00 00 00 00 00  b9 02 00 00 00 00 00 00  |................|
+0001c660  00 00 00 00 00 00 00 00  01 00 00 00 00 00 00 00  |................|
+0001c670  00 00 00 00 00 00 00 00                           |........|
+0001c678
+[android_SC20@localhost daizelai]$
+[android_SC20@localhost daizelai]$ perl ../kernel/msm-3.18/scripts/sign-file sha512 /home/android_SC20/daizelai/sign/signing_key.priv /home/android_SC20/daizelai/sign/signing_key.x509 hellotmp.o 
+[android_SC20@localhost daizelai]$ hexdump -C hellotmp.o | tail
+0001c850  70 77 d9 69 fa 34 83 ff  2a 05 c8 67 c7 70 f1 84  |pw.i.4..*..g.p..|
+0001c860  0d de 99 5f ec b0 30 ad  4d 1e 89 fe 40 88 6d 86  |..._..0.M...@.m.|
+0001c870  a5 e0 d9 cd f2 e4 c3 10  8c 5d 1a 36 1b df b2 9a  |.........].6....|
+0001c880  52 7a 25 b7 f6 2b f0 a3  14 83 55 63 4a c3 a2 36  |Rz%..+....UcJ..6|
+0001c890  e1 dd d0 75 c4 bb c8 0e  97 a8 2d 9c 95 9d 0c 50  |...u......-....P|
+0001c8a0  42 a8 05 46 73 b3 50 18  5e ca 92 12 01 06 01 1e  |B..Fs.P.^.......|
+0001c8b0  14 00 00 00 00 00 02 02  7e 4d 6f 64 75 6c 65 20  |........~Module |
+0001c8c0  73 69 67 6e 61 74 75 72  65 20 61 70 70 65 6e 64  |signature append|
+0001c8d0  65 64 7e 0a                                       |ed~.|
+0001c8d4
+[android_SC20@localhost daizelai]$
+</code></pre><p>其实搞错了，不是对o签名，必须生成ko文件，然后对ko文件进行签名。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sz14_android_7.1.2_qcom]$ date
+Thu Nov 23 09:55:43 CST 2023
+[android_SC20@localhost sz14_android_7.1.2_qcom]$ pwd
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom
+[android_SC20@localhost sz14_android_7.1.2_qcom]$ 
+</code></pre><h3 id="82查看hexdump">8.2.查看hexdump</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sz14_android_7.1.2_qcom]$ hexdump -C out/target/product/msm8953_64/obj/kernel/msm-3.18/drivers/hellotmp/hellotmp.ko | tail
+0002dee0  00 00 00 00 00 00 00 00  01 00 00 00 02 00 00 00  |................|
+0002def0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+0002df00  38 83 01 00 00 00 00 00  a0 08 00 00 00 00 00 00  |8...............|
+0002df10  20 00 00 00 50 00 00 00  08 00 00 00 00 00 00 00  | ...P...........|
+0002df20  18 00 00 00 00 00 00 00  09 00 00 00 03 00 00 00  |................|
+0002df30  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+0002df40  d8 8b 01 00 00 00 00 00  2a 03 00 00 00 00 00 00  |........*.......|
+0002df50  00 00 00 00 00 00 00 00  01 00 00 00 00 00 00 00  |................|
+0002df60  00 00 00 00 00 00 00 00                           |........|
+0002df68
+[android_SC20@localhost sz14_android_7.1.2_qcom]$
+</code></pre><h3 id="83签名">8.3.签名</h3>
+<p>拷贝到指定目录。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sz14_android_7.1.2_qcom]$ ls -l daizelai/
+total 12
+-rwxr--r-- 1 android_SC20 android_SC20 3272 Nov 22 20:14 signing_key.priv
+-rwxr--r-- 1 android_SC20 android_SC20 1446 Nov 22 20:14 signing_key.x509
+-rwxr--r-- 1 android_SC20 android_SC20  372 Nov 22 20:14 x509.genkey
+[android_SC20@localhost sz14_android_7.1.2_qcom]$ cp out/target/product/msm8953_64/obj/kernel/msm-3.18/drivers/hellotmp/hellotmp.ko ./daizelai/
+[android_SC20@localhost sz14_android_7.1.2_qcom]$ ls -l daizelai/
+total 196
+-rw-rw-r-- 1 android_SC20 android_SC20 188264 Nov 23 09:53 hellotmp.ko
+-rwxr--r-- 1 android_SC20 android_SC20   3272 Nov 22 20:14 signing_key.priv
+-rwxr--r-- 1 android_SC20 android_SC20   1446 Nov 22 20:14 signing_key.x509
+-rwxr--r-- 1 android_SC20 android_SC20    372 Nov 22 20:14 x509.genkey
+[android_SC20@localhost sz14_android_7.1.2_qcom]$
+</code></pre><p>签名</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sz14_android_7.1.2_qcom]$ perl kernel/msm-3.18/scripts/sign-file sha512 ./daizelai/signing_key.priv ./daizelai/signing_key.x509 ./daizelai/hellotmp.ko     
+[android_SC20@localhost sz14_android_7.1.2_qcom]$ hexdump -C ./daizelai/hellotmp.ko | tail                                          
+0002e140  fc 4b 0d cb 74 3d 4e 03  30 ec ba 80 01 b2 56 12  |.K..t=N.0.....V.|
+0002e150  03 d4 2b 54 66 28 77 f2  de 01 9f 55 29 05 a4 60  |..+Tf(w....U)..`|
+0002e160  89 75 d6 f5 e7 e8 fa 9c  4f ce a0 2c e7 19 07 09  |.u......O..,....|
+0002e170  43 28 68 e0 d3 35 49 58  be 99 0b d3 3a 93 99 fc  |C(h..5IX....:...|
+0002e180  01 66 54 5b dd f0 2c 57  3a b2 32 31 5d dc 16 8d  |.fT[..,W:.21]...|
+0002e190  73 70 e9 fe d1 92 cb 79  89 d5 45 05 01 06 01 1e  |sp.....y..E.....|
+0002e1a0  14 00 00 00 00 00 02 02  7e 4d 6f 64 75 6c 65 20  |........~Module |
+0002e1b0  73 69 67 6e 61 74 75 72  65 20 61 70 70 65 6e 64  |signature append|
+0002e1c0  65 64 7e 0a                                       |ed~.|
+0002e1c4
+[android_SC20@localhost sz14_android_7.1.2_qcom]$
+</code></pre><h3 id="84终端tx350的使用">8.4.终端TX350的使用</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\log\uart&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\hellotmp.ko /sdcard/
+E:\SC60\wuhan19_fx_20231030_1645\os\hellotmp.ko: 1 file pushed, 0 skipped. 3.8 MB/s (188868 bytes in 0.048s)
+
+D:\log\uart&gt;adb shell
+msm8953_64:/ # cd sdcard
+msm8953_64:/sdcard #
+msm8953_64:/sdcard # date
+Sun Jan  4 08:46:38 CST 1970
+msm8953_64:/sdcard # ls -l *.ko
+-rw-rw---- 1 root sdcard_rw 188868 2023-11-23 09:54 hellotmp.ko
+msm8953_64:/sdcard # pwd
+/sdcard
+msm8953_64:/sdcard # lsmod
+Module                  Size  Used by
+msm8953_64:/sdcard # insmod hellotmp.ko
+msm8953_64:/sdcard # lsmod
+Module                  Size  Used by
+hellotmp               12629  0
+msm8953_64:/sdcard #
+</code></pre><h2 id="九问题">九、问题</h2>
+<h3 id="91exec-format-error">9.1.Exec format error</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/dev # insmod  hellotmp.ko
+insmod: failed to load hellotmp.ko: Exec format error
+1|msm8953_64:/dev #
+</code></pre><p>这是因为编译ko时所在的boot.img和当前终端系统中的boot.img不是一样。</p>
+<h2 id="十驱动读写配置文件">十、驱动读写配置文件</h2>
+<h3 id="101文件一">10.1.文件一</h3>
+<p>下面是一个未经过验证的文件。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/fs.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/kernel.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/module.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#099">#define CONFIG_FILE_PATH &#34;/path/to/system_config.ini&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">read_system_code</span>(<span style="color:#078;font-weight:bold">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> file <span style="color:#555">*</span>file;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">loff_t</span> pos <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 打开配置文件
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    file <span style="color:#555">=</span> <span style="color:#c0f">filp_open</span>(CONFIG_FILE_PATH, O_RDONLY, <span style="color:#f60">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">IS_ERR</span>(file)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">pr_err</span>(<span style="color:#c30">&#34;Error opening file %s</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, CONFIG_FILE_PATH);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 为读取配置文件内容分配缓冲区
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    buffer <span style="color:#555">=</span> <span style="color:#c0f">kmalloc</span>(PAGE_SIZE, GFP_KERNEL);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#555">!</span>buffer) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">pr_err</span>(<span style="color:#c30">&#34;Memory allocation failed</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">filp_close</span>(file, <span style="color:#366">NULL</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 读取配置文件内容
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c0f">memset</span>(buffer, <span style="color:#f60">0</span>, PAGE_SIZE);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">vfs_read</span>(file, buffer, PAGE_SIZE, <span style="color:#555">&amp;</span>pos) <span style="color:#555">&lt;</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">pr_err</span>(<span style="color:#c30">&#34;Error reading file</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">kfree</span>(buffer);
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">filp_close</span>(file, <span style="color:#366">NULL</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 关闭配置文件
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c0f">filp_close</span>(file, <span style="color:#366">NULL</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 处理读取的数据，示例中简单打印
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c0f">pr_info</span>(<span style="color:#c30">&#34;Read from config file:</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">%s</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 在实际的内核驱动中，你需要解析buffer中的数据，提取system_code的值，并进行相应的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 释放缓冲区
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c0f">kfree</span>(buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">int</span> __init <span style="color:#c0f">my_init</span>(<span style="color:#078;font-weight:bold">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">pr_info</span>(<span style="color:#c30">&#34;Loading my module</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">read_system_code</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">void</span> __exit <span style="color:#c0f">my_exit</span>(<span style="color:#078;font-weight:bold">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">pr_info</span>(<span style="color:#c30">&#34;Unloading my module</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_init</span>(my_init);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_exit</span>(my_exit);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_LICENSE</span>(<span style="color:#c30">&#34;GPL&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_AUTHOR</span>(<span style="color:#c30">&#34;Your Name&#34;</span>);
+</span></span></code></pre></div><h3 id="102文件二">10.2.文件二</h3>
+<p>下面是一个ko驱动的文件，真实可以写也可以读的驱动文件。by daizelai on 2023/11/23 15:38
+路径：kernel/msm-3.18/drivers/hellotmp/hellotmp.c</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/module.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/init.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/fs.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/uaccess.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">char</span> buf[] <span style="color:#555">=</span> <span style="color:#c30">&#34;你好&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">char</span> buf1[<span style="color:#f60">10</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> __init <span style="color:#c0f">hello_init</span>(<span style="color:#078;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> file <span style="color:#555">*</span>fp;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">mm_segment_t</span> fs;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">loff_t</span> pos;
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;hello enter</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    fp <span style="color:#555">=</span> <span style="color:#c0f">filp_open</span>(<span style="color:#c30">&#34;/custom/metro/system/system_config.ini&#34;</span>, O_RDWR <span style="color:#555">|</span> O_CREAT, <span style="color:#f60">0644</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">IS_ERR</span>(fp)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;create file error</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span><span style="color:#f60">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    fs <span style="color:#555">=</span> <span style="color:#c0f">get_fs</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">set_fs</span>(KERNEL_DS);
+</span></span><span style="display:flex;"><span>    pos <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">vfs_write</span>(fp, buf, <span style="color:#069;font-weight:bold">sizeof</span>(buf), <span style="color:#555">&amp;</span>pos);
+</span></span><span style="display:flex;"><span>    pos <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">vfs_read</span>(fp, buf1, <span style="color:#069;font-weight:bold">sizeof</span>(buf), <span style="color:#555">&amp;</span>pos);
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;read: %s</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, buf1);
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">filp_close</span>(fp, <span style="color:#366">NULL</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">set_fs</span>(fs);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">void</span> __exit <span style="color:#c0f">hello_exit</span>(<span style="color:#078;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;hello exit</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_init</span>(hello_init);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_exit</span>(hello_exit);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_LICENSE</span>(<span style="color:#c30">&#34;GPL&#34;</span>);
+</span></span></code></pre></div><h3 id="103vfs的介绍">10.3.VFS的介绍</h3>
+<p>在VFS的支持下，用户态进程读写 任何类型的文件系统都可以使用read和write着两个系统调用，但是在linux内核中没有这样的系统调用我们如何操作文件呢？我们知道read和 write在进入内核态之后，实际执行的是sys_read和sys_write，但是查看内核源代码，发现这些操作文件的函数都没有导出(使用 EXPORT_SYMBOL导出)。</p>
+<p>通过查看sys_open的源码我 们发现，其主要使用了do_filp_open()函数，该函数在fs/namei.c中，而在改文件中，filp_open函数也是调用了 do_filp_open函数，并且接口和sys_open函数极为相似，调用参数也和sys_open一样，并且使用EXPORT_SYMBOL导出 了，所以我们猜想该函数可以打开文件，功能和open一样。使用同样的查找方法，我们找出了一组在内核中操作文件的函数，如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">函数原型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">打开文件</td>
+<td style="text-align:left">struct file *filp_open(const char *filename, int flags, int mode)</td>
+</tr>
+<tr>
+<td style="text-align:left">读取文件</td>
+<td style="text-align:left">ssize_t vfs_read(struct file *file, char __user *buf, size_t count, loff_t *pos)</td>
+</tr>
+<tr>
+<td style="text-align:left">写文件</td>
+<td style="text-align:left">ssize_t vfs_write(struct file *file, const char __user *buf, size_t count, loff_t *pos)</td>
+</tr>
+<tr>
+<td style="text-align:left">关闭文件</td>
+<td style="text-align:left">int filp_close(struct file *filp, fl_owner_t id)</td>
+</tr>
+</tbody>
+</table>
+<p>在vfs_read和vfs_write函数中，其参数buf指向的用户空间的内存地址，如果我们直接使用内核空间的指针，则会返回-EFALUT。所以我们需要使用
+set_fs()和get_fs()宏来改变内核对内存地址检查的处理方式，所以在内核空间对文件的读写流程为：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#078;font-weight:bold">mm_segment_t</span> fs <span style="color:#555">=</span> <span style="color:#c0f">get_fs</span>();
+</span></span><span style="display:flex;"><span><span style="color:#c0f">set_fs</span>(KERNEL_FS);
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">//vfs_write();
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#c0f">vfs_read</span>();
+</span></span><span style="display:flex;"><span><span style="color:#c0f">set_fs</span>(fs);
+</span></span></code></pre></div><h3 id="104测试效果">10.4.测试效果</h3>
+<p>查看读的效果，可以看到，读出来了<strong>你好</strong>。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">130|msm8953_64:/ # date
+Sun Jan  4 14:25:15 CST 1970
+130|msm8953_64:/ # logcat -b kernel -b main -b system
+
+......
+
+1-04 14:24:38.751     0     0 I         : hello enter
+01-04 14:24:38.752     0     0 I read    : 你好
+01-04 14:24:38.839     0     0 I         : wuning thread for recover
+01-04 14:24:38.840     0     0 D mipi_convert 2-002c: reg: e0, READ8: 0
+01-04 14:24:38.840     0     0 D mipi_convert 2-002c: reg: e1, READ8: 0
+01-04 14:24:38.840     0     0 D mipi_convert 2-002c: reg: e5, READ8: b5
+01-04 14:24:38.840     0     0 I         : daizelai add thread for data reg_val_e0: 0, reg_val_e1: 0, reg_val_e5: b5, max_int:2147483647, function_call_count:0
+01-04 14:24:37.772   831   831 I MSM-irqbalance: Decided to move IRQ5 from CPU2 [P:0] to CPU5 [P:1] (banned)
+01-04 14:24:37.774   831   831 I MSM-irqbalance: Decided to move IRQ5 from CPU3 [P:0] to CPU7 [P:1] (banned)
+01-04 14:24:37.776   831   831 I MSM-irqbalance: Decided to move IRQ5 from CPU0 [P:0] to CPU4 [P:1] (banned)
+01-04 14:24:37.777   831   831 I MSM-irqbalance: Decided to move IRQ5 from CPU1 [P:0] to CPU6 [P:1] (banned)
+^C
+130|msm8953_64:/ # logcat -b kernel -b main -b system
+</code></pre><p>我们再看一下文件中的内容：</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">msm8953_64:/sdcard # cat /custom/metro/system/system_config.ini
+你好orld.kernel file.msm8953_64:/sdcard #
+</code></pre><h2 id="十一编译问题">十一、编译问题</h2>
+<h3 id="111operation-not-permitted">11.1.Operation not permitted</h3>
+<p>2023/11/23 14:57，编译的ko出现下面的问题，是因为ko的代码里，<code>open</code>一个<code>/root/test.txt</code>不存在文件，所有没有权限。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/sdcard # lsmod hellotmp.ko
+Module                  Size  Used by
+msm8953_64:/sdcard # insmod hellotmp.ko
+insmod: failed to load hellotmp.ko: Operation not permitted
+1|msm8953_64:/sdcard # date
+Sun Jan  4 13:49:18 CST 1970
+msm8953_64:/sdcard #
+</code></pre><h3 id="112iso-c90-forbids-mixed-declarations">11.2.ISO C90 forbids mixed declarations</h3>
+<p>编译ko驱动源码的时候<code>2023/11/23 17:46</code>遇到以下错误。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c: In function &#39;hello_init&#39;:
+/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c:67:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+error, forbidden warning: hellotmp.c:67
+make[3]: *** [drivers/hellotmp/hellotmp.o] Error 1
+make[2]: *** [drivers/hellotmp] Error 2
+make[2]: *** Waiting for unfinished jobs....
+</code></pre><p>这个警告是由于在 hello_init 函数中有变量声明和代码混合在一起，而 ISO C90 不允许这样的语法。为了解决这个问题，您可以将变量的声明移到函数的开头。
+只要把函数中，声明的<code>struct ConfigData myConfig;</code>和<code>u8 reg_e5 = 0;</code>放到函数最前面，再编译就没有这个问题了。</p>
+<h3 id="113c99-or-c11-mode">11.3.C99 or C11 mode</h3>
+<p>编译ko源码遇到以下错误。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c: In function &#39;contains_value&#39;:
+/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c:35:5: error: &#39;for&#39; loop initial declarations are only allowed in C99 or C11 mode
+     for (size_t i = 0; i &lt; size; ++i) {
+     ^
+/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c:35:5: note: use option -std=c99, -std=gnu99, -std=c11 or -std=gnu11 to compile your code
+  DTC     arch/arm64/boot/dts/qcom/msmcobalt-rumi.dtb
+make[3]: *** [drivers/hellotmp/hellotmp.o] Error 1
+make[2]: *** [drivers/hellotmp] Error 2
+</code></pre><blockquote>
+<p>解决办法</p>
+</blockquote>
+<p>错误提示是因为在 C 语言的标准中（C89/90），不支持在 for 循环中声明变量。而在 C99 标准及之后的版本中，允许在 for 循环中声明变量。
+为了解决这个问题，你可以在编译时添加 -std=c99 选项，告诉编译器使用 C99 标准。修改你的 Makefile 或编译命令，添加 -std=c99 选项，如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">gcc -std=c99 -o your_output_file your_source_file.c
+</code></pre><p>确保在你的 Makefile 中也包含了 -std=c99 选项。
+在 Makefile 中使用 -std=c99 选项通常通过修改 CFLAGS 变量来实现。在你的 Makefile 中找到 CFLAGS 变量的设置，然后添加 -std=c99。例如：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#033">CC</span> <span style="color:#555">=</span> gcc
+</span></span><span style="display:flex;"><span><span style="color:#033">CFLAGS</span> <span style="color:#555">=</span> -Wall -std<span style="color:#555">=</span>c99
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">your_program</span><span style="color:#555">:</span> your_program.o
+</span></span><span style="display:flex;"><span>	<span style="color:#069;font-weight:bold">$(</span>CC<span style="color:#069;font-weight:bold">)</span> <span style="color:#069;font-weight:bold">$(</span>CFLAGS<span style="color:#069;font-weight:bold">)</span> -o your_program your_program.o
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">your_program.o</span><span style="color:#555">:</span> your_program.c
+</span></span><span style="display:flex;"><span>	<span style="color:#069;font-weight:bold">$(</span>CC<span style="color:#069;font-weight:bold">)</span> <span style="color:#069;font-weight:bold">$(</span>CFLAGS<span style="color:#069;font-weight:bold">)</span> -c your_program.c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">clean</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>	rm -f your_program your_program.o
+</span></span></code></pre></div><p>如果不方便添加 -std=c99 选项，你还可以使用传统的 C 风格的 for 循环初始化方式。在旧的 C 标准（如 ANSI C89）中，for 循环的变量声明必须在代码块的开头。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;stddef.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">contains_value</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>arr, <span style="color:#078;font-weight:bold">size_t</span> size, <span style="color:#078;font-weight:bold">int</span> value) {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">size_t</span> i;
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">for</span> (i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> size; <span style="color:#555">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (arr[i] <span style="color:#555">==</span> value) {
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">1</span>; <span style="color:#09f;font-style:italic">// 找到了
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>; <span style="color:#09f;font-style:italic">// 没找到
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>}
+</span></span></code></pre></div><p>这种方式会在更早的 C 标准中起作用，但需要注意的是，这会将变量的作用域限制在 for 循环内。</p>
+<h3 id="114iso-c90-forbids-mixed-declarations">11.4.ISO C90 forbids mixed declarations</h3>
+<p>编译ko源码错误时遇到以下错误：</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c: In function &#39;parse_config&#39;:
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c:286:1: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+error, forbidden warning: hellotmp.c:286
+make[3]: *** [drivers/hellotmp/hellotmp.o] Error 1
+make[2]: *** [drivers/hellotmp] Error 2
+make[2]: *** Waiting for unfinished jobs....
+</code></pre><p>问题原因为代码中的white循环没有结束}大括号。</p>
+<p>添加内容</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">130|msm8953_64:/custom/metro/system # cat system_config.ini
+[system]
+self_mac=11:aa:bb:cc:dd
+
+msm8953_64:/custom/metro/system # echo &#34;[screen]&#34;&gt;&gt;system_config.ini
+msm8953_64:/custom/metro/system # echo &#34;GbcomCode1 = 0xb1&#34;&gt;&gt;system_config.ini
+msm8953_64:/custom/metro/system # echo &#34;GbcomCode2 = 0xb5&#34;&gt;&gt;system_config.ini
+msm8953_64:/custom/metro/system # echo &#34;GbcomCode3 = 0x31&#34;&gt;&gt;system_config.ini
+msm8953_64:/custom/metro/system # cat system_config.ini
+[system]
+self_mac=11:aa:bb:cc:dd
+
+[screen]
+Code1 = 0xb1
+Code2 = 0xb5
+Code3 = 0x31
+msm8953_64:/custom/metro/system #
+</code></pre><h3 id="115passing-argument-1-of-strim">11.5.passing argument 1 of &lsquo;strim&rsquo;</h3>
+<p>编译ko源码时遇到下面的问题。【此问题验证失败，后面再遇到可以这样尝试】</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c: In function &#39;parse_config&#39;:
+/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c:207:22: warning: passing argument 1 of &#39;strim&#39; discards &#39;const&#39; qualifier from pointer target type
+error, forbidden warning: hellotmp.c:207
+make[3]: *** [drivers/hellotmp/hellotmp.o] Error 1
+make[2]: *** [drivers/hellotmp] Error 2
+make[2]: *** Waiting for unfinished jobs....
+</code></pre><p>代码是</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>line, <span style="color:#555">*</span>key, <span style="color:#555">*</span>value;c
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>line, <span style="color:#555">*</span>key, <span style="color:#555">*</span>value;
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 去除空格
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    line <span style="color:#555">=</span> <span style="color:#c0f">strim</span>(line);
+</span></span></code></pre></div><p>错误提示表明在 hellotmp.c 文件的 parse_config 函数中，传递给 strim 函数的参数是 const 类型的，而 strim 函数期望的是非 const 类型。</p>
+<p>strim 函数的原型通常是这样的：char *strim(char *s)。它用于删除字符串开头和结尾的空格符、制表符、换行符等。</p>
+<p>在你的 parse_config 函数中，看起来你在调用 strim 时使用了 const char *line，但 strim 函数的参数类型是 char *，所以编译器发出了警告。</p>
+<p>解决这个问题的方法是创建一个可修改的字符串拷贝，然后将其传递给 strim 函数。你可以使用 kstrdup 来创建可修改的字符串拷贝。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 在头文件中包含 kstrdup 的声明
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/slab.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 在 parse_config 函数中使用 kstrdup
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>line_copy <span style="color:#555">=</span> <span style="color:#c0f">kstrdup</span>(line, GFP_KERNEL);
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">if</span> (<span style="color:#555">!</span>line_copy) {
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 处理内存分配失败的情况
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span>ENOMEM;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 使用 strim 处理可修改的字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#c0f">strim</span>(line_copy);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 现在你可以使用 line_copy 了
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 最后别忘了释放 line_copy 的内存
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#c0f">kfree</span>(line_copy);
+</span></span></code></pre></div><h3 id="116implicit-declaration">11.6.implicit declaration</h3>
+<p>编译ko驱动源码时遇到以下错误：</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c: In function &#39;handle_config_file&#39;:
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c:97:13: error: implicit declaration of function &#39;print_array&#39; [-Werror=implicit-function-declaration]
+             print_array(myConfig.code, myConfig.code_size);
+             ^
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c:99:13: error: implicit declaration of function &#39;contains_value&#39; [-Werror=implicit-function-declaration]
+             if (contains_value(myConfig.code, myConfig.code_size, reg_e5)) {
+             ^
+cc1: some warnings being treated as errors
+make[3]: *** [drivers/hellotmp/hellotmp.o] Error 1
+make[2]: *** [drivers/hellotmp] Error 2
+make[2]: *** Waiting for unfinished jobs....
+</code></pre><p>上面的错误表明编译器找不到 print_array 和 contains_value 函数的声明。这是因为这两个函数是在 hello_init 函数之后才定义的，而在 hello_init 函数之前被调用。</p>
+<p>要解决这个问题，你可以在文件的开头添加这两个函数的声明：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/module.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/kernel.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/init.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/fs.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/uaccess.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/string.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/slab.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/types.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#099">#define CONFIG_FILE_PATH &#34;/custom/metro/system/system_config.ini&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">char</span> bufCode[<span style="color:#f60">1024</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">struct</span> ConfigData {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">char</span> mac[<span style="color:#f60">6</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>code;  <span style="color:#09f;font-style:italic">// 使用指针来表示变长数组
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">size_t</span> code_size;    <span style="color:#09f;font-style:italic">// 记录数组的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 函数声明
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">print_array</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size);
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">contains_value</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size, <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> value);
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">parse_config</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#069;font-weight:bold">struct</span> ConfigData <span style="color:#555">*</span>config);
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">handle_config_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_path);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 读取文件的辅助函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">read_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_path, <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#078;font-weight:bold">size_t</span> buffer_size) {
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 其他代码...
+</span></span></span></code></pre></div><h3 id="117expects-argument">11.7.expects argument</h3>
+<p>2023/11/29 10:41，编译内核c文件遇到以下错误：</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c: In function &#39;thread_func&#39;:
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c:902:9: warning: format &#39;%d&#39; expects argument of type &#39;int&#39;, but argument 2 has type &#39;ktime_t&#39; [-Wformat=]
+error, forbidden warning: mipi_convert.c:902
+make[3]: *** [drivers/video/mipi_convert.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+</code></pre><p>解决办法：
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">thread_func</span>(<span style="color:#078;font-weight:bold">void</span> <span style="color:#555">*</span>data)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> convert_platform_data <span style="color:#555">*</span>pdata <span style="color:#555">=</span> data;
+</span></span><span style="display:flex;"><span>    u8 reg_val_e0 <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    u8 reg_val_e1 <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    u8 reg_val_e5 <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">//int count = 0;
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">//    u8 regE5;
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>config_data;
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 初始化设备字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">char</span> deviceString[<span style="color:#f60">100</span>] <span style="color:#555">=</span> <span style="color:#c30">&#34;info: &#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">ktime_t</span> start_time <span style="color:#555">=</span> <span style="color:#c0f">ktime_get_real</span>();
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> elapsed_time <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> ConfigData my_config <span style="color:#555">=</span> {
+</span></span><span style="display:flex;"><span>        .code <span style="color:#555">=</span> <span style="color:#366">NULL</span>,
+</span></span><span style="display:flex;"><span>        .time <span style="color:#555">=</span> <span style="color:#f60">0</span>  <span style="color:#09f;font-style:italic">// 初始值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">while</span> (<span style="color:#555">!</span><span style="color:#c0f">kthread_should_stop</span>()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">msleep</span>(<span style="color:#f60">5000</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 获取已过去的时间
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#555">-</span>        <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> elapsed_time <span style="color:#555">=</span> <span style="color:#c0f">get_elapsed_time</span>(<span style="color:#555">&amp;</span>start_time);
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>        elapsed_time <span style="color:#555">=</span> <span style="color:#c0f">get_elapsed_time</span>(<span style="color:#555">&amp;</span>start_time);
+</span></span><span style="display:flex;"><span>        ......
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="118继续expects-argument">11.8.继续expects argument</h3>
+<p>编译遇到以下错误</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c:902:9: warning: format &#39;%d&#39; expects argument of type &#39;int&#39;, but argument 2 has type &#39;ktime_t&#39; [-Wformat=]
+</code></pre><p>修改如下：
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">thread_func</span>(<span style="color:#078;font-weight:bold">void</span> <span style="color:#555">*</span>data)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> convert_platform_data <span style="color:#555">*</span>pdata <span style="color:#555">=</span> data;
+</span></span><span style="display:flex;"><span>    u8 reg_val_e0 <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    u8 reg_val_e1 <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    u8 reg_val_e5 <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">//int count = 0;
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">//    u8 regE5;
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>config_data;
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 初始化设备字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">char</span> deviceString[<span style="color:#f60">100</span>] <span style="color:#555">=</span> <span style="color:#c30">&#34;info: &#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">ktime_t</span> start_time <span style="color:#555">=</span> <span style="color:#c0f">ktime_get_real</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> elapsed_time <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> ConfigData my_config <span style="color:#555">=</span> {
+</span></span><span style="display:flex;"><span>        .code <span style="color:#555">=</span> <span style="color:#366">NULL</span>,
+</span></span><span style="display:flex;"><span>        .time <span style="color:#555">=</span> <span style="color:#f60">0</span>  <span style="color:#09f;font-style:italic">// 初始值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">while</span> (<span style="color:#555">!</span><span style="color:#c0f">kthread_should_stop</span>()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">msleep</span>(<span style="color:#f60">5000</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 获取已过去的时间
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        elapsed_time <span style="color:#555">=</span> <span style="color:#c0f">get_elapsed_time</span>(<span style="color:#555">&amp;</span>start_time);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span>        <span style="color:#c0f">printk</span>(KERN_INFO <span style="color:#c30">&#34;auto fix task, start thread for recover start_time:%d, elapsed_time:%d</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, start_time, elapsed_time);
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>        <span style="color:#c0f">printk</span>(KERN_INFO <span style="color:#c30">&#34;auto fix task, start thread for recover start_time:%lld, elapsed_time:%d</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, <span style="color:#c0f">ktime_to_ns</span>(start_time), elapsed_time);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        ......
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    .....
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="119继续expects-argument">11.9.继续expects argument</h3>
+<p>编译遇到以下错误。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c: In function &#39;thread_func&#39;:
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c:902:9: warning: format &#39;%lld&#39; expects argument of type &#39;long long int&#39;, but argument 2 has type &#39;ktime_t&#39; [-Wformat=]
+error, forbidden warning: mipi_convert.c:902
+make[3]: *** [drivers/video/mipi_convert.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+</code></pre><p>这个警告表明在你的代码中有一个 printf 或者类似的函数，使用了 %lld 格式说明符，但是提供的实际参数类型是 ktime_t，而不是 long long int。</p>
+<p>在内核中，ktime_t 类型的值通常以纳秒为单位，可以使用 ktime_to_ns 函数将其转换为 s64 类型（64位有符号整数），然后使用 %lld 来打印。</p>
+<p>以下是一个示例，展示了如何在内核中正确使用 %lld 来打印 ktime_t：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/kernel.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/ktime.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">main</span>(<span style="color:#078;font-weight:bold">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">ktime_t</span> my_ktime <span style="color:#555">=</span> <span style="color:#c0f">ktime_get</span>();
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>    s64 ns_value <span style="color:#555">=</span> <span style="color:#c0f">ktime_to_ns</span>(my_ktime);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 使用 %lld 来打印 64 位整数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#555">-</span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;ktime_t value: %lld</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, my_ktime);
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;ktime_t value: %lld</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, ns_value);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="1110remove_whitespace">11.10.remove_whitespace</h3>
+<p>编译mipi_convert.c时遇到以下错误。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c:250:13: warning: &#39;remove_whitespace&#39; defined but not used [-Wunused-function]
+error, forbidden warning: mipi_convert.c:250
+</code></pre><p>原因为定义的<code>remove_whitespace</code>从来没有使用过。</p>
+<h3 id="1111passing-argument-1-of-strlen">11.11.passing argument 1 of &lsquo;strlen&rsquo;</h3>
+<p>编译遇到以下错误</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">In file included from /home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c:3:0:
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c: In function &#39;parse_config&#39;:
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/include/linux/kernel.h:21:18: warning: passing argument 1 of &#39;strlen&#39; makes pointer from integer without a cast
+error, forbidden warning: kernel.h:21
+make[3]: *** [drivers/video/mipi_convert.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+</code></pre><p>警告是因为你在parse_config函数中将一个整数值传递给strlen函数，而strlen函数期望接收一个以null结尾的字符串。为了解决这个问题，你可以将整数值转换为字符串，然后再使用strlen。</p>
+<p>可以如下解决：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">else</span> <span style="color:#c0f">if</span> (<span style="color:#c0f">strcmp</span>(key, <span style="color:#c30">&#34;period_time&#34;</span>) <span style="color:#555">==</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> period_time_value;
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>    <span style="color:#078;font-weight:bold">char</span> value_str[<span style="color:#f60">20</span>];  <span style="color:#09f;font-style:italic">// 根据值的预期长度调整大小
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>    <span style="color:#09f;font-style:italic">// 将整数转换为字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#555">+</span>    <span style="color:#c0f">snprintf</span>(value_str, <span style="color:#069;font-weight:bold">sizeof</span>(value_str), <span style="color:#c30">&#34;%u&#34;</span>, period_time_value);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span>    <span style="color:#078;font-weight:bold">size_t</span> value_len <span style="color:#555">=</span> <span style="color:#c0f">strlen</span>(value);
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>    <span style="color:#078;font-weight:bold">size_t</span> value_len <span style="color:#555">=</span> <span style="color:#c0f">strlen</span>(value_str);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 代码的其余部分保持不变...
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">if</span> (value_len <span style="color:#555">&gt;</span> <span style="color:#f60">10</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config ------------时间值长度无效。使用默认值。</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 使用默认值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        config<span style="color:#555">-&gt;</span>time <span style="color:#555">=</span> <span style="color:#f60">5000</span>;  <span style="color:#09f;font-style:italic">// 默认值为毫秒
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    } <span style="color:#069;font-weight:bold">else</span> <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">sscanf</span>(value_str, <span style="color:#c30">&#34;%u&#34;</span>, <span style="color:#555">&amp;</span>period_time_value) <span style="color:#555">==</span> <span style="color:#f60">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config ------------解析的时间值：%u</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, period_time_value);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 其他检查和调整...
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 将时间值存储到结构体字段中
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        config<span style="color:#555">-&gt;</span>time <span style="color:#555">=</span> period_time_value;
+</span></span><span style="display:flex;"><span>    } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config ------------时间值无效或缺失。使用默认值。</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 使用默认值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        config<span style="color:#555">-&gt;</span>time <span style="color:#555">=</span> <span style="color:#f60">5000</span>;  <span style="color:#09f;font-style:italic">// 默认值为毫秒
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="十二整个流程记录">十二、整个流程记录</h2>
+<p>下面这样的测试方法是可行的，来就是这么做的。
+SC60模块编译，SC60编译模块，SC60中编译ko，ko测试方法：
+编译
+1.在台式机vscode中修改hellotmp.c代码。
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c
+2.在台式机中的CRT中“make bootimage -j 20”
+3.在台式机中的CRT中“cp out/target/product/msm8953_64/obj/kernel/msm-3.18/drivers/hellotmp/hellotmp.ko  ./daizelai/”
+4.在台式机中的CRT中“perl kernel/msm-3.18/scripts/sign-file sha512 ./daizelai/signing_key.priv ./daizelai/signing_key.x509 ./daizelai/hellotmp.ko ”
+测试
+5.在笔记本电脑中开四个窗口。
+6.在笔记中的第一个窗口是目录，用来打开编译机并找到刚刚编译的的ko
+7.在笔记中的第二个窗口是目录，存放从编译机上拿下来的ko
+8.在笔记本中的第三个窗口CMD命令行，先adb push文件ko到msm8953_64/custom/metro/system
+方法：E:\SC60\wuhan19_fx_20231030_1645\os&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\hellotmp.ko /custom/metro/system/
+继续执行：adb shell &ldquo;logcat -c &amp;&amp; logcat -b kernel -b main -b system&rdquo;</p>
+<p>9.在笔记本中的第四个窗口CMD命令行。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/custom/metro/system # rm -f hellotmp.ko
+msm8953_64:/custom/metro/system # rmmod hellotmp
+msm8953_64:/custom/metro/system # insmod hellotmp.ko
+</code></pre><p>10.同时观察第三个串口CMD命令中的日志打印，看ko是否正常执行。</p>
+<p><strong>重点：</strong> 功能可用后，把代码合到mipi_convert.c文件中，这个文件修改后，需要编译内核，然后把编译出来的boot.img直接放到emmc镜像中去，直接刷机就可以了。</p>
+<h2 id="十三完整版本的读写配置功能代码">十三、完整版本的读写配置功能代码</h2>
+<p>本次配置文件中的内容如下：</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">msm8953_64:/custom/metro/system # cat system_config.ini
+[system]
+self_mac=11:aa:bb:cc:dd
+
+[screen]
+GbcomCode1 = 0xb1
+GbcomCode2 = 0xb5
+GbcomCode3 = 0x31
+[code]
+code=0xb1,0xb2
+msm8953_64:/custom/metro/system #
+</code></pre><p>本次2023/11/24 13:22的日志打印为：</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">01-05 12:10:47.811     0     0 I         : hello enter
+01-05 12:10:47.811     0     0 I ++++++++++++++++++++++++++++++read: [system]
+01-05 12:10:47.811     0     0 I self_mac=11: aa:bb:cc:dd
+01-05 12:10:47.811     0     0 I         : [screen]
+01-05 12:10:47.811     0     0 I         : GbcomCode1 = 0xb1
+01-05 12:10:47.811     0     0 I         : GbcomCode2 = 0xb5
+01-05 12:10:47.811     0     0 I         : GbcomCode3 = 0x31
+01-05 12:10:47.811     0     0 I         : [code]
+01-05 12:10:47.811     0     0 I         : code=0xb1,0xb2
+01-05 12:10:47.811     0     0 I         : Before parse_config
+01-05 12:10:47.811     0     0 I         : parse_config aaaaa
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config ddddd =======key: [system]
+01-05 12:10:47.811     0     0 I         : parse_config eeee ======value: (null)
+01-05 12:10:47.811     0     0 I         : parse_config kkkk
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config ddddd =======key: self_mac
+01-05 12:10:47.811     0     0 I         : parse_config eeee ======value: 11:aa:bb:cc:dd
+01-05 12:10:47.811     0     0 I         : parse_config ffffffff
+01-05 12:10:47.811     0     0 I         : parse_config kkkk
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config ddddd =======key: [screen]
+01-05 12:10:47.811     0     0 I         : parse_config eeee ======value: (null)
+01-05 12:10:47.811     0     0 I         : parse_config kkkk
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config ddddd =======key: GbcomCode1
+01-05 12:10:47.811     0     0 I         : parse_config eeee ======value:  0xb1
+01-05 12:10:47.811     0     0 I         : parse_config ffffffff
+01-05 12:10:47.811     0     0 I         : parse_config kkkk
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config ddddd =======key: GbcomCode2
+01-05 12:10:47.811     0     0 I         : parse_config eeee ======value:  0xb5
+01-05 12:10:47.811     0     0 I         : parse_config ffffffff
+01-05 12:10:47.811     0     0 I         : parse_config kkkk
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config ddddd =======key: GbcomCode3
+01-05 12:10:47.811     0     0 I         : parse_config eeee ======value:  0x31
+01-05 12:10:47.811     0     0 I         : parse_config ffffffff
+01-05 12:10:47.811     0     0 I         : parse_config kkkk
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config ddddd =======key: [code]
+01-05 12:10:47.811     0     0 I         : parse_config eeee ======value: (null)
+01-05 12:10:47.811     0     0 I         : parse_config kkkk
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config ddddd =======key: code
+01-05 12:10:47.811     0     0 I         : parse_config eeee ======value: 0xb1,0xb2
+01-05 12:10:47.811     0     0 I         : parse_config ffffffff
+01-05 12:10:47.811     0     0 I         : parse_config hhhhhhhhh
+01-05 12:10:47.811     0     0 I         : parse_config jjjjjjjjjjjjjjjjjjj ------------Parsed code[0]: b1
+01-05 12:10:47.811     0     0 I         : parse_config jjjjjjjjjjjjjjjjjjj ------------Parsed code[1]: b2
+01-05 12:10:47.811     0     0 I         : parse_config kkkk
+01-05 12:10:47.811     0     0 I         : parse_config cccc
+01-05 12:10:47.811     0     0 I         : parse_config mmmmmmm
+01-05 12:10:47.811     0     0 I         : parse_config succeeded
+</code></pre><p>下面是2023/11/24 17:01完全可用的一个版本。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/module.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/kernel.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/init.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/fs.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/uaccess.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/string.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/slab.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/types.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#099">#define CONFIG_FILE_PATH &#34;/custom/metro/system/system_config.ini&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">char</span> codeBuf[<span style="color:#f60">1024</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">struct</span> ConfigData {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">char</span> mac[<span style="color:#f60">6</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>code;  <span style="color:#09f;font-style:italic">// 使用指针来表示变长数组
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">size_t</span> code_size;    <span style="color:#09f;font-style:italic">// 记录数组的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 函数声明
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">print_array</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size);
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">contains_value</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size, <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> value);
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">parse_config</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#069;font-weight:bold">struct</span> ConfigData <span style="color:#555">*</span>config);
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">handle_config_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_path);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 读取文件的辅助函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">read_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_path, <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#078;font-weight:bold">size_t</span> buffer_size) {
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> file <span style="color:#555">*</span>fp;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">mm_segment_t</span> fs;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">loff_t</span> pos <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">int</span> err;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fp <span style="color:#555">=</span> <span style="color:#c0f">filp_open</span>(file_path, O_RDWR <span style="color:#555">|</span> O_CREAT, <span style="color:#f60">0644</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">IS_ERR</span>(fp)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;create file error</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 如果 filp_open 返回的错误码是 -ENOENT，就表示文件不存在
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">PTR_ERR</span>(fp) <span style="color:#555">==</span> <span style="color:#555">-</span>ENOENT) {
+</span></span><span style="display:flex;"><span>            <span style="color:#09f;font-style:italic">// 文件不存在的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Config file does not exist. Exiting...</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span>ENOENT;
+</span></span><span style="display:flex;"><span>        } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#09f;font-style:italic">// 其他错误的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Error opening config file: %ld</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, <span style="color:#c0f">PTR_ERR</span>(fp));
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">return</span> <span style="color:#c0f">PTR_ERR</span>(fp);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fs <span style="color:#555">=</span> <span style="color:#c0f">get_fs</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">set_fs</span>(KERNEL_DS);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    err <span style="color:#555">=</span> <span style="color:#c0f">vfs_read</span>(fp, buffer, buffer_size, <span style="color:#555">&amp;</span>pos);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (err <span style="color:#555">&lt;</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;read file error: %d</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, err);
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">filp_close</span>(fp, <span style="color:#366">NULL</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">set_fs</span>(fs);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> err;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">filp_close</span>(fp, <span style="color:#366">NULL</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">set_fs</span>(fs);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> __init <span style="color:#c0f">hello_init</span>(<span style="color:#078;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;hello enter</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 读取文件并处理配置
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c0f">handle_config_file</span>(CONFIG_FILE_PATH);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 打印数组的辅助函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">print_array</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size) {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">size_t</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Array contents: [&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">for</span> (i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> size; <span style="color:#555">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;%x&#34;</span>, array[i]);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (i <span style="color:#555">&lt;</span> size <span style="color:#555">-</span> <span style="color:#f60">1</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;, &#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;]</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// Array contents: [b1, b2]
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 判断数组中是否包含特定值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">contains_value</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size, <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> value) {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">size_t</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 先打印数组
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c0f">print_array</span>(array, size);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">for</span> (i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> size; <span style="color:#555">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (array[i] <span style="color:#555">==</span> value) {
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">1</span>;  <span style="color:#09f;font-style:italic">// 包含特定值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;  <span style="color:#09f;font-style:italic">// 不包含特定值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 处理配置文件的函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">handle_config_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_path) {
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> ConfigData myConfig <span style="color:#555">=</span> {
+</span></span><span style="display:flex;"><span>        .code <span style="color:#555">=</span> <span style="color:#366">NULL</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    u8 reg_e5 <span style="color:#555">=</span> <span style="color:#f60">0xb1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 读取文件内容
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">read_file</span>(file_path, codeBuf, <span style="color:#069;font-weight:bold">sizeof</span>(codeBuf)) <span style="color:#555">&lt;</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 检查配置文件是否为空
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">strlen</span>(codeBuf) <span style="color:#555">==</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Config file is empty.</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 解析配置文件
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">parse_config</span>(codeBuf, <span style="color:#555">&amp;</span>myConfig) <span style="color:#555">==</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (myConfig.code <span style="color:#555">!=</span> <span style="color:#366">NULL</span> <span style="color:#555">&amp;&amp;</span> myConfig.code_size <span style="color:#555">&gt;</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#09f;font-style:italic">// 有有效的 code 数据
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Parsed code array with %zu elements.</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, myConfig.code_size);
+</span></span><span style="display:flex;"><span>            <span style="color:#c0f">print_array</span>(myConfig.code, myConfig.code_size);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">contains_value</span>(myConfig.code, myConfig.code_size, reg_e5)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;The array contains reg_e5.----------------------%x</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, reg_e5);
+</span></span><span style="display:flex;"><span>            } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;The array does not contain reg_e5.+++++++++++++++%x</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, reg_e5);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;No valid code data found in the config file.</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config failed</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 释放分配的内存
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">if</span> (myConfig.code <span style="color:#555">!=</span> <span style="color:#366">NULL</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">kfree</span>(myConfig.code);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 解析配置文件的函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">parse_config</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#069;font-weight:bold">struct</span> ConfigData <span style="color:#555">*</span>config)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>line, <span style="color:#555">*</span>key, <span style="color:#555">*</span>value;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>context <span style="color:#555">=</span> (<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>)buffer;  <span style="color:#09f;font-style:italic">// 初始化为 buffer
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>delim <span style="color:#555">=</span> <span style="color:#c30">&#34;</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config start</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    line <span style="color:#555">=</span> buffer;
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">while</span> ((line <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>(<span style="color:#555">&amp;</span>context, delim)) <span style="color:#555">!=</span> <span style="color:#366">NULL</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config while start</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (line[<span style="color:#f60">0</span>] <span style="color:#555">==</span> <span style="color:#c30">&#39;\0&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#09f;font-style:italic">// 空行，跳过
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>            <span style="color:#069;font-weight:bold">continue</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        key <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>((<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">**</span>)<span style="color:#555">&amp;</span>line, <span style="color:#c30">&#34;=&#34;</span>);
+</span></span><span style="display:flex;"><span>        value <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>((<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">**</span>)<span style="color:#555">&amp;</span>line, <span style="color:#c30">&#34;=&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (key <span style="color:#555">!=</span> <span style="color:#366">NULL</span> <span style="color:#555">&amp;&amp;</span> value <span style="color:#555">!=</span> <span style="color:#366">NULL</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">strcmp</span>(key, <span style="color:#c30">&#34;code&#34;</span>) <span style="color:#555">==</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>token <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>((<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">**</span>)<span style="color:#555">&amp;</span>value, <span style="color:#c30">&#34;,&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#078;font-weight:bold">size_t</span> i <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#069;font-weight:bold">while</span> (token <span style="color:#555">!=</span> <span style="color:#366">NULL</span>) {
+</span></span><span style="display:flex;"><span>                    config<span style="color:#555">-&gt;</span>code <span style="color:#555">=</span> <span style="color:#c0f">krealloc</span>(config<span style="color:#555">-&gt;</span>code, (i <span style="color:#555">+</span> <span style="color:#f60">1</span>) <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(<span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span>), GFP_KERNEL);
+</span></span><span style="display:flex;"><span>                    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#555">!</span>config<span style="color:#555">-&gt;</span>code) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Failed to reallocate memory for code array.</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>                        <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span>ENOMEM;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">strstr</span>(token, <span style="color:#c30">&#34;0x&#34;</span>) <span style="color:#555">!=</span> token) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#078;font-weight:bold">char</span> hex_token[<span style="color:#f60">10</span>];
+</span></span><span style="display:flex;"><span>                        <span style="color:#c0f">snprintf</span>(hex_token, <span style="color:#069;font-weight:bold">sizeof</span>(hex_token), <span style="color:#c30">&#34;0x%s&#34;</span>, token);
+</span></span><span style="display:flex;"><span>                        <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">sscanf</span>(hex_token, <span style="color:#c30">&#34;0x%x&#34;</span>, <span style="color:#555">&amp;</span>config<span style="color:#555">-&gt;</span>code[i]) <span style="color:#555">!=</span> <span style="color:#f60">1</span>) {
+</span></span><span style="display:flex;"><span>                            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Failed to parse code value. parse_config failed</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span>EINVAL;
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">sscanf</span>(token, <span style="color:#c30">&#34;0x%x&#34;</span>, <span style="color:#555">&amp;</span>config<span style="color:#555">-&gt;</span>code[i]) <span style="color:#555">!=</span> <span style="color:#f60">1</span>) {
+</span></span><span style="display:flex;"><span>                            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Failed to parse code value. parse_config failed</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span>EINVAL;
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    i<span style="color:#555">++</span>;
+</span></span><span style="display:flex;"><span>                    token <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>((<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">**</span>)<span style="color:#555">&amp;</span>value, <span style="color:#c30">&#34;,&#34;</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                config<span style="color:#555">-&gt;</span>code_size <span style="color:#555">=</span> i;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config end</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">void</span> __exit <span style="color:#c0f">hello_exit</span>(<span style="color:#078;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;hello exit</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_init</span>(hello_init);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_exit</span>(hello_exit);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_AUTHOR</span>(<span style="color:#c30">&#34;Zelai Dai &lt;daizelai@gbcom.com.cn&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_DESCRIPTION</span>(<span style="color:#c30">&#34;read system ini main module&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_LICENSE</span>(<span style="color:#c30">&#34;GPL&#34;</span>);
+</span></span></code></pre></div><p>下面是2023/11/24 18:21完全可用的一个<code>hellotmp.c</code>版本，接近完工了。
+<a href="./file/hellotmp_20231124_1824.7z">hellotmp_20231124_1824.7z</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/module.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/kernel.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/init.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/fs.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/uaccess.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/string.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/slab.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/types.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/moduleparam.h&gt;</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// insmod your_module.ko config_file_path=/path/to/your/config_file.ini， 在没有指定模块参数时将使用DEFAULT_CONFIG_FILE_PATH这个默认路径。
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#099">#define DEFAULT_CONFIG_FILE_PATH &#34;/custom/metro/system/system_config.ini&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>config_file_path <span style="color:#555">=</span> DEFAULT_CONFIG_FILE_PATH;
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_param</span>(config_file_path, charp, <span style="color:#f60">0000</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">char</span> codeBuf[<span style="color:#f60">1024</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">struct</span> ConfigData {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>code;  <span style="color:#09f;font-style:italic">// 使用指针来表示变长数组
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">size_t</span> code_size;    <span style="color:#09f;font-style:italic">// 记录数组的大小
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 函数声明
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">print_array</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size);
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">contains_value</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size, <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> value);
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">parse_config</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#069;font-weight:bold">struct</span> ConfigData <span style="color:#555">*</span>config);
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 下面两个方法在init函数之前，所以不需要声音
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">//int read_file(const char *file_path, char *buffer, size_t buffer_size);
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">//void read_config_file(const char *file_path, char *buffer, size_t buffer_size, struct ConfigData *my_config);
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">handle_config_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_content, <span style="color:#069;font-weight:bold">struct</span> ConfigData <span style="color:#555">*</span>my_config);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 读取文件的辅助函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">read_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_path, <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#078;font-weight:bold">size_t</span> buffer_size) {
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> file <span style="color:#555">*</span>fp;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">mm_segment_t</span> fs;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">loff_t</span> pos <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">int</span> err;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fp <span style="color:#555">=</span> <span style="color:#c0f">filp_open</span>(file_path, O_RDWR <span style="color:#555">|</span> O_CREAT, <span style="color:#f60">0644</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">IS_ERR</span>(fp)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Error opening config file: %ld</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, <span style="color:#c0f">PTR_ERR</span>(fp));
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> <span style="color:#c0f">PTR_ERR</span>(fp);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fs <span style="color:#555">=</span> <span style="color:#c0f">get_fs</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">set_fs</span>(KERNEL_DS);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    err <span style="color:#555">=</span> <span style="color:#c0f">vfs_read</span>(fp, buffer, buffer_size, <span style="color:#555">&amp;</span>pos);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (err <span style="color:#555">&lt;</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;read file error: %d</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, err);
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">filp_close</span>(fp, <span style="color:#366">NULL</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">set_fs</span>(fs);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> err;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">filp_close</span>(fp, <span style="color:#366">NULL</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">set_fs</span>(fs);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">read_config_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_path, <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#078;font-weight:bold">size_t</span> buffer_size, <span style="color:#069;font-weight:bold">struct</span> ConfigData <span style="color:#555">*</span>my_config) {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">int</span> err <span style="color:#555">=</span> <span style="color:#c0f">read_file</span>(file_path, buffer, buffer_size);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (err <span style="color:#555">&lt;</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 处理读取文件错误...
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Failed to read config file: %d</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, err);
+</span></span><span style="display:flex;"><span>    } <span style="color:#069;font-weight:bold">else</span> <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">strlen</span>(buffer) <span style="color:#555">==</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 文件内容为空
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Config file is empty.</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#09f;font-style:italic">// 处理配置文件内容
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        <span style="color:#c0f">handle_config_file</span>(buffer, my_config);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> __init <span style="color:#c0f">hello_init</span>(<span style="color:#078;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> ConfigData my_config <span style="color:#555">=</span> {
+</span></span><span style="display:flex;"><span>        .code <span style="color:#555">=</span> <span style="color:#366">NULL</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">//u8 reg_e5 = 0xb1;
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;hello enter</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 读取配置文件
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>	<span style="color:#c0f">read_config_file</span>(config_file_path, codeBuf, <span style="color:#069;font-weight:bold">sizeof</span>(codeBuf), <span style="color:#555">&amp;</span>my_config);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 处理配置文件内容
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic">//handle_config_file(codeBuf, &amp;my_config);
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> (my_config.code <span style="color:#555">!=</span> <span style="color:#366">NULL</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">kfree</span>(my_config.code);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 打印数组的辅助函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">print_array</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size) {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">size_t</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Array contents: [&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">for</span> (i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> size; <span style="color:#555">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;%x&#34;</span>, array[i]);
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (i <span style="color:#555">&lt;</span> size <span style="color:#555">-</span> <span style="color:#f60">1</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;, &#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;]</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// Array contents: [b1, b2]
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 判断数组中是否包含特定值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">contains_value</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>array, <span style="color:#078;font-weight:bold">size_t</span> size, <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> value) {
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">size_t</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 先打印数组
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c0f">print_array</span>(array, size);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">for</span> (i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> size; <span style="color:#555">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (array[i] <span style="color:#555">==</span> value) {
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">1</span>;  <span style="color:#09f;font-style:italic">// 包含特定值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;  <span style="color:#09f;font-style:italic">// 不包含特定值
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 处理配置文件内容的函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">handle_config_file</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>file_content, <span style="color:#069;font-weight:bold">struct</span> ConfigData <span style="color:#555">*</span>my_config) {
+</span></span><span style="display:flex;"><span>    u8 reg_e5 <span style="color:#555">=</span> <span style="color:#f60">0xb1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 解析配置文件
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">parse_config</span>(file_content, my_config) <span style="color:#555">==</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (my_config<span style="color:#555">-&gt;</span>code <span style="color:#555">!=</span> <span style="color:#366">NULL</span> <span style="color:#555">&amp;&amp;</span> my_config<span style="color:#555">-&gt;</span>code_size <span style="color:#555">&gt;</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#09f;font-style:italic">// 有有效的 code 数据
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Parsed code array with %zu elements.</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, my_config<span style="color:#555">-&gt;</span>code_size);
+</span></span><span style="display:flex;"><span>            <span style="color:#c0f">print_array</span>(my_config<span style="color:#555">-&gt;</span>code, my_config<span style="color:#555">-&gt;</span>code_size);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">contains_value</span>(my_config<span style="color:#555">-&gt;</span>code, my_config<span style="color:#555">-&gt;</span>code_size, reg_e5)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;The array contains reg_e5.%x</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, reg_e5);
+</span></span><span style="display:flex;"><span>            } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;The array does not contain reg_e5:%x</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, reg_e5);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;No valid code data found in the config file.</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config failed</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 解析配置文件的函数
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">parse_config</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>buffer, <span style="color:#069;font-weight:bold">struct</span> ConfigData <span style="color:#555">*</span>config) {
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>line, <span style="color:#555">*</span>key, <span style="color:#555">*</span>value;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>context <span style="color:#555">=</span> (<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>)buffer;
+</span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>delim <span style="color:#555">=</span> <span style="color:#c30">&#34;</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config start</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    line <span style="color:#555">=</span> buffer;
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">while</span> ((line <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>(<span style="color:#555">&amp;</span>context, delim)) <span style="color:#555">!=</span> <span style="color:#366">NULL</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (line[<span style="color:#f60">0</span>] <span style="color:#555">==</span> <span style="color:#c30">&#39;\0&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#09f;font-style:italic">// 空行，跳过
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>            <span style="color:#069;font-weight:bold">continue</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        key <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>((<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">**</span>)<span style="color:#555">&amp;</span>line, <span style="color:#c30">&#34;=&#34;</span>);
+</span></span><span style="display:flex;"><span>        value <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>((<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">**</span>)<span style="color:#555">&amp;</span>line, <span style="color:#c30">&#34;=&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> (key <span style="color:#555">!=</span> <span style="color:#366">NULL</span> <span style="color:#555">&amp;&amp;</span> value <span style="color:#555">!=</span> <span style="color:#366">NULL</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">strcmp</span>(key, <span style="color:#c30">&#34;code&#34;</span>) <span style="color:#555">==</span> <span style="color:#f60">0</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>token <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>((<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">**</span>)<span style="color:#555">&amp;</span>value, <span style="color:#c30">&#34;,&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#078;font-weight:bold">size_t</span> i <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#069;font-weight:bold">while</span> (token <span style="color:#555">!=</span> <span style="color:#366">NULL</span>) {
+</span></span><span style="display:flex;"><span>                    config<span style="color:#555">-&gt;</span>code <span style="color:#555">=</span> <span style="color:#c0f">krealloc</span>(config<span style="color:#555">-&gt;</span>code, (i <span style="color:#555">+</span> <span style="color:#f60">1</span>) <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(<span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span>), GFP_KERNEL);
+</span></span><span style="display:flex;"><span>                    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#555">!</span>config<span style="color:#555">-&gt;</span>code) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Failed to reallocate memory for code array.</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>                        <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span>ENOMEM;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">strstr</span>(token, <span style="color:#c30">&#34;0x&#34;</span>) <span style="color:#555">!=</span> token) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#078;font-weight:bold">char</span> hex_token[<span style="color:#f60">10</span>];
+</span></span><span style="display:flex;"><span>                        <span style="color:#c0f">snprintf</span>(hex_token, <span style="color:#069;font-weight:bold">sizeof</span>(hex_token), <span style="color:#c30">&#34;0x%s&#34;</span>, token);
+</span></span><span style="display:flex;"><span>                        <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">sscanf</span>(hex_token, <span style="color:#c30">&#34;0x%x&#34;</span>, <span style="color:#555">&amp;</span>config<span style="color:#555">-&gt;</span>code[i]) <span style="color:#555">!=</span> <span style="color:#f60">1</span>) {
+</span></span><span style="display:flex;"><span>                            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Failed to parse code value. parse_config failed</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span>EINVAL;
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    } <span style="color:#069;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#069;font-weight:bold">if</span> (<span style="color:#c0f">sscanf</span>(token, <span style="color:#c30">&#34;0x%x&#34;</span>, <span style="color:#555">&amp;</span>config<span style="color:#555">-&gt;</span>code[i]) <span style="color:#555">!=</span> <span style="color:#f60">1</span>) {
+</span></span><span style="display:flex;"><span>                            <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;Failed to parse code value. parse_config failed</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">-</span>EINVAL;
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    i<span style="color:#555">++</span>;
+</span></span><span style="display:flex;"><span>                    token <span style="color:#555">=</span> <span style="color:#c0f">strsep</span>((<span style="color:#078;font-weight:bold">char</span> <span style="color:#555">**</span>)<span style="color:#555">&amp;</span>value, <span style="color:#c30">&#34;,&#34;</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                config<span style="color:#555">-&gt;</span>code_size <span style="color:#555">=</span> i;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;parse_config end</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">void</span> __exit <span style="color:#c0f">hello_exit</span>(<span style="color:#078;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">printk</span>(<span style="color:#c30">&#34;hello exit</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_init</span>(hello_init);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">module_exit</span>(hello_exit);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_AUTHOR</span>(<span style="color:#c30">&#34;Zelai Dai &lt;daizelai@gbcom.com.cn&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_DESCRIPTION</span>(<span style="color:#c30">&#34;Read system ini main module&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_LICENSE</span>(<span style="color:#c30">&#34;GPL&#34;</span>);
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-11-22 15:56:00">更新于 2023-11-22&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/%E5%86%85%E6%A0%B8%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9D%97/' class="post-tag">内核添加模块</a><a href='/tags/%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/' class="post-tag">驱动模块</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/" class="post-nav-item" rel="prev" title="编译android系统user版本时默认开启adb模式"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>编译android系统user版本时默认开启adb模式</a>
+      <a href="/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-nav-item" rel="next" title="终端屏幕自动修复配置的使用">终端屏幕自动修复配置的使用<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

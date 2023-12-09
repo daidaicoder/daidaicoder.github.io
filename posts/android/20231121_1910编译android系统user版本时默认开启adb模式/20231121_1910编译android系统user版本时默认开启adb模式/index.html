@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>编译android系统user版本时默认开启adb模式 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="编译android系统user版本时默认开启adb模式, user版本默认开启adb模式" /><meta name="keywords" content='日志, msm8953_64, user版本, user版本默认开启adb模式' /><meta itemprop="name" content="编译android系统user版本时默认开启adb模式">
+<meta itemprop="description" content="编译android系统user版本时默认开启adb模式, user版本默认开启adb模式"><meta itemprop="datePublished" content="2023-11-21T19:10:00+08:00" />
+<meta itemprop="dateModified" content="2023-11-21T19:10:00+08:00" />
+<meta itemprop="wordCount" content="502">
+<meta itemprop="keywords" content="原创,msm8953_64,user版本," /><meta property="og:title" content="编译android系统user版本时默认开启adb模式" />
+<meta property="og:description" content="编译android系统user版本时默认开启adb模式, user版本默认开启adb模式" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-21T19:10:00+08:00" />
+<meta property="article:modified_time" content="2023-11-21T19:10:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="编译android系统user版本时默认开启adb模式"/>
+<meta name="twitter:description" content="编译android系统user版本时默认开启adb模式, user版本默认开启adb模式"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="https://daizelai.github.io/posts/android/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" /><link rel="next" href="https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "编译android系统user版本时默认开启adb模式",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/android\/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F\/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F\/"
+    },"genre": "posts","keywords": "原创, msm8953_64, user版本","wordcount":  502 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/android\/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F\/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F\/","datePublished": "2023-11-21T19:10:00+08:00","dateModified": "2023-11-21T19:10:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "编译android系统user版本时默认开启adb模式, user版本默认开启adb模式"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>编译android系统user版本时默认开启adb模式</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/msm8953_64/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> msm8953_64</a>&ensp;<a href="/categories/user%E7%89%88%E6%9C%AC/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> user版本</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-11-21 19:10:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-21">2023-11-21</time></span>&nbsp;<span title="更新于 2023-11-21 19:10:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-21">2023-11-21</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 502 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二user版本默认开启adb以及root权限">二、user版本默认开启adb以及root权限</a>
+      <ul>
+        <li><a href="#修改secure属性">修改secure属性</a></li>
+        <li><a href="#修改adb模块的androidmk文件">修改adb模块的android.mk文件</a></li>
+        <li><a href="#修改sepolicy">修改sepolicy</a></li>
+        <li><a href="#user版本开启fastboot一般不修改未次也未修改">user版本开启fastboot【一般不修改】【未次也未修改】</a></li>
+        <li><a href="#内核编译宏配置文件">内核编译宏配置文件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20231121_1910编译android系统user版本时默认开启adb模式">20231121_1910编译android系统user版本时默认开启adb模式</h1>
+<h2 id="一描述">一、描述</h2>
+<p>默认编译user系统后，是不能直接adb和root的，但有时候为了方便又必须要这样做，怎么办呢？</p>
+<p>本文给出了msm8953_64+Android7.1环境下，如何解决这个问题。</p>
+<h2 id="二user版本默认开启adb以及root权限">二、user版本默认开启adb以及root权限</h2>
+<h3 id="修改secure属性">修改secure属性</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">diff</span> <span style="color:#a00;background-color:#faa">--git</span> <span style="color:#a00;background-color:#faa">a/build/core/main.mk</span> <span style="color:#a00;background-color:#faa">b/build/core/main.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">index</span> <span style="color:#a00;background-color:#faa">76b368d21d..f9a55894ad</span> <span style="color:#a00;background-color:#faa">100644</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">---</span> <span style="color:#a00;background-color:#faa">a/build/core/main.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+++</span> <span style="color:#a00;background-color:#faa">b/build/core/main.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">@@ -390,11 +390,11 @@ enable_target_debugging </span><span style="color:#555">:</span>= true
+</span></span><span style="display:flex;"><span> tags_to_install :<span style="color:#555">=</span>
+</span></span><span style="display:flex;"><span> ifneq <span style="color:#555">(</span>,<span style="color:#069;font-weight:bold">$(</span>user_variant<span style="color:#069;font-weight:bold">)</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#09f;font-style:italic"># Target is secure in user builds.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>  <span style="color:#033">ADDITIONAL_DEFAULT_PROPERTIES</span> <span style="color:#555">+=</span> ro.secure<span style="color:#555">=</span><span style="color:#f60">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span>  <span style="color:#033">ADDITIONAL_DEFAULT_PROPERTIES</span> <span style="color:#555">+=</span> ro.secure<span style="color:#555">=</span><span style="color:#f60">0</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#033">ADDITIONAL_DEFAULT_PROPERTIES</span> <span style="color:#555">+=</span> security.perf_harden<span style="color:#555">=</span><span style="color:#f60">1</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>   ifeq <span style="color:#555">(</span><span style="color:#069;font-weight:bold">$(</span>user_variant<span style="color:#069;font-weight:bold">)</span>,user<span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>    <span style="color:#033">ADDITIONAL_DEFAULT_PROPERTIES</span> <span style="color:#555">+=</span> ro.adb.secure<span style="color:#555">=</span><span style="color:#f60">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span>    <span style="color:#033">ADDITIONAL_DEFAULT_PROPERTIES</span> <span style="color:#555">+=</span> ro.adb.secure<span style="color:#555">=</span><span style="color:#f60">0</span>
+</span></span><span style="display:flex;"><span>   endif
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>   ifeq <span style="color:#555">(</span><span style="color:#069;font-weight:bold">$(</span>user_variant<span style="color:#069;font-weight:bold">)</span>,userdebug<span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">@@</span> <span style="color:#a00;background-color:#faa">-402,7</span> <span style="color:#a00;background-color:#faa">+402,7</span> <span style="color:#a00;background-color:#faa">@@</span> <span style="color:#a00;background-color:#faa">ifneq</span> <span style="color:#a00;background-color:#faa">(,</span><span style="color:#069;font-weight:bold">$(</span><span style="color:#033">user_variant</span><span style="color:#069;font-weight:bold">)</span><span style="color:#a00;background-color:#faa">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#033">tags_to_install</span> <span style="color:#555">+=</span> debug
+</span></span><span style="display:flex;"><span>   <span style="color:#069;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#09f;font-style:italic"># Disable debugging in plain user builds.</span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">-    enable_target_debugging </span><span style="color:#555">:</span>=
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+    # enable_target_debugging </span><span style="color:#555">:</span>=
+</span></span><span style="display:flex;"><span>   endif
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>   <span style="color:#09f;font-style:italic"># Disallow mock locations by default for user builds</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">@@</span> <span style="color:#a00;background-color:#faa">-753,7</span> <span style="color:#a00;background-color:#faa">+753,7</span> <span style="color:#a00;background-color:#faa">@@</span> <span style="color:#a00;background-color:#faa">ifdef</span> <span style="color:#a00;background-color:#faa">FULL_BUILD</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#09f;font-style:italic">#或者直接使用下面这个
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>   <span style="color:#09f;font-style:italic">#product_MODULES := $(filter-out $(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_DEL_PACKAGES), $(product_MODULES))</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#09f;font-style:italic">#added end by daizelai</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>  
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#09f;font-style:italic"># Resolve the :32 :64 module name
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>   modules_32 :<span style="color:#555">=</span> <span style="color:#069;font-weight:bold">$(</span>patsubst %:32,%,<span style="color:#069;font-weight:bold">$(</span>filter %:32, <span style="color:#069;font-weight:bold">$(</span>product_MODULES<span style="color:#069;font-weight:bold">)))</span>
+</span></span><span style="display:flex;"><span>   modules_64 :<span style="color:#555">=</span> <span style="color:#069;font-weight:bold">$(</span>patsubst %:64,%,<span style="color:#069;font-weight:bold">$(</span>filter %:64, <span style="color:#069;font-weight:bold">$(</span>product_MODULES<span style="color:#069;font-weight:bold">)))</span>
+</span></span></code></pre></div><h3 id="修改adb模块的androidmk文件">修改adb模块的android.mk文件</h3>
+<p>允许adb root，添加adb认证过滤user。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">diff</span> <span style="color:#a00;background-color:#faa">--git</span> <span style="color:#a00;background-color:#faa">a/system/core/adb/Android.mk</span> <span style="color:#a00;background-color:#faa">b/system/core/adb/Android.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">index</span> <span style="color:#a00;background-color:#faa">94e2a5794d..60f81ac259</span> <span style="color:#a00;background-color:#faa">100644</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">---</span> <span style="color:#a00;background-color:#faa">a/system/core/adb/Android.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+++</span> <span style="color:#a00;background-color:#faa">b/system/core/adb/Android.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">@@ -327,9 +327,9 @@ LOCAL_CFLAGS </span><span style="color:#555">:</span>= \
+</span></span><span style="display:flex;"><span>     -D_GNU_SOURCE \
+</span></span><span style="display:flex;"><span>     -Wno-deprecated-declarations \
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#033">-LOCAL_CFLAGS</span> <span style="color:#555">+=</span> -DALLOW_ADBD_NO_AUTH<span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(if</span> <span style="color:#069;font-weight:bold">$(</span>filter userdebug eng,<span style="color:#069;font-weight:bold">$(</span>TARGET_BUILD_VARIANT<span style="color:#069;font-weight:bold">))</span>,1,0<span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span><span style="color:#033">LOCAL_CFLAGS</span> <span style="color:#555">+=</span> -DALLOW_ADBD_NO_AUTH<span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(if</span> <span style="color:#069;font-weight:bold">$(</span>filter userdebug user eng,<span style="color:#069;font-weight:bold">$(</span>TARGET_BUILD_VARIANT<span style="color:#069;font-weight:bold">))</span>,1,0<span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span><span style="color:#09f;font-style:italic">#daizelai ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#a00;background-color:#faa">+</span><span style="color:#09f;font-style:italic">#daizelai ifneq (,$(filter userdebug user eng,$(TARGET_BUILD_VARIANT)))
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span> <span style="color:#033">LOCAL_CFLAGS</span> <span style="color:#555">+=</span> -DALLOW_ADBD_DISABLE_VERITY<span style="color:#555">=</span><span style="color:#f60">1</span>
+</span></span><span style="display:flex;"><span> <span style="color:#033">LOCAL_CFLAGS</span> <span style="color:#555">+=</span> -DALLOW_ADBD_ROOT<span style="color:#555">=</span><span style="color:#f60">1</span>
+</span></span><span style="display:flex;"><span> <span style="color:#09f;font-style:italic">#daizelai endif</span>
+</span></span></code></pre></div><h3 id="修改sepolicy">修改sepolicy</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">diff</span> <span style="color:#a00;background-color:#faa">--git</span> <span style="color:#a00;background-color:#faa">a/system/sepolicy/Android.mk</span> <span style="color:#a00;background-color:#faa">b/system/sepolicy/Android.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">index</span> <span style="color:#a00;background-color:#faa">0bfa54d389..07d53dd9d2</span> <span style="color:#a00;background-color:#faa">100644</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">---</span> <span style="color:#a00;background-color:#faa">a/system/sepolicy/Android.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+++</span> <span style="color:#a00;background-color:#faa">b/system/sepolicy/Android.mk</span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">@@ -94,7 +94,7 @@ $(sepolicy_policy.conf)</span><span style="color:#555">:</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">call</span> <span style="color:#033">build_policy</span>, <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">sepolicy_build_files</span><span style="color:#069;font-weight:bold">))</span>
+</span></span><span style="display:flex;"><span>        @mkdir -p <span style="color:#069;font-weight:bold">$(</span>dir <span style="color:#033">$@</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">$(</span>hide<span style="color:#069;font-weight:bold">)</span> m4 <span style="color:#069;font-weight:bold">$(</span>PRIVATE_ADDITIONAL_M4DEFS<span style="color:#069;font-weight:bold">)</span> <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span>                -D <span style="color:#033">mls_num_sens</span><span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(</span>PRIVATE_MLS_SENS<span style="color:#069;font-weight:bold">)</span> -D <span style="color:#033">mls_num_cats</span><span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(</span>PRIVATE_MLS_CATS<span style="color:#069;font-weight:bold">)</span> <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span><span style="color:#a00;background-color:#faa">-</span>               <span style="color:#a00;background-color:#faa">-D</span> <span style="color:#033">target_build_variant</span><span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(</span>TARGET_BUILD_VARIANT<span style="color:#069;font-weight:bold">)</span> <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span>+               -D <span style="color:#033">target_build_variant</span><span style="color:#555">=</span>eng <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span>                -s $^ &gt; <span style="color:#033">$@</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">$(</span>hide<span style="color:#069;font-weight:bold">)</span> sed <span style="color:#c30">&#39;/dontaudit/d&#39;</span> <span style="color:#033">$@</span> &gt; <span style="color:#033">$@</span>.dontaudit
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#c0f">@@ -108,7 +108,6 @@ $(LOCAL_BUILT_MODULE)</span><span style="color:#555">:</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">sepolicy_policy</span>.<span style="color:#033">conf</span><span style="color:#069;font-weight:bold">)</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">HOST_OUT_EXECUTABLES</span><span style="color:#069;font-weight:bold">)</span>/checkpoli
+</span></span><span style="display:flex;"><span>                <span style="color:#366">echo</span> <span style="color:#c30">&#34;ERROR: permissive domains not allowed in user builds&#34;</span> 1&gt;&amp;2; <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span>                <span style="color:#366">echo</span> <span style="color:#c30">&#34;List of invalid domains:&#34;</span> 1&gt;&amp;2; <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span>                cat <span style="color:#033">$@</span>.permissivedomains 1&gt;&amp;2; <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span><span style="color:#a00;background-color:#faa">-</span>               <span style="color:#a00;background-color:#faa">exit</span> <span style="color:#a00;background-color:#faa">1;</span> <span style="color:#a00;background-color:#faa">\</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a00;background-color:#faa">fi</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">hide</span><span style="color:#069;font-weight:bold">)</span> <span style="color:#a00;background-color:#faa">mv</span> <span style="color:#069;font-weight:bold">$@</span><span style="color:#a00;background-color:#faa">.tmp</span> <span style="color:#069;font-weight:bold">$@</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#c0f">@@ -145,7 +144,6 @@ $(LOCAL_BUILT_MODULE)</span><span style="color:#555">:</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">sepolicy_policy_recovery</span>.<span style="color:#033">conf</span><span style="color:#069;font-weight:bold">)</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">HOST_OUT_EXECUTABLES</span><span style="color:#069;font-weight:bold">)</span>/
+</span></span><span style="display:flex;"><span>                <span style="color:#366">echo</span> <span style="color:#c30">&#34;ERROR: permissive domains not allowed in user builds&#34;</span> 1&gt;&amp;2; <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span>                <span style="color:#366">echo</span> <span style="color:#c30">&#34;List of invalid domains:&#34;</span> 1&gt;&amp;2; <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span>                cat <span style="color:#033">$@</span>.permissivedomains 1&gt;&amp;2; <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span><span style="color:#a00;background-color:#faa">-</span>               <span style="color:#a00;background-color:#faa">exit</span> <span style="color:#a00;background-color:#faa">1;</span> <span style="color:#a00;background-color:#faa">\</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a00;background-color:#faa">fi</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">hide</span><span style="color:#069;font-weight:bold">)</span> <span style="color:#a00;background-color:#faa">mv</span> <span style="color:#069;font-weight:bold">$@</span><span style="color:#a00;background-color:#faa">.tmp</span> <span style="color:#069;font-weight:bold">$@</span>
+</span></span></code></pre></div><h3 id="user版本开启fastboot一般不修改未次也未修改">user版本开启fastboot【一般不修改】【未次也未修改】</h3>
+<p>此项只是记录一下。
+路径：bootable/bootloader/lk/app/aboot/aboot.c</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#f60">3979</span> <span style="color:#a00;background-color:#faa">#</span>ifndef DISABLE_FASTBOOT_CMDS
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#f60">3979</span> <span style="color:#09f;font-style:italic">//#ifndef DISABLE_FASTBOOT_CMDS
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#f60">3980</span>                         <span style="color:#09f;font-style:italic">/* Register the following commands only for non-user builds */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f60">3981</span>                         {<span style="color:#c30">&#34;flash:&#34;</span>, cmd_flash},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3982</span>                         {<span style="color:#c30">&#34;erase:&#34;</span>, cmd_erase},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3983</span>                         {<span style="color:#c30">&#34;boot&#34;</span>, cmd_boot},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3984</span>                         {<span style="color:#c30">&#34;continue&#34;</span>, cmd_continue},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3985</span>                         {<span style="color:#c30">&#34;reboot&#34;</span>, cmd_reboot},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3986</span>                         {<span style="color:#c30">&#34;reboot-bootloader&#34;</span>, cmd_reboot_bootloader},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3987</span>                         {<span style="color:#c30">&#34;oem unlock&#34;</span>, cmd_oem_unlock},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3988</span>                         {<span style="color:#c30">&#34;oem unlock-go&#34;</span>, cmd_oem_unlock_go},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3989</span>                         {<span style="color:#c30">&#34;oem lock&#34;</span>, cmd_oem_lock},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3990</span>                         {<span style="color:#c30">&#34;flashing unlock&#34;</span>, cmd_oem_unlock},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3991</span>                         {<span style="color:#c30">&#34;flashing lock&#34;</span>, cmd_oem_lock},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3992</span>                         {<span style="color:#c30">&#34;flashing lock_critical&#34;</span>, cmd_flashing_lock_critical},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3993</span>                         {<span style="color:#c30">&#34;flashing unlock_critical&#34;</span>, cmd_flashing_unlock_critical},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3994</span>                         {<span style="color:#c30">&#34;flashing get_unlock_ability&#34;</span>, cmd_flashing_get_unlock_ability},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3995</span>                         {<span style="color:#c30">&#34;oem device-info&#34;</span>, cmd_oem_devinfo},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3996</span>                         {<span style="color:#c30">&#34;preflash&#34;</span>, cmd_preflash},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3997</span>                         {<span style="color:#c30">&#34;oem enable-charger-screen&#34;</span>, cmd_oem_enable_charger_screen},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3998</span>                         {<span style="color:#c30">&#34;oem disable-charger-screen&#34;</span>, cmd_oem_disable_charger_screen},
+</span></span><span style="display:flex;"><span><span style="color:#f60">3999</span>                         {<span style="color:#c30">&#34;oem off-mode-charge&#34;</span>, cmd_oem_off_mode_charger},
+</span></span><span style="display:flex;"><span><span style="color:#f60">4000</span>                         {<span style="color:#c30">&#34;oem select-display-panel&#34;</span>, cmd_oem_select_display_panel},
+</span></span><span style="display:flex;"><span><span style="color:#f60">4001</span> <span style="color:#a00;background-color:#faa">#</span><span style="color:#069;font-weight:bold">if</span> UNITTEST_FW_SUPPORT
+</span></span><span style="display:flex;"><span><span style="color:#f60">4002</span>                         {<span style="color:#c30">&#34;oem run-tests&#34;</span>, cmd_oem_runtests},
+</span></span><span style="display:flex;"><span><span style="color:#f60">4003</span> <span style="color:#a00;background-color:#faa">#</span>endif
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#f60">4004</span> <span style="color:#a00;background-color:#faa">#</span>endif
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#f60">4004</span> <span style="color:#09f;font-style:italic">//#endif
+</span></span></span></code></pre></div><h3 id="内核编译宏配置文件">内核编译宏配置文件</h3>
+<p>2023/11/22 14:39
+user版本和userdebug版本所使用的内核配置文件是不同的，这个在AndroidBorad.mk中有说明。
+路径：device/qcom/msm8953_64/AndroidBoard.mk</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span> <span style="color:#f60">18</span> <span style="color:#09f;font-style:italic">#----------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">19</span> <span style="color:#09f;font-style:italic"># Compile Linux Kernel</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">20</span> <span style="color:#09f;font-style:italic">#----------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">21</span> 
+</span></span><span style="display:flex;"><span> <span style="color:#f60">22</span> <span style="color:#09f;font-style:italic">#joe add fastboot complie option 20180830</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">23</span> ifeq <span style="color:#555">(</span><span style="color:#069;font-weight:bold">$(</span>KERNEL_DEFCONFIG<span style="color:#069;font-weight:bold">)</span>,<span style="color:#555">)</span> 
+</span></span><span style="display:flex;"><span> <span style="color:#f60">24</span>     ifeq <span style="color:#555">(</span><span style="color:#069;font-weight:bold">$(</span>TARGET_QUECTEL_BUILD_FASTBOOT<span style="color:#069;font-weight:bold">)</span>,userfastboot<span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">25</span>       KERNEL_DEFCONFIG :<span style="color:#555">=</span> msmcortex-perf_fastboot_defconfig
+</span></span><span style="display:flex;"><span> <span style="color:#f60">26</span>     endif
+</span></span><span style="display:flex;"><span> <span style="color:#f60">27</span> endif
+</span></span><span style="display:flex;"><span> <span style="color:#f60">28</span> <span style="color:#09f;font-style:italic">#joe add fastboot complie option 20180830</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">29</span> 
+</span></span><span style="display:flex;"><span> <span style="color:#f60">30</span> ifeq <span style="color:#555">(</span><span style="color:#069;font-weight:bold">$(</span>KERNEL_DEFCONFIG<span style="color:#069;font-weight:bold">)</span>,<span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">31</span>     ifeq <span style="color:#555">(</span><span style="color:#069;font-weight:bold">$(</span>TARGET_BUILD_VARIANT<span style="color:#069;font-weight:bold">)</span>,user<span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">32</span>       KERNEL_DEFCONFIG :<span style="color:#555">=</span> msmcortex-perf_defconfig // user
+</span></span><span style="display:flex;"><span> <span style="color:#f60">33</span>     <span style="color:#069;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">34</span>       KERNEL_DEFCONFIG :<span style="color:#555">=</span> msmcortex_defconfig // debug
+</span></span><span style="display:flex;"><span> <span style="color:#f60">35</span>     endif
+</span></span><span style="display:flex;"><span> <span style="color:#f60">36</span> endif
+</span></span><span style="display:flex;"><span> <span style="color:#f60">37</span> 
+</span></span><span style="display:flex;"><span> <span style="color:#f60">38</span> 
+</span></span><span style="display:flex;"><span> <span style="color:#f60">39</span> ifeq <span style="color:#555">(</span><span style="color:#069;font-weight:bold">$(</span>TARGET_KERNEL_SOURCE<span style="color:#069;font-weight:bold">)</span>,<span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f60">40</span>      TARGET_KERNEL_SOURCE :<span style="color:#555">=</span> kernel
+</span></span><span style="display:flex;"><span> <span style="color:#f60">41</span> endif
+</span></span><span style="display:flex;"><span> <span style="color:#f60">42</span> include <span style="color:#069;font-weight:bold">$(</span>TARGET_KERNEL_SOURCE<span style="color:#069;font-weight:bold">)</span>/AndroidKernel.mk
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-11-21 19:10:00">更新于 2023-11-21&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/msm8953_64/' class="post-tag">msm8953_64</a><a href='/tags/user%E7%89%88%E6%9C%AC/' class="post-tag">user版本</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/android/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" class="post-nav-item" rel="prev" title="android系统开机启动脚本"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>android系统开机启动脚本</a>
+      <a href="/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" class="post-nav-item" rel="next" title="内核中添加驱动模块">内核中添加驱动模块<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>as中插件的使用 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="在as中使用插件" /><meta name="keywords" content='原创, android, as, 插件' /><meta itemprop="name" content="as中插件的使用">
+<meta itemprop="description" content="在as中使用插件"><meta itemprop="datePublished" content="2022-10-17T16:39:00+08:00" />
+<meta itemprop="dateModified" content="2022-10-17T16:39:00+08:00" />
+<meta itemprop="wordCount" content="272">
+<meta itemprop="keywords" content="原创,android,as,插件," /><meta property="og:title" content="as中插件的使用" />
+<meta property="og:description" content="在as中使用插件" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/as/20221017_1639as%E4%B8%AD%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-17T16:39:00+08:00" />
+<meta property="article:modified_time" content="2022-10-17T16:39:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="as中插件的使用"/>
+<meta name="twitter:description" content="在as中使用插件"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/as/20221017_1639as%E4%B8%AD%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" /><link rel="next" href="https://daizelai.github.io/posts/android/20221025_2016windows10%E4%B8%8Adocker%E4%B8%ADcentos7.9%E5%AE%89%E8%A3%85android%E7%8E%AF%E5%A2%83%E9%87%8D%E6%96%B0%E8%AE%B0%E5%BD%95%E7%89%88/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "as中插件的使用",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/as\/20221017_1639as%E4%B8%AD%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8\/"
+    },"genre": "posts","keywords": "原创, android, as, 插件","wordcount":  272 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/as\/20221017_1639as%E4%B8%AD%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8\/","datePublished": "2022-10-17T16:39:00+08:00","dateModified": "2022-10-17T16:39:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "在as中使用插件"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>as中插件的使用</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/as/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> as</a>&ensp;<a href="/categories/%E6%8F%92%E4%BB%B6/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 插件</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2022-10-17 16:39:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-10-17">2022-10-17</time></span>&nbsp;<span title="更新于 2022-10-17 16:39:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-10-17">2022-10-17</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 272 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二开始">二、开始</a>
+      <ul>
+        <li><a href="#21javadoc">2.1.JavaDoc</a></li>
+        <li><a href="#22json-parser">2.2.Json Parser</a></li>
+        <li><a href="#23sexy-editor">2.3.Sexy Editor</a></li>
+        <li><a href="#24plantuml-integration">2.4.PlantUML Integration</a></li>
+        <li><a href="#25ideavim">2.5.IdeaVim</a></li>
+        <li><a href="#26rainbow-brackets">2.6.Rainbow Brackets</a></li>
+        <li><a href="#27markdown-navigator">2.7.Markdown Navigator</a></li>
+        <li><a href="#28background-image-plus">2.8.Background Image Plus</a></li>
+        <li><a href="#29jclasslib-bytecode-viewer">2.9.jclasslib bytecode viewer</a></li>
+        <li><a href="#210codota">2.10.Codota</a></li>
+        <li><a href="#211maven-helper">2.11.Maven Helper</a></li>
+        <li><a href="#212findbugs">2.12.FindBugs</a></li>
+        <li><a href="#213sequencediagram">2.13.SequenceDiagram</a></li>
+        <li><a href="#214translation">2.14.Translation</a></li>
+        <li><a href="#215离线-java-反编译工具">2.15.离线 Java 反编译工具</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20221017_1639as中插件的使用">20221017_1639as中插件的使用</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2022/10/17 16:49
+android studio的插件使用。</p>
+<h2 id="二开始">二、开始</h2>
+<h3 id="21javadoc">2.1.JavaDoc</h3>
+<p>使用idea生成开发文档，报错（错误: 编码GBK的不可映射字符）并出现乱码问题解决：
+需要指定编码，菜单 Tools -&gt; Generate JavaDoc，弹出配置面板
+在Other command line arguments 栏输入：-encoding utf-8 -charset utf-8</p>
+<p><img loading="lazy" src="./images/as_make_java_doc_2022-10-18_103931.png" srcset="./images/as_make_java_doc_2022-10-18_103931.png, ./images/as_make_java_doc_2022-10-18_103931.png 1.5x, ./images/as_make_java_doc_2022-10-18_103931.png 2x" sizes="auto" data-title="javadoc" data-alt="javadoc" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="22json-parser">2.2.Json Parser</h3>
+<p>自动解析Json数据插件，格式化json代码。</p>
+<p><img loading="lazy" src="./images/as_use_json_parse_20221017_1644.gif" srcset="./images/as_use_json_parse_20221017_1644.gif, ./images/as_use_json_parse_20221017_1644.gif 1.5x, ./images/as_use_json_parse_20221017_1644.gif 2x" sizes="auto" data-title="json插件使用" data-alt="json插件使用" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="23sexy-editor">2.3.Sexy Editor</h3>
+<h3 id="24plantuml-integration">2.4.PlantUML Integration</h3>
+<p>强烈推荐大家画UML 图时使用PlantUML，理由是其他大多数作图软件都采用拖拽式，对于有些强迫症的人会浪费很多时间进行对齐等操作。</p>
+<p>该软件还提供了 IDEA 插件，在IDEA中创建 plantUML 的图形支持实时预览。</p>
+<p>通过 PlantUML 官网给出的示例，大家可以快速上手。</p>
+<h3 id="25ideavim">2.5.IdeaVim</h3>
+<p>设定激活/关闭IdeaVim模拟器的快捷键，设定为Ctrl+;（分号）</p>
+<p>ideaVim插件配置快捷键</p>
+<p><img loading="lazy" src="./images/androidstudio_config_ideavim_keymap_2022-10-17_113917.png" srcset="./images/androidstudio_config_ideavim_keymap_2022-10-17_113917.png, ./images/androidstudio_config_ideavim_keymap_2022-10-17_113917.png 1.5x, ./images/androidstudio_config_ideavim_keymap_2022-10-17_113917.png 2x" sizes="auto" data-title="ideaVim插件配置快捷键" data-alt="ideaVim插件配置快捷键" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="26rainbow-brackets">2.6.Rainbow Brackets</h3>
+<p>彩虹括号，让自己的代码编辑页面有了一点靓丽。</p>
+<h3 id="27markdown-navigator">2.7.Markdown Navigator</h3>
+<p>文档编辑器，CSDN的博客也是用的这种编辑器，在Android Studio上就可以写博客了。</p>
+<h3 id="28background-image-plus">2.8.Background Image Plus</h3>
+<p>该插件支持用户自定义设置Idea的背景图，并且能修改背景图的透明度；</p>
+<p>配置Background</p>
+<p><img loading="lazy" src="./images/as_config_bg_image_20221017_1641.gif" srcset="./images/as_config_bg_image_20221017_1641.gif, ./images/as_config_bg_image_20221017_1641.gif 1.5x, ./images/as_config_bg_image_20221017_1641.gif 2x" sizes="auto" data-title="配置Background" data-alt="配置Background" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="29jclasslib-bytecode-viewer">2.9.jclasslib bytecode viewer</h3>
+<p>下面要隆重介绍的是一款可视化的字节码查看插件：jclasslib 。</p>
+<p>使用方法：</p>
+<p>1.在 IDEA 打开想研究的类；
+2.编译该类或者直接编译整个项目（ 如果想研究的类在 jar 包中，此步可略过）；
+3.打开“view” 菜单，选择“Show Bytecode With jclasslib” 选项；
+4.选择上述菜单项后 IDEA 中会弹出 jclasslib 工具窗口。</p>
+<p>那么有自带的强大的反汇编工具 javap 还有必要用这个插件吗？</p>
+<p>这个插件的强大之处在于：</p>
+<p>1、不需要敲命令，简单直接，在右侧方便和源代码进行对比学习；
+2、字节码命令支持超链接，点击其中的虚拟机指令即可跳转到 jvms 相关章节，超级方便。</p>
+<p>该插件对我们学习虚拟机指令有极大的帮助。</p>
+<h3 id="210codota">2.10.Codota</h3>
+<p>另外一个不得不说的就是专栏中提到的辅助开发神器: Codota。</p>
+<p>该插件的强大之处在于：</p>
+<p>1.支持智能代码自动提示，该功能可以增强 IDEA 的代码提示功能；
+2.支持 JDK 和知名第三方库的函数的使用方法搜索，可以看到其他知名开源项目对该函数的用法。</p>
+<p>当我们第一次使用某个类，对某个函数不够熟悉时，可以通过该插件搜索相关用法，快速模仿学习。</p>
+<h3 id="211maven-helper">2.11.Maven Helper</h3>
+<p>这是一个idea的插件。
+现在Java项目通常会使用 maven 或者 gradle 构建，对于maven 项目来说， jar 包冲突非常常见。</p>
+<p>大家可以安装该插件，安装后 IDEA 中打开 pom.xml 文件时，就会多出一个 “Dependency Analyzer” 选项卡。</p>
+<p>如上图所示，该插件支持值插件冲突的 jar 包，可以选择冲突的 jar 包将其 exclude 掉。</p>
+<h3 id="212findbugs">2.12.FindBugs</h3>
+<p>程序员总是想尽可能地避免写 BUG， FindBugs 作为静态代码检查插件，可以检查你代码中的隐患，并给出原因。</p>
+<h3 id="213sequencediagram">2.13.SequenceDiagram</h3>
+<p>as装了，没看到在哪里使用，可能是idea java IDE用。</p>
+<p>SequenceDiagram 可以根据代码调用链路自动生成时序图，超级赞，超级推荐！</p>
+<p>这对研究源码，梳理工作中的业务代码有极大的帮助，堪称神器。</p>
+<p>安装完成后，在某个类的某个函数中，右键 &ndash;&gt; Sequence Diagaram 即可调出。</p>
+<h3 id="214translation">2.14.Translation</h3>
+<p>没啥用，因为无法翻译，google被墙</p>
+<h3 id="215离线-java-反编译工具">2.15.离线 Java 反编译工具</h3>
+<h4 id="2151反编译软件">2.15.1.反编译软件</h4>
+<p>很多人担心在线反编译可能会引起代码泄露等，所以倾向于使用本地的反编译工具。</p>
+<p>这里推荐两款软件：JD-GUI(android studio无法使用，as重启后提示idea中可以)和 Luyten。</p>
+<p>JD-GUI 是一款可以根据 Java的 class 文件反编译出其源码的工具，界面简单，功能强大。</p>
+<p>另外一个非常好用的反编译软件为 Luyten， 它是反编译工具 Procyon 的可视化显示工具。</p>
+<p>大家可以在其 github 上下载安装：https://github.com/deathmarine/Luyten/releases。</p>
+<p>该软件的用法和 JD-GUI 类似。</p>
+<p>图形界面反编译虽然更直观，但是如果我们想反编译Linux服务器上的类文件可咋办呢？</p>
+<p>我们可以通过 Jad 、CFR、Procyon、ernflower、 JD等反编译工具。</p>
+<p>另外知名的阿里开源 Java诊断工具 arthas 也支持 jad 命令，可以将 JVM 中实际运行的 class 文件的字节码反编译成 Java 代码，便于理解业务和排查问题。</p>
+<blockquote>
+<p>举一个真实发生过的典型的场景：
+有一次代码发布上线，但是从功能表现看线上仍然是“旧代码”，但是从发布的 git 提交版本来看是最新版。
+此时就可以使用 jad 反编译该类，来核查该问题。</p>
+</blockquote>
+<h4 id="2152反汇编">2.15.2.反汇编</h4>
+<p>这里简单介绍 Java 反编译和反汇编的区别。</p>
+<p>这里说的反编译是指：将 class 文件反编译成 Java 源码的过程。</p>
+<p>这里说的反汇编是指：将class 文件反解析为更可读的虚拟机指令的过程。</p>
+<p>反汇编最权威和强大的当属 JDK 自带的 javap 工具，具体用法直接输入帮助指令javap -help 即可查看：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">用法</span><span style="color:#555">:</span> javap <span style="color:#555">&lt;</span>options<span style="color:#555">&gt;</span> <span style="color:#555">&lt;</span>classes<span style="color:#555">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">其中</span><span style="color:#555">,</span> <span style="color:#a00;background-color:#faa">可能的选项包括</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>help  <span style="color:#555">--</span>help  <span style="color:#555">-?</span>        <span style="color:#a00;background-color:#faa">输出此用法消息</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>version                 <span style="color:#a00;background-color:#faa">版本信息</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>v  <span style="color:#555">-</span>verbose             <span style="color:#a00;background-color:#faa">输出附加信息</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>l                       <span style="color:#a00;background-color:#faa">输出行号和本地变量表</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span><span style="color:#069;font-weight:bold">public</span>                  <span style="color:#a00;background-color:#faa">仅显示公共类和成员</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span><span style="color:#069;font-weight:bold">protected</span>               <span style="color:#a00;background-color:#faa">显示受保护的</span><span style="color:#555">/</span><span style="color:#a00;background-color:#faa">公共类和成员</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span><span style="color:#069;font-weight:bold">package</span>                 <span style="color:#a00;background-color:#faa">显示程序包/受保护的/公共类</span>
+</span></span><span style="display:flex;"><span>                           <span style="color:#a00;background-color:#faa">和成员</span> <span style="color:#555">(</span><span style="color:#a00;background-color:#faa">默认</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>p  <span style="color:#555">-</span><span style="color:#069;font-weight:bold">private</span>             <span style="color:#a00;background-color:#faa">显示所有类和成员</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>c                       <span style="color:#a00;background-color:#faa">对代码进行反汇编</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>s                       <span style="color:#a00;background-color:#faa">输出内部类型签名</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>sysinfo                 <span style="color:#a00;background-color:#faa">显示正在处理的类的</span>
+</span></span><span style="display:flex;"><span>                           <span style="color:#a00;background-color:#faa">系统信息</span> <span style="color:#555">(</span><span style="color:#a00;background-color:#faa">路径</span><span style="color:#555">,</span> <span style="color:#a00;background-color:#faa">大小</span><span style="color:#555">,</span> <span style="color:#a00;background-color:#faa">日期</span><span style="color:#555">,</span> MD5 <span style="color:#a00;background-color:#faa">散列</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>constants               <span style="color:#a00;background-color:#faa">显示最终常量</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>classpath <span style="color:#555">&lt;</span>path<span style="color:#555">&gt;</span>        <span style="color:#a00;background-color:#faa">指定查找用户类文件的位置</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>cp <span style="color:#555">&lt;</span>path<span style="color:#555">&gt;</span>               <span style="color:#a00;background-color:#faa">指定查找用户类文件的位置</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#555">-</span>bootclasspath <span style="color:#555">&lt;</span>path<span style="color:#555">&gt;</span>    <span style="color:#a00;background-color:#faa">覆盖引导类文件的位置</span>
+</span></span></code></pre></div><p>另外一个比较好用的反汇编工具为 jclasslib。</p>
+<p>在IDEA 插件中心中还可以搜到该工具的IDEA插件。</p>
+<p>当然，还有很多其他好用的 Java 反编译和反汇编软件，希望大家平时多尝试，多练习。</p>
+<p>希望大家能够熟练掌握其中一两种，能够快速反编译和反汇编，帮助自己学习知识和解决问题。</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2022-10-17 16:39:00">更新于 2022-10-17&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/as/' class="post-tag">as</a><a href='/tags/%E6%8F%92%E4%BB%B6/' class="post-tag">插件</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" class="post-nav-item" rel="prev" title="ssh免密码登录"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>ssh免密码登录</a>
+      <a href="/posts/android/20221025_2016windows10%E4%B8%8Adocker%E4%B8%ADcentos7.9%E5%AE%89%E8%A3%85android%E7%8E%AF%E5%A2%83%E9%87%8D%E6%96%B0%E8%AE%B0%E5%BD%95%E7%89%88/" class="post-nav-item" rel="next" title="windows10上docker中centos7.9安装android环境重新记录版">windows10上docker中centos7.9安装android环境重新记录版<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

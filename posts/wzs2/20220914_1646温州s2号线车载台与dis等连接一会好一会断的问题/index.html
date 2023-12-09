@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>温州S2号线车载台与DIS等连接一会好一会断的问题 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="温州S2号线车载台与DIS等连接一会好一会断的问题" /><meta name="keywords" content='原创, 车载台, 温州S2号线, 网络, GM655&#43;, 车载台app' /><meta itemprop="name" content="温州S2号线车载台与DIS等连接一会好一会断的问题">
+<meta itemprop="description" content="温州S2号线车载台与DIS等连接一会好一会断的问题">
+
+<meta itemprop="wordCount" content="2525">
+<meta itemprop="keywords" content="原创,车载台,温州S2号线,网络,GM655&#43;,车载台app," /><meta property="og:title" content="温州S2号线车载台与DIS等连接一会好一会断的问题" />
+<meta property="og:description" content="温州S2号线车载台与DIS等连接一会好一会断的问题" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/wzs2/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/" /><meta property="article:section" content="posts" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="温州S2号线车载台与DIS等连接一会好一会断的问题"/>
+<meta name="twitter:description" content="温州S2号线车载台与DIS等连接一会好一会断的问题"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/wzs2/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/linuxgrep/" /><link rel="next" href="https://daizelai.github.io/posts/wzs2/%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0app%E5%8F%91%E8%B5%B7%E8%AF%B7%E5%91%BC%E4%B8%9A%E5%8A%A1%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E9%97%AE%E9%A2%98/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "温州S2号线车载台与DIS等连接一会好一会断的问题",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/wzs2\/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98\/"
+    },"genre": "posts","keywords": "原创, 车载台, 温州S2号线, 网络, GM655\u002b, 车载台app","wordcount":  2525 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/wzs2\/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98\/","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "温州S2号线车载台与DIS等连接一会好一会断的问题"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>温州S2号线车载台与DIS等连接一会好一会断的问题</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E8%BD%A6%E8%BD%BD%E5%8F%B0/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 车载台</a></span></div>
+      <div class="post-meta-line"><span title="发布于 0001-01-01 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span title="更新于 0001-01-01 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2525 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 12 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a>
+      <ul>
+        <li><a href="#11问题描述">1.1.问题描述</a></li>
+        <li><a href="#12dis服务器日志">1.2.DIS服务器日志</a></li>
+        <li><a href="#13as控制台日志">1.3.AS控制台日志</a></li>
+      </ul>
+    </li>
+    <li><a href="#二问题分析">二、问题分析</a>
+      <ul>
+        <li><a href="#21问题复现">2.1.问题复现</a></li>
+        <li><a href="#22问题原因">2.2.问题原因</a></li>
+        <li><a href="#23解决办法">2.3.解决办法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20220914_1646温州s2号线车载台与dis等连接一会好一会断的问题">20220914_1646温州S2号线车载台与DIS等连接一会好一会断的问题</h1>
+<h2 id="一描述">一、描述</h2>
+<h3 id="11问题描述">1.1.问题描述</h3>
+<p>在开发并运行温州S2号线APP的时候，突然发现，一会能正常收到DIS回复的报文，一会又收不到，APP这边每次正常发送报文，比如心跳是每3秒准时发送。</p>
+<p>去DIS服务器192.168.42.177上面抓包发现，APP一会上线，一会下线，并且收到的APP心跳一会是3秒，一会卫了10秒才收到。</p>
+<!-- raw HTML omitted -->
+<h3 id="12dis服务器日志">1.2.DIS服务器日志</h3>
+<p>下面是DIS服务器的日志，可以看到有一个<code>m_Socket contains app_id(10.255.0.2) old:strOldIP(10.255.0.2):64003 -&gt; new:strNewIP(192.168.42.130):64003</code>这样的提示，后面问题找到了这里就好理解了，是app_id为<code>10.255.0.2</code>的设备，一会以<code>10.255.0.2</code>IP连接，一会以<code>192.168.42.130</code>连接。其实就是两台终端都向DIS服务器发的，一台是我自己的下挂在GM655+下的终端，一台是我今天下午换到深圳14号线的EV751下的终端。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">18:13:56.049 [INFO  ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 192.168.42.130. Port: 64003
+18:13:56.049 [WARN  ] [dis_wz2] [TaskAPP.cpp:899, OnAppGetATSInfo, pid: 6220, tid: 18044] : app is not online! app_id(10.255.0.2)
+18:13:56.998 [WARN  ] [dis_wz2] [TaskAPP.cpp:899, OnAppGetATSInfo, pid: 6220, tid: 18044] : app is not online! app_id(10.255.0.2)
+18:13:56.999 [INFO  ] [dis_wz2] [AppRegisterManager.cpp:87, AppOnline, pid: 6220, tid: 18044] : app id: 10.255.0.2 is online! sdk_long_num: 10000007133
+18:13:57.948 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.11.1.1.2.0
+18:13:57.949 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:868, SendGetSysInfoRsp, pid: 6220, tid: 21700] : send GetSysInfoRsp succ
+18:13:57.950 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.70.1.19.0
+18:13:57.950 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:896, SendGetSysStatusRsp, pid: 6220, tid: 21700] : send GetSysStatusRsp succ
+18:13:57.950 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1003, HandleSnmpMsg, pid: 6220, tid: 21700] : send get sys status rsp to omc
+18:13:57.950 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 161, oid is .1.3.6.1.4.1.28723.11.1.4.10.1.5
+18:13:57.950 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1051, HandleSnmpMsg, pid: 6220, tid: 21700] : send get gateway rsp to omc
+18:13:59.048 [WARN  ] [dis_wz2] [AppNetworkManager.cpp:180, UpdateAppIP, pid: 6220, tid: 18044] : m_Socket contains app_id(10.255.0.2) old:strOldIP(192.168.42.130):64003 -&gt; new:strNewIP(10.255.0.2):64003
+18:13:59.049 [INFO  ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 10.255.0.2. Port: 64003
+18:14:07.939 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.11.1.1.2.0
+18:14:07.940 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:868, SendGetSysInfoRsp, pid: 6220, tid: 21700] : send GetSysInfoRsp succ
+18:14:07.940 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.70.1.19.0
+18:14:07.941 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:896, SendGetSysStatusRsp, pid: 6220, tid: 21700] : send GetSysStatusRsp succ
+18:14:07.941 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1003, HandleSnmpMsg, pid: 6220, tid: 21700] : send get sys status rsp to omc
+18:14:07.941 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 161, oid is .1.3.6.1.4.1.28723.11.1.4.10.1.5
+18:14:07.942 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1051, HandleSnmpMsg, pid: 6220, tid: 21700] : send get gateway rsp to omc
+18:14:15.788 [WARN  ] [dis_wz2] [AppNetworkManager.cpp:180, UpdateAppIP, pid: 6220, tid: 18044] : m_Socket contains app_id(10.255.0.2) old:strOldIP(10.255.0.2):64003 -&gt; new:strNewIP(192.168.42.130):64003
+18:14:15.788 [INFO  ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 192.168.42.130. Port: 64003
+18:14:17.947 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.11.1.1.2.0
+18:14:17.948 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:868, SendGetSysInfoRsp, pid: 6220, tid: 21700] : send GetSysInfoRsp succ
+18:14:17.948 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.70.1.19.0
+18:14:17.949 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:896, SendGetSysStatusRsp, pid: 6220, tid: 21700] : send GetSysStatusRsp succ
+18:14:17.949 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1003, HandleSnmpMsg, pid: 6220, tid: 21700] : send get sys status rsp to omc
+18:14:17.949 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 161, oid is .1.3.6.1.4.1.28723.11.1.4.10.1.5
+18:14:17.949 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1051, HandleSnmpMsg, pid: 6220, tid: 21700] : send get gateway rsp to omc
+18:14:18.788 [WARN  ] [dis_wz2] [AppNetworkManager.cpp:180, UpdateAppIP, pid: 6220, tid: 18044] : m_Socket contains app_id(10.255.0.2) old:strOldIP(192.168.42.130):64003 -&gt; new:strNewIP(10.255.0.2):64003
+18:14:18.789 [INFO  ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 10.255.0.2. Port: 64003
+18:14:27.068 [ERROR ] [dis_wz2] [AppNetworkManager.cpp:55, HandleAppMsgImpl, pid: 6220, tid: 18044] : Json To Struct failed! {&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:1533,&#34;AppID&#34;:&#34;&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:13630,&#34;Code&#34;:10002}}
+18:14:27.946 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.11.1.1.2.0
+18:14:27.947 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:868, SendGetSysInfoRsp, pid: 6220, tid: 21700] : send GetSysInfoRsp succ
+18:14:27.947 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.70.1.19.0
+18:14:27.947 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:896, SendGetSysStatusRsp, pid: 6220, tid: 21700] : send GetSysStatusRsp succ
+18:14:27.948 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1003, HandleSnmpMsg, pid: 6220, tid: 21700] : send get sys status rsp to omc
+18:14:27.948 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 161, oid is .1.3.6.1.4.1.28723.11.1.4.10.1.5
+18:14:27.948 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1051, HandleSnmpMsg, pid: 6220, tid: 21700] : send get gateway rsp to omc
+18:14:35.058 [WARN  ] [dis_wz2] [AppNetworkManager.cpp:180, UpdateAppIP, pid: 6220, tid: 18044] : m_Socket contains app_id(10.255.0.2) old:strOldIP(10.255.0.2):64003 -&gt; new:strNewIP(192.168.42.130):64003
+18:14:35.059 [INFO  ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 192.168.42.130. Port: 64003
+18:14:37.947 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.11.1.1.2.0
+18:14:37.948 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:868, SendGetSysInfoRsp, pid: 6220, tid: 21700] : send GetSysInfoRsp succ
+18:14:37.949 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.70.1.19.0
+18:14:37.949 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:896, SendGetSysStatusRsp, pid: 6220, tid: 21700] : send GetSysStatusRsp succ
+18:14:37.949 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1003, HandleSnmpMsg, pid: 6220, tid: 21700] : send get sys status rsp to omc
+18:14:37.949 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 161, oid is .1.3.6.1.4.1.28723.11.1.4.10.1.5
+18:14:37.949 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1051, HandleSnmpMsg, pid: 6220, tid: 21700] : send get gateway rsp to omc
+18:14:38.068 [WARN  ] [dis_wz2] [AppNetworkManager.cpp:180, UpdateAppIP, pid: 6220, tid: 18044] : m_Socket contains app_id(10.255.0.2) old:strOldIP(192.168.42.130):64003 -&gt; new:strNewIP(10.255.0.2):64003
+18:14:38.069 [INFO  ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 10.255.0.2. Port: 64003
+18:14:47.945 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.11.1.1.2.0
+18:14:47.946 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:868, SendGetSysInfoRsp, pid: 6220, tid: 21700] : send GetSysInfoRsp succ
+18:14:47.946 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 160, oid is .1.3.6.1.4.1.28723.70.1.19.0
+18:14:47.947 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:896, SendGetSysStatusRsp, pid: 6220, tid: 21700] : send GetSysStatusRsp succ
+18:14:47.947 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1003, HandleSnmpMsg, pid: 6220, tid: 21700] : send get sys status rsp to omc
+18:14:47.947 [DETAIL] [OMA    ] [ThreadOMA_Dis.cpp:955, HandleSnmpMsg, pid: 6220, tid: 21700] : recv snmp msg type 161, oid is .1.3.6.1.4.1.28723.11.1.4.10.1.5
+18:14:47.947 [INFO  ] [OMA    ] [ThreadOMA_Dis.cpp:1051, HandleSnmpMsg, pid: 6220, tid: 21700] : send get gateway rsp to omc
+18:14:48.008 [WARN  ] [dis_wz2] [AppNetworkManager.cpp:180, UpdateAppIP, pid: 6220, tid: 18044] : m_Socket contains app_id(10.255.0.2) old:strOldIP(10.255.0.2):64003 -&gt; new:strNewIP(192.168.42.130):64003
+18:14:48.008 [INFO  ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 192.168.42.130. Port: 64003
+18:14:51.798 [WARN  ] [dis_wz2] [AppNetworkManager.cpp:180, UpdateAppIP, pid: 6220, tid: 18044] : m_Socket contains app_id(10.255.0.2) old:strOldIP(192.168.42.130):64003 -&gt; new:strNewIP(10.255.0.2):64003
+18:14:51.799 [INFO  ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 10.255.0.2. Port: 64003
+</code></pre><h3 id="13as控制台日志">1.3.AS控制台日志</h3>
+<p>下面是在AS控制台发现的异常日志。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">2022-09-14 16:44:30.849 15694-15759/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=249  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:8111,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:307,&#34;Code&#34;:10001}}
+2022-09-14 16:44:30.849 15694-15759/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=249 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:8111,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:307,&#34;Code&#34;:10001}}
+2022-09-14 16:44:30.850 15694-15759/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=249  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:8112,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:308,&#34;Code&#34;:10001}}
+2022-09-14 16:44:30.851 15694-15759/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=249 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:8112,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:308,&#34;Code&#34;:10001}}
+2022-09-14 16:44:30.852 15694-15759/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=249  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:8113,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 16:44:30.856 15694-15759/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=249 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:8113,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 16:44:30.862 15694-15787/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=266, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:309,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:8113,&#34;Code&#34;:10002}}
+2022-09-14 16:44:30.867 15694-15800/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=276, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:310,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:8113,&#34;Code&#34;:10002}}
+2022-09-14 16:44:32.285 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:311,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:33.812 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:312,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 16:44:33.823 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:313,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:35.284 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:314,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:36.815 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:315,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 16:44:36.823 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:316,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:38.286 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:317,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:39.764 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetDSCfgInfoReq&#34;,&#34;MsgSeqID&#34;:318,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:39.813 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:319,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 16:44:39.823 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:320,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:41.287 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:321,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:42.815 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:322,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 16:44:42.823 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:323,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:42.851 15694-15759/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=249  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:8127,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:322,&#34;Code&#34;:10001}}
+2022-09-14 16:44:42.852 15694-15759/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=249 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:8127,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:322,&#34;Code&#34;:10001}}
+2022-09-14 16:44:42.853 15694-15759/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=249  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:8128,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:323,&#34;Code&#34;:10001}}
+2022-09-14 16:44:42.856 15694-15759/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=249 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:8128,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:323,&#34;Code&#34;:10001}}
+2022-09-14 16:44:42.864 15694-15759/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=249  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:8129,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 16:44:42.865 15694-15759/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=249 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:8129,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 16:44:42.874 15694-15787/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=266, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:324,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:8129,&#34;Code&#34;:10002}}
+2022-09-14 16:44:42.880 15694-15768/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=256, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:325,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:8129,&#34;Code&#34;:10002}}
+2022-09-14 16:44:44.290 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:326,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:45.816 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:327,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 16:44:45.828 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:328,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:47.292 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:329,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:48.819 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:330,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 16:44:48.825 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:331,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:50.291 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:332,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:51.819 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:333,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 16:44:51.827 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:334,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:53.293 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:335,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:54.820 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:336,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 16:44:54.831 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:337,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 16:44:56.294 15694-15791/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=270, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:338,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+</code></pre><p><a href="./file/wzs2_lte_pro_20220914_1645.log">本次日志下载</a></p>
+<h2 id="二问题分析">二、问题分析</h2>
+<h3 id="21问题复现">2.1.问题复现</h3>
+<p>突然灵机一动，发现不是代码造成的问题，想起来今天因为要复现黑屏问题，把我的设备拿到鼎桥环境上了，但是IP地址没有改，还是192.168.42.130，然后APP因为是随系统自启动的，所以也是在跑的。于时想到，是不是这个有冲突呢？</p>
+<p>跑去把那台设备下电，然后果然我的这台设备APP运行正常，CAD再也没断，同时信号栏图标也一直正常显示了，不然一会就全没信号也就是网断了。</p>
+<p>下面是第二次复现问题的录屏。</p>
+<p><img loading="lazy" src="./images/wzs2_network_pro_20220914_1744.gif" srcset="./images/wzs2_network_pro_20220914_1744.gif, ./images/wzs2_network_pro_20220914_1744.gif 1.5x, ./images/wzs2_network_pro_20220914_1744.gif 2x" sizes="auto" data-title="网断录屏" data-alt="网断录屏" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>下面是第二次复现问题的AS控制台的日志，可以看到，一会能接收到DIS数据，一会儿接收不到DIS数据。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">2022-09-14 17:42:08.650 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10214,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:723,&#34;Code&#34;:10001}}
+2022-09-14 17:42:08.651 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10214,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:723,&#34;Code&#34;:10001}}
+2022-09-14 17:42:08.652 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10215,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 17:42:08.652 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10215,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 17:42:08.660 4476-4565/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=169, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:726,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:10215,&#34;Code&#34;:10002}}
+2022-09-14 17:42:08.663 4476-4572/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=176, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:725,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:10215,&#34;Code&#34;:10002}}
+2022-09-14 17:42:08.679 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10216,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:724,&#34;Code&#34;:10001}}
+2022-09-14 17:42:08.679 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10216,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:724,&#34;Code&#34;:10001}}
+2022-09-14 17:42:08.838 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10217,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:42,&#34;Code&#34;:10001}}
+2022-09-14 17:42:08.839 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10217,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:42,&#34;Code&#34;:10001}}
+2022-09-14 17:42:08.840 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10218,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 17:42:08.840 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10218,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 17:42:08.841 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10219,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:43,&#34;Code&#34;:10001}}
+2022-09-14 17:42:08.841 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10219,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:43,&#34;Code&#34;:10001}}
+2022-09-14 17:42:08.853 4476-4572/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=176, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:727,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:10218,&#34;Code&#34;:10002}}
+2022-09-14 17:42:08.856 4476-4801/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=192, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:728,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:10218,&#34;Code&#34;:10002}}
+2022-09-14 17:42:10.681 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:729,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:10.709 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10220,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:729,&#34;Code&#34;:10001}}
+2022-09-14 17:42:10.710 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10220,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:729,&#34;Code&#34;:10001}}
+2022-09-14 17:42:10.711 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10221,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 17:42:10.712 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10221,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 17:42:10.722 4476-4800/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=191, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:730,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:10221,&#34;Code&#34;:10002}}
+2022-09-14 17:42:10.723 4476-4801/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=192, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:731,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:10221,&#34;Code&#34;:10002}}
+2022-09-14 17:42:11.622 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:732,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:11.649 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:733,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 17:42:13.682 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:734,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:14.545 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetDSCfgInfoReq&#34;,&#34;MsgSeqID&#34;:735,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:14.620 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:736,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:14.650 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:737,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 17:42:16.684 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:738,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:17.624 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:739,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:17.652 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:740,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 17:42:19.684 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:741,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:20.625 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:742,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:20.651 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:743,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+2022-09-14 17:42:22.684 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:744,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:22.720 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10228,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:744,&#34;Code&#34;:10001}}
+2022-09-14 17:42:22.721 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10228,&#34;MsgName&#34;:&#34;DisReceivedNotify&#34;,&#34;MsgInfo&#34;:{&#34;AppMsgSeqID&#34;:744,&#34;Code&#34;:10001}}
+2022-09-14 17:42:22.734 4476-4542/com.gbcom.metrosystem D/UdpDisServices: udp receive - api receive data disApi, udp service id=153  - udp.packet.address=/192.168.13.177, udp.pack.socketAddress=/192.168.13.177:64002, udp.port=64002- running=true - message={&#34;MsgSeqID&#34;:10229,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 17:42:22.735 4476-4542/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] udp receive - api receive data disApi, udp service id=153 - running=true  - ip=/192.168.13.177 - port=64002 - message={&#34;MsgSeqID&#34;:10229,&#34;MsgName&#34;:&#34;GetATSInfoRsp&#34;,&#34;MsgInfo&#34;:{&#34;Code&#34;:10010}}
+2022-09-14 17:42:22.743 4476-4572/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=176, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:745,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:10229,&#34;Code&#34;:10002}}
+2022-09-14 17:42:22.753 4476-4801/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=192, send msg={&#34;MsgName&#34;:&#34;AppReceivedNotify&#34;,&#34;MsgSeqID&#34;:746,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;DisMsgSeqID&#34;:10229,&#34;Code&#34;:10002}}
+2022-09-14 17:42:23.625 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;GetATSInfoReq&#34;,&#34;MsgSeqID&#34;:747,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{}}
+2022-09-14 17:42:23.651 4476-4573/com.gbcom.metrosystem I/APP_LogUtils.kt: [(LogUtils.kt:50).i()] [UdpDisServices] start: send(String) - thread ID=177, send msg={&#34;MsgName&#34;:&#34;AppHeartbeat&#34;,&#34;MsgSeqID&#34;:748,&#34;AppID&#34;:&#34;10.255.0.2&#34;,&#34;MsgInfo&#34;:{&#34;SDKLongNumber&#34;:&#34;10000007133&#34;}}
+</code></pre><p><a href="./file/wzs2_lte_pro_20220914_1808.log">AS控制台日志文件</a></p>
+<h3 id="22问题原因">2.2.问题原因</h3>
+<p>我自己的这台温州车载台终端IP是192.168.42.130，然后下挂在GM655+下面。
+另一台设备跟在EV751深圳14的环境上，但是也跑的是温州S2号线APP，同时终端的IP也是192.168.42.130.</p>
+<p>下挂在EV751下的终端</p>
+<p><img loading="lazy" src="./images/wzs2_lte_pro_20220914180221.jpg" srcset="./images/wzs2_lte_pro_20220914180221.jpg, ./images/wzs2_lte_pro_20220914180221.jpg 1.5x, ./images/wzs2_lte_pro_20220914180221.jpg 2x" sizes="auto" data-title="下挂在EV751下的终端" data-alt="下挂在EV751下的终端" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="./images/wzs2_lte_pro_20220914180304.jpg" srcset="./images/wzs2_lte_pro_20220914180304.jpg, ./images/wzs2_lte_pro_20220914180304.jpg 1.5x, ./images/wzs2_lte_pro_20220914180304.jpg 2x" sizes="auto" data-title="下挂在EV751下的终端2" data-alt="下挂在EV751下的终端2" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>可以看到，虽然不是直接下挂在GM655+下面，但是因为实验室网络都是通的，所以，这台EV751下的设备连接的也是我正在测试的那台GM655+设备。</p>
+<p><img loading="lazy" src="./images/wzs2_lte_pro_20220914180254.jpg" srcset="./images/wzs2_lte_pro_20220914180254.jpg, ./images/wzs2_lte_pro_20220914180254.jpg 1.5x, ./images/wzs2_lte_pro_20220914180254.jpg 2x" sizes="auto" data-title="下挂在EV751下的终端3" data-alt="下挂在EV751下的终端3" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>我当前使用的车载台终端主界面：</p>
+<p><img loading="lazy" src="./images/wzs2_lte_pro_2022-09-14_180454.png" srcset="./images/wzs2_lte_pro_2022-09-14_180454.png, ./images/wzs2_lte_pro_2022-09-14_180454.png 1.5x, ./images/wzs2_lte_pro_2022-09-14_180454.png 2x" sizes="auto" data-title="主界面" data-alt="主界面" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>我当前使用的车载台终端设置页面：</p>
+<p><img loading="lazy" src="./images/wzs2_lte_pro_2022-09-14_180515.png" srcset="./images/wzs2_lte_pro_2022-09-14_180515.png, ./images/wzs2_lte_pro_2022-09-14_180515.png 1.5x, ./images/wzs2_lte_pro_2022-09-14_180515.png 2x" sizes="auto" data-title="设置页面" data-alt="设置页面" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="23解决办法">2.3.解决办法</h3>
+<p>问题解决的办法也很简单：</p>
+<p>1.把那台EV751下的终端APP杀掉。
+2.把那台终端的IP换成EV751下的IP地址。
+3.最简单的是把它主机直边的网线拔掉，让它以EV751的网络通信就可以了。</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 0001-01-01 00:00:00">更新于 0001-01-01&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/%E8%BD%A6%E8%BD%BD%E5%8F%B0/' class="post-tag">车载台</a><a href='/tags/%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF/' class="post-tag">温州S2号线</a><a href='/tags/%E7%BD%91%E7%BB%9C/' class="post-tag">网络</a><a href='/tags/gm655&#43;/' class="post-tag">GM655&#43;</a><a href='/tags/%E8%BD%A6%E8%BD%BD%E5%8F%B0app/' class="post-tag">车载台app</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/linuxgrep/" class="post-nav-item" rel="prev" title="在linux中使用grep的几种技巧"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>在linux中使用grep的几种技巧</a>
+      <a href="/posts/wzs2/%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0app%E5%8F%91%E8%B5%B7%E8%AF%B7%E5%91%BC%E4%B8%9A%E5%8A%A1%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-nav-item" rel="next" title="温州S2号线车载台APP发起请呼业务不成功的问题">温州S2号线车载台APP发起请呼业务不成功的问题<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

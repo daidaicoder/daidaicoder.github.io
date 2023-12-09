@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>vmbox扩容 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="给VM VirtualBox磁盘扩充容量。" /><meta name="keywords" content='原创, virtualbox, 虚拟机' /><meta itemprop="name" content="vmbox扩容">
+<meta itemprop="description" content="给VM VirtualBox磁盘扩充容量。"><meta itemprop="datePublished" content="2016-10-27T15:42:51+08:00" />
+<meta itemprop="dateModified" content="2016-10-27T15:42:51+08:00" />
+<meta itemprop="wordCount" content="853">
+<meta itemprop="keywords" content="原创,virtualbox,虚拟机," /><meta property="og:title" content="vmbox扩容" />
+<meta property="og:description" content="给VM VirtualBox磁盘扩充容量。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-10-27T15:42:51+08:00" />
+<meta property="article:modified_time" content="2016-10-27T15:42:51+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="vmbox扩容"/>
+<meta name="twitter:description" content="给VM VirtualBox磁盘扩充容量。"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/lsof/" /><link rel="next" href="https://daizelai.github.io/posts/mysql/character/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "vmbox扩容",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/virtualbox\/vmbox%E6%89%A9%E5%AE%B9\/"
+    },"genre": "posts","keywords": "原创, virtualbox, 虚拟机","wordcount":  853 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/virtualbox\/vmbox%E6%89%A9%E5%AE%B9\/","datePublished": "2016-10-27T15:42:51+08:00","dateModified": "2016-10-27T15:42:51+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "给VM VirtualBox磁盘扩充容量。"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>vmbox扩容</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 虚拟机</a>&ensp;<a href="/categories/virtualbox/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> virtualbox</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-10-27 15:42:51"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-27">2016-10-27</time></span>&nbsp;<span title="更新于 2016-10-27 15:42:51"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-27">2016-10-27</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 853 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 5 分钟</span>&nbsp;</div>
+    </div><div class="content" id="content"><h1 id="windows下面命令扩容虚拟机容量这一招没用">windows下面命令扩容虚拟机容量（这一招没用）</h1>
+<p>使用VM VirtualBox安装的CentOS最近空间满了， 想要添加一些空间。使用VBoxManage命令来添加空间。</p>
+<p>首先cmd来到VirtualBox的安装目录，发现有VBoxManage.exe命令文件，就可以按下面的命令来操作。</p>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code>F:\soft\VBox\App\VirtualBox&gt;VBoxManage modifyhd F:\PortableApps\VirtualBoxPortab
+le\VMs\centos_7\centos_7.vdi --resize 19000
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+</code></pre><p>扩容失败问题如下。</p>
+<pre tabindex="0"><code>F:\soft\VBox\App\VirtualBox&gt;VBoxManage modifyhd F:\PortableApps\VirtualBoxPortab
+le\VMs\centos_7\centos_7.vdi --resize 16000
+0%...
+Progress state: VBOX_E_NOT_SUPPORTED
+VBoxManage.exe: error: Resize medium operation for this format is not implemente
+d yet!
+</code></pre><p>首先虚拟系统的扩展名必须为vdi，如果是vmdk的话，需要转换为vdi，我这里就是vdi就不管了。</p>
+<p>我这里的错误是因为我的虚拟机的空间就是16G，所以当然扩容不成功了。
+<figure><a class="lightgallery" href="./images/vmvirtualbox_disksize16.jpg" data-thumbnail="./images/vmvirtualbox_disksize16.jpg" data-sub-html="<h2>扩容前的空间大小为16G</h2><p>扩容前的空间大小为16G</p>"><img loading="lazy" src="./images/vmvirtualbox_disksize16.jpg" srcset="./images/vmvirtualbox_disksize16.jpg, ./images/vmvirtualbox_disksize16.jpg 1.5x, ./images/vmvirtualbox_disksize16.jpg 2x" sizes="auto" data-title="扩容前的空间大小为16G" data-alt="扩容前的空间大小为16G" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">扩容前的空间大小为16G</figcaption>
+  </figure></p>
+<p>通过VBoxManage list hdds就可以看到我们克隆的文件了</p>
+<pre tabindex="0"><code>F:\soft\VBox\App\VirtualBox&gt;VBoxManage list hdds
+UUID:           56600bb8-bb8d-4ec4-97ff-10e11f4fac22
+Parent UUID:    base
+State:          locked read
+Type:           normal (base)
+Location:       F:\PortableApps\VirtualBoxPortable\VMs\centos_7\centos_7.vdi
+Storage format: VDI
+Capacity:       19000 MBytes
+Encryption:     disabled
+
+UUID:           d0f331ec-eff9-4bc5-8691-e05cfa36d0b4
+Parent UUID:    56600bb8-bb8d-4ec4-97ff-10e11f4fac22
+State:          created
+Type:           normal (differencing)
+Location:       F:\PortableApps\VirtualBoxPortable\VMs\centos_7\Snapshots/{d0f33
+1ec-eff9-4bc5-8691-e05cfa36d0b4}.vdi
+Storage format: VDI
+Capacity:       8192 MBytes
+Encryption:     disabled
+
+UUID:           8c4dee1d-d0eb-41d5-8033-23c484ec89ae
+Parent UUID:    56600bb8-bb8d-4ec4-97ff-10e11f4fac22
+State:          locked read
+Type:           normal (differencing)
+Location:       F:\PortableApps\VirtualBoxPortable\VMs\centos_7\Snapshots/{8c4de
+e1d-d0eb-41d5-8033-23c484ec89ae}.vdi
+Storage format: VDI
+Capacity:       8192 MBytes
+Encryption:     disabled
+
+UUID:           1794a92b-b5d9-49cb-a02d-8eff36216b3b
+Parent UUID:    8c4dee1d-d0eb-41d5-8033-23c484ec89ae
+State:          locked write
+Type:           normal (differencing)
+Location:       F:\PortableApps\VirtualBoxPortable\VMs\centos_7\Snapshots\{1794a
+92b-b5d9-49cb-a02d-8eff36216b3b}.vdi
+Storage format: VDI
+Capacity:       8192 MBytes
+Encryption:     disabled
+</code></pre><h1 id="添加磁盘直接添加新虚拟盘成功">添加磁盘（直接添加新虚拟盘成功）</h1>
+<p>在打开虚拟机&ndash;选个系统&ndash;右击&ndash;设置&ndash;存储&ndash;控制器SATA&ndash;右边的添加虚拟硬盘&ndash;选择克隆的文件就行了。
+我这里<strong>选择使用现有的虚拟盘</strong>，然后手动选择本身虚拟系统<strong>centos_7.vdi</strong>，不另外添加文件时，后面通过fdisk /dev/sda分区时<strong>报错No free sectors available</strong>。</p>
+<p>然后我这里就选择<strong>创建新的虚拟盘</strong></p>
+<p><figure><a class="lightgallery" href="./images/vmvirtualbox_disksize16_1.jpg" data-thumbnail="./images/vmvirtualbox_disksize16_1.jpg" data-sub-html="<h2>添加虚拟盘</h2><p>添加虚拟盘</p>"><img loading="lazy" src="./images/vmvirtualbox_disksize16_1.jpg" srcset="./images/vmvirtualbox_disksize16_1.jpg, ./images/vmvirtualbox_disksize16_1.jpg 1.5x, ./images/vmvirtualbox_disksize16_1.jpg 2x" sizes="auto" data-title="添加虚拟盘" data-alt="添加虚拟盘" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">添加虚拟盘</figcaption>
+  </figure></p>
+<p>确定后我们可以看到空间已经增大。</p>
+<p><figure><a class="lightgallery" href="./images/vmvirtualbox_disksize16_3.jpg" data-thumbnail="./images/vmvirtualbox_disksize16_3.jpg" data-sub-html="<h2>添加虚拟盘后效果</h2><p>添加虚拟盘后效果</p>"><img loading="lazy" src="./images/vmvirtualbox_disksize16_3.jpg" srcset="./images/vmvirtualbox_disksize16_3.jpg, ./images/vmvirtualbox_disksize16_3.jpg 1.5x, ./images/vmvirtualbox_disksize16_3.jpg 2x" sizes="auto" data-title="添加虚拟盘后效果" data-alt="添加虚拟盘后效果" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">添加虚拟盘后效果</figcaption>
+  </figure></p>
+<h1 id="挂载新磁盘通过lvm来扩展分区">挂载新磁盘，通过LVM来扩展分区</h1>
+<p>进入系统后发现，空间还是以前一样大。</p>
+<pre tabindex="0"><code>[root@localhost ~]# df -h
+文件系统                 容量  已用  可用 已用% 挂载点
+/dev/mapper/centos-root  6.7G  4.8G  2.0G   72% /
+devtmpfs                 361M     0  361M    0% /dev
+tmpfs                    371M     0  371M    0% /dev/shm
+tmpfs                    371M  5.0M  366M    2% /run
+tmpfs                    371M     0  371M    0% /sys/fs/cgroup
+/dev/sda1                497M  164M  334M   33% /boot
+tmpfs                     75M     0   75M    0% /run/user/0
+</code></pre><p>使用fdisk -l查看系统分区情况。
+可以看到我们已经创建的分区，sda1 sda2的什么，也可以ls /dev/来查看。如果有第二块硬盘会看到sdb</p>
+<pre tabindex="0"><code>[root@localhost ~]# fdisk -l
+
+磁盘 /dev/sda：8589 MB, 8589934592 字节，16777216 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+磁盘标签类型：dos
+磁盘标识符：0x000bf8c7
+
+   设备 Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     1026047      512000   83  Linux
+/dev/sda2         1026048    16777215     7875584   83  Linux
+
+磁盘 /dev/mapper/centos-root：7159 MB, 7159676928 字节，13983744 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+
+磁盘 /dev/mapper/centos-swap：859 MB, 859832320 字节，1679360 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+
+磁盘 /dev/mapper/centos-docker--poolmeta：8 MB, 8388608 字节，16384 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+
+磁盘 /dev/mapper/docker-253:0-13774-pool：107.4 GB, 107374182400 字节，209715200 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：65536 字节 / 65536 字节
+</code></pre><p>下面创建将扩展的空间，创建新分区</p>
+<p>使用<code>fdisk -l</code>可以看到新添加的sdb硬盘的。</p>
+<pre tabindex="0"><code>[root@localhost ~]# fdisk -l
+
+磁盘 /dev/sda：8589 MB, 8589934592 字节，16777216 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+磁盘标签类型：dos
+磁盘标识符：0x000bf8c7
+
+   设备 Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     1026047      512000   83  Linux
+/dev/sda2         1026048    16777215     7875584   83  Linux
+
+磁盘 /dev/sdb：8589 MB, 8589934592 字节，16777216 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+</code></pre><p>可以直接通过<code>ll /dev/sd*</code>查看设备文件，可以看到有一个<code>sdb</code></p>
+<pre tabindex="0"><code>[root@localhost ~]# ll /dev/sd*
+brw-rw----. 1 root disk 8,  0 10月 27 15:07 /dev/sda
+brw-rw----. 1 root disk 8,  1 10月 27 15:07 /dev/sda1
+brw-rw----. 1 root disk 8,  2 10月 27 15:07 /dev/sda2
+brw-rw----. 1 root disk 8, 16 10月 27 15:07 /dev/sdb
+</code></pre><p>创建分区</p>
+<pre tabindex="0"><code>[root@localhost ~]# fdisk /dev/sdb
+欢迎使用 fdisk (util-linux 2.23.2)。
+
+更改将停留在内存中，直到您决定将更改写入磁盘。
+使用写入命令前请三思。
+
+Device does not contain a recognized partition table
+使用磁盘标识符 0x97e7506c 创建新的 DOS 磁盘标签。
+
+命令(输入 m 获取帮助)：n
+Partition type:
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended
+Select (default p): p
+分区号 (1-4，默认 1)：
+起始 扇区 (2048-16777215，默认为 2048)：
+将使用默认值 2048
+Last 扇区, +扇区 or +size{K,M,G} (2048-16777215，默认为 16777215)：
+将使用默认值 16777215
+分区 1 已设置为 Linux 类型，大小设为 8 GiB
+
+命令(输入 m 获取帮助)：q
+</code></pre><h1 id="格式分区">格式分区</h1>
+<p>用命令mke2fs为sdb1主分区创建文件系统
+mke2fs -t ext4 /dev/sdb1</p>
+<pre tabindex="0"><code>[root@localhost ~]# mkfs.ext4 /dev/sdb
+mke2fs 1.42.9 (28-Dec-2013)
+/dev/sdb is entire device, not just one partition!
+无论如何也要继续? (y,n) y
+文件系统标签=
+OS type: Linux
+块大小=4096 (log=2)
+分块大小=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+524288 inodes, 2097152 blocks
+104857 blocks (5.00%) reserved for the super user
+第一个数据块=0
+Maximum filesystem blocks=2147483648
+64 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables: 完成                            
+正在写入inode表: 完成                            
+Creating journal (32768 blocks): 完成
+Writing superblocks and filesystem accounting information: 完成
+</code></pre><h1 id="挂载">挂载</h1>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code>[root@localhost ~]# mkdir /newdata
+[root@localhost ~]# mount /dev/sdb /newdata
+[root@localhost ~]# df -h
+文件系统                 容量  已用  可用 已用% 挂载点
+/dev/mapper/centos-root  6.7G  4.8G  2.0G   72% /
+devtmpfs                 361M     0  361M    0% /dev
+tmpfs                    371M     0  371M    0% /dev/shm
+tmpfs                    371M  5.0M  366M    2% /run
+tmpfs                    371M     0  371M    0% /sys/fs/cgroup
+/dev/sda1                497M  164M  334M   33% /boot
+tmpfs                     75M     0   75M    0% /run/user/0
+/dev/sdb                 7.8G   36M  7.3G    1% /newdata
+</code></pre><p>刚刚只是手动的挂载了一下，当系统重启后，就没有了，下面来个自动挂载</p>
+<pre tabindex="0"><code>[root@localhost ~]# vim /etc/fstab 
+#
+# /etc/fstab
+# Created by anaconda on Mon Sep  5 16:25:20 2016
+#
+# Accessible filesystems, by reference, are maintained under &#39;/dev/disk&#39;
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/centos-root /                       xfs     defaults        0 0
+UUID=08c3cda7-d97d-47e9-8ecb-bbc074e8cc96 /boot                   xfs     defaults        0 0
+/dev/mapper/centos-swap swap                    swap    defaults        0 0
+/dev/sdb /newdata                    ext4    defaults        0 0
+</code></pre><p>重启系统后一样是有的。</p>
+<pre tabindex="0"><code>[root@localhost ~]# df -h
+文件系统                 容量  已用  可用 已用% 挂载点
+/dev/mapper/centos-root  6.7G  4.8G  1.9G   72% /
+devtmpfs                 361M     0  361M    0% /dev
+tmpfs                    371M     0  371M    0% /dev/shm
+tmpfs                    371M  5.1M  366M    2% /run
+tmpfs                    371M     0  371M    0% /sys/fs/cgroup
+/dev/sdb                 7.8G   36M  7.3G    1% /newdata
+/dev/sda1                497M  164M  334M   33% /boot
+tmpfs                     75M     0   75M    0% /run/user/0
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-10-27 15:42:51">更新于 2016-10-27&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/virtualbox/' class="post-tag">virtualbox</a><a href='/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/' class="post-tag">虚拟机</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/lsof/" class="post-nav-item" rel="prev" title="linux之lsof的使用"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>linux之lsof的使用</a>
+      <a href="/posts/mysql/character/" class="post-nav-item" rel="next" title="mysql乱码">mysql乱码<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>SC60添加实体按键 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="在android中添加实体按键" /><meta name="keywords" content='原创, SC60, android, 添加实体按键' /><meta itemprop="name" content="SC60添加实体按键">
+<meta itemprop="description" content="在android中添加实体按键"><meta itemprop="datePublished" content="2021-05-18T13:10:00+08:00" />
+<meta itemprop="dateModified" content="2021-05-18T13:10:00+08:00" />
+<meta itemprop="wordCount" content="6921">
+<meta itemprop="keywords" content="原创,SC60,android,按键," /><meta property="og:title" content="SC60添加实体按键" />
+<meta property="og:description" content="在android中添加实体按键" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/sc60/20210518_1310sc60%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BD%93%E6%8C%89%E9%94%AE/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-18T13:10:00+08:00" />
+<meta property="article:modified_time" content="2021-05-18T13:10:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SC60添加实体按键"/>
+<meta name="twitter:description" content="在android中添加实体按键"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/sc60/20210518_1310sc60%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BD%93%E6%8C%89%E9%94%AE/" /><link rel="prev" href="https://daizelai.github.io/posts/room/20220929_1505%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3room%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%A1%A8sql%E8%AF%AD%E5%8F%A5%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/room/" /><link rel="next" href="https://daizelai.github.io/posts/windows/excel/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "SC60添加实体按键",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/sc60\/20210518_1310sc60%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BD%93%E6%8C%89%E9%94%AE\/"
+    },"genre": "posts","keywords": "原创, SC60, android, 按键","wordcount":  6921 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/sc60\/20210518_1310sc60%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BD%93%E6%8C%89%E9%94%AE\/","datePublished": "2021-05-18T13:10:00+08:00","dateModified": "2021-05-18T13:10:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "在android中添加实体按键"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>SC60添加实体按键</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/sc60/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> SC60</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/%E6%8C%89%E9%94%AE/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 按键</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2021-05-18 13:10:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2021-05-18">2021-05-18</time></span>&nbsp;<span title="更新于 2021-05-18 13:10:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2021-05-18">2021-05-18</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 6921 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 33 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二首次添加一个ptt按键">二、首次添加一个PTT按键</a>
+      <ul>
+        <li><a href="#21文件列表">2.1.文件列表</a></li>
+        <li><a href="#22kernel注册gpio_key上报的key_value">2.2.kernel注册gpio_key上报的key_value</a></li>
+        <li><a href="#23frameworks-native层转换kernel上报的key-value值">2.3.frameworks native层转换kernel上报的key value值</a></li>
+        <li><a href="#24frameworks-java层-配置keyevent-值并且修改gpio_keyskl映射文件">2.4.frameworks java层 配置keyevent 值，并且修改gpio_keys.kl映射文件</a></li>
+        <li><a href="#26frameworks-java层根据keyevent事件处理新增按键事件">2.6.frameworks java层根据keyevent事件处理新增按键事件</a></li>
+        <li><a href="#27修改">2.7.修改</a></li>
+        <li><a href="#28测试效果">2.8.测试效果</a></li>
+        <li><a href="#29添加ptt按键的代码记录">2.9.添加PTT按键的代码记录</a></li>
+      </ul>
+    </li>
+    <li><a href="#三第二次添加剩下实体按键">三、第二次添加剩下实体按键</a>
+      <ul>
+        <li><a href="#31测试gpio可用状态">3.1.测试gpio可用状态</a></li>
+        <li><a href="#32kernel注册gpio_key上报的key_value">3.2.kernel注册gpio_key上报的key_value</a></li>
+        <li><a href="#33新增key-value">3.3.新增key value</a></li>
+        <li><a href="#34frameworks-native层转换kernel上报的key-value值">3.4.frameworks native层转换kernel上报的key value值</a></li>
+        <li><a href="#35frameworks-java层配置keyevent值并且修改gpio_keyskl映射文件">3.5.frameworks java层配置keyevent值，并且修改gpio_keys.kl映射文件</a></li>
+        <li><a href="#36frameworks-java层根据keyevent事件处理新增按键事件">3.6.frameworks java层根据keyevent事件处理新增按键事件</a></li>
+        <li><a href="#37执行make-update-api命令">3.7.执行make update-api命令</a></li>
+        <li><a href="#38所有文件修改">3.8.所有文件修改</a></li>
+        <li><a href="#39代码提交">3.9.代码提交</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20210518_1310sc60添加实体按键">20210518_1310SC60添加实体按键</h1>
+<h2 id="一描述">一、描述</h2>
+<p>添加按键功能开发。</p>
+<p>android系统增加按键功能。</p>
+<!-- raw HTML omitted -->
+<h2 id="二首次添加一个ptt按键">二、首次添加一个PTT按键</h2>
+<h3 id="21文件列表">2.1.文件列表</h3>
+<p>实现（由下往上-&gt;(kernel-&gt;frameworks)）
+先列举下该功能实现所涉及到的文件</p>
+<ul>
+<li>device/qcom/msm8953_64/gpio-keys.kl</li>
+<li>frameworks/base/core/java/android/view/KeyEvent.java</li>
+<li>frameworks/base/core/res/res/values/attrs.xml</li>
+<li>frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java</li>
+<li>frameworks/native/include/android/keycodes.h b/include/android/keycodes.h</li>
+<li>frameworks/native/include/input/InputEventLabels.h</li>
+<li>kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi</li>
+<li>kernel/msm-3.18/include/uapi/linux/input.h</li>
+</ul>
+<h3 id="22kernel注册gpio_key上报的key_value">2.2.kernel注册gpio_key上报的key_value</h3>
+<h4 id="221配置一个ptt按钮">2.2.1配置一个PTT按钮</h4>
+<p>找到平台对应内核dtsi配置文件，我这里的路径如下。
+路径：\sc60_android_7.1.2_qcom_sz14\kernel\msm-3.18\arch\arm\boot\dts\qcom\msm8953-mtp.dtsi
+在文件中的<code>gpio_keys</code>里面增加如下代码。</p>
+<pre tabindex="0"><code class="language-dtsi" data-lang="dtsi">		ptt_button {
+			label = &#34;ptt_button&#34;;
+			gpios = &lt;&amp;tlmm 96 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;603&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+</code></pre><h4 id="222新增key-value">2.2.2.新增key value</h4>
+<p>路径：\sc60_android_7.1.2_qcom_sz14\kernel\msm-3.18\include\uapi\linux\input.h</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-h" data-lang="h"><span style="display:flex;"><span><span style="color:#099">#define KEY_CUSTOM_PTT				603
+</span></span></span></code></pre></div><h3 id="23frameworks-native层转换kernel上报的key-value值">2.3.frameworks native层转换kernel上报的key value值</h3>
+<p>路径：sc60_android_7.1.2_qcom_sz14\frameworks\native\include\android\keycodes.h
+在枚举中增加</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-h" data-lang="h"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">enum</span> {
+</span></span><span style="display:flex;"><span>    	......
+</span></span><span style="display:flex;"><span>    	AKEYCODE_PTT <span style="color:#555">=</span> <span style="color:#f60">603</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>路径：sc60_android_7.1.2_qcom_sz14\frameworks\native\include\input\InputEventLabels.h
+在<code>static const InputEventLabel KEYCODES[] = {</code>中增加</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-h" data-lang="h"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">const</span> InputEventLabel KEYCODES[] <span style="color:#555">=</span> {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>    <span style="color:#c0f">DEFINE_KEYCODE</span>(PTT),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    { <span style="color:#366">NULL</span>, <span style="color:#f60">0</span> }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>完成这两步后，驱动上报的key value值603经过frameworks native层的处理到frameworks java层就会是我们在keyevent中得到的值了</p>
+<h3 id="24frameworks-java层-配置keyevent-值并且修改gpio_keyskl映射文件">2.4.frameworks java层 配置keyevent 值，并且修改gpio_keys.kl映射文件</h3>
+<p>路径：frameworks\base\core\res\res\values\attrs.xml
+在<code>&lt;attr name=&quot;keycode&quot;&gt;</code>里面添加</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;attr</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;keycode&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>		......
+</span></span><span style="display:flex;"><span>		<span style="color:#309;font-weight:bold">&lt;enum</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;KEYCODE_KEYCODE_PTT&#34;</span> <span style="color:#309">value=</span><span style="color:#c30">&#34;603&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;/attr&gt;</span>
+</span></span></code></pre></div><p>路径：sc60_android_7.1.2_qcom_sz14\frameworks\base\core\java\android\view\KeyEvent.java</p>
+<p>增加如下代码：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555">[</span>android_SC20<span style="color:#99f">@localhost</span> sc60_android_7<span style="color:#f60">.1.2_</span>qcom_sz14<span style="color:#555">]</span>$ git diff frameworks<span style="color:#555">/</span>base<span style="color:#555">/</span>core<span style="color:#555">/</span>java<span style="color:#555">/</span>android<span style="color:#555">/</span>view<span style="color:#555">/</span>KeyEvent<span style="color:#555">.</span><span style="color:#309">java</span>
+</span></span><span style="display:flex;"><span>diff <span style="color:#555">--</span>git a<span style="color:#555">/</span>frameworks<span style="color:#555">/</span>base<span style="color:#555">/</span>core<span style="color:#555">/</span>java<span style="color:#555">/</span>android<span style="color:#555">/</span>view<span style="color:#555">/</span>KeyEvent<span style="color:#555">.</span><span style="color:#309">java</span> b<span style="color:#555">/</span>frameworks<span style="color:#555">/</span>base<span style="color:#555">/</span>core<span style="color:#555">/</span>java<span style="color:#555">/</span>android<span style="color:#555">/</span>view<span style="color:#555">/</span>KeyEvent<span style="color:#555">.</span><span style="color:#309">java</span>
+</span></span><span style="display:flex;"><span>index b73acda<span style="color:#555">.</span><span style="color:#f60">.049</span>cb3c <span style="color:#f60">100644</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">---</span> a<span style="color:#555">/</span>frameworks<span style="color:#555">/</span>base<span style="color:#555">/</span>core<span style="color:#555">/</span>java<span style="color:#555">/</span>android<span style="color:#555">/</span>view<span style="color:#555">/</span>KeyEvent<span style="color:#555">.</span><span style="color:#309">java</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+++</span> b<span style="color:#555">/</span>frameworks<span style="color:#555">/</span>base<span style="color:#555">/</span>core<span style="color:#555">/</span>java<span style="color:#555">/</span>android<span style="color:#555">/</span>view<span style="color:#555">/</span>KeyEvent<span style="color:#555">.</span><span style="color:#309">java</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">@@</span> <span style="color:#555">-</span><span style="color:#f60">804</span><span style="color:#555">,</span><span style="color:#f60">6</span> <span style="color:#555">+</span><span style="color:#f60">804</span><span style="color:#555">,</span><span style="color:#f60">8</span> <span style="color:#a00;background-color:#faa">@@</span> <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">class</span> <span style="color:#0a8;font-weight:bold">KeyEvent</span> <span style="color:#069;font-weight:bold">extends</span> InputEvent <span style="color:#069;font-weight:bold">implements</span> Parcelable <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_SYSTEM_NAVIGATION_LEFT <span style="color:#555">=</span> <span style="color:#f60">282</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#09f;font-style:italic">/** Key code constant: Consumed by the system for navigation right */</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_SYSTEM_NAVIGATION_RIGHT <span style="color:#555">=</span> <span style="color:#f60">283</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>       <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_KEYCODE_PTT <span style="color:#555">=</span> <span style="color:#f60">603</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#069;font-weight:bold">private</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> LAST_KEYCODE <span style="color:#555">=</span> KEYCODE_SYSTEM_NAVIGATION_RIGHT<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">@@</span> <span style="color:#555">-</span><span style="color:#f60">1857</span><span style="color:#555">,</span><span style="color:#f60">6</span> <span style="color:#555">+</span><span style="color:#f60">1859</span><span style="color:#555">,</span><span style="color:#f60">7</span> <span style="color:#a00;background-color:#faa">@@</span> <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">class</span> <span style="color:#0a8;font-weight:bold">KeyEvent</span> <span style="color:#069;font-weight:bold">extends</span> InputEvent <span style="color:#069;font-weight:bold">implements</span> Parcelable <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SYSTEM_NAVIGATION_DOWN</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SYSTEM_NAVIGATION_LEFT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SYSTEM_NAVIGATION_RIGHT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>                       <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_KEYCODE_PTT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#069;font-weight:bold">return</span> <span style="color:#069;font-weight:bold">true</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">@@</span> <span style="color:#555">-</span><span style="color:#f60">1873</span><span style="color:#555">,</span><span style="color:#f60">6</span> <span style="color:#555">+</span><span style="color:#f60">1876</span><span style="color:#555">,</span><span style="color:#f60">7</span> <span style="color:#a00;background-color:#faa">@@</span> <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">class</span> <span style="color:#0a8;font-weight:bold">KeyEvent</span> <span style="color:#069;font-weight:bold">extends</span> InputEvent <span style="color:#069;font-weight:bold">implements</span> Parcelable <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_STEM_1</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_STEM_2</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_STEM_3</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>                       <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_KEYCODE_PTT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#069;font-weight:bold">return</span> <span style="color:#069;font-weight:bold">true</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#069;font-weight:bold">return</span> <span style="color:#069;font-weight:bold">false</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">[</span>android_SC20<span style="color:#99f">@localhost</span> sc60_android_7<span style="color:#f60">.1.2_</span>qcom_sz14<span style="color:#555">]</span>$
+</span></span></code></pre></div><p>路径：device/qcom/msm8953_64/gpio-keys.kl
+添加PTT定义。</p>
+<pre tabindex="0"><code># Copyright (c) 2014, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+key 115   VOLUME_UP
+key 114   VOLUME_DOWN
+key 102   HOME
+key 528   FOCUS
+key 766   CAMERA
+key 603   PTT
+</code></pre><p>确定key在kernel注册的是什么节点，通过<code>cat proc/bus/input/devices</code>命令查看。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>D:<span style="color:#c30;font-weight:bold">\s</span>oft<span style="color:#c30;font-weight:bold">\a</span>db&gt;adb shell
+</span></span><span style="display:flex;"><span>msm8953_64:/ $ cat proc/bus/input/devices
+</span></span><span style="display:flex;"><span>cat proc/bus/input/devices
+</span></span><span style="display:flex;"><span>I: <span style="color:#033">Bus</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Vendor</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Product</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Version</span><span style="color:#555">=</span><span style="color:#f60">0000</span>
+</span></span><span style="display:flex;"><span>N: <span style="color:#033">Name</span><span style="color:#555">=</span><span style="color:#c30">&#34;qpnp_pon&#34;</span>
+</span></span><span style="display:flex;"><span>P: <span style="color:#033">Phys</span><span style="color:#555">=</span>qpnp_pon/input0
+</span></span><span style="display:flex;"><span>S: <span style="color:#033">Sysfs</span><span style="color:#555">=</span>/devices/virtual/input/input0
+</span></span><span style="display:flex;"><span>U: <span style="color:#033">Uniq</span><span style="color:#555">=</span>
+</span></span><span style="display:flex;"><span>H: <span style="color:#033">Handlers</span><span style="color:#555">=</span>event0
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">PROP</span><span style="color:#555">=</span><span style="color:#f60">40</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">EV</span><span style="color:#555">=</span><span style="color:#f60">3</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">KEY</span><span style="color:#555">=</span><span style="color:#f60">14000000000000</span> <span style="color:#f60">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>I: <span style="color:#033">Bus</span><span style="color:#555">=</span><span style="color:#f60">0018</span> <span style="color:#033">Vendor</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Product</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Version</span><span style="color:#555">=</span><span style="color:#f60">0000</span>
+</span></span><span style="display:flex;"><span>N: <span style="color:#033">Name</span><span style="color:#555">=</span><span style="color:#c30">&#34;fts_ts&#34;</span>
+</span></span><span style="display:flex;"><span>P: <span style="color:#033">Phys</span><span style="color:#555">=</span>
+</span></span><span style="display:flex;"><span>S: <span style="color:#033">Sysfs</span><span style="color:#555">=</span>/devices/soc/78b7000.i2c/i2c-3/3-0038/input/input1
+</span></span><span style="display:flex;"><span>U: <span style="color:#033">Uniq</span><span style="color:#555">=</span>
+</span></span><span style="display:flex;"><span>H: <span style="color:#033">Handlers</span><span style="color:#555">=</span>mdss_fb kgsl event1
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">PROP</span><span style="color:#555">=</span><span style="color:#f60">2</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">EV</span><span style="color:#555">=</span>b
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">KEY</span><span style="color:#555">=</span><span style="color:#f60">400</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">100040000800</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">ABS</span><span style="color:#555">=</span><span style="color:#f60">661800000000000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>I: <span style="color:#033">Bus</span><span style="color:#555">=</span><span style="color:#f60">0019</span> <span style="color:#033">Vendor</span><span style="color:#555">=</span><span style="color:#f60">0001</span> <span style="color:#033">Product</span><span style="color:#555">=</span><span style="color:#f60">0001</span> <span style="color:#033">Version</span><span style="color:#555">=</span><span style="color:#f60">0100</span>
+</span></span><span style="display:flex;"><span>N: <span style="color:#033">Name</span><span style="color:#555">=</span><span style="color:#c30">&#34;gpio-keys&#34;</span>
+</span></span><span style="display:flex;"><span>P: <span style="color:#033">Phys</span><span style="color:#555">=</span>gpio-keys/input0
+</span></span><span style="display:flex;"><span>S: <span style="color:#033">Sysfs</span><span style="color:#555">=</span>/devices/soc/soc:gpio_keys/input/input3
+</span></span><span style="display:flex;"><span>U: <span style="color:#033">Uniq</span><span style="color:#555">=</span>
+</span></span><span style="display:flex;"><span>H: <span style="color:#033">Handlers</span><span style="color:#555">=</span>event2
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">PROP</span><span style="color:#555">=</span><span style="color:#f60">0</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">EV</span><span style="color:#555">=</span><span style="color:#f60">3</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">KEY</span><span style="color:#555">=</span><span style="color:#f60">4000000000000000</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">8000000000000</span> <span style="color:#f60">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>I: <span style="color:#033">Bus</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Vendor</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Product</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Version</span><span style="color:#555">=</span><span style="color:#f60">0000</span>
+</span></span><span style="display:flex;"><span>N: <span style="color:#033">Name</span><span style="color:#555">=</span><span style="color:#c30">&#34;msm8953-snd-card-mtp Headset Jack&#34;</span>
+</span></span><span style="display:flex;"><span>P: <span style="color:#033">Phys</span><span style="color:#555">=</span>ALSA
+</span></span><span style="display:flex;"><span>S: <span style="color:#033">Sysfs</span><span style="color:#555">=</span>/devices/soc/c051000.sound/sound/card0/input4
+</span></span><span style="display:flex;"><span>U: <span style="color:#033">Uniq</span><span style="color:#555">=</span>
+</span></span><span style="display:flex;"><span>H: <span style="color:#033">Handlers</span><span style="color:#555">=</span>event3
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">PROP</span><span style="color:#555">=</span><span style="color:#f60">0</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">EV</span><span style="color:#555">=</span><span style="color:#f60">21</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">SW</span><span style="color:#555">=</span>3c0d4
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>I: <span style="color:#033">Bus</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Vendor</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Product</span><span style="color:#555">=</span><span style="color:#f60">0000</span> <span style="color:#033">Version</span><span style="color:#555">=</span><span style="color:#f60">0000</span>
+</span></span><span style="display:flex;"><span>N: <span style="color:#033">Name</span><span style="color:#555">=</span><span style="color:#c30">&#34;msm8953-snd-card-mtp Button Jack&#34;</span>
+</span></span><span style="display:flex;"><span>P: <span style="color:#033">Phys</span><span style="color:#555">=</span>ALSA
+</span></span><span style="display:flex;"><span>S: <span style="color:#033">Sysfs</span><span style="color:#555">=</span>/devices/soc/c051000.sound/sound/card0/input5
+</span></span><span style="display:flex;"><span>U: <span style="color:#033">Uniq</span><span style="color:#555">=</span>
+</span></span><span style="display:flex;"><span>H: <span style="color:#033">Handlers</span><span style="color:#555">=</span>event4
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">PROP</span><span style="color:#555">=</span><span style="color:#f60">40</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">EV</span><span style="color:#555">=</span><span style="color:#f60">3</span>
+</span></span><span style="display:flex;"><span>B: <span style="color:#033">KEY</span><span style="color:#555">=</span><span style="color:#f60">40</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> <span style="color:#f60">0</span> f0 <span style="color:#f60">400000000</span> <span style="color:#f60">0</span> c000000000000 <span style="color:#f60">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msm8953_64:/ $
+</span></span></code></pre></div><p>直接通getevent按按钮就知道是哪个。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>msm8953_64:/ $ getevent
+</span></span></code></pre></div><p>查看对应kl文件dumpsys input | grep &ldquo;gpio-keys&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>D:<span style="color:#c30;font-weight:bold">\s</span>oft<span style="color:#c30;font-weight:bold">\a</span>db&gt;adb shell
+</span></span><span style="display:flex;"><span>msm8953_64:/ $ dumpsys input | grep <span style="color:#c30">&#34;gpio-keys&#34;</span>
+</span></span><span style="display:flex;"><span>dumpsys input | grep <span style="color:#c30">&#34;gpio-keys&#34;</span>
+</span></span><span style="display:flex;"><span>    4: gpio-keys
+</span></span><span style="display:flex;"><span>      Location: gpio-keys/input0
+</span></span><span style="display:flex;"><span>      KeyLayoutFile: /system/usr/keylayout/gpio-keys.kl
+</span></span><span style="display:flex;"><span>  Device 4: gpio-keys
+</span></span><span style="display:flex;"><span>msm8953_64:/ $
+</span></span></code></pre></div><p>可以看到这里的<code>/system/usr/keylayout/gpio-keys.kl</code></p>
+<h3 id="26frameworks-java层根据keyevent事件处理新增按键事件">2.6.frameworks java层根据keyevent事件处理新增按键事件</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+diff --git a/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java b/frameworks/base/services/core/java/com/
+index 82e739b..a6b3f95 100755
+--- a/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
++++ b/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+@@ -5784,6 +5784,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+                     + &#34; policyFlags=&#34; + Integer.toHexString(policyFlags));
+         }
+
++               Intent intentKey = new Intent(&#34;com.quectel.key.intercept&#34;);
++               Bundle bundle = new Bundle();
++               bundle.putParcelable(&#34;keyevent&#34;,event);
++               intentKey.putExtras(bundle);
++               mContext.sendBroadcast(intentKey);
++
+         // Basic policy based on interactive state.
+         int result;
+         boolean isWakeKey = (policyFlags &amp; WindowManagerPolicy.FLAG_WAKE) != 0
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre><h4 id="261何时需要执行make-update-api命令">2.6.1.何时需要执行make update-api命令</h4>
+<ul>
+<li>
+<p>添加系统API或者修改@hide的API后，需要执行
+make update-api，然后再make</p>
+</li>
+<li>
+<p>修改公共api后，需要
+make update-api</p>
+</li>
+</ul>
+<h5 id="2611在修改完系统api或部分公共api后常见于修改intentjavakeyeventjava等等执行源码编译时会有如下提示">2.6.1.1.在修改完系统Api或部分公共Api后（常见于修改Intent.java、KeyEvent.java等等），执行源码编译时会有如下提示</h5>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">see build/core/apicheck_msg_current.txt
+******************************
+You have tried to change the API from what has been previously approved.
+
+To make these errors go away, you have two choices:
+   1) You can add &#34;@hide&#34; javadoc comments to the methods, etc. listed in the
+      errors above.
+
+   2) You can update current.txt by executing the following command:
+         make update-api
+
+      To submit the revised current.txt to the main Android repository,
+      you will need approval.
+******************************
+</code></pre><h5 id="2612错误信息表明是由于api错误导致">2.6.1.2.错误信息表明是由于API错误导致</h5>
+<p>谷歌对于所有的类和API，分为开方和非开放两种，而开放的类和API，可以通过“Javadoc标签”与源码同步生成“程序的开发文档”；当我们修改或者添加一个新的API时，我们有两种方案可以避免出现上述错误.</p>
+<p>其一是将该接口加上 非公开的标签：/*{@hide}/；
+再者可以在修改后执行：make update-api(公开)，将修改内容与API的doc文件更新到一致。</p>
+<h5 id="2613解决办法">2.6.1.3.解决办法：</h5>
+<p>执行： make update -api ;
+修改后相应API文件后，在base库下面会产生“.current.txt”文件的差异，提交时将该差异一并提交审核即可。</p>
+<p>1&gt;执行： make update -api ;
+2&gt;修改后相应API文件后，在base库下面会产生“.current.txt”文件的差异，提交时将该差异一并提交审核即可。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">make update-api
+</code></pre><h3 id="27修改">2.7.修改</h3>
+<p>本次我是手动修改的，尴尬。</p>
+<p>frameworks/base/api/current.txt</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>	field public static final int KEYCODE_SYSTEM_NAVIGATION_UP = 280; // 0x118
+</span></span><span style="display:flex;"><span>	field public static final int KEYCODE_KEYCODE_PTT = 603;
+</span></span><span style="display:flex;"><span>    ......
+</span></span></code></pre></div><p>frameworks/base/api/system-current.txt</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>    field public static final int KEYCODE_SYSTEM_NAVIGATION_RIGHT = 283; // 0x11b
+</span></span><span style="display:flex;"><span>    field public static final int KEYCODE_SYSTEM_NAVIGATION_UP = 280; // 0x118
+</span></span><span style="display:flex;"><span>	field public static final int KEYCODE_KEYCODE_PTT = 603;
+</span></span></code></pre></div><p>frameworks/base/api/test-current.txt</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>    field public static final int KEYCODE_SYSTEM_NAVIGATION_RIGHT = 283; // 0x11b
+</span></span><span style="display:flex;"><span>    field public static final int KEYCODE_SYSTEM_NAVIGATION_UP = 280; // 0x118
+</span></span><span style="display:flex;"><span>	field public static final int KEYCODE_KEYCODE_PTT = 603;
+</span></span></code></pre></div><h3 id="28测试效果">2.8.测试效果</h3>
+<p>使用adb进去之后，按住面板上面的PTT按钮可以看到是有反应了，十六进制025b就是十进制的603.</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/ $ getevent
+getevent
+add device 1: /dev/input/event4
+  name:     &#34;msm8953-snd-card-mtp Button Jack&#34;
+add device 2: /dev/input/event3
+  name:     &#34;msm8953-snd-card-mtp Headset Jack&#34;
+add device 3: /dev/input/event0
+  name:     &#34;qpnp_pon&#34;
+could not get driver version for /dev/input/mice, Not a typewriter
+add device 4: /dev/input/event2
+  name:     &#34;gpio-keys&#34;
+add device 5: /dev/input/event1
+  name:     &#34;fts_ts&#34;
+/dev/input/event2: 0001 025b 00000001
+/dev/input/event2: 0000 0000 00000000
+/dev/input/event2: 0001 025b 00000000
+/dev/input/event2: 0000 0000 00000000
+</code></pre><p>注意看这里的<code>/dev/input/event2</code>对应的是<code>gpio-keys</code>。</p>
+<h3 id="29添加ptt按键的代码记录">2.9.添加PTT按键的代码记录</h3>
+<p>改动的文件列表如下所示：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ date
+Tue May 18 13:44:38 CST 2021
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git status
+# On branch develop
+# Changes not staged for commit:
+#   (use &#34;git add/rm &lt;file&gt;...&#34; to update what will be committed)
+#   (use &#34;git checkout -- &lt;file&gt;...&#34; to discard changes in working directory)
+#
+#       modified:   device/qcom/msm8953_64/gpio-keys.kl
+#       modified:   frameworks/base/api/current.txt
+#       modified:   frameworks/base/api/system-current.txt
+#       modified:   frameworks/base/api/test-current.txt
+#       modified:   frameworks/base/core/java/android/view/KeyEvent.java
+#       modified:   frameworks/base/core/res/res/values/attrs.xml
+#       modified:   frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+#       modified:   frameworks/native/include/android/keycodes.h
+#       modified:   frameworks/native/include/input/InputEventLabels.h
+#       modified:   hardware/qcom/audio/configs/msm8953/mixer_paths_mtp.xml
+#       modified:   kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
+#       modified:   kernel/msm-3.18/include/uapi/linux/input.h
+</code></pre><p>具体的改动如下所示：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff
+diff --git a/device/qcom/msm8953_64/gpio-keys.kl b/device/qcom/msm8953_64/gpio-keys.kl
+index 079fcd2..c952cc4 100755
+--- a/device/qcom/msm8953_64/gpio-keys.kl
++++ b/device/qcom/msm8953_64/gpio-keys.kl
+@@ -30,3 +30,4 @@ key 114   VOLUME_DOWN
+ key 102   HOME
+ key 528   FOCUS
+ key 766   CAMERA
++key 603   PTT
+diff --git a/frameworks/base/api/current.txt b/frameworks/base/api/current.txt
+index 8655d89..6d89cef 100644
+--- a/frameworks/base/api/current.txt
++++ b/frameworks/base/api/current.txt
+@@ -41593,6 +41593,7 @@ package android.view {
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_LEFT = 282; // 0x11a
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_RIGHT = 283; // 0x11b
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_UP = 280; // 0x118
++       field public static final int KEYCODE_KEYCODE_PTT = 603;
+     field public static final int KEYCODE_T = 48; // 0x30
+     field public static final int KEYCODE_TAB = 61; // 0x3d
+     field public static final int KEYCODE_TV = 170; // 0xaa
+diff --git a/frameworks/base/api/system-current.txt b/frameworks/base/api/system-current.txt
+index 6b6f7e9..7ed5c27 100644
+--- a/frameworks/base/api/system-current.txt
++++ b/frameworks/base/api/system-current.txt
+@@ -44771,6 +44771,7 @@ package android.view {
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_LEFT = 282; // 0x11a
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_RIGHT = 283; // 0x11b
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_UP = 280; // 0x118
++       field public static final int KEYCODE_KEYCODE_PTT = 603;
+     field public static final int KEYCODE_T = 48; // 0x30
+     field public static final int KEYCODE_TAB = 61; // 0x3d
+     field public static final int KEYCODE_TV = 170; // 0xaa
+diff --git a/frameworks/base/api/test-current.txt b/frameworks/base/api/test-current.txt
+index fcbd1b5..ef17487 100644
+--- a/frameworks/base/api/test-current.txt
++++ b/frameworks/base/api/test-current.txt
+@@ -41679,6 +41679,7 @@ package android.view {
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_LEFT = 282; // 0x11a
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_RIGHT = 283; // 0x11b
+     field public static final int KEYCODE_SYSTEM_NAVIGATION_UP = 280; // 0x118
++       field public static final int KEYCODE_KEYCODE_PTT = 603;
+     field public static final int KEYCODE_T = 48; // 0x30
+     field public static final int KEYCODE_TAB = 61; // 0x3d
+     field public static final int KEYCODE_TV = 170; // 0xaa
+diff --git a/frameworks/base/core/java/android/view/KeyEvent.java b/frameworks/base/core/java/android/view/KeyEvent.java
+index b73acda..2623c3e 100644
+--- a/frameworks/base/core/java/android/view/KeyEvent.java
++++ b/frameworks/base/core/java/android/view/KeyEvent.java
+@@ -804,8 +804,10 @@ public class KeyEvent extends InputEvent implements Parcelable {
+     public static final int KEYCODE_SYSTEM_NAVIGATION_LEFT = 282;
+     /** Key code constant: Consumed by the system for navigation right */
+     public static final int KEYCODE_SYSTEM_NAVIGATION_RIGHT = 283;
++
++       public static final int KEYCODE_KEYCODE_PTT = 603;
+
+-    private static final int LAST_KEYCODE = KEYCODE_SYSTEM_NAVIGATION_RIGHT;
++    private static final int LAST_KEYCODE = KEYCODE_KEYCODE_PTT;
+
+     // NOTE: If you add a new keycode here you must also add it to:
+     //  isSystem()
+@@ -1857,6 +1859,7 @@ public class KeyEvent extends InputEvent implements Parcelable {
+             case KeyEvent.KEYCODE_SYSTEM_NAVIGATION_DOWN:
+             case KeyEvent.KEYCODE_SYSTEM_NAVIGATION_LEFT:
+             case KeyEvent.KEYCODE_SYSTEM_NAVIGATION_RIGHT:
++                       case KeyEvent.KEYCODE_KEYCODE_PTT:
+                 return true;
+         }
+
+@@ -1873,6 +1876,7 @@ public class KeyEvent extends InputEvent implements Parcelable {
+             case KeyEvent.KEYCODE_STEM_1:
+             case KeyEvent.KEYCODE_STEM_2:
+             case KeyEvent.KEYCODE_STEM_3:
++                       case KeyEvent.KEYCODE_KEYCODE_PTT:
+                 return true;
+         }
+         return false;
+diff --git a/frameworks/base/core/res/res/values/attrs.xml b/frameworks/base/core/res/res/values/attrs.xml
+index 066a538..a2b2dd1 100644
+--- a/frameworks/base/core/res/res/values/attrs.xml
++++ b/frameworks/base/core/res/res/values/attrs.xml
+@@ -1839,6 +1839,7 @@ i
+         &lt;enum name=&#34;KEYCODE_SYSTEM_NAVIGATION_DOWN&#34; value=&#34;281&#34; /&gt;
+         &lt;enum name=&#34;KEYCODE_SYSTEM_NAVIGATION_LEFT&#34; value=&#34;282&#34; /&gt;
+         &lt;enum name=&#34;KEYCODE_SYSTEM_NAVIGATION_RIGHT&#34; value=&#34;283&#34; /&gt;
++               &lt;enum name=&#34;KEYCODE_KEYCODE_PTT&#34; value=&#34;603&#34; /&gt;
+     &lt;/attr&gt;
+
+     &lt;!-- ***************************************************************** --&gt;
+diff --git a/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java b/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+index 82e739b..a6b3f95 100755
+--- a/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
++++ b/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+@@ -5784,6 +5784,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+                     + &#34; policyFlags=&#34; + Integer.toHexString(policyFlags));
+         }
+
++               Intent intentKey = new Intent(&#34;com.quectel.key.intercept&#34;);
++               Bundle bundle = new Bundle();
++               bundle.putParcelable(&#34;keyevent&#34;,event);
++               intentKey.putExtras(bundle);
++               mContext.sendBroadcast(intentKey);
++
+         // Basic policy based on interactive state.
+         int result;
+         boolean isWakeKey = (policyFlags &amp; WindowManagerPolicy.FLAG_WAKE) != 0
+diff --git a/frameworks/native/include/android/keycodes.h b/frameworks/native/include/android/keycodes.h
+index e202060..fe5fd5d 100644
+--- a/frameworks/native/include/android/keycodes.h
++++ b/frameworks/native/include/android/keycodes.h
+@@ -765,7 +765,8 @@ enum {
+     /** fingerprint navigation key, left. */
+     AKEYCODE_SYSTEM_NAVIGATION_LEFT = 282,
+     /** fingerprint navigation key, right. */
+-    AKEYCODE_SYSTEM_NAVIGATION_RIGHT = 283
++    AKEYCODE_SYSTEM_NAVIGATION_RIGHT = 283,
++       AKEYCODE_PTT = 603
+
+     // NOTE: If you add a new keycode here you must also add it to several other files.
+     //       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
+diff --git a/frameworks/native/include/input/InputEventLabels.h b/frameworks/native/include/input/InputEventLabels.h
+index 0bd14ea..f07c518 100644
+--- a/frameworks/native/include/input/InputEventLabels.h
++++ b/frameworks/native/include/input/InputEventLabels.h
+@@ -323,6 +323,7 @@ static const InputEventLabel KEYCODES[] = {
+     DEFINE_KEYCODE(SYSTEM_NAVIGATION_DOWN),
+     DEFINE_KEYCODE(SYSTEM_NAVIGATION_LEFT),
+     DEFINE_KEYCODE(SYSTEM_NAVIGATION_RIGHT),
++       DEFINE_KEYCODE(PTT),
+
+     { NULL, 0 }
+ };
+diff --git a/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi b/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
+index f991509..879491f 100755
+--- a/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
++++ b/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
+@@ -296,6 +296,14 @@
+                        linux,code = &lt;115&gt;;
+                        debounce-interval = &lt;15&gt;;
+                };
++
++               ptt_button {
++                       label = &#34;ptt_button&#34;;
++                       gpios = &lt;&amp;tlmm 96 0x1&gt;;
++                       linux,input-type = &lt;1&gt;;
++                       linux,code = &lt;603&gt;;
++                       debounce-interval = &lt;15&gt;;
++               };
+        };
+ /*barnett-&gt; rm improvetouch
+        hbtp {
+diff --git a/kernel/msm-3.18/include/uapi/linux/input.h b/kernel/msm-3.18/include/uapi/linux/input.h
+index 7082516..839ef76 100644
+--- a/kernel/msm-3.18/include/uapi/linux/input.h
++++ b/kernel/msm-3.18/include/uapi/linux/input.h
+@@ -480,6 +480,7 @@ struct input_keymap_entry {
+ #define KEY_RFKILL             247     /* Key that controls all radios */
+
+ #define KEY_MICMUTE            248     /* Mute / unmute the microphone */
++#define KEY_CUSTOM_PTT                         603
+
+ /* Code 255 is reserved for special needs of AT keyboard driver */
+</code></pre><h2 id="三第二次添加剩下实体按键">三、第二次添加剩下实体按键</h2>
+<p>by daizelai on 2021/05/20 10:25</p>
+<h3 id="31测试gpio可用状态">3.1.测试gpio可用状态</h3>
+<p>by daizelai on 2021/05/24 13:37</p>
+<p>在开发按键功能之前先确定所有的gpio是可用的，先使用双头usb线连接笔记本和SC60设备，然后通过如下命令进入设备命令行。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># adb root
+# adb remount
+# adb shell
+</code></pre><p>通过命令来查看是否可控制gpio电平的高低切换状态。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># cd /sys/class/gpio
+# echo 33 &gt; export
+# ls
+# cd gpio33
+# cat direction
+# cat value
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux">D:\soft\adb&gt;adb shell
+msm8953_64:/sys/class/gpio # ls
+ls
+export       gpiochip1022 gpiochip667 gpiochip795 gpiochip923
+gpio36       gpiochip571  gpiochip699 gpiochip827 gpiochip955
+gpiochip0    gpiochip603  gpiochip731 gpiochip859 gpiochip987
+gpiochip1019 gpiochip635  gpiochip763 gpiochip891 unexport
+msm8953_64:/sys/class/gpio # echo 33 &gt; export
+echo 33 &gt; export
+msm8953_64:/sys/class/gpio # ls
+ls
+export gpiochip0    gpiochip571 gpiochip667 gpiochip763 gpiochip859 gpiochip955
+gpio33 gpiochip1019 gpiochip603 gpiochip699 gpiochip795 gpiochip891 gpiochip987
+gpio36 gpiochip1022 gpiochip635 gpiochip731 gpiochip827 gpiochip923 unexport
+msm8953_64:/sys/class/gpio #
+msm8953_64:/sys/class/gpio # cat gpio33/direction
+cat gpio33/direction
+in
+msm8953_64:/sys/class/gpio #
+msm8953_64:/sys/class/gpio # cat gpio33/value
+cat gpio33/value
+1
+msm8953_64:/sys/class/gpio # cd gpio33
+cd gpio33
+msm8953_64:/sys/class/gpio/gpio33 # echo 0 &gt; value
+echo 0 &gt; value
+1|msm8953_64:/sys/class/gpio/gpio33 # cat value
+cat value
+1
+</code></pre><p>分别查看按下按键和松开按键时gpio33的value值。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/sys/class/gpio # cat gpio33/value
+cat gpio33/value
+1
+</code></pre><p>如果可以切换比如未按下是gpio33/value是1，按下去时gpio33/value是0，说明该gpio是可以控制的，可以正常使用。
+本次gpio33是无法控制的，是因为被SC60的副屏占用了，释放掉副屏对gpio33的配置即可。</p>
+<p>路径1：kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-nopmi-panel-camera.dtsi</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">#include &lt;dt-bindings/gpio/gpio.h&gt;
+#include &lt;dt-bindings/clock/msm-clocks-8953.h&gt;
+#include &#34;msm8953-mdss-panels.dtsi&#34;
+
+&amp;tlmm{
+//rid add for pwm
+//        gpio_clk {
+//            gpio_clk_default: gpio_clk_default {
+//                 mux {
+//                          pins = &#34;gpio33&#34;;
+//                          function = &#34;gp0_clk_a&#34;;
+//                 };
+//                 config {
+//                          pins = &#34;gpio33&#34;;
+//                          drive-strength = &lt;8&gt;;
+//                          bias-pull-up;
+//                };
+//            };
+//
+//            gpio_clk_sleep: gpio_clk_sleep {
+//                 mux {
+//                          pins = &#34;gpio33&#34;;
+//                          function = &#34;gp0_clk_a&#34;;
+//                     };
+//                 config {
+//                          pins = &#34;gpio33&#34;;
+//                          drive-strength = &lt;2&gt;;
+//                          bias-pull-down;
+//                 };
+//            };
+//        };
+};
+
+&amp;soc {
+//barnett:add dsi1 bridge for dual mipi dsi
+    qcom,dsi1_bridge {
+        compatible = &#34;qcom,dsi1_bridge&#34;;
+        instance_id = &lt;0&gt;;
+        mdss-dsi-bl-pmic-pwm-frequency = &lt;100&gt;;
+        mdss-dsi-bl-pmic-bank-select = &lt;0&gt;;
+        mdss-dsi-bl-max-level = &lt;4095&gt;;
+    };
+
+////barnett:add for pwm
+//    qcom,gpioclk {
+//		compatible = &#34;qcom,gpio_clk&#34;;
+//		clocks = &lt;&amp;clock_gcc clk_gcc_camss_gp0_clk&gt;;
+//		clock-names = &#34;gpio_clk&#34;;
+//		pinctrl-names = &#34;clk_default&#34;, &#34;clk_sleep&#34;;
+//		pinctrl-0 = &lt;&amp;gpio_clk_default&gt;;
+//		pinctrl-1 = &lt;&amp;gpio_clk_sleep&gt;;
+//	};
+};
+......
+</code></pre><p>路径2：kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dtsi</p>
+<pre tabindex="0"><code class="language-dtsi" data-lang="dtsi">......
+////barnett add for pwm
+//        gpio_clk {
+//            gpio_clk_default: gpio_clk_default {
+//                 mux {
+//                          pins = &#34;gpio33&#34;;
+//                          function = &#34;gp0_clk_a&#34;;
+//                 };
+//                 config {
+//                          pins = &#34;gpio33&#34;;
+//                          drive-strength = &lt;8&gt;;
+//                          bias-pull-up;
+//                };
+//            };
+//            gpio_clk_sleep: gpio_clk_sleep {
+//                 mux {
+//                          pins = &#34;gpio33&#34;;
+//                          function = &#34;gp0_clk_a&#34;;
+//                     };
+//                 config {
+//                          pins = &#34;gpio33&#34;;
+//                          drive-strength = &lt;2&gt;;
+//                          bias-pull-down;
+//                 };
+//            };
+//        };
+......
+</code></pre><h3 id="32kernel注册gpio_key上报的key_value">3.2.kernel注册gpio_key上报的key_value</h3>
+<ul>
+<li>配置内核dtsi文件
+找到平台对应内核dtsi配置文件，我这里的路径如下。
+路径：\sc60_android_7.1.2_qcom_sz14\kernel\msm-3.18\arch\arm\boot\dts\qcom\msm8953-mtp.dtsi
+在文件中的<code>gpio_keys</code>里面增加如下代码。</li>
+</ul>
+<pre tabindex="0"><code class="language-dtsi" data-lang="dtsi">// add key button by daizelai
+sos_button {
+	label = &#34;sos_button&#34;;
+	gpios = &lt;&amp;tlmm 90 0x1&gt;;
+	linux,input-type = &lt;1&gt;;
+	linux,code = &lt;605&gt;;
+	debounce-interval = &lt;15&gt;;
+};
+
+call_button {
+	label = &#34;call_button&#34;;
+	gpios = &lt;&amp;tlmm 36 0x1&gt;;
+	linux,input-type = &lt;1&gt;;
+	linux,code = &lt;601&gt;;
+	debounce-interval = &lt;15&gt;;
+};
+
+register_button {
+	label = &#34;register_button&#34;;
+	gpios = &lt;&amp;tlmm 45 0x1&gt;;
+	linux,input-type = &lt;1&gt;;
+	linux,code = &lt;602&gt;;
+	debounce-interval = &lt;15&gt;;
+};
+
+cancel_button {
+	label = &#34;cancel_button&#34;;
+	gpios = &lt;&amp;tlmm 43 0x1&gt;;
+	linux,input-type = &lt;1&gt;;
+	linux,code = &lt;604&gt;;
+	debounce-interval = &lt;15&gt;;
+};
+
+record_button {
+	label = &#34;record_button&#34;;
+	gpios = &lt;&amp;tlmm 33 0x1&gt;;
+	linux,input-type = &lt;1&gt;;
+	linux,code = &lt;600&gt;;
+	debounce-interval = &lt;15&gt;;
+};
+
+ptt_button {
+	label = &#34;ptt_button&#34;;
+	gpios = &lt;&amp;tlmm 96 0x1&gt;;
+	linux,input-type = &lt;1&gt;;
+	linux,code = &lt;603&gt;;
+	debounce-interval = &lt;15&gt;;
+};
+
+gbpanicbtn_button {
+	label = &#34;gbpanicbtn_button&#34;;
+	gpios = &lt;&amp;tlmm 3 0x1&gt;;
+	linux,input-type = &lt;1&gt;;
+	linux,code = &lt;607&gt;;
+	debounce-interval = &lt;15&gt;;
+};
+</code></pre><p>效果如下</p>
+<pre tabindex="0"><code class="language-dtsi" data-lang="dtsi">&amp;soc {
+	gpio-clock {
+               compatible = &#34;qcom,fct_gpio_clk&#34;;
+               pwm-gpio = &lt;36&gt;;
+       };
+	gpio_keys {
+		compatible = &#34;gpio-keys&#34;;
+		input-name = &#34;gpio-keys&#34;;
+		pinctrl-names = &#34;tlmm_gpio_key_active&#34;,&#34;tlmm_gpio_key_suspend&#34;;
+		pinctrl-0 = &lt;&amp;gpio_key_active&gt;;
+		pinctrl-1 = &lt;&amp;gpio_key_suspend&gt;;
+
+		camera_snapshot {
+			label = &#34;camera_snapshot&#34;;
+			gpios = &lt;&amp;tlmm 86 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;0x2fe&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+
+		vol_up {
+			label = &#34;volume_up&#34;;
+			gpios = &lt;&amp;tlmm 85 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;115&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+
+		// add key button by daizelai
+		sos_button {
+			label = &#34;sos_button&#34;;
+			gpios = &lt;&amp;tlmm 90 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;605&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+
+		call_button {
+			label = &#34;call_button&#34;;
+			gpios = &lt;&amp;tlmm 36 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;601&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+
+		register_button {
+			label = &#34;register_button&#34;;
+			gpios = &lt;&amp;tlmm 45 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;602&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+
+		cancel_button {
+			label = &#34;cancel_button&#34;;
+			gpios = &lt;&amp;tlmm 43 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;604&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+
+		record_button {
+			label = &#34;record_button&#34;;
+			gpios = &lt;&amp;tlmm 33 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;600&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+
+		ptt_button {
+			label = &#34;ptt_button&#34;;
+			gpios = &lt;&amp;tlmm 96 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;603&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+
+		gbpanicbtn_button {
+			label = &#34;gbpanicbtn_button&#34;;
+			gpios = &lt;&amp;tlmm 3 0x1&gt;;
+			linux,input-type = &lt;1&gt;;
+			linux,code = &lt;607&gt;;
+			debounce-interval = &lt;15&gt;;
+		};
+	};
+/*barnett-&gt; rm improvetouch
+	hbtp {
+		compatible = &#34;qcom,hbtp-input&#34;;
+		vcc_ana-supply = &lt;&amp;pm8953_l10&gt;;
+		vcc_dig-supply = &lt;&amp;pm8953_l5&gt;;
+		qcom,afe-load = &lt;50000&gt;;
+		qcom,afe-vtg-min = &lt;2850000&gt;;
+		qcom,afe-vtg-max = &lt;2850000&gt;;
+		qcom,dig-load = &lt;15000&gt;;
+		qcom,dig-vtg-min = &lt;1800000&gt;;
+		qcom,dig-vtg-max = &lt;1800000&gt;;
+	};
+-&gt;barnett*/
+};
+</code></pre><h3 id="33新增key-value">3.3.新增key value</h3>
+<p>路径：\sc60_android_7.1.2_qcom_sz14\kernel\msm-3.18\include\uapi\linux\input.h</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-h" data-lang="h"><span style="display:flex;"><span><span style="color:#099">#define KEY_MICMUTE		248	</span><span style="color:#09f;font-style:italic">/* Mute / unmute the microphone */</span><span style="color:#099">
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#099">#define KEY_CUSTOM_METRORECORD  600
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#define KEY_CUSTOM_METROCALL    601
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#define KEY_CUSTOM_REGISTER     602
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#define KEY_CUSTOM_PTT          603
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#define KEY_CUSTOM_CANCEL       604
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#define KEY_CUSTOM_SOS          605
+</span></span></span><span style="display:flex;"><span><span style="color:#099">#define KEY_CUSTOM_GBPANICBTN   607
+</span></span></span></code></pre></div><h3 id="34frameworks-native层转换kernel上报的key-value值">3.4.frameworks native层转换kernel上报的key value值</h3>
+<ul>
+<li>在枚举中增加</li>
+</ul>
+<p>路径：sc60_android_7.1.2_qcom_sz14/frameworks/native/include/android/keycodes.h</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-h" data-lang="h"><span style="display:flex;"><span>AKEYCODE_METRORECORD <span style="color:#555">=</span> <span style="color:#f60">600</span>,
+</span></span><span style="display:flex;"><span>AKEYCODE_METROCALL <span style="color:#555">=</span> <span style="color:#f60">601</span>,
+</span></span><span style="display:flex;"><span>AKEYCODE_REGISTER <span style="color:#555">=</span> <span style="color:#f60">602</span>,
+</span></span><span style="display:flex;"><span>AKEYCODE_PTT <span style="color:#555">=</span> <span style="color:#f60">603</span>,
+</span></span><span style="display:flex;"><span>AKEYCODE_CANCEL <span style="color:#555">=</span> <span style="color:#f60">604</span>,
+</span></span><span style="display:flex;"><span>AKEYCODE_SOS <span style="color:#555">=</span> <span style="color:#f60">605</span>,
+</span></span><span style="display:flex;"><span>AKEYCODE_GBPANICBTN <span style="color:#555">=</span> <span style="color:#f60">607</span>
+</span></span></code></pre></div><p>效果如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-h" data-lang="h"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">enum</span> {
+</span></span><span style="display:flex;"><span>	......
+</span></span><span style="display:flex;"><span>	AKEYCODE_METRORECORD <span style="color:#555">=</span> <span style="color:#f60">600</span>,
+</span></span><span style="display:flex;"><span>	AKEYCODE_METROCALL <span style="color:#555">=</span> <span style="color:#f60">601</span>,
+</span></span><span style="display:flex;"><span>	AKEYCODE_REGISTER <span style="color:#555">=</span> <span style="color:#f60">602</span>,
+</span></span><span style="display:flex;"><span>	AKEYCODE_PTT <span style="color:#555">=</span> <span style="color:#f60">603</span>,
+</span></span><span style="display:flex;"><span>	AKEYCODE_CANCEL <span style="color:#555">=</span> <span style="color:#f60">604</span>,
+</span></span><span style="display:flex;"><span>	AKEYCODE_SOS <span style="color:#555">=</span> <span style="color:#f60">605</span>,
+</span></span><span style="display:flex;"><span>	AKEYCODE_GBPANICBTN <span style="color:#555">=</span> <span style="color:#f60">607</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#09f;font-style:italic">// NOTE: If you add a new keycode here you must also add it to several other files.
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>	<span style="color:#09f;font-style:italic">//       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#099">#ifdef __cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>}
+</span></span><span style="display:flex;"><span><span style="color:#099">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
+</span></span><span style="display:flex;"><span><span style="color:#099">#endif </span><span style="color:#09f;font-style:italic">// _ANDROID_KEYCODES_H
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">/** @} */</span>
+</span></span></code></pre></div><ul>
+<li>DEFINE_KEYCODE</li>
+</ul>
+<p>路径：sc60_android_7.1.2_qcom_sz14/frameworks/native/include/input/InputEventLabels.h</p>
+<p>在<code>static const InputEventLabel KEYCODES[] = {</code>中增加</p>
+<pre tabindex="0"><code>static const InputEventLabel KEYCODES[] = {
+    ......
+    DEFINE_KEYCODE(METRORECORD),
+    DEFINE_KEYCODE(METROCALL),
+    DEFINE_KEYCODE(REGISTER),
+    DEFINE_KEYCODE(PTT),
+    DEFINE_KEYCODE(CANCEL),
+    DEFINE_KEYCODE(SOS),
+    DEFINE_KEYCODE(GBPANICBTN),
+
+    { NULL, 0 }
+}
+</code></pre><p>完成这两步后，驱动上报的key value值603经过frameworks native层的处理到frameworks java层就会是我们在keyevent中得到的值了</p>
+<h3 id="35frameworks-java层配置keyevent值并且修改gpio_keyskl映射文件">3.5.frameworks java层配置keyevent值，并且修改gpio_keys.kl映射文件</h3>
+<p>路径：frameworks/base/core/res/res/values/attrs.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;attr</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;keycode&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;enum</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;KEYCODE_SYSTEM_NAVIGATION_RIGHT&#34;</span> <span style="color:#309">value=</span><span style="color:#c30">&#34;283&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#309;font-weight:bold">&lt;enum</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;KEYCODE_METRORECORD&#34;</span> <span style="color:#309">value=</span><span style="color:#c30">&#34;600&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#309;font-weight:bold">&lt;enum</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;KEYCODE_METROCALL&#34;</span> <span style="color:#309">value=</span><span style="color:#c30">&#34;601&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#309;font-weight:bold">&lt;enum</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;KEYCODE_REGISTER&#34;</span> <span style="color:#309">value=</span><span style="color:#c30">&#34;602&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#309;font-weight:bold">&lt;enum</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;KEYCODE_KEYCODE_PTT&#34;</span> <span style="color:#309">value=</span><span style="color:#c30">&#34;603&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#309;font-weight:bold">&lt;enum</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;KEYCODE_CANCEL&#34;</span> <span style="color:#309">value=</span><span style="color:#c30">&#34;604&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#309;font-weight:bold">&lt;enum</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;KEYCODE_SOS&#34;</span> <span style="color:#309">value=</span><span style="color:#c30">&#34;605&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;/attr&gt;</span>
+</span></span></code></pre></div><p>路径：frameworks/base/core/java/android/view/KeyEvent.java</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Key code constant: Consumed by the system for navigation right */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_SYSTEM_NAVIGATION_RIGHT <span style="color:#555">=</span> <span style="color:#f60">283</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Key code constant: PLAY  */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_METRORECORD <span style="color:#555">=</span> <span style="color:#f60">600</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Key code constant: CALL*/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_METROCALL <span style="color:#555">=</span> <span style="color:#f60">601</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Key code constant: REGISTER*/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_REGISTER <span style="color:#555">=</span> <span style="color:#f60">602</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Key code constant: PTT*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_KEYCODE_PTT <span style="color:#555">=</span> <span style="color:#f60">603</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Key code constant: CANCEL*/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_CANCEL <span style="color:#555">=</span> <span style="color:#f60">604</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Key code constant: SOS */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_SOS <span style="color:#555">=</span> <span style="color:#f60">605</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Key code constant: GBPANICBTN*/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> KEYCODE_GBPANICBTN <span style="color:#555">=</span> <span style="color:#f60">607</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">private</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">int</span> LAST_KEYCODE <span style="color:#555">=</span> KEYCODE_GBPANICBTN<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#555">......</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** Is this a system key? System keys can not be used for menu shortcuts.
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">     * @hide
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">boolean</span> <span style="color:#c0f">isSystemKey</span><span style="color:#555">(</span><span style="color:#078;font-weight:bold">int</span> keyCode<span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">switch</span> <span style="color:#555">(</span>keyCode<span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MENU</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SOFT_RIGHT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_HOME</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_BACK</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_CALL</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_ENDCALL</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_VOLUME_UP</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_VOLUME_DOWN</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_VOLUME_MUTE</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MUTE</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_POWER</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_HEADSETHOOK</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_PLAY</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_PAUSE</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_PLAY_PAUSE</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_STOP</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_NEXT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_PREVIOUS</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_REWIND</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_RECORD</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_FAST_FORWARD</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_CAMERA</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_FOCUS</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SEARCH</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_BRIGHTNESS_DOWN</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_BRIGHTNESS_UP</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MEDIA_AUDIO_TRACK</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SYSTEM_NAVIGATION_UP</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SYSTEM_NAVIGATION_DOWN</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SYSTEM_NAVIGATION_LEFT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SYSTEM_NAVIGATION_RIGHT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_METRORECORD</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_METROCALL</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_REGISTER</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_KEYCODE_PTT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_CANCEL</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SOS</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_GBPANICBTN</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#069;font-weight:bold">return</span> <span style="color:#069;font-weight:bold">true</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> <span style="color:#069;font-weight:bold">false</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">/** @hide */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> <span style="color:#078;font-weight:bold">boolean</span> <span style="color:#c0f">isWakeKey</span><span style="color:#555">(</span><span style="color:#078;font-weight:bold">int</span> keyCode<span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">switch</span> <span style="color:#555">(</span>keyCode<span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_BACK</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_MENU</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_WAKEUP</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_PAIRING</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_STEM_1</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_STEM_2</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_STEM_3</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_METRORECORD</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_METROCALL</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_REGISTER</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_KEYCODE_PTT</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_CANCEL</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_SOS</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#069;font-weight:bold">case</span> KeyEvent<span style="color:#555">.</span><span style="color:#309">KEYCODE_GBPANICBTN</span><span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#069;font-weight:bold">return</span> <span style="color:#069;font-weight:bold">true</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> <span style="color:#069;font-weight:bold">false</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#555">}</span>
+</span></span></code></pre></div><p>路径：device/qcom/msm8953_64/gpio-keys.kl
+添加PTT定义。</p>
+<pre tabindex="0"><code class="language-kl" data-lang="kl">.....
+key 600   METRORECORD
+key 601   METROCALL
+key 602   REGISTER
+key 603   PTT
+key 604   CANCEL
+key 605   SOS
+key 607   GBPANICBTN
+</code></pre><p>确定key在kernel注册的是什么节点，通过<code>cat proc/bus/input/devices</code>命令查看。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\soft\adb&gt;adb shell
+msm8953_64:/ $ cat proc/bus/input/devices
+cat proc/bus/input/devices
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name=&#34;qpnp_pon&#34;
+P: Phys=qpnp_pon/input0
+S: Sysfs=/devices/virtual/input/input0
+U: Uniq=
+H: Handlers=event0
+B: PROP=40
+B: EV=3
+B: KEY=14000000000000 0
+
+I: Bus=0018 Vendor=0000 Product=0000 Version=0000
+N: Name=&#34;fts_ts&#34;
+P: Phys=
+S: Sysfs=/devices/soc/78b7000.i2c/i2c-3/3-0038/input/input1
+U: Uniq=
+H: Handlers=mdss_fb kgsl event1
+B: PROP=2
+B: EV=b
+B: KEY=400 0 0 100040000800 0 0
+B: ABS=661800000000000
+
+I: Bus=0019 Vendor=0001 Product=0001 Version=0100
+N: Name=&#34;gpio-keys&#34;
+P: Phys=gpio-keys/input0
+S: Sysfs=/devices/soc/soc:gpio_keys/input/input3
+U: Uniq=
+H: Handlers=event2
+B: PROP=0
+B: EV=3
+B: KEY=4000000000000000 0 0 0 0 0 0 0 0 0 8000000000000 0
+
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name=&#34;msm8953-snd-card-mtp Headset Jack&#34;
+P: Phys=ALSA
+S: Sysfs=/devices/soc/c051000.sound/sound/card0/input4
+U: Uniq=
+H: Handlers=event3
+B: PROP=0
+B: EV=21
+B: SW=3c0d4
+
+I: Bus=0000 Vendor=0000 Product=0000 Version=0000
+N: Name=&#34;msm8953-snd-card-mtp Button Jack&#34;
+P: Phys=ALSA
+S: Sysfs=/devices/soc/c051000.sound/sound/card0/input5
+U: Uniq=
+H: Handlers=event4
+B: PROP=40
+B: EV=3
+B: KEY=40 0 0 0 0 f0 400000000 0 c000000000000 0
+
+msm8953_64:/ $
+</code></pre><p>直接通getevent按按钮就知道是哪个。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/ $ getevent
+</code></pre><p>查看对应kl文件dumpsys input | grep &ldquo;gpio-keys&rdquo;</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\soft\adb&gt;adb shell
+msm8953_64:/ $ dumpsys input | grep &#34;gpio-keys&#34;
+dumpsys input | grep &#34;gpio-keys&#34;
+    4: gpio-keys
+      Location: gpio-keys/input0
+      KeyLayoutFile: /system/usr/keylayout/gpio-keys.kl
+  Device 4: gpio-keys
+msm8953_64:/ $
+</code></pre><p>可以看到这里的<code>/system/usr/keylayout/gpio-keys.kl</code></p>
+<h3 id="36frameworks-java层根据keyevent事件处理新增按键事件">3.6.frameworks java层根据keyevent事件处理新增按键事件</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+diff --git a/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java b/frameworks/base/services/core/java/com/
+index 82e739b..a6b3f95 100755
+--- a/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
++++ b/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+@@ -5784,6 +5784,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+                     + &#34; policyFlags=&#34; + Integer.toHexString(policyFlags));
+         }
+
++               Intent intentKey = new Intent(&#34;com.quectel.key.intercept&#34;);
++               Bundle bundle = new Bundle();
++               bundle.putParcelable(&#34;keyevent&#34;,event);
++               intentKey.putExtras(bundle);
++               mContext.sendBroadcast(intentKey);
++
+         // Basic policy based on interactive state.
+         int result;
+         boolean isWakeKey = (policyFlags &amp; WindowManagerPolicy.FLAG_WAKE) != 0
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre><h3 id="37执行make-update-api命令">3.7.执行make update-api命令</h3>
+<h4 id="371执行时机">3.7.1.执行时机</h4>
+<p>何时需要执行make update-api命令</p>
+<ul>
+<li>
+<p>添加系统API或者修改@hide的API后，需要执行
+make update-api，然后再make</p>
+</li>
+<li>
+<p>修改公共api后，需要
+make update-api</p>
+</li>
+</ul>
+<h5 id="372在修改完系统api或部分公共api后常见于修改intentjavakeyeventjava等等执行源码编译时会有如下提示">3.7.2.在修改完系统Api或部分公共Api后（常见于修改Intent.java、KeyEvent.java等等），执行源码编译时会有如下提示</h5>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$  make clean &amp;&amp; make -j 20
+......
+[  6% 4855/72724] Checking API:  checktestapi-current
+FAILED: /bin/bash -c &#34;(( out/host/linux-x86/bin/apicheck -JXmx1024m -J\&#34;classpath /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/bin/../lib/tools.jar:out/host/linux-x86/framework/doclava.jar:out/host/linux-x86/framework/jsilver.jar\&#34;  -error 2 -error 3 -error 4 -error 5 -error 6 -error 7 -error 8 -error 9 -error 10 -error 11 -error 12 -error 13 -error 14 -error 15 -error 16 -error 17 -error 18 -error 19 -error 20 -error 21 -error 23 -error 24 -error 25 -error 26 -error 27  frameworks/base/api/test-current.txt  out/target/common/obj/PACKAGING/test-api.txt  frameworks/base/api/test-removed.txt  out/target/common/obj/PACKAGING/test-removed.txt || (  cat build/core/apicheck_msg_current.txt ; exit 38 ) ) ) &amp;&amp; (mkdir -p out/target/common/obj/PACKAGING/ ) &amp;&amp; (touch out/target/common/obj/PACKAGING/checktestapi-current-timestamp )&#34;
+out/target/common/obj/PACKAGING/test-api.txt:41513: error 5: Added public field android.view.KeyEvent.KEYCODE_CANCEL
+out/target/common/obj/PACKAGING/test-api.txt:41563: error 5: Added public field android.view.KeyEvent.KEYCODE_GBPANICBTN
+out/target/common/obj/PACKAGING/test-api.txt:41605: error 5: Added public field android.view.KeyEvent.KEYCODE_METROCALL
+out/target/common/obj/PACKAGING/test-api.txt:41606: error 5: Added public field android.view.KeyEvent.KEYCODE_METROPLAY
+out/target/common/obj/PACKAGING/test-api.txt:41658: error 5: Added public field android.view.KeyEvent.KEYCODE_REGISTER
+out/target/common/obj/PACKAGING/test-api.txt:41673: error 5: Added public field android.view.KeyEvent.KEYCODE_SOS
+
+******************************
+You have tried to change the API from what has been previously approved.
+
+To make these errors go away, you have two choices:
+   1) You can add &#34;@hide&#34; javadoc comments to the methods, etc. listed in the
+      errors above.
+
+   2) You can update current.txt by executing the following command:
+         make update-api
+
+      To submit the revised current.txt to the main Android repository,
+      you will need approval.
+******************************
+
+
+
+[  6% 4855/72724] host C++: libLLVMCore &lt;= external/llvm/lib/IR/Function.cpp
+ninja: build stopped: subcommand failed.
+make: *** [ninja_wrapper] Error 1
+
+#### make failed to build some targets (05:10 (mm:ss)) ####
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre><h5 id="373错误信息表明是由于api错误导致">3.7.3.错误信息表明是由于API错误导致</h5>
+<p>谷歌对于所有的类和API，分为开方和非开放两种，而开放的类和API，可以通过“Javadoc标签”与源码同步生成“程序的开发文档”；当我们修改或者添加一个新的API时，我们有两种方案可以避免出现上述错误.</p>
+<p>其一是将该接口加上 非公开的标签：/*{@hide}/；
+再者可以在修改后执行：make update-api(公开)，将修改内容与API的doc文件更新到一致。</p>
+<h5 id="374解决办法">3.7.4.解决办法：</h5>
+<p>1&gt;执行： make update-api ;
+2&gt;修改后相应API文件后，在base库下面会产生“.current.txt”文件的差异，提交时将该差异一并提交审核即可。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make update-api
+......
+[ 99% 1908/1909] Copying current.txt
+Copying removed.txt
+[100% 1909/1909] Copying system-current.txt
+Copying system-removed.txt
+
+#### make completed successfully (09:08 (mm:ss)) ####
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre><h3 id="38所有文件修改">3.8.所有文件修改</h3>
+<p>注意修改的文件msm8953-nopmi-panel-camera.dtsi和msm8953-pinctrl.dtsi文件里有部分修改是去掉副屏使用gpio33的，不然回放按键[gpio33]无法生效</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dtsi
+diff --git a/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dtsi b/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dt
+index bf36e0d..9dcb494 100755
+--- a/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dtsi
++++ b/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dtsi
+@@ -1734,31 +1734,31 @@
+                                };
+                        };
+                };
+-//barnett add for pwm
+-        gpio_clk {
+-            gpio_clk_default: gpio_clk_default {
+-                 mux {
+-                          pins = &#34;gpio33&#34;;
+-                          function = &#34;gp0_clk_a&#34;;
+-                 };
+-                 config {
+-                          pins = &#34;gpio33&#34;;
+-                          drive-strength = &lt;8&gt;;
+-                          bias-pull-up;
+-                };
+-            };
+-            gpio_clk_sleep: gpio_clk_sleep {
+-                 mux {
+-                          pins = &#34;gpio33&#34;;
+-                          function = &#34;gp0_clk_a&#34;;
+-                     };
+-                 config {
+-                          pins = &#34;gpio33&#34;;
+-                          drive-strength = &lt;2&gt;;
+-                          bias-pull-down;
+-                 };
+-            };
+-        };
++////barnett add for pwm
++//        gpio_clk {
++//            gpio_clk_default: gpio_clk_default {
++//                 mux {
++//                          pins = &#34;gpio33&#34;;
++//                          function = &#34;gp0_clk_a&#34;;
++//                 };
++//                 config {
++//                          pins = &#34;gpio33&#34;;
++//                          drive-strength = &lt;8&gt;;
++//                          bias-pull-up;
++//                };
++//            };
++//            gpio_clk_sleep: gpio_clk_sleep {
++//                 mux {
++//                          pins = &#34;gpio33&#34;;
++//                          function = &#34;gp0_clk_a&#34;;
++//                     };
++//                 config {
++//                          pins = &#34;gpio33&#34;;
++//                          drive-strength = &lt;2&gt;;
++//                          bias-pull-down;
++//                 };
++//            };
++//        };
+                /* add pingrp for touchscreen */
+                pmx_ts_int_active {
+                        ts_int_active: ts_int_active {
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
+diff --git a/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi b/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
+index f991509..57ffdc9 100755
+--- a/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
++++ b/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
+@@ -296,6 +296,63 @@
+                        linux,code = &lt;115&gt;;
+                        debounce-interval = &lt;15&gt;;
+                };
++
++               // add key button by daizelai
++               sos_button {
++                       label = &#34;sos_button&#34;;
++                       gpios = &lt;&amp;tlmm 90 0x1&gt;;
++                       linux,input-type = &lt;1&gt;;
++                       linux,code = &lt;605&gt;;
++                       debounce-interval = &lt;15&gt;;
++               };
++
++               call_button {
++                       label = &#34;call_button&#34;;
++                       gpios = &lt;&amp;tlmm 36 0x1&gt;;
++                       linux,input-type = &lt;1&gt;;
++                       linux,code = &lt;601&gt;;
++                       debounce-interval = &lt;15&gt;;
++               };
++
++               register_button {
++                       label = &#34;register_button&#34;;
++                       gpios = &lt;&amp;tlmm 45 0x1&gt;;
++                       linux,input-type = &lt;1&gt;;
++                       linux,code = &lt;602&gt;;
++                       debounce-interval = &lt;15&gt;;
++               };
++
++               cancel_button {
++                       label = &#34;cancel_button&#34;;
++                       gpios = &lt;&amp;tlmm 43 0x1&gt;;
++                       linux,input-type = &lt;1&gt;;
++                       linux,code = &lt;604&gt;;
++                       debounce-interval = &lt;15&gt;;
++               };
++
++               record_button {
++                       label = &#34;record_button&#34;;
++                       gpios = &lt;&amp;tlmm 33 0x1&gt;;
++                       linux,input-type = &lt;1&gt;;
++                       linux,code = &lt;600&gt;;
++                       debounce-interval = &lt;15&gt;;
++               };
++
++               ptt_button {
++                       label = &#34;ptt_button&#34;;
++                       gpios = &lt;&amp;tlmm 96 0x1&gt;;
++                       linux,input-type = &lt;1&gt;;
++                       linux,code = &lt;603&gt;;
++                       debounce-interval = &lt;15&gt;;
++               };
++
++               gbpanicbtn_button {
++                       label = &#34;gbpanicbtn_button&#34;;
++                       gpios = &lt;&amp;tlmm 3 0x1&gt;;
++                       linux,input-type = &lt;1&gt;;
++                       linux,code = &lt;607&gt;;
++                       debounce-interval = &lt;15&gt;;
++               };
+        };
+ /*barnett-&gt; rm improvetouch
+        hbtp {
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-nopmi-panel-camera.dtsi
+diff --git a/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-nopmi-panel-camera.dtsi b/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953
+index ebccecc..0cabb7b 100755
+--- a/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-nopmi-panel-camera.dtsi
++++ b/kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-nopmi-panel-camera.dtsi
+@@ -18,31 +18,31 @@
+
+ &amp;tlmm{
+ //rid add for pwm
+-        gpio_clk {
+-            gpio_clk_default: gpio_clk_default {
+-                 mux {
+-                          pins = &#34;gpio33&#34;;
+-                          function = &#34;gp0_clk_a&#34;;
+-                 };
+-                 config {
+-                          pins = &#34;gpio33&#34;;
+-                          drive-strength = &lt;8&gt;;
+-                          bias-pull-up;
+-                };
+-            };
+-
+-            gpio_clk_sleep: gpio_clk_sleep {
+-                 mux {
+-                          pins = &#34;gpio33&#34;;
+-                          function = &#34;gp0_clk_a&#34;;
+-                     };
+-                 config {
+-                          pins = &#34;gpio33&#34;;
+-                          drive-strength = &lt;2&gt;;
+-                          bias-pull-down;
+-                 };
+-            };
+-        };
++//        gpio_clk {
++//            gpio_clk_default: gpio_clk_default {
++//                 mux {
++//                          pins = &#34;gpio33&#34;;
++//                          function = &#34;gp0_clk_a&#34;;
++//                 };
++//                 config {
++//                          pins = &#34;gpio33&#34;;
++//                          drive-strength = &lt;8&gt;;
++//                          bias-pull-up;
++//                };
++//            };
++//
++//            gpio_clk_sleep: gpio_clk_sleep {
++//                 mux {
++//                          pins = &#34;gpio33&#34;;
++//                          function = &#34;gp0_clk_a&#34;;
++//                     };
++//                 config {
++//                          pins = &#34;gpio33&#34;;
++//                          drive-strength = &lt;2&gt;;
++//                          bias-pull-down;
++//                 };
++//            };
++//        };
+ };
+
+ &amp;soc {
+@@ -55,15 +55,15 @@
+         mdss-dsi-bl-max-level = &lt;4095&gt;;
+     };
+
+-//barnett:add for pwm
+-    qcom,gpioclk {
+-               compatible = &#34;qcom,gpio_clk&#34;;
+-               clocks = &lt;&amp;clock_gcc clk_gcc_camss_gp0_clk&gt;;
+-               clock-names = &#34;gpio_clk&#34;;
+-               pinctrl-names = &#34;clk_default&#34;, &#34;clk_sleep&#34;;
+-               pinctrl-0 = &lt;&amp;gpio_clk_default&gt;;
+-               pinctrl-1 = &lt;&amp;gpio_clk_sleep&gt;;
+-       };
++////barnett:add for pwm
++//    qcom,gpioclk {
++//             compatible = &#34;qcom,gpio_clk&#34;;
++//             clocks = &lt;&amp;clock_gcc clk_gcc_camss_gp0_clk&gt;;
++//             clock-names = &#34;gpio_clk&#34;;
++//             pinctrl-names = &#34;clk_default&#34;, &#34;clk_sleep&#34;;
++//             pinctrl-0 = &lt;&amp;gpio_clk_default&gt;;
++//             pinctrl-1 = &lt;&amp;gpio_clk_sleep&gt;;
++//     };
+ };
+
+ &amp;mdss_mdp {
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff kernel/msm-3.18/include/uapi/linux/input.h
+diff --git a/kernel/msm-3.18/include/uapi/linux/input.h b/kernel/msm-3.18/include/uapi/linux/input.h
+index 7082516..18eb282 100644
+--- a/kernel/msm-3.18/include/uapi/linux/input.h
++++ b/kernel/msm-3.18/include/uapi/linux/input.h
+@@ -480,6 +480,13 @@ struct input_keymap_entry {
+ #define KEY_RFKILL             247     /* Key that controls all radios */
+
+ #define KEY_MICMUTE            248     /* Mute / unmute the microphone */
++#define KEY_CUSTOM_METRORECORD  600
++#define KEY_CUSTOM_METROCALL    601
++#define KEY_CUSTOM_REGISTER     602
++#define KEY_CUSTOM_PTT          603
++#define KEY_CUSTOM_CANCEL       604
++#define KEY_CUSTOM_SOS          605
++#define KEY_CUSTOM_GBPANICBTN   607
+
+ /* Code 255 is reserved for special needs of AT keyboard driver */
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/native/include/android/keycodes.h
+diff --git a/frameworks/native/include/android/keycodes.h b/frameworks/native/include/android/keycodes.h
+index e202060..26684d7 100644
+--- a/frameworks/native/include/android/keycodes.h
++++ b/frameworks/native/include/android/keycodes.h
+@@ -765,7 +765,14 @@ enum {
+     /** fingerprint navigation key, left. */
+     AKEYCODE_SYSTEM_NAVIGATION_LEFT = 282,
+     /** fingerprint navigation key, right. */
+-    AKEYCODE_SYSTEM_NAVIGATION_RIGHT = 283
++    AKEYCODE_SYSTEM_NAVIGATION_RIGHT = 283,
++       AKEYCODE_METRORECORD = 600,
++       AKEYCODE_METROCALL = 601,
++       AKEYCODE_REGISTER = 602,
++       AKEYCODE_PTT = 603,
++       AKEYCODE_CANCEL = 604,
++       AKEYCODE_SOS = 605,
++       AKEYCODE_GBPANICBTN = 607
+
+     // NOTE: If you add a new keycode here you must also add it to several other files.
+     //       Refer to frameworks/base/core/java/android/view/KeyEvent.java for the full list.
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/native/include/input/InputEventLabels.h
+diff --git a/frameworks/native/include/input/InputEventLabels.h b/frameworks/native/include/input/InputEventLabels.h
+index 0bd14ea..6fe3584 100644
+--- a/frameworks/native/include/input/InputEventLabels.h
++++ b/frameworks/native/include/input/InputEventLabels.h
+@@ -323,6 +323,13 @@ static const InputEventLabel KEYCODES[] = {
+     DEFINE_KEYCODE(SYSTEM_NAVIGATION_DOWN),
+     DEFINE_KEYCODE(SYSTEM_NAVIGATION_LEFT),
+     DEFINE_KEYCODE(SYSTEM_NAVIGATION_RIGHT),
++       DEFINE_KEYCODE(METRORECORD),
++    DEFINE_KEYCODE(METROCALL),
++    DEFINE_KEYCODE(REGISTER),
++    DEFINE_KEYCODE(PTT),
++    DEFINE_KEYCODE(CANCEL),
++    DEFINE_KEYCODE(SOS),
++    DEFINE_KEYCODE(GBPANICBTN),
+
+     { NULL, 0 }
+ };
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/base/core/res/res/values/attrs.xml
+diff --git a/frameworks/base/core/res/res/values/attrs.xml b/frameworks/base/core/res/res/values/attrs.xml
+index 066a538..ea409b1 100644
+--- a/frameworks/base/core/res/res/values/attrs.xml
++++ b/frameworks/base/core/res/res/values/attrs.xml
+@@ -1839,6 +1839,12 @@ i
+         &lt;enum name=&#34;KEYCODE_SYSTEM_NAVIGATION_DOWN&#34; value=&#34;281&#34; /&gt;
+         &lt;enum name=&#34;KEYCODE_SYSTEM_NAVIGATION_LEFT&#34; value=&#34;282&#34; /&gt;
+         &lt;enum name=&#34;KEYCODE_SYSTEM_NAVIGATION_RIGHT&#34; value=&#34;283&#34; /&gt;
++               &lt;enum name=&#34;KEYCODE_METRORECORD&#34; value=&#34;600&#34; /&gt;
++               &lt;enum name=&#34;KEYCODE_METROCALL&#34; value=&#34;601&#34; /&gt;
++               &lt;enum name=&#34;KEYCODE_REGISTER&#34; value=&#34;602&#34; /&gt;
++               &lt;enum name=&#34;KEYCODE_KEYCODE_PTT&#34; value=&#34;603&#34; /&gt;
++               &lt;enum name=&#34;KEYCODE_CANCEL&#34; value=&#34;604&#34; /&gt;
++               &lt;enum name=&#34;KEYCODE_SOS&#34; value=&#34;605&#34; /&gt;
+     &lt;/attr&gt;
+
+     &lt;!-- ***************************************************************** --&gt;
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/base/core/java/android/view/KeyEvent.java
+diff --git a/frameworks/base/core/java/android/view/KeyEvent.java b/frameworks/base/core/java/android/view/KeyEvent.java
+index b73acda..733f033 100644
+--- a/frameworks/base/core/java/android/view/KeyEvent.java
++++ b/frameworks/base/core/java/android/view/KeyEvent.java
+@@ -804,8 +804,29 @@ public class KeyEvent extends InputEvent implements Parcelable {
+     public static final int KEYCODE_SYSTEM_NAVIGATION_LEFT = 282;
+     /** Key code constant: Consumed by the system for navigation right */
+     public static final int KEYCODE_SYSTEM_NAVIGATION_RIGHT = 283;
++
++       /** Key code constant: PLAY  */
++    public static final int KEYCODE_METRORECORD = 600;
+
+-    private static final int LAST_KEYCODE = KEYCODE_SYSTEM_NAVIGATION_RIGHT;
++    /** Key code constant: CALL*/
++    public static final int KEYCODE_METROCALL = 601;
++
++    /** Key code constant: REGISTER*/
++    public static final int KEYCODE_REGISTER = 602;
++
++    /** Key code constant: PTT*/
++       public static final int KEYCODE_KEYCODE_PTT = 603;
++
++    /** Key code constant: CANCEL*/
++    public static final int KEYCODE_CANCEL = 604;
++
++    /** Key code constant: SOS */
++    public static final int KEYCODE_SOS = 605;
++
++    /** Key code constant: GBPANICBTN*/
++    public static final int KEYCODE_GBPANICBTN = 607;
++
++    private static final int LAST_KEYCODE = KEYCODE_GBPANICBTN;
+
+     // NOTE: If you add a new keycode here you must also add it to:
+     //  isSystem()
+@@ -1857,6 +1878,13 @@ public class KeyEvent extends InputEvent implements Parcelable {
+             case KeyEvent.KEYCODE_SYSTEM_NAVIGATION_DOWN:
+             case KeyEvent.KEYCODE_SYSTEM_NAVIGATION_LEFT:
+             case KeyEvent.KEYCODE_SYSTEM_NAVIGATION_RIGHT:
++                       case KeyEvent.KEYCODE_METRORECORD:
++                       case KeyEvent.KEYCODE_METROCALL:
++                       case KeyEvent.KEYCODE_REGISTER:
++                       case KeyEvent.KEYCODE_KEYCODE_PTT:
++                       case KeyEvent.KEYCODE_CANCEL:
++                       case KeyEvent.KEYCODE_SOS:
++                       case KeyEvent.KEYCODE_GBPANICBTN:
+                 return true;
+         }
+
+@@ -1873,6 +1901,13 @@ public class KeyEvent extends InputEvent implements Parcelable {
+             case KeyEvent.KEYCODE_STEM_1:
+             case KeyEvent.KEYCODE_STEM_2:
+             case KeyEvent.KEYCODE_STEM_3:
++                       case KeyEvent.KEYCODE_METRORECORD:
++                       case KeyEvent.KEYCODE_METROCALL:
++                       case KeyEvent.KEYCODE_REGISTER:
++                       case KeyEvent.KEYCODE_KEYCODE_PTT:
++                       case KeyEvent.KEYCODE_CANCEL:
++                       case KeyEvent.KEYCODE_SOS:
++                       case KeyEvent.KEYCODE_GBPANICBTN:
+                 return true;
+         }
+         return false;
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+diff --git a/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java b/frameworks/base/services/core/ja
+index 82e739b..a6b3f95 100755
+--- a/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
++++ b/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+@@ -5784,6 +5784,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+                     + &#34; policyFlags=&#34; + Integer.toHexString(policyFlags));
+         }
+
++               Intent intentKey = new Intent(&#34;com.quectel.key.intercept&#34;);
++               Bundle bundle = new Bundle();
++               bundle.putParcelable(&#34;keyevent&#34;,event);
++               intentKey.putExtras(bundle);
++               mContext.sendBroadcast(intentKey);
++
+         // Basic policy based on interactive state.
+         int result;
+         boolean isWakeKey = (policyFlags &amp; WindowManagerPolicy.FLAG_WAKE) != 0
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff device/qcom/msm8953_64/gpio-keys.kl
+diff --git a/device/qcom/msm8953_64/gpio-keys.kl b/device/qcom/msm8953_64/gpio-keys.kl
+index 079fcd2..43879dd 100755
+--- a/device/qcom/msm8953_64/gpio-keys.kl
++++ b/device/qcom/msm8953_64/gpio-keys.kl
+@@ -30,3 +30,10 @@ key 114   VOLUME_DOWN
+ key 102   HOME
+ key 528   FOCUS
+ key 766   CAMERA
++key 600   METRORECORD
++key 601   METROCALL
++key 602   REGISTER
++key 603   PTT
++key 604   CANCEL
++key 605   SOS
++key 607   GBPANICBTN
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/base/api/current.txt
+diff --git a/frameworks/base/api/current.txt b/frameworks/base/api/current.txt
+index 8655d89..c31cc00 100644
+--- a/frameworks/base/api/current.txt
++++ b/frameworks/base/api/current.txt
+@@ -41424,6 +41424,7 @@ package android.view {
+     field public static final int KEYCODE_CALENDAR = 208; // 0xd0
+     field public static final int KEYCODE_CALL = 5; // 0x5
+     field public static final int KEYCODE_CAMERA = 27; // 0x1b
++    field public static final int KEYCODE_CANCEL = 604; // 0x25c
+     field public static final int KEYCODE_CAPS_LOCK = 115; // 0x73
+     field public static final int KEYCODE_CAPTIONS = 175; // 0xaf
+     field public static final int KEYCODE_CHANNEL_DOWN = 167; // 0xa7
+@@ -41473,6 +41474,7 @@ package android.view {
+     field public static final int KEYCODE_FORWARD_DEL = 112; // 0x70
+     field public static final int KEYCODE_FUNCTION = 119; // 0x77
+     field public static final int KEYCODE_G = 35; // 0x23
++    field public static final int KEYCODE_GBPANICBTN = 607; // 0x25f
+     field public static final int KEYCODE_GRAVE = 68; // 0x44
+     field public static final int KEYCODE_GUIDE = 172; // 0xac
+     field public static final int KEYCODE_H = 36; // 0x24
+@@ -41487,6 +41489,7 @@ package android.view {
+     field public static final int KEYCODE_K = 39; // 0x27
+     field public static final int KEYCODE_KANA = 218; // 0xda
+     field public static final int KEYCODE_KATAKANA_HIRAGANA = 215; // 0xd7
++    field public static final int KEYCODE_KEYCODE_PTT = 603; // 0x25b
+     field public static final int KEYCODE_L = 40; // 0x28
+     field public static final int KEYCODE_LANGUAGE_SWITCH = 204; // 0xcc
+     field public static final int KEYCODE_LAST_CHANNEL = 229; // 0xe5
+@@ -41513,6 +41516,8 @@ package android.view {
+     field public static final int KEYCODE_MENU = 82; // 0x52
+     field public static final int KEYCODE_META_LEFT = 117; // 0x75
+     field public static final int KEYCODE_META_RIGHT = 118; // 0x76
++    field public static final int KEYCODE_METROCALL = 601; // 0x259
++    field public static final int KEYCODE_METRORECORD = 600; // 0x258
+     field public static final int KEYCODE_MINUS = 69; // 0x45
+     field public static final int KEYCODE_MOVE_END = 123; // 0x7b
+     field public static final int KEYCODE_MOVE_HOME = 122; // 0x7a
+@@ -41564,6 +41569,7 @@ package android.view {
+     field public static final int KEYCODE_PROG_YELLOW = 185; // 0xb9
+     field public static final int KEYCODE_Q = 45; // 0x2d
+     field public static final int KEYCODE_R = 46; // 0x2e
++    field public static final int KEYCODE_REGISTER = 602; // 0x25a
+     field public static final int KEYCODE_RIGHT_BRACKET = 72; // 0x48
+     field public static final int KEYCODE_RO = 217; // 0xd9
+     field public static final int KEYCODE_S = 47; // 0x2f
+@@ -41578,6 +41584,7 @@ package android.view {
+     field public static final int KEYCODE_SOFT_LEFT = 1; // 0x1
+     field public static final int KEYCODE_SOFT_RIGHT = 2; // 0x2
+     field public static final int KEYCODE_SOFT_SLEEP = 276; // 0x114
++    field public static final int KEYCODE_SOS = 605; // 0x25d
+     field public static final int KEYCODE_SPACE = 62; // 0x3e
+     field public static final int KEYCODE_STAR = 17; // 0x11
+     field public static final int KEYCODE_STB_INPUT = 180; // 0xb4
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/base/api/system-current.txt
+diff --git a/frameworks/base/api/system-current.txt b/frameworks/base/api/system-current.txt
+index 6b6f7e9..32dd859 100644
+--- a/frameworks/base/api/system-current.txt
++++ b/frameworks/base/api/system-current.txt
+@@ -44602,6 +44602,7 @@ package android.view {
+     field public static final int KEYCODE_CALENDAR = 208; // 0xd0
+     field public static final int KEYCODE_CALL = 5; // 0x5
+     field public static final int KEYCODE_CAMERA = 27; // 0x1b
++    field public static final int KEYCODE_CANCEL = 604; // 0x25c
+     field public static final int KEYCODE_CAPS_LOCK = 115; // 0x73
+     field public static final int KEYCODE_CAPTIONS = 175; // 0xaf
+     field public static final int KEYCODE_CHANNEL_DOWN = 167; // 0xa7
+@@ -44651,6 +44652,7 @@ package android.view {
+     field public static final int KEYCODE_FORWARD_DEL = 112; // 0x70
+     field public static final int KEYCODE_FUNCTION = 119; // 0x77
+     field public static final int KEYCODE_G = 35; // 0x23
++    field public static final int KEYCODE_GBPANICBTN = 607; // 0x25f
+     field public static final int KEYCODE_GRAVE = 68; // 0x44
+     field public static final int KEYCODE_GUIDE = 172; // 0xac
+     field public static final int KEYCODE_H = 36; // 0x24
+@@ -44665,6 +44667,7 @@ package android.view {
+     field public static final int KEYCODE_K = 39; // 0x27
+     field public static final int KEYCODE_KANA = 218; // 0xda
+     field public static final int KEYCODE_KATAKANA_HIRAGANA = 215; // 0xd7
++    field public static final int KEYCODE_KEYCODE_PTT = 603; // 0x25b
+     field public static final int KEYCODE_L = 40; // 0x28
+     field public static final int KEYCODE_LANGUAGE_SWITCH = 204; // 0xcc
+     field public static final int KEYCODE_LAST_CHANNEL = 229; // 0xe5
+@@ -44691,6 +44694,8 @@ package android.view {
+     field public static final int KEYCODE_MENU = 82; // 0x52
+     field public static final int KEYCODE_META_LEFT = 117; // 0x75
+     field public static final int KEYCODE_META_RIGHT = 118; // 0x76
++    field public static final int KEYCODE_METROCALL = 601; // 0x259
++    field public static final int KEYCODE_METRORECORD = 600; // 0x258
+     field public static final int KEYCODE_MINUS = 69; // 0x45
+     field public static final int KEYCODE_MOVE_END = 123; // 0x7b
+     field public static final int KEYCODE_MOVE_HOME = 122; // 0x7a
+@@ -44742,6 +44747,7 @@ package android.view {
+     field public static final int KEYCODE_PROG_YELLOW = 185; // 0xb9
+     field public static final int KEYCODE_Q = 45; // 0x2d
+     field public static final int KEYCODE_R = 46; // 0x2e
++    field public static final int KEYCODE_REGISTER = 602; // 0x25a
+     field public static final int KEYCODE_RIGHT_BRACKET = 72; // 0x48
+     field public static final int KEYCODE_RO = 217; // 0xd9
+     field public static final int KEYCODE_S = 47; // 0x2f
+@@ -44756,6 +44762,7 @@ package android.view {
+     field public static final int KEYCODE_SOFT_LEFT = 1; // 0x1
+     field public static final int KEYCODE_SOFT_RIGHT = 2; // 0x2
+     field public static final int KEYCODE_SOFT_SLEEP = 276; // 0x114
++    field public static final int KEYCODE_SOS = 605; // 0x25d
+     field public static final int KEYCODE_SPACE = 62; // 0x3e
+     field public static final int KEYCODE_STAR = 17; // 0x11
+     field public static final int KEYCODE_STB_INPUT = 180; // 0xb4
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff frameworks/base/api/test-current.txt
+diff --git a/frameworks/base/api/test-current.txt b/frameworks/base/api/test-current.txt
+index fcbd1b5..399aefb 100644
+--- a/frameworks/base/api/test-current.txt
++++ b/frameworks/base/api/test-current.txt
+@@ -41510,6 +41510,7 @@ package android.view {
+     field public static final int KEYCODE_CALENDAR = 208; // 0xd0
+     field public static final int KEYCODE_CALL = 5; // 0x5
+     field public static final int KEYCODE_CAMERA = 27; // 0x1b
++    field public static final int KEYCODE_CANCEL = 604; // 0x25c
+     field public static final int KEYCODE_CAPS_LOCK = 115; // 0x73
+     field public static final int KEYCODE_CAPTIONS = 175; // 0xaf
+     field public static final int KEYCODE_CHANNEL_DOWN = 167; // 0xa7
+@@ -41559,6 +41560,7 @@ package android.view {
+     field public static final int KEYCODE_FORWARD_DEL = 112; // 0x70
+     field public static final int KEYCODE_FUNCTION = 119; // 0x77
+     field public static final int KEYCODE_G = 35; // 0x23
++    field public static final int KEYCODE_GBPANICBTN = 607; // 0x25f
+     field public static final int KEYCODE_GRAVE = 68; // 0x44
+     field public static final int KEYCODE_GUIDE = 172; // 0xac
+     field public static final int KEYCODE_H = 36; // 0x24
+@@ -41573,6 +41575,7 @@ package android.view {
+     field public static final int KEYCODE_K = 39; // 0x27
+     field public static final int KEYCODE_KANA = 218; // 0xda
+     field public static final int KEYCODE_KATAKANA_HIRAGANA = 215; // 0xd7
++    field public static final int KEYCODE_KEYCODE_PTT = 603; // 0x25b
+     field public static final int KEYCODE_L = 40; // 0x28
+     field public static final int KEYCODE_LANGUAGE_SWITCH = 204; // 0xcc
+     field public static final int KEYCODE_LAST_CHANNEL = 229; // 0xe5
+@@ -41599,6 +41602,8 @@ package android.view {
+     field public static final int KEYCODE_MENU = 82; // 0x52
+     field public static final int KEYCODE_META_LEFT = 117; // 0x75
+     field public static final int KEYCODE_META_RIGHT = 118; // 0x76
++    field public static final int KEYCODE_METROCALL = 601; // 0x259
++    field public static final int KEYCODE_METRORECORD = 600; // 0x258
+     field public static final int KEYCODE_MINUS = 69; // 0x45
+     field public static final int KEYCODE_MOVE_END = 123; // 0x7b
+     field public static final int KEYCODE_MOVE_HOME = 122; // 0x7a
+@@ -41650,6 +41655,7 @@ package android.view {
+     field public static final int KEYCODE_PROG_YELLOW = 185; // 0xb9
+     field public static final int KEYCODE_Q = 45; // 0x2d
+     field public static final int KEYCODE_R = 46; // 0x2e
++    field public static final int KEYCODE_REGISTER = 602; // 0x25a
+     field public static final int KEYCODE_RIGHT_BRACKET = 72; // 0x48
+     field public static final int KEYCODE_RO = 217; // 0xd9
+     field public static final int KEYCODE_S = 47; // 0x2f
+@@ -41664,6 +41670,7 @@ package android.view {
+     field public static final int KEYCODE_SOFT_LEFT = 1; // 0x1
+     field public static final int KEYCODE_SOFT_RIGHT = 2; // 0x2
+     field public static final int KEYCODE_SOFT_SLEEP = 276; // 0x114
++    field public static final int KEYCODE_SOS = 605; // 0x25d
+     field public static final int KEYCODE_SPACE = 62; // 0x3e
+     field public static final int KEYCODE_STAR = 17; // 0x11
+     field public static final int KEYCODE_STB_INPUT = 180; // 0xb4
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre><h3 id="39代码提交">3.9.代码提交</h3>
+<p>一开始是把所有修改的文件都add的，后面又撤销并分开提交的。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git add kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-nopmi-panel-camera.dtsi kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dtsi
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git add device/qcom/msm8953_64/gpio-keys.kl frameworks/base/api/current.txt frameworks/base/api/system-current.txt frameworks/base/api/test-current.txt frameworks/base/core/java/android/view/KeyEvent.java frameworks/base/core/res/res/values/attrs.xml frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java frameworks/native/include/android/keycodes.h frameworks/native/include/input/InputEventLabels.h kernel/msm-3.18/include/uapi/linux/input.h
+</code></pre><p>一共add了这么多文件。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git status
+# On branch develop
+# Changes to be committed:
+#   (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+#
+#       modified:   device/qcom/msm8953_64/gpio-keys.kl
+#       modified:   frameworks/base/api/current.txt
+#       modified:   frameworks/base/api/system-current.txt
+#       modified:   frameworks/base/api/test-current.txt
+#       modified:   frameworks/base/core/java/android/view/KeyEvent.java
+#       modified:   frameworks/base/core/res/res/values/attrs.xml
+#       modified:   frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+#       modified:   frameworks/native/include/android/keycodes.h
+#       modified:   frameworks/native/include/input/InputEventLabels.h
+#       modified:   kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
+#       modified:   kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-nopmi-panel-camera.dtsi
+#       modified:   kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dtsi
+#       modified:   kernel/msm-3.18/include/uapi/linux/input.h
+</code></pre><ul>
+<li>撤销add的文件</li>
+</ul>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">git add 添加 多余文件
+这样的错误是由于， 有的时候 可能
+
+git add . （空格+ 点） 表示当前目录所有文件，不小心就会提交其他文件
+git add 如果添加了错误的文件的话
+</code></pre><ul>
+<li>撤销操作</li>
+</ul>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">git status 先看一下add 中的文件
+git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了
+git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux">git reset HEAD device/qcom/msm8953_64/gpio-keys.kl
+git reset HEAD frameworks/base/api/current.txt
+git reset HEAD frameworks/base/api/system-current.txt
+git reset HEAD frameworks/base/api/test-current.txt
+git reset HEAD frameworks/base/core/java/android/view/KeyEvent.java
+git reset HEAD frameworks/base/core/res/res/values/attrs.xml
+git reset HEAD frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+git reset HEAD frameworks/native/include/android/keycodes.h
+git reset HEAD frameworks/native/include/input/InputEventLabels.h
+</code></pre><p>kernel代码提交。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git reset HEAD frameworks/native/include/android/keycodes.h
+...非kernel全部撤销...
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git commit -m &#34;[all]button module in kernel&#34;
+[develop a6d947c] [all]button module in kernel
+ 4 files changed, 123 insertions(+), 59 deletions(-)
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git status
+# On branch develop
+# Changes to be committed:
+#   (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+#
+#       modified:   kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi
+#       modified:   kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-nopmi-panel-camera.dtsi
+#       modified:   kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-pinctrl.dtsi
+#       modified:   kernel/msm-3.18/include/uapi/linux/input.h
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git push origin develop
+Counting objects: 31, done.
+Delta compression using up to 40 threads.
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (16/16), 1.72 KiB | 0 bytes/s, done.
+Total 16 (delta 14), reused 0 (delta 0)
+remote: Checking connectivity: 16, done.
+remote:
+remote: To create a merge request for develop, visit:
+remote:   http://gitlab.gbcom.com.cn/daizelai/sc60_android_7.1.2_qcom_sc14/-/merge_requests/new?merge_request%5Bsource_branch%5D=develop
+remote:
+To git@gitlab.gbcom.com.cn:daizelai/sc60_android_7.1.2_qcom_sc14.git
+   0b79654..a6d947c  develop -&gt; develop
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre><p>framework代码提交。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ date
+Thu May 27 18:31:21 CST 2021
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git add device/qcom/msm8953_64/gpio-keys.kl frameworks/base/api/current.txt frameworks/base/api/system-current.txt frameworks/base/api/test-current.txt frameworks/base/core/java/android/view/KeyEvent.java frameworks/base/core/res/res/values/attrs.xml frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java frameworks/native/include/android/keycodes.h frameworks/native/include/input/InputEventLabels.h
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git commit -m &#34;[all]button module in framework&#34;
+[develop 05b120c] [all]button module in framework
+ 9 files changed, 91 insertions(+), 2 deletions(-)
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git push origin develop
+Counting objects: 69, done.
+Delta compression using up to 40 threads.
+Compressing objects: 100% (32/32), done.
+Writing objects: 100% (35/35), 4.17 KiB | 0 bytes/s, done.
+Total 35 (delta 28), reused 0 (delta 0)
+remote:
+remote: To create a merge request for develop, visit:
+remote:   http://gitlab.gbcom.com.cn/daizelai/sc60_android_7.1.2_qcom_sc14/-/merge_requests/new?merge_request%5Bsource_branch%5D=develop
+remote:
+To git@gitlab.gbcom.com.cn:daizelai/sc60_android_7.1.2_qcom_sc14.git
+   a6d947c..05b120c  develop -&gt; develop
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2021-05-18 13:10:00">更新于 2021-05-18&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/sc60/' class="post-tag">SC60</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/%E6%8C%89%E9%94%AE/' class="post-tag">按键</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/room/20220929_1505%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3room%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%A1%A8sql%E8%AF%AD%E5%8F%A5%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/room/" class="post-nav-item" rel="prev" title="快速解决room升级数据库添加新表SQL语句冲突问题"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>快速解决room升级数据库添加新表SQL语句冲突问题</a>
+      <a href="/posts/windows/excel/" class="post-nav-item" rel="next" title="设置excel单元格下拉框">设置excel单元格下拉框<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

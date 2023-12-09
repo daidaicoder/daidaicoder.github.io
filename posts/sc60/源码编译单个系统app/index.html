@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>源码编译单个系统app - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="源码编译单个系统app" /><meta name="keywords" content='原创, SC60, 单编' /><meta itemprop="name" content="源码编译单个系统app">
+<meta itemprop="description" content="源码编译单个系统app"><meta itemprop="datePublished" content="2021-09-06T16:48:27+08:00" />
+<meta itemprop="dateModified" content="2021-09-06T16:48:27+08:00" />
+<meta itemprop="wordCount" content="636">
+<meta itemprop="keywords" content="原创,SC60,单编," /><meta property="og:title" content="源码编译单个系统app" />
+<meta property="og:description" content="源码编译单个系统app" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/sc60/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%8D%95%E4%B8%AA%E7%B3%BB%E7%BB%9Fapp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-06T16:48:27+08:00" />
+<meta property="article:modified_time" content="2021-09-06T16:48:27+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="源码编译单个系统app"/>
+<meta name="twitter:description" content="源码编译单个系统app"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/sc60/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%8D%95%E4%B8%AA%E7%B3%BB%E7%BB%9Fapp/" /><link rel="prev" href="https://daizelai.github.io/posts/sc60/sc60%E7%89%88%E6%9C%AC%E5%8C%85%E5%8D%87%E7%BA%A7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" /><link rel="next" href="https://daizelai.github.io/posts/windows/windowsntp/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "源码编译单个系统app",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/sc60\/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%8D%95%E4%B8%AA%E7%B3%BB%E7%BB%9Fapp\/"
+    },"genre": "posts","keywords": "原创, SC60, 单编","wordcount":  636 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/sc60\/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%8D%95%E4%B8%AA%E7%B3%BB%E7%BB%9Fapp\/","datePublished": "2021-09-06T16:48:27+08:00","dateModified": "2021-09-06T16:48:27+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "源码编译单个系统app"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>源码编译单个系统app</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/sc60/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> SC60</a>&ensp;<a href="/categories/%E5%8D%95%E7%BC%96/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 单编</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2021-09-06 16:48:27"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2021-09-06">2021-09-06</time></span>&nbsp;<span title="更新于 2021-09-06 16:48:27"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2021-09-06">2021-09-06</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 636 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二编译方法">二、编译方法</a>
+      <ul>
+        <li><a href="#路径">路径</a></li>
+        <li><a href="#编译">编译</a></li>
+        <li><a href="#测试">测试</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="源码编译单个系统app">源码编译单个系统app</h1>
+<h2 id="一描述">一、描述</h2>
+<p>在SC60源码中直接编译单个系统app。
+by daizelai on 2021/09/06 16:48</p>
+<!-- raw HTML omitted -->
+<h2 id="二编译方法">二、编译方法</h2>
+<h3 id="路径">路径</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd
+/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14
+</code></pre><h3 id="编译">编译</h3>
+<p>使用<code>mmm</code>命令编译，但有一个前提，<strong>必须是完整编译过一次系统才能使用<code>mmm</code>，如果没有编译过，或者使用过<code>make clean</code>立即执行<code>mmm file</code>命令是无法执行的</strong>。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">......
+BUILD_ID=N2G47H
+OUT_DIR=out
+============================================
+Unknown option: -C
+usage: git [--version] [--help] [-c name=value]
+           [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+           &lt;command&gt; [&lt;args&gt;]
+make: Entering directory `/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14&#39;
+Running kati to generate build-efc28e71d8f1fdd3f3f8f083ddc7d1fe.ninja...
+No need to regenerate ninja file
+Starting build with ninja
+ninja: Entering directory `.&#39; 
+ninja: error: &#39;out/target/common/obj/JAVA_LIBRARIES/core-junit_intermediates/classes.dex.toc&#39;, needed by &#39;out/target/common/obj/JAVA
+_LIBRARIES/settings-logtags_intermediates/classes.jack&#39;, missing and no known rule to make it 
+make: *** [ninja_wrapper] Error 1
+make: Leaving directory `/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14&#39;
+
+^[[0;31m#### make failed to build some targets (1 seconds) ####^[[00m
+</code></pre><p>执行<code>mmm</code>命令开始编译。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ mmm /home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14/packages/apps/Settings/
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=7.1.2
+TARGET_PRODUCT=msm8953_64
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_BUILD_APPS=
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=generic
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv7-a-neon
+TARGET_2ND_CPU_VARIANT=cortex-a53
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-3.10.0-1127.13.1.el7.x86_64-x86_64-with-centos-7.8.2003-Core
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=N2G47H
+OUT_DIR=out
+============================================
+Unknown option: -C
+usage: git [--version] [--help] [-c name=value]
+           [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+           &lt;command&gt; [&lt;args&gt;]
+make: Entering directory `/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14&#39;
+Running kati to generate build-efc28e71d8f1fdd3f3f8f083ddc7d1fe.ninja...
+out/build-efc28e71d8f1fdd3f3f8f083ddc7d1fe.ninja is missing, regenerating...
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=7.1.2
+TARGET_PRODUCT=msm8953_64
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_BUILD_APPS=
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=generic
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv7-a-neon
+TARGET_2ND_CPU_VARIANT=cortex-a53
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-3.10.0-1127.13.1.el7.x86_64-x86_64-with-centos-7.8.2003-Core
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=N2G47H
+OUT_DIR=out
+============================================
+*** Overlay change detected, clean shared intermediate files...
+*** rm -rf out/target/common/obj/APPS/Settings_intermediates
+*** Obsolete generated java files detected, clean intermediate files...
+*** rm -rf out/target/common/obj/APPS/Settings_intermediates/src
+PRODUCT_COPY_FILES device/qcom/common/media/media_profiles.xml:system/etc/media_profiles.xml ignored.
+PRODUCT_COPY_FILES device/qcom/common/media/media_codecs.xml:system/etc/media_codecs.xml ignored.
+No private recovery resources for TARGET_DEVICE msm8953_64
+616+0 records in
+616+0 records out
+630784 bytes (631 kB) copied, 0.0145401 s, 43.4 MB/s
+vendor/qcom/build/tasks/generate_extra_images.mk:55: warning: overriding commands for target `out/target/product/msm8953_64/root/persist&#39;
+vendor/qcom/build/tasks/generate_extra_images.mk:50: warning: ignoring old commands for target `out/target/product/msm8953_64/root/persist&#39;
+Starting build with ninja
+ninja: Entering directory `.&#39;
+[ 37% 6/16] Ensure Jack server is installed and started
+Jack server already installed in &#34;/home/android_SC20/.jack-server&#34;
+Server is already running
+[ 62% 10/16] target R.java/Manifest.java: Settings (out/target/common/obj/APPS/Settings_intermediates/src/R.stamp)
+nothing matches overlay file suw_navbar_ic_back.xml, for flavor anydpi-v21
+nothing matches overlay file suw_navbar_ic_more.xml, for flavor anydpi-v21
+nothing matches overlay file suw_navbar_ic_next.xml, for flavor anydpi-v21
+nothing matches overlay file suw_progress_bar.xml, for flavor v21
+[ 93% 15/16] target Package: Settings (out/target/product/msm8953_64/obj/APPS/Settings_intermediates/package.apk)
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c hdpi-v4. Use --preferred-density instead.
+warning: ignoring flag -c mdpi-v4. Use --preferred-density instead.
+nothing matches overlay file suw_navbar_ic_back.xml, for flavor anydpi-v21
+nothing matches overlay file suw_navbar_ic_more.xml, for flavor anydpi-v21
+nothing matches overlay file suw_navbar_ic_next.xml, for flavor anydpi-v21
+nothing matches overlay file suw_progress_bar.xml, for flavor v21
+[100% 16/16] Install: out/target/product/msm8953_64/system/priv-app/Settings/Settings.apk
+make: Leaving directory `/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14&#39;
+
+#### make completed successfully (02:38 (mm:ss)) ####
+
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre><h3 id="测试">测试</h3>
+<p>可以在编译控制日志中发现Settings.apk。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[100% 16/16] Install: out/target/product/msm8953_64/system/priv-app/Settings/Settings.apk
+</code></pre><p>可以看到Settings.apk已经存在了</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ ls -lh out/target/product/msm8953_64/system/priv-app/Settings/
+total 19M
+drwxrwxr-x 3 android_SC20 android_SC20 4.0K Sep  6 14:31 oat
+-rw-rw-r-- 1 android_SC20 android_SC20  19M Sep  6 16:54 Settings.apk
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2021-09-06 16:48:27">更新于 2021-09-06&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/sc60/' class="post-tag">SC60</a><a href='/tags/%E5%8D%95%E7%BC%96/' class="post-tag">单编</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/sc60/sc60%E7%89%88%E6%9C%AC%E5%8C%85%E5%8D%87%E7%BA%A7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-nav-item" rel="prev" title="版本包升级注意事项"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>版本包升级注意事项</a>
+      <a href="/posts/windows/windowsntp/" class="post-nav-item" rel="next" title="windows10搭建本地NTP服务器">windows10搭建本地NTP服务器<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

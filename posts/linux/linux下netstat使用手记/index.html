@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux下netstat使用手记 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="Linux下netstat使用手记，刚刚简单的看了一下windows下面使用netstat命令，这里主要是讲在linux环境下操作netstat命令的方法。" /><meta name="keywords" content='原创, linux, netstat' /><meta itemprop="name" content="Linux下netstat使用手记">
+<meta itemprop="description" content="Linux下netstat使用手记，刚刚简单的看了一下windows下面使用netstat命令，这里主要是讲在linux环境下操作netstat命令的方法。"><meta itemprop="datePublished" content="2016-10-14T15:45:51+08:00" />
+<meta itemprop="dateModified" content="2016-10-14T15:45:51+08:00" />
+<meta itemprop="wordCount" content="1878">
+<meta itemprop="keywords" content="原创,linux,netstat," /><meta property="og:title" content="Linux下netstat使用手记" />
+<meta property="og:description" content="Linux下netstat使用手记，刚刚简单的看了一下windows下面使用netstat命令，这里主要是讲在linux环境下操作netstat命令的方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-10-14T15:45:51+08:00" />
+<meta property="article:modified_time" content="2016-10-14T15:45:51+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux下netstat使用手记"/>
+<meta name="twitter:description" content="Linux下netstat使用手记，刚刚简单的看了一下windows下面使用netstat命令，这里主要是讲在linux环境下操作netstat命令的方法。"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/" /><link rel="prev" href="https://daizelai.github.io/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/" /><link rel="next" href="https://daizelai.github.io/posts/php/php%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0post%E7%9A%84json%E6%95%B0%E6%8D%AE%E7%9A%84%E9%97%AE%E9%A2%98/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux下netstat使用手记",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0\/"
+    },"genre": "posts","keywords": "原创, linux, netstat","wordcount":  1878 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0\/","datePublished": "2016-10-14T15:45:51+08:00","dateModified": "2016-10-14T15:45:51+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "Linux下netstat使用手记，刚刚简单的看了一下windows下面使用netstat命令，这里主要是讲在linux环境下操作netstat命令的方法。"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Linux下netstat使用手记</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-10-14 15:45:51"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-14">2016-10-14</time></span>&nbsp;<span title="更新于 2016-10-14 15:45:51"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-14">2016-10-14</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1878 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 9 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一netstat命令说明">一、netstat命令说明</a>
+      <ul>
+        <li><a href="#11netstat常用参数介绍">1.1.netstat常用参数介绍</a></li>
+      </ul>
+    </li>
+    <li><a href="#二netstat常用命令介绍">二、netstat常用命令介绍</a>
+      <ul>
+        <li><a href="#21列出所有端口">2.1.列出所有端口</a></li>
+        <li><a href="#22列出所有tcp端口">2.2.列出所有TCP端口</a></li>
+        <li><a href="#23列出所有-udp-端口">2.3.列出所有 udp 端口</a></li>
+        <li><a href="#24列出所有处于监听状态的-sockets">2.4.列出所有处于监听状态的 Sockets</a></li>
+        <li><a href="#25列出所有处于监听状态的tcp端口">2.5.列出所有处于监听状态的tcp端口</a></li>
+        <li><a href="#26列出所有处于监听状态的udp端口">2.6.列出所有处于监听状态的udp端口</a></li>
+        <li><a href="#27列出所有处于监听状态的unix端口">2.7.列出所有处于监听状态的unix端口</a></li>
+        <li><a href="#28显示每个协议的统计信息">2.8.显示每个协议的统计信息</a></li>
+        <li><a href="#29在netstat输出中显示-pid-和进程名称">2.9.在netstat输出中显示 PID 和进程名称</a></li>
+        <li><a href="#210在netstat输出中不显示主机端口和用户名host-port-or-user">2.10.在netstat输出中不显示主机，端口和用户名(host, port or user)</a></li>
+        <li><a href="#211查看3306端口是否被占用">2.11.查看3306端口是否被占用</a></li>
+        <li><a href="#212显示路由信息">2.12.显示路由信息</a></li>
+        <li><a href="#213持续输出netstat信息">2.13.持续输出netstat信息</a></li>
+        <li><a href="#214显示系统不支持的地址族address-families">2.14.显示系统不支持的地址族(Address Families)</a></li>
+        <li><a href="#215找出程序运行的端口">2.15.找出程序运行的端口</a></li>
+        <li><a href="#216找出运行在指定端口的进程">2.16.找出运行在指定端口的进程</a></li>
+        <li><a href="#217显示网络接口列表">2.17.显示网络接口列表</a></li>
+      </ul>
+    </li>
+    <li><a href="#三使用netstat进行ip和tcp分析">三、使用netstat进行IP和TCP分析</a>
+      <ul>
+        <li><a href="#31查看mysqld进程数">3.1.查看mysqld进程数</a></li>
+        <li><a href="#32查看连接某服务端口最多的的ip地址">3.2.查看连接某服务端口最多的的IP地址</a></li>
+        <li><a href="#33tcp各种状态列表">3.3.TCP各种状态列表</a></li>
+        <li><a href="#34查找请求数大于20个ip常用于查找攻来源">3.4.查找请求数大于20个IP（常用于查找攻来源）</a></li>
+        <li><a href="#35查找较多time_wait连接">3.5.查找较多time_wait连接</a></li>
+        <li><a href="#36找查较多的syn连接">3.6.找查较多的SYN连接</a></li>
+        <li><a href="#37根据端口列进程">3.7.根据端口列进程</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>Linux下netstat命令的简单使用记录，这里以CentOS7为基础。</p>
+<h2 id="一netstat命令说明">一、netstat命令说明</h2>
+<h3 id="11netstat常用参数介绍">1.1.netstat常用参数介绍</h3>
+<p>netstat有很多参数，下面列表每个参数的说明。</p>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code>-a或--all：显示所有连线中的Socket；
+-A&lt;网络类型&gt;或--&lt;网络类型&gt;：列出该网络类型连线中的相关地址； 
+-c或--continuous：持续列出网络状态； 
+-C或--cache：显示路由器配置的快取信息； 
+-e或--extend：显示网络其他相关信息； 
+-F或--fib：显示FIB； 
+-g或--groups：显示多重广播功能群组组员名单； 
+-h或--help：在线帮助； 
+-i或--interfaces：显示网络界面信息表单； 
+-l或--listening：显示监控中的服务器的Socket； 
+-M或--masquerade：显示伪装的网络连线； 
+-n或--numeric：直接使用ip地址，而不通过域名服务器； 
+-N或--netlink或--symbolic：显示网络硬件外围设备的符号连接名称； 
+-o或--timers：显示计时器； 
+-p或--programs：显示正在使用Socket的程序识别码和程序名称； 
+-r或--route：显示Routing Table； 
+-s或--statistice：显示网络工作信息统计表； 
+-t或--tcp：显示TCP传输协议的连线状况； 
+-u或--udp：显示UDP传输协议的连线状况； 
+-v或--verbose：显示指令执行过程； 
+-V或--version：显示版本信息； 
+-w或--raw：显示RAW传输协议的连线状况； 
+-x或--unix：此参数的效果和指定&#34;-A unix&#34;参数相同； 
+--ip或--inet：此参数的效果和指定&#34;-A inet&#34;参数相同。
+</code></pre><h2 id="二netstat常用命令介绍">二、netstat常用命令介绍</h2>
+<h3 id="21列出所有端口">2.1.列出所有端口</h3>
+<p><code>netstat -a</code>列出所有的端口，包括监听和未监听的，这里lai因为觉得太多了，只选其中一部分。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -a
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:http            0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN     
+tcp        0      0 localhost:smtp          0.0.0.0:*               LISTEN     
+tcp        0     52 localhost.localdoma:ssh 10.60.0.95:50661        ESTABLISHED
+tcp6       0      0 [::]:mysql              [::]:*                  LISTEN     
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN     
+tcp6       0      0 localhost:smtp          [::]:*                  LISTEN     
+udp        0      0 0.0.0.0:hid             0.0.0.0:*                          
+udp        0      0 0.0.0.0:32605           0.0.0.0:*                          
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                          
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                          
+udp6       0      0 [::]:32605              [::]:*                             
+udp6       0      0 [::]:9149               [::]:*                             
+raw6       0      0 [::]:ipv6-icmp          [::]:*                  7          
+raw6       0      0 [::]:ipv6-icmp          [::]:*                  7          
+Active UNIX domain sockets (servers and established)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  12     [ ]         DGRAM                    6655     /dev/log
+unix  2      [ ACC ]     STREAM     LISTENING     17477    public/flush
+unix  2      [ ACC ]     STREAM     LISTENING     18565    /tmp/ssh-8fkRgZJdUc/agent.2336
+unix  2      [ ACC ]     STREAM     LISTENING     11011    /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     13574    /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     17492    public/showq
+unix  2      [ ACC ]     STREAM     LISTENING     11025    /run/lvm/lvmetad.socket
+unix  2      [ ]         DGRAM                    11071    /run/systemd/shutdownd
+unix  2      [ ACC ]     STREAM     LISTENING     11078    /run/lvm/lvmpolld.socket
+unix  2      [ ACC ]     SEQPACKET  LISTENING     11093    /run/udev/control
+</code></pre><h3 id="22列出所有tcp端口">2.2.列出所有TCP端口</h3>
+<p>使用<code>netstat -at</code>列出所有TCP端口，a是所有端口，t表示tcp的意思</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -at
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:http            0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN     
+tcp        0      0 localhost:smtp          0.0.0.0:*               LISTEN     
+tcp        0     52 localhost.localdoma:ssh 10.60.0.95:50661        ESTABLISHED
+tcp6       0      0 [::]:mysql              [::]:*                  LISTEN     
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN     
+tcp6       0      0 localhost:smtp          [::]:*                  LISTEN 
+</code></pre><h3 id="23列出所有-udp-端口">2.3.列出所有 udp 端口</h3>
+<p>使用<code>netstat -au</code>列出所有TCP端口，a是所有端口，u表示udp的意思</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -au
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+udp        0      0 0.0.0.0:hid             0.0.0.0:*                          
+udp        0      0 0.0.0.0:32605           0.0.0.0:*                          
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                          
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                          
+udp6       0      0 [::]:32605              [::]:*                             
+udp6       0      0 [::]:9149               [::]:* 
+</code></pre><h3 id="24列出所有处于监听状态的-sockets">2.4.列出所有处于监听状态的 Sockets</h3>
+<p><code>netstat -l</code>只显示监听端口。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -l
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:http            0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN     
+tcp        0      0 localhost:smtp          0.0.0.0:*               LISTEN     
+tcp6       0      0 [::]:mysql              [::]:*                  LISTEN     
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN     
+tcp6       0      0 localhost:smtp          [::]:*                  LISTEN     
+udp        0      0 0.0.0.0:hid             0.0.0.0:*                          
+udp        0      0 0.0.0.0:32605           0.0.0.0:*                          
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                          
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                          
+udp6       0      0 [::]:32605              [::]:*                             
+udp6       0      0 [::]:9149               [::]:*                             
+raw6       0      0 [::]:ipv6-icmp          [::]:*                  7          
+raw6       0      0 [::]:ipv6-icmp          [::]:*                  7          
+Active UNIX domain sockets (only servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ACC ]     STREAM     LISTENING     17477    public/flush
+unix  2      [ ACC ]     STREAM     LISTENING     18565    /tmp/ssh-8fkRgZJdUc/agent.2336
+unix  2      [ ACC ]     STREAM     LISTENING     11011    /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     13574    /var/run/dbus/system_bus_socket
+</code></pre><h3 id="25列出所有处于监听状态的tcp端口">2.5.列出所有处于监听状态的tcp端口</h3>
+<p><code>netstat -lt</code>列出所有处于监听状态的tcp端口。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -lt
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:http            0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN     
+tcp        0      0 localhost:smtp          0.0.0.0:*               LISTEN     
+tcp6       0      0 [::]:mysql              [::]:*                  LISTEN     
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN     
+tcp6       0      0 localhost:smtp          [::]:*                  LISTEN
+</code></pre><h3 id="26列出所有处于监听状态的udp端口">2.6.列出所有处于监听状态的udp端口</h3>
+<p><code>netstat -lu</code>列出所有处于监听状态的udp端口。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -lu
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+udp        0      0 0.0.0.0:hid             0.0.0.0:*                          
+udp        0      0 0.0.0.0:32605           0.0.0.0:*                          
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                          
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                          
+udp6       0      0 [::]:32605              [::]:*                             
+udp6       0      0 [::]:9149               [::]:*  
+</code></pre><h3 id="27列出所有处于监听状态的unix端口">2.7.列出所有处于监听状态的unix端口</h3>
+<p><code>netstat -lx</code>列出所有处于监听状态的unix端口。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -lx
+Active UNIX domain sockets (only servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ACC ]     STREAM     LISTENING     17477    public/flush
+unix  2      [ ACC ]     STREAM     LISTENING     18565    /tmp/ssh-8fkRgZJdUc/agent.2336
+unix  2      [ ACC ]     STREAM     LISTENING     11011    /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     13574    /var/run/dbus/system_bus_socket
+</code></pre><h3 id="28显示每个协议的统计信息">2.8.显示每个协议的统计信息</h3>
+<p>使用<code>netstat -s</code>显示所有端口的统计信息，<code>-st</code>显示TCP端口的统计信息，<code>-su</code>显示UDP端口的统计信息。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -s
+Ip:
+    33816 total packets received
+    0 forwarded
+    0 incoming packets discarded
+    33031 incoming packets delivered
+    3135 requests sent out
+Icmp:
+    3 ICMP messages received
+    0 input ICMP message failed.
+    ICMP input histogram:
+        echo requests: 3
+    48 ICMP messages sent
+    0 ICMP messages failed
+</code></pre><h3 id="29在netstat输出中显示-pid-和进程名称">2.9.在netstat输出中显示 PID 和进程名称</h3>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -pt
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0     52 localhost.localdoma:ssh 10.60.0.95:50661        ESTABLISHED 2336/sshd: root@pts 
+</code></pre><h3 id="210在netstat输出中不显示主机端口和用户名host-port-or-user">2.10.在netstat输出中不显示主机，端口和用户名(host, port or user)</h3>
+<p>使用<code>netstat -n</code>。将会使用数字代替那些名称。同样可以加速输出，因为不用进行比对查询。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -a
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:http            0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN
+</code></pre><p>使用<code>netstat -an</code>可以看到，<code>http</code>换成了<code>80</code>显示了。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -an
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN  
+</code></pre><p>如果不想显示其中一项的话，可以像下面这样操作：</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -a --numeric-ports 
+[root@localhost _posts]# netstat -a --numeric-hosts 
+[root@localhost _posts]# netstat -a --numeric-users
+</code></pre><h3 id="211查看3306端口是否被占用">2.11.查看3306端口是否被占用</h3>
+<p>通过<code>netstat -tnl | grep 3306</code>命令查看<code>3306</code>端口是否已被占用。</p>
+<pre tabindex="0"><code>[root@worker4 ~]# netstat -tnl | grep 3306
+tcp        0      0 :::3306                     :::*                        LISTEN      
+</code></pre><p>当然如果是root用户，还可以像下面这样使用，可以看到PID。</p>
+<pre tabindex="0"><code>[root@worker4 ~]# netstat -pnl | grep 3306 
+tcp        0      0 :::3306                     :::*                        LISTEN      1299/mysqld         
+[root@work
+</code></pre><h3 id="212显示路由信息">2.12.显示路由信息</h3>
+<p>使用<code>netstat -r</code>可以显示路由的信息。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -r
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+default         gateway         0.0.0.0         UG        0 0          0 enp0s3
+default         gateway         0.0.0.0         UG        0 0          0 enp0s8
+10.0.2.0        0.0.0.0         255.255.255.0   U         0 0          0 enp0s3
+dc.gbcom.com.cn gateway         255.255.255.255 UGH       0 0          0 enp0s8
+10.60.0.0       0.0.0.0         255.255.0.0     U         0 0          0 enp0s8
+172.17.0.0      0.0.0.0         255.255.0.0     U         0 0          0 docker0
+</code></pre><p>使用<code>-rn</code>参数显示数字格式，不查询主机名称，此命令同<code>route -n</code>命令输出结果一样。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -rn
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         10.0.2.2        0.0.0.0         UG        0 0          0 enp0s3
+0.0.0.0         10.60.1.254     0.0.0.0         UG        0 0          0 enp0s8
+10.0.2.0        0.0.0.0         255.255.255.0   U         0 0          0 enp0s3
+10.1.1.249      10.60.1.254     255.255.255.255 UGH       0 0          0 enp0s8
+10.60.0.0       0.0.0.0         255.255.0.0     U         0 0          0 enp0s8
+172.17.0.0      0.0.0.0         255.255.0.0     U         0 0          0 docker0
+</code></pre><h3 id="213持续输出netstat信息">2.13.持续输出netstat信息</h3>
+<pre tabindex="0"><code>netstat -c // 每隔一秒输出网络信息
+</code></pre><h3 id="214显示系统不支持的地址族address-families">2.14.显示系统不支持的地址族(Address Families)</h3>
+<pre tabindex="0"><code>netstat --verbose // 显示系统不支持的地址族(Address Families)
+</code></pre><h3 id="215找出程序运行的端口">2.15.找出程序运行的端口</h3>
+<p>使用<code>netstat -ap | grep ssh</code>我们可以看到SSH程序运行的端口为50661。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -ap | grep ssh
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN      896/sshd            
+tcp        0     52 localhost.localdoma:ssh 10.60.0.95:50661        ESTABLISHED 2336/sshd: root@pts 
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      896/sshd            
+unix  2      [ ACC ]     STREAM     LISTENING     18565    2336/sshd: root@pts  /tmp/ssh-8fkRgZJdUc/agent.2336
+unix  2      [ ]         DGRAM                    18558    2336/sshd: root@pts  
+unix  3      [ ]         STREAM     CONNECTED     15920    896/sshd  
+</code></pre><h3 id="216找出运行在指定端口的进程">2.16.找出运行在指定端口的进程</h3>
+<p>这里我们来试着查找一下使用80端口的进程是什么。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -an | grep &#39;:80&#39;  
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN 
+</code></pre><h3 id="217显示网络接口列表">2.17.显示网络接口列表</h3>
+<p>使用<code>netstat -i</code>可以查看到网络接口的列表。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -i
+Kernel Interface table
+Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+docker0   1500        0      0      0 0             0      0      0      0 BMU
+enp0s3    1500        1      0      0 0             9      0      0      0 BMRU
+enp0s8    1500   202335      0      1 0          6884      0      0      0 BMRU
+lo       65536        0      0      0 0             0      0      0      0 LRU
+</code></pre><p>如果加上<code>-e</code>参数的话，得到的结果和<code>ifconfig</code>命令是类似的。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -ie
+Kernel Interface table
+docker0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 0.0.0.0
+        ether 02:42:32:a4:5c:15  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::a00:27ff:feb9:ac71  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 08:00:27:b9:ac:71  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 590 (590.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 9  bytes 966 (966.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s8: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.60.0.84  netmask 255.255.0.0  broadcast 10.60.255.255
+        inet6 fe80::a00:27ff:fe36:439f  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 08:00:27:36:43:9f  txqueuelen 1000  (Ethernet)
+        RX packets 203172  bytes 17266502 (16.4 MiB)
+        RX errors 0  dropped 1  overruns 0  frame 0
+        TX packets 6921  bytes 6129272 (5.8 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 0  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre><h2 id="三使用netstat进行ip和tcp分析">三、使用netstat进行IP和TCP分析</h2>
+<h3 id="31查看mysqld进程数">3.1.查看mysqld进程数</h3>
+<p>可以通过<code>netstat -anpo | grep &quot;mysqld&quot; | wc -l </code>命令查看<code>mysqld</code>服务的进程数</p>
+<pre tabindex="0"><code>[root@localhost _posts]# netstat -anpo | grep &#34;mysqld&#34; | wc -l 
+2
+</code></pre><p>这里可以通过<code>ps aux | grep mysqld</code>命令查看对比一上，除却本身的grep进程，得到的结果也为2（3-1）。</p>
+<pre tabindex="0"><code>[root@localhost _posts]# ps aux | grep mysqld  
+root      1413  0.0  0.0 115248   204 ?        S    09:16   0:00 /bin/sh /usr/local/mysql/bin/mysqld_safe --datadir=/usr/local/mysql/data --pid-file=/usr/local/mysql/data/localhost.localdomain.pid
+mysql     2102  0.0 30.0 978972 228272 ?       Sl   09:16   0:07 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=/usr/local/mysql/data/localhost.localdomain.err --pid-file=/usr/local/mysql/data/localhost.localdomain.pid
+root      2744  0.0  0.1 112664   976 pts/1    R+   13:32   0:00 grep --color=auto mysqld
+[root@localhost _posts]# ps aux | grep mysqld | wc -l
+3
+</code></pre><h3 id="32查看连接某服务端口最多的的ip地址">3.2.查看连接某服务端口最多的的IP地址</h3>
+<p>通过<code>netstat</code>命令来查看一下访问<code>80</code>端口最多的IP地址是多少。</p>
+<pre tabindex="0"><code>[root@worker4 ~]# netstat -ntu | grep :80 | awk &#39;{print $5}&#39; | cut -d: -f1 | awk &#39;{++ip[$1]} END {for(i in ip) print ip[i],&#34;\t&#34;,i}&#39; | sort -nr
+13       
+1        127.0.0.1
+</code></pre><h3 id="33tcp各种状态列表">3.3.TCP各种状态列表</h3>
+<p>查看TCP状态列表</p>
+<pre tabindex="0"><code>[root@worker4 ~]# netstat -nt | grep -e 127.0.0.1 -e 0.0.0.0 -e ::: -v | awk &#39;/^tcp/ {++state[$NF]} END {for(i in state) print i,&#34;\t&#34;,state[i]}&#39;
+ESTABLISHED      12
+TIME_WAIT        10
+</code></pre><pre tabindex="0"><code>[root@worker4 ~]# netstat -n | awk &#39;/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}&#39;
+ESTABLISHED 16
+TIME_WAIT 24
+[root@worker4 ~]# 
+[root@worker4 ~]# netstat -n | awk &#39;/^tcp/ {++state[$NF]}; END {for(key in state) print key,&#34;\t&#34;,state[key]}&#39;
+ESTABLISHED      16
+TIME_WAIT        24
+[root@worker4 ~]# netstat -n | awk &#39;/^tcp/ {++arr[$NF]};END {for(k in arr) print k,&#34;\t&#34;,arr[k]}&#39;
+ESTABLISHED      16
+TIME_WAIT        22
+[root@worker4 ~]# 
+[root@worker4 ~]# netstat -n |awk &#39;/^tcp/ {print $NF}&#39; |sort|uniq -c|sort -rn
+     24 TIME_WAIT
+     16 ESTABLISHED
+[root@worker4 ~]# netstat -ant | awk &#39;{print $NF}&#39; | grep -v &#39;[a-z]&#39; | sort | uniq -c
+     16 ESTABLISHED
+     29 LISTEN
+     24 TIME_WAIT
+</code></pre><p>查看网络连接状态，这里是指所有的连接状态。</p>
+<pre tabindex="0"><code>[root@worker4 ~]# netstat -nt |awk &#39;{print $6}&#39; |sort|uniq -c|sort -nr                                                                   22 TIME_WAIT
+     16 ESTABLISHED
+      1 Foreign
+      1 
+</code></pre><h3 id="34查找请求数大于20个ip常用于查找攻来源">3.4.查找请求数大于20个IP（常用于查找攻来源）</h3>
+<p>方式一</p>
+<pre tabindex="0"><code>[root@AY131018133441986ba1Z ~]# netstat -anlp|grep 80|grep tcp|awk &#39;{print $5}&#39;|awk -F: &#39;{print $1}&#39;|sort|uniq -c|sort -nr|head -n20
+    237 127.0.0.1
+    126 115.29.172.248
+     97 10.141.3.102
+     63 115.60.17.12
+     57 218.206.234.162
+     45 171.15.63.212
+     36 115.171.81.189
+     35 219.72.202.138
+     34 113.133.55.9
+     31 122.5.45.122
+     27 221.226.65.107
+     27 117.141.240.39
+     26 39.180.40.11
+     26 221.203.158.70
+     26 123.161.200.9
+     26 111.20.145.10
+     25 39.180.42.105
+     25 220.249.195.227
+     25 220.188.179.221
+     25 1.193.27.80
+</code></pre><p>方式二</p>
+<pre tabindex="0"><code>[root@AY131018133441986ba1Z ~]# netstat -ant |awk &#39;/:80/{split($5,ip,&#34;:&#34;);++A[ip[1]]}END{for(i in A) print A[i],i}&#39; |sort -rn|head -n20
+153 115.29.172.248
+60 221.226.65.107
+53 218.206.234.162
+52 113.133.55.9
+44 115.171.81.189
+43 171.15.63.212
+37 219.72.202.138
+35 223.85.196.193
+34 221.203.158.70
+30 61.185.32.68
+28 183.237.188.141
+28 180.168.191.195
+27 101.4.137.78
+25 39.190.27.130
+25 39.180.42.105
+25 39.180.40.11
+25 36.149.116.233
+25 36.149.116.138
+25 220.249.195.227
+25 218.205.57.7
+</code></pre><h3 id="35查找较多time_wait连接">3.5.查找较多time_wait连接</h3>
+<pre tabindex="0"><code>[root@worker4 ~]# netstat -n|grep TIME_WAIT|awk &#39;{print $5}&#39;|sort|uniq -c|sort -rn|head -n20
+      5 ::ffff:10.60.0.182:9000
+      2 10.60.1.7:27017
+      2 10.60.0.182:27017
+      1 ::ffff:127.0.0.1:39209
+      1 ::ffff:127.0.0.1:39206
+      1 ::ffff:127.0.0.1:39201
+      1 ::ffff:127.0.0.1:39198
+      1 ::ffff:127.0.0.1:39193
+      1 ::ffff:127.0.0.1:39189
+      1 ::ffff:127.0.0.1:39188
+      1 ::ffff:127.0.0.1:39183
+      1 ::ffff:127.0.0.1:39180
+      1 ::ffff:127.0.0.1:39173
+      1 ::ffff:127.0.0.1:39171
+</code></pre><h3 id="36找查较多的syn连接">3.6.找查较多的SYN连接</h3>
+<p>因为本地没有SYN，所以去test上面执行了一把。</p>
+<pre tabindex="0"><code>-bash-3.2# netstat -an | grep SYN | awk &#39;{print $5}&#39; | awk -F: &#39;{print $1}&#39; | sort | uniq -c | sort -nr | more
+      1 123.151.40.40
+</code></pre><h3 id="37根据端口列进程">3.7.根据端口列进程</h3>
+<pre tabindex="0"><code>[root@worker4 ~]# netstat -ntlp | grep 3306 | awk &#39;{print $7}&#39; | cut -d/ -f1   
+1299
+[root@worker4 ~]# ps -ef | grep mysqld
+root       318 27378  0 16:03 pts/0    00:00:00 grep mysqld
+root      1083     1  0 Jul22 ?        00:00:00 /bin/sh /usr/bin/mysqld_safe --datadir=/var/lib/mysql --socket=/var/lib/mysql/mysql.sock --pid-file=/var/run/mysqld/mysqld.pid --basedir=/usr --user=mysql
+mysql     1299  1083  0 Jul22 ?        01:48:31 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysqld.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/lib/mysql/mysql.sock
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-10-14 15:45:51">更新于 2016-10-14&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/netstat/' class="post-tag">netstat</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/" class="post-nav-item" rel="prev" title="windows下netstat使用手记"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>windows下netstat使用手记</a>
+      <a href="/posts/php/php%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0post%E7%9A%84json%E6%95%B0%E6%8D%AE%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-nav-item" rel="next" title="php获取不到post的json数据的问题">php获取不到post的json数据的问题<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

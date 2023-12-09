@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>adb网络命令记录 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="adb网络命令记录" /><meta name="keywords" content='android, adb, adb网络命令' /><meta itemprop="name" content="adb网络命令记录">
+<meta itemprop="description" content="adb网络命令记录"><meta itemprop="datePublished" content="2023-09-03T20:02:00+08:00" />
+<meta itemprop="dateModified" content="2023-09-03T20:02:00+08:00" />
+<meta itemprop="wordCount" content="381">
+<meta itemprop="keywords" content="android,adb,adb网络命令," /><meta property="og:title" content="adb网络命令记录" />
+<meta property="og:description" content="adb网络命令记录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/android/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-03T20:02:00+08:00" />
+<meta property="article:modified_time" content="2023-09-03T20:02:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="adb网络命令记录"/>
+<meta name="twitter:description" content="adb网络命令记录"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/" /><link rel="prev" href="https://daizelai.github.io/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/" /><link rel="next" href="https://daizelai.github.io/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "adb网络命令记录",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/android\/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95\/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95\/"
+    },"genre": "posts","keywords": "android, adb, adb网络命令","wordcount":  381 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/android\/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95\/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95\/","datePublished": "2023-09-03T20:02:00+08:00","dateModified": "2023-09-03T20:02:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "adb网络命令记录"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>adb网络命令记录</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/adb/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> adb</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-09-03 20:02:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-09-03">2023-09-03</time></span>&nbsp;<span title="更新于 2023-09-03 20:02:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-09-03">2023-09-03</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 381 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一常用命令">一、常用命令</a></li>
+    <li><a href="#二用ifconfig-来配置虚拟网络接口">二、用ifconfig 来配置虚拟网络接口</a></li>
+    <li><a href="#三用ifconfig-来激活和终止网络接口的连接">三、用ifconfig 来激活和终止网络接口的连接</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="adb网络命令记录">adb网络命令记录</h1>
+<h2 id="一常用命令">一、常用命令</h2>
+<p>在<code>ADB Shell root</code>用户下，添加IP地址为<code>10.0.1.2</code>，子网掩码为<code>255.255.255.0</code>，对应的指令如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># eth0 为有线网络 wlan0 为无线网络
+ip address add 10.0.1.2/24 dev eth0
+</code></pre><p>手动添加路由规则到eth0网卡路由表：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">ip route add 10.0.1.0/24 dev eth0  proto kernel  scope link  src 10.0.1.2 table eth0
+</code></pre><p>修改eth0路由表</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># ip route add 192.168.43.0/24 dev wlan0 proto static scope link table eth0
+或者直接复制wlan0路由表的规则添加到eth0路由表:
+# ip route add 192.168.43.0/24 dev wlan0  proto kernel  scope link  src 192.168.43.3 table eth0
+</code></pre><p>上面命令的意思是：向路由表<code>eth0</code>中添加一条<code>192.168.43.0/24 dev wlan0</code>路由规则.这样发送到<code>192.168.43</code>网段的数据就会通过wifi出去了。在设备中就可以ping通无线和有线两个网络了.</p>
+<p>对应的删除指令，需将<code>add</code>改为<code>del</code>：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">ip address del 10.0.1.2/24 dev eth0 
+ip route del 10.0.1.0/24 dev eth0  proto kernel  scope link  src 10.0.1.2 table eth0
+</code></pre><p>查看路由表：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># ip route list table eth0
+</code></pre><p>查看当前路由信息</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># ip route
+192.168.43.0/24 dev wlan0  proto kernel  scope link  src 192.168.43.3
+
+192.168.88.0/24 dev eth0  proto kernel  scope link  src 192.168.88.29
+</code></pre><p>想知道主机所有网络接口的情况</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># ifconfig -a
+</code></pre><p>想查看某个端口，比如查看<code>eth0</code>的状态</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># ifconfig eth0
+</code></pre><p><code>ifconfig</code>可以用来配置网络接口的IP地址、掩码、网关、物理地址等；值得一说的是用<code>ifconfig</code> 为网卡指定IP地址，这只是用来调试网络用的，并不会更改系统关于网卡的配置文件。如果您想把网络接口的IP地址固定下来，目前有三个方法：</p>
+<ul>
+<li>一、是通过各个 发行和版本专用的工具来修改IP地址；</li>
+<li>二、是直接修改网络接口的配置文件；</li>
+<li>三、是修改特定的文件，加入<code>ifconfig</code>指令来指定网卡的IP地址，比如在<code>redhat</code>或<code>Fedora</code>中，把<code>ifconfig</code>的语名写入<code>/etc/rc.d/rc.local</code>文件中；</li>
+</ul>
+<blockquote>
+<p>ifconfig 配置网络端口的方法：</p>
+</blockquote>
+<ul>
+<li>ifconfig 工具配置网络接口的方法是通过指令的参数来达到目的的，我们只说最常用的参数；</li>
+<li>ifconfig 网络端口 IP地址 hw <!-- raw HTML omitted --> MAC地址 netmask 掩码地址 broadcast 广播地址 [up/down]</li>
+</ul>
+<p>＊ 实例一：
+比如我们用ifconfig 来调试 eth0网卡的地址</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ifconfig eth0 down
+[root@localhost ~]# ifconfig eth0 192.168.1.99 broadcast 192.168.1.255 netmask 255.255.255.0
+[root@localhost ~]# ifconfig eth0 up
+[root@localhost ~]# ifconfig eth0
+eth0 Link encap:Ethernet HWaddr 00:11:00:00:11:11
+          inet addr:192.168.1.99 Bcast:192.168.1.255 Mask:255.255.255.0
+          UP BROADCAST MULTICAST MTU:1500 Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 b) TX bytes:0 (0.0 b)
+          Interrupt:11 Base address:0x3400
+</code></pre><p>注解： 上面的例子我们解说一下；</p>
+<ul>
+<li>第一行：<code>ifconfig eth0 down</code>表示如果<code>eth0</code>是激活的，就把它<code>DOWN</code>掉。此命令等同于<code>ifdown eth0</code>；</li>
+<li>第二行：用<code>ifconfig</code>来配置<code>eth0</code>的IP地址、广播地址和网络掩码；</li>
+<li>第三行：用<code>ifconfig eth0 up</code>来激活<code>eth0</code> ； 此命令等同于<code>ifup eth0</code></li>
+<li>第四行：用<code>ifconfig eth0</code>来查看<code>eth0</code>的状态；</li>
+</ul>
+<p>直接在指令IP地址、网络掩码、广播地址的同时，激活网卡</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ifconfig eth0 192.168.1.99 broadcast 192.168.1.255 netmask 255.255.255.0 up 
+</code></pre><p>设置网卡eth1的IP地址、网络掩码、广播地址，物理地址并且激活它；</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ifconfig eth1 192.168.1.252 hw ether 00:11:00:00:11:11 netmask 255.255.255.0 broadcast 192.168.1.255 up
+</code></pre><p>或</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ifconfig eth1 hw ether 00:11:00:00:11:22
+[root@localhost ~]# ifconfig eth1 192.168.1.252 netmask 255.255.255.0 broadcast 192.168.1.255 up其中 hw 后面所接的是网络接口类型， ether表示乙太网， 同时也支持 ax25 、ARCnet、netrom等，详情请查看 man ifconfig ； 
+</code></pre><h2 id="二用ifconfig-来配置虚拟网络接口">二、用ifconfig 来配置虚拟网络接口</h2>
+<p>有时我们为了满足不同的需要还需要配置虚拟网络接口，比如我们用不 同的IP地址来架运行多个HTTPD服务器，就要用到虚拟地址；这样就省却了同一个IP地址，如果开设两个的HTTPD服务器时，要指定端口号。</p>
+<p>虚拟网络接口指的是为一个网络接口指定多个IP地址，虚拟接口是这样的<code>eth0:0</code>、<code>eth0:1</code>、<code>eth0:2</code>&hellip; .. <code>eth1N</code>。当然您为<code>eth1</code>指定多个IP地址，也就是<code>eth1:0</code>、<code>eth1:1</code>、<code>eth1:2</code>&hellip; &hellip;以此类推；</p>
+<p>其实用 ifconfig 为一个网卡配置多个IP地址，就用前面我们所说的ifconfig的用法，这个比较简单；看下面的例子；</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ifconfig eth1:0 192.168.1.251 hw ether 00:11:00:00:11:33 netmask 255.255.255.0 broadcast 192.168.1.255 up
+</code></pre><p>或</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ifconfig eth1 hw ether 00:11:00:00:11:33
+[root@localhost ~]# ifconfig eth1 192.168.1.251 netmask 255.255.255.0 broadcast 192.168.1.255 up
+</code></pre><p>注意：指定时，要为每个虚拟网卡指定不同的物理地址；
+在<code>Redhat/Fedora</code>或与<code>Redhat/Fedora</code>类似的系统，您可以把配置网络IP地址、广播地址、掩码地址、物理地址以及激活网络接口同时放在一个句子中，写入<code>/etc /rc.d/rc.local</code>中。比如下面的例子；</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">ifconfig eth1:0 192.168.1.250 hw ether 00:11:00:00:11:44 netmask 255.255.255.0 broadcast 192.168.1.255 up
+ifconfig eth1:1 192.168.1.249 hw ether 00:11:00:00:11:55 netmask 255.255.255.0 broadcast 192.168.1.255 up
+</code></pre><p><strong>解说：</strong> 上面是为eth1的网络接口，设置了两个虚拟接口；每个接口都有自己的物理地址、IP地址&hellip; &hellip;</p>
+<h2 id="三用ifconfig-来激活和终止网络接口的连接">三、用ifconfig 来激活和终止网络接口的连接</h2>
+<p>激活和终止网络接口的用<code>ifconfig</code>命令，后面接网络接口，然后加上<code>down</code>或<code>up</code>参数，就可以禁止或激活相应的网络接口了。当然也可以用专用工具<code>ifup</code>和<code>ifdown</code>工具；</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ifconfig eth0 down
+[root@localhost ~]# ifconfig eth0 up
+[root@localhost ~]# ifup eth0
+[root@localhost ~]# ifdown eth0
+</code></pre><p>对于激活其它类型的网络接口也是如 此，比如 ppp0，wlan0等；不过只是对指定IP的网卡有效。</p>
+<p>注意：对DHCP自动分配的IP，还得由各个发行版自带的网络 工具来激活；当然得安装dhcp客户端；这个您我们应该明白；</p>
+<p>比如<code>Redhat/Fedora</code></p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# /etc/init.d/network
+</code></pre><p>startSlackware 发行版；</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# /etc/rc.d/rc.inet1
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-09-03 20:02:00">更新于 2023-09-03&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/android/' class="post-tag">android</a><a href='/tags/adb/' class="post-tag">adb</a><a href='/tags/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4/' class="post-tag">adb网络命令</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-nav-item" rel="prev" title="搭建HTTP方式的nginx视频推流服务器"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>搭建HTTP方式的nginx视频推流服务器</a>
+      <a href="/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="post-nav-item" rel="next" title="android音频配置文件详解">android音频配置文件详解<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

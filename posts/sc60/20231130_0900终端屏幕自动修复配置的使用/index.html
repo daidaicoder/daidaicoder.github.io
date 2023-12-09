@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>终端屏幕自动修复配置的使用 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="android屏幕重置,终端屏幕自动修复配置的使用" /><meta name="keywords" content='msm8953_64, 原创, android, 黑屏修复, 白屏修复' /><meta itemprop="name" content="终端屏幕自动修复配置的使用">
+<meta itemprop="description" content="android屏幕重置,终端屏幕自动修复配置的使用"><meta itemprop="datePublished" content="2023-11-30T09:00:00+08:00" />
+<meta itemprop="dateModified" content="2023-11-30T09:00:00+08:00" />
+<meta itemprop="wordCount" content="2720">
+<meta itemprop="keywords" content="原创,android,msm8953_64,SC60," /><meta property="og:title" content="终端屏幕自动修复配置的使用" />
+<meta property="og:description" content="android屏幕重置,终端屏幕自动修复配置的使用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-30T09:00:00+08:00" />
+<meta property="article:modified_time" content="2023-11-30T09:00:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="终端屏幕自动修复配置的使用"/>
+<meta name="twitter:description" content="android屏幕重置,终端屏幕自动修复配置的使用"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" /><link rel="next" href="https://daizelai.github.io/posts/sc60/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "终端屏幕自动修复配置的使用",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/sc60\/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8\/"
+    },"genre": "posts","keywords": "原创, android, msm8953_64, SC60","wordcount":  2720 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/sc60\/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8\/","datePublished": "2023-11-30T09:00:00+08:00","dateModified": "2023-11-30T09:00:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "android屏幕重置,终端屏幕自动修复配置的使用"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>终端屏幕自动修复配置的使用</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/msm8953_64/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> msm8953_64</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/sc60/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> SC60</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-11-30 09:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-30">2023-11-30</time></span>&nbsp;<span title="更新于 2023-11-30 09:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-30">2023-11-30</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2720 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 13 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二配置文件">二、配置文件</a>
+      <ul>
+        <li><a href="#21配置文件内容">2.1.配置文件内容</a></li>
+        <li><a href="#22配置文件说明">2.2.配置文件说明</a></li>
+        <li><a href="#23配置文件路径">2.3.配置文件路径</a></li>
+      </ul>
+    </li>
+    <li><a href="#三自动修复基本逻辑">三、自动修复基本逻辑</a></li>
+    <li><a href="#四操作说明">四、操作说明</a>
+      <ul>
+        <li><a href="#41编辑配置文件">4.1.编辑配置文件</a></li>
+        <li><a href="#42替换配置文件">4.2.替换配置文件</a></li>
+        <li><a href="#43重启设备生效">4.3.重启设备生效</a></li>
+      </ul>
+    </li>
+    <li><a href="#五屏幕异常复现方法">五、屏幕异常复现方法</a>
+      <ul>
+        <li><a href="#51重启大法">5.1.重启大法</a></li>
+        <li><a href="#52静电干扰大法">5.2.静电干扰大法</a></li>
+        <li><a href="#53重置大法">5.3.重置大法</a></li>
+      </ul>
+    </li>
+    <li><a href="#六检查结果">六、检查结果</a>
+      <ul>
+        <li><a href="#61屏幕观测法">6.1.屏幕观测法</a></li>
+        <li><a href="#62日志观测法">6.2.日志观测法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20231130_0900终端屏幕自动修复配置的使用">20231130_0900终端屏幕自动修复配置的使用</h1>
+<h2 id="一描述">一、描述</h2>
+<p>本文记录了如何在终端上配置屏幕自动修复的方法，以及如何查看是否执行了修复操作。</p>
+<!-- raw HTML omitted -->
+<p><strong>版本路径：</strong> \10.1.1.154\00-网络u盘\地铁集群二开项目\版本\SC60\E220\WH19\TX\20231130\userdebug_emmc_20231130_1135.7z
+<strong>配置文件样本：</strong> <a href="./file/system_config.ini">system_config.ini</a></p>
+<h2 id="二配置文件">二、配置文件</h2>
+<h3 id="21配置文件内容">2.1.配置文件内容</h3>
+<p>配置文件内容如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">[system]</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">self_mac</span><span style="color:#555">=</span><span style="color:#c30">11:aa:bb:cc:dd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">[screen]</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">reset_code</span><span style="color:#555">=</span><span style="color:#c30">0xb1,0xb5,0x31,0xbd</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">period_time</span><span style="color:#555">=</span><span style="color:#c30">5000</span>
+</span></span></code></pre></div><h3 id="22配置文件说明">2.2.配置文件说明</h3>
+<p>配置文件中的<code>[screen]</code>只是为了区分，最主要的配置项是<code>reset_code</code>和<code>period_time</code>。</p>
+<ul>
+<li>其中<code>reset_code</code>表示检测码，<code>period_time</code>表示单次修复的间隔时间。</li>
+<li>配置项中=号前后不需要空格。</li>
+<li>配置文件中的period_time字段单位是毫秒，即如果是5秒，需要配置5000，如果1天需要配置86400000。</li>
+</ul>
+<p>当系统检测到配置项中的某个<code>reset_code</code>时，会在达到<code>period_time</code>时间时修复一次，<code>period_time</code>项配置的时间不是绝对值，是一个大概区间值。</p>
+<h3 id="23配置文件路径">2.3.配置文件路径</h3>
+<p>配置文件存放在<code>/custom/metro/system</code>路径下。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/custom/metro/system # pwd
+/custom/metro/system
+msm8953_64:/custom/metro/system # ls -l
+total 8
+-rw-rw-rw- 1 root root 100 2023-11-29 19:17 system_config.ini
+msm8953_64:/custom/metro/system #
+</code></pre><h2 id="三自动修复基本逻辑">三、自动修复基本逻辑</h2>
+<p>基本逻辑如下：</p>
+<ul>
+<li>无配置文件，默认修复时间为5秒检测一次，当遇到异常时，且是在默认的错误码[0xb1/0x31/0xb5/0xbd]中时会修复一次，没有检查到检测码，继续下一次。</li>
+<li>有配置文件，以配置文件中配置的检测码为准。</li>
+<li>有配置文件，以配置文件中的检查时间为准，但未配置或配置小于5秒，以5秒为间隔，配置超过或等于INT范围时，以一天86400秒为准。</li>
+</ul>
+<p>下面是屏幕修复的主要流程：</p>
+<p><img loading="lazy" src="./images/screen_fix_flow_2023-11-30_103339.png" srcset="./images/screen_fix_flow_2023-11-30_103339.png, ./images/screen_fix_flow_2023-11-30_103339.png 1.5x, ./images/screen_fix_flow_2023-11-30_103339.png 2x" sizes="auto" data-title="屏幕修复流程图" data-alt="屏幕修复流程图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h2 id="四操作说明">四、操作说明</h2>
+<h3 id="41编辑配置文件">4.1.编辑配置文件</h3>
+<p>可以根据需要配置正确的配置项。</p>
+<h3 id="42替换配置文件">4.2.替换配置文件</h3>
+<p>使用adb命令替换配置文件，如果终端系统刷机后，此默认是没有配置项的，需要人工去替换配置文件。</p>
+<p>后期会做到上层应用中，通过服务器下发此配置项来覆盖人工操作。</p>
+<p>下面是一次成功的替换配置文件的操作记录。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">C:\Users\daizelai&gt;adb root
+adbd is already running as root
+
+C:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini
+adb.exe: push requires an argument
+
+C:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini /custom/metro/system/
+E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini: 1 file pushed, 0 skipped. 0.1 MB/s (95 bytes in 0.001s)
+
+C:\Users\daizelai&gt;adb shell
+msm8953_64:/ # cd /custom/metro/system
+msm8953_64:/custom/metro/system # cat system_config.ini
+[system]
+self_mac=00:e0:99:8e:28:a8
+
+[screen]
+reset_code=0xb1,0x31,0xb5,0xbd,0x35
+period_time=8000
+
+msm8953_64:/custom/metro/system #
+</code></pre><h3 id="43重启设备生效">4.3.重启设备生效</h3>
+<p>导入配置后，需要重启设备生效。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/custom/metro/system # reboot
+</code></pre><h2 id="五屏幕异常复现方法">五、屏幕异常复现方法</h2>
+<h3 id="51重启大法">5.1.重启大法</h3>
+<p>可以通过对设备上下电或reboot重启来观察屏幕是否黑屏，现场大部分设备产生的屏幕问题都是在终端系统上电重启后出现的。</p>
+<p>如果一次重启不能复现，可通过多次重启系统直到系统启动后出现黑屏。</p>
+<h3 id="52静电干扰大法">5.2.静电干扰大法</h3>
+<p>可通过使用静电枪对设备进行静电干扰，人为的让设备产生黑屏。</p>
+<h3 id="53重置大法">5.3.重置大法</h3>
+<p>可以通过在上层APP中使用屏幕修复命令或者使用终端面板的RST按钮对设备进行修复，通过频繁的对设备进行修复，直到屏幕出现黑/白屏。</p>
+<h2 id="六检查结果">六、检查结果</h2>
+<h3 id="61屏幕观测法">6.1.屏幕观测法</h3>
+<p>此种方法简单，无需要多余操作，直接看屏幕是否有修复刷新的操作即可，一般修复一次，屏幕会刷新闪一次。</p>
+<h3 id="62日志观测法">6.2.日志观测法</h3>
+<p>可在设备的命令行中观察logcat日志，通过日志关键字进行观察修复操作。</p>
+<p>搜索日志并以<code>init_convert</code>为关键字过滤日志，如下所示：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># adb shell
+# logcat -b kernel | grep &#34;init_convert&#34;
+</code></pre><p>仔细观察是可以看到是否执行了修复，比如搜索到了<code>convert_reset end</code>关键字表示执行了一次修复。</p>
+<p>下面是一次查看结果的日志片段，通过<code>convert_reset end</code>关键字可以看到一共修复了<code>11</code>次，屏幕闪了<code>11</code>次，然后后面很长一段时间都没有修复。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">127|msm8953_64:/ # logcat -b kernel | grep &#34;init_convert&#34;
+01-10 18:07:18.875     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:35.
+01-10 18:07:18.875     0     0 I         : auto fix task, init_convert - last count:3, reg_e5:35.
+01-10 18:07:26.533     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:07:26.533     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:07:26.534     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:35.
+01-10 18:07:26.534     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:07:26.534     0     0 I         : auto fix task, init_convert - count:3
+01-10 18:07:27.220     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:35.
+01-10 18:07:27.220     0     0 I         : auto fix task, init_convert - last count:4, reg_e5:35.
+01-10 18:07:34.881     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:07:34.881     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:07:34.881     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:35.
+01-10 18:07:34.881     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:07:34.881     0     0 I         : auto fix task, init_convert - count:4
+01-10 18:07:35.569     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:35.
+01-10 18:07:35.569     0     0 I         : auto fix task, init_convert - last count:5, reg_e5:35.
+01-10 18:07:43.233     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:07:43.233     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:07:43.233     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:35.
+01-10 18:07:43.233     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:07:43.233     0     0 I         : auto fix task, init_convert - count:5
+01-10 18:07:43.941     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:35.
+01-10 18:07:43.941     0     0 I         : auto fix task, init_convert - last count:6, reg_e5:35.
+01-10 18:07:51.603     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:07:51.603     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:07:51.603     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:35.
+01-10 18:07:51.603     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:07:51.603     0     0 I         : auto fix task, init_convert - count:6
+01-10 18:07:52.321     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:35.
+01-10 18:07:52.321     0     0 I         : auto fix task, init_convert - last count:7, reg_e5:35.
+01-10 18:07:59.982     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:07:59.982     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:07:59.982     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:35.
+01-10 18:07:59.982     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:07:59.982     0     0 I         : auto fix task, init_convert - count:7
+01-10 18:08:00.680     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:35.
+01-10 18:08:00.680     0     0 I         : auto fix task, init_convert - last count:8, reg_e5:35.
+01-10 18:08:08.333     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:08:08.333     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:08:08.333     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:35.
+01-10 18:08:08.333     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:08:08.333     0     0 I         : auto fix task, init_convert - count:8
+01-10 18:08:09.051     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:b5.
+01-10 18:08:09.051     0     0 I         : auto fix task, init_convert - last count:9, reg_e5:b5.
+01-10 18:08:16.722     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:08:16.722     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:08:16.722     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:b5.
+01-10 18:08:16.722     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:08:16.724     0     0 I         : auto fix task, init_convert - count:9
+01-10 18:08:17.433     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:35.
+01-10 18:08:17.433     0     0 I         : auto fix task, init_convert - last count:10, reg_e5:35.
+01-10 18:08:25.093     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:08:25.094     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:08:25.094     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:35.
+01-10 18:08:25.094     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:08:25.094     0     0 I         : auto fix task, init_convert - count:10
+01-10 18:08:25.803     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:b5.
+01-10 18:08:25.803     0     0 I         : auto fix task, init_convert - last count:11, reg_e5:b5.
+01-10 18:08:33.464     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:08:33.464     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:08:33.464     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:b5.
+01-10 18:08:33.464     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:08:33.468     0     0 I         : auto fix task, init_convert - count:11
+01-10 18:08:34.180     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:b5.
+01-10 18:08:34.180     0     0 I         : auto fix task, init_convert - last count:12, reg_e5:b5.
+01-10 18:08:41.842     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:08:41.842     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:08:41.842     0     0 I         : auto fix task, handle_config_file - init_convert - line:372, The array contains reg_val:b5.
+01-10 18:08:41.843     0     0 I         : auto fix task, init_convert - input_report_key KEY_A.
+01-10 18:08:41.843     0     0 I         : auto fix task, init_convert - count:12
+01-10 18:08:42.551     0     0 I         : auto fix task, init_convert - convert_reset end, reg_e5:3d.
+01-10 18:08:42.551     0     0 I         : auto fix task, init_convert - last count:13, reg_e5:3d.
+01-10 18:08:50.222     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:08:50.222     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:08:58.402     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:08:58.402     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:09:06.574     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:09:06.574     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:09:14.744     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:09:14.744     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:09:22.904     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:09:22.905     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:09:31.073     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:09:31.073     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:09:39.236     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:09:39.236     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:09:47.392     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:09:47.392     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:09:55.552     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:09:55.552     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:10:03.712     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:10:03.712     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:10:11.882     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:10:11.882     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:10:20.052     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:10:20.053     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:10:28.222     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:10:28.222     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:10:36.382     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:10:36.382     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:10:44.542     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:10:44.542     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:10:52.722     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:10:52.722     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:11:00.892     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:11:00.892     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:11:09.052     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:11:09.052     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:11:17.213     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:11:17.213     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:11:25.392     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:11:25.392     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:11:33.562     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:11:33.562     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:11:41.753     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:11:41.753     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:11:49.993     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:11:49.993     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:11:58.153     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:11:58.153     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:12:06.314     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:12:06.314     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:12:14.491     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:12:14.491     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:12:22.653     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:12:22.653     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:12:30.813     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:12:30.813     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:12:38.973     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:12:38.973     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:12:47.133     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:12:47.133     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:12:55.292     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:12:55.292     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:13:03.462     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:13:03.463     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:13:11.651     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:13:11.651     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:13:19.842     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:13:19.842     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:13:28.011     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:13:28.011     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:13:36.173     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:13:36.173     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+01-10 18:13:44.333     0     0 I         : auto fix task, thread_func - while - init_convert - line:943 config_data:[system], code_buf:[system], config_time:8000.
+01-10 18:13:44.333     0     0 I         : auto fix task, print_array - init_convert - Array contents: [b1, 31, b5, bd, 35].
+^C
+130|msm8953_64:/ #
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-11-30 09:00:00">更新于 2023-11-30&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/msm8953_64/' class="post-tag">msm8953_64</a><a href='/tags/sc60/' class="post-tag">SC60</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" class="post-nav-item" rel="prev" title="内核中添加驱动模块"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>内核中添加驱动模块</a>
+      <a href="/posts/sc60/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80/" class="post-nav-item" rel="next" title="系统启动后修改usb网卡的mac地址">系统启动后修改usb网卡的mac地址<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

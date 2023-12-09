@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>JSON数据int超过取值范围问题解决 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="android解析版JSON数据int超过取值范围问题解决" /><meta name="keywords" content='原创, android, JSON解析' /><meta itemprop="name" content="JSON数据int超过取值范围问题解决">
+<meta itemprop="description" content="android解析版JSON数据int超过取值范围问题解决"><meta itemprop="datePublished" content="2023-10-26T17:59:00+08:00" />
+<meta itemprop="dateModified" content="2023-10-26T17:59:00+08:00" />
+<meta itemprop="wordCount" content="741">
+<meta itemprop="keywords" content="原创,android,app开发,JSON处理," /><meta property="og:title" content="JSON数据int超过取值范围问题解决" />
+<meta property="og:description" content="android解析版JSON数据int超过取值范围问题解决" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-26T17:59:00+08:00" />
+<meta property="article:modified_time" content="2023-10-26T17:59:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JSON数据int超过取值范围问题解决"/>
+<meta name="twitter:description" content="android解析版JSON数据int超过取值范围问题解决"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/" /><link rel="prev" href="https://daizelai.github.io/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" /><link rel="next" href="https://daizelai.github.io/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "JSON数据int超过取值范围问题解决",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/android\/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98\/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98\/"
+    },"genre": "posts","keywords": "原创, android, app开发, JSON处理","wordcount":  741 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/android\/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98\/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98\/","datePublished": "2023-10-26T17:59:00+08:00","dateModified": "2023-10-26T17:59:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "android解析版JSON数据int超过取值范围问题解决"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>JSON数据int超过取值范围问题解决</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/json%E8%A7%A3%E6%9E%90/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> JSON解析</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-10-26 17:59:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-10-26">2023-10-26</time></span>&nbsp;<span title="更新于 2023-10-26 17:59:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-10-26">2023-10-26</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 741 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二解决方案">二、解决方案</a>
+      <ul>
+        <li><a href="#21方案一">2.1.方案一</a></li>
+        <li><a href="#22方案二">2.2.方案二</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20231026_1759解决json数据时int变量接收超过int取值范围的异常问题">20231026_1759解决JSON数据时int变量接收超过int取值范围的异常问题</h1>
+<h2 id="一描述">一、描述</h2>
+<p>在android或java中，与服务器进行接口交互的时候，如果本地变量是Int类型的，但是由于服务器的错误，传递了一个long型的数据过来，本地程序就是出现异常，如下所示：</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">10-26 12:26:37.517  9089  9089 D [ main: TrainActivity:3749 ]: TrainActivity, UdpDcReceiverBean - accept - udpReceiverBean=UdpDcReceiverBean{mIp=&#39;172.16.120.16&#39;, mPort=63001, mContent=&#39;{&#34;MsgName&#34;:&#34;GetDSCfgInfoRsp&#34;,&#34;MsgSeqID&#34;:1698294397,&#34;MsgInfo&#34;:{&#34;MaxSelfCheckNum&#34;:20,&#34;AllowEmergencyCall&#34;:&#34;false&#34;,&#34;PTTAllow&#34;:&#34;false&#34;,&#34;BroadcastTimeout&#34;:30,&#34;BroadcastVolume&#34;:1,&#34;HangoffTime&#34;:10,&#34;NTPServerAddr&#34;:&#34;172.16.120.52&#34;,&#34;NTPServerPort&#34;:123,&#34;NTPSyncPeriod&#34;:60,&#34;AutoFixScreenTime&#34;:-1,&#34;AutoLockTimeout&#34;:0,&#34;LockPwd&#34;:&#34;MTIzNDU=&#34;,&#34;TrainPos&#34;:[{&#34;TrainPosID&#34;:1,&#34;TrainPosName&#34;:&#34;正线&#34;},{&#34;TrainPosID&#34;:4294967295,&#34;TrainPosName&#34;:&#34;停车场&#34;},{&#34;TrainPosID&#34;:2,&#34;TrainPosName&#34;:&#34;车辆段&#34;}],&#34;Station&#34;:[{&#34;StationID&#34;:1,&#34;StationName&#34;:&#34;新月溪公园站&#34;,&#34;TrainPosID&#34;:1,&#34;TrainGroupID&#34;:194007},{&#34;StationID&#34;:2,&#34;StationName&#34;:&#34;光谷五路站&#34;,&#34;TrainPosID&#34;:1,&#34;TrainGroupID&#34;:194006},{&#34;StationID&#34;:3,&#34;StationName&#34;:&#34;花山河站&#34;,&#34;TrainPosID&#34;:1,&#34;TrainGroupID&#34;:194005},{&#34;StationID&#34;:4,&#34;StationName&#34;:&#34;花山新城站&#34;,&#34;TrainPosID&#34;:1,&#34;TrainGroupID&#34;:194004},{&#34;StationID&#34;:5,&#34;StationName&#34;:&#34;鼓架山站&#34;,&#34;TrainPosID&#34;:1,&#34;TrainGroupID&#34;:194003},{&#34;StationID&#34;:6,&#34;StationName&#34;:&#34;武东站&#34;,&#34;TrainPosID&#34;:1,&#34;TrainGroupID&#34;:194002},{&#34;StationID&#34;:7,&#34;StationName&#34;:&#34;武汉站西广场站&#34;,&#34;TrainPosID&#34;:1,&#34;TrainGroupID&#34;:194001},{&#34;StationID&#34;:8,&#34;StationName&#34;:&#34;花山车辆段&#34;,&#34;TrainPosID&#34;:2,&#34;TrainGroupID&#34;:1956780},{&#34;StationID&#34;:9,&#34;StationName&#34;:&#34;停车场&#34;,&#34;TrainPosID&#34;:3,&#34;TrainGroupID&#34;:12345},{&#34;StationID&#34;:101,&#34;StationName&#34;:&#34;车辆段转换轨&#34;,&#34;TrainPosID&#34;:2,&#34;TrainGroupID&#34;:0}],&#34;TrainType&#34;:1,&#34;TrainName&#34;:&#34;1917车&#34;,&#34;MainLineGroupID&#34;:1234,&#34;DepotGroupID&#34;:1234,&#34;UplineTrainGroupID&#34;:190316,&#34;DownlineTrainGroupID&#34;:190317,&#34;AlllineTrainGroupID&#34;:190318,&#34;TrainBrdGroup&#34;:[{&#34;GroupID&#34;:0},{&#34;GroupID&#34;:0},{&#34;GroupID&#34;:0}],&#34;PredefinedSMS&#34;:[{&#34;SMSID&#34;:1,&#34;SDSType&#34;:9,&#34;SMSInfo&#34;:&#34;前车故障，请慢行&#34;},{&#34;SMSID&#34;:2,&#34;SDSType&#34;:9,&#34;SMSInfo&#34;:&#34;前车未离站，请慢行&#34;},{&#34;SMSID&#34;:3,&#34;SDSType&#34;:7,&#34;SMSInfo&#34;:&#34;本车不载客&#34;},{&#34;SMSID&#34;:4,&#34;SDSType&#34;:9,&#34;SMSInfo&#34;:&#34;前站不停车&#34;},{&#34;SMSID&#34;:5,&#34;SDSType&#34;:8,&#34;SMSInfo&#34;:&#34;新增1&#34;}],&#34;AllowP2PCall&#34;:&#34;true&#34;,&#34;AllowDepotTrainCallMainLine&#34;:&#34;false&#34;}}&#39;}
+10-26 12:26:37.518  9089  9089 D [ main: TrainActivity:1527 ]: TrainActivity, ATS_LAST_RECEIVE_CONNECTED=14691834, gettime=156, ATS_RECEIVE_TIMEOUT=3000
+10-26 12:26:37.518  9089  9089 D TAG     : isAllowP2PCall: isAllowP2PCall=false
+10-26 12:26:37.518  9089  9089 D TAG     : isAllowP2PCall: isAllowP2PCall=false
+10-26 12:26:37.519  9089 11511 W System.err: com.alibaba.fastjson.JSONException: parseInt error, field : trainPosID
+10-26 12:26:37.519  9089 11511 W System.err: 	at com.alibaba.fastjson.serializer.IntegerCodec.deserialze(IntegerCodec.java:101)
+10-26 12:26:37.519  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.DefaultFieldDeserializer.parseField(DefaultFieldDeserializer.java:85)
+10-26 12:26:37.519  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField(JavaBeanDeserializer.java:1224)
+10-26 12:26:37.519  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:850)
+10-26 12:26:37.519  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:288)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:284)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.ArrayListTypeFieldDeserializer.parseArray(ArrayListTypeFieldDeserializer.java:177)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.ArrayListTypeFieldDeserializer.parseField(ArrayListTypeFieldDeserializer.java:65)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField(JavaBeanDeserializer.java:1224)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:850)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:288)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:284)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.DefaultFieldDeserializer.parseField(DefaultFieldDeserializer.java:85)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField(JavaBeanDeserializer.java:1224)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:850)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:288)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:690)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.JSON.parseObject(JSON.java:383)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.JSON.parseObject(JSON.java:287)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.alibaba.fastjson.JSON.parseObject(JSON.java:560)
+10-26 12:26:37.520  9089 11511 W System.err: 	at com.gbcom.subwaysystem.activity.TrainActivity$ParseDSCfgInfoRunnable.run(TrainActivity.java:1700)
+10-26 12:26:37.520  9089 11511 W System.err: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1133)
+10-26 12:26:37.520  9089 11511 W System.err: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:607)
+10-26 12:26:37.520  9089 11511 W System.err: 	at java.lang.Thread.run(Thread.java:761)
+10-26 12:26:37.521  9089 11511 W System.err: Caused by: java.lang.NumberFormatException: 4294967295
+10-26 12:26:37.521  9089 11511 W System.err: 	at com.alibaba.fastjson.parser.JSONLexerBase.intValue(JSONLexerBase.java:1074)
+10-26 12:26:37.521  9089 11511 W System.err: 	at com.alibaba.fastjson.serializer.IntegerCodec.deserialze(IntegerCodec.java:79)
+10-26 12:26:37.521  9089 11511 W System.err: 	... 23 more
+10-26 12:26:37.521  9089 11511 E [ pool-88-thread-5: TrainActivity:2079 ]: ParseDSCfgInfoRunnable - Exception=parseInt error, field : trainPosID
+</code></pre><p>上面的<code>{&quot;TrainPosID&quot;:4294967295,&quot;TrainPosName&quot;:&quot;停车场&quot;}</code>是有问题的，Int接收不了<code>TrainPosID</code>。</p>
+<h2 id="二解决方案">二、解决方案</h2>
+<h3 id="21方案一">2.1.方案一</h3>
+<p>使用<code>long</code>类型代码<code>int</code>类型，但是此方案不是最好的，因为正常的时候确实没必要使用long，int就足够了。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">class</span> <span style="color:#0a8;font-weight:bold">TcpBean</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@JSONField</span><span style="color:#555">(</span>name <span style="color:#555">=</span> <span style="color:#c30">&#34;MsgName&#34;</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">private</span> String msgName<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@JSONField</span><span style="color:#555">(</span>name <span style="color:#555">=</span> <span style="color:#c30">&#34;MsgSeqID&#34;</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span>    <span style="color:#069;font-weight:bold">private</span> <span style="color:#078;font-weight:bold">long</span> msgSeqID<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span>    <span style="color:#069;font-weight:bold">private</span> <span style="color:#078;font-weight:bold">long</span> msgSeqID<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@JSONField</span><span style="color:#555">(</span>name <span style="color:#555">=</span> <span style="color:#c30">&#34;TcpName&#34;</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">private</span> String tcpName<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@JSONField</span><span style="color:#555">(</span>name <span style="color:#555">=</span> <span style="color:#c30">&#34;TcpNumber&#34;</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">private</span> String tcpNumber<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">}</span>
+</span></span></code></pre></div><h3 id="22方案二">2.2.方案二</h3>
+<p>如果不想使用long类型的话，还可以这样操作。</p>
+<p>如果你希望保持MsgSeqID的数据类型为int，但同时又想避免溢出错误，你可以通过在接收数据之前检查MsgSeqID的值来处理。你可以将MsgSeqID的值与Integer.MAX_VALUE进行比较，如果大于等于Integer.MAX_VALUE，则将其设置为0。这样，你可以继续使用int数据类型来处理数据，同时处理大于Integer.MAX_VALUE的值。</p>
+<blockquote>
+<p>错误的解决方案。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">class</span> <span style="color:#0a8;font-weight:bold">TcpBean</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@JSONField</span><span style="color:#555">(</span>name <span style="color:#555">=</span> <span style="color:#c30">&#34;MsgName&#34;</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">private</span> String msgName<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@JSONField</span><span style="color:#555">(</span>name <span style="color:#555">=</span> <span style="color:#c30">&#34;MsgSeqID&#34;</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">private</span> <span style="color:#078;font-weight:bold">int</span> msgSeqID<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@JSONField</span><span style="color:#555">(</span>name <span style="color:#555">=</span> <span style="color:#c30">&#34;TcpName&#34;</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">private</span> String tcpName<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@JSONField</span><span style="color:#555">(</span>name <span style="color:#555">=</span> <span style="color:#c30">&#34;TcpNumber&#34;</span><span style="color:#555">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">private</span> String tcpNumber<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">setMsgSeqID</span><span style="color:#555">(</span><span style="color:#078;font-weight:bold">long</span> msgSeqID<span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>msgSeqID <span style="color:#555">&lt;</span> Integer<span style="color:#555">.</span><span style="color:#309">MAX_VALUE</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">this</span><span style="color:#555">.</span><span style="color:#309">msgSeqID</span> <span style="color:#555">=</span> <span style="color:#555">(</span><span style="color:#078;font-weight:bold">int</span><span style="color:#555">)</span> msgSeqID<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#555">}</span> <span style="color:#069;font-weight:bold">else</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">this</span><span style="color:#555">.</span><span style="color:#309">msgSeqID</span> <span style="color:#555">=</span> <span style="color:#f60">0</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">}</span>
+</span></span></code></pre></div><p>通过上面的setMsgSeqID方法，你可以在设置MsgSeqID的时候检查其值，如果大于等于Integer.MAX_VALUE，则将其设置为0。这样，在处理数据时，你仍然可以使用int数据类型，同时处理大于Integer.MAX_VALUE的值。</p>
+<blockquote>
+<p>正确的解决方案</p>
+</blockquote>
+<p>路径：E:\develop\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\adapter\IntOverflowDeserializer.java</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">package</span> <span style="color:#0cf;font-weight:bold">com.gbcom.subwaysystem.adapter</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">com.alibaba.fastjson.parser.DefaultJSONParser</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">com.alibaba.fastjson.parser.deserializer.ObjectDeserializer</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">java.lang.reflect.Type</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"> * 解决接收数据时int类型变量的数据实际长度为long类型的异常问题
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"> * @author daizelai
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"> * @date 2023/10/27 11:42
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">class</span> <span style="color:#0a8;font-weight:bold">IntOverflowDeserializer</span> <span style="color:#069;font-weight:bold">implements</span> ObjectDeserializer <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#555">&lt;</span>T<span style="color:#555">&gt;</span> T <span style="color:#c0f">deserialze</span><span style="color:#555">(</span>DefaultJSONParser parser<span style="color:#555">,</span> Type type<span style="color:#555">,</span> Object fieldName<span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>        Object value <span style="color:#555">=</span> parser<span style="color:#555">.</span><span style="color:#309">parse</span><span style="color:#555">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>value <span style="color:#069;font-weight:bold">instanceof</span> Long<span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#078;font-weight:bold">long</span> longValue <span style="color:#555">=</span> <span style="color:#555">(</span>Long<span style="color:#555">)</span> value<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#069;font-weight:bold">if</span> <span style="color:#555">(</span>longValue <span style="color:#555">&gt;</span> Integer<span style="color:#555">.</span><span style="color:#309">MAX_VALUE</span> <span style="color:#555">||</span> longValue <span style="color:#555">&lt;</span> Integer<span style="color:#555">.</span><span style="color:#309">MIN_VALUE</span><span style="color:#555">)</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">(</span>T<span style="color:#555">)</span> Integer<span style="color:#555">.</span><span style="color:#309">valueOf</span><span style="color:#555">(</span><span style="color:#f60">0</span><span style="color:#555">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> <span style="color:#555">(</span>T<span style="color:#555">)</span> value<span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#99f">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">public</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">getFastMatchToken</span><span style="color:#555">()</span> <span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#555">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">}</span>
+</span></span></code></pre></div><p>正确解析<code>TrainPosID</code>为<code>4294967295</code>，int接收正常。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log"># message = &#34;{\&#34;MsgName\&#34;:\&#34;GetDSCfgInfoRsp\&#34;,\&#34;MsgSeqID\&#34;:1698293947,\&#34;MsgInfo\&#34;:{\&#34;MaxSelfCheckNum\&#34;:20,\&#34;AllowEmergencyCall\&#34;:\&#34;false\&#34;,\&#34;PTTAllow\&#34;:\&#34;false\&#34;,\&#34;BroadcastTimeout\&#34;:30,\&#34;BroadcastVolume\&#34;:1,\&#34;HangoffTime\&#34;:10,\&#34;NTPServerAddr\&#34;:\&#34;172.16.120.52\&#34;,\&#34;NTPServerPort\&#34;:123,\&#34;NTPSyncPeriod\&#34;:60,\&#34;AutoFixScreenTime\&#34;:-1,\&#34;AutoLockTimeout\&#34;:0,\&#34;LockPwd\&#34;:\&#34;MTIzNDU=\&#34;,\&#34;TrainPos\&#34;:[{\&#34;TrainPosID\&#34;:1,\&#34;TrainPosName\&#34;:\&#34;正线\&#34;},{\&#34;TrainPosID\&#34;:4294967295,\&#34;TrainPosName\&#34;:\&#34;停车场\&#34;},{\&#34;TrainPosID\&#34;:2,\&#34;TrainPosName\&#34;:\&#34;车辆段\&#34;}],\&#34;Station\&#34;:[{\&#34;StationID\&#34;:1,\&#34;StationName\&#34;:\&#34;新月溪公园站\&#34;,\&#34;TrainPosID\&#34;:1,\&#34;TrainGroupID\&#34;:194007},{\&#34;StationID\&#34;:2,\&#34;StationName\&#34;:\&#34;光谷五路站\&#34;,\&#34;TrainPosID\&#34;:1,\&#34;TrainGroupID\&#34;:194006},{\&#34;StationID\&#34;:3,\&#34;StationName\&#34;:\&#34;花山河站\&#34;,\&#34;TrainPosID\&#34;:1,\&#34;TrainGroupID\&#34;:194005},{\&#34;StationID\&#34;:4,\&#34;StationName\&#34;:\&#34;花山新城站\&#34;,\&#34;TrainPosID\&#34;:1,\&#34;TrainGroupID\&#34;:194004},{\&#34;StationID\&#34;:5,\&#34;StationName\&#34;:\&#34;鼓架山站\&#34;,\&#34;TrainPosID\&#34;:1,\&#34;TrainGroupID\&#34;:194003},{\&#34;StationID\&#34;:6,\&#34;StationName\&#34;:\&#34;武东站\&#34;,\&#34;TrainPosID\&#34;:1,\&#34;TrainGroupID\&#34;:194002},{\&#34;StationID\&#34;:7,\&#34;StationName\&#34;:\&#34;武汉站西广场站\&#34;,\&#34;TrainPosID\&#34;:1,\&#34;TrainGroupID\&#34;:194001},{\&#34;StationID\&#34;:8,\&#34;StationName\&#34;:\&#34;花山车辆段\&#34;,\&#34;TrainPosID\&#34;:2,\&#34;TrainGroupID\&#34;:1956780},{\&#34;StationID\&#34;:9,\&#34;StationName\&#34;:\&#34;停车场\&#34;,\&#34;TrainPosID\&#34;:3,\&#34;TrainGroupID\&#34;:12345},{\&#34;StationID\&#34;:101,\&#34;StationName\&#34;:\&#34;车辆段转换轨\&#34;,\&#34;TrainPosID\&#34;:2,\&#34;TrainGroupID\&#34;:0}],\&#34;TrainType\&#34;:1,\&#34;TrainName\&#34;:\&#34;1917车\&#34;,\&#34;MainLineGroupID\&#34;:1234,\&#34;DepotGroupID\&#34;:1234,\&#34;UplineTrainGroupID\&#34;:190316,\&#34;DownlineTrainGroupID\&#34;:190317,\&#34;AlllineTrainGroupID\&#34;:190318,\&#34;TrainBrdGroup\&#34;:[{\&#34;GroupID\&#34;:0},{\&#34;GroupID\&#34;:0},{\&#34;GroupID\&#34;:0}],\&#34;PredefinedSMS\&#34;:[{\&#34;SMSID\&#34;:1,\&#34;SDSType\&#34;:9,\&#34;SMSInfo\&#34;:\&#34;前车故障，请慢行\&#34;},{\&#34;SMSID\&#34;:2,\&#34;SDSType\&#34;:9,\&#34;SMSInfo\&#34;:\&#34;前车未离站，请慢行\&#34;},{\&#34;SMSID\&#34;:3,\&#34;SDSType\&#34;:7,\&#34;SMSInfo\&#34;:\&#34;本车不载客\&#34;},{\&#34;SMSID\&#34;:4,\&#34;SDSType\&#34;:9,\&#34;SMSInfo\&#34;:\&#34;前站不停车\&#34;},{\&#34;SMSID\&#34;:5,\&#34;SDSType\&#34;:8,\&#34;SMSInfo\&#34;:\&#34;新增1\&#34;}],\&#34;AllowP2PCall\&#34;:\&#34;true\&#34;,\&#34;AllowDepotTrainCallMainLine\&#34;:\&#34;false\&#34;}}&#34;;
+
+
+2023-10-27 11:35:04.169  6296-7618  MyLogger                com.gbcom.subwaysystem               D  debug: ParseDSCfgInfoRunnable, mDisBean=TcpDisBean{msgName=&#39;GetDSCfgInfoRsp&#39;, msgSeqID=1698293947, msgInfo=MsgInfo{allowEmergencyCall=&#39;false&#39;, pttAllow=&#39;false&#39;, trainType=1, trainName=&#39;1917车&#39;, broadcastTimeout=30, broadcastVolume=1, hangoffTime=10, defaultGroupID=0, depotGroupID=1234, stationInnerGroupID=0, trainGroupID=0, stationGroupID=0, mainLineGroupID=1234, uplineTrainGroupID=190316, downlineTrainGroupID=190317, alllineTrainGroupID=190318, omcServerAddr=&#39;null&#39;, omcTrapPort=0, omcTrapCommunity=&#39;null&#39;, omcFTPPort=0, omcFTPUser=&#39;null&#39;, omcFTPPwd=&#39;null&#39;, ntpServerAddr=&#39;172.16.120.52&#39;, ntpServerPort=123, ntpSyncPeriod=60, autoFixScreenTime=-1, autoLockTimeout=0, lockPwd=&#39;MTIzNDU=&#39;, stationID=0, stationName=&#39;null&#39;, maxSelfCheckNum=20, mFXAutoRebootPeriod=0, mFXAutoRebootTime=0, allowP2PCall=&#39;true&#39;, allowDepotTrainCallMainLine=&#39;false&#39;, mTrainPos=[TrainPos{trainPosID=1, trainPosName=&#39;正线&#39;}, TrainPos{trainPosID=0, trainPosName=&#39;停车场&#39;}, TrainPos{trainPosID=2, trainPosName=&#39;车辆段&#39;}], mStationBrdZone=[], mStation=[Station{stationID=1, stationName=&#39;新月溪公园站&#39;, trainGroupID=&#39;194007&#39;, trainPosID=1}, Station{stationID=2, stationName=&#39;光谷五路站&#39;, trainGroupID=&#39;194006&#39;, trainPosID=1}, Station{stationID=3, stationName=&#39;花山河站&#39;, trainGroupID=&#39;194005&#39;, trainPosID=1}, Station{stationID=4, stationName=&#39;花山新城站&#39;, trainGroupID=&#39;194004&#39;, trainPosID=1}, Station{stationID=5, stationName=&#39;鼓架山站&#39;, trainGroupID=&#39;194003&#39;, trainPosID=1}, Station{stationID=6, stationName=&#39;武东站&#39;, trainGroupID=&#39;194002&#39;, trainPosID=1}, Station{stationID=7, stationName=&#39;武汉站西广场站&#39;, trainGroupID=&#39;194001&#39;, trainPosID=1}, Station{stationID=8, stationName=&#39;花山车辆段&#39;, trainGroupID=&#39;1956780&#39;, trainPosID=2}, Station{stationID=9, stationName=&#39;停车场&#39;, trainGroupID=&#39;12345&#39;, trainPosID=3}, Station{stationID=101, stationName=&#39;车辆段转换轨&#39;, trainGroupID=&#39;0&#39;, trainPosID=2}], mTrainBrdGroup=[TrainBrdGroup{groupID=0}, TrainBrdGroup{groupID=0}, TrainBrdGroup{groupID=0}], mPredefinedSMS=[PredefinedSMS{smsId=1smsType=9, smsInfo=&#39;前车故障，请慢行&#39;}, PredefinedSMS{smsId=2smsType=9, smsInfo=&#39;前车未离站，请慢行&#39;}, PredefinedSMS{smsId=3smsType=7, smsInfo=&#39;本车不载客&#39;}, PredefinedSMS{smsId=4smsType=9, smsInfo=&#39;前站不停车&#39;}, PredefinedSMS{smsId=5smsType=8, smsInfo=&#39;新增1&#39;}]}}
+2023-10-27 11:35:04.169  6296-7618  TrainActivity           com.gbcom.subwaysystem               D  ParseDSCfgInfoRunnable - mTrainPosStr=[
+                                                                                                    	{
+                                                                                                    		&#34;trainPosID&#34;:1,
+                                                                                                    		&#34;trainPosName&#34;:&#34;正线&#34;
+                                                                                                    	},
+                                                                                                    	{
+                                                                                                    		&#34;trainPosID&#34;:0,
+                                                                                                    		&#34;trainPosName&#34;:&#34;停车场&#34;
+                                                                                                    	},
+                                                                                                    	{
+                                                                                                    		&#34;trainPosID&#34;:2,
+                                                                                                    		&#34;trainPosName&#34;:&#34;车辆段&#34;
+                                                                                                    	}
+                                                                                                    ]
+2023-10-27 11:35:04.170  6296-7618  TrainActivity           com.gbcom.subwaysystem               D  ParseDSCfgInfoRunnable - getBroadcastTime=30, getBroascastTimeout=30
+2023-10-27 11:35:04.170  6296-7618  TrainActivity           com.gbcom.subwaysystem               D  ParseDSCfgInfoRunnable - getOffhookTime=10, getHangoffTime=10
+2023-10-27 11:35:04.170  6296-7618  TrainActivity           com.gbcom.subwaysystem               D  ParseDSCfgInfoRunnable - getDepotGroupId=1234, - getDepotGroupID=1234
+2023-10-27 11:35:04.170  6296-7618  TrainActivity           com.gbcom.subwaysystem               D  ParseDSCfgInfoRunnable - getNtpSyncPeriod=60, getNtpSyncPeriod=60
+2023-10-27 11:35:04.170  6296-7618  TrainActivity           com.gbcom.subwaysystem               D  ParseDSCfgInfoRunnable - getNtpServerAddr=172.16.120.52, getNtpServerAddr=172.16.120.52
+2023-10-27 11:35:04.171  6296-7618  TrainActivity           com.gbcom.subwaysystem               D  ParseDSCfgInfoRunnable - getNtpServerPort=123, getNtpServerPort=123
+2023-10-27 11:35:04.171  6296-7618  TrainActivity           com.gbcom.subwaysystem               D  ParseDSCfgInfoRunnable - mDsMap.len=1
+2023-10-27 11:35:04.177  6296-7618  MyLogger                com.gbcom.subwaysystem               D  debug: TrainActivity,ParseDSCfgInfoRunnable - mStationList=[TrainStation{stationID=1, stationName=&#39;新月溪公园站&#39;, trainPosID=1, trainGroupID=194007, markNumber=&#39;1917&#39;}, TrainStation{stationID=2, stationName=&#39;光谷五路站&#39;, trainPosID=1, trainGroupID=194006, markNumber=&#39;1917&#39;}, TrainStation{stationID=3, stationName=&#39;花山河站&#39;, trainPosID=1, trainGroupID=194005, markNumber=&#39;1917&#39;}, TrainStation{stationID=4, stationName=&#39;花山新城站&#39;, trainPosID=1, trainGroupID=194004, markNumber=&#39;1917&#39;}, TrainStation{stationID=5, stationName=&#39;鼓架山站&#39;, trainPosID=1, trainGroupID=194003, markNumber=&#39;1917&#39;}, TrainStation{stationID=6, stationName=&#39;武东站&#39;, trainPosID=1, trainGroupID=194002, markNumber=&#39;1917&#39;}, TrainStation{stationID=7, stationName=&#39;武汉站西广场站&#39;, trainPosID=1, trainGroupID=194001, markNumber=&#39;1917&#39;}, TrainStation{stationID=8, stationName=&#39;花山车辆段&#39;, trainPosID=2, trainGroupID=1956780, markNumber=&#39;1917&#39;}, TrainStation{stationID=9, stationName=&#39;停车场&#39;, trainPosID=3, trainGroupID=12345, markNumber=&#39;1917&#39;}, TrainStation{stationID=101, stationName=&#39;车辆段转换轨&#39;, trainPosID=2, trainGroupID=0, markNumber=&#39;1917&#39;}]
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-10-26 17:59:00">更新于 2023-10-26&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/app%E5%BC%80%E5%8F%91/' class="post-tag">app开发</a><a href='/tags/json%E5%A4%84%E7%90%86/' class="post-tag">JSON处理</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="post-nav-item" rel="prev" title="android音频配置文件详解"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>android音频配置文件详解</a>
+      <a href="/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/" class="post-nav-item" rel="next" title="android实现浮动窗口记录">android实现浮动窗口记录<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>APP项目迁移到androidx - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="APP项目迁移到androidx" /><meta name="keywords" content='androidx, 迁移, 迁移androidx, 武汉19号线' /><meta itemprop="name" content="APP项目迁移到androidx">
+<meta itemprop="description" content="APP项目迁移到androidx"><meta itemprop="datePublished" content="2023-05-18T08:46:00+08:00" />
+<meta itemprop="dateModified" content="2023-05-18T08:46:00+08:00" />
+<meta itemprop="wordCount" content="2058">
+<meta itemprop="keywords" content="androidx,迁移,迁移androidx,武汉19号线," /><meta property="og:title" content="APP项目迁移到androidx" />
+<meta property="og:description" content="APP项目迁移到androidx" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/wh19/3.20230518_0946%E8%BF%81%E7%A7%BBandroidx/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-18T08:46:00+08:00" />
+<meta property="article:modified_time" content="2023-05-18T08:46:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="APP项目迁移到androidx"/>
+<meta name="twitter:description" content="APP项目迁移到androidx"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/wh19/3.20230518_0946%E8%BF%81%E7%A7%BBandroidx/" /><link rel="prev" href="https://daizelai.github.io/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/" /><link rel="next" href="https://daizelai.github.io/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "APP项目迁移到androidx",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/wh19\/3.20230518_0946%E8%BF%81%E7%A7%BBandroidx\/"
+    },"genre": "posts","keywords": "androidx, 迁移, 迁移androidx, 武汉19号线","wordcount":  2058 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/wh19\/3.20230518_0946%E8%BF%81%E7%A7%BBandroidx\/","datePublished": "2023-05-18T08:46:00+08:00","dateModified": "2023-05-18T08:46:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "APP项目迁移到androidx"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>APP项目迁移到androidx</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/androidx/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> androidx</a>&ensp;<a href="/categories/%E8%BF%81%E7%A7%BB/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 迁移</a>&ensp;<a href="/categories/%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 武汉19号线</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-05-18 08:46:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-05-18">2023-05-18</time></span>&nbsp;<span title="更新于 2023-05-18 08:46:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-05-18">2023-05-18</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2058 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 10 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a>
+      <ul>
+        <li><a href="#11前言">1.1.前言</a></li>
+        <li><a href="#12背景">1.2.背景</a></li>
+      </ul>
+    </li>
+    <li><a href="#二迁移失败">二、迁移【失败】</a></li>
+    <li><a href="#三迁移自动手动成功">三、迁移【自动+手动成功】</a>
+      <ul>
+        <li><a href="#31工具初始迁移">3.1.工具初始迁移</a></li>
+        <li><a href="#32手动修复迁移">3.2.手动修复迁移</a></li>
+        <li><a href="#33databinding的错误">3.3.databinding的错误</a></li>
+        <li><a href="#34编译成功">3.4.编译成功</a></li>
+      </ul>
+    </li>
+    <li><a href="#四迁移全自动的成功">四、迁移【全自动的成功】</a>
+      <ul>
+        <li><a href="#41自动迁移成功">4.1.自动迁移成功</a></li>
+        <li><a href="#42迁移过程">4.2.迁移过程</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20230518_0946迁移androidx">20230518_0946迁移androidx</h1>
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>因为公网SDK使用了androidx，所以项目需要迁移到androidx。</p>
+<p>预想的迁移到androidx方案：</p>
+<!-- raw HTML omitted -->
+<ol>
+<li>因为demo使用android9.0编译成功了，就想下一个android9.0的framework.jar进行开发，所有代码也适配android9.0，并且依赖升级到androidx。</li>
+<li>APP项目使用android9.0编译开发，但涉及到framework.jar部分不管，就不用下载android源码编译framework.jar了，至于涉及到framework.jar开发的部分，后面单独开发一个APP来配置。</li>
+<li>不管SDK使用的是android版本多少，依赖使用的是androidx也不管，APP项目还是之前的那一套，强制SDK中的依赖使用support版本。</li>
+<li>因为最后试了，demo在android7.1环境下也可以编译并运行成功，所以只要把APP项目中所有support依赖升级到androidx就可以了。【最终采用】</li>
+</ol>
+<p>成功的迁移步骤：</p>
+<ol>
+<li>使用AS的Refactor的Migrate to AndroidX&hellip;，基本上自动执行。</li>
+<li>手动修改各java文件，xml文件中的引用，使用androidx替换，这个最耗时间了，注意ctrl+shift+R全局替换。</li>
+<li>最后就是混淆文件的修改。</li>
+</ol>
+<h3 id="12背景">1.2.背景</h3>
+<p>由于公网SDK中使用了androidx依赖库，而APP项目使用的进v4,v7依赖库，导致项目编译失败，所以需要把APP项目的所有依赖库也迁移到androidx依赖库。</p>
+<h2 id="二迁移失败">二、迁移【失败】</h2>
+<p>只是简单的记录了一点点，其实中间操作了很多，因为失败，所以没怎么留下记录。</p>
+<p><a href="./file/use_dingqiao_public_sdk_failure_modify_20230518_1430.patch">use_dingqiao_public_sdk_failure_modify_20230518_1430.patch</a></p>
+<h2 id="三迁移自动手动成功">三、迁移【自动+手动成功】</h2>
+<h3 id="31工具初始迁移">3.1.工具初始迁移</h3>
+<p>使用AS工具进行refactor。</p>
+<p>![开始refactor](./images/app_to_androidx_refactor_2023-05-17_193622.png</p>
+<p>提示备份代码</p>
+<p><img loading="lazy" src="./images/app_to_androidx_migrate_2023-05-17_193630.png" srcset="./images/app_to_androidx_migrate_2023-05-17_193630.png, ./images/app_to_androidx_migrate_2023-05-17_193630.png 1.5x, ./images/app_to_androidx_migrate_2023-05-17_193630.png 2x" sizes="auto" data-title="提示备份代码" data-alt="提示备份代码" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>备份到指定目录</p>
+<p><img loading="lazy" src="./images/app_to_androidx_refactor_save_2023-05-17_193638.png" srcset="./images/app_to_androidx_refactor_save_2023-05-17_193638.png, ./images/app_to_androidx_refactor_save_2023-05-17_193638.png 1.5x, ./images/app_to_androidx_refactor_save_2023-05-17_193638.png 2x" sizes="auto" data-title="备份到指定目录" data-alt="备份到指定目录" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>现在AS会自动对APP项目进行替换各种依赖到androidx版本。</p>
+<p><img loading="lazy" src="./images/app_to_androidx_auto_fix_2023-05-17_193858.png" srcset="./images/app_to_androidx_auto_fix_2023-05-17_193858.png, ./images/app_to_androidx_auto_fix_2023-05-17_193858.png 1.5x, ./images/app_to_androidx_auto_fix_2023-05-17_193858.png 2x" sizes="auto" data-title="更新androidx依赖" data-alt="更新androidx依赖" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="32手动修复迁移">3.2.手动修复迁移</h3>
+<p>接着就来到手动修复时间了，AS工具不能处理所有的<code>androidx</code>依赖和控件的更新，剩下来的一部分就需要手动修改了。</p>
+<p><img loading="lazy" src="./images/app_to_androidx_modify_support_to_androidx_2023-05-17_194746.png" srcset="./images/app_to_androidx_modify_support_to_androidx_2023-05-17_194746.png, ./images/app_to_androidx_modify_support_to_androidx_2023-05-17_194746.png 1.5x, ./images/app_to_androidx_modify_support_to_androidx_2023-05-17_194746.png 2x" sizes="auto" data-title="./images/app_to_androidx_modify_support_to_androidx_2023-05-17_194746.png" data-alt="./images/app_to_androidx_modify_support_to_androidx_2023-05-17_194746.png" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>推荐使用<code>find</code>搜索某一个错误的依赖或<code>import</code>关键字，然后集中一键替换，或手动一个一个替换，会方便好多。</p>
+<blockquote>
+<p>源码部分</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.core.content.LocalBroadcastManager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用下面这个：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.localbroadcastmanager.content.LocalBroadcastManager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.support.v7.widget.SwitchCompat</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用下面空上：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.appcompat.widget.SwitchCompat</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.support.v7.app.AppCompatActivity</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.appcompat.app.AppCompatActivity</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.core.view.ViewPager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.viewpager.widget.ViewPager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.support.v4.view.PagerAdapter</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.viewpager.widget.PagerAdapter</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.core.app.Fragment</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.fragment.app.Fragment</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.core.content.LocalBroadcastManager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.localbroadcastmanager.content.LocalBroadcastManager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.core.view.ViewPager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.viewpager.widget.ViewPager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.support.v7.widget.LinearLayoutManager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.recyclerview.widget.LinearLayoutManager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.support.v7.widget.ListPopupWindow</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.widget.ListPopupWindow</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">其实最终端使用</span>AS<span style="color:#a00;background-color:#faa">工具自动迁移使用的是：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.appcompat.widget.ListPopupWindow</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.support.v7.widget.RecyclerView</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.recyclerview.widget.RecyclerView</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.core.widget.SwipeRefreshLayout</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.swiperefreshlayout.widget.SwipeRefreshLayout</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.fragment.app.Fragment</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.core.app.FragmentManager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.fragment.app.FragmentManager</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.fragment.app.FragmentPagerAdapter</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.core.app.FragmentTransaction</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>androidx<span style="color:#a00;background-color:#faa">使用</span>FragmentTransaction<span style="color:#555">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.fragment.app.FragmentTransaction</span><span style="color:#555">;</span>
+</span></span></code></pre></div><p>特殊处理，下面的文件需要引入控件。
+路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\widge\LSeekBar.java</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.appcompat.widget.AppCompatSeekBar</span><span style="color:#555">;</span>
+</span></span></code></pre></div><p>路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\widge\NoScrollViewPager.java</p>
+<p>路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\adapter\MainAdapter.java</p>
+<p>路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\listeners\LEndLessOnScrollListener.java</p>
+<p>路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\bean\OperationLog.java</p>
+<p>路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\fragment\TrainIndexFragment.java
+import com.gbcom.subwaysystem.BR;</p>
+<p>路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\utils\CommonUtils.java
+使用下面这个：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.loader.content.CursorLoader</span><span style="color:#555">;</span>
+</span></span></code></pre></div><p>路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\utils\Converters.java</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.TypeConverter</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用下面这个：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.TypeConverter</span><span style="color:#555">;</span>
+</span></span></code></pre></div><p>路径：D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\widge\DragFloatActionButton.java</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.support.design.widget.FloatingActionButton</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用下面这个：</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">com.google.android.material.floatingactionbutton.FloatingActionButton</span><span style="color:#555">;</span>
+</span></span></code></pre></div><blockquote>
+<p>xml布局部分</p>
+</blockquote>
+<p>xml，注意修改xml标签时，如果是成对标签的话，开始标签修改后，结束标签也需要修改后。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>-android.support.v4.view.ViewPager
+</span></span><span style="display:flex;"><span>+androidx.viewpager.widget.ViewPager
+</span></span></code></pre></div><p>老的RecyclerView</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>-android.support.v7.widget.RecyclerView
+</span></span></code></pre></div><p>androidx使用下面的依赖</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>implementation <span style="color:#c30">&#39;androidx.recyclerview:recyclerview:1.2.1&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;androidx.recyclerview.widget.RecyclerView</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/recyclerView&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_width=</span><span style="color:#c30">&#34;match_parent&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_height=</span><span style="color:#c30">&#34;match_parent&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span></code></pre></div><p>SwitchCompat控件：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>-android.support.v7.widget.SwitchCompat
+</span></span></code></pre></div><p>使用依赖implementation &lsquo;androidx.appcompat:appcompat:1.4.0&rsquo;</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;androidx.appcompat.widget.SwitchCompat</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/switchCompat&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_width=</span><span style="color:#c30">&#34;wrap_content&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_height=</span><span style="color:#c30">&#34;wrap_content&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span></code></pre></div><p>NestedScrollView控件的替换：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>-android.support.v4.widget.NestedScrollView
+</span></span><span style="display:flex;"><span>使用下面这个：
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>implementation <span style="color:#c30">&#39;androidx.core:core-ktx:1.7.0&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;androidx.core.widget.NestedScrollView</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/nestedScrollView&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_width=</span><span style="color:#c30">&#34;match_parent&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_height=</span><span style="color:#c30">&#34;match_parent&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- 添加您的内容布局 --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/androidx.core.widget.NestedScrollView&gt;</span>
+</span></span></code></pre></div><p>ConstraintLayout控件的替换：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>android.support.constraint.ConstraintLayout
+</span></span><span style="display:flex;"><span>+androidx.constraintlayout.widget.ConstraintLayout
+</span></span></code></pre></div><p>注意：布局中使用了<code>ConstraintLayout</code>布局的话，还需要添加依赖才可以的。</p>
+<p><code>ConstraintLayout</code>是<code>Android Studio</code>中的布局工具，是<code>Android Support</code>库的一部分，而在<code>AndroidX</code>中，<code>ConstraintLayout</code>已经从<code>Support</code>库中移除并成为了一个独立的库。如果你想在<code>AndroidX</code>项目中使用<code>ConstraintLayout</code>，你需要在你的<code>build.gradle</code>文件中添加以下依赖：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>implementation <span style="color:#c30">&#39;androidx.constraintlayout:constraintlayout:2.1.0&#39;</span>
+</span></span></code></pre></div><p>SwipeRefreshLayout控件：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>-android.support.v4.widget.SwipeRefreshLayout
+</span></span><span style="display:flex;"><span>在`AndroidX`中使用`SwipeRefreshLayout`，您需要添加以下依赖项到您的`build.gradle`文件中：
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span>implementation <span style="color:#c30">&#39;androidx.swiperefreshlayout:swiperefreshlayout:1.1.0&#39;</span>
+</span></span></code></pre></div><p>这将引入<code>AndroidX</code>中的<code>SwipeRefreshLayout</code>库，版本号为<code>1.1.0</code>。请注意，版本号可能会随时间的推移而有所变化，请确保使用最新的版本。</p>
+<p>然后，您可以在布局文件中使用<code>androidx.swiperefreshlayout.widget.SwipeRefreshLayout</code>来包裹您的内容布局，并在其中添加下拉刷新的逻辑。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;androidx.swiperefreshlayout.widget.SwipeRefreshLayout</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/swipeRefreshLayout&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_width=</span><span style="color:#c30">&#34;match_parent&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_height=</span><span style="color:#c30">&#34;match_parent&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- 添加你的内容布局 --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/androidx.swiperefreshlayout.widget.SwipeRefreshLayout&gt;</span>
+</span></span></code></pre></div><blockquote>
+<p>关于room</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.ColumnInfo</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.Entity</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.Index</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.PrimaryKey</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">#使用下面这个</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.ColumnInfo</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Entity</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Index</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.PrimaryKey</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Ignore</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.Dao</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.Insert</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.OnConflictStrategy</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.Query</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">#使用下面这个</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Dao</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Insert</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.OnConflictStrategy</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Query</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.Delete</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">#使用下面这个</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Delete</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Update</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Dao</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Insert</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.OnConflictStrategy</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Query</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.RoomWarnings</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.db.SupportSQLiteDatabase</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.Database</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.Room</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.RoomDatabase</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#555">-</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">android.arch.persistence.room.migration.Migration</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">使用下面这个</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Database</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.Room</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.RoomDatabase</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.room.migration.Migration</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.sqlite.db.SupportSQLiteDatabase</span><span style="color:#555">;</span>
+</span></span></code></pre></div><h3 id="33databinding的错误">3.3.databinding的错误</h3>
+<p>如果发现所有错误都修改完了，但是一build就是下面的错误，好像是项目迁移到androidx后databinding有问题了。那么怎么解决呢？请往下看。</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">:app:generateDebugSources
+:app:dataBindingExportBuildInfoDebug
+:app:dataBindingExportFeaturePackageIdsDebug
+:app:dataBindingMergeDependencyArtifactsDebug
+:app:transformDataBindingBaseClassLogWithDataBindingMergeGenClassesForDebug
+:app:dataBindingGenBaseClassesDebug
+:binder:transformClassesAndResourcesWithPrepareIntermediateJarsForDebug
+:binder-compile:compileJava
+:binder-compile:processResources
+:binder-compile:classes
+:binder-compile:jar
+:eventlib:transformClassesAndResourcesWithPrepareIntermediateJarsForDebug
+:app:javaPreCompileDebug
+:binder:createFullJarDebug
+:eventlib:createFullJarDebug
+:app:compileDebugJavaWithJavacD:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityBootBinding.java:8: 错误: 找不到符号
+import androidx.databinding.DataBindingComponent;
+                           ^
+  符号:   类 DataBindingComponent
+  位置: 程序包 androidx.databinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityBootBinding.java:13: 错误: 找不到符号
+  protected ActivityBootBinding(DataBindingComponent _bindingComponent, View _root,
+                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityBootBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityBootBinding.java:26: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityBootBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityBootBinding.java:37: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityBootBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityBootBinding.java:46: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityBootBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\bean\CallRecords.java:13: 错误: 找不到符号
+import com.gbcom.subwaysystem.BR;
+                             ^
+  符号:   类 BR
+  位置: 程序包 com.gbcom.subwaysystem
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityEmergencyCallBinding.java:43: 错误: 找不到符号
+  protected ActivityEmergencyCallBinding(DataBindingComponent _bindingComponent, View _root,
+                                         ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityEmergencyCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityEmergencyCallBinding.java:78: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityEmergencyCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityEmergencyCallBinding.java:89: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityEmergencyCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityEmergencyCallBinding.java:98: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityEmergencyCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityGroupCallBinding.java:55: 错误: 找不到符号
+  protected ActivityGroupCallBinding(DataBindingComponent _bindingComponent, View _root,
+                                     ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityGroupCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityGroupCallBinding.java:89: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityGroupCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityGroupCallBinding.java💯 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityGroupCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityGroupCallBinding.java:109: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityGroupCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityInitNetworkBinding.java:32: 错误: 找不到符号
+  protected ActivityInitNetworkBinding(DataBindingComponent _bindingComponent, View _root,
+                                       ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityInitNetworkBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityInitNetworkBinding.java:57: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityInitNetworkBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityInitNetworkBinding.java:68: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityInitNetworkBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityInitNetworkBinding.java:77: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityInitNetworkBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\activity\LaunchActivity.java:10: 错误: 找不到符号
+import com.gbcom.subwaysystem.BR;
+                             ^
+  符号:   类 BR
+  位置: 程序包 com.gbcom.subwaysystem
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\viewmodel\ViewPagerItemModel.java:9: 错误: 找不到符号
+import com.gbcom.subwaysystem.BR;
+                             ^
+  符号:   类 BR
+  位置: 程序包 com.gbcom.subwaysystem
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLaunchBinding.java:17: 错误: 找不到符号
+  protected ActivityLaunchBinding(DataBindingComponent _bindingComponent, View _root,
+                                  ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLaunchBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLaunchBinding.java:31: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLaunchBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLaunchBinding.java:42: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLaunchBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLaunchBinding.java:51: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLaunchBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLockScreenBinding.java:26: 错误: 找不到符号
+  protected ActivityLockScreenBinding(DataBindingComponent _bindingComponent, View _root,
+                                      ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLockScreenBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLockScreenBinding.java:48: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLockScreenBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLockScreenBinding.java:59: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLockScreenBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLockScreenBinding.java:68: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLockScreenBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLoginBinding.java:47: 错误: 找不到符号
+  protected ActivityLoginBinding(DataBindingComponent _bindingComponent, View _root,
+                                 ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLoginBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLoginBinding.java:77: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLoginBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLoginBinding.java:88: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLoginBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLoginBinding.java:97: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLoginBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityMaintainBinding.java:94: 错误: 找不到符号
+  protected ActivityMaintainBinding(DataBindingComponent _bindingComponent, View _root,
+                                    ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityMaintainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityMaintainBinding.java:144: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityMaintainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityMaintainBinding.java:155: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityMaintainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityMaintainBinding.java:164: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityMaintainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityPrivateCallBinding.java:89: 错误: 找不到符号
+  protected ActivityPrivateCallBinding(DataBindingComponent _bindingComponent, View _root,
+                                       ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityPrivateCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityPrivateCallBinding.java:138: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityPrivateCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityPrivateCallBinding.java:149: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityPrivateCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityPrivateCallBinding.java:158: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityPrivateCallBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLoginingBinding.java:44: 错误: 找不到符号
+  protected ActivityLoginingBinding(DataBindingComponent _bindingComponent, View _root,
+                                    ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLoginingBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLoginingBinding.java:68: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLoginingBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLoginingBinding.java:79: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLoginingBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityLoginingBinding.java:88: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityLoginingBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivitySelfCheckBinding.java:251: 错误: 找不到符号
+  protected ActivitySelfCheckBinding(DataBindingComponent _bindingComponent, View _root,
+                                     ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivitySelfCheckBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivitySelfCheckBinding.java:374: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivitySelfCheckBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivitySelfCheckBinding.java:385: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivitySelfCheckBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivitySelfCheckBinding.java:394: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivitySelfCheckBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\fragment\TrainIndexFragment.java:45: 错误: 找不到符号
+import com.gbcom.subwaysystem.BR;
+                             ^
+  符号:   类 BR
+  位置: 程序包 com.gbcom.subwaysystem
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\fragment\TrainCallFragment.java:25: 错误: 找不到符号
+import com.gbcom.subwaysystem.BR;
+                             ^
+  符号:   类 BR
+  位置: 程序包 com.gbcom.subwaysystem
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityTrainBinding.java:102: 错误: 找不到符号
+  protected ActivityTrainBinding(DataBindingComponent _bindingComponent, View _root,
+                                 ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityTrainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityTrainBinding.java:161: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityTrainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityTrainBinding.java:172: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityTrainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\ActivityTrainBinding.java:181: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 ActivityTrainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\java\com\gbcom\subwaysystem\bean\TrainSet.java:6: 错误: 找不到符号
+import com.gbcom.subwaysystem.BR;
+                             ^
+  符号:   类 BR
+  位置: 程序包 com.gbcom.subwaysystem
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainVolumeAdjustingDialogBinding.java:39: 错误: 找不到符号
+  protected TrainVolumeAdjustingDialogBinding(DataBindingComponent _bindingComponent, View _root,
+                                              ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainVolumeAdjustingDialogBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainVolumeAdjustingDialogBinding.java:66: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainVolumeAdjustingDialogBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainVolumeAdjustingDialogBinding.java:77: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainVolumeAdjustingDialogBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainVolumeAdjustingDialogBinding.java:86: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainVolumeAdjustingDialogBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainRequestCallDialogBinding.java:31: 错误: 找不到符号
+  protected TrainRequestCallDialogBinding(DataBindingComponent _bindingComponent, View _root,
+                                          ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainRequestCallDialogBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainRequestCallDialogBinding.java:51: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainRequestCallDialogBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainRequestCallDialogBinding.java:62: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainRequestCallDialogBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainRequestCallDialogBinding.java:71: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainRequestCallDialogBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainIndexFragmentBinding.java:166: 错误: 找不到符号
+  protected TrainIndexFragmentBinding(DataBindingComponent _bindingComponent, View _root,
+                                      ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainIndexFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainIndexFragmentBinding.java:252: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainIndexFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainIndexFragmentBinding.java:263: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainIndexFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainIndexFragmentBinding.java:272: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainIndexFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainCallFragmentBinding.java:26: 错误: 找不到符号
+  protected TrainCallFragmentBinding(DataBindingComponent _bindingComponent, View _root,
+                                     ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainCallFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainCallFragmentBinding.java:48: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainCallFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainCallFragmentBinding.java:59: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainCallFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainCallFragmentBinding.java:68: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainCallFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainSmsFragmentBinding.java:51: 错误: 找不到符号
+  protected TrainSmsFragmentBinding(DataBindingComponent _bindingComponent, View _root,
+                                    ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainSmsFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainSmsFragmentBinding.java:83: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainSmsFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainSmsFragmentBinding.java:94: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainSmsFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\TrainSmsFragmentBinding.java:103: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 TrainSmsFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\HomeSettingFragmentBinding.java:68: 错误: 找不到符号
+  protected HomeSettingFragmentBinding(DataBindingComponent _bindingComponent, View _root,
+                                       ^
+  符号:   类 DataBindingComponent
+  位置: 类 HomeSettingFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\HomeSettingFragmentBinding.java:113: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 HomeSettingFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\HomeSettingFragmentBinding.java:124: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 HomeSettingFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\HomeSettingFragmentBinding.java:133: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 HomeSettingFragmentBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentDeviceMaintainBinding.java:41: 错误: 找不到符号
+  protected FragmentDeviceMaintainBinding(DataBindingComponent _bindingComponent, View _root,
+                                          ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentDeviceMaintainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentDeviceMaintainBinding.java:70: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentDeviceMaintainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentDeviceMaintainBinding.java:81: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentDeviceMaintainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentDeviceMaintainBinding.java:90: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentDeviceMaintainBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalMaintainFragemntBinding.java:154: 错误: 找不到符号
+  protected FragmentLocalMaintainFragemntBinding(DataBindingComponent _bindingComponent, View _root,
+                                                 ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalMaintainFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalMaintainFragemntBinding.java:233: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalMaintainFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalMaintainFragemntBinding.java:244: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalMaintainFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalMaintainFragemntBinding.java:253: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalMaintainFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalServiceFragemntBinding.java:96: 错误: 找不到符号
+  protected FragmentLocalServiceFragemntBinding(DataBindingComponent _bindingComponent, View _root,
+                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalServiceFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalServiceFragemntBinding.java:153: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalServiceFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalServiceFragemntBinding.java:164: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalServiceFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalServiceFragemntBinding.java:173: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalServiceFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalVolumeFragemntBinding.java:54: 错误: 找不到符号
+  protected FragmentLocalVolumeFragemntBinding(DataBindingComponent _bindingComponent, View _root,
+                                               ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalVolumeFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalVolumeFragemntBinding.java:93: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalVolumeFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalVolumeFragemntBinding.java:104: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalVolumeFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalVolumeFragemntBinding.java:113: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalVolumeFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalDisplayFragemntBinding.java:43: 错误: 找不到符号
+  protected FragmentLocalDisplayFragemntBinding(DataBindingComponent _bindingComponent, View _root,
+                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalDisplayFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalDisplayFragemntBinding.java:71: 错误: 找不到符号
+      @Nullable ViewGroup root, boolean attachToRoot, @Nullable DataBindingComponent component) {
+                                                                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalDisplayFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalDisplayFragemntBinding.java:82: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalDisplayFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalDisplayFragemntBinding.java:91: 错误: 找不到符号
+      @Nullable DataBindingComponent component) {
+                ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalDisplayFragemntBinding
+D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\build\generated\data_binding_base_class_source_out\debug\dataBindingGenBaseClassesDebug\out\com\gbcom\subwaysystem\databinding\FragmentLocalAboutFragemntBinding.java:93: 错误: 找不到符号
+  protected FragmentLocalAboutFragemntBinding(DataBindingComponent _bindingComponent, View _root,
+                                              ^
+  符号:   类 DataBindingComponent
+  位置: 类 FragmentLocalAboutFragemntBinding
+警告: No SupportedSourceVersion annotation found on com.cl.compiler.lib.BinderProcessor, returning RELEASE_6.
+警告: 来自注释处理程序 &#39;com.cl.compiler.lib.BinderProcessor&#39; 的受支持 source 版本 &#39;RELEASE_6&#39; 低于 -source &#39;1.8&#39;
+ FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task &#39;:app:compileDebugJavaWithJavac&#39;.
+&gt; android.databinding.tool.util.LoggedErrorException: Found data binding errors.
+  ****/ data binding error ****msg:Cannot find the setter for attribute &#39;android:onCheckedChanged&#39; with parameter type lambda on android.support.v7.widget.SwitchCompat.
+  file:D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\res\layout\train_system_type_dialog.xml
+  loc:87:52 - 87:106
+  ****\ data binding error ****
+  ****/ data binding error ****msg:Cannot find the setter for attribute &#39;android:onClick&#39; with parameter type lambda on android.support.constraint.ConstraintLayout.
+  file:D:\code\gbcom_gitlab\test\WH19-MetroSystem\app\src\main\res\layout\train_activity_picture.xml
+  loc:11:27 - 11:53
+  ****\ data binding error ****
+
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 18s
+78 actionable tasks: 67 executed, 11 up-to-date
+</code></pre><p>先在gradle.properties中添加如下配置。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#309">android.databinding.enableV2</span><span style="color:#555">=</span><span style="color:#c30">true</span>
+</span></span></code></pre></div><p>在 Android 中，android.databinding.enableV2=true是一个用于配置 Data Binding 的属性。当将该属性设置为 true 时，表示启用 Data Binding 的版本 2。</p>
+<p>Data Binding 是 Android 提供的一种用于将布局文件与数据源绑定的框架，它可以简化 UI 的更新和管理。在 Data Binding 版本 2 中，提供了一些改进和增强的功能，包括更好的性能、更丰富的绑定表达式语法以及对 Kotlin 语言的更好支持。</p>
+<p>再在app:build.gradle中添加如下依赖。by daizelai on 2023/05/18 14:05</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 版本号根据您的需求进行替换
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>implementation <span style="color:#c30">&#39;androidx.databinding:databinding-runtime:4.2.2&#39;</span>
+</span></span></code></pre></div><p>build后各种提示下面这个找不到<code>com.gbcom.subwaysystem.BR</code>。</p>
+<p><img loading="lazy" src="./images/app_to_androidx_databinding_2023-05-18_111259.png" srcset="./images/app_to_androidx_databinding_2023-05-18_111259.png, ./images/app_to_androidx_databinding_2023-05-18_111259.png 1.5x, ./images/app_to_androidx_databinding_2023-05-18_111259.png 2x" sizes="auto" data-title="./images/app_to_androidx_databinding_2023-05-18_111259.png" data-alt="./images/app_to_androidx_databinding_2023-05-18_111259.png" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>android项目在debug模式下好像只有<code>import androidx.databinding.library.baseAdapters.BR;</code>这个，找不到<code>com.gbcom.subwaysystem.BR</code>。</p>
+<p>如下图所示：</p>
+<p><img loading="lazy" src="./images/app_to_androidx_databing_br_2023-05-18_103659.png" srcset="./images/app_to_androidx_databing_br_2023-05-18_103659.png, ./images/app_to_androidx_databing_br_2023-05-18_103659.png 1.5x, ./images/app_to_androidx_databing_br_2023-05-18_103659.png 2x" sizes="auto" data-title="./images/app_to_androidx_databing_br_2023-05-18_103659.png" data-alt="./images/app_to_androidx_databing_br_2023-05-18_103659.png" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>解决办法，在AS中的Build Variants切换到release模式即可。</p>
+<p>还有，对于上述错误，可以新建<code>DataBindingComponent.java</code>来解决，新建<code>DataBindingComponent.java</code>文件后，如果这个接口文件有红线不用管它。</p>
+<p>src/main/java/androidx/databinding/DataBindingComponent.java</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">package</span> <span style="color:#0cf;font-weight:bold">androidx.databinding</span><span style="color:#555">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">interface</span> <span style="color:#0a8;font-weight:bold">DataBindingComponent</span><span style="color:#555">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555">}</span>
+</span></span></code></pre></div><p>再AS清除缓存并重启AS，然后build，就可以看到各种错误了，继续修复吧。</p>
+<p><img loading="lazy" src="./images/app_to_androidx_fix_error_go_on_2023-05-18_112644.png" srcset="./images/app_to_androidx_fix_error_go_on_2023-05-18_112644.png, ./images/app_to_androidx_fix_error_go_on_2023-05-18_112644.png 1.5x, ./images/app_to_androidx_fix_error_go_on_2023-05-18_112644.png 2x" sizes="auto" data-title="./images/app_to_androidx_fix_error_go_on_2023-05-18_112644.png" data-alt="./images/app_to_androidx_fix_error_go_on_2023-05-18_112644.png" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>可以看到，有很多的错误又出来了。</p>
+<p><img loading="lazy" src="./images/app_to_androidx_br_crate_dataBindingComponent_2023-05-18_111657.png" srcset="./images/app_to_androidx_br_crate_dataBindingComponent_2023-05-18_111657.png, ./images/app_to_androidx_br_crate_dataBindingComponent_2023-05-18_111657.png 1.5x, ./images/app_to_androidx_br_crate_dataBindingComponent_2023-05-18_111657.png 2x" sizes="auto" data-title="./images/app_to_androidx_br_crate_dataBindingComponent_2023-05-18_111657.png" data-alt="./images/app_to_androidx_br_crate_dataBindingComponent_2023-05-18_111657.png" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>把上面的所有错误修复之后，再清空AS缓存并重启并build之后，可以看到，就一个错误了，删除<code>DataBindingComponent.java</code>文件及所有在文件夹之后，问题解决。</p>
+<p>然后继续清空AS缓存并重启并build之后，可以看到，还有一个如下错误。</p>
+<p><img loading="lazy" src="./images/app_to_androidx_databinding_error_fix_2023-05-18_112957.png" srcset="./images/app_to_androidx_databinding_error_fix_2023-05-18_112957.png, ./images/app_to_androidx_databinding_error_fix_2023-05-18_112957.png 1.5x, ./images/app_to_androidx_databinding_error_fix_2023-05-18_112957.png 2x" sizes="auto" data-title="./images/app_to_androidx_databinding_error_fix_2023-05-18_112957.png" data-alt="./images/app_to_androidx_databinding_error_fix_2023-05-18_112957.png" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>再继续build之后发现，只有一个<code>SelfCheckActivity.java</code>错误，添加缺少的<code>import androidx.appcompat.widget.SwitchCompat;</code>之后，项目终于可以完整无错误的build了。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#555">+</span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">androidx.appcompat.widget.SwitchCompat</span><span style="color:#555">;</span>
+</span></span></code></pre></div><h3 id="34编译成功">3.4.编译成功</h3>
+<p><img loading="lazy" src="./images/app_to_androidx_build_successful_2023-05-18_113654.png" srcset="./images/app_to_androidx_build_successful_2023-05-18_113654.png, ./images/app_to_androidx_build_successful_2023-05-18_113654.png 1.5x, ./images/app_to_androidx_build_successful_2023-05-18_113654.png 2x" sizes="auto" data-title="./images/app_to_androidx_build_successful_2023-05-18_113654.png" data-alt="./images/app_to_androidx_build_successful_2023-05-18_113654.png" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h2 id="四迁移全自动的成功">四、迁移【全自动的成功】</h2>
+<h3 id="41自动迁移成功">4.1.自动迁移成功</h3>
+<p>说到这里气死我了，其实后面为了记录本次迁移过程，想做一个gif动画记录AS自动迁移到<code>Androidx</code>后发现，都不用手动修改代码，直接就可以。</p>
+<p>完全使用AS迁移成功过程。by daizelai on 2023/05/18 15:32</p>
+<p><img loading="lazy" src="./images/wh19_to_androix_record_20230518_1531.gif" srcset="./images/wh19_to_androix_record_20230518_1531.gif, ./images/wh19_to_androix_record_20230518_1531.gif 1.5x, ./images/wh19_to_androix_record_20230518_1531.gif 2x" sizes="auto" data-title="完全使用AS迁移成功过程" data-alt="完全使用AS迁移成功过程" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>下面这个gif时间更短，AS打开项目后，先菜单栏<code>Build&gt;Rebuild Project</code>了一下，然后菜单栏<code>Refactor</code>选择<code>Migrate to AndroidX...</code>后一次成功。</p>
+<p><img loading="lazy" src="./images/wh19_to_androix_record_20230518_1540.gif" srcset="./images/wh19_to_androix_record_20230518_1540.gif, ./images/wh19_to_androix_record_20230518_1540.gif 1.5x, ./images/wh19_to_androix_record_20230518_1540.gif 2x" sizes="auto" data-title="./images/wh19_to_androix_record_20230518_1540.gif" data-alt="./images/wh19_to_androix_record_20230518_1540.gif" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="42迁移过程">4.2.迁移过程</h3>
+<p>最后再描述一下迁移的过程：</p>
+<p>编译前提：</p>
+<ol>
+<li>配置gradle.properties文件中没有添加<code>android.useAndroidX=true</code>和<code>android.enableJetifier=true</code>配置。</li>
+<li>project:build.gradle的插件版本是<code>classpath 'com.android.tools.build:gradle:3.2.0'</code>。</li>
+<li>gradle的版本是<code>distributionUrl=https\://services.gradle.org/distributions/gradle-4.6-all.zip</code>。</li>
+<li>app:build.gradle中使用的都是support版本的依赖库。</li>
+</ol>
+<p>编译过程：</p>
+<ol>
+<li>使用AS打开项目后，File&gt;Invalidate Caches / Restart&hellip;</li>
+<li>Build&gt;Clean Project</li>
+<li>Build&gt;Rebuild Project，保证项目可以正常build就可以了。</li>
+<li>Refactor&gt;Migrate to AndroidX&hellip;</li>
+<li>手动修改app/proguard-rules.pro</li>
+</ol>
+<p>注意：上面执行时，<code>Build Variants</code>还是在<code>debug</code>模式下执行的，也就是说在<code>debug</code>模式下也是可以的。</p>
+<p><img loading="lazy" src="./images/wh19_to_androix_successful_20230518_1611.gif" srcset="./images/wh19_to_androix_successful_20230518_1611.gif, ./images/wh19_to_androix_successful_20230518_1611.gif 1.5x, ./images/wh19_to_androix_successful_20230518_1611.gif 2x" sizes="auto" data-title="成功的迁移到AndroidX" data-alt="成功的迁移到AndroidX" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>上面这个只需要点击几下就成功了，已经把代码<code>git reset --hard HEAD</code>恢复并试了N次了，都是成功的，只是有的需要点击两次<code>Refactor&gt;Migrate to AndroidX...</code>，有的一次就成功了。至于为什么最开始执行<code>Refactor&gt;Migrate to AndroidX...</code>没有成功，还需要手动修改，后面只要执行<code>Refactor&gt;Migrate to AndroidX...</code>就可以了，怀疑：</p>
+<ol>
+<li>是一开始没有执行<code>Refactor&gt;Migrate to AndroidX...</code>第二次。</li>
+<li>第二个可能是因为前面已经执行<code>Refactor&gt;Migrate to AndroidX...</code>并手动修改各种依赖后，AS缓存记住了，后面就可以这样操作了？</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-05-18 08:46:00">更新于 2023-05-18&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/androidx/' class="post-tag">androidx</a><a href='/tags/%E8%BF%81%E7%A7%BB/' class="post-tag">迁移</a><a href='/tags/%E8%BF%81%E7%A7%BBandroidx/' class="post-tag">迁移androidx</a><a href='/tags/%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF/' class="post-tag">武汉19号线</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/" class="post-nav-item" rel="prev" title="gitflow记录"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>gitflow记录</a>
+      <a href="/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/" class="post-nav-item" rel="next" title="vscode提交代码交合并分支">vscode提交代码交合并分支<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

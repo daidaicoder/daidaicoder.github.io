@@ -23,7 +23,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/navigationview/bottomnavigationview/" /><link rel="prev" href="https://daizelai.github.io/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/" /><link rel="next" href="https://daizelai.github.io/posts/wzs2/gm605/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/navigationview/bottomnavigationview/" /><link rel="prev" href="https://daizelai.github.io/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/" /><link rel="next" href="https://daizelai.github.io/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -204,132 +204,132 @@
 <h3 id="菜单布局">菜单布局</h3>
 <p>activity_main.xml
 路径：\SH-CityRailway-ZTE\library_main\src\main\res\layout\activity_main.xml</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>- <span style="color:#f92672">&lt;com.google.android.material.bottomnavigation.BottomNavigationView</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/nav_menu_view&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;450dp&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;100dp&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">android:background=</span><span style="color:#e6db74">&#34;#cccccc&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">android:visibility=</span><span style="color:#e6db74">&#34;gone&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">android:padding=</span><span style="color:#e6db74">&#34;3dp&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">app:elevation=</span><span style="color:#e6db74">&#34;500dp&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">app:itemIconSize=</span><span style="color:#e6db74">&#34;35dp&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">app:itemTextColor=</span><span style="color:#e6db74">&#34;@color/main_bottom_item_text_selector&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">app:labelVisibilityMode=</span><span style="color:#e6db74">&#34;labeled&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">-</span>     <span style="color:#a6e22e">app:menu=</span><span style="color:#e6db74">&#34;@menu/main_menu&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;com.google.android.material.bottomnavigation.BottomNavigationView</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/nav_menu_view&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;600dp&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">android:padding=</span><span style="color:#e6db74">&#34;10dp&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">app:itemIconSize=</span><span style="color:#e6db74">&#34;45dp&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">android:background=</span><span style="color:#e6db74">&#34;#cccccc&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">app:itemTextAppearanceActive=</span><span style="color:#e6db74">&#34;@style/bottom_tab_title_active&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">app:itemTextAppearanceInactive=</span><span style="color:#e6db74">&#34;@style/bottom_tab_title_inactive&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">app:itemTextColor=</span><span style="color:#e6db74">&#34;@color/main_bottom_item_text_selector&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">app:labelVisibilityMode=</span><span style="color:#e6db74">&#34;labeled&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">app:menu=</span><span style="color:#e6db74">&#34;@menu/main_menu&#34;</span> <span style="color:#f92672">/&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>- <span style="color:#309;font-weight:bold">&lt;com.google.android.material.bottomnavigation.BottomNavigationView</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/nav_menu_view&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:layout_width=</span><span style="color:#c30">&#34;450dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:layout_height=</span><span style="color:#c30">&#34;100dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:background=</span><span style="color:#c30">&#34;#cccccc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:visibility=</span><span style="color:#c30">&#34;gone&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:padding=</span><span style="color:#c30">&#34;3dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:elevation=</span><span style="color:#c30">&#34;500dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:itemIconSize=</span><span style="color:#c30">&#34;35dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:itemTextColor=</span><span style="color:#c30">&#34;@color/main_bottom_item_text_selector&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:labelVisibilityMode=</span><span style="color:#c30">&#34;labeled&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:menu=</span><span style="color:#c30">&#34;@menu/main_menu&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;com.google.android.material.bottomnavigation.BottomNavigationView</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/nav_menu_view&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_width=</span><span style="color:#c30">&#34;600dp&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_height=</span><span style="color:#c30">&#34;wrap_content&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:padding=</span><span style="color:#c30">&#34;10dp&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:itemIconSize=</span><span style="color:#c30">&#34;45dp&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:background=</span><span style="color:#c30">&#34;#cccccc&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:itemTextAppearanceActive=</span><span style="color:#c30">&#34;@style/bottom_tab_title_active&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:itemTextAppearanceInactive=</span><span style="color:#c30">&#34;@style/bottom_tab_title_inactive&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:itemTextColor=</span><span style="color:#c30">&#34;@color/main_bottom_item_text_selector&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:labelVisibilityMode=</span><span style="color:#c30">&#34;labeled&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:menu=</span><span style="color:#c30">&#34;@menu/main_menu&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
 </span></span></code></pre></div><h3 id="菜单设置">菜单设置</h3>
 <p>这里还是和温州S2号线APP一样，没有改变。
 路径：\SH-CityRailway-ZTE\library_main\src\main\res\menu\main_menu.xml</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;menu</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">xmlns:app=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res-auto&#34;</span><span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;menu</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">xmlns:app=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res-auto&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 设置了android:icon=&#34;@drawable/bottom_png_list&#34;，就不需要BottomNavigationView设置 itemIconTint和itemTextColor 颜色 --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/toRirstFragment&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:enabled=</span><span style="color:#e6db74">&#34;true&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:icon=</span><span style="color:#e6db74">&#34;@drawable/main_menu_index_item_selector&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:title=</span><span style="color:#e6db74">&#34;主页&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">app:showAsAction=</span><span style="color:#e6db74">&#34;never&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- 设置了android:icon=&#34;@drawable/bottom_png_list&#34;，就不需要BottomNavigationView设置 itemIconTint和itemTextColor 颜色 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toRirstFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_index_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;主页&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;never&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/toSecondFragment&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:enabled=</span><span style="color:#e6db74">&#34;true&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:icon=</span><span style="color:#e6db74">&#34;@drawable/main_menu_call_item_selector&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:title=</span><span style="color:#e6db74">&#34;通话&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">app:showAsAction=</span><span style="color:#e6db74">&#34;always&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toSecondFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_call_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;通话&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;always&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/toThirdFragment&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:enabled=</span><span style="color:#e6db74">&#34;true&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:icon=</span><span style="color:#e6db74">&#34;@drawable/main_menu_message_item_selector&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:title=</span><span style="color:#e6db74">&#34;消息&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">app:showAsAction=</span><span style="color:#e6db74">&#34;collapseActionView&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toThirdFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_message_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;消息&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;collapseActionView&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/toFiveFragment&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:enabled=</span><span style="color:#e6db74">&#34;true&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:icon=</span><span style="color:#e6db74">&#34;@drawable/main_menu_message_item_selector&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:title=</span><span style="color:#e6db74">&#34;调度命令&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">app:showAsAction=</span><span style="color:#e6db74">&#34;withText&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toFiveFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_message_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;调度命令&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;withText&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/toFourthFragment&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:enabled=</span><span style="color:#e6db74">&#34;true&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:icon=</span><span style="color:#e6db74">&#34;@drawable/main_menu_setting_item_selector&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">android:title=</span><span style="color:#e6db74">&#34;我的&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">app:showAsAction=</span><span style="color:#e6db74">&#34;ifRoom&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/menu&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toFourthFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_setting_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;我的&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;ifRoom&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/menu&gt;</span>
 </span></span></code></pre></div><p>main_menu_index_item_selector.xml
 路径：\SH-CityRailway-ZTE\library_res\src\main\res\drawable\main_menu_index_item_selector.xml</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;selector</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">android:drawable=</span><span style="color:#e6db74">&#34;@drawable/train_menu_index_active&#34;</span> <span style="color:#a6e22e">android:state_checked=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">android:drawable=</span><span style="color:#e6db74">&#34;@drawable/train_menu_index_normal&#34;</span> <span style="color:#a6e22e">android:state_checked=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/selector&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;selector</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_index_active&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_index_normal&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/selector&gt;</span>
 </span></span></code></pre></div><p>main_menu_call_item_selector.xml</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;selector</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">android:drawable=</span><span style="color:#e6db74">&#34;@drawable/train_menu_call_active&#34;</span> <span style="color:#a6e22e">android:state_checked=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">android:drawable=</span><span style="color:#e6db74">&#34;@drawable/train_menu_call_normal&#34;</span> <span style="color:#a6e22e">android:state_checked=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/selector&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;selector</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_call_active&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_call_normal&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/selector&gt;</span>
 </span></span></code></pre></div><p>main_menu_message_item_selector.xml</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;selector</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">android:drawable=</span><span style="color:#e6db74">&#34;@drawable/train_menu_msg_active&#34;</span> <span style="color:#a6e22e">android:state_checked=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">android:drawable=</span><span style="color:#e6db74">&#34;@drawable/train_menu_msg_normal&#34;</span> <span style="color:#a6e22e">android:state_checked=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/selector&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;selector</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_msg_active&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_msg_normal&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/selector&gt;</span>
 </span></span></code></pre></div><p>main_menu_setting_item_selector.xml</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;selector</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">android:drawable=</span><span style="color:#e6db74">&#34;@drawable/train_menu_set_active&#34;</span> <span style="color:#a6e22e">android:state_checked=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">android:drawable=</span><span style="color:#e6db74">&#34;@drawable/train_menu_set_normal&#34;</span> <span style="color:#a6e22e">android:state_checked=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/selector&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;selector</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_set_active&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_set_normal&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/selector&gt;</span>
 </span></span></code></pre></div><h3 id="调整菜单高度图片和文字间距">调整菜单高度【图片和文字间距】</h3>
 <p>这里的<code>design_bottom_navigation_height</code>可以设置main_menu.xml中的图片和文字的距离，也就是整个菜单高度越高，间距越大。
 路径：\SH-CityRailway-ZTE\library_res\src\main\res\values\dimens.xml</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;resources</span> <span style="color:#a6e22e">xmlns:tools=</span><span style="color:#e6db74">&#34;http://schemas.android.com/tools&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 项目默认文字大小 --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dimen</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;defaultTextSize&#34;</span><span style="color:#f92672">&gt;</span>18sp<span style="color:#f92672">&lt;/dimen&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dimen</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;textSize22sp&#34;</span><span style="color:#f92672">&gt;</span>22sp<span style="color:#f92672">&lt;/dimen&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;resources</span> <span style="color:#309">xmlns:tools=</span><span style="color:#c30">&#34;http://schemas.android.com/tools&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- 项目默认文字大小 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;defaultTextSize&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>18sp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;textSize22sp&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>22sp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- BottomNavigationView修改文字与icon之间的间距 --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- BottomNavigationView设置icon距离上边距的距离 --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dimen</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;design_bottom_navigation_margin&#34;</span> <span style="color:#a6e22e">tools:override=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>6dp<span style="color:#f92672">&lt;/dimen&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 下面两个是设置TextView的大小：选中时的文字和未选中时的文字大小，保持一样的话，就没有动画了【好像没有起作用，style.xml的bottom_tab_title_active和bottom_tab_title_inactive起作用】 --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dimen</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;design_bottom_navigation_active_text_size&#34;</span> <span style="color:#a6e22e">tools:override=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>18sp<span style="color:#f92672">&lt;/dimen&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dimen</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;design_bottom_navigation_text_size&#34;</span> <span style="color:#a6e22e">tools:override=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>18sp<span style="color:#f92672">&lt;/dimen&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- BottomNavigationView菜单栏-导航栏高度和文字和图片之间的间距，值越大，图片和文字间的距离越大 --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dimen</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;design_bottom_navigation_height&#34;</span><span style="color:#f92672">&gt;</span>90dp<span style="color:#f92672">&lt;/dimen&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- BottomNavigationView修改文字与icon之间的间距 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- BottomNavigationView设置icon距离上边距的距离 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;design_bottom_navigation_margin&#34;</span> <span style="color:#309">tools:override=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>6dp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- 下面两个是设置TextView的大小：选中时的文字和未选中时的文字大小，保持一样的话，就没有动画了【好像没有起作用，style.xml的bottom_tab_title_active和bottom_tab_title_inactive起作用】 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;design_bottom_navigation_active_text_size&#34;</span> <span style="color:#309">tools:override=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>18sp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;design_bottom_navigation_text_size&#34;</span> <span style="color:#309">tools:override=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>18sp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- BottomNavigationView菜单栏-导航栏高度和文字和图片之间的间距，值越大，图片和文字间的距离越大 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;design_bottom_navigation_height&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>90dp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/resources&gt;</span>
 </span></span></code></pre></div><h3 id="文字样式">文字样式</h3>
 <p>路径：\SH-CityRailway-ZTE\library_res\src\main\res\values\styles.xml</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;resources&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--BottomNavigationView选中的样式，可以设置选择的字体颜色，这里只是为了改变选择时的字体大小--&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;style</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;bottom_tab_title_active&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:textSize&#34;</span><span style="color:#f92672">&gt;</span>28sp<span style="color:#f92672">&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:drawablePadding&#34;</span><span style="color:#f92672">&gt;</span>14dp<span style="color:#f92672">&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/style&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;resources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!--BottomNavigationView选中的样式，可以设置选择的字体颜色，这里只是为了改变选择时的字体大小--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;style</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;bottom_tab_title_active&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;android:textSize&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>28sp<span style="color:#309;font-weight:bold">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;android:drawablePadding&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>14dp<span style="color:#309;font-weight:bold">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;/style&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--BottomNavigationView没有选中的样式，导航默认的字体大小就是12sp--&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;style</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;bottom_tab_title_inactive&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:textSize&#34;</span><span style="color:#f92672">&gt;</span>24sp<span style="color:#f92672">&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:drawablePadding&#34;</span><span style="color:#f92672">&gt;</span>14dp<span style="color:#f92672">&lt;/item&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/style&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!--BottomNavigationView没有选中的样式，导航默认的字体大小就是12sp--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;style</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;bottom_tab_title_inactive&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;android:textSize&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>24sp<span style="color:#309;font-weight:bold">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;android:drawablePadding&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>14dp<span style="color:#309;font-weight:bold">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;/style&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/resources&gt;</span>
 </span></span></code></pre></div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
@@ -354,10 +354,10 @@
   </div>
 
   <div class="post-nav"><a href="/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/" class="post-nav-item" rel="prev" title="springboot打包自定义文件名"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>springboot打包自定义文件名</a>
-      <a href="/posts/wzs2/gm605/" class="post-nav-item" rel="next" title="中兴SDK多端口配置的使用记录">中兴SDK多端口配置的使用记录<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+      <a href="/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/" class="post-nav-item" rel="next" title="as默认打开上一次的状态">as默认打开上一次的状态<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.112.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
               <a href="/"></a></span></div><div class="footer-line statistics"></div></div>

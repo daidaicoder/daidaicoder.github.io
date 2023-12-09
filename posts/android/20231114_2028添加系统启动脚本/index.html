@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>android系统开机启动脚本 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="android系统开机启动脚本" /><meta name="keywords" content='msm8953_64, 原创, android' /><meta itemprop="name" content="android系统开机启动脚本">
+<meta itemprop="description" content="android系统开机启动脚本"><meta itemprop="datePublished" content="2023-11-16T19:41:00+08:00" />
+<meta itemprop="dateModified" content="2023-11-16T19:41:00+08:00" />
+<meta itemprop="wordCount" content="2260">
+<meta itemprop="keywords" content="原创,android,msm8953_64," /><meta property="og:title" content="android系统开机启动脚本" />
+<meta property="og:description" content="android系统开机启动脚本" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/android/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-16T19:41:00+08:00" />
+<meta property="article:modified_time" content="2023-11-16T19:41:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="android系统开机启动脚本"/>
+<meta name="twitter:description" content="android系统开机启动脚本"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" /><link rel="prev" href="https://daizelai.github.io/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/" /><link rel="next" href="https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "android系统开机启动脚本",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/android\/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC\/"
+    },"genre": "posts","keywords": "原创, android, msm8953_64","wordcount":  2260 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/android\/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC\/","datePublished": "2023-11-16T19:41:00+08:00","dateModified": "2023-11-16T19:41:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "android系统开机启动脚本"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>android系统开机启动脚本</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创原创</a>&ensp;<a href="/categories/msm8953_64/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> msm8953_64</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-11-16 19:41:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-16">2023-11-16</time></span>&nbsp;<span title="更新于 2023-11-16 19:41:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-16">2023-11-16</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2260 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 11 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a>
+      <ul>
+        <li><a href="#11功能描述">1.1.功能描述</a></li>
+        <li><a href="#12本次修改的最终patch">1.2.本次修改的最终patch</a></li>
+      </ul>
+    </li>
+    <li><a href="#二开始">二、开始</a>
+      <ul>
+        <li><a href="#21新建一个shell脚本">2.1.新建一个shell脚本</a></li>
+        <li><a href="#22增加脚本初始化">2.2.增加脚本初始化</a></li>
+        <li><a href="#23编译拷贝">2.3.编译拷贝</a></li>
+        <li><a href="#24系统启动时调用">2.4.系统启动时调用</a></li>
+        <li><a href="#25配置shell脚本执行权限">2.5.配置shell脚本执行权限</a></li>
+        <li><a href="#26配置shell脚本执行权限二">2.6.配置shell脚本执行权限二</a></li>
+      </ul>
+    </li>
+    <li><a href="#三编译拷贝文件到某路径">三、编译拷贝文件到某路径</a>
+      <ul>
+        <li><a href="#31方案一之前拷贝其它文件已使用过只要这一步就可以实现适配拷贝一个app用的配置文件">3.1.方案一【之前拷贝其它文件已使用过，只要这一步就可以实现，适配拷贝一个APP用的配置文件】</a></li>
+        <li><a href="#32方案二本次采用">3.2.方案二【本次采用】</a></li>
+      </ul>
+    </li>
+    <li><a href="#四成功的修改了设备的mac地址">四、成功的修改了设备的mac地址</a></li>
+    <li><a href="#五查看脚本文件">五、查看脚本文件</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20231114_2028添加系统启动脚本">20231114_2028添加系统启动脚本</h1>
+<h2 id="一描述">一、描述</h2>
+<h3 id="11功能描述">1.1.功能描述</h3>
+<p>动态修改网卡地址。</p>
+<ul>
+<li>android系统启动时启动脚本。</li>
+<li>android开机启动脚本。</li>
+<li>android系统开机启动服务。</li>
+<li>android开机时启动服务。</li>
+<li>android开机时启动自定义服务。</li>
+<li>android系统自启动服务。</li>
+<li>android启动后修改mac地址。</li>
+<li>android系统启动后修改mac地址。</li>
+<li>msm8953_64启动后修改mac地址。</li>
+<li>msm8953_64启动后修改网卡地址。</li>
+<li>msm8953_64系统启动后修改mac地址。</li>
+</ul>
+<h3 id="12本次修改的最终patch">1.2.本次修改的最终patch</h3>
+<p><a href="./file/modify_mac_when_android_starts.patch">modify_mac_when_android_starts.patch</a></p>
+<h2 id="二开始">二、开始</h2>
+<h3 id="21新建一个shell脚本">2.1.新建一个shell脚本</h3>
+<p>新建shell脚本文件。by daizelai on 2023/11/15 09:45
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/etc/init.gbcom.mac.script.sh</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#099">#!/system/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#099"></span><span style="color:#09f;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># update gbcom mac address.</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># Sample command: /system/bin/sh /system/etc/init.gbcom.mac.script.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># All the output files will be created under root privilege. Please use</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># &#34;adb root&#34; before pulling the generated files.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/system/bin/ifconfig eth0 down
+</span></span><span style="display:flex;"><span>/system/bin/ifconfig eth0 hw ether 00:e0:99:8e:38:0f
+</span></span><span style="display:flex;"><span>/system/bin/ifconfig eth0 up
+</span></span></code></pre></div><h3 id="22增加脚本初始化">2.2.增加脚本初始化</h3>
+<p>配置脚本提交。by daizelai on 2023/11/15 09:20
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/base.mk</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span><span style="color:#033">INIT</span> <span style="color:#555">+=</span> fstab.qcom
+</span></span><span style="display:flex;"><span><span style="color:#033">INIT</span> <span style="color:#555">+=</span> init.qcom.sensors.sh
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span><span style="color:#033">INIT</span> <span style="color:#555">+=</span> init.gbcom.mac.script.sh
+</span></span></code></pre></div><h3 id="23编译拷贝">2.3.编译拷贝</h3>
+<p>配置。by daizelai on 2023/11/15 09:27
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/Android.mk</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">CLEAR_VARS</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE</span>       <span style="color:#555">:=</span> init.qcom.sensors.sh
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE_TAGS</span>  <span style="color:#555">:=</span> optional eng
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE_CLASS</span> <span style="color:#555">:=</span> ETC
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_SRC_FILES</span>    <span style="color:#555">:=</span> etc/init.qcom.sensors.sh
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE_PATH</span>  <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">$(</span>TARGET_ROOT_OUT<span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">BUILD_PREBUILT</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">CLEAR_VARS</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+LOCAL_MODULE       </span><span style="color:#555">:</span>= init.gbcom.mac.script.sh
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+LOCAL_MODULE_TAGS  </span><span style="color:#555">:</span>= optional eng
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+LOCAL_MODULE_CLASS </span><span style="color:#555">:</span>= ETC
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+LOCAL_SRC_FILES    </span><span style="color:#555">:</span>= etc/init.gbcom.mac.script.sh
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">BUILD_PREBUILT</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">ifneq</span> <span style="color:#a00;background-color:#faa">(,</span><span style="color:#069;font-weight:bold">$(</span><span style="color:#033">filter</span> <span style="color:#033">userdebug</span> <span style="color:#033">eng</span>, <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">TARGET_BUILD_VARIANT</span><span style="color:#069;font-weight:bold">))</span><span style="color:#a00;background-color:#faa">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a00;background-color:#faa">include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">CLEAR_VARS</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#033">LOCAL_MODULE</span>       <span style="color:#555">:=</span> init.qcom.test.rc
+</span></span><span style="display:flex;"><span>    LOCAL_MODULE_TAGS  :<span style="color:#555">=</span> optional eng
+</span></span><span style="display:flex;"><span>    LOCAL_MODULE_CLASS :<span style="color:#555">=</span> ETC
+</span></span><span style="display:flex;"><span>    LOCAL_SRC_FILES    :<span style="color:#555">=</span> etc/init.qcom.test.rc
+</span></span><span style="display:flex;"><span>    LOCAL_MODULE_PATH  :<span style="color:#555">=</span> <span style="color:#069;font-weight:bold">$(</span>TARGET_ROOT_OUT<span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    include <span style="color:#069;font-weight:bold">$(</span>BUILD_PREBUILT<span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">endif</span>
+</span></span></code></pre></div><h3 id="24系统启动时调用">2.4.系统启动时调用</h3>
+<p>系统启动后调用脚本。
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/etc/init.qcom.rc</p>
+<pre tabindex="0"><code class="language-rc" data-lang="rc">on property:sys.boot_completed=1
+    write /dev/kmsg &#34;Boot completed &#34;
+    #Reset read ahead for dm-0 and dm-1 to 512kb
+    write /sys/block/dm-0/queue/read_ahead_kb 512
+    write /sys/block/dm-1/queue/read_ahead_kb 512
+    #WDSP FW boot sysfs node used by STHAL
+    chown media audio /sys/kernel/wdsp0/boot
+    #CPE fw_name used by sound trigger HAL
+    chown media audio /sys/kernel/wcd_cpe0/fw_name
++    #update sh
++    chmod 0777 /system/etc/init.gbcom.mac.script.sh
++    start update_gbcom_mac
+
+on property:sys.boot_completed=1 &amp;&amp;property:gsm.version.baseband=*
+    setprop persist.radio.baseband.quec ${gsm.version.baseband}
+
+......
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_wigig0 /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
++
++service update_gbcom_mac /system/bin/sh /system/etc/init.gbcom.mac.script.sh
++    class main
++    user root
++    group root shell system
++    disabled
++    oneshot
+
+service ptt_socket_app /system/bin/ptt_socket_app -d
+    class main
+    user root
+    group root
+    oneshot
+</code></pre><h3 id="25配置shell脚本执行权限">2.5.配置shell脚本执行权限</h3>
+<p>脚本执行权限。
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/sepolicy/common/file_contexts</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#09f;font-style:italic">###################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># cache files</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">/cache/FTM_AP(/.*)?                                                  u:object_r:mmi_data_file:s0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#ethan add for wifi nv file</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">/system/bin/WifiNvService                                            u:object_r:mmi_exec:s0</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">+###################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">+# update gbcom mac</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">+#</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">+/system/bin/init.gbcom.mac.script\.sh                                           u:object_r:qti_init_shell_exec:s0</span>
+</span></span></code></pre></div><h3 id="26配置shell脚本执行权限二">2.6.配置shell脚本执行权限二</h3>
+<p>shell权限继续配置。
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/sepolicy/common/init_shell.te</p>
+<pre tabindex="0"><code class="language-te" data-lang="te"># Restricted domain for shell processes spawned by init.
+# Normally these are shell commands or scripts invoked via sh
+# from an init*.rc file.  No service should ever run in this domain.
+type qti_init_shell, domain, domain_deprecated;
++type qti_init_shell_exec, exec_type,file_type;
+domain_auto_trans(init, shell_exec, qti_init_shell)
+
+# For executing init shell scripts (init.qcom.early_boot.sh)
+allow qti_init_shell rootfs:file entrypoint;
+
+......
+
+#Allow /sys access to write zram disksize
+allow qti_init_shell sysfs_zram:dir r_dir_perms;
+allow qti_init_shell sysfs_zram:file w_file_perms;
+
+# To get GPU frequencies
+allow qti_init_shell sysfs_kgsl:file r_file_perms;
++
++# update gbcom mac
++allow qti_init_shell sdcardfs:chr_file {read};
++allow qti_init_shell mnt_user_file:dir search;
++allow qti_init_shell mnt_user_file:lnk_file read;
++allow qti_init_shell sdcardfs:dir search;
++allow qti_init_shell storage_file:dir search;
++allow qti_init_shell storage_file:lnk_file read;
++allow qti_init_shell tmpfs:lnk_file read;
++allow qti_init_shell sysfs:file {read write};
+</code></pre><h2 id="三编译拷贝文件到某路径">三、编译拷贝文件到某路径</h2>
+<h3 id="31方案一之前拷贝其它文件已使用过只要这一步就可以实现适配拷贝一个app用的配置文件">3.1.方案一【之前拷贝其它文件已使用过，只要这一步就可以实现，适配拷贝一个APP用的配置文件】</h3>
+<p>关键字：预置文件，拷贝文件，默认文件，默认配置文件。</p>
+<p>在msm8953_64 android7.1中，默认放入文件。
+将该脚本从编译路径下拷贝到生成系统文件的指定路径下，此方法可以在刷机包中预放配置文件了。
+路径：device/qcom/msm8953_64/msm8953_64.mk</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span> <span style="color:#033">PRODUCT_COPY_FILES</span> <span style="color:#555">+=</span> <span style="color:#c30;font-weight:bold">\
+</span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span> 	device/qcom/common/rootdir/etc/init.gbcom.mac.script.sh:system/etc/init.gbcom.mac.script.sh
+</span></span></code></pre></div><h3 id="32方案二本次采用">3.2.方案二【本次采用】</h3>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/Android.mk</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">CLEAR_VARS</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE</span>       <span style="color:#555">:=</span> init.qcom.sensors.sh
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE_TAGS</span>  <span style="color:#555">:=</span> optional eng
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE_CLASS</span> <span style="color:#555">:=</span> ETC
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_SRC_FILES</span>    <span style="color:#555">:=</span> etc/init.qcom.sensors.sh
+</span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE_PATH</span>  <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">$(</span>TARGET_ROOT_OUT<span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">BUILD_PREBUILT</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">CLEAR_VARS</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+LOCAL_MODULE       </span><span style="color:#555">:</span>= init.gbcom.mac.script.sh
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+LOCAL_MODULE_TAGS  </span><span style="color:#555">:</span>= optional eng
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+LOCAL_MODULE_CLASS </span><span style="color:#555">:</span>= ETC
+</span></span><span style="display:flex;"><span><span style="color:#c0f">+LOCAL_SRC_FILES    </span><span style="color:#555">:</span>= etc/init.gbcom.mac.script.sh
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#include $(BUILD_EXECUTABLE) 不要使用这个
+</span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#a00;background-color:#faa">+include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">BUILD_PREBUILT</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">ifneq</span> <span style="color:#a00;background-color:#faa">(,</span><span style="color:#069;font-weight:bold">$(</span><span style="color:#033">filter</span> <span style="color:#033">userdebug</span> <span style="color:#033">eng</span>, <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">TARGET_BUILD_VARIANT</span><span style="color:#069;font-weight:bold">))</span><span style="color:#a00;background-color:#faa">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a00;background-color:#faa">include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">CLEAR_VARS</span><span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#033">LOCAL_MODULE</span>       <span style="color:#555">:=</span> init.qcom.test.rc
+</span></span><span style="display:flex;"><span>    LOCAL_MODULE_TAGS  :<span style="color:#555">=</span> optional eng
+</span></span><span style="display:flex;"><span>    LOCAL_MODULE_CLASS :<span style="color:#555">=</span> ETC
+</span></span><span style="display:flex;"><span>    LOCAL_SRC_FILES    :<span style="color:#555">=</span> etc/init.qcom.test.rc
+</span></span><span style="display:flex;"><span>    LOCAL_MODULE_PATH  :<span style="color:#555">=</span> <span style="color:#069;font-weight:bold">$(</span>TARGET_ROOT_OUT<span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    include <span style="color:#069;font-weight:bold">$(</span>BUILD_PREBUILT<span style="color:#069;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">endif</span>
+</span></span></code></pre></div><p>最开始使用<code>#include $(BUILD_EXECUTABLE)</code>这个，然后一编译<code>make -j20</code>就出错，然后看了下以前正常编译通过的<code>out/target/product/msm8953_64/system/etc/qca6234-service.sh</code>文件，然后对比了下<code>/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/Android.mk</code>中<code>qca6234-service.sh</code>对比的配置，修改成一样的<code>include $(BUILD_PREBUILT)</code>，然后使用<code>make -j20</code>编译成功。</p>
+<p>可以看到，下面编译出的产物中已经有<code>init.gbcom.mac.script.sh</code>文件了。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost etc]$ date
+Wed Nov 15 14:29:17 CST 2023
+[android_SC20@localhost etc]$ pwd
+/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/out/target/product/msm8953_64/system/etc
+[android_SC20@localhost etc]$ ls -l
+total 1692
+drwxrwxr-x 4 android_SC20 android_SC20   4096 Nov 15 14:15 acdbdata
+-rwxrwxr-x 1 android_SC20 android_SC20   1054 Nov 15 14:15 apdr.conf
+-rw-rw-r-- 1 android_SC20 android_SC20   2308 Nov 15 14:15 appops_policy.xml
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 13:45 bluetooth
+-rwxrwxr-x 1 android_SC20 android_SC20  30438 Nov 15 14:15 cacert_location.pem
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 camera
+-rwxrwxr-x 1 android_SC20 android_SC20   3252 Nov 15 14:15 capability.xml
+-rw-rw-r-- 1 android_SC20 android_SC20 989184 Nov 15 14:15 cdrom_install.iso
+-rw-rw-r-- 1 android_SC20 android_SC20   1045 Nov 15 14:15 clatd.conf
+drwxrwxr-x 3 android_SC20 android_SC20   4096 Nov 15 14:15 cne
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 data
+drwxrwxr-x 3 android_SC20 android_SC20   4096 Nov 15 14:15 dpm
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 drc
+-rwxrwxr-x 1 android_SC20 android_SC20   1362 Nov 15 14:15 ethertypes
+drwxrwxr-x 4 android_SC20 android_SC20   4096 Nov 15 14:15 firmware
+-rwxrwxr-x 1 android_SC20 android_SC20   1826 Nov 15 13:50 flp.conf
+-rwxrwxr-x 1 android_SC20 android_SC20  14103 Nov 15 13:50 fonts.xml
+-rw-rw-r-- 1 android_SC20 android_SC20    312 Nov 15 13:50 fs_config_files
+-rwxrwxr-x 1 android_SC20 android_SC20  12225 Nov 15 14:15 ftm_test_config
+-rwxrwxr-x 1 android_SC20 android_SC20  27930 Nov 15 14:15 ftm_test_config_msm8953-sku3-tasha-snd-card
+-rwxrwxr-x 1 android_SC20 android_SC20  11604 Nov 15 14:15 ftm_test_config_mtp
+-rwxrwxr-x 1 android_SC20 android_SC20  32166 Nov 15 14:15 ftm_test_config_wcd9335
+-rw-rw-r-- 1 android_SC20 android_SC20   5046 Nov 15 14:15 gps.conf
+-rwxrwxr-x 1 android_SC20 android_SC20   1918 Nov 15 14:11 hcidump.sh
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 hostapd
+-rw-rw-r-- 1 android_SC20 android_SC20   3222 Nov 15 14:15 hsic.control.bt.sh
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 init
+-rwxrwxr-x 1 android_SC20 android_SC20   2767 Nov 15 14:15 init.ath3k.bt.sh
+-rwxrwxr-x 1 android_SC20 android_SC20   1773 Nov 15 14:15 init.crda.sh
+-rw-rw-r-- 1 android_SC20 android_SC20   1972 Nov 15 14:15 init.gbcom.mac.script.sh
+-rw-rw-r-- 1 android_SC20 android_SC20   4987 Nov 15 14:15 init.qcom.audio.sh
+-rw-rw-r-- 1 android_SC20 android_SC20  10269 Nov 15 14:15 init.qcom.bt.sh
+-rwxrwxr-x 1 android_SC20 android_SC20   3651 Nov 15 14:15 init.qcom.coex.sh
+-rwxrwxr-x 1 android_SC20 android_SC20  22317 Nov 15 14:15 init.qcom.debug.sh
+-rw-rw-r-- 1 android_SC20 android_SC20   1725 Nov 15 14:15 init.qcom.efs.sync.sh
+-rwxrwxr-x 1 android_SC20 android_SC20   2738 Nov 15 14:15 init.qcom.fm.sh
+-rw-rw-r-- 1 android_SC20 android_SC20 125621 Nov 15 14:15 init.qcom.post_boot.sh
+-rwxrwxr-x 1 android_SC20 android_SC20   2767 Nov 15 14:15 init.qcom.sdio.sh
+-rw-rw-r-- 1 android_SC20 android_SC20   1985 Nov 15 14:15 init.qcom.testscripts.sh
+-rw-rw-r-- 1 android_SC20 android_SC20   4560 Nov 15 14:15 init.qcom.uicc.sh
+-rw-rw-r-- 1 android_SC20 android_SC20  19064 Nov 15 14:15 init.qcom.wifi.sh
+-rw-rw-r-- 1 android_SC20 android_SC20   2157 Nov 15 14:15 init.qti.ims.sh
+-rw-rw-r-- 1 android_SC20 android_SC20   4078 Nov 15 14:15 IPACM_cfg.xml
+-rwxrwxr-x 1 android_SC20 android_SC20   6339 Nov 15 14:15 izat.conf
+-rw-rw-r-- 1 android_SC20 android_SC20  17826 Nov 15 14:15 libnfc-brcm.conf
+-rwxrwxr-x 1 android_SC20 android_SC20  14158 Nov 15 14:15 libnfc-mtp_default.conf
+-rwxrwxr-x 1 android_SC20 android_SC20  14158 Nov 15 14:15 libnfc-mtp_rf1.conf
+-rwxrwxr-x 1 android_SC20 android_SC20  14158 Nov 15 14:15 libnfc-mtp_rf2.conf
+-rw-rw-r-- 1 android_SC20 android_SC20  12352 Nov 15 14:15 libnfc-nxp_default.conf
+-rwxrwxr-x 1 android_SC20 android_SC20  14158 Nov 15 14:15 libnfc-qrd_default.conf
+-rwxrwxr-x 1 android_SC20 android_SC20  14158 Nov 15 14:15 libnfc-qrd_rf1.conf
+-rwxrwxr-x 1 android_SC20 android_SC20  14158 Nov 15 14:15 libnfc-qrd_rf2.conf
+-rwxrwxr-x 1 android_SC20 android_SC20   1678 Nov 15 14:15 lowi.conf
+-rw-rw-r-- 1 android_SC20 android_SC20    495 Nov 15 14:15 mkshrc
+drwxrwxr-x 3 android_SC20 android_SC20   4096 Nov 15 14:15 mmi
+-rw-rw-r-- 1 android_SC20 android_SC20   4197 Nov 15 14:15 nqnfcee_access.xml
+-rw-rw-r-- 1 android_SC20 android_SC20   4197 Nov 15 14:15 nqnfcse_access.xml
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 permissions
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 ppp
+-rw-rw-r-- 1 android_SC20 android_SC20   3740 Nov 15 14:15 qca6234-service.sh
+-rwxrwxr-x 1 android_SC20 android_SC20     94 Nov 15 14:15 qmi_fw.conf
+-rwxrwxr-x 1 android_SC20 android_SC20   2251 Nov 15 14:15 sap.conf
+drwxrwxr-x 3 android_SC20 android_SC20   4096 Nov 15 14:15 security
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 sensors
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 surround_sound_3mic
+-rwxrwxr-x 1 android_SC20 android_SC20     84 Nov 15 14:15 thermal-engine.conf
+-rw-rw-r-- 1 android_SC20 android_SC20   1630 Nov 15 14:15 vold.fstab
+-rwxrwxr-x 1 android_SC20 android_SC20  27558 Nov 15 14:15 wfdconfigsink.xml
+-rwxrwxr-x 1 android_SC20 android_SC20  24168 Nov 15 14:15 wfdconfig.xml
+drwxrwxr-x 2 android_SC20 android_SC20   4096 Nov 15 14:15 wifi
+-rwxrwxr-x 1 android_SC20 android_SC20   1265 Nov 15 14:15 xtra_root_cert.pem
+-rwxrwxr-x 1 android_SC20 android_SC20   3312 Nov 15 14:15 xtwifi.conf
+[android_SC20@localhost etc]$ 
+</code></pre><p>再看一下<code>init.gbcom.mac.script.sh</code>文件内容，就是我开始编辑的脚本内容。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#555">[</span>android_SC20@localhost etc<span style="color:#555">]</span>$ cat init.gbcom.mac.script.sh 
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#!/system/bin/sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># Copyright (c) 2015, The Linux Foundation. All rights reserved.</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># Redistribution and use in source and binary forms, with or without</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># modification, are permitted provided that the following conditions are met:</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#     * Redistributions of source code must retain the above copyright</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#       notice, this list of conditions and the following disclaimer.</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#     * Redistributions in binary form must reproduce the above copyright</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#       notice, this list of conditions and the following disclaimer in the</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#       documentation and/or other materials provided with the distribution.</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#     * Neither the name of The Linux Foundation nor</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#       the names of its contributors may be used to endorse or promote</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#       products derived from this software without specific prior written</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#       permission.</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &#34;AS IS&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># This is the file for test teams to trigger their test setup.</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># Sample command: /system/bin/sh /sdcard/command.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># All the output files will be created under root privilege. Please use</span>
+</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># &#34;adb root&#34; before pulling the generated files.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/system/bin/ifconfig eth0 down
+</span></span><span style="display:flex;"><span>/system/bin/ifconfig eth0 hw ether 00:e0:99:8e:38:0f
+</span></span><span style="display:flex;"><span>/system/bin/ifconfig eth0 up
+</span></span><span style="display:flex;"><span><span style="color:#555">[</span>android_SC20@localhost etc<span style="color:#555">]</span>$
+</span></span></code></pre></div><h2 id="四成功的修改了设备的mac地址">四、成功的修改了设备的mac地址</h2>
+<p><a href="./file/sessionSerial-COM10Serial-COM10_11161533-success.log">系统启动后成功修改了mac地址-串口日志</a></p>
+<pre tabindex="0"><code class="language-log" data-lang="log">msm8953_64:/ $ ifconfig
+ifconfig: socket 2 0: Permission denied
+1|msm8953_64:/ $ su
+msm8953_64:/ # ifconfig
+rmnet_ipa0 Link encap:UNSPEC  
+          UP RUNNING  MTU:2000  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 TX bytes:0 
+
+dummy0    Link encap:Ethernet  HWaddr ba:ce:7d:99:e4:98
+          inet6 addr: fe80::b8ce:7dff:fe99:e498/64 Scope: Link
+          UP BROADCAST RUNNING NOARP  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:0 
+          RX bytes:0 TX bytes:210 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0 
+          inet6 addr: ::1/128 Scope: Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:0 
+          RX bytes:0 TX bytes:0 
+
+msm8953_64:/ # [   73.458947] init: Service &#39;bootanim&#39; (pid 861) exited with status 0
+[   73.603171] init: write_file: Unable to open &#39;/sys/block/dm-1/queue/read_ahead_kb&#39;: No such file or directory
+[   73.615727] init: Starting service &#39;update_gbcom_mac&#39;...
+[   73.622923] init: Starting service &#39;qcom-post-boot&#39;...
+[   73.629895] init: Starting service &#39;qti-testscripts&#39;...
+[   73.636499] init: cannot find &#39;/system/bin/qrngp&#39; (No such file or directory), disabling &#39;qrngp&#39;
+[   73.644807] init: write_file: Unable to open &#39;/sys/class/leds/green/brightness&#39;: No such file or directory
+[   73.672386] init: write_file: Unable to write to &#39;/sys/class/gpio/export&#39;: Device or resource busy
+[   73.683099] init: write_file: Unable to open &#39;/sys/class/gpio/gpio44/direction&#39;: No such file or directory
+[   73.710622] init: Starting service &#39;cs-post-boot&#39;...
+[   73.720813] init: Service &#39;qti-testscripts&#39; (pid 2889) exited with status 0
+[   73.730325] init: Starting service &#39;exec 4 (/system/bin/bootstat)&#39;...
+[   73.772386] init: Service &#39;cs-post-boot&#39; (pid 2899) exited with status 0
+[   73.780828] init: Service &#39;exec 4 (/system/bin/bootstat)&#39; (pid 2901) exited with status 0
+[   73.793682] init: Starting service &#39;exec 5 (/system/bin/bootstat)&#39;...
+[   73.804020] init: Service &#39;update_gbcom_mac&#39; (pid 2881) exited with status 0
+[   73.850487] init: Service &#39;exec 5 (/system/bin/bootstat)&#39; (pid 2918) exited with status 0
+[   73.860162] init: Starting service &#39;exec 6 (/system/bin/bootstat)&#39;...
+[   73.922070] init: Service &#39;exec 6 (/system/bin/bootstat)&#39; (pid 2920) exited with status 0
+[   73.931011] init: Starting service &#39;exec 7 (/system/bin/bootstat)&#39;...
+[   73.964790] init: Service &#39;exec 7 (/system/bin/bootstat)&#39; (pid 2925) exited with status 0
+[   74.374007] init: cannot find &#39;/system/vendor/bin/gamed&#39; (No such file or directory), disabling &#39;gamed&#39;
+[   74.396765] devbw soc:qcom,cpubw: dev_pm_opp_get_opp_count: device OPP not found (-19)
+
+msm8953_64:/ # ifconfig
+rmnet_ipa0 Link encap:UNSPEC  
+          UP RUNNING  MTU:2000  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 TX bytes:0 
+
+eth0      Link encap:Ethernet  HWaddr 00:e0:99:8e:38:0f
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 TX bytes:0 
+
+dummy0    Link encap:Ethernet  HWaddr ba:ce:7d:99:e4:98
+          inet6 addr: fe80::b8ce:7dff:fe99:e498/64 Scope: Link
+          UP BROADCAST RUNNING NOARP  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:0 
+          RX bytes:0 TX bytes:210 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0 
+          inet6 addr: ::1/128 Scope: Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:0 
+          RX bytes:0 TX bytes:0 
+
+msm8953_64:/ # date
+Mon Feb  9 14:58:44 CST 1970
+msm8953_64:/ # ifconfig
+rmnet_ipa0 Link encap:UNSPEC  
+          UP RUNNING  MTU:2000  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 TX bytes:0 
+
+eth0      Link encap:Ethernet  HWaddr 00:e0:99:8e:38:0f
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 TX bytes:0 
+
+dummy0    Link encap:Ethernet  HWaddr ba:ce:7d:99:e4:98
+          inet6 addr: fe80::b8ce:7dff:fe99:e498/64 Scope: Link
+          UP BROADCAST RUNNING NOARP  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:0 
+          RX bytes:0 TX bytes:210 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0 
+          inet6 addr: ::1/128 Scope: Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:2 errors:0 dropped:0 overruns:0 frame:0 
+          TX packets:2 errors:0 dropped:0 overruns:0 carrier:0 
+          collisions:0 txqueuelen:0 
+          RX bytes:240 TX bytes:240 
+</code></pre><h2 id="五查看脚本文件">五、查看脚本文件</h2>
+<p>查看设备板子中的脚本文件<code>init.gbcom.mac.script.sh</code>。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/system/etc # pwd
+/system/etc
+msm8953_64:/system/etc # date
+Mon Feb  9 15:13:19 CST 1970
+msm8953_64:/system/etc # ls -l *.sh
+-rw-r--r-- 1 root root   1918 2023-11-16 16:34 hcidump.sh
+-rw-r--r-- 1 root root   3222 2023-11-16 16:41 hsic.control.bt.sh
+-rw-r--r-- 1 root root   2767 2023-11-16 16:41 init.ath3k.bt.sh
+-rw-r--r-- 1 root root   1773 2023-11-16 16:41 init.crda.sh
+-rw-r--r-- 1 root root    417 2023-11-16 16:41 init.gbcom.mac.script.sh
+-rw-r--r-- 1 root root   4987 2023-11-16 16:41 init.qcom.audio.sh
+-rw-r--r-- 1 root root  10269 2023-11-16 16:41 init.qcom.bt.sh
+-rw-r--r-- 1 root root   3651 2023-11-16 16:41 init.qcom.coex.sh
+-rw-r--r-- 1 root root  22317 2023-11-16 16:41 init.qcom.debug.sh
+-rw-r--r-- 1 root root   1725 2023-11-16 16:41 init.qcom.efs.sync.sh
+-rw-r--r-- 1 root root   2738 2023-11-16 16:41 init.qcom.fm.sh
+-rw-r--r-- 1 root root 125621 2023-11-16 16:41 init.qcom.post_boot.sh
+-rw-r--r-- 1 root root   2767 2023-11-16 16:41 init.qcom.sdio.sh
+-rw-r--r-- 1 root root   1985 2023-11-16 16:41 init.qcom.testscripts.sh
+-rw-r--r-- 1 root root   4560 2023-11-16 16:41 init.qcom.uicc.sh
+-rw-r--r-- 1 root root  19064 2023-11-16 16:41 init.qcom.wifi.sh
+-rw-r--r-- 1 root root   2157 2023-11-16 16:41 init.qti.ims.sh
+-rw-r--r-- 1 root root   3740 2023-11-16 16:41 qca6234-service.sh
+msm8953_64:/system/etc # 
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-11-16 19:41:00">更新于 2023-11-16&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/msm8953_64/' class="post-tag">msm8953_64</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/" class="post-nav-item" rel="prev" title="android实现浮动窗口记录"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>android实现浮动窗口记录</a>
+      <a href="/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/" class="post-nav-item" rel="next" title="编译android系统user版本时默认开启adb模式">编译android系统user版本时默认开启adb模式<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

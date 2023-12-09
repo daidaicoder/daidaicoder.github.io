@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>系统启动后修改usb网卡的mac地址 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="系统启动后修改usb网卡的mac地址" /><meta name="keywords" content='msm8953_64, 原创, android' /><meta itemprop="name" content="系统启动后修改usb网卡的mac地址">
+<meta itemprop="description" content="系统启动后修改usb网卡的mac地址"><meta itemprop="datePublished" content="2023-11-30T11:15:00+08:00" />
+<meta itemprop="dateModified" content="2023-11-30T11:15:00+08:00" />
+<meta itemprop="wordCount" content="475">
+<meta itemprop="keywords" content="原创,android,msm8953_64,SC60," /><meta property="og:title" content="系统启动后修改usb网卡的mac地址" />
+<meta property="og:description" content="系统启动后修改usb网卡的mac地址" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/sc60/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-30T11:15:00+08:00" />
+<meta property="article:modified_time" content="2023-11-30T11:15:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="系统启动后修改usb网卡的mac地址"/>
+<meta name="twitter:description" content="系统启动后修改usb网卡的mac地址"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/sc60/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80/" /><link rel="prev" href="https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="next" href="https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "系统启动后修改usb网卡的mac地址",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/sc60\/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80\/"
+    },"genre": "posts","keywords": "原创, android, msm8953_64, SC60","wordcount":  475 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/sc60\/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80\/","datePublished": "2023-11-30T11:15:00+08:00","dateModified": "2023-11-30T11:15:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "系统启动后修改usb网卡的mac地址"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>系统启动后修改usb网卡的mac地址</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/msm8953_64/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> msm8953_64</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/sc60/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> SC60</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-11-30 11:15:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-30">2023-11-30</time></span>&nbsp;<span title="更新于 2023-11-30 11:15:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-30">2023-11-30</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 475 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 3 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二配置文件">二、配置文件</a>
+      <ul>
+        <li><a href="#21配置文件内容">2.1.配置文件内容</a></li>
+        <li><a href="#22配置文件说明">2.2.配置文件说明</a></li>
+        <li><a href="#23配置文件路径">2.3.配置文件路径</a></li>
+      </ul>
+    </li>
+    <li><a href="#三基本逻辑">三、基本逻辑</a></li>
+    <li><a href="#四操作说明">四、操作说明</a>
+      <ul>
+        <li><a href="#41编辑配置文件">4.1.编辑配置文件</a></li>
+        <li><a href="#42替换配置文件">4.2.替换配置文件</a></li>
+        <li><a href="#43重启设备生效">4.3.重启设备生效</a></li>
+      </ul>
+    </li>
+    <li><a href="#五检查结果">五、检查结果</a>
+      <ul>
+        <li><a href="#51检查命令">5.1.检查命令</a></li>
+        <li><a href="#52查看默认mac地址">5.2.查看默认mac地址</a></li>
+        <li><a href="#53导入配置文件">5.3.导入配置文件</a></li>
+        <li><a href="#54重启生效">5.4.重启生效</a></li>
+        <li><a href="#55查看当前mac地址">5.5.查看当前mac地址</a></li>
+        <li><a href="#56反复验证">5.6.反复验证</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20231130_1115系统启动后修改usb网卡的mac地址">20231130_1115系统启动后修改usb网卡的mac地址</h1>
+<h2 id="一描述">一、描述</h2>
+<p>由于无法通过工具直接修改usb网卡的mac地址，所以做了个变通的方法，通过在系统启动后来修改mac地址。</p>
+<p>配置文件样本： <a href="./file/system_config.ini">system_config.ini</a></p>
+<!-- raw HTML omitted -->
+<h2 id="二配置文件">二、配置文件</h2>
+<h3 id="21配置文件内容">2.1.配置文件内容</h3>
+<p>也是在配置文件中配置参数。如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">[system]</span>
+</span></span><span style="display:flex;"><span><span style="color:#309">self_mac</span><span style="color:#555">=</span><span style="color:#c30">11:aa:bb:cc:dd</span>
+</span></span></code></pre></div><p>注意，配置时请使用合法的mac地址，非法的mac地址就不会生效。</p>
+<h3 id="22配置文件说明">2.2.配置文件说明</h3>
+<p>配置文件中的<code>[system]</code>只是为了区分，最主要的配置项是<code>self_mac</code>。</p>
+<ul>
+<li>其中，<code>self_mac</code>表示修改后的mac地址，请设置合法mac地址。</li>
+<li>配置项中=号前后不需要空格。</li>
+</ul>
+<p>当系统在启动时，检测到<code>self_mac</code>值时，将会修改<code>eth0</code>的mac地址。</p>
+<h3 id="23配置文件路径">2.3.配置文件路径</h3>
+<p>配置文件存放在<code>/custom/metro/system</code>路径下。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/custom/metro/system # pwd
+/custom/metro/system
+msm8953_64:/custom/metro/system # ls -l
+total 8
+-rw-rw-rw- 1 root root 100 2023-11-29 19:17 system_config.ini
+msm8953_64:/custom/metro/system #
+</code></pre><h2 id="三基本逻辑">三、基本逻辑</h2>
+<p>修改mac地址的基本逻辑如下：</p>
+<ol>
+<li>端口<code>eth0</code>不在，不会设置<code>mac地址</code>。</li>
+<li>无配置文件，不会设置<code>mac地址</code>。</li>
+<li>有<code>self_mac=</code>但未设置值，不会设置<code>mac地址</code>。</li>
+<li>配置了<code>self_mac</code>地址，但是<code>mac</code>不合法，不会设置<code>mac地址</code>。</li>
+<li>正确的设置了合法的<code>mac地址</code>，会设置<code>mac地址</code>。</li>
+</ol>
+<h2 id="四操作说明">四、操作说明</h2>
+<h3 id="41编辑配置文件">4.1.编辑配置文件</h3>
+<p>可以根据需要配置正确的配置项。</p>
+<h3 id="42替换配置文件">4.2.替换配置文件</h3>
+<p>使用adb命令替换配置文件，如果终端系统刷机后，此默认是没有配置项的，需要人工去替换配置文件。</p>
+<p>本配置文件一般会有产测的时候需要做这一步，后期可根据需要做好维护工作。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">C:\Users\daizelai&gt;adb root
+adbd is already running as root
+
+C:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini
+adb.exe: push requires an argument
+
+C:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini /custom/metro/system/
+E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini: 1 file pushed, 0 skipped. 0.1 MB/s (95 bytes in 0.001s)
+
+C:\Users\daizelai&gt;
+</code></pre><h3 id="43重启设备生效">4.3.重启设备生效</h3>
+<p>导入配置后，需要重启设备生效。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/custom/metro/system # reboot
+</code></pre><h2 id="五检查结果">五、检查结果</h2>
+<h3 id="51检查命令">5.1.检查命令</h3>
+<p>检查是否修改成功，可以使用<code>ifconfig</code>命令检查。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># adb shell
+# ifconfig
+</code></pre><h3 id="52查看默认mac地址">5.2.查看默认mac地址</h3>
+<p>未导入配置文件时，查看到的mac地址。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">C:\Users\daizelai&gt;adb connect 192.168.42.137:5566
+connected to 192.168.42.137:5566
+
+C:\Users\daizelai&gt;adb devices
+List of devices attached
+192.168.42.137:5566     device
+
+
+C:\Users\daizelai&gt;adb shell
+msm8953_64:/ # date
+Sat Jan 10 18:04:02 CST 1970
+msm8953_64:/ #
+msm8953_64:/ # ifconfig
+rmnet_ipa0 Link encap:UNSPEC
+          UP RUNNING  MTU:2000  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 TX bytes:0
+
+eth0      Link encap:Ethernet  HWaddr 00:e0:99:8e:26:a1
+          inet addr:192.168.42.137  Bcast:192.168.42.255  Mask:255.255.255.0
+          inet6 addr: fe80::2e0:99ff:fe8e:26a1/64 Scope: Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:21088 errors:0 dropped:1859 overruns:0 frame:0
+          TX packets:681 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:2159787 TX bytes:140030
+
+dummy0    Link encap:Ethernet  HWaddr 9e:10:4c:e9:e4:1f
+          inet6 addr: fe80::9c10:4cff:fee9:e41f/64 Scope: Link
+          UP BROADCAST RUNNING NOARP  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 TX bytes:210
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope: Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:132 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:132 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:12158 TX bytes:12158
+
+msm8953_64:/ #
+</code></pre><h3 id="53导入配置文件">5.3.导入配置文件</h3>
+<p>导入配置文件到设备。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">C:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini /custom/metro/system
+E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini: 1 file pushed, 0 skipped. 0.0 MB/s (100 bytes in 0.006s)
+
+C:\Users\daizelai&gt;adb shell
+msm8953_64:/ # date
+Sat Jan 10 18:06:03 CST 1970
+msm8953_64:/ #
+msm8953_64:/ # cd /custom/metro/system
+msm8953_64:/custom/metro/system # cat system_config.ini
+[system]
+self_mac=00:e0:99:8e:28:a8
+
+[screen]
+reset_code=0xb1,0x31,0xb5,0xbd,0x35
+period_time=8000
+
+msm8953_64:/custom/metro/system #
+</code></pre><h3 id="54重启生效">5.4.重启生效</h3>
+<p>重启生效。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/custom/metro/system # reboot
+</code></pre><h3 id="55查看当前mac地址">5.5.查看当前mac地址</h3>
+<p>查看当前mac地址：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">C:\Users\daizelai&gt;adb connect 192.168.42.137:5566
+already connected to 192.168.42.137:5566
+
+C:\Users\daizelai&gt;date
+当前日期: 2023/11/29 周三
+输入新日期: (年月日)
+
+C:\Users\daizelai&gt;time
+当前时间: 19:19:52.84
+输入新时间:
+
+C:\Users\daizelai&gt;adb shell
+msm8953_64:/ # ifconfig
+rmnet_ipa0 Link encap:UNSPEC
+          UP RUNNING  MTU:2000  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 TX bytes:0
+
+eth0      Link encap:Ethernet  HWaddr 00:e0:99:8e:28:a8
+          inet addr:192.168.42.137  Bcast:192.168.42.255  Mask:255.255.255.0
+          inet6 addr: fe80::2e0:99ff:fe8e:28a8/64 Scope: Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:6634 errors:0 dropped:429 overruns:0 frame:0
+          TX packets:597 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:473425 TX bytes:68361
+
+dummy0    Link encap:Ethernet  HWaddr 1e:a8:8a:35:d9:d0
+          inet6 addr: fe80::1ca8:8aff:fe35:d9d0/64 Scope: Link
+          UP BROADCAST RUNNING NOARP  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 TX bytes:210
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope: Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:93 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:93 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:8013 TX bytes:8013
+
+msm8953_64:/ #
+</code></pre><p>确认当前的<code>eth0</code>的<code>mac地址</code>就是配置文件中的<code>mac地址</code>，以前当前网络是正常上网的，表示修改成功。</p>
+<h3 id="56反复验证">5.6.反复验证</h3>
+<p>还可多重启设备几次，看看mac地址是否一直保持配置文件中的同样的mac地址。</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-11-30 11:15:00">更新于 2023-11-30&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/msm8953_64/' class="post-tag">msm8953_64</a><a href='/tags/sc60/' class="post-tag">SC60</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-nav-item" rel="prev" title="终端屏幕自动修复配置的使用"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>终端屏幕自动修复配置的使用</a>
+      <a href="/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" class="post-nav-item" rel="next" title="Android中XLog框架的使用">Android中XLog框架的使用<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

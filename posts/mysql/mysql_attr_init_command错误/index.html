@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>mysql_attr_init_command错误 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="mysql关于mysql_attr_init_command错误的修复。" /><meta name="keywords" content='原创, mysql, mysql问题修复' /><meta itemprop="name" content="mysql_attr_init_command错误">
+<meta itemprop="description" content="mysql关于mysql_attr_init_command错误的修复。"><meta itemprop="datePublished" content="2016-09-06T19:39:15+08:00" />
+<meta itemprop="dateModified" content="2016-09-06T19:39:15+08:00" />
+<meta itemprop="wordCount" content="271">
+<meta itemprop="keywords" content="原创,mysql,mysql问题修复," /><meta property="og:title" content="mysql_attr_init_command错误" />
+<meta property="og:description" content="mysql关于mysql_attr_init_command错误的修复。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/mysql/mysql_attr_init_command%E9%94%99%E8%AF%AF/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-09-06T19:39:15+08:00" />
+<meta property="article:modified_time" content="2016-09-06T19:39:15+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="mysql_attr_init_command错误"/>
+<meta name="twitter:description" content="mysql关于mysql_attr_init_command错误的修复。"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/mysql/mysql_attr_init_command%E9%94%99%E8%AF%AF/" /><link rel="prev" href="https://daizelai.github.io/posts/mysql/mysql%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/" /><link rel="next" href="https://daizelai.github.io/posts/mysql/mysql/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "mysql_attr_init_command错误",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/mysql\/mysql_attr_init_command%E9%94%99%E8%AF%AF\/"
+    },"genre": "posts","keywords": "原创, mysql, mysql问题修复","wordcount":  271 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/mysql\/mysql_attr_init_command%E9%94%99%E8%AF%AF\/","datePublished": "2016-09-06T19:39:15+08:00","dateModified": "2016-09-06T19:39:15+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "mysql关于mysql_attr_init_command错误的修复。"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>mysql_attr_init_command错误</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-09-06 19:39:15"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-09-06">2016-09-06</time></span>&nbsp;<span title="更新于 2016-09-06 19:39:15"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-09-06">2016-09-06</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 271 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一问题描述">一、问题描述</a>
+      <ul>
+        <li><a href="#11打开web时出现如下问题mysql_attr_init_command">1.1.打开Web时出现如下问题：mysql_attr_init_command</a></li>
+        <li><a href="#12看了一下项目的配置是使用mysqli配置的">1.2.看了一下项目的配置，是使用mysqli配置的</a></li>
+      </ul>
+    </li>
+    <li><a href="#二查看服务器的环境配置">二、查看服务器的环境配置</a>
+      <ul>
+        <li><a href="#21首先看了一下phpinfo中的配置">2.1.首先看了一下phpinfo中的配置</a></li>
+        <li><a href="#22在服务器中查看php的扩展">2.2.在服务器中查看php的扩展</a></li>
+      </ul>
+    </li>
+    <li><a href="#三安装php扩展">三、安装php扩展</a>
+      <ul>
+        <li><a href="#31命令行安装扩展">3.1.命令行安装扩展</a></li>
+        <li><a href="#32使用phpinfo查看是否安装成功">3.2.使用phpinfo查看是否安装成功</a></li>
+        <li><a href="#33使用命令行查看是否安装成功">3.3.使用命令行查看是否安装成功</a></li>
+      </ul>
+    </li>
+    <li><a href="#四查看web效果">四、查看Web效果</a>
+      <ul>
+        <li><a href="#41使用phpinfo查看mysqli扩展是否安装成功">4.1.使用phpinfo查看mysqli扩展是否安装成功</a></li>
+        <li><a href="#42访问web界面查看效果">4.2.访问Web界面查看效果</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="一问题描述">一、问题描述</h2>
+<h3 id="11打开web时出现如下问题mysql_attr_init_command">1.1.打开Web时出现如下问题：mysql_attr_init_command</h3>
+<!-- raw HTML omitted -->
+<p><figure><a class="lightgallery" href="./images/mysql_attr_init_command.jpg" data-thumbnail="./images/mysql_attr_init_command.jpg" data-sub-html="<h2>Mysql错误-MSYQL_ATTR_INIT_COMMAND</h2><p>Mysql错误-MSYQL_ATTR_INIT_COMMAND</p>"><img loading="lazy" src="./images/mysql_attr_init_command.jpg" srcset="./images/mysql_attr_init_command.jpg, ./images/mysql_attr_init_command.jpg 1.5x, ./images/mysql_attr_init_command.jpg 2x" sizes="auto" data-title="Mysql错误-MSYQL_ATTR_INIT_COMMAND" data-alt="Mysql错误-MSYQL_ATTR_INIT_COMMAND" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">Mysql错误-MSYQL_ATTR_INIT_COMMAND</figcaption>
+  </figure></p>
+<h3 id="12看了一下项目的配置是使用mysqli配置的">1.2.看了一下项目的配置，是使用mysqli配置的</h3>
+<p><figure><a class="lightgallery" href="./images/mysql_attr_init_command_project_mysql.jpg" data-thumbnail="./images/mysql_attr_init_command_project_mysql.jpg" data-sub-html="<h2>项目中连接mysql配置</h2><p>项目中连接mysql配置</p>"><img loading="lazy" src="./images/mysql_attr_init_command_project_mysql.jpg" srcset="./images/mysql_attr_init_command_project_mysql.jpg, ./images/mysql_attr_init_command_project_mysql.jpg 1.5x, ./images/mysql_attr_init_command_project_mysql.jpg 2x" sizes="auto" data-title="项目中连接mysql配置" data-alt="项目中连接mysql配置" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">项目中连接mysql配置</figcaption>
+  </figure></p>
+<h2 id="二查看服务器的环境配置">二、查看服务器的环境配置</h2>
+<h3 id="21首先看了一下phpinfo中的配置">2.1.首先看了一下phpinfo中的配置</h3>
+<p><figure><a class="lightgallery" href="./images/mysql_attr_init_command_phpinfo.jpg" data-thumbnail="./images/mysql_attr_init_command_phpinfo.jpg" data-sub-html="<h2>phpinfo配置</h2><p>phpinfo配置</p>"><img loading="lazy" src="./images/mysql_attr_init_command_phpinfo.jpg" srcset="./images/mysql_attr_init_command_phpinfo.jpg, ./images/mysql_attr_init_command_phpinfo.jpg 1.5x, ./images/mysql_attr_init_command_phpinfo.jpg 2x" sizes="auto" data-title="phpinfo配置" data-alt="phpinfo配置" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">phpinfo配置</figcaption>
+  </figure></p>
+<p>在配置中没有看到mysqli这一项扩展。</p>
+<h3 id="22在服务器中查看php的扩展">2.2.在服务器中查看php的扩展</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@edu local]# php -m
+[PHP Modules]
+bz2
+calendar
+Core
+ctype
+curl
+date
+dom
+ereg
+exif
+fileinfo
+filter
+ftp
+gd
+gettext
+gmp
+hash
+iconv
+json
+libxml
+mbstring
+memcache
+mysql
+</code></pre><p>在这里也没有看到mysqli扩展，意思就是没有这个扩展，需要安装了。</p>
+<h2 id="三安装php扩展">三、安装php扩展</h2>
+<h3 id="31命令行安装扩展">3.1.命令行安装扩展</h3>
+<p>在命令行中安装扩展，如下所示：</p>
+<pre><code>[root@edu html]# yum  install  php5-mysqli
+</code></pre>
+<p>第一次使用这种命令时出现错误：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@edu html]# yum  install  php5-mysqli
+Loaded plugins: fastestmirror
+Setting up Install Process
+Loading mirror speeds from cached hostfile
+ * base: mirrors.163.com
+ * epel: ftp.cuhk.edu.hk
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.cn99.com
+No package php5-mysqli available.
+Error: Nothing to do
+</code></pre><p>第二次安装：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@edu html]# yum  install  php-mysqli 
+Loaded plugins: fastestmirror
+Setting up Install Process
+Loading mirror speeds from cached hostfile
+ * base: mirrors.163.com
+ * epel: ftp.cuhk.edu.hk
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.cn99.com
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package php-mysql.x86_64 0:5.3.3-48.el6_8 will be installed
+--&gt; Processing Dependency: php-common(x86-64) = 5.3.3-48.el6_8 for package: php-mysql-5.3.3-48.el6_8.x86_64
+--&gt; Running transaction check
+---&gt; Package php-common.x86_64 0:5.3.3-47.el6 will be updated
+--&gt; Processing Dependency: php-common(x86-64) = 5.3.3-47.el6 for package: php-snmp-5.3.3-47.el6.x86_64
+--&gt; Processing Dependency: php-common(x86-64) = 5.3.3-47.el6 for package: php-xml-5.3.3-47.el6.x86_64
+--&gt; Processing Dependency: php-common(x86-64) = 5.3.3-47.el6 for package: php-xmlrpc-5.3.3-47.el6.x86_64
+--&gt; Processing Dependency: php-common(x86-64) = 5.3.3-47.el6 for package: php-pdo-5.3.3-47.el6.x86_64
+--&gt; Processing Dependency: php-common(x86-64) = 5.3.3-47.el6 for package: php-mbstring-5.3.3-47.el6.x86_64
+--&gt; Processing Dependency: php-common(x86-64) = 5.3.3-47.el6 for package: php-pspell-5.3.3-47.el6.x86_64
+--&gt; Processing Dependency: php-common(x86-64) = 5.3.3-47.el6 for package: php-cli-5.3.3-47.el6.x86_64
+....省略....
+Installed:
+  php-mysql.x86_64 0:5.3.3-48.el6_8                                                                                                 
+
+Dependency Updated:
+  php.x86_64 0:5.3.3-48.el6_8               php-cli.x86_64 0:5.3.3-48.el6_8            php-common.x86_64 0:5.3.3-48.el6_8          
+  php-devel.x86_64 0:5.3.3-48.el6_8         php-gd.x86_64 0:5.3.3-48.el6_8             php-mbstring.x86_64 0:5.3.3-48.el6_8        
+  php-pdo.x86_64 0:5.3.3-48.el6_8           php-pspell.x86_64 0:5.3.3-48.el6_8         php-snmp.x86_64 0:5.3.3-48.el6_8            
+  php-xml.x86_64 0:5.3.3-48.el6_8           php-xmlrpc.x86_64 0:5.3.3-48.el6_8        
+
+Complete!
+[root@edu html]# 
+</code></pre><h3 id="32使用phpinfo查看是否安装成功">3.2.使用phpinfo查看是否安装成功</h3>
+<pre><code>phpinfo()
+</code></pre>
+<h3 id="33使用命令行查看是否安装成功">3.3.使用命令行查看是否安装成功</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@edu local]# php -m
+[PHP Modules]
+....lai省略.....
+gd
+gettext
+gmp
+hash
+iconv
+json
+libxml
+mbstring
+memcache
+mysql
+mysqli
+....lai省略.....
+</code></pre><h2 id="四查看web效果">四、查看Web效果</h2>
+<h3 id="41使用phpinfo查看mysqli扩展是否安装成功">4.1.使用phpinfo查看mysqli扩展是否安装成功</h3>
+<p><figure><a class="lightgallery" href="./images/mysql_attr_init_command_mysql_ext.jpg" data-thumbnail="./images/mysql_attr_init_command_mysql_ext.jpg" data-sub-html="<h2>查看mysqli是否安装成功</h2><p>查看mysqli是否安装成功</p>"><img loading="lazy" src="./images/mysql_attr_init_command_mysql_ext.jpg" srcset="./images/mysql_attr_init_command_mysql_ext.jpg, ./images/mysql_attr_init_command_mysql_ext.jpg 1.5x, ./images/mysql_attr_init_command_mysql_ext.jpg 2x" sizes="auto" data-title="查看mysqli是否安装成功" data-alt="查看mysqli是否安装成功" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">查看mysqli是否安装成功</figcaption>
+  </figure></p>
+<h3 id="42访问web界面查看效果">4.2.访问Web界面查看效果</h3>
+<p><figure><a class="lightgallery" href="./images/mysql_attr_init_commandwebpage.jpg" data-thumbnail="./images/mysql_attr_init_commandwebpage.jpg" data-sub-html="<h2>访问Web页面效果</h2><p>Web界面已可正常访问</p>"><img loading="lazy" src="./images/mysql_attr_init_commandwebpage.jpg" srcset="./images/mysql_attr_init_commandwebpage.jpg, ./images/mysql_attr_init_commandwebpage.jpg 1.5x, ./images/mysql_attr_init_commandwebpage.jpg 2x" sizes="auto" data-title="Web界面已可正常访问" data-alt="访问Web页面效果" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">访问Web页面效果</figcaption>
+  </figure></p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-09-06 19:39:15">更新于 2016-09-06&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/mysql%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/' class="post-tag">mysql问题修复</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/mysql/mysql%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-nav-item" rel="prev" title="mysql导入数据库后乱码的问题"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>mysql导入数据库后乱码的问题</a>
+      <a href="/posts/mysql/mysql/" class="post-nav-item" rel="next" title="mysql创建utf8字符集数据库">mysql创建utf8字符集数据库<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

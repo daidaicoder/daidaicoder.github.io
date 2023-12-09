@@ -1,0 +1,257 @@
+diff --git a/build/core/Makefile b/build/core/Makefile
+index a3ff16b847..33087df475 100755
+--- a/build/core/Makefile
++++ b/build/core/Makefile
+@@ -182,7 +182,7 @@ OEM_THUMBPRINT_PROPERTIES := $(filter $(KNOWN_OEM_THUMBPRINT_PROPERTIES),\
+ #endif
+ 
+ # WZS2train.last.ver=R0015
+-BUILD_DISPLAY_ID := "TX300（5G）-ANDROID-7.1-R0025"
++BUILD_DISPLAY_ID := "TX300（5G）-ANDROID-7.1-R0025.a"
+ 
+ # Accepts a whitespace separated list of product locales such as
+ # (en_US en_AU en_GB...) and returns the first locale in the list with
+diff --git a/device/qcom/common/base.mk b/device/qcom/common/base.mk
+index b7ff909e18..ffec8cfa45 100755
+--- a/device/qcom/common/base.mk
++++ b/device/qcom/common/base.mk
+@@ -285,6 +285,7 @@ INIT += init.mdm.sh
+ INIT += init.qcom.uicc.sh
+ INIT += fstab.qcom
+ INIT += init.qcom.sensors.sh
++INIT += init.gbcom.mac.script.sh
+ 
+ #IPROUTE2
+ IPROUTE2 := ip
+@@ -986,33 +987,33 @@ ifeq ($(TARGET_QUECTEL_BUILD_FASTBOOT),userfastboot)
+  #define fastboot feature , always true when build with userfastboot
+ 	PRODUCT_PROPERTY_OVERRIDES+= \
+     	ro.quectel.bootfast=true
+-    	
++
+    #define fastboot without wallpaper feature, could change to false,if need keep wallpaper
+ 	PRODUCT_PROPERTY_OVERRIDES+= \
+     	ro.quectel.bootfast_nowp=true
+-    	
+-  #define fastboot without keyguard feature, could change to false,if need keep keyguard  	    	
++
++  #define fastboot without keyguard feature, could change to false,if need keep keyguard
+  	PRODUCT_PROPERTY_OVERRIDES+= \
+     	ro.quectel.bootfast_nokg=true
+-    	   	    	
+-  #define  fastboot without bootaudio, could change to 1 ,if need audio 
++
++  #define  fastboot without bootaudio, could change to 1 ,if need audio
+   PRODUCT_PROPERTY_OVERRIDES+= \
+     	ro.quectel.bootwithaudio=0
+-    	
++
+ else
+ 
+ 	 #disable fastboot feature is normal build
+ 	PRODUCT_PROPERTY_OVERRIDES+= \
+     	ro.quectel.bootfast=false
+-    	
++
+ 	PRODUCT_PROPERTY_OVERRIDES+= \
+     	ro.quectel.bootfast_nowp=false
+-    	
++
+ 	PRODUCT_PROPERTY_OVERRIDES+= \
+     	ro.quectel.bootfast_nokg=false
+ 
+   PRODUCT_PROPERTY_OVERRIDES+= \
+-    	ro.quectel.bootwithaudio=1    	
+-    	    	    	    	    	
+-endif 
++    	ro.quectel.bootwithaudio=1
++
++endif
+ #joe add fastboot complie option 20180830
+diff --git a/device/qcom/common/rootdir/Android.mk b/device/qcom/common/rootdir/Android.mk
+index f7618068f4..91a7a40665 100644
+--- a/device/qcom/common/rootdir/Android.mk
++++ b/device/qcom/common/rootdir/Android.mk
+@@ -234,6 +234,13 @@ LOCAL_SRC_FILES    := etc/init.qcom.sensors.sh
+ LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+ include $(BUILD_PREBUILT)
+ 
++include $(CLEAR_VARS)
++LOCAL_MODULE       := init.gbcom.mac.script.sh
++LOCAL_MODULE_TAGS  := optional eng
++LOCAL_MODULE_CLASS := ETC
++LOCAL_SRC_FILES    := etc/init.gbcom.mac.script.sh
++include $(BUILD_PREBUILT)
++
+ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+     include $(CLEAR_VARS)
+     LOCAL_MODULE       := init.qcom.test.rc
+diff --git a/device/qcom/common/rootdir/etc/init.qcom.rc b/device/qcom/common/rootdir/etc/init.qcom.rc
+index 15512e31a2..b0167f26a1 100755
+--- a/device/qcom/common/rootdir/etc/init.qcom.rc
++++ b/device/qcom/common/rootdir/etc/init.qcom.rc
+@@ -434,6 +434,9 @@ on property:sys.boot_completed=1
+     chown media audio /sys/kernel/wdsp0/boot
+     #CPE fw_name used by sound trigger HAL
+     chown media audio /sys/kernel/wcd_cpe0/fw_name
++    #update sh
++    chmod 0777 /system/etc/init.gbcom.mac.script.sh
++    start update_gbcom_mac
+ 
+ on property:sys.boot_completed=1 &&property:gsm.version.baseband=*
+     setprop persist.radio.baseband.quec ${gsm.version.baseband}
+@@ -472,8 +475,8 @@ on property:bluetooth.startbtlogger=true
+ 
+ on property:bluetooth.startbtlogger=false
+     stop bt_logger
+-    
+-    
++
++
+ on property:wifi.ptt_socket_app=false
+     stop ptt_socket_app
+ 
+@@ -486,17 +489,17 @@ on property:wifi.p_socket_app=false
+ on property:wifi.p_socket_app=true
+     start p_socket_app
+ 
+-on property:bt.start=false	
+-    stop bt_ftmdaemon	
++on property:bt.start=false
++    stop bt_ftmdaemon
+ 
+-on property:bt.start=true	
+-    start bt_ftmdaemon	
++on property:bt.start=true
++    start bt_ftmdaemon
+ 
+-service bt_ftmdaemon /system/bin/ftmdaemon -n	
+-    class main	
+-    user root	
+-    group root	
+-    disabled	
++service bt_ftmdaemon /system/bin/ftmdaemon -n
++    class main
++    user root
++    group root
++    disabled
+     oneshot
+ 
+ service p_socket_app /system/bin/ptt_socket_app -v -d -f
+@@ -820,6 +823,13 @@ service iprenew_wigig0 /system/bin/dhcpcd -n
+     disabled
+     oneshot
+ 
++service update_gbcom_mac /system/bin/sh /system/etc/init.gbcom.mac.script.sh
++    class main
++    user root
++    group root shell system
++    disabled
++    oneshot
++
+ service ptt_socket_app /system/bin/ptt_socket_app -d
+     class main
+     user root
+diff --git a/device/qcom/msm8953_64/msm8953_64.mk b/device/qcom/msm8953_64/msm8953_64.mk
+index 43e1ad8d97..10ccbf1716 100755
+--- a/device/qcom/msm8953_64/msm8953_64.mk
++++ b/device/qcom/msm8953_64/msm8953_64.mk
+@@ -57,7 +57,7 @@ PRODUCT_BOOT_JARS += qcmediaplayer
+ # default is nosdcard, S/W button enabled in resource
+ PRODUCT_CHARACTERISTICS := nosdcard
+ 
+-# When can normal compile this module,  need module owner enable below commands 
++# When can normal compile this module,  need module owner enable below commands
+ # font rendering engine feature switch
+ -include $(QCPATH)/common/config/rendering-engine.mk
+ ifneq (,$(strip $(wildcard $(PRODUCT_RENDERING_ENGINE_REVLIB))))
+@@ -214,8 +214,8 @@ PRODUCT_DEL_PACKAGES += \
+ 	CNESettings \
+ 	Csm \
+ 	QSensorTest
+-	
++
+ #added by daizelai end
+ #FEATURE_OPENGLES_EXTENSION_PACK support string config file
+ PRODUCT_COPY_FILES += \
+-        frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
++     frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+diff --git a/device/qcom/sepolicy/common/file_contexts b/device/qcom/sepolicy/common/file_contexts
+index fec8619901..ce169cb66e 100755
+--- a/device/qcom/sepolicy/common/file_contexts
++++ b/device/qcom/sepolicy/common/file_contexts
+@@ -388,3 +388,8 @@
+ 
+ #ethan add for wifi nv file
+ /system/bin/WifiNvService                                            u:object_r:mmi_exec:s0
++
++###################################
++# update gbcom mac
++#
++/system/bin/init.gbcom.mac.script\.sh                                           u:object_r:qti_init_shell_exec:s0
+diff --git a/device/qcom/sepolicy/common/init_shell.te b/device/qcom/sepolicy/common/init_shell.te
+index 3962d29676..c7fc5a236f 100644
+--- a/device/qcom/sepolicy/common/init_shell.te
++++ b/device/qcom/sepolicy/common/init_shell.te
+@@ -2,6 +2,7 @@
+ # Normally these are shell commands or scripts invoked via sh
+ # from an init*.rc file.  No service should ever run in this domain.
+ type qti_init_shell, domain, domain_deprecated;
++type qti_init_shell_exec, exec_type,file_type;
+ domain_auto_trans(init, shell_exec, qti_init_shell)
+ 
+ # For executing init shell scripts (init.qcom.early_boot.sh)
+@@ -199,3 +200,13 @@ allow qti_init_shell sysfs_zram:file w_file_perms;
+ 
+ # To get GPU frequencies
+ allow qti_init_shell sysfs_kgsl:file r_file_perms;
++
++# update gbcom mac
++allow qti_init_shell sdcardfs:chr_file {read};
++allow qti_init_shell mnt_user_file:dir search;
++allow qti_init_shell mnt_user_file:lnk_file read;
++allow qti_init_shell sdcardfs:dir search;
++allow qti_init_shell storage_file:dir search;
++allow qti_init_shell storage_file:lnk_file read;
++allow qti_init_shell tmpfs:lnk_file read;
++allow qti_init_shell sysfs:file {read write};
+diff --git a/kernel/msm-3.18/drivers/Makefile b/kernel/msm-3.18/drivers/Makefile
+index 5b42799aae..e342c0d4ef 100755
+--- a/kernel/msm-3.18/drivers/Makefile
++++ b/kernel/msm-3.18/drivers/Makefile
+@@ -9,7 +9,7 @@ obj-y				+= irqchip/
+ obj-y				+= bus/
+ 
+ obj-$(CONFIG_GENERIC_PHY)	+= phy/
+-obj-y				+= otgid/  
++obj-y				+= otgid/
+ # GPIO must come after pinctrl as gpios may need to mux pins etc
+ obj-y				+= pinctrl/
+ obj-y				+= gpio/
+@@ -172,3 +172,4 @@ obj-$(CONFIG_BIF)		+= bif/
+ obj-$(CONFIG_SENSORS_SSC)	+= sensors/
+ obj-y	+= qdevinfo/
+ obj-y  += gpioclk/
++obj-y  += hello/
+diff --git a/kernel/msm-3.18/drivers/video/mipi_convert.c b/kernel/msm-3.18/drivers/video/mipi_convert.c
+index f4710367ab..8c26608823 100755
+--- a/kernel/msm-3.18/drivers/video/mipi_convert.c
++++ b/kernel/msm-3.18/drivers/video/mipi_convert.c
+@@ -682,7 +682,7 @@ static int thread_func(void *data)
+     }
+ 
+     while (!kthread_should_stop()) {
+-        msleep(15 * 1000);
++        msleep(500);
+         printk(KERN_INFO "wuning thread for recover\n");
+         convert_i2c_read8(pdata->client, I2C_ADDR_MAIN, 0xE0, &reg_val_e0);
+         convert_i2c_read8(pdata->client, I2C_ADDR_MAIN, 0xE1, &reg_val_e1);
+@@ -707,7 +707,7 @@ static int thread_func(void *data)
+                 convert_reset(pdata);
+                 regE5 = convert_i2c_read8_E5(pdata->client);
+                 dev_err(&(pdata->client)->dev, "two line:%d Read E5 [%x]\n",__LINE__,regE5);
+-                printk(KERN_INFO "daizelai add thread for convert_reset\n");
++                printk(KERN_INFO "daizelai add thread for convert_reset too\n");
+ 
+                 function_call_count++;
+                 count++;

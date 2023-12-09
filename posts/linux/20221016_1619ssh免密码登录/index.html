@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>ssh免密码登录 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="20221016_1619ssh免密码登录
+一、描述
+1.1.前言
+by daizelai 2022/10/16 16:20
+本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh" /><meta name="keywords" content='ssh, 免密码登录ssh, 远程登录, 原创' /><meta itemprop="name" content="ssh免密码登录">
+<meta itemprop="description" content="20221016_1619ssh免密码登录
+一、描述
+1.1.前言
+by daizelai 2022/10/16 16:20
+本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh"><meta itemprop="datePublished" content="2022-10-16T06:40:00+08:00" />
+<meta itemprop="dateModified" content="2022-10-16T06:40:00+08:00" />
+<meta itemprop="wordCount" content="1000">
+<meta itemprop="keywords" content="ssh,免密码登录ssh,远程登录,原创," /><meta property="og:title" content="ssh免密码登录" />
+<meta property="og:description" content="20221016_1619ssh免密码登录
+一、描述
+1.1.前言
+by daizelai 2022/10/16 16:20
+本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-16T06:40:00+08:00" />
+<meta property="article:modified_time" content="2022-10-16T06:40:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ssh免密码登录"/>
+<meta name="twitter:description" content="20221016_1619ssh免密码登录
+一、描述
+1.1.前言
+by daizelai 2022/10/16 16:20
+本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" /><link rel="prev" href="https://daizelai.github.io/posts/wzs2/20221010_1750%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E5%9B%BA%E5%AE%9A%E5%8F%B0%E7%AB%99%E9%80%89%E5%8C%BA%E5%B9%BF%E6%92%AD%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/" /><link rel="next" href="https://daizelai.github.io/posts/as/20221017_1639as%E4%B8%AD%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ssh免密码登录",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95\/"
+    },"genre": "posts","keywords": "ssh, 免密码登录ssh, 远程登录, 原创","wordcount":  1000 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95\/","datePublished": "2022-10-16T06:40:00+08:00","dateModified": "2022-10-16T06:40:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>ssh免密码登录</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/ssh/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ssh</a>&ensp;<a href="/categories/%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95ssh/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 免密码登录ssh</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2022-10-16 06:40:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-10-16">2022-10-16</time></span>&nbsp;<span title="更新于 2022-10-16 06:40:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-10-16">2022-10-16</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1000 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 5 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a>
+      <ul>
+        <li><a href="#11前言">1.1.前言</a></li>
+        <li><a href="#12介绍">1.2.介绍</a></li>
+      </ul>
+    </li>
+    <li><a href="#二免密码ssh登录">二、免密码SSH登录</a>
+      <ul>
+        <li><a href="#21生成密钥">2.1.生成密钥</a></li>
+        <li><a href="#22复制公钥到b服务器">2.2.复制公钥到B服务器</a></li>
+        <li><a href="#23配置ssh">2.3.配置ssh</a></li>
+        <li><a href="#24配置root账号authorized_keys">2.4.配置root账号authorized_keys</a></li>
+        <li><a href="#25配置普通账号daizelai登录">2.5.配置普通账号daizelai登录</a></li>
+        <li><a href="#26客户端登录效果">2.6.客户端登录效果</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20221016_1619ssh免密码登录">20221016_1619ssh免密码登录</h1>
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>by daizelai 2022/10/16 16:20</p>
+<p>本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh</p>
+<h3 id="12介绍">1.2.介绍</h3>
+<p>A免密登录B的两种方式</p>
+<p>比如A本地台式机电脑上远程登录linux系统的B服务器</p>
+<h4 id="121方式一上传a的pub公钥到b服务器">1.2.1.方式一，上传A的pub公钥到B服务器</h4>
+<p>把A的公钥pub文件，放在B的<code>~/authorized_keys</code>文件中
+打开A的<code>id_isa.pub</code>的文件，复制并粘贴到B的<code>~/authorized_keys</code>文件的最下方，不要带多余的空格和其他符号</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">vim  ~/authorized_keys   #插入B服务器的的内容底部
+</code></pre><p><code>authorized_keys</code>文件里保存了其他人的公钥列表，代表这些服务器可以直接登录自己。</p>
+<p>命令执行过程：A会用自己的<code>.ssh/</code>目录下的私钥文件，例如<code>id_rds</code>进行加密登录。而B会用自己<code>authorized_keys</code>保存的公钥内容进行解密，如果解密成功，就认为A是合法用户，让A免密登录。</p>
+<p><strong>注：</strong> 所以A的目录下必须有<code>id_rsa</code>文件。</p>
+<h4 id="122方式二下载b的私钥文件生成pem文件">1.2.2.方式二、下载B的私钥文件，生成pem文件</h4>
+<p>新建一个pem文件，把B的private内容粘贴进去</p>
+<p>利用ssh命令即可登录</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">ssh -i b的私钥.pem文件 root@B的ip地址
+</code></pre><p>B的私钥文件（原本只能B自己知道）给了A，证明B足够信任A，A可以直接登录B
+命令执行过程：A会用
+-i指定的私钥文件（这里就是B的私钥文件）加密，B在自己的authorized_keys中用自己的公钥文件解密。如果成功，就认为A是合法用户，让A免密登录。</p>
+<h2 id="二免密码ssh登录">二、免密码SSH登录</h2>
+<h3 id="21生成密钥">2.1.生成密钥</h3>
+<p>密钥生成说明</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">C:\Users\你的用户名&gt;ssh-keygen -t rsa -b 2048   
+【上面一行的-t参数代表类型type，表示用rsa方式加密；-b参数，这里表示生成2048位的公钥】
+【输完ssh-keygen -t rsa -b 2048后回车，生成公钥-私钥对总共只用到这一个命令，以下是配置部分】
+Generating public/private rsa key pair.
+Enter file in which to save the key (/cygdrive/c/Users/你的用户名/.ssh/id_rsa): 
+【在上一行的冒号后输入保存私钥的文件名。默认是在C:\Users\你的用户名\.ssh\ 这个路径下，生成名为id_rsa的文件。】
+【另外在该路径下还会自动生成id_rsa.pub文件，用来保存公钥。】
+Enter passphrase (empty for no passphrase):【在这里输入私钥密码】
+Enter same passphrase again:【重复输入私钥密码】
+Your identification has been saved in c/Users/你的用户名/.ssh/id_rsa.
+Your public key has been saved in c/Users/你的用户名/.ssh/id_rsa.pub.
+【上面两行说明了你私钥、公钥的保存位置】
+The key fingerprint is:
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+</code></pre><p>在lai的windows台式机上面也就是A电脑上面生成密钥。</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">PS C:\Users\daizelai\.ssh&gt; dir
+
+
+    目录: C:\Users\daizelai\.ssh
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2022/10/3     15:11            800 config
+-a----         2022/5/12     15:59           2610 id_rsa
+-a----         2022/5/12     15:59            575 id_rsa.pub
+-a----         2022/9/27     14:03           2655 id_rsa_itcss_gitlab
+-a----         2022/9/27     14:03            572 id_rsa_itcss_gitlab.pub
+-a----         2022/9/27     14:24           1323 known_hosts
+-a----         2021/6/21     10:27            101 known_hosts.old
+
+PS C:\Users\daizelai\.ssh&gt; date
+
+2022年10月16日 14:03:33
+
+
+PS C:\Users\daizelai\.ssh&gt; ssh-keygen -t rsa -f C:/Users/daizelai/.ssh/id_rsa_centos79
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): #这里我没有输入密码
+Enter same passphrase again:
+Your identification has been saved in C:/Users/daizelai/.ssh/id_rsa_centos79.
+Your public key has been saved in C:/Users/daizelai/.ssh/id_rsa_centos79.pub.
+The key fingerprint is:
+SHA256:zt84eZ7ml+45laBc9I/DL+4aw72RAHP5brmWJ1X/Qic daizelai@GBCOM-20210524I
+The key&#39;s randomart image is:
++---[RSA 3072]----+
+|                 |
+|             o   |
+|          o + .  |
+|           + + ..|
+|        S . +.o.=|
+|       o   + +E+*|
+|        o  .+.BX.|
+|         .ooo=X=+|
+|          o**OO* |
++----[SHA256]-----+
+PS C:\Users\daizelai\.ssh&gt; dir
+
+
+    目录: C:\Users\daizelai\.ssh
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2022/10/3     15:11            800 config
+-a----         2022/5/12     15:59           2610 id_rsa
+-a----         2022/5/12     15:59            575 id_rsa.pub
+-a----        2022/10/16     14:04           2610 id_rsa_centos79
+-a----        2022/10/16     14:04            579 id_rsa_centos79.pub
+-a----         2022/9/27     14:03           2655 id_rsa_itcss_gitlab
+-a----         2022/9/27     14:03            572 id_rsa_itcss_gitlab.pub
+-a----         2022/9/27     14:24           1323 known_hosts
+-a----         2021/6/21     10:27            101 known_hosts.old
+
+
+PS C:\Users\daizelai\.ssh&gt;
+</code></pre><h3 id="22复制公钥到b服务器">2.2.复制公钥到B服务器</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[daizelai@0883a4966fee ~]$ date
+Sun Oct 16 08:27:22 UTC 2022
+[daizelai@0883a4966fee ~]$ whoami
+daizelai
+[daizelai@0883a4966fee ~]$ pwd
+/home/daizelai
+[daizelai@0883a4966fee ~]$ ls -lah
+total 36K
+drwx------ 4 daizelai daizelai 4.0K Oct 16 07:26 .
+drwxr-xr-x 1 root     root     4.0K Oct 13 09:58 ..
+drwxrwxr-x 2 daizelai daizelai 4.0K Oct 14 01:36 aaa
+-rw-rw-r-- 1 daizelai daizelai    4 Oct 14 01:03 a.txt
+-rw------- 1 daizelai daizelai  226 Oct 14 07:22 .bash_history
+-rw-r--r-- 1 daizelai daizelai   18 Apr  1  2020 .bash_logout
+-rw-r--r-- 1 daizelai daizelai  193 Apr  1  2020 .bash_profile
+-rw-r--r-- 1 daizelai daizelai  231 Apr  1  2020 .bashrc
+drwx------ 2 daizelai daizelai 4.0K Oct 16 07:53 .ssh
+[daizelai@0883a4966fee ~]$ cat .ssh/autherized_keys
+cat: .ssh/autherized_keys: No such file or directory
+[daizelai@0883a4966fee ~]$
+[daizelai@0883a4966fee ~]$ echo &#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/+0+SWT/18/qrClf49vZ8L4HQ2p3ZSkoEQC82UpuuuDf0IPMK5kqKISFTn9QzB+5R0GQ1gXiYQeNhFSvuWi8R5sdDtJbVphaLh/FGxJhah8SAE7w+Y4i7XKsMMuOdFD60IQuvm3qDnlT4B3DMVr31FoThzLdAGWF6DN7l9aKWUPDkWp0YExEYdUJTusdgXe8X6JP4qnb5AiQeOpyopl+VNAf6I7rSFD41IjiaetQpc6cdrMu7nh8yQWM0jr0i7PmzlHMws8k5zvDf52LOKOqfcq1ml9hINB1LsoFoOOpIjoDj/TbXLWCRH3J8s+jPgT50IvDM8wCsEBH0PqY7sJvU2/GRIP7iFZqrb+YFvq9+dStUpnXEfU7hg8D5CFjJAA3svoniyFG9aYCNez/W0kNDW40CZ6ABHEwMkOkee3/hbuX/eP58+zdjbjZ4O8DOLZWz7y7W2ok4BGk2T4PTsNTWk9KgpeiK7OlzAO5SlMEVqz51RBgKMBZMGpSU/kWbK6M= daizelai@GBCOM-20210524I&#34; &gt; .ssh/autherized_keys
+[daizelai@0883a4966fee ~]$ cat .ssh/authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/+0+SWT/18/qrClf49vZ8L4HQ2p3ZSkoEQC82UpuuuDf0IPMK5kqKISFTn9QzB+5R0GQ1gXiYQeNhFSvuWi8R5sdDtJbVphaLh/FGxJhah8SAE7w+Y4i7XKsMMuOdFD60IQuvm3qDnlT4B3DMVr31FoThzLdAGWF6DN7l9aKWUPDkWp0YExEYdUJTusdgXe8X6JP4qnb5AiQeOpyopl+VNAf6I7rSFD41IjiaetQpc6cdrMu7nh8yQWM0jr0i7PmzlHMws8k5zvDf52LOKOqfcq1ml9hINB1LsoFoOOpIjoDj/TbXLWCRH3J8s+jPgT50IvDM8wCsEBH0PqY7sJvU2/GRIP7iFZqrb+YFvq9+dStUpnXEfU7hg8D5CFjJAA3svoniyFG9aYCNez/W0kNDW40CZ6ABHEwMkOkee3/hbuX/eP58+zdjbjZ4O8DOLZWz7y7W2ok4BGk2T4PTsNTWk9KgpeiK7OlzAO5SlMEVqz51RBgKMBZMGpSU/kWbK6M= daizelai@GBCOM-20210524I
+[daizelai@0883a4966fee ~]$
+</code></pre><h3 id="23配置ssh">2.3.配置ssh</h3>
+<p>这里是用root账号登录B服务器电脑里，对sshd进行配置的。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@0883a4966fee ~]# vi /etc/ssh/sshd_config
+PermitRootLogin yes
+PubkeyAuthentication yes
+PasswordAuthentication yes
+AuthorizedKeysFile      .ssh/authorized_keys
+</code></pre><h3 id="24配置root账号authorized_keys">2.4.配置root账号authorized_keys</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[daizelai@0883a4966fee ~]$ su - root
+Password: 
+Last login: Sun Oct 16 07:58:58 UTC 2022 from gateway on pts/2
+Last failed login: Sun Oct 16 08:22:36 UTC 2022 from gateway on ssh:notty
+There were 4 failed login attempts since the last successful login.
+[root@0883a4966fee ~]# date
+Sun Oct 16 08:32:49 UTC 2022
+[root@0883a4966fee ~]# ls -lah 
+total 68K
+dr-xr-x---  1 root root 4.0K Oct 16 07:48 .
+drwxr-xr-x  1 root root 4.0K Oct  4 06:49 ..
+-rw-------  1 root root 3.4K Nov 13  2020 anaconda-ks.cfg
+drwxr-xr-x  4 root root 4.0K Oct  6 01:50 .android
+-rw-------  1 root root 2.4K Oct 16 08:03 .bash_history
+-rw-r--r--  1 root root   18 Dec 29  2013 .bash_logout
+-rw-r--r--  1 root root  176 Dec 29  2013 .bash_profile
+-rw-r--r--  1 root root  176 Dec 29  2013 .bashrc
+drwxr-xr-x  3 root root 4.0K Oct  4 06:35 .cache
+-rw-r--r--  1 root root  100 Dec 29  2013 .cshrc
+drwxr-xr-x 10 root root 4.0K Oct  6 02:15 .gradle
+drwxr-xr-x  3 root root 4.0K Oct  4 06:20 .groovy
+drwxr-xr-x  3 root root 4.0K Oct  4 06:09 .java
+drwxr-xr-x  3 root root 4.0K Oct  5 06:32 .kotlin
+-rw-------  1 root root  126 Oct 14 07:21 .mysql_history
+drwxr-xr-x  2 root root 4.0K Oct 16 07:51 .ssh
+-rw-r--r--  1 root root  129 Dec 29  2013 .tcshrc
+[root@0883a4966fee ~]# ls -lah .ssh/
+total 12K
+drwxr-xr-x 2 root root 4.0K Oct 16 07:51 .
+dr-xr-x--- 1 root root 4.0K Oct 16 07:48 ..
+-rw-r--r-- 1 root root  578 Oct 16 07:49 authorized_keys
+[root@0883a4966fee ~]#
+[root@0883a4966fee ~]# cat .ssh/authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/+0+SWT/18/qrClf49vZ8L4HQ2p3ZSkoEQC82UpuuuDf0IPMK5kqKISFTn9QzB+5R0GQ1gXiYQeNhFSvuWi8R5sdDtJbVphaLh/FGxJhah8SAE7w+Y4i7XKsMMuOdFD60IQuvm3qDnlT4B3DMVr31FoThzLdAGWF6DN7l9aKWUPDkWp0YExEYdUJTusdgXe8X6JP4qnb5AiQeOpyopl+VNAf6I7rSFD41IjiaetQpc6cdrMu7nh8yQWM0jr0i7PmzlHMws8k5zvDf52LOKOqfcq1ml9hINB1LsoFoOOpIjoDj/TbXLWCRH3J8s+jPgT50IvDM8wCsEBH0PqY7sJvU2/GRIP7iFZqrb+YFvq9+dStUpnXEfU7hg8D5CFjJAA3svoniyFG9aYCNez/W0kNDW40CZ6ABHEwMkOkee3/hbuX/eP58+zdjbjZ4O8DOLZWz7y7W2ok4BGk2T4PTsNTWk9KgpeiK7OlzAO5SlMEVqz51RBgKMBZMGpSU/kWbK6M= daizelai@GBCOM-20210524I
+[root@0883a4966fee ~]#
+</code></pre><h3 id="25配置普通账号daizelai登录">2.5.配置普通账号daizelai登录</h3>
+<p>下面是设置非root账号daizelai的免密码登录。</p>
+<p><strong>特别注意</strong>：<code>.ssh</code>目录的权限为<code>700</code>，其下文件<code>authorized_keys</code>和私钥的权限为<code>600</code>，否则会因为权限问题导致无法免密码登录。zelai就是因为这个问题一开始怎么也登录不了，后面就如下设置权限就可以登录了。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[daizelai@0883a4966fee .ssh]$ date
+Sun Oct 16 08:14:44 UTC 2022
+[daizelai@0883a4966fee .ssh]$ whoami
+daizelai
+[daizelai@0883a4966fee .ssh]$ pwd
+/home/daizelai/.ssh
+[daizelai@0883a4966fee .ssh]$
+[daizelai@0883a4966fee .ssh]$ cd ..
+[daizelai@0883a4966fee ~]$ ls -lah
+total 36K
+drwx------ 4 daizelai daizelai 4.0K Oct 16 07:26 .
+drwxr-xr-x 1 root     root     4.0K Oct 13 09:58 ..
+drwxrwxr-x 2 daizelai daizelai 4.0K Oct 14 01:36 aaa
+-rw-rw-r-- 1 daizelai daizelai    4 Oct 14 01:03 a.txt
+-rw------- 1 daizelai daizelai  226 Oct 14 07:22 .bash_history
+-rw-r--r-- 1 daizelai daizelai   18 Apr  1  2020 .bash_logout
+-rw-r--r-- 1 daizelai daizelai  193 Apr  1  2020 .bash_profile
+-rw-r--r-- 1 daizelai daizelai  231 Apr  1  2020 .bashrc
+drwxrwxr-x 2 daizelai daizelai 4.0K Oct 16 07:53 .ssh
+[daizelai@0883a4966fee ~]$ chmod 700 .ssh
+[daizelai@0883a4966fee ~]$ ls -lah
+total 36K
+drwx------ 4 daizelai daizelai 4.0K Oct 16 07:26 .
+drwxr-xr-x 1 root     root     4.0K Oct 13 09:58 ..
+drwxrwxr-x 2 daizelai daizelai 4.0K Oct 14 01:36 aaa
+-rw-rw-r-- 1 daizelai daizelai    4 Oct 14 01:03 a.txt
+-rw------- 1 daizelai daizelai  226 Oct 14 07:22 .bash_history
+-rw-r--r-- 1 daizelai daizelai   18 Apr  1  2020 .bash_logout
+-rw-r--r-- 1 daizelai daizelai  193 Apr  1  2020 .bash_profile
+-rw-r--r-- 1 daizelai daizelai  231 Apr  1  2020 .bashrc
+drwx------ 2 daizelai daizelai 4.0K Oct 16 07:53 .ssh
+[daizelai@0883a4966fee ~]$ cd .ssh
+[daizelai@0883a4966fee .ssh]$ ls -l
+total 4
+-rwxrwxrwx 1 daizelai daizelai 578 Oct 16 06:08 authorized_keys
+[daizelai@0883a4966fee .ssh]$ chmod 600 authorized_keys 
+[daizelai@0883a4966fee .ssh]$ ls -l
+total 4
+-rw------- 1 daizelai daizelai 578 Oct 16 06:08 authorized_keys
+[daizelai@0883a4966fee ~]$ cd
+[daizelai@0883a4966fee ~]$ pwd
+/home/daizelai
+[daizelai@0883a4966fee ~]$ cat .ssh/authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/+0+SWT/18/qrClf49vZ8L4HQ2p3ZSkoEQC82UpuuuDf0IPMK5kqKISFTn9QzB+5R0GQ1gXiYQeNhFSvuWi8R5sdDtJbVphaLh/FGxJhah8SAE7w+Y4i7XKsMMuOdFD60IQuvm3qDnlT4B3DMVr31FoThzLdAGWF6DN7l9aKWUPDkWp0YExEYdUJTusdgXe8X6JP4qnb5AiQeOpyopl+VNAf6I7rSFD41IjiaetQpc6cdrMu7nh8yQWM0jr0i7PmzlHMws8k5zvDf52LOKOqfcq1ml9hINB1LsoFoOOpIjoDj/TbXLWCRH3J8s+jPgT50IvDM8wCsEBH0PqY7sJvU2/GRIP7iFZqrb+YFvq9+dStUpnXEfU7hg8D5CFjJAA3svoniyFG9aYCNez/W0kNDW40CZ6ABHEwMkOkee3/hbuX/eP58+zdjbjZ4O8DOLZWz7y7W2ok4BGk2T4PTsNTWk9KgpeiK7OlzAO5SlMEVqz51RBgKMBZMGpSU/kWbK6M= daizelai@GBCOM-20210524I
+[daizelai@0883a4966fee ~]$
+</code></pre><p>最好重启ssh服务生效。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[daizelai@0883a4966fee .ssh]$ /bin/systemctl restart sshd.service
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Authentication is required to manage system services or units.
+Authenticating as: root
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[daizelai@0883a4966fee .ssh]$
+</code></pre><h3 id="26客户端登录效果">2.6.客户端登录效果</h3>
+<p>下面是在我的台式机客户端上面使用WindTerm配置密钥登录B服务器。</p>
+<p>新增ssh连接会话</p>
+<p><img loading="lazy" src="./images/ssh_no_password_login_2022-10-16_165340.png" srcset="./images/ssh_no_password_login_2022-10-16_165340.png, ./images/ssh_no_password_login_2022-10-16_165340.png 1.5x, ./images/ssh_no_password_login_2022-10-16_165340.png 2x" sizes="auto" data-title="新增ssh连接会话" data-alt="新增ssh连接会话" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>配置密钥登录</p>
+<p><img loading="lazy" src="./images/ssh_no_password_login_2022-10-16_164849.png" srcset="./images/ssh_no_password_login_2022-10-16_164849.png, ./images/ssh_no_password_login_2022-10-16_164849.png 1.5x, ./images/ssh_no_password_login_2022-10-16_164849.png 2x" sizes="auto" data-title="配置密钥登录" data-alt="配置密钥登录" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>下面是使用WindTerm登录效果</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">Last login: Sun Oct 16 08:12:48 2022 from gateway
+[daizelai@0883a4966fee ~]$ 
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2022-10-16 06:40:00">更新于 2022-10-16&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/ssh/' class="post-tag">ssh</a><a href='/tags/%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95ssh/' class="post-tag">免密码登录ssh</a><a href='/tags/%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/' class="post-tag">远程登录</a><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/wzs2/20221010_1750%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E5%9B%BA%E5%AE%9A%E5%8F%B0%E7%AB%99%E9%80%89%E5%8C%BA%E5%B9%BF%E6%92%AD%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/" class="post-nav-item" rel="prev" title="温州S2号线固定台站选区广播调试记录"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>温州S2号线固定台站选区广播调试记录</a>
+      <a href="/posts/as/20221017_1639as%E4%B8%AD%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-nav-item" rel="next" title="as中插件的使用">as中插件的使用<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

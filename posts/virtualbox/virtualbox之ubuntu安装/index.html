@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>virtualbox之ubuntu安装 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="在virtualbox虚拟机中安装ubuntu系统。" /><meta name="keywords" content='原创, ubuntu, virtualbox' /><meta itemprop="name" content="virtualbox之ubuntu安装">
+<meta itemprop="description" content="在virtualbox虚拟机中安装ubuntu系统。"><meta itemprop="datePublished" content="2016-11-01T11:22:28+08:00" />
+<meta itemprop="dateModified" content="2016-11-01T11:22:28+08:00" />
+<meta itemprop="wordCount" content="67">
+<meta itemprop="keywords" content="原创,ubuntu,virtualbox," /><meta property="og:title" content="virtualbox之ubuntu安装" />
+<meta property="og:description" content="在virtualbox虚拟机中安装ubuntu系统。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-11-01T11:22:28+08:00" />
+<meta property="article:modified_time" content="2016-11-01T11:22:28+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="virtualbox之ubuntu安装"/>
+<meta name="twitter:description" content="在virtualbox虚拟机中安装ubuntu系统。"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/" /><link rel="next" href="https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%85%A8%E5%B1%8F%E6%98%BE%E7%A4%BA/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "virtualbox之ubuntu安装",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/virtualbox\/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85\/"
+    },"genre": "posts","keywords": "原创, ubuntu, virtualbox","wordcount":  67 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/virtualbox\/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85\/","datePublished": "2016-11-01T11:22:28+08:00","dateModified": "2016-11-01T11:22:28+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "在virtualbox虚拟机中安装ubuntu系统。"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>virtualbox之ubuntu安装</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/ubuntu/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ubuntu</a>&ensp;<a href="/categories/virtualbox/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> virtualbox</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-11-01 11:22:28"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-11-01">2016-11-01</time></span>&nbsp;<span title="更新于 2016-11-01 11:22:28"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-11-01">2016-11-01</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 67 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 1 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一ubuntu版本介绍">一、ubuntu版本介绍</a></li>
+    <li><a href="#二系统下载">二、系统下载</a></li>
+    <li><a href="#三安装系统">三、安装系统</a>
+      <ul>
+        <li><a href="#31创建虚拟电脑">3.1.创建虚拟电脑</a></li>
+        <li><a href="#32安装前的准备">3.2.安装前的准备</a></li>
+        <li><a href="#33安装系统">3.3.安装系统</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="一ubuntu版本介绍">一、ubuntu版本介绍</h2>
+<pre tabindex="0"><code>Desktop是桌面操作系统版本;
+Server是服务器端操作系统版本;
+Cloud应该是云端操作系统版本。
+</code></pre><!-- raw HTML omitted -->
+<h2 id="二系统下载">二、系统下载</h2>
+<p>作为PC机，我们<a href="https://www.ubuntu.com/download/alternative-downloads"target="_blank" rel="external nofollow noopener noreferrer">下载Desktop版本</a>。</p>
+<p>LTS = Long Term Support    Long Term Support：长时间支持版本（三年） ，一般的版本支持为18个月。Ubuntu定期并有计划的不断发布其新版本,Ubuntu 一直坚持每6个月发布一个新的版本。</p>
+<p>下载Ubuntu 16.04.1 LTS</p>
+<pre tabindex="0"><code>下载最新的LTS版本的Ubuntu，适用于台式电脑和笔记本电脑。 LTS代表长期支持 - 这意味着五年的免费安全和维护更新，保证。
+
+Ubuntu 16.04 LTS发行说明
+
+推荐系统要求：
+     2 GHz双核处理器或更好
+     2 GB系统内存
+     25 GB可用硬盘空间
+     DVD驱动器或安装程序媒体的USB端口
+     互联网接入是有帮助的
+</code></pre><h2 id="三安装系统">三、安装系统</h2>
+<h3 id="31创建虚拟电脑">3.1.创建虚拟电脑</h3>
+<p><figure><a class="lightgallery" href="./images/ubuntu1.jpg" data-thumbnail="./images/ubuntu1.jpg" data-sub-html="<h2>创建虚拟电脑</h2><p>创建虚拟电脑</p>"><img loading="lazy" src="./images/ubuntu1.jpg" srcset="./images/ubuntu1.jpg, ./images/ubuntu1.jpg 1.5x, ./images/ubuntu1.jpg 2x" sizes="auto" data-title="创建虚拟电脑" data-alt="创建虚拟电脑" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">创建虚拟电脑</figcaption>
+  </figure></p>
+<p><figure><a class="lightgallery" href="./images/ubuntu2.jpg" data-thumbnail="./images/ubuntu2.jpg" data-sub-html="<h2>创建虚拟电脑</h2><p>创建虚拟电脑</p>"><img loading="lazy" src="./images/ubuntu2.jpg" srcset="./images/ubuntu2.jpg, ./images/ubuntu2.jpg 1.5x, ./images/ubuntu2.jpg 2x" sizes="auto" data-title="创建虚拟电脑" data-alt="创建虚拟电脑" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">创建虚拟电脑</figcaption>
+  </figure></p>
+<p><figure><a class="lightgallery" href="./images/ubuntu3.jpg" data-thumbnail="./images/ubuntu3.jpg" data-sub-html="<h2>创建虚拟电脑</h2><p>创建虚拟电脑</p>"><img loading="lazy" src="./images/ubuntu3.jpg" srcset="./images/ubuntu3.jpg, ./images/ubuntu3.jpg 1.5x, ./images/ubuntu3.jpg 2x" sizes="auto" data-title="创建虚拟电脑" data-alt="创建虚拟电脑" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">创建虚拟电脑</figcaption>
+  </figure></p>
+<p><figure><a class="lightgallery" href="./images/ubuntu4.jpg" data-thumbnail="./images/ubuntu4.jpg" data-sub-html="<h2>创建虚拟电脑</h2><p>创建虚拟电脑</p>"><img loading="lazy" src="./images/ubuntu4.jpg" srcset="./images/ubuntu4.jpg, ./images/ubuntu4.jpg 1.5x, ./images/ubuntu4.jpg 2x" sizes="auto" data-title="创建虚拟电脑" data-alt="创建虚拟电脑" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">创建虚拟电脑</figcaption>
+  </figure></p>
+<h3 id="32安装前的准备">3.2.安装前的准备</h3>
+<p>点击启动后，在弹出的框中选择之前下载的ubuntu系统文件后。</p>
+<p><figure><a class="lightgallery" href="./images/ubuntu5.jpg" data-thumbnail="./images/ubuntu5.jpg" data-sub-html="<h2>启动虚拟电脑</h2><p>启动虚拟电脑</p>"><img loading="lazy" src="./images/ubuntu5.jpg" srcset="./images/ubuntu5.jpg, ./images/ubuntu5.jpg 1.5x, ./images/ubuntu5.jpg 2x" sizes="auto" data-title="启动虚拟电脑" data-alt="启动虚拟电脑" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">启动虚拟电脑</figcaption>
+  </figure></p>
+<p>点击<code>启动</code>按钮，效果如下</p>
+<p><figure><a class="lightgallery" href="./images/ubuntu6.jpg" data-thumbnail="./images/ubuntu6.jpg" data-sub-html="<h2>启动虚拟电脑</h2><p>启动虚拟电脑</p>"><img loading="lazy" src="./images/ubuntu6.jpg" srcset="./images/ubuntu6.jpg, ./images/ubuntu6.jpg 1.5x, ./images/ubuntu6.jpg 2x" sizes="auto" data-title="启动虚拟电脑" data-alt="启动虚拟电脑" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">启动虚拟电脑</figcaption>
+  </figure></p>
+<h3 id="33安装系统">3.3.安装系统</h3>
+<p>现在来到了安装界面，选择我们熟悉的中文语言，点击install Ubuntu</p>
+<p><figure><a class="lightgallery" href="./images/ubuntu7.jpg" data-thumbnail="./images/ubuntu7.jpg" data-sub-html="<h2>安装中文ubuntu</h2><p>安装中文ubuntu</p>"><img loading="lazy" src="./images/ubuntu7.jpg" srcset="./images/ubuntu7.jpg, ./images/ubuntu7.jpg 1.5x, ./images/ubuntu7.jpg 2x" sizes="auto" data-title="安装中文ubuntu" data-alt="安装中文ubuntu" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">安装中文ubuntu</figcaption>
+  </figure></p>
+<p>来到此界面，需要注意的是，这里全部都不选择，我第一次全部选择安装后启动系统只看到桌面壁纸了。
+<figure><a class="lightgallery" href="./images/ubuntu8.jpg" data-thumbnail="./images/ubuntu8.jpg" data-sub-html="<h2>安装中文ubuntu</h2><p>安装中文ubuntu</p>"><img loading="lazy" src="./images/ubuntu8.jpg" srcset="./images/ubuntu8.jpg, ./images/ubuntu8.jpg 1.5x, ./images/ubuntu8.jpg 2x" sizes="auto" data-title="安装中文ubuntu" data-alt="安装中文ubuntu" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">安装中文ubuntu</figcaption>
+  </figure></p>
+<p>点击继续后来到<code>安装类型</code>界面，这里选择“清除整个磁盘并安装Ubuntu”，点击<code>现在安装</code></p>
+<p>此处，选择“清除整个磁盘并安装Ubuntu”或“其他选项”，就可以实现，傻瓜化的，不用关心如何分区，而直接安装Ubuntu的。</p>
+<p>而与此相对的，如果选择“给新安装的Ubuntu使用LVM”，则是需要去关心，Linux类系统的各种分区，各种挂载点，设置不用的挂载点，不同的大小，以实现，尤其是和软件开发等相关的，一些特定目的。</p>
+<p><figure><a class="lightgallery" href="./images/ubuntu9.jpg" data-thumbnail="./images/ubuntu9.jpg" data-sub-html="<h2>安装类型</h2><p>安装类型</p>"><img loading="lazy" src="./images/ubuntu9.jpg" srcset="./images/ubuntu9.jpg, ./images/ubuntu9.jpg 1.5x, ./images/ubuntu9.jpg 2x" sizes="auto" data-title="安装类型" data-alt="安装类型" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">安装类型</figcaption>
+  </figure></p>
+<p>接着很快就来到选择时区界面，默认选择<code>shanghai</code></p>
+<p>然后来到键盘布局页面，我图方便就选择<code>汉语-汉语</code>.:</p>
+<p>现在我们可以设置用户名和密码了。</p>
+<p><figure><a class="lightgallery" href="./images/ubuntu10.jpg" data-thumbnail="./images/ubuntu10.jpg" data-sub-html="<h2>设置用户名和密码</h2><p>设置用户名和密码</p>"><img loading="lazy" src="./images/ubuntu10.jpg" srcset="./images/ubuntu10.jpg, ./images/ubuntu10.jpg 1.5x, ./images/ubuntu10.jpg 2x" sizes="auto" data-title="设置用户名和密码" data-alt="设置用户名和密码" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">设置用户名和密码</figcaption>
+  </figure></p>
+<p>然后就是去安装系统了，首先是复制文件以及安装系统操作，因为前面我勾选了下载更新文件，所以还会下载一些文件的。</p>
+<p><figure><a class="lightgallery" href="./images/ubuntu11.jpg" data-thumbnail="./images/ubuntu11.jpg" data-sub-html="<h2>安装中。。。</h2><p>安装中。。。</p>"><img loading="lazy" src="./images/ubuntu11.jpg" srcset="./images/ubuntu11.jpg, ./images/ubuntu11.jpg 1.5x, ./images/ubuntu11.jpg 2x" sizes="auto" data-title="安装中。。。" data-alt="安装中。。。" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">安装中。。。</figcaption>
+  </figure></p>
+<p><figure><a class="lightgallery" href="./images/ubuntu12.jpg" data-thumbnail="./images/ubuntu12.jpg" data-sub-html="<h2>安装中。。。</h2><p>安装中。。。</p>"><img loading="lazy" src="./images/ubuntu12.jpg" srcset="./images/ubuntu12.jpg, ./images/ubuntu12.jpg 1.5x, ./images/ubuntu12.jpg 2x" sizes="auto" data-title="安装中。。。" data-alt="安装中。。。" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">安装中。。。</figcaption>
+  </figure></p>
+<p>安装完毕
+这里没有上面11,12下载文件了，只要不到1个小时应该，因为查问题没记时间。</p>
+<p><figure><a class="lightgallery" href="./images/ubuntu13.jpg" data-thumbnail="./images/ubuntu13.jpg" data-sub-html="<h2>安装成功</h2><p>安装成功</p>"><img loading="lazy" src="./images/ubuntu13.jpg" srcset="./images/ubuntu13.jpg, ./images/ubuntu13.jpg 1.5x, ./images/ubuntu13.jpg 2x" sizes="auto" data-title="安装成功" data-alt="安装成功" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">安装成功</figcaption>
+  </figure></p>
+<p>现在就可以登录ubuntu系统喽。</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-11-01 11:22:28">更新于 2016-11-01&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/ubuntu/' class="post-tag">ubuntu</a><a href='/tags/virtualbox/' class="post-tag">virtualbox</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/" class="post-nav-item" rel="prev" title="linux之磁盘sdc变为sdb后"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>linux之磁盘sdc变为sdb后</a>
+      <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%85%A8%E5%B1%8F%E6%98%BE%E7%A4%BA/" class="post-nav-item" rel="next" title="virtualbox之ubuntu全屏显示">virtualbox之ubuntu全屏显示<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

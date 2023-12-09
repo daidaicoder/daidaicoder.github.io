@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>BottomNavigationView菜单调整高度和间距 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="BottomNavigationView菜单调整,BottomNavigationView高度调整" /><meta name="keywords" content='原创, android, BottomNavigationView' /><meta itemprop="name" content="BottomNavigationView菜单调整高度和间距">
+<meta itemprop="description" content="BottomNavigationView菜单调整,BottomNavigationView高度调整"><meta itemprop="datePublished" content="2022-09-30T16:58:00+08:00" />
+<meta itemprop="dateModified" content="2022-09-30T16:58:00+08:00" />
+<meta itemprop="wordCount" content="217">
+<meta itemprop="keywords" content="原创,android,BottomNavigationView," /><meta property="og:title" content="BottomNavigationView菜单调整高度和间距" />
+<meta property="og:description" content="BottomNavigationView菜单调整,BottomNavigationView高度调整" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/android/navigationview/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-30T16:58:00+08:00" />
+<meta property="article:modified_time" content="2022-09-30T16:58:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="BottomNavigationView菜单调整高度和间距"/>
+<meta name="twitter:description" content="BottomNavigationView菜单调整,BottomNavigationView高度调整"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/navigationview/" /><link rel="prev" href="https://daizelai.github.io/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/" /><link rel="next" href="https://daizelai.github.io/posts/mysql/mysqlcreateuser/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "BottomNavigationView菜单调整高度和间距",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/android\/navigationview\/"
+    },"genre": "posts","keywords": "原创, android, BottomNavigationView","wordcount":  217 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/android\/navigationview\/","datePublished": "2022-09-30T16:58:00+08:00","dateModified": "2022-09-30T16:58:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "BottomNavigationView菜单调整,BottomNavigationView高度调整"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>BottomNavigationView菜单调整高度和间距</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/bottomnavigationview/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> BottomNavigationView</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2022-09-30 16:58:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-09-30">2022-09-30</time></span>&nbsp;<span title="更新于 2022-09-30 16:58:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-09-30">2022-09-30</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 217 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二bottomnavigationview菜单">二、BottomNavigationView菜单</a>
+      <ul>
+        <li><a href="#菜单布局">菜单布局</a></li>
+        <li><a href="#菜单设置">菜单设置</a></li>
+        <li><a href="#调整菜单高度图片和文字间距">调整菜单高度【图片和文字间距】</a></li>
+        <li><a href="#文字样式">文字样式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="20220930_1657bottomnavigationview菜单调整高度和间距">20220930_1657BottomNavigationView菜单调整高度和间距</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2022/09/30 16:58
+关键字：菜单栏间距,温州S2号线菜单调整,BottomNavigationView菜单调整</p>
+<p>之前一直困扰许久的问题，BottomNavigationView菜单文件和图片的间距调整不好，然后调度还不知道怎么调整。</p>
+<!-- raw HTML omitted -->
+<p>今天终于搞定了。</p>
+<h2 id="二bottomnavigationview菜单">二、BottomNavigationView菜单</h2>
+<h3 id="菜单布局">菜单布局</h3>
+<p>activity_main.xml
+路径：\SH-CityRailway-ZTE\library_main\src\main\res\layout\activity_main.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>- <span style="color:#309;font-weight:bold">&lt;com.google.android.material.bottomnavigation.BottomNavigationView</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/nav_menu_view&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:layout_width=</span><span style="color:#c30">&#34;450dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:layout_height=</span><span style="color:#c30">&#34;100dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:background=</span><span style="color:#c30">&#34;#cccccc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:visibility=</span><span style="color:#c30">&#34;gone&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">android:padding=</span><span style="color:#c30">&#34;3dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:elevation=</span><span style="color:#c30">&#34;500dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:itemIconSize=</span><span style="color:#c30">&#34;35dp&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:itemTextColor=</span><span style="color:#c30">&#34;@color/main_bottom_item_text_selector&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:labelVisibilityMode=</span><span style="color:#c30">&#34;labeled&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">-</span>     <span style="color:#309">app:menu=</span><span style="color:#c30">&#34;@menu/main_menu&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;com.google.android.material.bottomnavigation.BottomNavigationView</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/nav_menu_view&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_width=</span><span style="color:#c30">&#34;600dp&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:layout_height=</span><span style="color:#c30">&#34;wrap_content&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:padding=</span><span style="color:#c30">&#34;10dp&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:itemIconSize=</span><span style="color:#c30">&#34;45dp&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">android:background=</span><span style="color:#c30">&#34;#cccccc&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:itemTextAppearanceActive=</span><span style="color:#c30">&#34;@style/bottom_tab_title_active&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:itemTextAppearanceInactive=</span><span style="color:#c30">&#34;@style/bottom_tab_title_inactive&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:itemTextColor=</span><span style="color:#c30">&#34;@color/main_bottom_item_text_selector&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:labelVisibilityMode=</span><span style="color:#c30">&#34;labeled&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">app:menu=</span><span style="color:#c30">&#34;@menu/main_menu&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span></code></pre></div><h3 id="菜单设置">菜单设置</h3>
+<p>这里还是和温州S2号线APP一样，没有改变。
+路径：\SH-CityRailway-ZTE\library_main\src\main\res\menu\main_menu.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;menu</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309">xmlns:app=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res-auto&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- 设置了android:icon=&#34;@drawable/bottom_png_list&#34;，就不需要BottomNavigationView设置 itemIconTint和itemTextColor 颜色 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toRirstFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_index_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;主页&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;never&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toSecondFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_call_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;通话&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;always&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toThirdFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_message_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;消息&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;collapseActionView&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toFiveFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_message_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;调度命令&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;withText&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:id=</span><span style="color:#c30">&#34;@+id/toFourthFragment&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:enabled=</span><span style="color:#c30">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:icon=</span><span style="color:#c30">&#34;@drawable/main_menu_setting_item_selector&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">android:title=</span><span style="color:#c30">&#34;我的&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309">app:showAsAction=</span><span style="color:#c30">&#34;ifRoom&#34;</span> <span style="color:#309;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/menu&gt;</span>
+</span></span></code></pre></div><p>main_menu_index_item_selector.xml
+路径：\SH-CityRailway-ZTE\library_res\src\main\res\drawable\main_menu_index_item_selector.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;selector</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_index_active&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_index_normal&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/selector&gt;</span>
+</span></span></code></pre></div><p>main_menu_call_item_selector.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;selector</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_call_active&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_call_normal&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/selector&gt;</span>
+</span></span></code></pre></div><p>main_menu_message_item_selector.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;selector</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_msg_active&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_msg_normal&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/selector&gt;</span>
+</span></span></code></pre></div><p>main_menu_setting_item_selector.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;selector</span> <span style="color:#309">xmlns:android=</span><span style="color:#c30">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_set_active&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">android:drawable=</span><span style="color:#c30">&#34;@drawable/train_menu_set_normal&#34;</span> <span style="color:#309">android:state_checked=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/selector&gt;</span>
+</span></span></code></pre></div><h3 id="调整菜单高度图片和文字间距">调整菜单高度【图片和文字间距】</h3>
+<p>这里的<code>design_bottom_navigation_height</code>可以设置main_menu.xml中的图片和文字的距离，也就是整个菜单高度越高，间距越大。
+路径：\SH-CityRailway-ZTE\library_res\src\main\res\values\dimens.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;resources</span> <span style="color:#309">xmlns:tools=</span><span style="color:#c30">&#34;http://schemas.android.com/tools&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- 项目默认文字大小 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;defaultTextSize&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>18sp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;textSize22sp&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>22sp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- BottomNavigationView修改文字与icon之间的间距 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- BottomNavigationView设置icon距离上边距的距离 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;design_bottom_navigation_margin&#34;</span> <span style="color:#309">tools:override=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>6dp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- 下面两个是设置TextView的大小：选中时的文字和未选中时的文字大小，保持一样的话，就没有动画了【好像没有起作用，style.xml的bottom_tab_title_active和bottom_tab_title_inactive起作用】 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;design_bottom_navigation_active_text_size&#34;</span> <span style="color:#309">tools:override=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>18sp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;design_bottom_navigation_text_size&#34;</span> <span style="color:#309">tools:override=</span><span style="color:#c30">&#34;true&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>18sp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!-- BottomNavigationView菜单栏-导航栏高度和文字和图片之间的间距，值越大，图片和文字间的距离越大 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;dimen</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;design_bottom_navigation_height&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>90dp<span style="color:#309;font-weight:bold">&lt;/dimen&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/resources&gt;</span>
+</span></span></code></pre></div><h3 id="文字样式">文字样式</h3>
+<p>路径：\SH-CityRailway-ZTE\library_res\src\main\res\values\styles.xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;resources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!--BottomNavigationView选中的样式，可以设置选择的字体颜色，这里只是为了改变选择时的字体大小--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;style</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;bottom_tab_title_active&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;android:textSize&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>28sp<span style="color:#309;font-weight:bold">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;android:drawablePadding&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>14dp<span style="color:#309;font-weight:bold">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;/style&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">&lt;!--BottomNavigationView没有选中的样式，导航默认的字体大小就是12sp--&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;style</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;bottom_tab_title_inactive&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;android:textSize&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>24sp<span style="color:#309;font-weight:bold">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#309;font-weight:bold">&lt;item</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;android:drawablePadding&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>14dp<span style="color:#309;font-weight:bold">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#309;font-weight:bold">&lt;/style&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#309;font-weight:bold">&lt;/resources&gt;</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2022-09-30 16:58:00">更新于 2022-09-30&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/bottomnavigationview/' class="post-tag">BottomNavigationView</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/" class="post-nav-item" rel="prev" title="as默认打开上一次的状态"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>as默认打开上一次的状态</a>
+      <a href="/posts/mysql/mysqlcreateuser/" class="post-nav-item" rel="next" title="mysql创建用户">mysql创建用户<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

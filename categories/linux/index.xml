@@ -16,9 +16,21 @@
 $ grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:470: /*pins = &#34;gpio99&#34;;*/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:475: /*pins = &#34;gpio99&#34;;*/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:936: /*pins = &#34;gpio98&#34;, &#34;gpio99&#34;;*/kernel/msm-3.]]></description>
 </item>
 <item>
+  <title>linux之磁盘sdc变为sdb后</title>
+  <link>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</link>
+  <pubDate>Tue, 01 Nov 2016 10:50:28 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</guid>
+  <description><![CDATA[一、场景 vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。
+启动系统后变乱码的问题 使用df查看发现磁盘sdb和磁盘sdc都看不到了。
+磁盘sda和sdb都看不到了 整个就不能使用了。
+二、分析 网上的解决方案(没试过，因为我是centos7)：
+查询磁盘设备的UUID标识代码 [root@localhost wwwroot]# ls -la /dev/disk/by-id 总用量 0 drwxr-xr-x. 2 root root 280 11月 1 11:12 . drwxr-xr-x. 5 root root 100 11月 1 11:12 .. lrwxrwxrwx. 1 root root 9 11月 1 11:12 ata-VBOX_CD-ROM_VB2-01700376 -&gt; ../../sr0 lrwxrwxrwx. 1 root root 9 11月 1 11:12 ata-VBOX_HARDDISK_VB56600bb8-22ac4f1f -&gt; ../../sda lrwxrwxrwx. 1 root root 10 11月 1 11:12 ata-VBOX_HARDDISK_VB56600bb8-22ac4f1f-part1 -&gt; .]]></description>
+</item>
+<item>
   <title>linux之lsof的使用</title>
   <link>https://daizelai.github.io/posts/linux/lsof/</link>
-  <pubDate>Wed, 19 Oct 2016 00:00:00 &#43;0000</pubDate>
+  <pubDate>Wed, 19 Oct 2016 20:02:17 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/linux/lsof/</guid>
   <description><![CDATA[<!-- raw HTML omitted -->
@@ -31,9 +43,29 @@ lsof:
 </code></pre>]]></description>
 </item>
 <item>
+  <title>Linux下netstat使用手记</title>
+  <link>https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</link>
+  <pubDate>Fri, 14 Oct 2016 15:45:51 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</guid>
+  <description><![CDATA[Linux下netstat命令的简单使用记录，这里以CentOS7为基础。
+一、netstat命令说明 1.1.netstat常用参数介绍 netstat有很多参数，下面列表每个参数的说明。
+-a或--all：显示所有连线中的Socket； -A&lt;网络类型&gt;或--&lt;网络类型&gt;：列出该网络类型连线中的相关地址； -c或--continuous：持续列出网络状态； -C或--cache：显示路由器配置的快取信息； -e或--extend：显示网络其他相关信息； -F或--fib：显示FIB； -g或--groups：显示多重广播功能群组组员名单； -h或--help：在线帮助； -i或--interfaces：显示网络界面信息表单； -l或--listening：显示监控中的服务器的Socket； -M或--masquerade：显示伪装的网络连线； -n或--numeric：直接使用ip地址，而不通过域名服务器； -N或--netlink或--symbolic：显示网络硬件外围设备的符号连接名称； -o或--timers：显示计时器； -p或--programs：显示正在使用Socket的程序识别码和程序名称； -r或--route：显示Routing Table； -s或--statistice：显示网络工作信息统计表； -t或--tcp：显示TCP传输协议的连线状况； -u或--udp：显示UDP传输协议的连线状况； -v或--verbose：显示指令执行过程； -V或--version：显示版本信息； -w或--raw：显示RAW传输协议的连线状况； -x或--unix：此参数的效果和指定&#34;-A unix&#34;参数相同； --ip或--inet：此参数的效果和指定&#34;-A inet&#34;参数相同。 二、netstat常用命令介绍 2.1.列出所有端口 netstat -a列出所有的端口，包括监听和未监听的，这里lai因为觉得太多了，只选其中一部分。
+[root@localhost _posts]# netstat -a Active Internet connections (servers and established) Proto Recv-Q Send-Q Local Address Foreign Address State tcp 0 0 0.0.0.0:http 0.0.0.0:* LISTEN tcp 0 0 0.0.0.0:ssh 0.0.0.0:* LISTEN tcp 0 0 localhost:smtp 0.0.0.0:* LISTEN tcp 0 52 localhost.]]></description>
+</item>
+<item>
+  <title>linux之进程管理</title>
+  <link>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+  <pubDate>Tue, 11 Oct 2016 08:43:25 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</guid>
+  <description><![CDATA[一、查看进程 1.1.ps之aux查看所有进程 在这里直接使用ps aux查看当前系统中所有的进程情况，当然ps -ef也是可以使用的。
+[root@localhost lai]# ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.0 0.3 43904 2672 ? Ss 08:58 0:01 /usr/lib/systemd/systemd --switched-root --system -- root 2 0.0 0.0 0 0 ? S 08:58 0:00 [kthreadd] root 3 0.0 0.0 0 0 ? S 08:58 0:00 [ksoftirqd/0] root 6 0.0 0.0 0 0 ? S 08:58 0:00 [kworker/u2:0] root 7 0.0 0.]]></description>
+</item>
+<item>
   <title>Linux之sftp使用</title>
   <link>https://daizelai.github.io/posts/linux/sftp/</link>
-  <pubDate>Sat, 08 Oct 2016 00:00:00 &#43;0000</pubDate>
+  <pubDate>Sat, 08 Oct 2016 14:39:04 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/linux/sftp/</guid>
   <description><![CDATA[<h2 id="一下载文件">一、下载文件</h2>
@@ -44,9 +76,35 @@ lsof:
 </code></pre>]]></description>
 </item>
 <item>
+  <title>VMware安装CentOS后配置SSH远程连接的问题</title>
+  <link>https://daizelai.github.io/posts/virtualbox/vmware%E5%AE%89%E8%A3%85centos%E5%90%8E%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+  <pubDate>Mon, 05 Sep 2016 19:57:48 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/virtualbox/vmware%E5%AE%89%E8%A3%85centos%E5%90%8E%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+  <description><![CDATA[可以SSH连接，但虚拟机CentOS不能连接外网，呜呜呜呜！！！
+一、安装VM的虚拟网卡（网络连接） 1.安装绿色版的VMware，安装好后，网络连接里是只有**本地连接**的。
+&ldquo;默认的本地连接&rdquo; 2.在VMware中安装CentOS系统
+&ldquo;VM的网络设置&rdquo; 3.安装系统后，在看网络连接还是只有本地连接，这时候这样VM的虚拟网络编辑设置一下
+点击VMware顶部的菜单，如下所示：
+&ldquo;VM的虚拟网络编辑&rdquo; 点击**“还原默认设置”**设置
+&ldquo;还原默认设置&rdquo; 4.点击以后，就会有上面图片中的三个连接了。同时，网络连接也多了两块VM的网络连接：
+&ldquo;VM的虚拟网络&rdquo; **VMnet1：**Host-only共享用的虚拟连接； **VMnet8：**NAT共享用的虚拟连接。VMnet8虚拟网卡就相当于连接到内网的网卡，Host主机上的物理网卡就相当于连接到外网的网卡，而虚拟机本身则相当于运行在内网上的计算机，虚拟机内的虚拟网卡则独立于Virtual Ethernet Switch（VMnet8）。
+二、配置VM虚拟连接并SSH连接 1.右击网络连接中“VMnet8”选择“属性”
+2.查看（没有就设置）TCP/IPv4的相应的IP地址和子网掩码，这里可以配置任意网段，然后点击确定按钮。
+&ldquo;设置VMnet8&rdquo; 3.查看windows主机的具体IP地址，输入ipconfig
+这里查看VMnet8的网络参数如上：IP：192.168.80.1 掩码：255.255.255.0
+&ldquo;查看VMnet8的参数&rdquo; 4.回到配置VMware中的网络参数，选择NAT模式，并点击右侧的NAT设置
+&ldquo;配置NAT参数&rdquo; 在弹出的对话框中进行网络的设置，这里的子网必须和windows主机中VMnet8的IP地址处于同一个网段，即192.168.80.0网段
+&ldquo;配置NAT参数&rdquo; 这里的网关可以选择windows主机中VMnet8的IP地址处于同一个网段的任意IP地址，然后点击确定。
+5.配置CentOS中的网络配置
+[root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0 DEVICE=eth0 HWADDR=00:0C:29:CA:3C:42 TYPE=Ethernet UUID=5bd32e4a-23c2-4c5a-be0f-26ffe1297a9d ONBOOT=yes NM_CONTROLLED=yes BOOTPROTO=none NETMASK=255.255.255.0 IPADDR=192.168.80.11 DNS1=10.60.1.254 主要需要设置下面的参数：
+ONBOOT=yes NETMASK=255.255.255.0 // 子网掩码 IPADDR=192.168.80.11 // IP地址和VMnet8的IP地址在同一个网段 DNS1=10.60.1.254 // 主DNS服务器IP地址为windows中主机真实网关 重启网络服务
+[root@localhost ~]# /etc/init.d/network restart 正在关闭接口 eth0： [确定] 关闭环回接口： [确定] 弹出环回接口： [确定] 弹出界面 eth0： Determining if ip address 192.]]></description>
+</item>
+<item>
   <title>Linux之scp复制远程文件</title>
   <link>https://daizelai.github.io/posts/linux/room/</link>
-  <pubDate>Wed, 10 Aug 2016 00:00:00 &#43;0000</pubDate>
+  <pubDate>Wed, 10 Aug 2016 08:56:57 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/linux/room/</guid>
   <description><![CDATA[<h3 id="一语法">一、语法</h3>
@@ -60,9 +118,18 @@ lsof:
 <p>复制文件：</p>]]></description>
 </item>
 <item>
+  <title>Linux之磁盘管理</title>
+  <link>https://daizelai.github.io/posts/linux/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</link>
+  <pubDate>Fri, 29 Jul 2016 20:35:07 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</guid>
+  <description><![CDATA[一、描述 在linux下查看磁盘使用情况。
+二、开始 2.1.查看硬盘使用情况 [root@MTX /]# df -h Filesystem Size Used Avail Use% Mounted on /dev/xvda1 20G 8.7G 10G 47% / tmpfs 1.9G 0 1.9G 0% /dev/shm /dev/xvdb1 20G 4.7G 15G 25% /alidata 2.2.查看当前目录大小 [root@MTX html]# du -sh ./* | sort -n 1.3G ./cmps 2.1M ./jc-website 4.0K ./index.html 32K ./t.tar 60K ./zydc ]]></description>
+</item>
+<item>
   <title>Linux之zip和unzip的使用</title>
   <link>https://daizelai.github.io/posts/linux/zip/</link>
-  <pubDate>Sat, 08 Aug 2015 00:00:00 &#43;0000</pubDate>
+  <pubDate>Sat, 08 Aug 2015 14:44:28 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/linux/zip/</guid>
   <description><![CDATA[一、zip/unzip命令说明 1.1.功能说明 将一般的文件或者目录进行压缩或者解压，默认生成以“.zip”为后缀的压缩包。zip命令类似于Windows中的winzip压缩程序。其格式如下：

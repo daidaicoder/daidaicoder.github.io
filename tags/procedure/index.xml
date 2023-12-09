@@ -3,10 +3,10 @@
     <title>procedure - 标签 - 来来往往</title>
     <link>https://daizelai.github.io/tags/procedure/</link>
     <description>procedure - 标签 - 来来往往</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 09 Oct 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/tags/procedure/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 09 Oct 2016 14:02:09 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/procedure/" rel="self" type="application/rss+xml" /><item>
   <title>mysql之存储过程</title>
   <link>https://daizelai.github.io/posts/mysql/procedure/</link>
-  <pubDate>Sun, 09 Oct 2016 00:00:00 &#43;0000</pubDate>
+  <pubDate>Sun, 09 Oct 2016 14:02:09 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/procedure/</guid>
   <description><![CDATA[ 查看存储过程 mysql&gt; show procedure status; 查看存储过程内容 查看某一个存储过程的内容

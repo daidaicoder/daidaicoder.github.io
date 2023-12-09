@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>日志框架 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</link>
+    <description>日志框架 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" rel="self" type="application/rss+xml" /><item>
+  <title>Android中XLog框架的使用</title>
+  <link>https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</link>
+  <pubDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</guid>
+  <description><![CDATA[<h1 id="20231130_1631武汉19号线使用新日志框架">20231130_1631武汉19号线使用新日志框架</h1>
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>怀疑武汉19号线最近出现的固定台APP异常退出的内存溢出，回到桌面是因为大量写数据到日志文件导致的，项目中使用的写日志到文件，是我自己写的工具类，性能堪忧。</p>
+<p>本文主要是把日志工具类替换为XLog日志框架，此框架之前也在此项目中使用过，现在正式启用它看看。</p>]]></description>
+</item>
+</channel>
+</rss>

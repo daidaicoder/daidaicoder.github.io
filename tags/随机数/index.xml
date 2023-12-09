@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>随机数 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0/</link>
+    <description>随机数 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 18 Oct 2016 11:27:46 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0/" rel="self" type="application/rss+xml" /><item>
+  <title>php生成8位随机数</title>
+  <link>https://daizelai.github.io/posts/php/php%E7%94%9F%E6%88%908%E4%BD%8D%E9%9A%8F%E6%9C%BA%E6%95%B0/</link>
+  <pubDate>Tue, 18 Oct 2016 11:27:46 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/php/php%E7%94%9F%E6%88%908%E4%BD%8D%E9%9A%8F%E6%9C%BA%E6%95%B0/</guid>
+  <description><![CDATA[一、描述 在php中使用随机数
+二、随机数 2.1.使用str_shuffle+substr产生8位随机数 $rand = substr(str_shuffle(&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890&#39;),0,8); echo $rand; F97VObtg 2.2.使用rand+pow生成8位随机数 function generate_code($length = 4) { return rand(pow(10,($length-1)), pow(10,$length)-1); } echo generate_code(8); echo &#34;&lt;br /&gt;&#34;; echo rand(pow(10,(8-1)), pow(10, 8)-1); 56469421 70479736 2.3.使用mt_rand生成8位随机数 echo &#34;&lt;br /&gt;&#34;; echo &#34;&lt;br /&gt;&#34;; $a = mt_rand(10000000,99999999); $b = mt_rand(10000000,99999999); echo $a; echo &#34;&lt;br /&gt;&#34;; echo $a.$b; 36816416 3681641615139555 2.4.使用range生成不定长度的随机数 $tmp = range(1,30); echo implode(&#34;&#34;, array_rand($tmp,10)); 051319212225262829 2.5.使用rand生成不定长度的位随机数 echo rand(); echo &#34;&lt;br /&gt;&#34;; echo rand(5, 15); 6135 8 ]]></description>
+</item>
+</channel>
+</rss>

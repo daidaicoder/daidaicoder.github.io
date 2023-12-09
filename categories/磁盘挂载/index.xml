@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>磁盘挂载 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</link>
+    <description>磁盘挂载 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 01 Nov 2016 10:50:28 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/" rel="self" type="application/rss+xml" /><item>
+  <title>linux之磁盘sdc变为sdb后</title>
+  <link>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</link>
+  <pubDate>Tue, 01 Nov 2016 10:50:28 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</guid>
+  <description><![CDATA[一、场景 vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。
+启动系统后变乱码的问题 使用df查看发现磁盘sdb和磁盘sdc都看不到了。
+磁盘sda和sdb都看不到了 整个就不能使用了。
+二、分析 网上的解决方案(没试过，因为我是centos7)：
+查询磁盘设备的UUID标识代码 [root@localhost wwwroot]# ls -la /dev/disk/by-id 总用量 0 drwxr-xr-x. 2 root root 280 11月 1 11:12 . drwxr-xr-x. 5 root root 100 11月 1 11:12 .. lrwxrwxrwx. 1 root root 9 11月 1 11:12 ata-VBOX_CD-ROM_VB2-01700376 -&gt; ../../sr0 lrwxrwxrwx. 1 root root 9 11月 1 11:12 ata-VBOX_HARDDISK_VB56600bb8-22ac4f1f -&gt; ../../sda lrwxrwxrwx. 1 root root 10 11月 1 11:12 ata-VBOX_HARDDISK_VB56600bb8-22ac4f1f-part1 -&gt; .]]></description>
+</item>
+</channel>
+</rss>

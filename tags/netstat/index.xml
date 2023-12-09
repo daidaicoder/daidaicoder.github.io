@@ -3,14 +3,43 @@
     <title>netstat - 标签 - 来来往往</title>
     <link>https://daizelai.github.io/tags/netstat/</link>
     <description>netstat - 标签 - 来来往往</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 13 Oct 2016 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/tags/netstat/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 14 Oct 2016 15:45:51 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/netstat/" rel="self" type="application/rss+xml" /><item>
+  <title>Linux下netstat使用手记</title>
+  <link>https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</link>
+  <pubDate>Fri, 14 Oct 2016 15:45:51 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</guid>
+  <description><![CDATA[Linux下netstat命令的简单使用记录，这里以CentOS7为基础。
+一、netstat命令说明 1.1.netstat常用参数介绍 netstat有很多参数，下面列表每个参数的说明。
+-a或--all：显示所有连线中的Socket； -A&lt;网络类型&gt;或--&lt;网络类型&gt;：列出该网络类型连线中的相关地址； -c或--continuous：持续列出网络状态； -C或--cache：显示路由器配置的快取信息； -e或--extend：显示网络其他相关信息； -F或--fib：显示FIB； -g或--groups：显示多重广播功能群组组员名单； -h或--help：在线帮助； -i或--interfaces：显示网络界面信息表单； -l或--listening：显示监控中的服务器的Socket； -M或--masquerade：显示伪装的网络连线； -n或--numeric：直接使用ip地址，而不通过域名服务器； -N或--netlink或--symbolic：显示网络硬件外围设备的符号连接名称； -o或--timers：显示计时器； -p或--programs：显示正在使用Socket的程序识别码和程序名称； -r或--route：显示Routing Table； -s或--statistice：显示网络工作信息统计表； -t或--tcp：显示TCP传输协议的连线状况； -u或--udp：显示UDP传输协议的连线状况； -v或--verbose：显示指令执行过程； -V或--version：显示版本信息； -w或--raw：显示RAW传输协议的连线状况； -x或--unix：此参数的效果和指定&#34;-A unix&#34;参数相同； --ip或--inet：此参数的效果和指定&#34;-A inet&#34;参数相同。 二、netstat常用命令介绍 2.1.列出所有端口 netstat -a列出所有的端口，包括监听和未监听的，这里lai因为觉得太多了，只选其中一部分。
+[root@localhost _posts]# netstat -a Active Internet connections (servers and established) Proto Recv-Q Send-Q Local Address Foreign Address State tcp 0 0 0.0.0.0:http 0.0.0.0:* LISTEN tcp 0 0 0.0.0.0:ssh 0.0.0.0:* LISTEN tcp 0 0 localhost:smtp 0.0.0.0:* LISTEN tcp 0 52 localhost.]]></description>
+</item>
+<item>
   <title>windows下netstat使用手记</title>
-  <link>https://daizelai.github.io/posts/winddows/netstat/</link>
+  <link>https://daizelai.github.io/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</link>
   <pubDate>Thu, 13 Oct 2016 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/winddows/netstat/</guid>
+  <guid>https://daizelai.github.io/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</guid>
   <description><![CDATA[windows下netstat命令的简单使用记录。
-一、windows下面查看所有端口，然后找到对应的端口和PID 1.1.查看netstat的帮助信息# D:\server\php5625&gt;netstat /? 显示协议统计和当前 TCP/IP 网络连接。 NETSTAT [-a] [-b] [-e] [-f] [-n] [-o] [-p proto] [-r] [-s] [-t] [interval] -a 显示所有连接和侦听端口。 -b 显示在创建每个连接或侦听端口时涉及的可执行程序。 在某些情况下，已知可执行程序承载多个独立的 组件，这些情况下，显示创建连接或侦听端口时涉 及的组件序列。此情况下，可执行程序的名称 位于底部[]中，它调用的组件位于顶部，直至达 到 TCP/IP。注意，此选项可能很耗时，并且在您没有 足够权限时可能失败。 -e 显示以太网统计。此选项可以与 -s 选项结合使用。 -f 显示外部地址的完全限定域名(FQDN)。 -n 以数字形式显示地址和端口号。 -o 显示拥有的与每个连接关联的进程 ID。 -p proto 显示 proto 指定的协议的连接；proto 可以是下列任 何一个: TCP、UDP、TCPv6 或 UDPv6。如果与 -s 选 项一起用来显示每个协议的统计，proto 可以是下列任 何一个: IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP 或 UDPv6。 -r 显示路由表。 -s 显示每个协议的统计。默认情况下，显示 IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP 和 UDPv6 的统计；-p 选项可用于指定默认的子网。 -t 显示当前连接卸载状态。 interval 重新显示选定的统计，各个显示间暂停的间隔秒数。 按 CTRL+C 停止重新显示统计。如果省略，则 netstat 将打印当前的配置信息一次。 1.]]></description>
+一、windows下使用 windows下面查看所有端口，然后找到对应的端口和PID。
+1.1.查看netstat的帮助信息# D:\server\php5625&gt;netstat /? 显示协议统计和当前 TCP/IP 网络连接。 NETSTAT [-a] [-b] [-e] [-f] [-n] [-o] [-p proto] [-r] [-s] [-t] [interval] -a 显示所有连接和侦听端口。 -b 显示在创建每个连接或侦听端口时涉及的可执行程序。 在某些情况下，已知可执行程序承载多个独立的 组件，这些情况下，显示创建连接或侦听端口时涉 及的组件序列。此情况下，可执行程序的名称 位于底部[]中，它调用的组件位于顶部，直至达 到 TCP/IP。注意，此选项可能很耗时，并且在您没有 足够权限时可能失败。 -e 显示以太网统计。此选项可以与 -s 选项结合使用。 -f 显示外部地址的完全限定域名(FQDN)。 -n 以数字形式显示地址和端口号。 -o 显示拥有的与每个连接关联的进程 ID。 -p proto 显示 proto 指定的协议的连接；proto 可以是下列任 何一个: TCP、UDP、TCPv6 或 UDPv6。如果与 -s 选 项一起用来显示每个协议的统计，proto 可以是下列任 何一个: IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP 或 UDPv6。 -r 显示路由表。 -s 显示每个协议的统计。默认情况下，显示 IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP 和 UDPv6 的统计；-p 选项可用于指定默认的子网。 -t 显示当前连接卸载状态。 interval 重新显示选定的统计，各个显示间暂停的间隔秒数。 按 CTRL+C 停止重新显示统计。如果省略，则 netstat 将打印当前的配置信息一次。 1.]]></description>
+</item>
+<item>
+  <title>Linux之netstat命令</title>
+  <link>https://daizelai.github.io/posts/linux/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/</link>
+  <pubDate>Sat, 09 Jan 2016 20:33:19 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/</guid>
+  <description><![CDATA[<h2 id="一netstat命令介绍">一、netstat命令介绍</h2>
+<p>在Linux使用过程中，需要了解当前系统开放了哪些端口，并且要查看开放这些端口的具体进程和用户，可以通过netstat命令进行简单查询。</p>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code>netstat命令各个参数说明如下：
+　　-t : 指明显示TCP端口
+　　-u : 指明显示UDP端口
+　　-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)
+　　-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。
+　　-n : 不进行DNS轮询，显示IP(可以加速操作)
+</code></pre>]]></description>
 </item>
 </channel>
 </rss>

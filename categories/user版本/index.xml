@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>user版本 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/user%E7%89%88%E6%9C%AC/</link>
+    <description>user版本 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 21 Nov 2023 19:10:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/user%E7%89%88%E6%9C%AC/" rel="self" type="application/rss+xml" /><item>
+  <title>编译android系统user版本时默认开启adb模式</title>
+  <link>https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Tue, 21 Nov 2023 19:10:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[<h1 id="20231121_1910编译android系统user版本时默认开启adb模式">20231121_1910编译android系统user版本时默认开启adb模式</h1>
+<h2 id="一描述">一、描述</h2>
+<p>默认编译user系统后，是不能直接adb和root的，但有时候为了方便又必须要这样做，怎么办呢？</p>
+<p>本文给出了msm8953_64+Android7.1环境下，如何解决这个问题。</p>]]></description>
+</item>
+</channel>
+</rss>

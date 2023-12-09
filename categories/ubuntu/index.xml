@@ -1,0 +1,59 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>ubuntu - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/ubuntu/</link>
+    <description>ubuntu - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 04 Nov 2016 19:59:15 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/ubuntu/" rel="self" type="application/rss+xml" /><item>
+  <title>ubuntu的不能连接SSH问题</title>
+  <link>https://daizelai.github.io/posts/linux/ubuntu/ubuntu%E7%9A%84%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5ssh%E9%97%AE%E9%A2%98/</link>
+  <pubDate>Fri, 04 Nov 2016 19:59:15 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/ubuntu/ubuntu%E7%9A%84%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5ssh%E9%97%AE%E9%A2%98/</guid>
+  <description><![CDATA[一、问题描述 ubuntu的不能连接SSH问题。
+安装好ubuntu系统中，网络也配置好可以ping通主机。使用SSH不能连接，提示：
+The remote system refused the connection. 二、获取root权限 为了方便配置，先取得系统的root权限。
+sudo su - root 获取root用户权限 三、安装ssh 使用如下命令安装ssh
+apt-get install openssh-server apt-get install openssh-client 安装openssh-server 我这边不用安装openssh-client了。
+安装openssh-server 安装ssh时出现问题：
+dpkg 被中断,您必须手工运行 sudo dpkg --configure -a解决此问题。 提示截图：
+安装openssh-server 导致这个问题的主要原因是因为/var/lib/dpkg/updates文件下的文件有问题，可能是其他软件安装过程或是其他原因导致的，这里删除掉然后重建即可。
+sudo rm /var/lib/dpkg/updates/* sudo apt-get update sudo apt-get upgrade update操作 upgrade操作 sudo apt-get update 指令会重新建立这些资料，所以不必担心删除后会出问题； sudo apt-get upgrade 会更新你的电脑里面已安装的软件的明细，根据软件的明细更新软件到最新版。 PS：“dpkg ”是“Debian Packager ”的简写。为 “Debian” 专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自“Debian”的“Linux ”发行版都使用 “dpkg”
+普通用法：
+1、dpkg -i 安装一个 Debian 包裹文件，如你手动下载的文件。 2、dpkg -c 列出 的内容。 3、dpkg -I 从 中提取包裹信息。 4、dpkg -r 移除一个已安装的包裹。 5、dpkg -P 完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。 6、dpkg -L 列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .]]></description>
+</item>
+<item>
+  <title>virtualbox之ubuntu全屏显示</title>
+  <link>https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%85%A8%E5%B1%8F%E6%98%BE%E7%A4%BA/</link>
+  <pubDate>Wed, 02 Nov 2016 18:07:32 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%85%A8%E5%B1%8F%E6%98%BE%E7%A4%BA/</guid>
+  <description><![CDATA[一、描述 virtualbox安装好ubuntu后调分辨率
+二、开始 在virtualbox安装好ubuntu后，显示的界面是800*600的分辨率，下面给出需要全屏显示的解决办法：
+1.启动Ubuntu后，安装Virtualbox增强功能（在虚拟机的“设备”菜单里可以点击） 安装Virtualbox增强功能 正在安装中。 安装Virtualbox增强功能 2.安装增强功能完成后，选中虚拟机菜单上的“视图” -&gt; “自动调整显示尺寸”。
+安装Virtualbox增强功能 3.点击虚拟机菜单上的“视图” -&gt; “显示全屏”(快捷键：右Ctrl + F)
+4.重启系统后就可以了，记得需要点一下虚拟机中“视图”下的“无缝模式”和“视图”下的“全屏模式”，此时缩小放大虚拟机窗口就会正常的变了。]]></description>
+</item>
+<item>
+  <title>virtualbox之ubuntu安装</title>
+  <link>https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/</link>
+  <pubDate>Tue, 01 Nov 2016 11:22:28 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/</guid>
+  <description><![CDATA[一、ubuntu版本介绍 Desktop是桌面操作系统版本; Server是服务器端操作系统版本; Cloud应该是云端操作系统版本。 二、系统下载 作为PC机，我们下载Desktop版本。
+LTS = Long Term Support Long Term Support：长时间支持版本（三年） ，一般的版本支持为18个月。Ubuntu定期并有计划的不断发布其新版本,Ubuntu 一直坚持每6个月发布一个新的版本。
+下载Ubuntu 16.04.1 LTS
+下载最新的LTS版本的Ubuntu，适用于台式电脑和笔记本电脑。 LTS代表长期支持 - 这意味着五年的免费安全和维护更新，保证。 Ubuntu 16.04 LTS发行说明 推荐系统要求： 2 GHz双核处理器或更好 2 GB系统内存 25 GB可用硬盘空间 DVD驱动器或安装程序媒体的USB端口 互联网接入是有帮助的 三、安装系统 3.1.创建虚拟电脑 创建虚拟电脑 创建虚拟电脑 创建虚拟电脑 创建虚拟电脑 3.2.安装前的准备 点击启动后，在弹出的框中选择之前下载的ubuntu系统文件后。
+启动虚拟电脑 点击启动按钮，效果如下
+启动虚拟电脑 3.3.安装系统 现在来到了安装界面，选择我们熟悉的中文语言，点击install Ubuntu
+安装中文ubuntu 来到此界面，需要注意的是，这里全部都不选择，我第一次全部选择安装后启动系统只看到桌面壁纸了。 安装中文ubuntu 点击继续后来到安装类型界面，这里选择“清除整个磁盘并安装Ubuntu”，点击现在安装
+此处，选择“清除整个磁盘并安装Ubuntu”或“其他选项”，就可以实现，傻瓜化的，不用关心如何分区，而直接安装Ubuntu的。
+而与此相对的，如果选择“给新安装的Ubuntu使用LVM”，则是需要去关心，Linux类系统的各种分区，各种挂载点，设置不用的挂载点，不同的大小，以实现，尤其是和软件开发等相关的，一些特定目的。
+安装类型 接着很快就来到选择时区界面，默认选择shanghai
+然后来到键盘布局页面，我图方便就选择汉语-汉语.:
+现在我们可以设置用户名和密码了。
+设置用户名和密码 然后就是去安装系统了，首先是复制文件以及安装系统操作，因为前面我勾选了下载更新文件，所以还会下载一些文件的。
+安装中。。。 安装中。。。 安装完毕 这里没有上面11,12下载文件了，只要不到1个小时应该，因为查问题没记时间。
+安装成功 现在就可以登录ubuntu系统喽。]]></description>
+</item>
+</channel>
+</rss>

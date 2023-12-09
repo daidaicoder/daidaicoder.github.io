@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>memcache - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/memcache/</link>
+    <description>memcache - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 15 Dec 2014 18:44:29 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/categories/memcache/" rel="self" type="application/rss+xml" /><item>
+  <title>Windows下memcache操作手记</title>
+  <link>https://daizelai.github.io/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+  <pubDate>Mon, 15 Dec 2014 18:44:29 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+  <description><![CDATA[Windows下memcache常用操作
+一、修改memcache端口 1.memcache的默认端口11211
+2.直接指定端口启动是无效的。
+memcached -p 15000 -d start // 这样做是无效的 3.于是直接修改注册表
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server 其中的ImagePath项的值为：
+&#34;c:\memcached\memcached.exe&#34; -d runservice 改成：
+&#34;c:\memcached\memcached.exe&#34; -p 15000 -d runservice 二、清除memcache中的缓存 1.在本地进入dos命令行
+2.进入控制台
+C:\Users\Administrator&gt;telnet localhost 11211（12000） 3.清除
+flush_all OK 4.最后退出telnet使用quit命令,再exit退出远程主机
+quit 遗失对主机的连接。 ]]></description>
+</item>
+</channel>
+</rss>

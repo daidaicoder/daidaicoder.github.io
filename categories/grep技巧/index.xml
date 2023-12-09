@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>grep技巧 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/grep%E6%8A%80%E5%B7%A7/</link>
+    <description>grep技巧 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://daizelai.github.io/categories/grep%E6%8A%80%E5%B7%A7/" rel="self" type="application/rss+xml" /><item>
+  <title>在linux中使用grep的几种技巧</title>
+  <link>https://daizelai.github.io/posts/linux/linuxgrep/</link>
+  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linuxgrep/</guid>
+  <description><![CDATA[<h1 id="20231105_1738在linux中使用grep的几种技巧">20231105_1738在linux中使用grep的几种技巧</h1>
+<h2 id="一描述">一、描述</h2>
+<p>在linux系统中，有一个非常强大的命令行文本搜索工具，它就是grep，本文主要介绍grep的几种使用方法。</p>]]></description>
+</item>
+</channel>
+</rss>

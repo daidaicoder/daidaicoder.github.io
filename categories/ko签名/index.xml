@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>ko签名 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/ko%E7%AD%BE%E5%90%8D/</link>
+    <description>ko签名 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 28 Jul 2023 19:39:21 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/ko%E7%AD%BE%E5%90%8D/" rel="self" type="application/rss+xml" /><item>
+  <title>在SC60源码中编译ko文件</title>
+  <link>https://daizelai.github.io/posts/android/drivers/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/</link>
+  <pubDate>Fri, 28 Jul 2023 19:39:21 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/drivers/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/</guid>
+  <description><![CDATA[在SC60源码中编译ko文件 一、描述 1.1.前言 本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。
+1.2.uevent简介 在Linux内核中，可以使用kobject_uevent函数向用户空间发送事件。这个函数用于生成uevent，并通知用户空间应用程序有关设备和硬件相关事件的信息。
+二、创建内核模块 创建一个简单的内核模块，使用kobject_uevent函数触发uevent。 路径：/mnt/android/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/display_event.c
+#include &lt;linux/init.h&gt; #include &lt;linux/kernel.h&gt; #include &lt;linux/module.h&gt; #include &lt;linux/kobject.h&gt; static struct kobject *kobj; static int __init uevent_example_init(void) { // 创建一个内核对象（kobject） kobj = kobject_create_and_add(&#34;my_uevent_obj&#34;, kernel_kobj); if (!kobj) return -ENOMEM; // 使用kobject_uevent函数发送uevent kobject_uevent(kobj, KOBJ_ADD); printk(KERN_INFO &#34;Uevent example module loaded\n&#34;); return 0; } static void __exit uevent_example_exit(void) { // 使用kobject_uevent函数发送uevent，这里发送移除事件 kobject_uevent(kobj, KOBJ_REMOVE); kobject_put(kobj); // 释放内核对象（kobject） printk(KERN_INFO &#34;Uevent example module unloaded\n&#34;); } module_init(uevent_example_init); module_exit(uevent_example_exit); MODULE_LICENSE(&#34;GPL&#34;); MODULE_DESCRIPTION(&#34;Uevent example&#34;); MODULE_AUTHOR(&#34;Zelai Dai&#34;); 三、编译ko 3.]]></description>
+</item>
+</channel>
+</rss>

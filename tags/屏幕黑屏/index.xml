@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>屏幕黑屏 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E5%B1%8F%E5%B9%95%E9%BB%91%E5%B1%8F/</link>
+    <description>屏幕黑屏 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 16 Sep 2022 13:38:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E5%B1%8F%E5%B9%95%E9%BB%91%E5%B1%8F/" rel="self" type="application/rss+xml" /><item>
+  <title>屏幕黑屏问题记录</title>
+  <link>https://daizelai.github.io/posts/sc60/20220916_1316sc60%E5%B1%8F%E5%B9%95%E9%BB%91%E5%B1%8F%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
+  <pubDate>Fri, 16 Sep 2022 13:38:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/sc60/20220916_1316sc60%E5%B1%8F%E5%B9%95%E9%BB%91%E5%B1%8F%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
+  <description><![CDATA[20220916_1316SC60屏幕黑屏问题记录 一、描述 1.1.现象 by daizelai on 2022/09/16 13:16
+由于深圳14号线车载台现场出现好几次屏幕黑屏的问题了，现出黑屏时，从侧面看屏幕还是有光的，并且使用虚拟屏连接进入后，系统其实一切是正常的。
+1.2.首次修改 然后我在实验室复现了一次后，取了串口日志给移远看了后也没有找到具体的问题。然后让把屏幕驱动的初始化时间提到开启背光之前。
+二、屏幕驱动修改 2.1.删除原有屏幕驱动实始化 把原有的屏幕驱动初始化删除掉。
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff bootable/bootloader/lk/target/msm8953/target_display.cdiff --git a/bootable/bootloader/lk/target/msm8953/target_display.c b/bootable/bootloader/lk/target/msm8953/target_display.cindex ffb18f8..776b214 100755--- a/bootable/bootloader/lk/target/msm8953/target_display.c+++ b/bootable/bootloader/lk/target/msm8953/target_display.c@@ -299,7 +299,7 @@ static int mipi_convert_i2c_read(uint8_t slave_addr, uint8_t reg, uint8_t *val)}//#define DBG_MIPI_CONVERT-static int mipi_convert_init(void)+int mipi_convert_init(void){int i = 0;#ifdef DBG_MIPI_CONVERT@@ -401,9 +401,9 @@ int target_panel_reset(uint8_t enable, struct panel_reset_sequence *resetseq,if (enable) {/*--&gt;add by danny*/- printf(&#34;danny init\n&#34;);- mipi_convert_init();- printf(&#34;danny init end\n&#34;);+ /*printf(&#34;danny init\n&#34;);*/+ /*mipi_convert_init();*/+ /*printf(&#34;danny init end\n&#34;);*//*&lt;--add by danny*/if (pinfo-&gt;mipi.]]></description>
+</item>
+</channel>
+</rss>

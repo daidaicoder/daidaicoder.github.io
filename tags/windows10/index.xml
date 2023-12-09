@@ -5,10 +5,10 @@
     <description>windows10 - 标签 - 来来往往</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/tags/windows10/" rel="self" type="application/rss+xml" /><item>
   <title>windows10搭建本地NTP服务器</title>
-  <link>https://daizelai.github.io/posts/winddows/windowsntp/</link>
+  <link>https://daizelai.github.io/posts/windows/windowsntp/</link>
   <pubDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/winddows/windowsntp/</guid>
+  <guid>https://daizelai.github.io/posts/windows/windowsntp/</guid>
   <description><![CDATA[windows10搭建本地NTP服务器 一、描述 因二开业务需要，将在本地Windows10笔记本上面搭建一个本地NTP服务器，用于车载台SC60终端中的车载台APP的NTP时间同步服务器。
 by daizelai on 2021/12/1 11:03
 二、搭建 2.1.启用NTP服务器 先打开注册表，使用win+r命令并输入regedit。

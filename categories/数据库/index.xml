@@ -39,7 +39,7 @@ mysql&gt; show create database we7; +----------+--------------------------------
 <item>
   <title>mysql创建utf8字符集数据库</title>
   <link>https://daizelai.github.io/posts/mysql/mysql/</link>
-  <pubDate>Wed, 07 Sep 2016 00:00:00 &#43;0000</pubDate>
+  <pubDate>Wed, 07 Sep 2016 13:19:50 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql/</guid>
   <description><![CDATA[ 一、MySQL新建数据库语法 CREATE DATABASE 的语法： CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name [create_specification [, create_specification] ...] create_specification: [DEFAULT] CHARACTER SET charset_name | [DEFAULT] COLLATE collation_name 二、新建数据使用示例 CREATE DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 三、更改数据库的字符编码 ALTER DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ]]></description>
@@ -47,7 +47,7 @@ mysql&gt; show create database we7; +----------+--------------------------------
 <item>
   <title>MySql服务突然没有了</title>
   <link>https://daizelai.github.io/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/</link>
-  <pubDate>Mon, 05 Sep 2016 00:00:00 &#43;0000</pubDate>
+  <pubDate>Mon, 05 Sep 2016 19:43:15 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/</guid>
   <description><![CDATA[一、打开Web界面发现如下错误 看下图的意思是sql连接的错误，后面会单独连接MySql试试看。
@@ -58,7 +58,7 @@ D:\server\mysql5714\bin&gt;mysql -h127.0.0.1 -uroot -p Enter password: ****** ER
 <item>
   <title>mysql之密码学</title>
   <link>https://daizelai.github.io/posts/mysql/mysqlpassword/</link>
-  <pubDate>Tue, 09 Aug 2016 00:00:00 &#43;0000</pubDate>
+  <pubDate>Tue, 09 Aug 2016 14:13:05 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysqlpassword/</guid>
   <description><![CDATA[<!-- raw HTML omitted -->

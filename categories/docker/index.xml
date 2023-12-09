@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>docker - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/docker/</link>
+    <description>docker - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 26 Oct 2022 18:15:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/docker/" rel="self" type="application/rss+xml" /><item>
+  <title>windows10上docker中centos7.9安装android环境重新记录版</title>
+  <link>https://daizelai.github.io/posts/android/20221025_2016windows10%E4%B8%8Adocker%E4%B8%ADcentos7.9%E5%AE%89%E8%A3%85android%E7%8E%AF%E5%A2%83%E9%87%8D%E6%96%B0%E8%AE%B0%E5%BD%95%E7%89%88/</link>
+  <pubDate>Wed, 26 Oct 2022 18:15:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/20221025_2016windows10%E4%B8%8Adocker%E4%B8%ADcentos7.9%E5%AE%89%E8%A3%85android%E7%8E%AF%E5%A2%83%E9%87%8D%E6%96%B0%E8%AE%B0%E5%BD%95%E7%89%88/</guid>
+  <description><![CDATA[<h1 id="20221025_2016windows10上docker中centos79安装android环境重新记录版">20221025_2016windows10上docker中centos7.9安装android环境重新记录版</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2022/10/25 20:17
+由于之前的记录有点混乱，再加上后面把centos7.9容器给删除了，需要重新搭建linux下android编译环境，所以这里重新记录了下搭建过程，比较流畅的一次记录。</p>]]></description>
+</item>
+</channel>
+</rss>

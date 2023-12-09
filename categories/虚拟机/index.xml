@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>虚拟机 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+    <description>虚拟机 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Oct 2016 15:42:51 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="self" type="application/rss+xml" /><item>
+  <title>vmbox扩容</title>
+  <link>https://daizelai.github.io/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/</link>
+  <pubDate>Thu, 27 Oct 2016 15:42:51 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/</guid>
+  <description><![CDATA[windows下面命令扩容虚拟机容量（这一招没用） 使用VM VirtualBox安装的CentOS最近空间满了， 想要添加一些空间。使用VBoxManage命令来添加空间。
+首先cmd来到VirtualBox的安装目录，发现有VBoxManage.exe命令文件，就可以按下面的命令来操作。
+F:\soft\VBox\App\VirtualBox&gt;VBoxManage modifyhd F:\PortableApps\VirtualBoxPortab le\VMs\centos_7\centos_7.vdi --resize 19000 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100% 扩容失败问题如下。
+F:\soft\VBox\App\VirtualBox&gt;VBoxManage modifyhd F:\PortableApps\VirtualBoxPortab le\VMs\centos_7\centos_7.vdi --resize 16000 0%... Progress state: VBOX_E_NOT_SUPPORTED VBoxManage.exe: error: Resize medium operation for this format is not implemente d yet! 首先虚拟系统的扩展名必须为vdi，如果是vmdk的话，需要转换为vdi，我这里就是vdi就不管了。
+我这里的错误是因为我的虚拟机的空间就是16G，所以当然扩容不成功了。 扩容前的空间大小为16G 通过VBoxManage list hdds就可以看到我们克隆的文件了
+F:\soft\VBox\App\VirtualBox&gt;VBoxManage list hdds UUID: 56600bb8-bb8d-4ec4-97ff-10e11f4fac22 Parent UUID: base State: locked read Type: normal (base) Location: F:\PortableApps\VirtualBoxPortable\VMs\centos_7\centos_7.vdi Storage format: VDI Capacity: 19000 MBytes Encryption: disabled UUID: d0f331ec-eff9-4bc5-8691-e05cfa36d0b4 Parent UUID: 56600bb8-bb8d-4ec4-97ff-10e11f4fac22 State: created Type: normal (differencing) Location: F:\PortableApps\VirtualBoxPortable\VMs\centos_7\Snapshots/{d0f33 1ec-eff9-4bc5-8691-e05cfa36d0b4}.]]></description>
+</item>
+</channel>
+</rss>

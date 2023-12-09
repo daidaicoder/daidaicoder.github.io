@@ -3,141 +3,151 @@
     <title>原创 - 标签 - 来来往往</title>
     <link>https://daizelai.github.io/tags/%E5%8E%9F%E5%88%9B/</link>
     <description>原创 - 标签 - 来来往往</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 03 Jun 2023 15:47:03 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E5%8E%9F%E5%88%9B/" rel="self" type="application/rss+xml" /><item>
-  <title>本地命令行删除分支</title>
-  <link>https://daizelai.github.io/posts/git/room/</link>
-  <pubDate>Sat, 03 Jun 2023 15:47:03 &#43;0800</pubDate>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E5%8E%9F%E5%88%9B/" rel="self" type="application/rss+xml" /><item>
+  <title>Android中XLog框架的使用</title>
+  <link>https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</link>
+  <pubDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/room/</guid>
-  <description><![CDATA[一、删除本地仓库中的分支 git branch -d &lt;branch-name&gt; 删除多个本地分支
-git branch -d &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 二、强制删除分支 如果要强制删除分支，即使它的更改尚未合并到其他分支中，可以使用以下命令：
-git branch -D &lt;branch-name&gt; 强制删除多个分支
-git branch -D &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 请确保在删除分支之前，已经将其上的任何重要更改合并到其他分支中或以其他方式进行了备份。
-三、删除远程仓库中的分支 如果你想删除远程仓库中的分支，可以使用以下命令：
-git push origin --delete &lt;branch-name&gt; 删除多个远程分支
-git push origin --delete &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 这将从远程仓库 origin 删除指定的分支。]]></description>
+  <guid>https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</guid>
+  <description><![CDATA[<h1 id="20231130_1631武汉19号线使用新日志框架">20231130_1631武汉19号线使用新日志框架</h1>
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>怀疑武汉19号线最近出现的固定台APP异常退出的内存溢出，回到桌面是因为大量写数据到日志文件导致的，项目中使用的写日志到文件，是我自己写的工具类，性能堪忧。</p>
+<p>本文主要是把日志工具类替换为XLog日志框架，此框架之前也在此项目中使用过，现在正式启用它看看。</p>]]></description>
 </item>
 <item>
-  <title>使用vscode合并分支提交到主分支</title>
-  <link>https://daizelai.github.io/posts/git/20230603_1255%E4%BD%BF%E7%94%A8vscode%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E6%8F%90%E4%BA%A4%E5%88%B0%E4%B8%BB%E5%88%86%E6%94%AF/gitmerge/</link>
-  <pubDate>Sat, 03 Jun 2023 12:55:26 &#43;0800</pubDate>
+  <title>系统启动后修改usb网卡的mac地址</title>
+  <link>https://daizelai.github.io/posts/sc60/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80/</link>
+  <pubDate>Thu, 30 Nov 2023 11:15:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/20230603_1255%E4%BD%BF%E7%94%A8vscode%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E6%8F%90%E4%BA%A4%E5%88%B0%E4%B8%BB%E5%88%86%E6%94%AF/gitmerge/</guid>
-  <description><![CDATA[一、描述 1.1.前言 git多commit合并提交到主分支过程记录，本文记录了类似于1.2小节的整个过程。
-1.2.在develop分支 git log 现有提交60714ec、fa0fbe5和6a54429。
-daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/test/wzs2_android_app (develop)$ git reflog -n 106a54429 (HEAD -&gt; develop) HEAD@{0}: commit: 修改了版本号为11fa0fbe5 HEAD@{1}: commit: 修改版本号为1060714ec HEAD@{2}: commit: 修改版本号为98cbf57e (origin/develop) HEAD@{3}: merge feature/login: Merge made by the &#39;recursive&#39; strategy.8791add HEAD@{4}: checkout: moving from feature/login to develop0108492 (origin/feature/login, feature/login) HEAD@{5}: commit: 修改了版本号为88bf847c HEAD@{6}: commit: 修改了版本号为7695c95c HEAD@{7}: checkout: moving from develop to feature/login8791add HEAD@{8}: merge feature/login: Merge made by the &#39;recursive&#39; strategy.]]></description>
+  <guid>https://daizelai.github.io/posts/sc60/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80/</guid>
+  <description><![CDATA[20231130_1115系统启动后修改usb网卡的mac地址 一、描述 由于无法通过工具直接修改usb网卡的mac地址，所以做了个变通的方法，通过在系统启动后来修改mac地址。
+配置文件样本： system_config.ini
+二、配置文件 2.1.配置文件内容 也是在配置文件中配置参数。如下所示：
+[system] self_mac=11:aa:bb:cc:dd 注意，配置时请使用合法的mac地址，非法的mac地址就不会生效。
+2.2.配置文件说明 配置文件中的[system]只是为了区分，最主要的配置项是self_mac。
+其中，self_mac表示修改后的mac地址，请设置合法mac地址。 配置项中=号前后不需要空格。 当系统在启动时，检测到self_mac值时，将会修改eth0的mac地址。
+2.3.配置文件路径 配置文件存放在/custom/metro/system路径下。
+msm8953_64:/custom/metro/system # pwd/custom/metro/systemmsm8953_64:/custom/metro/system # ls -ltotal 8-rw-rw-rw- 1 root root 100 2023-11-29 19:17 system_config.inimsm8953_64:/custom/metro/system # 三、基本逻辑 修改mac地址的基本逻辑如下：
+端口eth0不在，不会设置mac地址。 无配置文件，不会设置mac地址。 有self_mac=但未设置值，不会设置mac地址。 配置了self_mac地址，但是mac不合法，不会设置mac地址。 正确的设置了合法的mac地址，会设置mac地址。 四、操作说明 4.1.编辑配置文件 可以根据需要配置正确的配置项。
+4.2.替换配置文件 使用adb命令替换配置文件，如果终端系统刷机后，此默认是没有配置项的，需要人工去替换配置文件。
+本配置文件一般会有产测的时候需要做这一步，后期可根据需要做好维护工作。
+C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.iniadb.exe: push requires an argumentC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini /custom/metro/system/E:\SC60\wuhan19_fx_20231030_1645\os\system_config.]]></description>
 </item>
 <item>
-  <title>android开发中统计方法执行时间</title>
-  <link>https://daizelai.github.io/posts/android/methodexecution/</link>
-  <pubDate>Tue, 30 May 2023 14:13:30 &#43;0800</pubDate>
+  <title>终端屏幕自动修复配置的使用</title>
+  <link>https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+  <pubDate>Thu, 30 Nov 2023 09:00:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/android/methodexecution/</guid>
-  <description><![CDATA[一、android开发中统计方法执行时间 在Android开发中，可以使用以下方法来统计方法的执行时间：
-1.1.System.currentTimeMillis() 使用System.currentTimeMillis()方法： 在方法的开始处使用long startTime = System.currentTimeMillis();记录开始时间，在方法的结束处使用long endTime = System.currentTimeMillis();记录结束时间。然后可以通过计算差值long executionTime = endTime - startTime;来得到方法的执行时间。
-示例代码：
-long startTime = System.currentTimeMillis(); // 执行需要统计时间的方法 long endTime = System.currentTimeMillis(); long executionTime = endTime - startTime; Log.d(&#34;ExecutionTime&#34;, &#34;Method execution time: &#34; + executionTime + &#34;ms&#34;); 1.2.System.nanoTime() 使用System.nanoTime()方法： System.nanoTime()方法提供了更高精度的时间单位，可以用于测量方法的执行时间。用法与System.currentTimeMillis()类似。
-示例代码：
-long startTime = System.nanoTime(); // 执行需要统计时间的方法 long endTime = System.nanoTime(); long executionTime = endTime - startTime; Log.d(&#34;ExecutionTime&#34;, &#34;Method execution time: &#34; + executionTime + &#34;ns&#34;); 注意：以上方法只能统计方法的总体执行时间，不适用于需要分析方法内部细节的时间消耗。对于更复杂的性能分析和优化需求，可以考虑使用Android Profiler工具或第三方性能分析库，如Tracer等。]]></description>
+  <guid>https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+  <description><![CDATA[20231130_0900终端屏幕自动修复配置的使用 一、描述 本文记录了如何在终端上配置屏幕自动修复的方法，以及如何查看是否执行了修复操作。
+版本路径： \10.1.1.154\00-网络u盘\地铁集群二开项目\版本\SC60\E220\WH19\TX\20231130\userdebug_emmc_20231130_1135.7z 配置文件样本： system_config.ini
+二、配置文件 2.1.配置文件内容 配置文件内容如下所示：
+[system] self_mac=11:aa:bb:cc:dd [screen] reset_code=0xb1,0xb5,0x31,0xbd period_time=5000 2.2.配置文件说明 配置文件中的[screen]只是为了区分，最主要的配置项是reset_code和period_time。
+其中reset_code表示检测码，period_time表示单次修复的间隔时间。 配置项中=号前后不需要空格。 配置文件中的period_time字段单位是毫秒，即如果是5秒，需要配置5000，如果1天需要配置86400000。 当系统检测到配置项中的某个reset_code时，会在达到period_time时间时修复一次，period_time项配置的时间不是绝对值，是一个大概区间值。
+2.3.配置文件路径 配置文件存放在/custom/metro/system路径下。
+msm8953_64:/custom/metro/system # pwd/custom/metro/systemmsm8953_64:/custom/metro/system # ls -ltotal 8-rw-rw-rw- 1 root root 100 2023-11-29 19:17 system_config.inimsm8953_64:/custom/metro/system # 三、自动修复基本逻辑 基本逻辑如下：
+无配置文件，默认修复时间为5秒检测一次，当遇到异常时，且是在默认的错误码[0xb1/0x31/0xb5/0xbd]中时会修复一次，没有检查到检测码，继续下一次。 有配置文件，以配置文件中配置的检测码为准。 有配置文件，以配置文件中的检查时间为准，但未配置或配置小于5秒，以5秒为间隔，配置超过或等于INT范围时，以一天86400秒为准。 下面是屏幕修复的主要流程：
+四、操作说明 4.1.编辑配置文件 可以根据需要配置正确的配置项。
+4.2.替换配置文件 使用adb命令替换配置文件，如果终端系统刷机后，此默认是没有配置项的，需要人工去替换配置文件。
+后期会做到上层应用中，通过服务器下发此配置项来覆盖人工操作。
+下面是一次成功的替换配置文件的操作记录。
+C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.iniadb.exe: push requires an argumentC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.]]></description>
 </item>
 <item>
-  <title>gitflow记录</title>
-  <link>https://daizelai.github.io/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/</link>
-  <pubDate>Fri, 14 Apr 2023 16:11:56 &#43;0000</pubDate>
+  <title>内核中添加驱动模块</title>
+  <link>https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/</link>
+  <pubDate>Wed, 22 Nov 2023 15:56:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/</guid>
-  <description><![CDATA[一、描述 记录git flow的使用
-1.2.总结 1.dev-开发分支是从master分支派生的。2.feature-特性分支是从dev-开发分支派生的，feature只是本地分支，不会被上传远端，特殊环境例外。3.feature-特性分支完成时，它被合并到dev-开发分支中。4.feature-特性分支合并完成后删除。4.release-发布分支是从dev-开发分支派生的。5.release-发布分支发布完成时，它被合并到master分支和dev-开发分支中（前提是保证版本的稳定性后再合并到master分支上）。6.release-发布分支合并完成后删除。7.版本出现问题时候则通过master分支派生出hotfixes-紧急分支进行修复，修复完成后将它合并到master分支和dev-开发分支中。8.hotfixes-紧急分支合并完成后删除。 二、常用分支git命令 2.1.新开分支 $ git branch 新分支名#新建分支 develop$ git branch develop 2.2.切换到另一个分支 $ git checkout 分支名#切换到 develop 分支$ git checkout develop 2.3.新开分支并切换到新分支 $ git checkout -b 新分支名#新开 develop 分支，并切换到此分支$ git checkout -b develop 2.4.查看分支列表 头部带 remotes/origin 的，表示远程分支
-$ git branch -a 2.5.查看远程分支列表 $ git branch -r daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)$ git branch -rorigin/HEAD -&gt; origin/masterorigin/developorigin/masterdaizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)$ 下面是查看所有分支：]]></description>
+  <guid>https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/</guid>
+  <description><![CDATA[<h1 id="20231122_1556内核中添加驱动模块">20231122_1556内核中添加驱动模块</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2023/11/22 15:56
+成功在内核中添加一个模块。</p>
+<p>设备树目录在 arch/arm/boot/dts目录。
+设备树插件目录在 arch/arm/boot/dts/overlays 目录
+驱动目录在kernel/drivers下</p>]]></description>
 </item>
 <item>
-  <title>ssh免密码登录</title>
-  <link>https://daizelai.github.io/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/ssh/</link>
-  <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
+  <title>编译android系统user版本时默认开启adb模式</title>
+  <link>https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/</link>
+  <pubDate>Tue, 21 Nov 2023 19:10:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/ssh/</guid>
-  <description><![CDATA[20221016_1619ssh免密码登录 [TOC]
-一、描述 1.1.前言 by daizelai 2022/10/16 16:20 本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh
-1.2.介绍 A免密登录B的两种方式
-比如A本地台式机电脑上远程登录linux系统的B服务器
-1.2.1.方式一，上传A的pub公钥到B服务器 把A的公钥pub文件，放在B的~/authorized_keys文件中 打开A的id_isa.pub的文件，复制并粘贴到B的~/authorized_keys文件的最下方，不要带多余的空格和其他符号
-vim ~/authorized_keys #插入B服务器的的内容底部 authorized_keys文件里保存了其他人的公钥列表，代表这些服务器可以直接登录自己。
-命令执行过程：A会用自己的.ssh/目录下的私钥文件，例如id_rds进行加密登录。而B会用自己authorized_keys保存的公钥内容进行解密，如果解密成功，就认为A是合法用户，让A免密登录。
-注： 所以A的目录下必须有id_rsa文件。
-1.2.2.方式二、下载B的私钥文件，生成pem文件 新建一个pem文件，把B的private内容粘贴进去
-利用ssh命令即可登录
-ssh -i b的私钥.pem文件 root@B的ip地址 B的私钥文件（原本只能B自己知道）给了A，证明B足够信任A，A可以直接登录B 命令执行过程：A会用 -i指定的私钥文件（这里就是B的私钥文件）加密，B在自己的authorized_keys中用自己的公钥文件解密。如果成功，就认为A是合法用户，让A免密登录。
-二、免密码SSH登录 2.1.生成密钥 密钥生成说明
-C:\Users\你的用户名&gt;ssh-keygen -t rsa -b 2048 【上面一行的-t参数代表类型type，表示用rsa方式加密；-b参数，这里表示生成2048位的公钥】【输完ssh-keygen -t rsa -b 2048后回车，生成公钥-私钥对总共只用到这一个命令，以下是配置部分】Generating public/private rsa key pair.Enter file in which to save the key (/cygdrive/c/Users/你的用户名/.ssh/id_rsa): 【在上一行的冒号后输入保存私钥的文件名。默认是在C:\Users\你的用户名\.ssh\ 这个路径下，生成名为id_rsa的文件。】【另外在该路径下还会自动生成id_rsa.pub文件，用来保存公钥。】Enter passphrase (empty for no passphrase):【在这里输入私钥密码】Enter same passphrase again:【重复输入私钥密码】Your identification has been saved in c/Users/你的用户名/.]]></description>
+  <guid>https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/</guid>
+  <description><![CDATA[<h1 id="20231121_1910编译android系统user版本时默认开启adb模式">20231121_1910编译android系统user版本时默认开启adb模式</h1>
+<h2 id="一描述">一、描述</h2>
+<p>默认编译user系统后，是不能直接adb和root的，但有时候为了方便又必须要这样做，怎么办呢？</p>
+<p>本文给出了msm8953_64+Android7.1环境下，如何解决这个问题。</p>]]></description>
 </item>
 <item>
-  <title>中兴SDK多端口配置的使用记录</title>
-  <link>https://daizelai.github.io/posts/wzs2/gm605/</link>
-  <pubDate>Sat, 08 Oct 2022 00:00:00 &#43;0000</pubDate>
+  <title>android系统开机启动脚本</title>
+  <link>https://daizelai.github.io/posts/android/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/</link>
+  <pubDate>Thu, 16 Nov 2023 19:41:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/wzs2/gm605/</guid>
-  <description><![CDATA[20221011_1049中兴SDK多端口配置的使用记录 一、描述 by daizelai on 2022/10/11 10:52 中兴GM605/GM655+多端口配置。
-二、多端口使用 2.1.配置主机telnet访问 多端口配置主机telnet连接。
-多端口配置主机telnet连接的操作示例。
-2.1.配置主机web访问 未配置主机的web多端口时是无法访问主机的web界面的
-配置主机web访问的多端口
-成功配置主机web访问的多端口效果]]></description>
+  <guid>https://daizelai.github.io/posts/android/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/</guid>
+  <description><![CDATA[<h1 id="20231114_2028添加系统启动脚本">20231114_2028添加系统启动脚本</h1>
+<h2 id="一描述">一、描述</h2>
+<h3 id="11功能描述">1.1.功能描述</h3>
+<p>动态修改网卡地址。</p>
+<ul>
+<li>android系统启动时启动脚本。</li>
+<li>android开机启动脚本。</li>
+<li>android系统开机启动服务。</li>
+<li>android开机时启动服务。</li>
+<li>android开机时启动自定义服务。</li>
+<li>android系统自启动服务。</li>
+<li>android启动后修改mac地址。</li>
+<li>android系统启动后修改mac地址。</li>
+<li>msm8953_64启动后修改mac地址。</li>
+<li>msm8953_64启动后修改网卡地址。</li>
+<li>msm8953_64系统启动后修改mac地址。</li>
+</ul>]]></description>
 </item>
 <item>
-  <title>BottomNavigationView菜单调整高度和间距</title>
-  <link>https://daizelai.github.io/posts/android/navigationview/bottomnavigationview/</link>
-  <pubDate>Fri, 30 Sep 2022 00:00:00 &#43;0000</pubDate>
+  <title>android实现浮动窗口记录</title>
+  <link>https://daizelai.github.io/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/</link>
+  <pubDate>Wed, 08 Nov 2023 13:53:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/android/navigationview/bottomnavigationview/</guid>
-  <description><![CDATA[20220930_1657BottomNavigationView菜单调整高度和间距 一、描述 by daizelai on 2022/09/30 16:58 关键字：菜单栏间距,温州S2号线菜单调整,BottomNavigationView菜单调整
-之前一直困扰许久的问题，BottomNavigationView菜单文件和图片的间距调整不好，然后调度还不知道怎么调整。
-今天终于搞定了。
-二、BottomNavigationView菜单 菜单布局 activity_main.xml 路径：\SH-CityRailway-ZTE\library_main\src\main\res\layout\activity_main.xml
-- &lt;com.google.android.material.bottomnavigation.BottomNavigationView - android:id=&#34;@+id/nav_menu_view&#34; - android:layout_width=&#34;450dp&#34; - android:layout_height=&#34;100dp&#34; - android:background=&#34;#cccccc&#34; - android:visibility=&#34;gone&#34; - android:padding=&#34;3dp&#34; - app:elevation=&#34;500dp&#34; - app:itemIconSize=&#34;35dp&#34; - app:itemTextColor=&#34;@color/main_bottom_item_text_selector&#34; - app:labelVisibilityMode=&#34;labeled&#34; - app:menu=&#34;@menu/main_menu&#34; /&gt; &lt;com.google.android.material.bottomnavigation.BottomNavigationView android:id=&#34;@+id/nav_menu_view&#34; android:layout_width=&#34;600dp&#34; android:layout_height=&#34;wrap_content&#34; android:padding=&#34;10dp&#34; app:itemIconSize=&#34;45dp&#34; android:background=&#34;#cccccc&#34; app:itemTextAppearanceActive=&#34;@style/bottom_tab_title_active&#34; app:itemTextAppearanceInactive=&#34;@style/bottom_tab_title_inactive&#34; app:itemTextColor=&#34;@color/main_bottom_item_text_selector&#34; app:labelVisibilityMode=&#34;labeled&#34; app:menu=&#34;@menu/main_menu&#34; /&gt; 菜单设置 这里还是和温州S2号线APP一样，没有改变。 路径：\SH-CityRailway-ZTE\library_main\src\main\res\menu\main_menu.xml
-&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;menu xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34; xmlns:app=&#34;http://schemas.android.com/apk/res-auto&#34;&gt; &lt;!-- 设置了android:icon=&#34;@drawable/bottom_png_list&#34;，就不需要BottomNavigationView设置 itemIconTint和itemTextColor 颜色 --&gt; &lt;item android:id=&#34;@+id/toRirstFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_index_item_selector&#34; android:title=&#34;主页&#34; app:showAsAction=&#34;never&#34; /&gt; &lt;item android:id=&#34;@+id/toSecondFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_call_item_selector&#34; android:title=&#34;通话&#34; app:showAsAction=&#34;always&#34; /&gt; &lt;item android:id=&#34;@+id/toThirdFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_message_item_selector&#34; android:title=&#34;消息&#34; app:showAsAction=&#34;collapseActionView&#34; /&gt; &lt;item android:id=&#34;@+id/toFiveFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_message_item_selector&#34; android:title=&#34;调度命令&#34; app:showAsAction=&#34;withText&#34; /&gt; &lt;item android:id=&#34;@+id/toFourthFragment&#34; android:enabled=&#34;true&#34; android:icon=&#34;@drawable/main_menu_setting_item_selector&#34; android:title=&#34;我的&#34; app:showAsAction=&#34;ifRoom&#34; /&gt; &lt;/menu&gt; main_menu_index_item_selector.]]></description>
+  <guid>https://daizelai.github.io/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/</guid>
+  <description><![CDATA[<h1 id="20231108_1353android实现浮动窗口记录">20231108_1353Android实现浮动窗口记录</h1>
+<h2 id="一描述">一、描述</h2>
+<p>实现浮动窗口。</p>
+<p>难点
+1、悬浮窗的穿透点击
+当悬浮窗悬浮的时候，理想状态，应该是悬浮窗里面的按钮和悬浮窗底层点击触摸事件不冲突。
+2、需要注意，悬浮窗的可能会出现黑色背景，需要加params.format = PixelFormat.RGBA_8888;</p>]]></description>
 </item>
 <item>
-  <title>springboot打包自定义文件名</title>
-  <link>https://daizelai.github.io/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/</link>
-  <pubDate>Fri, 23 Sep 2022 00:00:00 &#43;0000</pubDate>
+  <title>JSON数据int超过取值范围问题解决</title>
+  <link>https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</link>
+  <pubDate>Thu, 26 Oct 2023 17:59:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/</guid>
-  <description><![CDATA[一、描述 1.1.引言 by daizelai on 2022/10/08 16:59 本文记录一下在对springboot项目进行打包的时候，如何修改生成的文件名称。
-1.2.默认打包 在springboot项目的根目录下，使用maven打包命令mvn clean package对项目进行打包。
-PS D:\code\IdeaProjects\springbootdemo&gt; mvn clean package [INFO] Scanning for projects... Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.1.3.RELEASE/spring-boot-starter-parent-2.1.3.RELEASE.pom Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.1.3.RELEASE/spring-boot-starter-parent-2.1.3.RELEASE.pom (12 kB at 10 kB/s) ...... [INFO] Replacing main artifact with repackaged archive [INFO] ------------------------------------------------------------------------ [INFO] BUILD SUCCESS [INFO] ------------------------------------------------------------------------ [INFO] Total time: 01:45 min [INFO] Finished at: 2022-10-08T16:31:28+08:00 [INFO] ------------------------------------------------------------------------ PS D:\code\IdeaProjects\springbootdemo&gt; 打包完成之后，生成如下文件：
-D:\code\IdeaProjects\springbootdemo\target&gt;dir 驱动器 D 中的卷是 新加卷 卷的序列号是 8AC9-706C D:\code\IdeaProjects\springbootdemo\target 的目录 2022/10/08 16:51 &lt;DIR&gt; .]]></description>
+  <guid>https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</guid>
+  <description><![CDATA[<h1 id="20231026_1759解决json数据时int变量接收超过int取值范围的异常问题">20231026_1759解决JSON数据时int变量接收超过int取值范围的异常问题</h1>
+<h2 id="一描述">一、描述</h2>
+<p>在android或java中，与服务器进行接口交互的时候，如果本地变量是Int类型的，但是由于服务器的错误，传递了一个long型的数据过来，本地程序就是出现异常，如下所示：</p>]]></description>
 </item>
 <item>
-  <title>搜索查找记录</title>
-  <link>https://daizelai.github.io/posts/linux/linuxsearch/</link>
-  <pubDate>Fri, 19 Aug 2022 00:00:00 &#43;0000</pubDate>
+  <title>android音频配置文件详解</title>
+  <link>https://daizelai.github.io/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
+  <pubDate>Sun, 08 Oct 2023 13:40:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/linuxsearch/</guid>
-  <description><![CDATA[搜索查找记录 一、描述 by daizelai on 2021/08/19 16:08
-在SC60中搜索和查找相关文件。 关键字：日志搜索、搜索日志、linux搜索
-二、在文件内容中查找 $ grep &#34;code&#34; -rni ./$ grep &#34;sdcard u:object_r:rootfs:s0&#34; -nr ./system/[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ grep &#34;code&#34; -rni ././kernel/msm-3.18/kernel/power/snapshot.c:837: * initialization code)./kernel/msm-3.18/kernel/power/snapshot.c:1880: info-&gt;version_code = LINUX_VERSION_CODE; 四、gpio查找 gpio查找其实也是在文件内容中查找。
-# grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/# grep -rn &#34;tlmm 99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/# grep -rn &#34;&amp;msm_gpio&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/ 查找示例：
-$ grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:470: /*pins = &#34;gpio99&#34;;*/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:475: /*pins = &#34;gpio99&#34;;*/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:936: /*pins = &#34;gpio98&#34;, &#34;gpio99&#34;;*/kernel/msm-3.]]></description>
+  <guid>https://daizelai.github.io/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
+  <description><![CDATA[<h1 id="20231008_1340android音频配置文件详解">20231008_1340Android音频配置文件详解</h1>
+<h2 id="描述">描述</h2>
+<p>本文主要记录了一下音频配置文件的简单理解，会慢慢更新。</p>]]></description>
 </item>
 <item>
-  <title>windows10搭建本地NTP服务器</title>
-  <link>https://daizelai.github.io/posts/winddows/windowsntp/</link>
-  <pubDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</pubDate>
+  <title>搭建HTTP方式的nginx视频推流服务器</title>
+  <link>https://daizelai.github.io/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+  <pubDate>Sun, 20 Aug 2023 11:02:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/winddows/windowsntp/</guid>
-  <description><![CDATA[windows10搭建本地NTP服务器 一、描述 因二开业务需要，将在本地Windows10笔记本上面搭建一个本地NTP服务器，用于车载台SC60终端中的车载台APP的NTP时间同步服务器。
-by daizelai on 2021/12/1 11:03
-二、搭建 2.1.启用NTP服务器 先打开注册表，使用win+r命令并输入regedit。
-打开注册表[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpServer]
-Enabled值修改为1，这里默认值为0，1为启用NTP服务器。
-2.2.修改时间源可靠性 打开注册表中[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Config\AnnounceFlags]
-把AnnounceFlags默认的值10修改为5，5的意思就是自身为可靠的时间源，注意这里的10是十进制，如果是十六进制的话是字母a。
-2.3.设置NTP服务器为开机启动 使用Win+r命令打开服务窗口，输入services.msc，找到Windows Time服务，启动并设置开机启动
-2.4.重启NTP服务 使用快捷键Win+X，打开Windows PowerShell(管理员)，然后输入命令重启NTP服务器，让修改生效。
-Windows PowerShell版权所有 (C) Microsoft Corporation。保留所有权利。尝试新的跨平台 PowerShell https://aka.ms/pscore6PS C:\WINDOWS\system32&gt; net stop w32timeWindows Time 服务正在停止.Windows Time 服务已成功停止。PS C:\WINDOWS\system32&gt; net start w32timeWindows Time 服务正在启动 .Windows Time 服务已经启动成功。PS C:\WINDOWS\system32&gt; 当然也可以直接在services.msc服务窗口，停止启动NTP服务。
-2.5.检测命令 检测命令
-w32tm /stripchart /computer:ntp_server_address 检测NTP服务器是否可用。
-PS C:\WINDOWS\system32&gt; w32tm /stripchart /computer:127.0.0.1正在跟踪 127.0.0.1 [127.]]></description>
+  <guid>https://daizelai.github.io/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+  <description><![CDATA[<h1 id="20230820_1102搭建http方式的nginx视频推流服务器">20230820_1102搭建HTTP方式的nginx视频推流服务器</h1>
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>搭建TCP/HTTP协议的nginx视频推流服务器，主要推RTMP和RTSP两种流。</p>]]></description>
 </item>
 </channel>
 </rss>

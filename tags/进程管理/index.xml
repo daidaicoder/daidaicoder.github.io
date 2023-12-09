@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>进程管理 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+    <description>进程管理 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 11 Oct 2016 08:43:25 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+  <title>linux之进程管理</title>
+  <link>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+  <pubDate>Tue, 11 Oct 2016 08:43:25 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</guid>
+  <description><![CDATA[一、查看进程 1.1.ps之aux查看所有进程 在这里直接使用ps aux查看当前系统中所有的进程情况，当然ps -ef也是可以使用的。
+[root@localhost lai]# ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.0 0.3 43904 2672 ? Ss 08:58 0:01 /usr/lib/systemd/systemd --switched-root --system -- root 2 0.0 0.0 0 0 ? S 08:58 0:00 [kthreadd] root 3 0.0 0.0 0 0 ? S 08:58 0:00 [ksoftirqd/0] root 6 0.0 0.0 0 0 ? S 08:58 0:00 [kworker/u2:0] root 7 0.0 0.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>按键 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E6%8C%89%E9%94%AE/</link>
+    <description>按键 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 18 May 2021 13:10:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E6%8C%89%E9%94%AE/" rel="self" type="application/rss+xml" /><item>
+  <title>SC60添加实体按键</title>
+  <link>https://daizelai.github.io/posts/sc60/20210518_1310sc60%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BD%93%E6%8C%89%E9%94%AE/</link>
+  <pubDate>Tue, 18 May 2021 13:10:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/sc60/20210518_1310sc60%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BD%93%E6%8C%89%E9%94%AE/</guid>
+  <description><![CDATA[20210518_1310SC60添加实体按键 一、描述 添加按键功能开发。
+android系统增加按键功能。
+二、首次添加一个PTT按键 2.1.文件列表 实现（由下往上-&gt;(kernel-&gt;frameworks)） 先列举下该功能实现所涉及到的文件
+device/qcom/msm8953_64/gpio-keys.kl frameworks/base/core/java/android/view/KeyEvent.java frameworks/base/core/res/res/values/attrs.xml frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java frameworks/native/include/android/keycodes.h b/include/android/keycodes.h frameworks/native/include/input/InputEventLabels.h kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi kernel/msm-3.18/include/uapi/linux/input.h 2.2.kernel注册gpio_key上报的key_value 2.2.1配置一个PTT按钮 找到平台对应内核dtsi配置文件，我这里的路径如下。 路径：\sc60_android_7.1.2_qcom_sz14\kernel\msm-3.18\arch\arm\boot\dts\qcom\msm8953-mtp.dtsi 在文件中的gpio_keys里面增加如下代码。
+ptt_button {label = &#34;ptt_button&#34;;gpios = &lt;&amp;tlmm 96 0x1&gt;;linux,input-type = &lt;1&gt;;linux,code = &lt;603&gt;;debounce-interval = &lt;15&gt;;}; 2.2.2.新增key value 路径：\sc60_android_7.1.2_qcom_sz14\kernel\msm-3.18\include\uapi\linux\input.h
+#define KEY_CUSTOM_PTT	603 2.3.frameworks native层转换kernel上报的key value值 路径：sc60_android_7.1.2_qcom_sz14\frameworks\native\include\android\keycodes.h 在枚举中增加
+enum { ...... AKEYCODE_PTT = 603 } 路径：sc60_android_7.1.2_qcom_sz14\frameworks\native\include\input\InputEventLabels.h 在static const InputEventLabel KEYCODES[] = {中增加
+static const InputEventLabel KEYCODES[] = { .]]></description>
+</item>
+</channel>
+</rss>

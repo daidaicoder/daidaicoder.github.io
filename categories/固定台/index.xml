@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>固定台 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/%E5%9B%BA%E5%AE%9A%E5%8F%B0/</link>
+    <description>固定台 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 10 Oct 2022 18:27:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/%E5%9B%BA%E5%AE%9A%E5%8F%B0/" rel="self" type="application/rss+xml" /><item>
+  <title>温州S2号线固定台站选区广播调试记录</title>
+  <link>https://daizelai.github.io/posts/wzs2/20221010_1750%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E5%9B%BA%E5%AE%9A%E5%8F%B0%E7%AB%99%E9%80%89%E5%8C%BA%E5%B9%BF%E6%92%AD%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/</link>
+  <pubDate>Mon, 10 Oct 2022 18:27:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/wzs2/20221010_1750%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E5%9B%BA%E5%AE%9A%E5%8F%B0%E7%AB%99%E9%80%89%E5%8C%BA%E5%B9%BF%E6%92%AD%E8%B0%83%E8%AF%95%E8%AE%B0%E5%BD%95/</guid>
+  <description><![CDATA[20221010_1750温州S2号线固定台站选区广播调试记录 一、描述 1.1.前言 by daizelai on 2022/10/10 18:27 温州S2号线固定台APP站选区广播调试对接记录。
+1.2.对接文档 PA-PIS音视频统一信息服务系统接口协议202000228（18号线专用无线系统）
+1.3.调试记录 时间 已方调试 对方调试 修改 结果 2022/10/10 daizelai/jiangfuqiang 林汐/武林过客 +86号码问题 已修改 2022/10/10 daizelai/jiangfuqiang 林汐/武林过客 广播密码问题，123修改为1234 已修改 2022/10/10 daizelai/jiangfuqiang 林汐/武林过客 广播账号问题，192.168.99.1修改为user 已修改 2022/10/10 daizelai/jiangfuqiang 林汐/武林过客 广播账号问题，对方写死的1修改为user 已修改 2022/10/10 daizelai/jiangfuqiang 林汐/武林过客 对方广播服务器问题，重启后http接口已通 已修改 2022/10/11 daizelai/jiangfuqiang 林汐/武林过客 已获取appid和token。但start_mic时解析失败，初步确定为api过来的格式不对 已修改 2022/10/11 daizelai/jiangfuqiang 林汐/武林过客 app解析start_mic报文也有问题，出到V1.1.4版本明天测试 已修改 2022/10/12 daizelai/jiangfuqiang 林汐/武林过客 广播服务器stop_mic问题，对方不是DELETE，而是用的POST，后对方修改成DELETE搞定 已修改 2022/10/12 daizelai/jiangfuqiang 林汐/武林过客 广播服务器区域问题，已出新版本 已修改 2022/10/12 daizelai/jiangfuqiang 林汐/武林过客 广播服务器问题调试初步完成，广播正常 已修改 2022/10/13 daizelai/jiangfuqiang 林汐/武林过客 广播服务器区域问题，已出新版本1.]]></description>
+</item>
+</channel>
+</rss>

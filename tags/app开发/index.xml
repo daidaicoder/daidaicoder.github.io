@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>app开发 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/app%E5%BC%80%E5%8F%91/</link>
+    <description>app开发 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/app%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml" /><item>
+  <title>Android中XLog框架的使用</title>
+  <link>https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</link>
+  <pubDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</guid>
+  <description><![CDATA[<h1 id="20231130_1631武汉19号线使用新日志框架">20231130_1631武汉19号线使用新日志框架</h1>
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>怀疑武汉19号线最近出现的固定台APP异常退出的内存溢出，回到桌面是因为大量写数据到日志文件导致的，项目中使用的写日志到文件，是我自己写的工具类，性能堪忧。</p>
+<p>本文主要是把日志工具类替换为XLog日志框架，此框架之前也在此项目中使用过，现在正式启用它看看。</p>]]></description>
+</item>
+<item>
+  <title>android实现浮动窗口记录</title>
+  <link>https://daizelai.github.io/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/</link>
+  <pubDate>Wed, 08 Nov 2023 13:53:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/</guid>
+  <description><![CDATA[<h1 id="20231108_1353android实现浮动窗口记录">20231108_1353Android实现浮动窗口记录</h1>
+<h2 id="一描述">一、描述</h2>
+<p>实现浮动窗口。</p>
+<p>难点
+1、悬浮窗的穿透点击
+当悬浮窗悬浮的时候，理想状态，应该是悬浮窗里面的按钮和悬浮窗底层点击触摸事件不冲突。
+2、需要注意，悬浮窗的可能会出现黑色背景，需要加params.format = PixelFormat.RGBA_8888;</p>]]></description>
+</item>
+<item>
+  <title>JSON数据int超过取值范围问题解决</title>
+  <link>https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</link>
+  <pubDate>Thu, 26 Oct 2023 17:59:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</guid>
+  <description><![CDATA[<h1 id="20231026_1759解决json数据时int变量接收超过int取值范围的异常问题">20231026_1759解决JSON数据时int变量接收超过int取值范围的异常问题</h1>
+<h2 id="一描述">一、描述</h2>
+<p>在android或java中，与服务器进行接口交互的时候，如果本地变量是Int类型的，但是由于服务器的错误，传递了一个long型的数据过来，本地程序就是出现异常，如下所示：</p>]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>迁移androidx - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E8%BF%81%E7%A7%BBandroidx/</link>
+    <description>迁移androidx - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 18 May 2023 08:46:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E8%BF%81%E7%A7%BBandroidx/" rel="self" type="application/rss+xml" /><item>
+  <title>APP项目迁移到androidx</title>
+  <link>https://daizelai.github.io/posts/wh19/3.20230518_0946%E8%BF%81%E7%A7%BBandroidx/</link>
+  <pubDate>Thu, 18 May 2023 08:46:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/wh19/3.20230518_0946%E8%BF%81%E7%A7%BBandroidx/</guid>
+  <description><![CDATA[20230518_0946迁移androidx 一、描述 1.1.前言 因为公网SDK使用了androidx，所以项目需要迁移到androidx。
+预想的迁移到androidx方案：
+因为demo使用android9.0编译成功了，就想下一个android9.0的framework.jar进行开发，所有代码也适配android9.0，并且依赖升级到androidx。 APP项目使用android9.0编译开发，但涉及到framework.jar部分不管，就不用下载android源码编译framework.jar了，至于涉及到framework.jar开发的部分，后面单独开发一个APP来配置。 不管SDK使用的是android版本多少，依赖使用的是androidx也不管，APP项目还是之前的那一套，强制SDK中的依赖使用support版本。 因为最后试了，demo在android7.1环境下也可以编译并运行成功，所以只要把APP项目中所有support依赖升级到androidx就可以了。【最终采用】 成功的迁移步骤：
+使用AS的Refactor的Migrate to AndroidX&hellip;，基本上自动执行。 手动修改各java文件，xml文件中的引用，使用androidx替换，这个最耗时间了，注意ctrl+shift+R全局替换。 最后就是混淆文件的修改。 1.2.背景 由于公网SDK中使用了androidx依赖库，而APP项目使用的进v4,v7依赖库，导致项目编译失败，所以需要把APP项目的所有依赖库也迁移到androidx依赖库。
+二、迁移【失败】 只是简单的记录了一点点，其实中间操作了很多，因为失败，所以没怎么留下记录。
+use_dingqiao_public_sdk_failure_modify_20230518_1430.patch
+三、迁移【自动+手动成功】 3.1.工具初始迁移 使用AS工具进行refactor。
+![开始refactor](./images/app_to_androidx_refactor_2023-05-17_193622.png
+提示备份代码
+备份到指定目录
+现在AS会自动对APP项目进行替换各种依赖到androidx版本。
+3.2.手动修复迁移 接着就来到手动修复时间了，AS工具不能处理所有的androidx依赖和控件的更新，剩下来的一部分就需要手动修改了。
+推荐使用find搜索某一个错误的依赖或import关键字，然后集中一键替换，或手动一个一个替换，会方便好多。
+源码部分
+-import androidx.core.content.LocalBroadcastManager; 使用下面这个： import androidx.localbroadcastmanager.content.LocalBroadcastManager; -import android.support.v7.widget.SwitchCompat; 使用下面空上： import androidx.appcompat.widget.SwitchCompat; -import android.support.v7.app.AppCompatActivity; +import androidx.appcompat.app.AppCompatActivity; -import androidx.core.view.ViewPager; +import androidx.viewpager.widget.ViewPager; -import android.support.v4.view.PagerAdapter; +import androidx.viewpager.widget.PagerAdapter; -import androidx.core.app.Fragment; 使用： import androidx.fragment.app.Fragment; -import androidx.core.content.LocalBroadcastManager; 使用： import androidx.localbroadcastmanager.content.LocalBroadcastManager; -import androidx.core.view.ViewPager; +import androidx.viewpager.widget.ViewPager; -import android.support.v7.widget.LinearLayoutManager; 使用： import androidx.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>OTA版本包 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/ota%E7%89%88%E6%9C%AC%E5%8C%85/</link>
+    <description>OTA版本包 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 07 Jun 2021 09:50:27 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/ota%E7%89%88%E6%9C%AC%E5%8C%85/" rel="self" type="application/rss+xml" /><item>
+  <title>制作OTA升级包二</title>
+  <link>https://daizelai.github.io/posts/sc60/6.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C/</link>
+  <pubDate>Mon, 07 Jun 2021 09:50:27 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/sc60/6.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C/</guid>
+  <description><![CDATA[6. 制作OTA升级包二 一、描述 本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。
+关键字： 制作update包，制作update.zip包，编译update包，编译update.zip包。 SC60制作update包，制作update升级包，制作update.zip升级包,SC60系统OTA包。
+二、编译前工作 制作OTA升级包之前，需要全编译系统。
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20 三、编译OTA升级包 3.1.编译OTA版本 其实通过命令make dist -j 20编译出来下面的路径中的文件就是OTA升级包，可以直接拿去系统升级。
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20......using prebuilt boot.img from IMAGES...boot size (28646696) is 42.69% of limit (67108864)Loading radio filesmap...Loading radio target...warning radio-update: no radio images in input target_filesrunning: openssl pkcs8 -in build/target/product/security/testkey.]]></description>
+</item>
+<item>
+  <title>制作OTA升级包</title>
+  <link>https://daizelai.github.io/posts/sc60/5.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85/</link>
+  <pubDate>Tue, 01 Jun 2021 11:22:27 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/sc60/5.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85/</guid>
+  <description><![CDATA[5. 制作OTA升级包 一、描述 本文记录了如何制作SC60系统的OTA升级包，以前制作OTA升级包的全过程。
+关键字：
+制作update包，制作update.zip包，编译update包，编译update.zip包。 SC60制作update包，制作update升级包，制作update.zip升级包。
+二、编译前工作 [android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20 三、编译版本 编译版本
+[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20......max stashed blocks: 0 (0 bytes), limit: 214748364 bytes (0.00%)using prebuilt boot.img from IMAGES...boot size (28642600) is 42.68% of limit (67108864)Loading radio filesmap...Loading radio target...warning radio-update: no radio images in input target_filesrunning: openssl pkcs8 -in build/target/product/security/testkey.]]></description>
+</item>
+</channel>
+</rss>

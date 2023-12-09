@@ -1,0 +1,33 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>centos - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/centos/</link>
+    <description>centos - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 05 Sep 2016 19:57:48 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/centos/" rel="self" type="application/rss+xml" /><item>
+  <title>VMware安装CentOS后配置SSH远程连接的问题</title>
+  <link>https://daizelai.github.io/posts/virtualbox/vmware%E5%AE%89%E8%A3%85centos%E5%90%8E%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+  <pubDate>Mon, 05 Sep 2016 19:57:48 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/virtualbox/vmware%E5%AE%89%E8%A3%85centos%E5%90%8E%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+  <description><![CDATA[可以SSH连接，但虚拟机CentOS不能连接外网，呜呜呜呜！！！
+一、安装VM的虚拟网卡（网络连接） 1.安装绿色版的VMware，安装好后，网络连接里是只有**本地连接**的。
+&ldquo;默认的本地连接&rdquo; 2.在VMware中安装CentOS系统
+&ldquo;VM的网络设置&rdquo; 3.安装系统后，在看网络连接还是只有本地连接，这时候这样VM的虚拟网络编辑设置一下
+点击VMware顶部的菜单，如下所示：
+&ldquo;VM的虚拟网络编辑&rdquo; 点击**“还原默认设置”**设置
+&ldquo;还原默认设置&rdquo; 4.点击以后，就会有上面图片中的三个连接了。同时，网络连接也多了两块VM的网络连接：
+&ldquo;VM的虚拟网络&rdquo; **VMnet1：**Host-only共享用的虚拟连接； **VMnet8：**NAT共享用的虚拟连接。VMnet8虚拟网卡就相当于连接到内网的网卡，Host主机上的物理网卡就相当于连接到外网的网卡，而虚拟机本身则相当于运行在内网上的计算机，虚拟机内的虚拟网卡则独立于Virtual Ethernet Switch（VMnet8）。
+二、配置VM虚拟连接并SSH连接 1.右击网络连接中“VMnet8”选择“属性”
+2.查看（没有就设置）TCP/IPv4的相应的IP地址和子网掩码，这里可以配置任意网段，然后点击确定按钮。
+&ldquo;设置VMnet8&rdquo; 3.查看windows主机的具体IP地址，输入ipconfig
+这里查看VMnet8的网络参数如上：IP：192.168.80.1 掩码：255.255.255.0
+&ldquo;查看VMnet8的参数&rdquo; 4.回到配置VMware中的网络参数，选择NAT模式，并点击右侧的NAT设置
+&ldquo;配置NAT参数&rdquo; 在弹出的对话框中进行网络的设置，这里的子网必须和windows主机中VMnet8的IP地址处于同一个网段，即192.168.80.0网段
+&ldquo;配置NAT参数&rdquo; 这里的网关可以选择windows主机中VMnet8的IP地址处于同一个网段的任意IP地址，然后点击确定。
+5.配置CentOS中的网络配置
+[root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0 DEVICE=eth0 HWADDR=00:0C:29:CA:3C:42 TYPE=Ethernet UUID=5bd32e4a-23c2-4c5a-be0f-26ffe1297a9d ONBOOT=yes NM_CONTROLLED=yes BOOTPROTO=none NETMASK=255.255.255.0 IPADDR=192.168.80.11 DNS1=10.60.1.254 主要需要设置下面的参数：
+ONBOOT=yes NETMASK=255.255.255.0 // 子网掩码 IPADDR=192.168.80.11 // IP地址和VMnet8的IP地址在同一个网段 DNS1=10.60.1.254 // 主DNS服务器IP地址为windows中主机真实网关 重启网络服务
+[root@localhost ~]# /etc/init.d/network restart 正在关闭接口 eth0： [确定] 关闭环回接口： [确定] 弹出环回接口： [确定] 弹出界面 eth0： Determining if ip address 192.]]></description>
+</item>
+</channel>
+</rss>

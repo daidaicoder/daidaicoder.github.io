@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>rtsp - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/rtsp/</link>
+    <description>rtsp - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 20 Aug 2023 11:02:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/rtsp/" rel="self" type="application/rss+xml" /><item>
+  <title>搭建HTTP方式的nginx视频推流服务器</title>
+  <link>https://daizelai.github.io/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+  <pubDate>Sun, 20 Aug 2023 11:02:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+  <description><![CDATA[<h1 id="20230820_1102搭建http方式的nginx视频推流服务器">20230820_1102搭建HTTP方式的nginx视频推流服务器</h1>
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>搭建TCP/HTTP协议的nginx视频推流服务器，主要推RTMP和RTSP两种流。</p>]]></description>
+</item>
+</channel>
+</rss>

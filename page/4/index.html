@@ -152,60 +152,6 @@
   <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
   </div><main class="container container-reverse"><div class="page home posts"><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/mysql/character/">centos7安装mysql</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2017-01-06 10:34:00'>发布于 <time datetime="2017-01-06">2017-01-06</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/mysql%E5%AE%89%E8%A3%85/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql安装</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a>&ensp;<a href="/categories/centos/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> centos</a></span></div><div class="content"><h2 id="一描述">一、描述</h2>
-<p>在centos7系统上面安装mysql。</p></div><div class="post-footer">
-    <a href="/posts/mysql/character/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/mysql%E5%AE%89%E8%A3%85/' class="post-tag">mysql安装</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/centos/' class="post-tag">centos</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/ubuntu/ubuntu%E7%9A%84%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5ssh%E9%97%AE%E9%A2%98/">ubuntu的不能连接SSH问题</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-04 19:59:15'>发布于 <time datetime="2016-11-04">2016-11-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/ubuntu/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ubuntu</a>&ensp;<a href="/categories/ssh/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ssh</a></span></div><div class="content">一、问题描述 ubuntu的不能连接SSH问题。
-安装好ubuntu系统中，网络也配置好可以ping通主机。使用SSH不能连接，提示：
-The remote system refused the connection. 二、获取root权限 为了方便配置，先取得系统的root权限。
-sudo su - root 获取root用户权限 三、安装ssh 使用如下命令安装ssh
-apt-get install openssh-server apt-get install openssh-client 安装openssh-server 我这边不用安装openssh-client了。
-安装openssh-server 安装ssh时出现问题：
-dpkg 被中断,您必须手工运行 sudo dpkg --configure -a解决此问题。 提示截图：
-安装openssh-server 导致这个问题的主要原因是因为/var/lib/dpkg/updates文件下的文件有问题，可能是其他软件安装过程或是其他原因导致的，这里删除掉然后重建即可。
-sudo rm /var/lib/dpkg/updates/* sudo apt-get update sudo apt-get upgrade update操作 upgrade操作 sudo apt-get update 指令会重新建立这些资料，所以不必担心删除后会出问题； sudo apt-get upgrade 会更新你的电脑里面已安装的软件的明细，根据软件的明细更新软件到最新版。 PS：“dpkg ”是“Debian Packager ”的简写。为 “Debian” 专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自“Debian”的“Linux ”发行版都使用 “dpkg”
-普通用法：
-1、dpkg -i 安装一个 Debian 包裹文件，如你手动下载的文件。 2、dpkg -c 列出 的内容。 3、dpkg -I 从 中提取包裹信息。 4、dpkg -r 移除一个已安装的包裹。 5、dpkg -P 完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。 6、dpkg -L 列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .</div><div class="post-footer">
-    <a href="/posts/linux/ubuntu/ubuntu%E7%9A%84%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5ssh%E9%97%AE%E9%A2%98/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/ubuntu/' class="post-tag">ubuntu</a><a href='/tags/ssh/' class="post-tag">ssh</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%85%A8%E5%B1%8F%E6%98%BE%E7%A4%BA/">virtualbox之ubuntu全屏显示</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-02 18:07:32'>发布于 <time datetime="2016-11-02">2016-11-02</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/ubuntu/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ubuntu</a>&ensp;<a href="/categories/virtualbox/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> virtualbox</a></span></div><div class="content"><h2 id="一描述">一、描述</h2>
-<p>virtualbox安装好ubuntu后调分辨率</p></div><div class="post-footer">
-    <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%85%A8%E5%B1%8F%E6%98%BE%E7%A4%BA/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/ubuntu/' class="post-tag">ubuntu</a><a href='/tags/virtualbox/' class="post-tag">virtualbox</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/">virtualbox之ubuntu安装</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-01 11:22:28'>发布于 <time datetime="2016-11-01">2016-11-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/ubuntu/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ubuntu</a>&ensp;<a href="/categories/virtualbox/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> virtualbox</a></span></div><div class="content"><h2 id="一ubuntu版本介绍">一、ubuntu版本介绍</h2>
-<pre tabindex="0"><code>Desktop是桌面操作系统版本;
-Server是服务器端操作系统版本;
-Cloud应该是云端操作系统版本。
-</code></pre></div><div class="post-footer">
-    <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/ubuntu/' class="post-tag">ubuntu</a><a href='/tags/virtualbox/' class="post-tag">virtualbox</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/">linux之磁盘sdc变为sdb后</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-01 10:50:28'>发布于 <time datetime="2016-11-01">2016-11-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 磁盘挂载</a></span></div><div class="content"><h2 id="一场景">一、场景</h2>
-<p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p></div><div class="post-footer">
-    <a href="/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/' class="post-tag">磁盘挂载</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/">linux之磁盘sdc变为sdb后</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-01 10:50:28'>发布于 <time datetime="2016-11-01">2016-11-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 磁盘挂载</a></span></div><div class="content"><h2 id="一场景">一、场景</h2>
-<p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p></div><div class="post-footer">
-    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/' class="post-tag">磁盘挂载</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
     <a href="/posts/mysql/character/">mysql乱码</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-28 00:00:00'>发布于 <time datetime="2016-10-28">2016-10-28</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a></span></div><div class="content"><!-- raw HTML omitted -->
@@ -250,19 +196,6 @@ Cloud应该是云端操作系统版本。
 lsof:
 </code></pre></div><div class="post-footer">
     <a href="/posts/linux/lsof/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/lsof/' class="post-tag">lsof</a><a href='/tags/linux/' class="post-tag">linux</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsof/">linux之lsof的使用</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-19 20:02:17'>发布于 <time datetime="2016-10-19">2016-10-19</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/lsof/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> lsof</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><!-- raw HTML omitted -->
-<h2 id="一安装lsof">一、安装lsof</h2>
-<p>先查看一下<code>lsof</code>命令是否存在。</p>
-<pre tabindex="0"><code>[root@localhost lai]# lsof
--bash: lsof: command not found
-[root@localhost lai]# whereis lsof
-lsof:
-</code></pre></div><div class="post-footer">
-    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsof/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/lsof/' class="post-tag">lsof</a><a href='/tags/linux/' class="post-tag">linux</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
     <a href="/posts/php/php%E7%94%9F%E6%88%908%E4%BD%8D%E9%9A%8F%E6%9C%BA%E6%95%B0/">php生成8位随机数</a>
@@ -319,15 +252,6 @@ lsof:
     <a href="/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/netstat/' class="post-tag">netstat</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">Linux下netstat使用手记</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-14 15:45:51'>发布于 <time datetime="2016-10-14">2016-10-14</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><p>Linux下netstat命令的简单使用记录，这里以CentOS7为基础。</p>
-<h2 id="一netstat命令说明">一、netstat命令说明</h2>
-<h3 id="11netstat常用参数介绍">1.1.netstat常用参数介绍</h3>
-<p>netstat有很多参数，下面列表每个参数的说明。</p></div><div class="post-footer">
-    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/netstat/' class="post-tag">netstat</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
     <a href="/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">windows下netstat使用手记</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-13 00:00:00'>发布于 <time datetime="2016-10-13">2016-10-13</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/windows/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> windows</a>&ensp;<a href="/categories/netstat/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> netstat</a></span></div><div class="content"><!-- raw HTML omitted -->
@@ -335,6 +259,83 @@ lsof:
 <h2 id="一windows下使用">一、windows下使用</h2>
 <p>windows下面查看所有端口，然后找到对应的端口和PID。</p></div><div class="post-footer">
     <a href="/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/windows/' class="post-tag">windows</a><a href='/tags/netstat/' class="post-tag">netstat</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/gateway/%E5%8E%82%E5%9B%ADapp%E4%B9%8B%E6%99%BA%E6%85%A7%E6%A0%A1%E5%9B%AD%E8%AE%A4%E8%AF%81%E5%A4%B1%E8%B4%A5feff%E5%A4%B4/%E5%8E%82%E5%9B%ADapp%E4%B9%8B%E6%99%BA%E6%85%A7%E6%A0%A1%E5%9B%AD%E8%AE%A4%E8%AF%81%E5%A4%B1%E8%B4%A5feff%E5%A4%B4/">认证失败之&lt;feff&gt;问题修复</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-12 19:36:00'>发布于 <time datetime="2016-10-12">2016-10-12</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/gateway/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> gateway</a></span></div><div class="content"><h2 id="一认证失败之feff问题修复">一、认证失败之<!-- raw HTML omitted -->问题修复</h2>
+<p>1.通过日志找到认证地址：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>authUrl<span style="color:#555">-----</span>http<span style="color:#555">://</span>api<span style="color:#555">.</span>gwifi<span style="color:#555">.</span>com<span style="color:#555">.</span>cn<span style="color:#555">/</span>cgi<span style="color:#555">/</span>api<span style="color:#555">/</span>token<span style="color:#555">?</span>phone<span style="color:#555">=</span><span style="color:#f60">13735923202</span><span style="color:#555">&amp;</span>pwd<span style="color:#555">=</span>e10adc3949ba59abbe56e057f20f883e<span style="color:#555">&amp;</span>secret<span style="color:#555">=</span>e55185dd80decc7
+</span></span><span style="display:flex;"><span>b957da57d300cc727
+</span></span></code></pre></div></div><div class="post-footer">
+    <a href="/posts/linux/gateway/%E5%8E%82%E5%9B%ADapp%E4%B9%8B%E6%99%BA%E6%85%A7%E6%A0%A1%E5%9B%AD%E8%AE%A4%E8%AF%81%E5%A4%B1%E8%B4%A5feff%E5%A4%B4/%E5%8E%82%E5%9B%ADapp%E4%B9%8B%E6%99%BA%E6%85%A7%E6%A0%A1%E5%9B%AD%E8%AE%A4%E8%AF%81%E5%A4%B1%E8%B4%A5feff%E5%A4%B4/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/gateway/' class="post-tag">gateway</a><a href='/tags/%E6%99%BA%E6%85%A7%E6%A0%A1%E5%9B%AD/' class="post-tag">智慧校园</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B03%E4%B8%8A%E7%BA%BF%E9%85%8D%E7%BD%AE/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B03%E4%B8%8A%E7%BA%BF%E9%85%8D%E7%BD%AE/">网关上线配置</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-11 17:43:06'>发布于 <time datetime="2016-10-11">2016-10-11</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%BD%91%E5%85%B3/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网关</a>&ensp;<a href="/categories/cgw3000t/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> CGW3000T</a>&ensp;<a href="/categories/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网络配置</a></span></div><div class="content">一、查看设备情况 1.1.查看AP 先来看一下网关和网关下的AP已正常上线。
+[root@CGW3000T ~]# gctl showapAP 0001: ip=172.16.66.91 mac=ac:34:cb:38:db:c0 model CA2025C name Access PointAP 0002: ip=10.60.10.158 mac=28:51:32:10:91:e2 model CGW3000T name CGW3000TAP_nums = 2, RegisterApNum = 0, OfflineApNum = 0 1.2.查看网关的版本 使用vlist命令可以查看系统版本情况。
+[root@CGW3000T ~]# vlistVersion : 1.3.3.3Revision : 5403BuildTime: 2016-03-03 10:53:07 查看网关版本 二、网关版本升级 2.1.因为版本较老，需要升级网关，我们登录网关来到系统升级页面，升级文件在智慧校园对接群里有的 网关版本升级 [root@CGW3000T ~]# vlistVersion : 1.3.6.0Revision : 7912BuildTime: 2016-09-12 18:04:30[root@CGW3000T ~]# 查看网关版本 2.2.在网关配置云平台的地址 在网关配置热点配置 配置完后，重启生效。
+三、云平台配置 因为是厂园同事范晨熙帮忙配置的，这里就省略了，不过应该和我们云平台的配置是差不多的。</div><div class="post-footer">
+    <a href="/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B03%E4%B8%8A%E7%BA%BF%E9%85%8D%E7%BD%AE/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B03%E4%B8%8A%E7%BA%BF%E9%85%8D%E7%BD%AE/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E5%A4%A7%E7%BD%91%E5%85%B3/' class="post-tag">大网关</a><a href='/tags/cgw3000t/' class="post-tag">CGW3000T</a><a href='/tags/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/' class="post-tag">网络配置</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">linux之进程管理</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-11 08:43:25'>发布于 <time datetime="2016-10-11">2016-10-11</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><h2 id="一查看进程">一、查看进程</h2>
+<h3 id="11ps之aux查看所有进程">1.1.ps之aux查看所有进程</h3>
+<p>在这里直接使用<code>ps aux</code>查看当前系统中所有的进程情况，当然<code>ps -ef</code>也是可以使用的。</p></div><div class="post-footer">
+    <a href="/posts/linux/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/' class="post-tag">进程管理</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E8%BF%9E%E6%8E%A5%E6%89%8B%E8%AE%B0/">厂园网关连接手记</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-10 11:39:04'>发布于 <time datetime="2016-10-10">2016-10-10</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%BD%91%E5%85%B3/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网关</a>&ensp;<a href="/categories/cgw3000t/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> CGW3000T</a>&ensp;<a href="/categories/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网络配置</a></span></div><div class="content"><h2 id="一获取厂园网关ip地址">一、获取厂园网关IP地址</h2>
+<h3 id="11使用串口连接网关">1.1.使用串口连接网关</h3>
+<p>通常情况下可以这样连接，一根网线连接网关的WLAN接口，另一头连接网络，另一根网线连接网关网口，另一头连接到笔记本，此时得到IP后，就可以通过<code>SSH</code>连接网关访问了。</p>
+<p>因为这里查询后，还是不不知道IP地址，不能通过<code>SSH</code>直接连接大网关，所以使用串口连接网关，CGW3000T网关正面最左边第一个网口是串口，第二个网口是<code>WLAN</code>外网接口。
+使用串口线把网线口接入第一个网口，然后另一端接口连接台式机，并在win7系统的管理工具中查看使用的是哪个com端口。</p></div><div class="post-footer">
+    <a href="/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E8%BF%9E%E6%8E%A5%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E5%A4%A7%E7%BD%91%E5%85%B3/' class="post-tag">大网关</a><a href='/tags/cgw3000t/' class="post-tag">CGW3000T</a><a href='/tags/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/' class="post-tag">网络配置</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/">lsyncd实时同步搭建指南</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-09 20:53:00'>发布于 <time datetime="2016-10-09">2016-10-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/lsyncd/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> lsyncd</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据同步</a></span></div><div class="content"><h1 id="lsyncd实时同步搭建指南">lsyncd实时同步搭建指南</h1>
+<h2 id="一介绍">一、介绍</h2>
+<p>github地址：<a href="https://github.com/axkibe/lsyncd"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/axkibe/lsyncd</a></p>
+<p>Lysncd 实际上是lua语言封装了 inotify 和 rsync 工具，采用了 Linux 内核（2.6.13 及以后）里的 inotify 触发机制，然后通过rsync去差异同步，达到实时的效果。我认为它最令人称道的特性是，完美解决了 inotify + rsync海量文件同步带来的文件频繁发送文件列表的问题 —— 通过时间延迟或累计触发事件次数实现。另外，它的配置方式很简单，lua本身就是一种配置语言，可读性非常强。lsyncd也有多种工作模式可以选择，本地目录cp，本地目录rsync，远程目录rsyncssh。</p></div><div class="post-footer">
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/lsyncd/' class="post-tag">lsyncd</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/' class="post-tag">数据同步</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/mysql/procedure/">mysql之存储过程</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-09 14:02:09'>发布于 <time datetime="2016-10-09">2016-10-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/procedure/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> procedure</a></span></div><div class="content"><!-- raw HTML omitted -->
+<h2 id="查看存储过程">查看存储过程</h2>
+<pre><code>mysql&gt; show procedure status;
+</code></pre></div><div class="post-footer">
+    <a href="/posts/mysql/procedure/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/procedure/' class="post-tag">procedure</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/sftp/">Linux之sftp使用</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-08 14:39:04'>发布于 <time datetime="2016-10-08">2016-10-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/sftp/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> sftp</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><h2 id="一下载文件">一、下载文件</h2>
+<blockquote>
+<p>将从远程主机的 <code>/var/www/layne/</code> 目录下将 <code>index.php</code> 下载到本地 <code>/home/layne/</code> 目录下。</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">sftp&gt; get /var/www/layne/index.php  /home/layne/
+</code></pre></div><div class="post-footer">
+    <a href="/posts/linux/sftp/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/sftp/' class="post-tag">sftp</a><a href='/tags/linux/' class="post-tag">linux</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/mysql/mysqldump/">mysql数据库导入导出</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-08 00:00:00'>发布于 <time datetime="2016-10-08">2016-10-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a>&ensp;<a href="/categories/mysqldump/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysqldump</a></span></div><div class="content"><!-- raw HTML omitted -->
+<h2 id="一数据库导入导出">一、数据库导入导出</h2>
+<h3 id="1导出数据库">1.导出数据库</h3>
+<blockquote>
+<p># mysqldump -u root -p 数据库名&gt;文件名.sql</p>
+</blockquote></div><div class="post-footer">
+    <a href="/posts/mysql/mysqldump/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/mysqldump/' class="post-tag">mysqldump</a></div></div>
 </article>
 <ul class="pagination"><li class="page-item">
           <span class="page-link">
@@ -355,10 +356,6 @@ lsof:
         </li><li class="page-item">
           <span class="page-link">
             <a href="/page/5/">5</a>
-          </span>
-        </li><li class="page-item">
-          <span class="page-link">
-            <a href="/page/6/">6</a>
           </span>
         </li></ul></div></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

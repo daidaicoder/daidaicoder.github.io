@@ -14,16 +14,5 @@
 <h3 id="11功能说明">1.1.功能说明</h3>
 <p>将一般的文件或者目录进行压缩或者解压，默认生成以“.zip”为后缀的压缩包。zip命令类似于Windows中的winzip压缩程序。其格式如下：</p>]]></description>
 </item>
-<item>
-  <title>Linux之zip和unzip的使用</title>
-  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/zip/</link>
-  <pubDate>Sat, 08 Aug 2015 14:44:28 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/zip/</guid>
-  <description><![CDATA[<!-- raw HTML omitted -->
-<h2 id="一zipunzip命令说明">一、zip/unzip命令说明</h2>
-<h3 id="11功能说明">1.1.功能说明</h3>
-<p>将一般的文件或者目录进行压缩或者解压，默认生成以“.zip”为后缀的压缩包。zip命令类似于Windows中的winzip压缩程序。其格式如下：</p>]]></description>
-</item>
 </channel>
 </rss>

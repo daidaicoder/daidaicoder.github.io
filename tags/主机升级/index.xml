@@ -5,19 +5,6 @@
     <description>主机升级 - 标签 - 来来往往</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 05 Jul 2022 14:55:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E4%B8%BB%E6%9C%BA%E5%8D%87%E7%BA%A7/" rel="self" type="application/rss+xml" /><item>
   <title>通过命令升级主机版本</title>
-  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</link>
-  <pubDate>Tue, 05 Jul 2022 14:55:00 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</guid>
-  <description><![CDATA[<!-- raw HTML omitted -->
-<h2 id="一启动tftp">一、启动tftp</h2>
-<p>使用tftp传送文件升级</p>
-<p>by daizelai on 2021/07/05 14:55</p>
-<p>在笔记本电脑中启动tftp，并配置Tftpd32的Server interface地址为172.16.173.20。</p>
-<p>需要注意一点的是，需要把将要上传到主机的文件放到tftp软件的根目录下。</p>]]></description>
-</item>
-<item>
-  <title>通过命令升级主机版本</title>
   <link>https://daizelai.github.io/posts/linux/master/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</link>
   <pubDate>Tue, 05 Jul 2022 14:55:00 &#43;0800</pubDate>
   <author>作者</author>

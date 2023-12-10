@@ -15,17 +15,5 @@
 <p>by daizelai 2022/10/16 16:20</p>
 <p>本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh</p>]]></description>
 </item>
-<item>
-  <title>ssh免密码登录</title>
-  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</link>
-  <pubDate>Sun, 16 Oct 2022 06:40:00 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/20221016_1619ssh%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</guid>
-  <description><![CDATA[<!-- raw HTML omitted -->
-<h2 id="一描述">一、描述</h2>
-<h3 id="11前言">1.1.前言</h3>
-<p>by daizelai 2022/10/16 16:20</p>
-<p>本文介绍如何在Windows10上面免密码登录远程centos服务器的ssh</p>]]></description>
-</item>
 </channel>
 </rss>

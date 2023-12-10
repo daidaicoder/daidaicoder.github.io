@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>CGW500网关抓包 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="CGW500网关抓包" /><meta name="keywords" content='原创, linux, CGW500, 网关' /><meta itemprop="name" content="CGW500网关抓包">
+<meta itemprop="description" content="CGW500网关抓包"><meta itemprop="datePublished" content="2016-10-17T21:20:00+08:00" />
+<meta itemprop="dateModified" content="2016-10-17T21:20:00+08:00" />
+<meta itemprop="wordCount" content="163">
+<meta itemprop="keywords" content="原创,linux,CGW500,网关," /><meta property="og:title" content="CGW500网关抓包" />
+<meta property="og:description" content="CGW500网关抓包" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-10-17T21:20:00+08:00" />
+<meta property="article:modified_time" content="2016-10-17T21:20:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CGW500网关抓包"/>
+<meta name="twitter:description" content="CGW500网关抓包"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/" /><link rel="prev" href="https://daizelai.github.io/posts/ap/ap%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/ap%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/" /><link rel="next" href="https://daizelai.github.io/posts/php/php%E7%94%9F%E6%88%908%E4%BD%8D%E9%9A%8F%E6%9C%BA%E6%95%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "CGW500网关抓包",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/gateway\/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85\/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85\/"
+    },"genre": "posts","keywords": "原创, linux, CGW500, 网关","wordcount":  163 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/gateway\/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85\/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85\/","datePublished": "2016-10-17T21:20:00+08:00","dateModified": "2016-10-17T21:20:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "CGW500网关抓包"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>CGW500网关抓包</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E7%BD%91%E5%85%B3/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网关</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/cgw500/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> CGW500</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-10-17 21:20:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-17">2016-10-17</time></span>&nbsp;<span title="更新于 2016-10-17 21:20:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-17">2016-10-17</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 163 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 1 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一cgw500网关抓包">一、CGW500网关抓包</a>
+      <ul>
+        <li><a href="#1使用tftp连接网关">1.使用tftp连接网关</a></li>
+        <li><a href="#2切换到tmp目录下">2.切换到tmp目录下</a></li>
+        <li><a href="#3把tcpdump导入网关">3.把tcpdump导入网关</a></li>
+        <li><a href="#4修改权限">4.修改权限</a></li>
+        <li><a href="#5抓包">5.抓包</a></li>
+        <li><a href="#6下载文件到本地">6.下载文件到本地</a></li>
+      </ul>
+    </li>
+    <li><a href="#二windows上的sftp命令">二、Windows上的sftp命令</a></li>
+    <li><a href="#三wireshark分析报文">三、Wireshark分析报文</a>
+      <ul>
+        <li><a href="#31场景描述">3.1.场景描述</a></li>
+        <li><a href="#32wireshark打开pingancap">3.2.Wireshark打开pingan.cap</a></li>
+        <li><a href="#33报文分析">3.3.报文分析</a></li>
+        <li><a href="#34云平台访问地址">3.4.云平台访问地址：</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="一cgw500网关抓包">一、CGW500网关抓包</h2>
+<h3 id="1使用tftp连接网关">1.使用tftp连接网关</h3>
+<p>在电脑和网关间进行文件传输，这里使用tftp工具，这里的网关为CGW500，IP地址为10.60.0.37，注意一点，哪里打开运行了tftp.exe，那么这里就是服务器，比如这里是在10.60.0.95上面打开的，10.60.0.95本地电脑就是服务器。</p>
+<p><figure><a class="lightgallery" href="/images/pingan_app_gw_cap_0.jpg" data-thumbnail="/images/pingan_app_gw_cap_0.jpg" data-sub-html="<h2>使用tftp连接网关</h2><p>使用tftp连接网关</p>"><img loading="lazy" src="/images/pingan_app_gw_cap_0.jpg" srcset="/images/pingan_app_gw_cap_0.jpg, /images/pingan_app_gw_cap_0.jpg 1.5x, /images/pingan_app_gw_cap_0.jpg 2x" sizes="auto" data-title="使用tftp连接网关" data-alt="使用tftp连接网关" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">使用tftp连接网关</figcaption>
+  </figure></p>
+<h3 id="2切换到tmp目录下">2.切换到tmp目录下</h3>
+<p>因为CGW500只有/tmp目录才能读写保存，所以切换到该目录下。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># cd /tmp
+</code></pre><h3 id="3把tcpdump导入网关">3.把tcpdump导入网关</h3>
+<p>Tftp导入tcpdump，语法格式如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># tftp –gr tcpdump xx.xx.xx.xx
+</code></pre><p>从tftp服务器端也就是本地电脑（10.60.0.95）上传文件<code>tcpdump</code>到网关（10.60.0.37）</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # tftp -gr tcpdump 10.60.0.95        
+/tmp # ls -lh tcpdump 
+-rw-r--r--    1 root     root         2.1M Oct 14 16:45 tcpdump
+</code></pre><h3 id="4修改权限">4.修改权限</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # chmod u+x tcpdump
+</code></pre><h3 id="5抓包">5.抓包</h3>
+<p>抓包语法格式：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # ./tcpdump –i br0 –w pingan.cap
+</code></pre><p>查看要抓的SSID所在网口名称</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # iwconfig
+ap0_5     IEEE 802.11ng  ESSID:&#34;00000003&#34; 
+</code></pre><p>抓包</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # ./tcpdump -i ap0_5 -w pingan.cap
+tcpdump: WARNING: ap0_5: no IPv4 address assigned
+tcpdump: listening on ap0_5, link-type EN10MB (Ethernet), capture size 65535 bytes
+^C339 packets captured
+339 packets received by filter
+0 packets dropped by kernel
+</code></pre><p><strong>提示：</strong>
+如果想判断报文有没有发出去，比如平安APP发送的数据到test上面去，可以抓一下ech0的包，看看有没有数据，当然这个eth0也要根据情况得到的。</p>
+<h3 id="6下载文件到本地">6.下载文件到本地</h3>
+<p>抓包完成后，通过<code>tftp</code>把网关中的cap文件拿到本地来。</p>
+<p>语法格式：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># tftp –pl pingan.cap xx.xx.xx.xx(ip地址)上传到本地
+</code></pre><p>下载文件电脑（tftp服务器端）</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # tftp -pl pingan.cap 10.60.0.95
+</code></pre><h2 id="二windows上的sftp命令">二、Windows上的sftp命令</h2>
+<p>在Windows上开启sftp服务器tftpd32.exe, 然后选定一个默认的目录作为服务器根目录，此时，tftpd32.exe自动读取pc的ip, 该ip就是tftp服务器的ip, 比如10.60.0.95</p>
+<p>同时windows上面的cmd中是有tftp命令的，cd到一个目录作为客户端目录。</p>
+<p>命令1：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># tftp 10.60.0.95 put index.php   
+</code></pre><p>该命令可以把tftp客户端目录下的index.php文件上传到tftp服务端，其中的10.60.0.95是服务端ip, put表示上传。</p>
+<p>命令2:</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># tftp 10.60.0.95 get test.txt 
+</code></pre><p>该命令可以把tftp服务端目录下的test.txt文件下载到tftp客户端， 其中的10.60.0.95是服务端ip, get表示下载。</p>
+<h2 id="三wireshark分析报文">三、Wireshark分析报文</h2>
+<h3 id="31场景描述">3.1.场景描述</h3>
+<p>手机终端连接我本地CGW500网关下名为	0000003的SSID，打开安APP，点击一键自动连接后，平安APP会向认证平台(test)发送认证数据，发送的认证的址为一开始给平安的平台认证地址。</p>
+<h3 id="32wireshark打开pingancap">3.2.Wireshark打开pingan.cap</h3>
+<p>打开<code>Wireshark后</code>，打开报文，因为平安APP提交的数据是到test上面去，test的IP地址为115.29.9.167。
+可以通过下面这样过滤一下报文。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">tcp &amp;&amp; ip.dst==115.29.9.167
+</code></pre><p><figure><a class="lightgallery" href="/images/pingan_app_gw_cap.jpg" data-thumbnail="/images/pingan_app_gw_cap.jpg" data-sub-html="<h2>网关抓包之报文浏览</h2><p>网关抓包之报文浏览</p>"><img loading="lazy" src="/images/pingan_app_gw_cap.jpg" srcset="/images/pingan_app_gw_cap.jpg, /images/pingan_app_gw_cap.jpg 1.5x, /images/pingan_app_gw_cap.jpg 2x" sizes="auto" data-title="网关抓包之报文浏览" data-alt="网关抓包之报文浏览" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">网关抓包之报文浏览</figcaption>
+  </figure></p>
+<h3 id="33报文分析">3.3.报文分析</h3>
+<p>1.网关抓包之手机连接SSID访问云平台报文查看
+可以看到<code>Hypertext Transfer Protocol</code>中的报文，源地址、提交地址、POST方式提交等信息。</p>
+<p><figure><a class="lightgallery" href="/images/pingan_app_gw_cap_2.jpg" data-thumbnail="/images/pingan_app_gw_cap_2.jpg" data-sub-html="<h2>网关抓包之手机连接SSID访问云平台报文查看</h2><p>网关抓包之手机连接SSID访问云平台报文查看</p>"><img loading="lazy" src="/images/pingan_app_gw_cap_2.jpg" srcset="/images/pingan_app_gw_cap_2.jpg, /images/pingan_app_gw_cap_2.jpg 1.5x, /images/pingan_app_gw_cap_2.jpg 2x" sizes="auto" data-title="网关抓包之手机连接SSID访问云平台报文查看" data-alt="网关抓包之手机连接SSID访问云平台报文查看" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">网关抓包之手机连接SSID访问云平台报文查看</figcaption>
+  </figure></p>
+<p>2.网关抓包之post数据查看
+这里是通过post提交的json格式数据，下面的报文可以看出类似键值对的数据，说明报文已经拿到了。</p>
+<p><figure><a class="lightgallery" href="/images/pingan_app_gw_cap_3.jpg" data-thumbnail="/images/pingan_app_gw_cap_3.jpg" data-sub-html="<h2>网关抓包之post数据查看</h2><p>网关抓包之post数据查看</p>"><img loading="lazy" src="/images/pingan_app_gw_cap_3.jpg" srcset="/images/pingan_app_gw_cap_3.jpg, /images/pingan_app_gw_cap_3.jpg 1.5x, /images/pingan_app_gw_cap_3.jpg 2x" sizes="auto" data-title="网关抓包之post数据查看" data-alt="网关抓包之post数据查看" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">网关抓包之post数据查看</figcaption>
+  </figure></p>
+<h3 id="34云平台访问地址">3.4.云平台访问地址：</h3>
+<p>地址：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">http://test.login-wifi.com/cmps/admin.php/pinganauth/doauth
+http://10.60.0.95/cmps/admin.php/pinganauth/doauth
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-10-17 21:20:00">更新于 2016-10-17&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/cgw500/' class="post-tag">CGW500</a><a href='/tags/%E7%BD%91%E5%85%B3/' class="post-tag">网关</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/ap/ap%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/ap%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/" class="post-nav-item" rel="prev" title="ap使用手记"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>ap使用手记</a>
+      <a href="/posts/php/php%E7%94%9F%E6%88%908%E4%BD%8D%E9%9A%8F%E6%9C%BA%E6%95%B0/" class="post-nav-item" rel="next" title="php生成8位随机数">php生成8位随机数<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

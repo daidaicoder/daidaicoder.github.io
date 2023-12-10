@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux-LAMP-源码安装 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="Linux-LAMP-源码安装" /><meta name="keywords" content='linux, 源码安装, 原创, LAMP' /><meta itemprop="name" content="Linux-LAMP-源码安装">
+<meta itemprop="description" content="Linux-LAMP-源码安装"><meta itemprop="datePublished" content="2016-01-09T20:33:19+08:00" />
+<meta itemprop="dateModified" content="2016-01-09T20:33:19+08:00" />
+<meta itemprop="wordCount" content="3624">
+<meta itemprop="keywords" content="linux,源码安装,原创,LAMP," /><meta property="og:title" content="Linux-LAMP-源码安装" />
+<meta property="og:description" content="Linux-LAMP-源码安装" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-01-09T20:33:19+08:00" />
+<meta property="article:modified_time" content="2016-01-09T20:33:19+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux-LAMP-源码安装"/>
+<meta name="twitter:description" content="Linux-LAMP-源码安装"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/" /><link rel="next" href="https://daizelai.github.io/posts/linux/linux-lamp-yum%E5%AE%89%E8%A3%85/linux-lamp-yum%E5%AE%89%E8%A3%85/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux-LAMP-源码安装",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85\/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85\/"
+    },"genre": "posts","keywords": "linux, 源码安装, 原创, LAMP","wordcount":  3624 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85\/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85\/","datePublished": "2016-01-09T20:33:19+08:00","dateModified": "2016-01-09T20:33:19+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "Linux-LAMP-源码安装"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Linux-LAMP-源码安装</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 源码安装</a>&ensp;<a href="/categories/lamp/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> LAMP</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-01-09 20:33:19"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-01-09">2016-01-09</time></span>&nbsp;<span title="更新于 2016-01-09 20:33:19"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-01-09">2016-01-09</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 3624 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 18 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一前言">一、前言</a>
+      <ul>
+        <li><a href="#11软件下载的方法">1.1.软件下载的方法</a></li>
+        <li><a href="#12安装权限说明">1.2.安装权限说明</a></li>
+        <li><a href="#13安装apr时的错误解决">1.3.安装apr时的错误解决</a></li>
+        <li><a href="#14安装pcre时的错误解决">1.4.安装pcre时的错误解决</a></li>
+        <li><a href="#15安装apache时的zlib-location-not-found错误">1.5.安装apache时的“zlib location&hellip; not found”错误</a></li>
+        <li><a href="#16安装apache时的no-ssl-c-headers-found错误">1.6.安装apache时的“no SSL-C headers found”错误</a></li>
+        <li><a href="#17启动apache后在主机输入虚拟机ip不能访问">1.7.启动apache后，在主机输入虚拟机IP不能访问</a></li>
+        <li><a href="#18查看80端口">1.8.查看80端口</a></li>
+        <li><a href="#19centos7的服务">1.9.centos7的服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#二安装apache">二、安装apache</a>
+      <ul>
+        <li><a href="#21下载安装">2.1.下载安装</a></li>
+        <li><a href="#213安装apr和apr-util">2.1.3.安装apr和apr-util</a></li>
+        <li><a href="#214安装pcre库">2.1.4.安装pcre库</a></li>
+        <li><a href="#217apache的配置">2.1.7.apache的配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#三编译安装mysql">三、编译安装MySQL</a>
+      <ul>
+        <li><a href="#31卸载老版本">3.1.卸载老版本</a></li>
+        <li><a href="#32安装依赖">3.2.安装依赖</a></li>
+        <li><a href="#33下载mysql">3.3.下载MySQL</a></li>
+        <li><a href="#34进入mysql源码目录生成makefile">3.4.进入mysql源码目录，生成makefile</a></li>
+        <li><a href="#35编译">3.5.编译</a></li>
+        <li><a href="#36安装">3.6.安装</a></li>
+        <li><a href="#37添加mysql用户和组">3.7.添加mysql用户和组</a></li>
+        <li><a href="#38安装默认数据库">3.8.安装默认数据库</a></li>
+        <li><a href="#39添加防火墙">3.9.添加防火墙</a></li>
+        <li><a href="#310关于mycnf">3.10.关于my.cnf</a></li>
+        <li><a href="#311加入环境变量">3.11.加入环境变量</a></li>
+        <li><a href="#312把mysql服务加入开机启动">3.12.把mysql服务加入开机启动</a></li>
+        <li><a href="#313修改root密码">3.13.修改root密码</a></li>
+        <li><a href="#314warning-bison-executable-not-found-in-path">3.14.Warning: Bison executable not found in PATH</a></li>
+      </ul>
+    </li>
+    <li><a href="#四安装php">四、安装PHP</a>
+      <ul>
+        <li><a href="#41安装依赖">4.1.安装依赖</a></li>
+        <li><a href="#42安装加密扩展库libmcrypt">4.2.安装加密扩展库Libmcrypt</a></li>
+        <li><a href="#43安装mhash">4.3.安装mhash</a></li>
+        <li><a href="#44安装mcrypt">4.4.安装mcrypt</a></li>
+        <li><a href="#45查询是否已安装php">4.5.查询是否已安装php</a></li>
+        <li><a href="#46安装php">4.6.安装php</a></li>
+        <li><a href="#47安装完php后的配置">4.7.安装完php后的配置</a></li>
+        <li><a href="#48编译安装php时的参数说明">4.8.编译安装php时的参数说明</a></li>
+        <li><a href="#49在centos上使用yum安装软件时提示loading-mirror-speeds-from-cached-hostfile">4.9.在centos上使用yum安装软件时提示Loading mirror speeds from cached hostfile</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h2 id="一前言">一、前言</h2>
+<h3 id="11软件下载的方法">1.1.软件下载的方法</h3>
+<p>1）、下载方式有两种：</p>
+<ul>
+<li>第一种：wget -c。</li>
+<li>第二种：axel。（支持断点续传）</li>
+</ul>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># axel -h查看帮助信息
+# axel -n 3 https://www.apache.org/dist/httpd/httpd-2.4.7.tar.gz
+</code></pre><p>下面是官方文档的要求，必须安装APR、APR-Util、PCRE，gcc-c++等包。
+文档URL地址：http://httpd.apache.org/docs/2.4/install.html</p>
+<h3 id="12安装权限说明">1.2.安装权限说明</h3>
+<p>1）、如果是以非root用户安装软件的话，需要使用sudo命令</p>
+<h3 id="13安装apr时的错误解决">1.3.安装apr时的错误解决</h3>
+<p>1）、出错error：no acceptable C compiler found in $PATH没有编译器那就下</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># yum -y install gcc 
+# Yum -y install libtools
+</code></pre><h3 id="14安装pcre时的错误解决">1.4.安装pcre时的错误解决</h3>
+<p>1）、出错error：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">libtool: compile: unrecognized option `-DHAVE_CONFIG_H&#39;
+libtool: compile: Try `libtool --help&#39; for more information.
+make[1]: *** [pcrecpp.lo] 错误 1
+make[1]: 离开目录“/root/apache/pcre-8.20”
+make: *** [all] 错误 2
+**原因：缺少gcc-c++ 包。**
+</code></pre><p>解决办法：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># yum -y install gcc-c++
+</code></pre><h3 id="15安装apache时的zlib-location-not-found错误">1.5.安装apache时的“zlib location&hellip; not found”错误</h3>
+<p>1）、安装apache到configure时出现错误</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd-2.2.31]# ./configure  --prefix=/usr/local/apache  --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util --with-pcre=/usr/local/pcre --with-mpm=prefork --enable-so --enable-rewrite --enable-mods-shared=all --enable-nonportable-atomics=yes --disable-dav --enable-deflate --enable-cache --enable-disk-cache --enable-mem-cache --enable-file-cache --enable-ssl --with-included-apr --enable-modules=all 
+......
+......
+checking whether to enable mod_filter... shared (all)
+checking whether to enable mod_substitute... shared (all)
+checking whether to enable mod_charset_lite... no
+checking whether to enable mod_deflate... checking dependencies
+checking for zlib location... not found
+checking whether to enable mod_deflate... configure: error: mod_deflate has been requested but can not be built due to prerequisite failures
+[root@localhost httpd-2.2.31]#
+[root@localhost httpd-2.2.31]# yum -y install zib-devel
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.163.com
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.163.com
+没有可用软件包 zib-devel。
+错误：无须任何处理
+[root@localhost httpd-2.2.31]# yum search zib-devel
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.163.com
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.163.com
+警告：没有匹配 zib-devel 的软件包
+No matches found
+</code></pre><p>2）、不能直接使用yum安装zib-devel的话，就只能通过下载文件来安装了
+下载地址：https://pkgs.org/download/zlib-devel</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># CentOS7
+[root@localhost soft]# wget http://mirror.centos.org/centos/7/os/x86_64/Packages/zlib-devel-1.2.7-15.el7.x86_64.rpm
+[root@localhost soft]# yum install zlib-devel
+</code></pre><h3 id="16安装apache时的no-ssl-c-headers-found错误">1.6.安装apache时的“no SSL-C headers found”错误</h3>
+<p>1）、解决办法，安装openssl-devel：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd-2.2.31]# yum -y install openssl-devel
+</code></pre><h3 id="17启动apache后在主机输入虚拟机ip不能访问">1.7.启动apache后，在主机输入虚拟机IP不能访问</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">原因：防火墙拦截了80端口
+解决：firewall-cmd --permanent --add-port=80/tcp
+</code></pre><h3 id="18查看80端口">1.8.查看80端口</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost conf]# netstat -luntp | grep 80
+tcp6       0      0 :::80                   :::*                    LISTEN      3795/httpd
+[root@localhost conf]# lsof -i :80
+</code></pre><h3 id="19centos7的服务">1.9.centos7的服务</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">// 当前安装的版本
+[root@localhost html]# systemctl --version
+systemd 219
+
+// 检查systemd和systemctl的二进制文件和库文件的安装位置
+[root@localhost html]# whereis systemd
+systemd: /usr/lib/systemd /etc/systemd /usr/share/systemd /usr/share/man/man1/systemd.1.gz
+[root@localhost html]# whereis systemctl
+systemctl: /usr/bin/systemctl /usr/share/man/man1/systemctl.1.gz
+
+// 检查systemd是否运行
+[root@localhost html]# ps -eaf | grep [s]ystemd
+注意：systemd是作为父进程（PID=1）运行的。在上面带（-e）参数的ps命令输出中，选择所有进程，（-a）选择除会话前导外的所有进程，并使用（-f）参数输出完整格式列表（即 -eaf）。
+也请注意上例中后随的方括号和例子中剩余部分。方括号表达式是grep的字符类表达式的一部分。
+
+// 分析systemd启动进程
+[root@localhost html]# systemd-analyze
+Startup finished in 449ms (kernel) + 3.094s (initrd) + 27.742s (userspace) = 31.286s
+
+分析启动时各个进程花费的时间
+[root@localhost html]# systemd-analyze blame
+10.159s docker.service
+ 7.276s postfix.service
+ 7.130s tuned.service
+ 6.091s kdump.service
+ 5.963s NetworkManager-wait-online.service
+
+// 分析启动时的关键链
+[root@localhost html]# systemd-analyze critical-chain
+重要：Systemctl接受服务（.service），挂载点（.mount），套接口（.socket）和设备（.device）作为单元。
+
+// 列出所有可用单元 
+[root@localhost html]# systemctl list-unit-files
+// 列出所有运行中单元
+[root@localhost html]# systemctl list-units
+// 列出所有失败单元
+[root@localhost html]# systemctl --failed
+// 检查某个单元（如 crond.service）是否启用
+[root@localhost html]# systemctl is-enabled crond.service
+enabled
+[root@localhost html]# systemctl is-enabled httpd.service
+httpd.service is not a native service, redirecting to /sbin/chkconfig.
+Executing /sbin/chkconfig httpd --level=5
+disabled
+//列出所有服务
+[root@localhost html]# systemctl list-unit-files --type=service
+//启动、重启、停止、重载服务以及检查服务（如 httpd.service）状态
+[root@localhost html]# systemctl start httpd.service
+[root@localhost html]# systemctl restart httpd.service
+[root@localhost html]# systemctl stop httpd.service
+[root@localhost html]# systemctl reload httpd.service
+[root@localhost html]# systemctl status httpd.service
+</code></pre><h2 id="二安装apache">二、安装apache</h2>
+<blockquote>
+<p>date:2016-09-25 18:17 星期天</p>
+</blockquote>
+<h3 id="21下载安装">2.1.下载安装</h3>
+<h4 id="211卸载原有apache">2.1.1.卸载原有Apache</h4>
+<p>1）、在源码安装apache之前，我们要先卸载系统中，已经通过rpm包安装的apache。如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># rpm -qa | grep httpd
+# rpm -e --nodeps httpd-2.2.15-29.el6.centos.x86_64
+# rpm -e --nodeps httpd-tools-2.2.15-29.el6.centos.x86_64
+</code></pre><h4 id="212apache需要软件">2.1.2.Apache需要软件</h4>
+<p>1）、apache依赖软件</p>
+<blockquote>
+<p>1.gcc
+2.g++
+3.zlib-devel
+4.openssl-devel
+5.apr-1.5.1.tar.gz
+6.apr-util-1.5.4.tar.gz
+7.pcre-8.20.tar.zip
+8.httpd-2.4.10.tar.gz</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># sudo yum install gcc 
+# sudo yum install gcc-c++
+</code></pre><h3 id="213安装apr和apr-util">2.1.3.安装apr和apr-util</h3>
+<blockquote>
+<p>下面两个是apache的优化工具(apr,apr-util)</p>
+</blockquote>
+<p>1）、apr安装</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# wget http://labfile.oss.aliyuncs.com/apr-1.5.1.tar.gz
+--2016-09-29 10:59:30--  http://labfile.oss.aliyuncs.com/apr-1.5.1.tar.gz
+正在解析主机 labfile.oss.aliyuncs.com (labfile.oss.aliyuncs.com)... 112.124.219.129
+正在连接 labfile.oss.aliyuncs.com (labfile.oss.aliyuncs.com)|112.124.219.129|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度：1020833 (997K) [application/octet-stream]
+正在保存至: “apr-1.5.1.tar.gz”
+
+100%[===========================================================================&gt;] 1,020,833   5.23MB/s 用时 0.2s   
+
+2016-09-29 10:59:30 (5.23 MB/s) - 已保存 “apr-1.5.1.tar.gz” [1020833/1020833])
+
+[root@localhost soft]# tar -zxf apr-1.5.1.tar.gz
+[root@localhost soft]# cd apr-1.5.1 
+[root@localhost apr-1.5.1]# ./configure --prefix=/usr/local/apr
+[root@localhost apr-1.5.1]# sudo make &amp;&amp; sudo make install
+
+[root@localhost apr-1.5.1]# ll /usr/local/apr/
+总用量 4
+drwxr-xr-x. 2 root root   25 9月  29 11:12 bin
+drwxr-xr-x. 2 root root  103 9月  29 11:12 build-1
+drwxr-xr-x. 3 root root   18 9月  29 11:12 include
+drwxr-xr-x. 3 root root 4096 9月  29 11:12 lib
+</code></pre><p>2）、apr-util安装</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# wget http://labfile.oss.aliyuncs.com/apr-util-1.5.4.tar.gz
+--2016-09-29 11:14:45--  http://labfile.oss.aliyuncs.com/apr-util-1.5.4.tar.gz
+正在解析主机 labfile.oss.aliyuncs.com (labfile.oss.aliyuncs.com)... 112.124.219.129
+正在连接 labfile.oss.aliyuncs.com (labfile.oss.aliyuncs.com)|112.124.219.129|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度：874044 (854K) [application/octet-stream]
+正在保存至: “apr-util-1.5.4.tar.gz”
+
+100%[===========================================================================&gt;] 874,044     5.17MB/s 用时 0.2s   
+
+2016-09-29 11:14:46 (5.17 MB/s) - 已保存 “apr-util-1.5.4.tar.gz” [874044/874044])
+
+[root@localhost soft]# tar -zxf apr-util-1.5.4.tar.gz 
+[root@localhost soft]# cd apr-util-1.5.4
+[root@localhost apr-util-1.5.4]# ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr
+[root@localhost apr-util-1.5.4]# sudo make &amp;&amp; sudo make install
+
+[root@localhost apr-util-1.5.4]# ll /usr/local/apr-util/
+总用量 4
+drwxr-xr-x. 2 root root   25 9月  29 11:17 bin
+drwxr-xr-x. 3 root root   18 9月  29 11:17 include
+drwxr-xr-x. 3 root root 4096 9月  29 11:17 lib
+</code></pre><h3 id="214安装pcre库">2.1.4.安装pcre库</h3>
+<p>1）、下载并安装</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# wget  http://labfile.oss.aliyuncs.com/pcre-8.36.tar.gz
+--2016-09-29 11:20:50--  http://labfile.oss.aliyuncs.com/pcre-8.36.tar.gz
+正在解析主机 labfile.oss.aliyuncs.com (labfile.oss.aliyuncs.com)... 112.124.219.129
+正在连接 labfile.oss.aliyuncs.com (labfile.oss.aliyuncs.com)|112.124.219.129|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度：2009464 (1.9M) [application/octet-stream]
+正在保存至: “pcre-8.36.tar.gz”
+
+100%[===========================================================================&gt;] 2,009,464   5.26MB/s 用时 0.4s   
+
+2016-09-29 11:20:50 (5.26 MB/s) - 已保存 “pcre-8.36.tar.gz” [2009464/2009464])
+
+[root@localhost soft]# tar -zxf pcre-8.36.tar.gz 
+[root@localhost soft]# cd pcre-8.36
+[root@localhost pcre-8.36]# ./configure --prefix=/usr/local/pcre
+[root@localhost pcre-8.36]# sudo make &amp;&amp; sudo make install
+
+[root@localhost pcre-8.36]# ll /usr/local/pcre
+总用量 8
+drwxr-xr-x. 2 root root   54 9月  29 11:22 bin
+drwxr-xr-x. 2 root root 4096 9月  29 11:22 include
+drwxr-xr-x. 3 root root 4096 9月  29 11:22 lib
+drwxr-xr-x. 4 root root   26 9月  29 11:22 share
+</code></pre><h4 id="215下载apache">2.1.5.下载apache</h4>
+<p>1）、下载<a href="http://apache.org/dist/httpd/"target="_blank" rel="external nofollow noopener noreferrer">apache</a>，这里选择最新版httpd-2.2.31.tar.gz。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# wget http://apache.org/dist/httpd/httpd-2.2.31.tar.gz
+--2016-09-25 18:25:48--  http://apache.org/dist/httpd/httpd-2.2.31.tar.gz
+正在解析主机 apache.org (apache.org)... 140.211.11.105, 88.198.26.2
+正在连接 apache.org (apache.org)|140.211.11.105|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 302 Found
+位置：http://101.44.1.117/files/B195000005CA9102/mirrors.cnnic.cn/apache//httpd/httpd-2.2.31.tar.gz [跟随至新的 URL]
+--2016-09-25 18:26:51--  http://101.44.1.117/files/B195000005CA9102/mirrors.cnnic.cn/apache//httpd/httpd-2.2.31.tar.gz
+正在连接 101.44.1.117:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度：7583841 (7.2M) [application/octet-stream]
+正在保存至: “httpd-2.2.31.tar.gz”
+
+100%[===========================================================&gt;] 7,583,841   8.96MB/s 用时 0.8s   
+
+2016-09-25 18:26:52 (8.96 MB/s) - 已保存 “httpd-2.2.31.tar.gz” [7583841/7583841])
+
+[root@localhost soft]#
+</code></pre><h4 id="216安装apache">2.1.6.安装apache</h4>
+<p>1）、可以使用命令查看安装选项：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># ./configure --help
+</code></pre><p>2）、我在centos7上面这样安装的：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># tar –zxvf httpd-2.2.31.tar.gz // 解压后为httpd-2.2.31
+# mkdir /usr/local/apache/   //在这个目录下建立文档，利于管理 
+# cd httpd-2.2.31
+# ./configure  --prefix=/usr/local/apache  \
+--with-apr=/usr/local/apr \
+--with-apr-util=/usr/local/apr-util \
+--with-pcre=/usr/local/pcre \
+--with-mpm=prefork \
+--enable-so \
+--enable-rewrite \
+--enable-mods-shared=all \
+--enable-nonportable-atomics=yes \
+--disable-dav \
+--enable-deflate \
+--enable-cache \
+--enable-disk-cache \
+--enable-mem-cache \
+--enable-file-cache \
+--enable-ssl \
+--with-included-apr \
+--enable-modules=all  
+</code></pre><p>3）、查看系统的核心数，编译时使用（注意这个可以先查好，不能接）：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost src]# cat /proc/cpuinfo | grep processor | wc -l
+1
+</code></pre><p>4）、如果是大于1的可以像下面这样执行，提高编译速度：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
+if [ $CPU_NUM -gt 1 ];then
+    make -j$CPU_NUM
+else
+    make
+fi
+</code></pre><p>5）、这里因为只有1个，所以直接编译：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># make
+# make install
+</code></pre><p>6）、注解：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">./configure //配置源代码树
+--prefix=/usr/local/apache2 //体系无关文件的顶级安装目录PREFIX ，也就Apache的安装目录。   
+--enable-module=so //打开 so 模块，so 模块是用来提 DSO 支持的 apache 核心模块   
+--enable-mods-shared=all //编译全部的模板，对于不需要我们可以在httpd.conf去掉。   
+--enable-cache //支持缓存   
+--enable-file-cache //支持文件缓存   
+--enable-mem-cache //支持记忆缓存   
+--enable-disk-cache //支持磁盘缓存   
+--enable-static-support //支持静态连接(默认为动态连接)   
+--enable-static-htpasswd //使用静态连接编译 htpasswd - 管理用于基本认证的用户文件   
+--enable-static-htdigest //使用静态连接编译 htdigest - 管理用于摘要认证的用户文件   
+--enable-static-rotatelogs //使用静态连接编译 rotatelogs - 滚动 Apache 日志的管道日志程序   
+--enable-static-logresolve //使用静态连接编译 logresolve - 解析 Apache 日志中的IP地址为主机名   
+--enable-static-htdbm //使用静态连接编译 htdbm - 操作 DBM 密码数据库   
+--enable-static-ab //使用静态连接编译 ab - Apache HTTP 服务器性能测试工具   
+--enable-static-checkgid //使用静态连接编译 checkgid   
+--disable-cgid //禁止用一个外部 CGI 守护进程执行CGI脚本   
+--disable-cgi //禁止编译 CGI 版本的 PHP   
+--enable-ssl // 编译 ssl模块。 
+
+--enable-rewrite提供URL规则的重写更嫩那个，即根据已知的URL地址，转换为其它想要的URL地址
+--enable-so激活apache服务的DSO（Dynamic Shared Objects动态共享目标），即在以后可以以DSO的方式编译安装共享模块，这个模块本身不能以DSO方式编译。
+--enable-headers提供允许对HTTP请求头的控制。
+--enable-expires激活荀彧通过配置文件控制HTTP的“Expires:”和“Cache-Control:”头内容，即对网站图片、js、css等内容，提供客户端浏览器缓存的设置。这个是apache调优的一个重要选项之一。
+--with-mpm=worker选择apache mpm的模式为worker模式。为worker模式原理是更多的使用线程来处理请求，所以可以处理更多的并发请求。而系统 资源的开销小玉基于进程的MPM prefork。如果不指定此参数，默认的模式是prefork进程模式。这个是apache调优的一个重要选项之一。
+--enable-deflate提供对内容的压缩传输编码支持，一般是html、js、css等内容的站点。使用此参数会打打提高传输速度，提升访问者访问的体验。在生产环境中，这是apache调优的一个重要选项之一。
+</code></pre><p>7）、****安装完毕apache，查看安装后的目录，如下:</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">tree -L 1 /usr/local/apache/
+-bash: tree: 未找到命令
+</code></pre><p>8）、查看apache安装目录：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd-2.2.31]# find / -name httpd.conf
+/root/layne/soft/httpd-2.2.31/docs/conf/httpd.conf
+/usr/local/apache/conf/original/httpd.conf
+/usr/local/apache/conf/httpd.conf
+</code></pre><h3 id="217apache的配置">2.1.7.apache的配置</h3>
+<p>1）、配置ServerName</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost conf]# vim httpd.conf
+ServerName www.example.com:80 // 去掉注释
+</code></pre><p>否则启动或停止apache时会提示如下错误：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost conf]# /etc/init.d/httpd start
+httpd: Could not reliably determine the server&#39;s fully qualified domain name, using localhost.localdomain for ServerName
+</code></pre><p>2）、修改网站目录</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# mkdir -p /var/www/html
+[root@localhost conf]# vim httpd.conf
+</code></pre><p>修改下面A为B：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">A: DocumentRoot &#34;/usr/local/apache/htdocs&#34;
+B: DocumentRoot &#34;/var/www/html&#34;
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux">A: &lt;Directory &#34;/usr/local/apache/htdocs&#34;&gt;
+B: &lt;Directory &#34;/var/www/html&#34;&gt;
+</code></pre><h4 id="218启动apache">2.1.8.启动apache</h4>
+<p>1）、将apache的启动脚本复制到/etc/rc.d/init.d这个目录下，如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd-2.2.31]# cp /usr/local/apache/bin/apachectl /etc/init.d/httpd
+[root@localhost httpd-2.2.31]# chmod +x /etc/init.d/httpd 
+</code></pre><p>其实apache的启动是调用/usr/local/apache/bin/httpd这个命令，查看该脚本的内容，如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd-2.2.31]# cat /etc/init.d/httpd|grep -v ^#|grep -v ^$
+</code></pre><p>也可以使用/usr/local/apache/bin/httpd进行启动，但lai没有成功。如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># /usr/local/apache/bin/httpd –k start
+</code></pre><h4 id="219测试apache">2.1.9.测试apache</h4>
+<p>1）、apache启动完毕后，我们来查看下，可以使用如下命令：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# curl -I http://10.60.0.83
+HTTP/1.1 200 OK
+Date: Thu, 29 Sep 2016 06:50:56 GMT
+Server: Apache/2.2.31 (Unix) mod_ssl/2.2.31 OpenSSL/1.0.1e-fips
+Last-Modified: Thu, 29 Sep 2016 06:50:32 GMT
+ETag: &#34;19559db-d1-53d9fe4ddbde8&#34;
+Accept-Ranges: bytes
+Content-Length: 209
+Content-Type: text/html
+
+[root@localhost html]# wget http://192.168.1.11
+Connecting to 192.168.1.11:80... connected.
+</code></pre><p>2）、web访问：</p>
+<blockquote>
+<p>http://10.60.0.83/phpinfo.php</p>
+</blockquote>
+<h4 id="2110查看apache安装生成的目录">2.1.10.查看apache安装生成的目录</h4>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">bin主要存放程序命令目录，。
+
+conf主要存放apache配置文件。
+
+htdocs主要存放站点目录。
+
+logs主要存放默认日志文件。
+
+modules主要存放apache的运行模块。例如php、memcache编译后的模块存放在这里。
+</code></pre><h4 id="2111查看apache的配置文件">2.1.11.查看apache的配置文件</h4>
+<p>1）、查看httpd.conf配置内容</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># egrep -v &#39;^[ ]*#|^$&#39; /usr/local/apache2/conf/httpd.conf | nl
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux">ServerRoot &#34;/usr/local/apache2&#34;
+表示apache根目录，该目录应只有root用户具有访问，一般不需要修改。
+
+Listen 80
+表示apache监听端口，默认为80。如果同时监控81端口，可以加一行:Listen 81。
+
+AddType application/x-httpd-php .php 
+LoadModule php5_module modules/libphp5.so
+用于apache与php进行集成时使用。
+
+User daemon 
+Group daemon
+表示apache运行时的用户及组，默认为daemon,建议修改，如apache。
+
+DocumentRoot &#34;/usr/local/apache2/htdocs&#34;
+表示apache默认的web站点目录，路径结尾不要添加斜线。
+
+ServerAdmin you@example.com
+表示系统管理员的邮箱，此项为非重要选项。当网站出现问题时，面面会显示此页面地址。
+
+DirectoryIndex index.php index.html
+配置默认的apache首页。如果虚拟主机未配置，默认应用这里的配置。
+
+ErrorLog &#34;logs/error_log&#34;
+错误日志路径。
+
+LogLevel warn
+错误日志级别。
+
+ScriptAlias /cgi-bin/ &#34;/usr/local/apache2/cgi-bin/&#34;
+配置cgi别名。
+
+LoadModule rewrite_module modules/mod_rewrite.so
+去除前面的;号，开启它。
+
+DirectoryIndex index.html index.htm index.php
+设置默认的首页
+
+Include conf/extra/httpd-mpm.conf
+去除前面的#号，开启它。
+
+Include conf/extra/httpd-vhosts.conf
+去除前面的#号，开启它，如果要设置虚拟目录的话。
+
+AllowOverride None修改为AllowOverride all
+这个根据情况再修改吧
+
+LoadModule php5_module modules/libphp5.so;
+这个不知道要不要，我这没有这个，根据情况再修改吧
+</code></pre><h4 id="2112apache加入系统服务">2.1.12.apache加入系统服务</h4>
+<p>1）、为了让apache开机启动，我们可以把apachectl启动脚本加入rc.local文件中，如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">echo &#34;/usr/local/apache/bin/apachectl start&#34;&gt;&gt;/etc/rc.local
+
+cat /etc/rc.local
+</code></pre><p>我们也可以通过把apache加入系统服务，来启动apache。把apache添加为系统服务有两种方法，第一种是通过chkconfig进行添加，第二种是直接添加系统的各个启动级别。</p>
+<p>2）、我们先来介绍第一种方法，修改启动httpd脚本加入如下两行命令，如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">#chkconfig: 2345 70 60
+#description: apache
+</code></pre><p>说明：</p>
+<ul>
+<li>chkconfig: 2345 70 60中的2345是指脚本的运行级别，即在2345这4种模式下都可以运行，234都是文本界面，5是图形界面X。</li>
+<li>70是指脚本将来的启动顺序号，如果别的程序的启动顺序号比70小（比如44、45），则脚本需要等这些程序都启动以后才启动。60是指系统关闭时，脚本的停止顺序号。</li>
+<li>description: apache关于脚本的简短描述。</li>
+</ul>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># cat /etc/init.d/httpd
+#!/bin/sh
+
+#chkconfig: 2345 70 60
+#description: apache
+</code></pre><p>3）、第二种方法，用chkconfig进行添加，如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># chkconfig --add httpd
+# chkconfig |grep httpd
+httpd 0:off 1:off 2:off 3:off 4:off 5:off 6:off
+</code></pre><p>chkconfig &ndash;add httpd命令的作用是把/etc/init.d/httpd加入到/etc/rc.d/rc0.d到/etc/rc.d/rc6.d目录下。如下</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># find /etc -name *httpd
+</code></pre><p>开启apache开机启动，使用如下命令：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># chkconfig |grep httpd
+httpd 0:off 1:off 2:off 3:off 4:off 5:off 6:off
+# chkconfig httpd on
+# chkconfig |grep httpd
+httpd 0:off 1:off 2:on 3:on 4:on 5:on 6:off
+</code></pre><p>实际操作时：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# systemctl is-active httpd.service
+unknown
+[root@localhost html]# systemctl enable httpd.service   
+httpd.service is not a native service, redirecting to /sbin/chkconfig.
+Executing /sbin/chkconfig httpd on
+服务 httpd 不支持 chkconfig
+[root@localhost html]# chkconfig --add httpd
+服务 httpd 不支持 chkconfig
+[root@localhost html]# chkconfig httpd on
+服务 httpd 不支持 chkconfig
+[root@localhost html]# chkconfig --level 2345 httpd on
+</code></pre><p>解决方法：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# vim /etc/init.d/httpd
+#!/bin/sh
+# chkconfig: 2345 10 90
+# description: Activates/Deactivates Apache Web Server
+......
+reboot system 这里我只是重启看看有没有加入开机启动，其实还要执行下面的操作
+......
+[root@localhost ~]# ps aux | grep httpd
+root      2183  0.0  0.1 112664   976 pts/0    S+   15:36   0:00 grep --color=auto httpd
+[root@localhost ~]# systemctl is-active httpd.service
+unknown
+[root@localhost ~]# systemctl enable httpd.service
+httpd.service is not a native service, redirecting to /sbin/chkconfig.
+Executing /sbin/chkconfig httpd on
+[root@localhost ~]# systemctl is-active httpd.service
+inactive
+[root@localhost ~]# chkconfig
+
+注意：该输出结果只显示 SysV 服务，并不包含原生 systemd 服务。SysV 配置数据可能被原生 systemd 配置覆盖。 
+      如果您想列出 systemd 服务,请执行 &#39;systemctl list-unit-files&#39;。
+      欲查看对特定 target 启用的服务请执行
+      &#39;systemctl list-dependencies [target]&#39;。
+
+httpd           0:关    1:关    2:开    3:开    4:开    5:开    6:关
+netconsole      0:关    1:关    2:关    3:关    4:关    5:关    6:关
+network         0:关    1:关    2:开    3:开    4:开    5:开    6:关
+</code></pre><p>经过以上操作apache就可以开机启动。</p>
+<h2 id="三编译安装mysql">三、编译安装MySQL</h2>
+<h3 id="31卸载老版本">3.1.卸载老版本</h3>
+<p>1）、如果之前安装了mysql，这里先卸载掉：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# rpm -qa | grep mysql
+[root@localhost ~]# rpm -e --nodeps xxx（xxx是搜索结果）
+</code></pre><h3 id="32安装依赖">3.2.安装依赖</h3>
+<p>1）、安装依赖文件</p>
+<p>注意: MySQL5.5之后的版本使用cmake进行编译。</p>
+<p>若先前编译过，则需要删除刚才编译生成的CMakeCache.txt文件</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">rm -f CMakeCache.txt
+</code></pre><p>2）、安装依赖</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">yum -y install gcc gcc-c++ autoconf automake zlib* fiex* libxml* ncurses-devel libmcrypt* libtool-ltdl-devel* cmake cmake-gui libaio-devel bison-devel make
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux"># yum install cmake gcc-c++ ncurses-devel perl-Data-Dumper libaio-devel bison bison-devel
+已安装:
+  bison-devel.x86_64 0:2.7-4.el7                         cmake.x86_64 0:2.8.11-5.el7                                
+  libaio-devel.x86_64 0:0.3.109-13.el7                   ncurses-devel.x86_64 0:5.9-13.20130511.el7                 
+  perl-Data-Dumper.x86_64 0:2.145-3.el7                 
+
+作为依赖被安装:
+  libarchive.x86_64 0:3.1.2-10.el7_2
+</code></pre><h3 id="33下载mysql">3.3.下载MySQL</h3>
+<p>1）、下载MySQL文件到软件目录</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# cd layne/soft/
+[root@localhost soft]# wget http://labfile.oss.aliyuncs.com/mysql-5.6.24.tar.gz
+[root@localhost soft]# tar -zxf mysql-5.6.24.tar.gz 
+</code></pre><h3 id="34进入mysql源码目录生成makefile">3.4.进入mysql源码目录，生成makefile</h3>
+<p>1）、这一步操作很慢，我这<code>16:28-16:58</code>，用时30分钟。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# cd mysql-5.6.24
+[root@localhost soft]# cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DWITH_INNOBASE_STORAGE_ENGINE=1
+</code></pre><p>2）、一般用到的参数说明：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># -DCMAKE_INSTALL_PREFIX=/usr/local/mysql          \    #安装路径
+# -DMYSQL_DATADIR=/usr/local/mysql/data            \    #数据文件存放位置
+# -DSYSCONFDIR=/etc                                \    #my.cnf路径
+# -DWITH_MYISAM_STORAGE_ENGINE=1                   \    #支持MyIASM引擎
+# -DWITH_INNOBASE_STORAGE_ENGINE=1                 \    #支持InnoDB引擎
+# -DWITH_MEMORY_STORAGE_ENGINE=1                   \    #支持Memory引擎
+# -DWITH_READLINE=1                                \    #快捷键功能(我没用过)
+# -DMYSQL_UNIX_ADDR=/tmp/mysqld.sock               \    #连接数据库socket路径
+# -DMYSQL_TCP_PORT=3306                            \    #端口
+# -DENABLED_LOCAL_INFILE=1                         \    #允许从本地导入数据
+# -DWITH_PARTITION_STORAGE_ENGINE=1                \    #安装支持数据库分区
+# -DEXTRA_CHARSETS=all                             \    #安装所有的字符集
+# -DDEFAULT_CHARSET=utf8                           \    #默认字符
+# -DDEFAULT_COLLATION=utf8_general_ci
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mysql-5.6.24]# (sudo) make
+[root@localhost mysql-5.6.24]# make
+Scanning dependencies of target INFO_BIN
+[  0%] Built target INFO_BIN
+Scanning dependencies of target INFO_SRC
+[  0%] Built target INFO_SRC
+Scanning dependencies of target abi_check
+[  0%] Built target abi_check
+Scanning dependencies of target zlib
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/adler32.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/compress.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/crc32.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/deflate.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/gzio.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/infback.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/inffast.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/inflate.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/inftrees.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/trees.c.o
+[  0%] Building C object zlib/CMakeFiles/zlib.dir/uncompr.c.o
+[  1%] Building C object zlib/CMakeFiles/zlib.dir/zutil.c.o
+Linking C static library libzlib.a
+[  1%] Built target zlib
+Scanning dependencies of target yassl
+[  1%] Building CXX object extra/yassl/CMakeFiles/yassl.dir/src/buffer.cpp.o
+......
+[ 26%] Building CXX object storage/perfschema/CMakeFiles/perfschema.dir/table_esms_by_digest.cc.o
+[ 26%] Building CXX object storage/perfschema/CMakeFiles/perfschema.dir/table_esms_by_thread_by_event_name.cc.o
+......
+[ 99%] Building CXX object libmysqld/CMakeFiles/sql_embedded.dir/__/sql/sql_union.cc.o
+[ 99%] Building CXX object libmysqld/CMakeFiles/sql_embedded.dir/__/sql/sql_update.cc.o
+[ 99%] Building CXX object libmysqld/CMakeFiles/sql_embedded.dir/__/sql/sql_view.cc.o
+[100%] Building CXX object libmysqld/CMakeFiles/sql_embedded.dir/__/sql/strfunc.cc.o
+[100%] Building CXX object libmysqld/CMakeFiles/sql_embedded.dir/__/sql/sys_vars.cc.o
+[100%] Building CXX object libmysqld/CMakeFiles/sql_embedded.dir/__/sql/table.cc.o
+[100%] Building CXX object libmysqld/CMakeFiles/sql_embedded.dir/__/sql/table_cache.cc.o
+......
+Linking CXX executable my_safe_process
+[100%] Built target my_safe_process
+</code></pre><h3 id="35编译">3.5.编译</h3>
+<p>1）、编译mysql，编译速度很快，1分钟不到。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mysql-5.6.24]# make
+</code></pre><h3 id="36安装">3.6.安装</h3>
+<p>1）、安装速度用了差不多3分钟。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mysql-5.6.24]# (sudo) make install
+</code></pre><h3 id="37添加mysql用户和组">3.7.添加mysql用户和组</h3>
+<p>1）、为mysql创建执行用户</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost local]# groupadd mysql -s /sbin/nologin
+[root@localhost local]# useradd -g mysql mysql
+// 修改权限
+[root@localhost local]# chown -R mysql:mysql /usr/local/mysql
+</code></pre><h3 id="38安装默认数据库">3.8.安装默认数据库</h3>
+<p>1）、编译安装好的MySQL是没有数据库的：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost data]# ll
+总用量 0
+drwxr-xr-x. 2 mysql mysql 19 9月  29 16:44 test
+[root@localhost data]# ls test/
+db.opt
+</code></pre><p>2）、进入安装路径，执行初始化配置脚本，创建系统自带的数据库和表:</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost data]# cd /usr/local/mysql
+[root@localhost mysql]# scripts/mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --user=mysql
+Installing MySQL system tables...2016-09-29 16:56:32 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2016-09-29 16:56:32 0 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.6.24) starting as process 17675 ...
+2016-09-29 16:56:32 17675 [Note] InnoDB: Using atomics to ref count buffer pool pages
+2016-09-29 16:56:32 17675 [Note] InnoDB: The InnoDB memory heap is disabled
+2016-09-29 16:56:32 17675 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+2016-09-29 16:56:32 17675 [Note] InnoDB: Memory barrier is not used
+2016-09-29 16:56:32 17675 [Note] InnoDB: Compressed tables use zlib 1.2.3
+</code></pre><p>上面其实也可以加入：&ndash;defaults-file=/opt/mysql/support-files/my-default.cnf，不加默认应该是/etc/my.cnf。</p>
+<p>3）、查看数据库目录：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mysql]# cd data/
+[root@localhost data]# ll
+总用量 110600
+-rw-rw----. 1 mysql mysql 12582912 9月  29 16:56 ibdata1
+-rw-rw----. 1 mysql mysql 50331648 9月  29 16:56 ib_logfile0
+-rw-rw----. 1 mysql mysql 50331648 9月  29 16:56 ib_logfile1
+drwx------. 2 mysql mysql     4096 9月  29 16:56 mysql
+drwx------. 2 mysql mysql     4096 9月  29 16:56 performance_schema
+drwxr-xr-x. 2 mysql mysql       19 9月  29 16:44 test
+</code></pre><p>注：在启动MySQL服务时，会按照一定次序搜索my.cnf，先在/etc目录下找，找不到则会搜索&quot;$basedir/my.cnf&quot;，在本例中就是 /usr/local/mysql/my.cnf，这是新版MySQL的配置文件的默认位置！</p>
+<p>在使用&quot;yum update&quot;更新系统后，需要检查下/etc目录下是否会多出一个my.cnf，如果多出，将它重命名成别的。否则，MySQL将使用这个配置文件启动，可能造成无法正常启动等问题。</p>
+<h3 id="39添加防火墙">3.9.添加防火墙</h3>
+<p>这一步我没有操作。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mysql]# firewall-cmd --zone=public --add-port=3306/tcp --permanent
+[root@localhost mysql]# firewall-cmd --reload
+</code></pre><h3 id="310关于mycnf">3.10.关于my.cnf</h3>
+<p>1）、配置my.cnf</p>
+<p>CentOS7自带MariaDB的支持，/etc下默认存在my.cnf文件干扰mysql运行，需要先删掉，或者修改一个名字：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost data]# date
+2016年 09月 29日 星期四 16:59:51 CST
+[root@localhost data]# ll /etc/my.cnf
+-rw-r--r--. 1 root root 570 8月  12 04:59 /etc/my.cnf
+[root@localhost mysql]# service mysqld start
+Starting MySQL. ERROR! The server quit without updating PID file (/var/lib/mysql/localhost.localdomain.pid).
+[root@localhost mysql]# ll /etc/my.cnf
+-rw-r--r--. 1 root root 570 8月  12 04:59 /etc/my.cnf
+[root@localhost mysql]# mv /etc/my.cnf /etc/my.cnf.system.bak
+[root@localhost mysql]# cp /usr/local/mysql/my.cnf /etc/
+[root@localhost mysql]# service mysqld start                 
+Starting MySQL.. SUCCESS! 
+</code></pre><p>CentOS7 不能使用service控制mysql服务，而源码安装的mysql也没有提供Systemd的控制脚本。
+有人这么启动</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># sudo /usr/local/mysql/bin/mysqld_safe --user=mysql &amp;
+</code></pre><h3 id="311加入环境变量">3.11.加入环境变量</h3>
+<p>每次执行绝对路径太麻烦，配置mysqld的环境变更。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mysql]# cp support-files/mysql.server /etc/init.d/mysqld
+[root@localhost mysql]# vim /etc/profile
+// 在文件末尾加入
+PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH
+// 让修改及时生效
+[root@localhost mysql]# source /etc/profile
+</code></pre><h3 id="312把mysql服务加入开机启动">3.12.把mysql服务加入开机启动</h3>
+<p>使用chkconfig命令把mysqld服务加入开机启动，这样就不用每次开机再手机启动那么麻烦了。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mysql]# chkconfig mysqld on
+[root@localhost mysql]# chkconfig
+
+注意：该输出结果只显示 SysV 服务，并不包含原生 systemd 服务。SysV 配置数据可能被原生 systemd 配置覆盖。 
+      如果您想列出 systemd 服务,请执行 &#39;systemctl list-unit-files&#39;。
+      欲查看对特定 target 启用的服务请执行
+      &#39;systemctl list-dependencies [target]&#39;。
+
+httpd           0:关    1:关    2:开    3:开    4:开    5:开    6:关
+mysqld          0:关    1:关    2:开    3:开    4:开    5:开    6:关
+netconsole      0:关    1:关    2:关    3:关    4:关    5:关    6:关
+network         0:关    1:关    2:开    3:开    4:开    5:开    6:关
+[root@localhost mysql]# 
+</code></pre><h3 id="313修改root密码">3.13.修改root密码</h3>
+<p>1）、登录数据库修改root密码</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mysql]# mysql -uroot
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.6.24 Source distribution
+mysql&gt; use mysql;
+mysql&gt; update user set password=password(&#39;123456&#39;) where user=&#39;root&#39;;
+Query OK, 4 rows affected (0.00 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql&gt; flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+</code></pre><p>2）、下面这一句，你懂的：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">GRANT ALL PRIVILEGES ON *.* TO root@&#39;%&#39; IDENTIFIED BY &#39;112233&#39;;
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost bin]# mysql -uroot -p
+Enter password: 
+mysql&gt;
+</code></pre><h3 id="314warning-bison-executable-not-found-in-path">3.14.Warning: Bison executable not found in PATH</h3>
+<h2 id="四安装php">四、安装PHP</h2>
+<h3 id="41安装依赖">4.1.安装依赖</h3>
+<p>1）、安装php前先安装依赖:</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost data]# yum install -y libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libpng libpng-devel libxml2 libxml2-devel openssl openssl-devel curl curl-devel openssl openssl-devel zlib zlib-devel libmcrypt-devel mhash-devel
+......
+已安装:
+  freetype-devel.x86_64 0:2.4.11-11.el7                  libcurl-devel.x86_64 0:7.29.0-25.el7.centos                
+  libjpeg-turbo.x86_64 0:1.2.90-5.el7                    libjpeg-turbo-devel.x86_64 0:1.2.90-5.el7                  
+  libpng.x86_64 2:1.5.13-7.el7_2                         libpng-devel.x86_64 2:1.5.13-7.el7_2                       
+  libxml2-devel.x86_64 0:2.9.1-6.el7_2.3                
+
+作为依赖被安装:
+  xz-devel.x86_64 0:5.1.2-12alpha.el7                                                                                
+
+完毕！
+</code></pre><h3 id="42安装加密扩展库libmcrypt">4.2.安装加密扩展库Libmcrypt</h3>
+<p>1）、查看是否已安装</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost data]# yum list installed | grep mcrypt
+</code></pre><p>2）、下载文件：</p>
+<ul>
+<li><a href="http://mcrypt.hellug.gr/lib/index.html"target="_blank" rel="external nofollow noopener noreferrer">http://mcrypt.hellug.gr/lib/index.html</a></li>
+<li><a href="http://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz"target="_blank" rel="external nofollow noopener noreferrer">http://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz</a></li>
+<li><a href="ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/libmcrypt/libmcrypt-2.5.7.tar.gz"target="_blank" rel="external nofollow noopener noreferrer">ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/libmcrypt/libmcrypt-2.5.7.tar.gz</a></li>
+</ul>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# wget ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/libmcrypt/libmcrypt-2.5.7.tar.gz
+[root@localhost soft]# tar -zxf libmcrypt-2.5.7.tar.gz
+[root@localhost soft]# cd libmcrypt-2.5.7
+[root@localhost libmcrypt-2.5.7]# ./configure prefix=/usr/local/libmcrypt/
+[root@localhost libmcrypt-2.5.7]# make
+[root@localhost libmcrypt-2.5.7]# make install
+</code></pre><h3 id="43安装mhash">4.3.安装mhash</h3>
+<p>1）、查看是否已安装</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost libmcrypt-2.5.7]# yum list installed | grep mhash
+[root@localhost libmcrypt-2.5.7]# find / -name mhash
+</code></pre><p>2）、下载地址：</p>
+<ul>
+<li><a href="http://sourceforge.net/projects/mhash/files/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz"target="_blank" rel="external nofollow noopener noreferrer">http://sourceforge.net/projects/mhash/files/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz</a></li>
+<li><a href="http://jaist.dl.sourceforge.net/project/lempelf/packages/mhash-0.9.9.9.tar.gz"target="_blank" rel="external nofollow noopener noreferrer">http://jaist.dl.sourceforge.net/project/lempelf/packages/mhash-0.9.9.9.tar.gz</a></li>
+</ul>
+<p>下载文件</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# wget http://jaist.dl.sourceforge.net/project/lempelf/packages/mhash-0.9.9.9.tar.gz
+
+[root@localhost soft]# tar -zxf mhash-0.9.9.9.tar.gz
+[root@localhost soft]# cd mhash-0.9.9.9
+[root@localhost mhash-0.9.9.9]# ./configure --prefix=/usr/local/mhash
+[root@localhost mhash-0.9.9.9]# make &amp;&amp; make install
+</code></pre><h3 id="44安装mcrypt">4.4.安装mcrypt</h3>
+<p>1）、下载地址：
+<a href="https://sourceforge.net/projects/mcrypt/files/MCrypt/2.6.8/"target="_blank" rel="external nofollow noopener noreferrer">https://sourceforge.net/projects/mcrypt/files/MCrypt/2.6.8/</a>
+<a href="http://sourceforge.net/projects/mcrypt/files/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz"target="_blank" rel="external nofollow noopener noreferrer">http://sourceforge.net/projects/mcrypt/files/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz</a>
+<a href="http://nchc.dl.sourceforge.net/project/mcrypt/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz"target="_blank" rel="external nofollow noopener noreferrer">http://nchc.dl.sourceforge.net/project/mcrypt/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz</a></p>
+<p>下载文件</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# wget http://nchc.dl.sourceforge.net/project/mcrypt/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz
+[root@localhost soft]# tar -zxf mcrypt-2.6.8.tar.gz 
+[root@localhost soft]# cd mcrypt-2.6.8
+</code></pre><p>2）、解决安装mcrypt的问题</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mcrypt-2.6.8]# LD_LIBRARY_PATH=/usr/local/lib ./configure
+checking for libmcrypt - version &gt;= 2.5.0... no
+*** Could not run libmcrypt test program, checking why...
+*** The test program failed to compile or link. See the file config.log for the
+*** exact error that occured. This usually means LIBMCRYPT was incorrectly installed
+*** or that you have moved LIBMCRYPT since it was installed. In the latter case, you
+*** may want to edit the libmcrypt-config script: no
+configure: error: *** libmcrypt was not found
+[root@localhost ~]#
+[root@localhost ~]# find / -name libmcrypt-config
+/root/layne/soft/libmcrypt-2.5.7/lib/libmcrypt-config
+/usr/local/libmcrypt/bin/libmcrypt-config
+[root@localhost mcrypt-2.6.8]#
+</code></pre><p>安装时出现如上错误，或者下面这个错误</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">configure: error: &#34;You need at least libmhash 0.8.15 to compile this program. http://mhash.sf.net/&#34;
+</code></pre><p>解决方法</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost mcrypt-2.6.8]# export LD_LIBRARY_PATH=/usr/local/libmcrypt/lib:/usr/local/mhash/lib
+[root@localhost mcrypt-2.6.8]# export LDFLAGS=&#34;-L/usr/local/mhash/lib -I/usr/local/mhash/include/&#34;
+[root@localhost mcrypt-2.6.8]# export CFLAGS=&#34;-I/usr/local/mhash/include/&#34;
+[root@localhost mcrypt-2.6.8]# ./configure --prefix=/usr/local/mcrypt --with-libmcrypt-prefix=/usr/local/libmcrypt
+......
+config.status: executing po-directories commands
+config.status: creating po/POTFILES
+config.status: creating po/Makefile
+config.status: executing default commands
+[root@localhost mcrypt-2.6.8]#
+</code></pre><p>安装成功</p>
+<h3 id="45查询是否已安装php">4.5.查询是否已安装php</h3>
+<p>1）、直接看一下php版本</p>
+<p>如果没有配置环境变量，这样也不行作用的。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# php -v
+-bash: php: 未找到命令
+</code></pre><p>2）、使用本地文件索引搜索</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# yum -y install mlocate
+已安装:
+  mlocate.x86_64 0:0.26-5.el7                                                                                        
+
+完毕！
+[root@localhost ~]# updatedb
+[root@localhost ~]# whereis locate
+locate: /usr/bin/locate /usr/share/man/man1/locate.1.gz
+[root@localhost ~]# locate php-5.6
+/root/layne/soft/php-5.6.5.tar.gz
+</code></pre><p>3）、使用基本的find命令搜索</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# find / -name php.ini
+[root@localhost ~]# find / -name httpd.conf
+/root/layne/soft/httpd-2.2.31/docs/conf/httpd.conf
+/usr/local/apache/conf/original/httpd.conf
+/usr/local/apache/conf/httpd.conf
+</code></pre><p>4）、使用搜索命令which或whereis</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# which gcc
+/usr/bin/gcc
+[root@localhost ~]# whereis gcc
+gcc: /usr/bin/gcc /usr/lib/gcc /usr/libexec/gcc /usr/share/man/man1/gcc.1.gz
+[root@localhost ~]# which php.ini
+/usr/bin/which: no php.ini in (/usr/local/mysql/bin:/usr/local/mysql/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin)
+[root@localhost ~]# whereis php.ini
+php:[root@localhost ~]# 
+</code></pre><p>5）、查询已经安装的包名称</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">#rpm包安装的
+[root@localhost ~]# rpm -qa | grep &#34;软件包名称“
+#deb包安装的
+[root@localhost ~]# dpkg -l | grep &#34;软件包名称&#34;
+</code></pre><p>6）、查询已经的软件都包含哪些文件？</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# rpm -ql php
+</code></pre><p>7）、查看yum安装过那些软件包？</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# yum list installed | grep php
+[root@localhost ~]# yum list installed | grep gcc
+gcc.x86_64                            4.8.5-4.el7                      @base    
+gcc-c++.x86_64                        4.8.5-4.el7                      @base    
+libgcc.x86_64                         4.8.5-4.el7                      @anaconda
+</code></pre><h3 id="46安装php">4.6.安装php</h3>
+<p>1）、查看yum上可安装的php</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# yum list php
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.163.com
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.163.com
+可安装的软件包
+php.x86_64                                         5.4.16-36.3.el7_2 
+</code></pre><p>2）、下载源码文件</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost soft]# wget http://cn2.php.net/distributions/php-5.6.5.tar.gz
+[root@localhost soft]# tar -zxf php-5.6.5.tar.gz 
+[root@localhost soft]# cd php-5.6.5
+</code></pre><p>3）、源码安装</p>
+<ul>
+<li>1.运行./configure脚本，启用需要的扩展模块，并指定php的安装目录</li>
+<li>2.要让nginx支持php，一定要把–enable-fpm加上去，fpm是php的一个脚本管理器，貌似说php5.3版本以前，fpm只是一个补丁patch，要去patch这个目录找他，php5.3后呢，据说是转正了，php里面已经集成了，不是第三方包了。只要跟上–enable-fpm安装完后就可以</li>
+<li>3.–with-mysql是指定mysql的头文件，可以whereis mysql然后指定mysql的安装目录，不过php5.5后，直接用php提供的mysql驱动mysqlnd就口以了</li>
+</ul>
+<p>使用&ndash;help来查询安装时的可用的所有参数</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost php-5.6.5]# ./configure --help
+</code></pre><p>4）、执行安装</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost php-5.6.5]# ./configure \
+--prefix=/usr/local/php \
+--enable-opcache \
+--with-config-file-path=/usr/local/php/etc \
+--with-apxs2=/usr/local/apache/bin/apxs \
+--with-mysql=mysqlnd \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
+--with-mhash=/usr/local/mhash \
+--with-mcrypt=/usr/local/mcrypt  \
+--with-curl \
+--with-zlib \
+--with-iconv \
+--with-xmlrpc \
+--with-gettext \
+--with-gd \
+--with-freetype-dir \
+--with-png-dir \
+--with-jpeg-dir \
+--enable-mbstring \
+--enable-calendar \
+--enable-ftp \
+--enable-sockets \
+--enable-zip \
+--enable-inline-optimization \
+--disable-ipv6 \
+--disable-debug
+...省略1万字...
+Thank you for using PHP.
+
+config.status: creating php5.spec
+config.status: creating main/build-defs.h
+config.status: creating scripts/phpize
+config.status: creating scripts/man1/phpize.1
+config.status: creating scripts/php-config
+config.status: creating scripts/man1/php-config.1
+config.status: creating sapi/cli/php.1
+config.status: creating sapi/cgi/php-cgi.1
+config.status: creating ext/phar/phar.1
+config.status: creating ext/phar/phar.phar.1
+config.status: creating main/php_config.h
+config.status: main/php_config.h is unchanged
+config.status: executing default commands
+[root@localhost php-5.6.5]# make
+// 大概用时5分钟
+Generating phar.php
+Generating phar.phar
+PEAR package PHP_Archive not installed: generated phar will require PHP&#39;s phar extension be enabled.
+clicommand.inc
+directorytreeiterator.inc
+invertedregexiterator.inc
+directorygraphiterator.inc
+pharcommand.inc
+phar.inc
+
+Build complete.
+Don&#39;t forget to run &#39;make test&#39;.
+[root@localhost php-5.6.5]# make install
+Installing PHP SAPI module:       apache2handler
+/usr/local/apache/build/instdso.sh SH_LIBTOOL=&#39;/usr/local/apache/build/libtool&#39; libphp5.la /usr/local/apache/modules
+/usr/local/apache/build/libtool --mode=install cp libphp5.la /usr/local/apache/modules/
+cp .libs/libphp5.so /usr/local/apache/modules/libphp5.so
+cp .libs/libphp5.lai /usr/local/apache/modules/libphp5.la
+libtool: install: warning: remember to run `libtool --finish /root/layne/soft/php-5.6.5/libs&#39;
+chmod 755 /usr/local/apache/modules/libphp5.so
+[activating module `php5&#39; in /usr/local/apache/conf/httpd.conf]
+Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/
+Installing PHP CLI binary:        /usr/local/php/bin/
+Installing PHP CLI man page:      /usr/local/php/php/man/man1/
+Installing PHP CGI binary:        /usr/local/php/bin/
+Installing PHP CGI man page:      /usr/local/php/php/man/man1/
+Installing build environment:     /usr/local/php/lib/php/build/
+Installing header files:          /usr/local/php/include/php/
+Installing helper programs:       /usr/local/php/bin/
+  program: phpize
+  program: php-config
+Installing man pages:             /usr/local/php/php/man/man1/
+  page: phpize.1
+  page: php-config.1
+Installing PEAR environment:      /usr/local/php/lib/php/
+[PEAR] Archive_Tar    - installed: 1.3.12
+[PEAR] Console_Getopt - installed: 1.3.1
+[PEAR] Structures_Graph- installed: 1.0.4
+[PEAR] XML_Util       - installed: 1.2.3
+[PEAR] PEAR           - installed: 1.9.5
+Wrote PEAR system config file at: /usr/local/php/etc/pear.conf
+You may want to add: /usr/local/php/lib/php to your php.ini include_path
+/root/layne/soft/php-5.6.5/build/shtool install -c ext/phar/phar.phar /usr/local/php/bin
+ln -s -f /usr/local/php/bin/phar.phar /usr/local/php/bin/phar
+Installing PDO headers:          /usr/local/php/include/php/ext/pdo/
+[root@localhost php-5.6.5]# 
+</code></pre><p>5）、解决“configure: error: mcrypt.h not found.”</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">configure: error: mcrypt.h not found. Please reinstall libmcrypt.
+</code></pre><p>可以需要这样一下，更新一下源再安装软件</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">yum  install epel-release  //扩展包更新包
+yum  update //更新yum源
+</code></pre><p>之前的libmcrypt-devel没有安装成功，因为默认centos7是没有这个源的，这里重新安装一下就OK了。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost php-5.6.5]# yum -y install libmcrypt-devel
+已安装:
+  libmcrypt-devel.x86_64 0:2.5.8-13.el7                                                                              
+
+作为依赖被安装:
+  libmcrypt.x86_64 0:2.5.8-13.el7                                                                                    
+
+完毕！
+</code></pre><p>6）、解决“configure: WARNING: unrecognized options: &ndash;enable-zend-multibyte, &ndash;without-sqlite, &ndash;disable-safe-mode”</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">使用“./configure --help”查看发现是没有这三个选项的，安装时去掉。
+</code></pre><p>7）、解决Sorry, I cannot run apxs. Possible reasons follow</p>
+<p>安装时出现如下错误。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">Sorry, I cannot run apxs.  Possible reasons follow:
+
+1. Perl is not installed
+2. apxs was not found. Try to pass the path using --with-apxs2=/path/to/apxs
+3. Apache was not built using --enable-so (the apxs usage page is displayed)
+
+The output of /usr/local/apache/bin/apxs follows:
+./configure: /usr/local/apache/bin/apxs: /replace/with/path/to/perl/interpreter: bad interpreter: No such file or directory
+configure: error: Aborting
+</code></pre><p>再次安装<code>yum -y install perl</code>提示已安装。</p>
+<p>解决办法：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[layne@bc8d91d5e039 php-5.6.5]$ ll /usr/local/apache/bin/apxs
+-rwxr-xr-x. 1 layne layne 22677 Oct 28 06:02 /usr/local/apache/bin/apxs
+[layne@bc8d91d5e039 php-5.6.5]$ head -1 /usr/local/apache/bin/apxs
+#!/replace/with/path/to/perl/interpreter -w
+[layne@bc8d91d5e039 php-5.6.5]$ cp cp /usr/local/apache/bin/apxs /usr/local/apache/bin.apxs.bak
+cp: target &#39;/usr/local/apache/bin.apxs.bak&#39; is not a directory
+[layne@bc8d91d5e039 php-5.6.5]$ sudo cp /usr/local/apache/bin/apxs /usr/local/apache/bin.apxs.bak
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux">[layne@bc8d91d5e039 ~]$ ll /usr/bin/perl
+-rwxr-xr-x. 2 root root 11400 Nov 20  2015 /usr/bin/perl
+[layne@bc8d91d5e039 php-5.6.5]$ sudo vi /usr/local/apache/bin/apxs    
+
+#!/replace/with/path/to/perl/interpreter -w
+# 把上一行的内容修改为下一行
+#!/usr/bin/perl -w
+</code></pre><p>再运行php的configure, 果然很流畅啊! 问题就这样的解决了.</p>
+<p>8）、php执行makde时<code>virtual memory exhausted: Cannot allocate memory</code></p>
+<p>应该是内存不够用了。</p>
+<p>解决方法：</p>
+<ul>
+<li>1.我把httpd,mysqld服务都杀死了。</li>
+<li>2.安装php时，./configure ***加入 &ndash;disable-fileinfo问题解决。</li>
+</ul>
+<h3 id="47安装完php后的配置">4.7.安装完php后的配置</h3>
+<p>1）、在apache配置文件中添加如下配置：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">#AddType application/x-gzip .tgz
+// 找到上面这一行，在后面加入
+AddType application/x-httpd-php .php .php3 .php4
+AddType application/x-httpd-php-source .phps
+</code></pre><p>在apache配置文件中找到DirectoryIndex：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">DirectoryIndex index.html index.htm index.php
+</code></pre><p>重启apache</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost php]# /etc/init.d/httpd stop
+[root@localhost php]# /etc/init.d/httpd start
+</code></pre><p>2）、解决运行phpinfo时的date错误</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">date
+
+Warning: phpinfo(): It is not safe to rely on the system&#39;s timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &#39;UTC&#39; for now, but please set date.timezone to select your timezone. in /var/www/html/phpinfo.php on line 2
+</code></pre><p>可以看现是date没有配置，修改php的配置文件</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# locate php.ini
+/root/layne/soft/php-5.6.5/php.ini-development
+/root/layne/soft/php-5.6.5/php.ini-production
+[root@localhost html]# cp /root/layne/soft/php-5.6.5/php.ini-development /usr/local/php/etc/
+[root@localhost etc]# vim php.ini
+date.timezone = PRC 
+</code></pre><p>3）、添加 PHP 命令到环境变量</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">在/etc/profile最后一行添加php的bin绝对路径
+[root@localhost etc]# vim /etc/profile
+PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:/usr/local/php/bin:$PATH
+[root@localhost etc]# source /etc/profile
+[root@localhost etc]# php -v
+PHP 5.6.5 (cli) (built: Sep 30 2016 15:13:49) 
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2014 Zend Technologies
+[root@localhost etc]# php -m | grep -i pdo
+PDO
+pdo_mysql
+pdo_sqlite
+</code></pre><p>当然也可以编辑<code># ~/.bash_profile</code>，编辑完后使 PHP 环境变量生效<code># . ~/.bash_profile</code></p>
+<h3 id="48编译安装php时的参数说明">4.8.编译安装php时的参数说明</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># 指定 php 安装目录
+--prefix=/usr/local/php 
+
+# 指定php.ini位置
+--with-config-file-path=/usr/local/php/etc 
+
+# mysql安装目录，对mysql的支持
+--with-mysql=/usr/local/mysql
+
+mysqli扩展技术不仅可以调用MySQL的存储过程、处理MySQL事务，而且还可以使访问数据库工作变得更加稳定。
+--with-mysqli=/usr/local/mysql/bin/mysql_config
+ 
+整合 apache，apxs功能是使用mod_so中的LoadModule指令，加载指定模块到 apache，要求 apache 要打开SO模块
+--with-apxs2=/usr/local/apache/bin/apxs 
+
+# 选项指令 --with-iconv-dir 用于 PHP 编译时指定 iconv 在系统里的路径，否则会扫描默认路径。
+--with-iconv-dir=/usr/local 
+
+--with-freetype-dir   打开对freetype字体库的支持 
+--with-jpeg-dir   打开对jpeg图片的支持 
+--with-png-dir   打开对png图片的支持 
+--with-zlib-dir   打开zlib库的支持，用于http压缩传输
+--with-libxml-dir   打开libxml2库的支持
+--disable-rpath    关闭额外的运行库文件 
+--enable-bcmath    打开图片大小调整,用到zabbix监控的时候用到了这个模块
+--enable-shmop --enable-sysvsem  这样就使得你的PHP系统可以处理相关的IPC函数了。
+--enable-inline-optimization  优化线程
+--with-curl    打开curl浏览工具的支持 
+--with-curlwrappers 运用curl工具打开url流 
+--enable-mbregex
+--enable-fpm 打上PHP-fpm 补丁后才有这个参数，CGI方式安装的启动程序
+--enable-mbstring 多字节，字符串的支持 
+--with-mcrypt mcrypt算法扩展
+--with-mhash mhash算法扩展
+--with-gd    打开gd库的支持 
+--enable-gd-native-ttf   支持TrueType字符串函数库
+--with-openssl      # openssl的支持，加密传输https时用到的
+--enable-pcntl   # freeTDS需要用到的，可能是链接mssql 才用到
+--enable-sockets     打开 sockets 支持
+--with-xmlrpc    打开xml-rpc的c语言 
+--enable-zip   打开对zip的支持 
+--enable-ftp   打开ftp的支持 
+--with-bz2    打开对bz2文件的支持        
+--without-iconv   关闭iconv函数，字符集间的转换 
+--with-ttf     打开freetype1.*的支持，可以不加了 
+--with-xsl     打开XSLT 文件支持，扩展了libXML2库 ，需要libxslt软件 
+--with-gettext     打开gnu 的gettext 支持，编码库用到 
+--with-pear    打开pear命令的支持，PHP扩展用的 
+--enable-calendar    打开日历扩展功能
+--enable-exif    图片的元数据支持 
+--enable-magic-quotes    魔术引用的支持 
+--disable-debug    关闭调试模式 
+--with-mime-magic=/usr/share/file/magic.mime 魔术头文件位置
+
+CGI方式安装才用的参数
+
+--enable-fastCGI 支持fastcgi方式启动PHP
+--enable-force-CGI-redirect 重定向方式启动PHP
+--with-ncurses 支持ncurses 屏幕绘制以及基于文本终端的图形互动功能的动态库
+--with-gmp 应该是支持一种规范
+--enable-dbase 建立DBA 作为共享模块
+--with-pcre-dir=/usr/local/bin/pcre-config # perl的正则库案安装位置
+--disable-dmalloc
+--with-gdbm # dba的gdbm支持
+--enable-sigchild
+--enable-sysvshm
+--enable-zend-multibyte 支持zend的多字节
+--enable-wddx
+--enable-soap
+
+网上查的
+--enable-static：生成静态链接库
+--enable-shared：生成动态链接库
+</code></pre><p>注意：</p>
+<p>指定了&ndash;with-apxs2=/usr/local/apache/bin/apxs以后，就不要再激活&ndash;enable-fpm和&ndash;enable-fastCGI，apxs是以php module的模式加载PHP的。</p>
+<h3 id="49在centos上使用yum安装软件时提示loading-mirror-speeds-from-cached-hostfile">4.9.在centos上使用yum安装软件时提示Loading mirror speeds from cached hostfile</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost conf]# yum install mcrypt -y
+Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+ * base: mirror.jdcloud.com
+ * extras: mirrors.aliyun.com
+ * updates: centos.ustc.edu.cn
+No package mcrypt available.
+</code></pre><p>本次解决问题的方法是因为能centos7.6系统上面python版本太高了，把版本修改低一点如2.7，因为yum是基于Python编写的，而Python3和Python2有部分语法是不同的。</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-01-09 20:33:19">更新于 2016-01-09&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/' class="post-tag">源码安装</a><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/lamp/' class="post-tag">LAMP</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/" class="post-nav-item" rel="prev" title="Linux之netstat命令"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux之netstat命令</a>
+      <a href="/posts/linux/linux-lamp-yum%E5%AE%89%E8%A3%85/linux-lamp-yum%E5%AE%89%E8%A3%85/" class="post-nav-item" rel="next" title="Linux-LAMP-yum安装">Linux-LAMP-yum安装<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

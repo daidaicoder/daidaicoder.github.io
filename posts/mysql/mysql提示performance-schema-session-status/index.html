@@ -23,7 +23,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/mysql/mysql%E6%8F%90%E7%A4%BAperformance-schema-session-status/" /><link rel="prev" href="https://daizelai.github.io/posts/mysql/mysql/" /><link rel="next" href="https://daizelai.github.io/posts/mysql/mysqldump/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/mysql/mysql%E6%8F%90%E7%A4%BAperformance-schema-session-status/" /><link rel="prev" href="https://daizelai.github.io/posts/mysql/mysql/" /><link rel="next" href="https://daizelai.github.io/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -192,7 +192,6 @@
 <h2 id="一问题的前世今生">一、问题的前世今生</h2>
 <p>开始Web环境为XP 32位系统中的php5.3.5+Apache2.2+mysql5.6.24组合，后来因为换成Win7 64位，Web环境又换成了php5625+Apache2.4+mysql5.7.14。
 为了图方便，直接把之前的Mysql5.6的data拷贝过来Mysql5.7使用，于是出现此问题。</p>
-<!-- raw HTML omitted -->
 <h2 id="二问题说明">二、问题说明</h2>
 <p>在php中使用代码执行SQL语句是没有问题的，但在navicat工具中使用查询语句就会有以下问题：</p>
 <blockquote>
@@ -234,8 +233,7 @@ MySQL 服务已经启动成功。
 <p>3.查看执行query效果</p>
 </blockquote>
 <p><figure><a class="lightgallery" href="./images/mysql_query_ok.jpg" data-thumbnail="./images/mysql_query_ok.jpg" data-sub-html="<h2>修复后的效果</h2><p>修复后的效果</p>"><img loading="lazy" src="./images/mysql_query_ok.jpg" srcset="./images/mysql_query_ok.jpg, ./images/mysql_query_ok.jpg 1.5x, ./images/mysql_query_ok.jpg 2x" sizes="auto" data-title="修复后的效果" data-alt="修复后的效果" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">修复后的效果</figcaption>
-  </figure></p>
-</div><div class="post-footer" id="post-footer">
+  </figure></p></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -259,7 +257,7 @@ MySQL 服务已经启动成功。
   </div>
 
   <div class="post-nav"><a href="/posts/mysql/mysql/" class="post-nav-item" rel="prev" title="mysql创建utf8字符集数据库"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>mysql创建utf8字符集数据库</a>
-      <a href="/posts/mysql/mysqldump/" class="post-nav-item" rel="next" title="mysql数据库导入导出">mysql数据库导入导出<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+      <a href="/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-nav-item" rel="next" title="Windows安装配置php&#43;memcached的方法">Windows安装配置php&#43;memcached的方法<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

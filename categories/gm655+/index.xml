@@ -9,12 +9,10 @@
   <pubDate>Sat, 08 Oct 2022 10:52:26 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/wzs2/20221011_1049%E4%B8%AD%E5%85%B4sdk%E5%A4%9A%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</guid>
-  <description><![CDATA[20221011_1049中兴SDK多端口配置的使用记录 一、描述 by daizelai on 2022/10/11 10:52 中兴GM605/GM655+多端口配置。
-二、多端口使用 2.1.配置主机telnet访问 多端口配置主机telnet连接。
-多端口配置主机telnet连接的操作示例。
-2.1.配置主机web访问 未配置主机的web多端口时是无法访问主机的web界面的
-配置主机web访问的多端口
-成功配置主机web访问的多端口效果]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2022/10/11 10:52
+中兴GM605/GM655+多端口配置。</p>]]></description>
 </item>
 </channel>
 </rss>

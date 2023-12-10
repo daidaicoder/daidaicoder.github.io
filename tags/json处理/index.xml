@@ -9,9 +9,9 @@
   <pubDate>Thu, 26 Oct 2023 17:59:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</guid>
-  <description><![CDATA[<h1 id="20231026_1759解决json数据时int变量接收超过int取值范围的异常问题">20231026_1759解决JSON数据时int变量接收超过int取值范围的异常问题</h1>
+  <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
-<p>在android或java中，与服务器进行接口交互的时候，如果本地变量是Int类型的，但是由于服务器的错误，传递了一个long型的数据过来，本地程序就是出现异常，如下所示：</p>]]></description>
+<p>在<code>android</code>或<code>java</code>中，与服务器进行接口交互的时候，如果本地变量是<code>Int</code>类型的，但是由于服务器的错误，传递了一个<code>long</code>型的数据过来，本地程序就是出现异常，如下所示：</p>]]></description>
 </item>
 </channel>
 </rss>

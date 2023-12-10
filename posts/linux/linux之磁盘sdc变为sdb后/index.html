@@ -23,7 +23,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/" /><link rel="prev" href="https://daizelai.github.io/posts/mysql/character/" /><link rel="next" href="https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/" /><link rel="next" href="https://daizelai.github.io/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -190,7 +190,6 @@
 </nav></div>
       </div><div class="content" id="content"><h2 id="一场景">一、场景</h2>
 <p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p>
-<!-- raw HTML omitted -->
 <p><figure><a class="lightgallery" href="./images/a1.jpg" data-thumbnail="./images/a1.jpg" data-sub-html="<h2>启动系统后变乱码的问题</h2><p>启动系统后变乱码的问题</p>"><img loading="lazy" src="./images/a1.jpg" srcset="./images/a1.jpg, ./images/a1.jpg 1.5x, ./images/a1.jpg 2x" sizes="auto" data-title="启动系统后变乱码的问题" data-alt="启动系统后变乱码的问题" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">启动系统后变乱码的问题</figcaption>
   </figure></p>
 <p>使用df查看发现磁盘sdb和磁盘sdc都看不到了。</p>
@@ -201,7 +200,7 @@
 <p>网上的解决方案(没试过，因为我是centos7)：</p>
 <p><figure><a class="lightgallery" href="./images/a3.jpg" data-thumbnail="./images/a3.jpg" data-sub-html="<h2>查询磁盘设备的UUID标识代码</h2><p>查询磁盘设备的UUID标识代码</p>"><img loading="lazy" src="./images/a3.jpg" srcset="./images/a3.jpg, ./images/a3.jpg 1.5x, ./images/a3.jpg 2x" sizes="auto" data-title="查询磁盘设备的UUID标识代码" data-alt="查询磁盘设备的UUID标识代码" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">查询磁盘设备的UUID标识代码</figcaption>
   </figure></p>
-<pre tabindex="0"><code>[root@localhost wwwroot]# ls -la /dev/disk/by-id
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost wwwroot]# ls -la /dev/disk/by-id
 总用量 0
 drwxr-xr-x. 2 root root 280 11月  1 11:12 .
 drwxr-xr-x. 5 root root 100 11月  1 11:12 ..
@@ -219,14 +218,13 @@ lrwxrwxrwx. 1 root root  10 11月  1 11:12 dm-uuid-LVM-mIvijZfEdaPjASZ4OCLaHtVz3
 lrwxrwxrwx. 1 root root  10 11月  1 11:12 lvm-pv-uuid-JcZgrG-0oo0-iRlg-EzNC-I3ld-74GV-1oHWkq -&gt; ../../sda2
 </code></pre><p>找到了磁盘设备唯一的UUID代码后，就可以加到/etc/grub.conf和/etc/fstab中，这样即使初始的系统盘sda变成了sdb，但Linux和文件系统的启动加载都是按照UUID来的，所以上层也不会受到影响</p>
 <p>在 /etc/grub.conf系统启动入口中做以下更改：</p>
-<pre tabindex="0"><code>kernel /boot/vmlinuz-3.10.0-3 root=/dev/disk/by-id/ata-VBOX_HARDDISK_VB61d9c9c9-e019bfdb
+<pre tabindex="0"><code class="language-linux" data-lang="linux">kernel /boot/vmlinuz-3.10.0-3 root=/dev/disk/by-id/ata-VBOX_HARDDISK_VB61d9c9c9-e019bfdb
 </code></pre><p>在 /etc/fstab文件系统启动入口中做以下更改：</p>
-<pre tabindex="0"><code>/dev/disk/by-id/ata-VBOX_HARDDISK_VB61d9c9c9-e019bfdb /          ext4   1  1
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/dev/disk/by-id/ata-VBOX_HARDDISK_VB61d9c9c9-e019bfdb /          ext4   1  1
 </code></pre><h2 id="三我的解决方案">三、我的解决方案</h2>
 <p>重新挂载一下sdc为sdb就可以了。</p>
 <p><figure><a class="lightgallery" href="./images/a4.jpg" data-thumbnail="./images/a4.jpg" data-sub-html="<h2>重新挂载一下sdc为sdb</h2><p>重新挂载一下sdc为sdb</p>"><img loading="lazy" src="./images/a4.jpg" srcset="./images/a4.jpg, ./images/a4.jpg 1.5x, ./images/a4.jpg 2x" sizes="auto" data-title="重新挂载一下sdc为sdb" data-alt="重新挂载一下sdc为sdb" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">重新挂载一下sdc为sdb</figcaption>
-  </figure></p>
-</div><div class="post-footer" id="post-footer">
+  </figure></p></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -249,7 +247,7 @@ lrwxrwxrwx. 1 root root  10 11月  1 11:12 lvm-pv-uuid-JcZgrG-0oo0-iRlg-EzNC-I3l
     </section>
   </div>
 
-  <div class="post-nav"><a href="/posts/mysql/character/" class="post-nav-item" rel="prev" title="mysql乱码"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>mysql乱码</a>
+  <div class="post-nav"><a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/" class="post-nav-item" rel="prev" title="linux之磁盘sdc变为sdb后"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>linux之磁盘sdc变为sdb后</a>
       <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/" class="post-nav-item" rel="next" title="virtualbox之ubuntu安装">virtualbox之ubuntu安装<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">

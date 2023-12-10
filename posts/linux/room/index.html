@@ -23,7 +23,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/room/" /><link rel="prev" href="https://daizelai.github.io/posts/mysql/mysqlpassword/" /><link rel="next" href="https://daizelai.github.io/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/room/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/room/" /><link rel="next" href="https://daizelai.github.io/posts/php/apache%E9%85%8D%E7%BD%AElocalhost%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E6%AD%A5%E9%AA%A4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -202,15 +202,15 @@
 </blockquote>
 <h3 id="二从-本地-复制到-远程">二、从 本地 复制到 远程</h3>
 <p>复制文件：</p>
-<pre tabindex="0"><code># scp /home/layne/music/1.mp3 root@test.login-wifi.com:/home/root/others/music 
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># scp /home/layne/music/1.mp3 root@test.login-wifi.com:/home/root/others/music 
 # scp /home/layne/music/1.mp3 root@test.login-wifi.com:/home/root/others/music/001.mp3 
 # scp /home/layne/music/1.mp3 test.login-wifi.com:/home/root/others/music 
 # scp /home/layne/music/1.mp3 test.login-wifi.com:/home/root/others/music/001.mp3 
 </code></pre><p>复制目录：</p>
-<pre tabindex="0"><code># scp -r /home/layne/music/ root@test.login-wifi.com:/home/root/others/ 
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># scp -r /home/layne/music/ root@test.login-wifi.com:/home/root/others/ 
 # scp -r /home/layne/music/ test.login-wifi.com:/home/root/others/ 
 </code></pre><p>混合复制：</p>
-<pre tabindex="0"><code>[root@master pkg]# scp -r public gbc_create_bin.sh svnExportBy* root@test.login-wifi.com:/home/kevin/manage/Public/shell/pkg
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@master pkg]# scp -r public gbc_create_bin.sh svnExportBy* root@test.login-wifi.com:/home/kevin/manage/Public/shell/pkg
 The authenticity of host &#39;test.login-wifi.com (115.29.9.167)&#39; can&#39;t be established.
 RSA key fingerprint is 0f:7e:6d:b8:1c:2b:22:6a:28:3b:2a:f1:25:6c:63:cf.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -237,10 +237,10 @@ svnExportByTags.sh                                                              
 -4 强行使用 IPV4 地址 .<br>
 -6 强行使用 IPV6 地址 .</p>
 </blockquote>
-<pre tabindex="0"><code># scp root@test.login-wifi.com:/home/root/others/music /home/layne/music/1.mp3 
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># scp root@test.login-wifi.com:/home/root/others/music /home/layne/music/1.mp3 
 # scp -r test.login-wifi.com:/home/root/others/ /home/layne/music/
 </code></pre><h3 id="四从远程主机复制文件到本地机亲测可用">四、从远程主机复制文件到本地机（亲测可用）</h3>
-<pre tabindex="0"><code># scp root@www.login-wifi.com:/htdocs/mem.zip /home/layne/
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># scp root@www.login-wifi.com:/htdocs/mem.zip /home/layne/
 // 注意复制目录需要添加参数-r
 # scp -r root@www.login-wifi.com:/htdocs/dir /home/layne/
 </code></pre></div><div class="post-footer" id="post-footer">
@@ -266,8 +266,8 @@ svnExportByTags.sh                                                              
     </section>
   </div>
 
-  <div class="post-nav"><a href="/posts/mysql/mysqlpassword/" class="post-nav-item" rel="prev" title="mysql之密码学"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>mysql之密码学</a>
-      <a href="/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/" class="post-nav-item" rel="next" title="MySql服务突然没有了">MySql服务突然没有了<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  <div class="post-nav"><a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/room/" class="post-nav-item" rel="prev" title="Linux之scp复制远程文件"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux之scp复制远程文件</a>
+      <a href="/posts/php/apache%E9%85%8D%E7%BD%AElocalhost%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E6%AD%A5%E9%AA%A4/" class="post-nav-item" rel="next" title="apache配置localhost虚拟主机步骤">apache配置localhost虚拟主机步骤<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

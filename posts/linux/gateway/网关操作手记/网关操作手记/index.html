@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>网关操作手记 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="网关操作手记，商业WIFI网关操作手记" /><meta name="keywords" content='原创, linux, 网关, 商业WIFI' /><meta itemprop="name" content="网关操作手记">
+<meta itemprop="description" content="网关操作手记，商业WIFI网关操作手记"><meta itemprop="datePublished" content="2015-07-30T14:56:12+08:00" />
+<meta itemprop="dateModified" content="2015-07-30T14:56:12+08:00" />
+<meta itemprop="wordCount" content="1391">
+<meta itemprop="keywords" content="原创,linux,网关,商业WIFI," /><meta property="og:title" content="网关操作手记" />
+<meta property="og:description" content="网关操作手记，商业WIFI网关操作手记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2015-07-30T14:56:12+08:00" />
+<meta property="article:modified_time" content="2015-07-30T14:56:12+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="网关操作手记"/>
+<meta name="twitter:description" content="网关操作手记，商业WIFI网关操作手记"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/" /><link rel="prev" href="https://daizelai.github.io/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" /><link rel="next" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/zip/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "网关操作手记",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/gateway\/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0\/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0\/"
+    },"genre": "posts","keywords": "原创, linux, 网关, 商业WIFI","wordcount":  1391 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/gateway\/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0\/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0\/","datePublished": "2015-07-30T14:56:12+08:00","dateModified": "2015-07-30T14:56:12+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "网关操作手记，商业WIFI网关操作手记"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>网关操作手记</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%BD%91%E5%85%B3/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网关</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2015-07-30 14:56:12"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2015-07-30">2015-07-30</time></span>&nbsp;<span title="更新于 2015-07-30 14:56:12"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2015-07-30">2015-07-30</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1391 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 7 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一登录网关">一、登录网关</a></li>
+    <li><a href="#二常用命令">二、常用命令</a>
+      <ul>
+        <li><a href="#21两大武器pactl和gctl">2.1.两大武器pactl和gctl</a></li>
+        <li><a href="#22查看白名单列表">2.2.查看白名单列表</a></li>
+        <li><a href="#23cgw1200修改平台url">2.3.CGW1200修改平台URL</a></li>
+        <li><a href="#24cgw3000t网关修改网络地址">2.4.CGW3000T网关修改网络地址</a></li>
+        <li><a href="#25网关下沉路径">2.5.网关下沉路径</a></li>
+        <li><a href="#26查看网关日志">2.6.查看网关日志</a></li>
+        <li><a href="#26查看网关日志-1">2.6.查看网关日志</a></li>
+        <li><a href="#27查看版本号">2.7.查看版本号</a></li>
+        <li><a href="#28查看下发的配置">2.8.查看下发的配置</a></li>
+        <li><a href="#29设备在线及管理">2.9.设备在线及管理</a></li>
+        <li><a href="#210查看地址映射关系">2.10.查看地址映射关系</a></li>
+      </ul>
+    </li>
+    <li><a href="#三ap操作">三、AP操作</a>
+      <ul>
+        <li><a href="#31查看ap的模式">3.1.查看AP的模式</a></li>
+        <li><a href="#32查看网关下面的ap列表">3.2.查看网关下面的ap列表</a></li>
+        <li><a href="#33查看ap的ssid">3.3.查看AP的SSID</a></li>
+      </ul>
+    </li>
+    <li><a href="#四常用网络操作">四、常用网络操作</a>
+      <ul>
+        <li><a href="#41配置ip和掩码">4.1.配置IP和掩码</a></li>
+        <li><a href="#42配置cgw3000t设备的网关">4.2.配置CGW3000T设备的网关</a></li>
+        <li><a href="#43路由查看">4.3.路由查看</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="一登录网关">一、登录网关</h2>
+<p>登录网关一般使用SSH就可以了，AP则使用telnet，当然也可以通过串登录。</p>
+<p>1.网关登录</p>
+<p>填写名称和选择通信协议，协议为SSH2</p>
+<p><figure><a class="lightgallery" href="/images/gw_login1.jpg" data-thumbnail="/images/gw_login1.jpg" data-sub-html="<h2>网关登录</h2><p>网关登录</p>"><img loading="lazy" src="/images/gw_login1.jpg" srcset="/images/gw_login1.jpg, /images/gw_login1.jpg 1.5x, /images/gw_login1.jpg 2x" sizes="auto" data-title="网关登录" data-alt="网关登录" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">网关登录</figcaption>
+  </figure></p>
+<p>配置主机地址及连接端口，SSH连接端口默认为22</p>
+<p><figure><a class="lightgallery" href="/images/gw_login2.jpg" data-thumbnail="/images/gw_login2.jpg" data-sub-html="<h2>网关登录</h2><p>网关登录</p>"><img loading="lazy" src="/images/gw_login2.jpg" srcset="/images/gw_login2.jpg, /images/gw_login2.jpg 1.5x, /images/gw_login2.jpg 2x" sizes="auto" data-title="网关登录" data-alt="网关登录" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">网关登录</figcaption>
+  </figure></p>
+<p>2.AP登录</p>
+<p>填写名称和选择通信协议，AP登录的话协议为Telnet</p>
+<p><figure><a class="lightgallery" href="/images/ap_login1.jpg" data-thumbnail="/images/ap_login1.jpg" data-sub-html="<h2>AP登录</h2><p>AP登录</p>"><img loading="lazy" src="/images/ap_login1.jpg" srcset="/images/ap_login1.jpg, /images/ap_login1.jpg 1.5x, /images/ap_login1.jpg 2x" sizes="auto" data-title="AP登录" data-alt="AP登录" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">AP登录</figcaption>
+  </figure></p>
+<p>配置主机地址及连接端口，Telnet连接端口默认为23</p>
+<p><figure><a class="lightgallery" href="/images/ap_login2.jpg" data-thumbnail="/images/ap_login2.jpg" data-sub-html="<h2>AP登录</h2><p>AP登录</p>"><img loading="lazy" src="/images/ap_login2.jpg" srcset="/images/ap_login2.jpg, /images/ap_login2.jpg 1.5x, /images/ap_login2.jpg 2x" sizes="auto" data-title="AP登录" data-alt="AP登录" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">AP登录</figcaption>
+  </figure></p>
+<h2 id="二常用命令">二、常用命令</h2>
+<h3 id="21两大武器pactl和gctl">2.1.两大武器pactl和gctl</h3>
+<p>直接敲入pactl和gctl，默认显示的是帮助，可以查看有哪些参数及如何使用。</p>
+<p>1.pactl</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # pactl
+Parameters invalid!
+    help            -- [subcmd]
+                       Show help information. {} means &#34;Required&#34;; [] means &#34;Optional&#34;; | means &#34;One of&#34;
+    version         -- 
+                       Get Current/Dependent version of application and module
+    debuglevel      -- [0-7]
+                       Set or get debug level of kernel module. Set 7 to print the most information
+    auth_state      -- {xx:xx:xx:xx:xx:xx} {xxx.xxx.xxx.xxx} [0|1|2]
+                       Set or get authentication state,0-not_auth,1-being_auth,2-auth
+    host_ip         -- [xxx.xxx.xxx.xxx]
+                       Set or get host ip
+    server_ip       -- [xxx.xxx.xxx.xxx]
+                       Set or get auth server ip
+    ccs_ip          -- [xxx.xxx.xxx.xxx]
+                       Set or get ccs server ip
+    snmp_ip         -- [xxx.xxx.xxx.xxx]
+                       Set or get snmp server ip
+    free_auth       -- [enable|disable]
+                       Enable or disable free auth sw
+    lan_free_auth   -- {show|set} {enable |disable}
+                       show-show lan free auth status; set enable|disable-set lan free status
+    stalist         -- [0|1|2 |flush]
+                       Get all stations,0-not_auth,1-being_auth,2-auth
+    lanif           -- [lan if name]
+                       Get or set lan if name
+    white_list      -- {mac|ip|url} {add {mac|ip [port] |url |net/mask} |del {mac|ip [port]|url |net/mask} | show |flush }
+                       Add ,Del,Show or Flush white list,mac--user&#39;s mac,ip--destination ip,destination port is optional
+    black_list      -- {mac|ip|url} {add {mac|ip [port_num] |url |net/mask} |del {mac|ip [port_num] |url |net/mask} | show |flush }
+                       Add ,Del,Show or Flush black list,mac--user&#39;s mac,ip--destination ip,destination port is optional
+    free_auth_list  -- {mac|ip|port|url|https_url} {add {url|ip|port_name|url|https_url} |del {mac|ip|port_name|url|https_url}|show|flush}
+                       Add ,Del,Show or Flush free auth list,mac--user&#39;s mac,ip--user&#39;s ip
+    let_pass        -- {tcp|udp} {add {port_num} | del {port_num} | show |flush }
+                       Add ,Del,Show or Flush destination port num list which should be let pass
+    must_redirect_list -- {mac|ip|url} {add {mac|ip [port] |url} |del {mac|ip [port]|url} | show |flush }
+                       Add ,Del,Show or Flush white list,mac--user&#39;s mac,ip--destination ip,destination port is optional
+    free_advertising_list -- {mac|ip|url} {add {mac|ip [port] |url} |del {mac|ip [port]|url} | show |flush }
+                       Add ,Del,Show or Flush white list,mac--user&#39;s mac,ip--destination ip,destination port is optional
+    wxl_serverip_list -- {add {ip mask} |del {ip mask} | show |flush }
+                       Add ,Del,Show or Flush wxl serverip list, ip--server ip,mask--serverip mask
+    net_connect     -- {show|set} {up |down}
+                       show-show network connectivity status; set up|down-set network connectivity status
+    sta_type        -- {xx:xx:xx:xx:xx:xx} {xxx.xxx.xxx.xxx} [0|1|2|3]
+                       Set or get sta type,0-init,1-pc,2-mobile,3-other
+    net_model       -- {show|set} {all|pc|mobile}
+                       show or set network model status; set all|pc|mobile surf the Internet
+    vlan_flood      -- {disable|enable}}
+                       config vlan flood
+</code></pre><p>2.gctl</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # gctl
+Usage: gctl option []
+
+  start         Start wifidog.
+  stop          Stop wifidog.
+  restart       restart wifidog.
+  status        Display clients information.
+  global        Display global config.
+  showap        Display registered APs
+  aplist        Display send APs
+  showsta       Display wireless connected STAs.
+  debug         Set WiFiDog debug level(1..7).
+  ext-debug     Set WiFiDog extend module debug level(1..7).
+  auth-ctrl     Set Auth Control (x,x,x: ios-auto_portal,ios-rd-mode,ucweb-rd-mode)
+  sta-auth      Set STA auth status (X.X.X.X XX:XX:XX:XX:XX:XX 0|2)
+  stat          Get statistics (start|stop [interval] [duration])
+  up-wxl        Update wxl whitelist.
+  vap-update    Update vap info
+  run-status    Get wifidog running status
+  roam-sta      Get maro hot roaming sta
+  ios-sta       Get ios sta
+  sta-acl       Get sta acl
+  http-record   Sta http record ([switch] [wdura] [bdura] [maxcnt] [ckintvl] [ckstalimit])
+  ssid-auth     set span ssid auth switch([enable|disable])
+  laninfo       Get|Set lan info([update])
+  help          Display this messages.
+</code></pre><h3 id="22查看白名单列表">2.2.查看白名单列表</h3>
+<p>这里简单列一下，更多详细使用方法可以根据<code>pactl</code>命令查询帮助得到。</p>
+<p>1.ip地址白名单</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # pactl white_list ip show
+DEST IP IN THE LIST:
+--------------------
+172.16.0.1
+114.114.114.114
+--------------------
+Total num:2
+</code></pre><p>2.url地址白名单</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # pactl white_list url show
+URL IN THE LIST:
+--------------------
+--------------------
+Total num:0
+URL related IPs:
+--------------------
+--------------------
+Total num:0
+</code></pre><p>3.ip地址免认证</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # pactl free_auth_list ip show
+USER IP IN THE LIST:
+--------------------
+--------------------
+Total num:0
+</code></pre><p>4.url地址免认证</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # pactl free_auth_list url show
+URL IN THE LIST:
+--------------------
+www.qq.com
+www.163.com
+www.kankan.com
+</code></pre><p>5.手动添加免认证列表</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # pactl free_auth_list url add test-wifi.pingan.com.cn
+Add Rule To The List OK
+/tmp # pactl free_auth_list url add test-pawf-uc.pingan.com.cn
+Add Rule To The List OK
+/tmp # pactl free_auth_list url add test-pawf-open.pingan.com.cn
+Add Rule To The List OK
+/tmp # pactl free_auth_list url add test-pawf-account.pingan.com.cn
+Add Rule To The List OK
+/tmp #
+/tmp # pactl free_auth_list url show | grep pingan
+test-wifi.pingan.com.cn
+test-pawf-uc.pingan.com.cn
+test-pawf-open.pingan.com.cn
+test-pawf-account.pingan.com.cn
+114.141.178.23  test-pawf-account.pingan.com.cn
+114.141.178.25  test-wifi.pingan.com.cn
+114.141.178.26  test-pawf-uc.pingan.com.cn
+114.141.178.28  test-pawf-open.pingan.com.cn
+</code></pre><h3 id="23cgw1200修改平台url">2.3.CGW1200修改平台URL</h3>
+<p>查看平台地址配置：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # nvramcli show | grep hotspot
+hotspot_name_prefixion=WIFI-
+device_hotspot_name=lltest
+device_hotspot_url=test.login-wifi.com
+device_hotspot_backupurl=
+device_hotspot_path=/cmps/admin.php/api/
+</code></pre><p>修改操作：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # nvramcli set device_hotspot_url=10.60.0.95
+~ # nvramcli commit
+</code></pre><p>查看修改结果：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # nvramcli show |grep hotspo
+</code></pre><p>修改后重启生效</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # reboot // 此命令所有linux通用^_^
+</code></pre><h3 id="24cgw3000t网关修改网络地址">2.4.CGW3000T网关修改网络地址</h3>
+<p>在CGW3000T的WEB界面，把LAN_IP设置错了，导致无法SSH连接网关了。修复方法为：
+通过串口连接网关。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T ~]# nvramcli show | grep lan_ip
+lan_ip=10.60.100.10
+
+修改为以前的正确地址：
+[root@CGW3000T ~]# nvramcli set lan_ip=172.16.1.1
+[root@CGW3000T ~]# nvramcli commit
+[root@CGW3000T ~]# nvramcli show | grep lan_ip
+lan_ip=172.16.1.1
+</code></pre><p>lai提示：其它配置如果需要查看或修改也是这样的做法。</p>
+<h3 id="25网关下沉路径">2.5.网关下沉路径</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">cd /tmp/app/home/cloud/webpages/cmps/static // 小网关下沉路径
+cd /appfs/web/webpages/cmps/static // 大网关下沉路径
+</code></pre><h3 id="26查看网关日志">2.6.查看网关日志</h3>
+<p>网关日志，如手机弹protal并认证过程中的日志，注意查看前需要先开启debug。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># gctl debug 7 // 打开日志
+# tail -f /var/log/messages.txt // 接着看日志
+</code></pre><h3 id="26查看网关日志-1">2.6.查看网关日志</h3>
+<p>1.查看终端上下线的记录</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # tail -n 100 /tmp/wd_usr.log  
+[2016-10-11 18:30:15]  Send client flow list. num = 0
+
+[2016-10-11 18:49:15]  Send client flow list. num = 0
+
+[2016-10-11 19:08:15]  Send client flow list. num = 0
+
+[2016-10-11 19:27:15]  Send client flow list. num = 0
+</code></pre><p>2.查看ping日志</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp/app/home/cloud/webpages/cmps/static # cat /tmp/wd_srv.log 
+[2016-10-12 10:07:04]  HTTP Request [ping_request] to Server: [GET /cmps/admin.php/api/ping/?gw_id=lltest&amp;sys_uptime=88459&amp;sys_memfree=18284&amp;sys_load=0.00&amp;wifidog_uptime=88408&amp;res_tpl_version=440567&amp;res_product_version=8&amp;res_adver_version=1&amp;userversion=0&amp;totalusernum=0&amp;model=CGW500&amp;mac=ac:34:cb:a0:b9:85&amp;stage=1&amp;version=1.0 HTTP/1.0
+User-Agent: WiFiDog 1.0.0
+Host: test.login-wifi.com
+
+] online(1)
+
+[2016-10-12 10:07:04]  HTTP Response[ping_response] form server: [HTTP/1.1 200 OK
+Date: Wed, 12 Oct 2016 02:07:04 GMT
+Server: Apache/2.4.2 (Unix) PHP/5.4.23
+X-Powered-By: ThinkPHP
+Set-Cookie: PHPSESSID=59iicn0ud46cq5t26r0dc3cqt6; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: private
+Pragma: no-cache
+Access-Control-Allow-Origin: *
+Content-Length: 117
+Connection: close
+Content-Type: text/html; charset=utf-8
+</code></pre><h3 id="27查看版本号">2.7.查看版本号</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp/app/home/cloud/webpages/cmps/static # vlist
+Version1(/dev/mtdblock4): ap-ta40.21-1.1.2.1-16M-T-8018
+Version2(/dev/mtdblock5): ap-ta40.21-1.1.2.1-16M-T-8632
+running version: ap-ta40.21-1.1.2.1-16M-T-8632
+target version: ap-ta40.21-1.1.2.1-16M-T-8632
+</code></pre><h3 id="28查看下发的配置">2.8.查看下发的配置</h3>
+<p>查看下发的配置，如-热点的最大连接数- max_client</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp/app/home/cloud/webpages/cmps/static # gctl global
+[gctl global]
+wifidog global config: 
+----------------------------------------------------
+auth_server                  : test.login-wifi.com
+gw_id                        : lltest
+online                       : 1
+server_mode                  : 1
+gw_redirect_port             : 9061
+gw_redirect_port_num         : 1
+gw_first_page_handle_port    : 8062
+conf_ver                     : 26
+config_ver_tmp               : 26
+cmd_ver                      : 0
+iUser_ver                    : 0
+qos_enable                   : 0
+max_client                   : 200
+dev_max_client               : 0
+bw_up                        : 0
+bw_down                      : 0
+forcetimeout                 : 86400
+idletimeout                  : 600
+wan_flow_report_switch       : 0
+wan_flow_report_interval     : 30
+g_freeauth_switch            : 0
+g_client_access_num          : 0
+g_cloudplatform_client_num   : 0
+server_mode                  : 1
+wxl_ssid                     : WIFI
+wxl_bssid                    : 00:34:cb:a0:b9:85
+authmode                     : 0,0,0,1,0,0,0,0
+debuglevel                   : 6
+LAN                          : interface(br0) address(172.16.0.1)
+WAN                          : wan_interface(eth0) address(10.60.0.37) mac(ac:34:cb:a0:b9:85)
+snmp_server                  : 10.60.0.20
+debug_count                  : 8061(1453) 8062(1247) html(36) 307(1)
+AuthCtrl                     : IosAutoPortal(1) IosRedirectMode(0) UcwebRedirectMode(0)
+Httpad                       : switch(1) wldura(5) bldura(720) maxcnt(256) ckIntvl(10) ckStaLimit(30)
+uiSpanSsidAuthSwith          : 0
+macro_hotspot                : 0
+uiLocatorSw                  : 0
+uiWebLocatorSw              :0
+fdmax                        : 8061(1) 8062(0) 8060(0) 80(0)
+----------------------------------------------------
+</code></pre><h3 id="29设备在线及管理">2.9.设备在线及管理</h3>
+<p>1.查看网关终端设备在线列表</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # pactl stalist
+MAC               IP              STATE TYPE  TIME                    TS-UP                  TS-DOWN     
+--------------------------------------------------------------------------------------------------------------
+65:3E:39:9E:D4:6Q 172.16.98.112   2     0     [12-10:16:09]          0:0                   0:0         
+--------------------------------------------------------------------------------------------------------------
+Total num:1
+</code></pre><p>2.剔除在线，但会导致云平台和网关的token不一致</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # pactl stalist flush
+FLUSH ALL
+</code></pre><p>3.正常剔除在线</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># gctl sta-auth (ip mac 0|2)
+# gctl sta-auth 172.16.98.112 65:3E:39:9E:D4:6Q 0
+</code></pre><h3 id="210查看地址映射关系">2.10.查看地址映射关系</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # arp -n
+? (10.60.0.20) at &lt;incomplete&gt;  on eth0
+? (172.16.173.165) at &lt;incomplete&gt;  on br0
+? (10.60.1.254) at 70:7b:e8:ee:0f:7c [ether]  on eth0
+? (172.16.59.118) at 90:fd:61:84:d4:ec [ether]  on br0
+? (10.60.0.95) at 74:27:ea:3a:af:04 [ether]  on eth0
+</code></pre><h2 id="三ap操作">三、AP操作</h2>
+<h3 id="31查看ap的模式">3.1.查看AP的模式</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # cat /tmp/ap_work_mode 
+ap_work_mode=fat // 胖模式
+</code></pre><h3 id="32查看网关下面的ap列表">3.2.查看网关下面的ap列表</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # gctl showap
+[gctl showap]
+AP 0001: ip=10.60.0.37 mac=ac:34:cb:a0:b9:85 model CGW500 name CGW500 RadioNum 1 RegisterTime:[1970-01-01 08:00:56]
+        =&gt;wifi0:RadioId=0 RadioType=0 VapNum=3
+                ==&gt;vap0:Bssid=00:34:cb:a0:b9:85 Ssid=0123456
+                ==&gt;vap1:Bssid=02:34:cb:a0:b9:85 Ssid=00000002
+                ==&gt;vap2:Bssid=12:34:cb:a0:b9:85 Ssid=00000003
+AP_nums = 1
+</code></pre><h3 id="33查看ap的ssid">3.3.查看AP的SSID</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">/tmp # iwconfig
+lo        no wireless extensions.
+
+eth0      no wireless extensions.
+
+eth1      no wireless extensions.
+
+wifi0     no wireless extensions.
+
+br0       no wireless extensions.
+
+ap0_1     IEEE 802.11ng  ESSID:&#34;0123456&#34;  
+          Mode:Master  Frequency:2.462 GHz  Access Point: 00:34:CB:A0:B9:85   
+          Bit Rate:144.4 Mb/s   Tx-Power=22 dBm   
+          RTS thr=2346 B   Fragment thr:off
+          Encryption key:off
+          Power Management:off
+          Link Quality=94/94  Signal level=-96 dBm  Noise level=-95 dBm
+          Rx invalid nwid:260235  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+
+ap0_4     IEEE 802.11ng  ESSID:&#34;00000002&#34;  
+          Mode:Master  Frequency:2.462 GHz  Access Point: 02:34:CB:A0:B9:85   
+          Bit Rate:144.4 Mb/s   Tx-Power=22 dBm   
+          RTS thr=2346 B   Fragment thr:off
+          Encryption key:off
+          Power Management:off
+          Link Quality=94/94  Signal level=-96 dBm  Noise level=-95 dBm
+          Rx invalid nwid:260246  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+
+ap0_5     IEEE 802.11ng  ESSID:&#34;00000003&#34;  
+          Mode:Master  Frequency:2.462 GHz  Access Point: 12:34:CB:A0:B9:85   
+          Bit Rate:144.4 Mb/s   Tx-Power=22 dBm   
+          RTS thr=2346 B   Fragment thr:off
+          Encryption key:off
+          Power Management:off
+          Link Quality=94/94  Signal level=-96 dBm  Noise level=-95 dBm
+          Rx invalid nwid:260245  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+</code></pre><h2 id="四常用网络操作">四、常用网络操作</h2>
+<h3 id="41配置ip和掩码">4.1.配置IP和掩码</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">~ # ifconfig eth0 10.60.110.10 netmask 255.255.0.0
+</code></pre><h3 id="42配置cgw3000t设备的网关">4.2.配置CGW3000T设备的网关</h3>
+<p>因为默认没有配置网关，导致不能访问外网，这里配置一下默认网关。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">route add default gw 10.60.1.254 // 设置大网关设置默认网关地址
+route add default gw 10.60.1.254 dev eth0 // 或者可以指定设备，如这里的eth0
+
+route del default gw 10.60.1.254 //删除置认网关
+route del default gw 10.60.1.254 dev eth0 // 或者可以指定设备，如这里的eth0
+</code></pre><h3 id="43路由查看">4.3.路由查看</h3>
+<p>1.路由查看</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+192.168.0.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+127.0.0.0       0.0.0.0         255.255.255.0   U     0      0        0 lo
+172.16.0.0      0.0.0.0         255.255.0.0     U     0      0        0 br0
+10.60.0.0       0.0.0.0         255.255.0.0     U     0      0        0 eth0
+0.0.0.0         10.60.1.254     0.0.0.0         UG    0      0        0 eth0
+</code></pre><p>删除IP地址</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T ~]# route del -net 192.168.0.0 netmask 255.255.255.0
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2015-07-30 14:56:12">更新于 2015-07-30&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E7%BD%91%E5%85%B3/' class="post-tag">网关</a><a href='/tags/%E5%95%86%E4%B8%9Awifi/' class="post-tag">商业WIFI</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="post-nav-item" rel="prev" title="Windows下memcache操作手记"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Windows下memcache操作手记</a>
+      <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/zip/" class="post-nav-item" rel="next" title="Linux之zip和unzip的使用">Linux之zip和unzip的使用<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

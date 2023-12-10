@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux-LAMP-yum安装 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="Linux-LAMP-yum安装" /><meta name="keywords" content='linux, LAMP, 原创' /><meta itemprop="name" content="Linux-LAMP-yum安装">
+<meta itemprop="description" content="Linux-LAMP-yum安装"><meta itemprop="datePublished" content="2016-01-09T20:33:19+08:00" />
+<meta itemprop="dateModified" content="2016-01-09T20:33:19+08:00" />
+<meta itemprop="wordCount" content="2207">
+<meta itemprop="keywords" content="linux,LAMP,原创," /><meta property="og:title" content="Linux-LAMP-yum安装" />
+<meta property="og:description" content="Linux-LAMP-yum安装" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/linux-lamp-yum%E5%AE%89%E8%A3%85/linux-lamp-yum%E5%AE%89%E8%A3%85/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-01-09T20:33:19+08:00" />
+<meta property="article:modified_time" content="2016-01-09T20:33:19+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux-LAMP-yum安装"/>
+<meta name="twitter:description" content="Linux-LAMP-yum安装"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linux-lamp-yum%E5%AE%89%E8%A3%85/linux-lamp-yum%E5%AE%89%E8%A3%85/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" /><link rel="next" href="https://daizelai.github.io/posts/linux/centos/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux-LAMP-yum安装",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/linux-lamp-yum%E5%AE%89%E8%A3%85\/linux-lamp-yum%E5%AE%89%E8%A3%85\/"
+    },"genre": "posts","keywords": "linux, LAMP, 原创","wordcount":  2207 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/linux-lamp-yum%E5%AE%89%E8%A3%85\/linux-lamp-yum%E5%AE%89%E8%A3%85\/","datePublished": "2016-01-09T20:33:19+08:00","dateModified": "2016-01-09T20:33:19+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "Linux-LAMP-yum安装"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Linux-LAMP-yum安装</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/lamp/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> LAMP</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-01-09 20:33:19"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-01-09">2016-01-09</time></span>&nbsp;<span title="更新于 2016-01-09 20:33:19"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-01-09">2016-01-09</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2207 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 11 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一检查软件是否安装">一、检查软件是否安装</a>
+      <ul>
+        <li><a href="#11查询apache是否安装">1.1.查询Apache是否安装</a></li>
+        <li><a href="#12查询端口">1.2.查询端口</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#二安装apache">二、安装Apache</a>
+      <ul>
+        <li><a href="#21安装httpd">2.1.安装httpd</a></li>
+        <li><a href="#22查询安装位置">2.2.查询安装位置</a></li>
+        <li><a href="#23启动apache服务">2.3.启动apache服务</a></li>
+        <li><a href="#24查看安装情况">2.4.查看安装情况</a></li>
+      </ul>
+    </li>
+    <li><a href="#三安装mysql">三、安装MySql</a>
+      <ul>
+        <li><a href="#31说明">3.1.说明</a></li>
+        <li><a href="#32安装mysql">3.2.安装mysql</a></li>
+        <li><a href="#33重置密码">3.3.重置密码</a></li>
+        <li><a href="#34开放3306端口centos7中没有试过">3.4.开放3306端口（centos7中没有试过）</a></li>
+      </ul>
+    </li>
+    <li><a href="#四安装php">四、安装PHP</a>
+      <ul>
+        <li><a href="#41查询php是否安装">4.1.查询php是否安装</a></li>
+        <li><a href="#42查询php有哪些安装包">4.2.查询PHP有哪些安装包</a></li>
+        <li><a href="#43安装php">4.3.安装php</a></li>
+        <li><a href="#44安装扩展">4.4.安装扩展</a></li>
+        <li><a href="#45重启服务">4.5.重启服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#五测试一下">五、测试一下</a>
+      <ul>
+        <li><a href="#51新建测试php文件">5.1.新建测试php文件</a></li>
+        <li><a href="#52使用浏览器查看效果">5.2.使用浏览器查看效果</a></li>
+        <li><a href="#53连接mysql的示例">5.3.连接MySql的示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#六安装memcached服务">六、安装memcached服务</a>
+      <ul>
+        <li><a href="#61安装服务">6.1.安装服务</a></li>
+        <li><a href="#62查看配置">6.2.查看配置</a></li>
+        <li><a href="#63启动服务">6.3.启动服务</a></li>
+        <li><a href="#64常用命令">6.4.常用命令</a></li>
+        <li><a href="#65状态">6.5.状态</a></li>
+        <li><a href="#66安装memcache扩展">6.6.安装memcache扩展</a></li>
+        <li><a href="#67使用memcache生效">6.7.使用memcache生效</a></li>
+        <li><a href="#68错误解决">6.8.错误解决</a></li>
+      </ul>
+    </li>
+    <li><a href="#七开机自启动">七、开机自启动</a>
+      <ul>
+        <li><a href="#71下面这个应该是centos6系列的">7.1.下面这个应该是centos6系列的：</a></li>
+        <li><a href="#72centos7自启动">7.2.centos7自启动</a></li>
+        <li><a href="#73memcached启动">7.3.memcached启动</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h2 id="一检查软件是否安装">一、检查软件是否安装</h2>
+<h3 id="11查询apache是否安装">1.1.查询Apache是否安装</h3>
+<blockquote>
+<p>方法一(查看有没有安装过)：</p>
+</blockquote>
+<pre><code>[root@localhost ~]# rpm -qa | grep httpd
+
+将搜索出的包名卸载：
+# rpm -e  –nodeps Apache-5.0.77-4.el5_4.2  （nodeps表示强制删除） 
+</code></pre>
+<blockquote>
+<p>方法二(查询路径)：</p>
+</blockquote>
+<pre><code>[root@iZ28q05wmpgZ Conf]# whereis httpd
+httpd: /alidata/server/httpd-2.4.2/bin/httpd
+</code></pre>
+<blockquote>
+<p>方法三(查看有没有安装过)：</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# yum list installed mysql*  
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.aliyun.com
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.cn99.com
+错误：没有匹配的软件包可以列出
+</code></pre><pre tabindex="0"><code class="language-linux" data-lang="linux">[root@worker4 ~]# yum list installed mysql*
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+64base                                                   | 4.0 kB     00:00     
+mysql-connectors-community                               | 2.5 kB     00:00     
+mysql-tools-community                                    | 2.5 kB     00:00     
+mysql56-community                                        | 2.5 kB     00:00     
+mysql56-community/primary_db                             | 114 kB     00:00     
+Installed Packages
+mysql-community-client.i686              5.6.26-2.el6         @mysql56-community
+mysql-community-common.i686              5.6.26-2.el6         @mysql56-community
+mysql-community-libs.i686                5.6.26-2.el6         @mysql56-community
+mysql-community-libs-compat.i686         5.6.26-2.el6         @mysql56-community
+mysql-community-release.noarch           el6-5                installed         
+mysql-community-server.i686              5.6.26-2.el6         @mysql56-community
+[root@worker4 ~]# 
+</code></pre><blockquote>
+<p>查看有没有安装包</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# yum list mysql*
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.aliyun.com
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.cn99.com
+可安装的软件包
+MySQL-python.x86_64                                            1.2.3-11.el7                                      base
+mysql-connector-java.noarch                                    1:5.1.25-3.el7                                    base
+mysql-connector-odbc.x86_64                                    5.2.5-6.el7                                       base
+[root@localhost ~]# 
+</code></pre><pre><code>[root@localhost ~]# yum -y update
+[root@localhost ~]# uname -a
+Linux localhost.localdomain 3.10.0-327.28.3.el7.x86_64 #1 SMP Thu Aug 18 19:05:49 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre>
+<h3 id="12查询端口">1.2.查询端口</h3>
+<h1 id="netstat--tulpn--grep--i-mysql">netstat -tulpn | grep -i mysql</h1>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-3.2# netstat -tulpn | grep -i mysql
+tcp        0      0 0.0.0.0:3306                0.0.0.0:*                   LISTEN      1852/mysqld
+</code></pre><h2 id="二安装apache">二、安装Apache</h2>
+<p>httpd-devel是http的开发包，里面包含了所有的编译用的头文件</p>
+<h3 id="21安装httpd">2.1.安装httpd</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# rpm -ql httpd-devel
+未安装软件包 httpd-devel
+</code></pre><pre tabindex="0"><code>[root@localhost ~]# yum install httpd httpd-devel
+=====================================================================================================================
+ Package                        架构                 版本                                源                     大小
+=====================================================================================================================
+正在安装:
+ httpd                          x86_64               2.4.6-40.el7.centos.4               updates               2.7 M
+ httpd-devel                    x86_64               2.4.6-40.el7.centos.4               updates               188 k
+为依赖而安装:
+ apr                            x86_64               1.4.8-3.el7                         base                  103 k
+ apr-devel                      x86_64               1.4.8-3.el7                         base                  188 k
+ apr-util                       x86_64               1.5.2-6.el7                         base                   92 k
+ apr-util-devel                 x86_64               1.5.2-6.el7                         base                   76 k
+ cyrus-sasl                     x86_64               2.1.26-20.el7_2                     updates                88 k
+ cyrus-sasl-devel               x86_64               2.1.26-20.el7_2                     updates               310 k
+ expat-devel                    x86_64               2.1.0-8.el7                         base                   56 k
+ httpd-tools                    x86_64               2.4.6-40.el7.centos.4               updates                83 k
+ libdb-devel                    x86_64               5.3.21-19.el7                       base                   38 k
+ mailcap                        noarch               2.1.41-2.el7                        base                   31 k
+ openldap-devel                 x86_64               2.4.40-9.el7_2                      updates               799 k
+
+事务概要
+=====================================================================================================================
+安装  2 软件包 (+11 依赖软件包)
+
+总下载量：4.7 M
+安装大小：17 M
+...................
+已安装:
+  httpd.x86_64 0:2.4.6-40.el7.centos.4                   httpd-devel.x86_64 0:2.4.6-40.el7.centos.4                  
+
+作为依赖被安装:
+  apr.x86_64 0:1.4.8-3.el7                                apr-devel.x86_64 0:1.4.8-3.el7                             
+  apr-util.x86_64 0:1.5.2-6.el7                           apr-util-devel.x86_64 0:1.5.2-6.el7                        
+  cyrus-sasl.x86_64 0:2.1.26-20.el7_2                     cyrus-sasl-devel.x86_64 0:2.1.26-20.el7_2                  
+  expat-devel.x86_64 0:2.1.0-8.el7                        httpd-tools.x86_64 0:2.4.6-40.el7.centos.4                 
+  libdb-devel.x86_64 0:5.3.21-19.el7                      mailcap.noarch 0:2.1.41-2.el7                              
+  openldap-devel.x86_64 0:2.4.40-9.el7_2                 
+
+完毕！
+</code></pre><h3 id="22查询安装位置">2.2.查询安装位置</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost modules]# rpm -ql httpd.x86_64 0:2.4.6-40.el7.centos.4
+/etc/httpd
+/etc/httpd/conf
+/etc/httpd/conf/httpd.conf
+/etc/httpd/logs
+/usr/sbin/apachectl
+/usr/share/doc/httpd-2.4.6
+</code></pre><p>或者：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd]# find / -name httpd.conf       
+/etc/httpd/conf/httpd.conf
+/usr/lib/tmpfiles.d/httpd.conf
+......
+[root@localhost httpd]# vim /etc/httpd/conf/httpd.conf
+ServerRoot &#34;/etc/httpd&#34; 
+</code></pre><h3 id="23启动apache服务">2.3.启动apache服务</h3>
+<pre><code>[root@localhost modules]# /usr/sbin/apachectl start
+</code></pre>
+<h3 id="24查看安装情况">2.4.查看安装情况</h3>
+<p>1）、查看httpd端口</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost noindex]# netstat -tulpn | grep httpd
+tcp6       0      0 :::80                   :::*                    LISTEN      2348/httpd          
+[root@localhost noindex]# 
+</code></pre><p>2）、访问web查看</p>
+<p><figure><a class="lightgallery" href="../images/httpd_is_ok_default.jpg" data-thumbnail="../images/httpd_is_ok_default.jpg" data-sub-html="<h2>默认访问web查看</h2><p>默认访问web查看</p>"><img loading="lazy" src="../images/httpd_is_ok_default.jpg" srcset="../images/httpd_is_ok_default.jpg, ../images/httpd_is_ok_default.jpg 1.5x, ../images/httpd_is_ok_default.jpg 2x" sizes="auto" data-title="默认访问web查看" data-alt="默认访问web查看" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">默认访问web查看</figcaption>
+  </figure></p>
+<p>因为没有项目，所以它访问的地址为：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost www]# cd /usr/share/httpd/noindex/
+[root@localhost noindex]# ll
+总用量 8
+drwxr-xr-x. 3 root root   92 9月  14 14:10 css
+drwxr-xr-x. 2 root root   46 9月  14 14:10 images
+-rw-r--r--. 1 root root 4897 10月 16 2014 index.html
+</code></pre><p>3）、新建一个html文件查看是否正常访问</p>
+<p><figure><a class="lightgallery" href="../images/httpd_is_ok_source.jpg" data-thumbnail="../images/httpd_is_ok_source.jpg" data-sub-html="<h2>新建php.html</h2><p>新建php.html</p>"><img loading="lazy" src="../images/httpd_is_ok_source.jpg" srcset="../images/httpd_is_ok_source.jpg, ../images/httpd_is_ok_source.jpg 1.5x, ../images/httpd_is_ok_source.jpg 2x" sizes="auto" data-title="新建php.html" data-alt="新建php.html" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">新建php.html</figcaption>
+  </figure></p>
+<p>4）、使用浏览器访问</p>
+<p><figure><a class="lightgallery" href="../images/httpd_is_ok.jpg" data-thumbnail="../images/httpd_is_ok.jpg" data-sub-html="<h2>访问php.html页面</h2><p>访问php.html页面</p>"><img loading="lazy" src="../images/httpd_is_ok.jpg" srcset="../images/httpd_is_ok.jpg, ../images/httpd_is_ok.jpg 1.5x, ../images/httpd_is_ok.jpg 2x" sizes="auto" data-title="访问php.html页面" data-alt="访问php.html页面" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">访问php.html页面</figcaption>
+  </figure></p>
+<p>5）、设置开机启动</p>
+<h2 id="三安装mysql">三、安装MySql</h2>
+<h3 id="31说明">3.1.说明</h3>
+<blockquote>
+<p>安装配置MySQL
+# mysql          客户端程序
+# mysql-server    服务端程序
+# mysql-devel    开发设计的库</p>
+</blockquote>
+<h3 id="32安装mysql">3.2.安装mysql</h3>
+<p>1）、安装mysql</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost noindex]# yum -y install mysql mysql-server mysql-devel
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.aliyun.com
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.cn99.com
+没有可用软件包 mysql-server
+...................
+=====================================================================================================================
+ Package                          架构                版本                                源                    大小
+=====================================================================================================================
+正在安装:
+ mariadb                          x86_64              1:5.5.50-1.el7_2                    updates              8.9 M
+ mariadb-devel                    x86_64              1:5.5.50-1.el7_2                    updates              750 k
+为依赖而安装:
+ keyutils-libs-devel              x86_64              1.5.8-3.el7                         base                  37 k
+ krb5-devel                       x86_64              1.13.2-12.el7_2                     updates              649 k
+ libcom_err-devel                 x86_64              1.42.9-7.el7                        base                  30 k
+ libselinux-devel                 x86_64              2.2.2-6.el7                         base                 174 k
+ libsepol-devel                   x86_64              2.1.9-3.el7                         base                  71 k
+ libverto-devel                   x86_64              0.2.5-4.el7                         base                  12 k
+ openssl-devel                    x86_64              1:1.0.1e-51.el7_2.5                 updates              1.2 M
+ pcre-devel                       x86_64              8.32-15.el7_2.1                     updates              479 k
+ zlib-devel                       x86_64              1.2.7-15.el7                        base                  50 k
+
+事务概要
+=====================================================================================================================
+安装  2 软件包 (+9 依赖软件包)
+.....................
+已安装:
+  mariadb.x86_64 1:5.5.50-1.el7_2                        mariadb-devel.x86_64 1:5.5.50-1.el7_2                       
+
+作为依赖被安装:
+  keyutils-libs-devel.x86_64 0:1.5.8-3.el7                   krb5-devel.x86_64 0:1.13.2-12.el7_2                    
+  libcom_err-devel.x86_64 0:1.42.9-7.el7                     libselinux-devel.x86_64 0:2.2.2-6.el7                  
+  libsepol-devel.x86_64 0:2.1.9-3.el7                        libverto-devel.x86_64 0:0.2.5-4.el7                    
+  openssl-devel.x86_64 1:1.0.1e-51.el7_2.5                   pcre-devel.x86_64 0:8.32-15.el7_2.1                    
+  zlib-devel.x86_64 0:1.2.7-15.el7                          
+
+完毕！
+</code></pre><p>2）、可以看到上面安装时提示“<strong>没有可用软件包 mysql-server</strong>”</p>
+<blockquote>
+<p>下面为CentOS7下解决yum install mysql-server没有可用包的问题，首先下载：</p>
+</blockquote>
+<pre><code>[root@localhost layne]# wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+</code></pre>
+<blockquote>
+<p>安装：</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost layne]# rpm -ivh mysql-community-release-el7-5.noarch.rpm 
+准备中...                          ################################# [100%]
+正在升级/安装...
+   1:mysql-community-release-el7-5    ################################# [100%]
+[root@localhost layne]#
+</code></pre><blockquote>
+<p>查看安装源：</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost etc]# ls -1 /etc/yum.repos.d/mysql-community*
+/etc/yum.repos.d/mysql-community.repo
+/etc/yum.repos.d/mysql-community-source.repo
+</code></pre><blockquote>
+<p>安装mysql-server</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost etc]# yum -y install mysql-server
+====================================================================================================================================
+ Package                                架构                  版本                           源                                大小
+====================================================================================================================================
+正在安装:
+ mysql-community-client                 x86_64                5.6.33-2.el7                   mysql56-community                 19 M
+      替换  mariadb.x86_64 1:5.5.50-1.el7_2
+ mysql-community-devel                  x86_64                5.6.33-2.el7                   mysql56-community                3.4 M
+      替换  mariadb-devel.x86_64 1:5.5.50-1.el7_2
+ mysql-community-libs                   x86_64                5.6.33-2.el7                   mysql56-community                2.0 M
+      替换  mariadb-libs.x86_64 1:5.5.50-1.el7_2
+ mysql-community-server                 x86_64                5.6.33-2.el7                   mysql56-community                 59 M
+为依赖而安装:
+ mysql-community-common                 x86_64                5.6.33-2.el7                   mysql56-community                256 k
+ perl-Compress-Raw-Bzip2                x86_64                2.061-3.el7                    base                              32 k
+ perl-Compress-Raw-Zlib                 x86_64                1:2.061-4.el7                  base                              57 k
+ perl-DBI                               x86_64                1.627-4.el7                    base                             802 k
+ perl-Data-Dumper                       x86_64                2.145-3.el7                    base                              47 k
+ perl-IO-Compress                       noarch                2.061-2.el7                    base                             260 k
+ perl-Net-Daemon                        noarch                0.48-5.el7                     base                              51 k
+ perl-PlRPC                             noarch                0.2020-14.el7                  base                              36 k
+
+事务概要
+====================================================================================================================================
+安装  4 软件包 (+8 依赖软件包)
+
+总下载量：85 M
+......................
+已安装:
+  mysql-community-client.x86_64 0:5.6.33-2.el7                     mysql-community-devel.x86_64 0:5.6.33-2.el7                     
+  mysql-community-libs.x86_64 0:5.6.33-2.el7                       mysql-community-server.x86_64 0:5.6.33-2.el7                    
+
+作为依赖被安装:
+  mysql-community-common.x86_64 0:5.6.33-2.el7                     perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7                    
+  perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7                      perl-DBI.x86_64 0:1.627-4.el7                                   
+  perl-Data-Dumper.x86_64 0:2.145-3.el7                            perl-IO-Compress.noarch 0:2.061-2.el7                           
+  perl-Net-Daemon.noarch 0:0.48-5.el7                              perl-PlRPC.noarch 0:0.2020-14.el7                               
+
+替代:
+  mariadb.x86_64 1:5.5.50-1.el7_2         mariadb-devel.x86_64 1:5.5.50-1.el7_2         mariadb-libs.x86_64 1:5.5.50-1.el7_2        
+
+完毕！
+</code></pre><p>3）、查看安装情况</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost etc]# rpm -ql  mysql-community-server.x86_64 0:5.6.33-2.el7
+/etc/logrotate.d/mysql
+/etc/my.cnf
+/etc/my.cnf.d
+/usr/bin/innochecksum
+/usr/bin/my_print_defaults
+/usr/bin/myisam_ftdump
+/usr/bin/myisamchk
+/usr/bin/myisamlog
+/usr/bin/myisampack
+/usr/sbin/mysqld
+</code></pre><p>4）、查看进程</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost layne]# ps -ef | grep mysqld
+mysql     2194     1  0 09:45 ?        00:00:00 /bin/sh /usr/bin/mysqld_safe
+mysql     2349  2194  0 09:45 ?        00:00:09 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib64/mysql/plugin --log-error=/var/log/mysqld.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/lib/mysql/mysql.sock
+root     10121 10011  0 14:40 pts/1    00:00:00 grep --color=auto mysqld
+</code></pre><h3 id="33重置密码">3.3.重置密码</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# mysql -u root
+ERROR 2002 (HY000): Can&#39;t connect to local MySQL server through socket &#39;/var/lib/mysql/mysql.sock&#39; (2)
+[root@localhost html]#
+</code></pre><p>登录时有可能报这样的错：ERROR 2002 (HY000): Can‘t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock‘ (2)，原因是/var/lib/mysql的访问权限问题。</p>
+<p>修改为当前root用户（或其它用户）</p>
+<pre><code>[root@localhost html]# chown -R root:root /var/lib/mysql
+</code></pre>
+<p>修改密码：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost layne]# mysql -uroot -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.6.33 MySQL Community Server (GPL)
+mysql&gt; set password for root@&#39;localhost&#39;=password(&#39;123456&#39;);
+</code></pre><p>或者也可以这样修改密码：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">mysql&gt; use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; update user set password=password(&#39;123456&#39;) where user=&#39;root&#39;;
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 4  Changed: 3  Warnings: 0
+
+mysql&gt; FLUSH PRIVILEGES;
+mysql&gt; exit;
+Bye
+</code></pre><p>或者也可以这样修改：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">为root账户设置密码
+
+mysql_secure_installation
+回车，根据提示输入Y
+输入2次密码，回车
+根据提示一路输入Y
+最后出现：Thanks for using MySQL!
+MySql密码设置完成，重新启动 MySQL：
+</code></pre><h3 id="34开放3306端口centos7中没有试过">3.4.开放3306端口（centos7中没有试过）</h3>
+<p>修改配置文件：</p>
+<pre><code># sudo vim /etc/sysconfig/iptables
+</code></pre>
+<p>添加以下内容：</p>
+<pre><code>-A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
+</code></pre>
+<p>保存后重启防火墙：</p>
+<pre><code># sudo service iptables restart
+</code></pre>
+<p>这样从其它客户机也可以连接上mysql服务了。</p>
+<h2 id="四安装php">四、安装PHP</h2>
+<h3 id="41查询php是否安装">4.1.查询php是否安装</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost layne]# rpm -qa | grep php
+</code></pre><h3 id="42查询php有哪些安装包">4.2.查询PHP有哪些安装包</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost layne]# yum list php*
+已加载插件：fastestmirror
+Determining fastest mirrors
+ * base: mirrors.aliyun.com
+ * extras: mirrors.cn99.com
+ * updates: mirrors.163.com
+可安装的软件包
+php.x86_64                                                5.4.16-36.3.el7_2                                   updates
+php-bcmath.x86_64                                         5.4.16-36.3.el7_2                                   updates
+php-cli.x86_64                                            5.4.16-36.3.el7_2                                   updates
+php-common.x86_64                                         5.4.16-36.3.el7_2                                   updates
+php-dba.x86_64                                            5.4.16-36.3.el7_2                                   updates
+php-devel.x86_64                                          5.4.16-36.3.el7_2                                   updates
+php-embedded.x86_64                                       5.4.16-36.3.el7_2                                   updates
+php-enchant.x86_64                                        5.4.16-36.3.el7_2                                   updates
+php-fpm.x86_64                                            5.4.16-36.3.el7_2                                   updates
+php-gd.x86_64                                             5.4.16-36.3.el7_2                                   updates
+php-intl.x86_64                                           5.4.16-36.3.el7_2                                   updates
+php-ldap.x86_64                                           5.4.16-36.3.el7_2                                   updates
+php-mbstring.x86_64                                       5.4.16-36.3.el7_2                                   updates
+php-mysql.x86_64                                          5.4.16-36.3.el7_2                                   updates
+php-mysqlnd.x86_64                                        5.4.16-36.3.el7_2                                   updates
+php-odbc.x86_64                                           5.4.16-36.3.el7_2                                   updates
+php-pdo.x86_64                                            5.4.16-36.3.el7_2                                   updates
+php-pear.noarch                                           1:1.9.4-21.el7                                      base   
+php-pecl-memcache.x86_64                                  3.0.8-4.el7                                         base   
+php-pgsql.x86_64                                          5.4.16-36.3.el7_2                                   updates
+php-process.x86_64                                        5.4.16-36.3.el7_2                                   updates
+php-pspell.x86_64                                         5.4.16-36.3.el7_2                                   updates
+php-recode.x86_64                                         5.4.16-36.3.el7_2                                   updates
+php-snmp.x86_64                                           5.4.16-36.3.el7_2                                   updates
+php-soap.x86_64                                           5.4.16-36.3.el7_2                                   updates
+php-xml.x86_64                                            5.4.16-36.3.el7_2                                   updates
+php-xmlrpc.x86_64                                         5.4.16-36.3.el7_2                                   updates
+</code></pre><h3 id="43安装php">4.3.安装php</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost layne]# yum install php
+已加载插件：fastestmirror
+base                                                                                          | 3.6 kB  00:00:00     
+extras                                                                                        | 3.4 kB  00:00:00     
+mysql-connectors-community                                                                    | 2.5 kB  00:00:00     
+mysql-tools-community                                                                         | 2.5 kB  00:00:00     
+mysql56-community                                                                             | 2.5 kB  00:00:00     
+updates                                                                                       | 3.4 kB  00:00:00     
+updates/7/x86_64/primary_db                                                                   | 7.1 MB  00:00:01     
+Loading mirror speeds from cached hostfile
+ * base: mirrors.aliyun.com
+ * extras: mirrors.cn99.com
+ * updates: mirrors.163.com
+=====================================================================================================================
+ Package                    架构                   版本                                源                       大小
+=====================================================================================================================
+正在安装:
+ php                        x86_64                 5.4.16-36.3.el7_2                   updates                 1.4 M
+为依赖而安装:
+ libzip                     x86_64                 0.10.1-8.el7                        base                     48 k
+ php-cli                    x86_64                 5.4.16-36.3.el7_2                   updates                 2.7 M
+ php-common                 x86_64                 5.4.16-36.3.el7_2                   updates                 563 k
+
+事务概要
+=====================================================================================================================
+安装  1 软件包 (+3 依赖软件包)
+
+总下载量：4.7 M
+
+已安装:
+  php.x86_64 0:5.4.16-36.3.el7_2                                                                                     
+
+作为依赖被安装:
+  libzip.x86_64 0:0.10.1-8.el7     php-cli.x86_64 0:5.4.16-36.3.el7_2     php-common.x86_64 0:5.4.16-36.3.el7_2    
+
+完毕！
+</code></pre><h3 id="44安装扩展">4.4.安装扩展</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost layne]# yum install php php-mysql php-common php-gd php-mbstring php-mcrypt php-devel php-xml
+=====================================================================================================================
+ Package                         架构                 版本                               源                     大小
+=====================================================================================================================
+正在安装:
+ php-devel                       x86_64               5.4.16-36.3.el7_2                  updates               601 k
+ php-gd                          x86_64               5.4.16-36.3.el7_2                  updates               126 k
+ php-mbstring                    x86_64               5.4.16-36.3.el7_2                  updates               504 k
+ php-mysql                       x86_64               5.4.16-36.3.el7_2                  updates               100 k
+ php-xml                         x86_64               5.4.16-36.3.el7_2                  updates               124 k
+为依赖而安装:
+ autoconf                        noarch               2.69-11.el7                        base                  701 k
+ automake                        noarch               1.13.4-3.el7                       base                  679 k
+ libX11                          x86_64               1.6.3-2.el7                        base                  605 k
+ libX11-common                   noarch               1.6.3-2.el7                        base                  162 k
+ libXau                          x86_64               1.0.8-2.1.el7                      base                   29 k
+ libXpm                          x86_64               3.5.11-3.el7                       base                   54 k
+ libjpeg-turbo                   x86_64               1.2.90-5.el7                       base                  134 k
+ libpng                          x86_64               2:1.5.13-7.el7_2                   updates               213 k
+ libxcb                          x86_64               1.11-4.el7                         base                  189 k
+ libxslt                         x86_64               1.1.28-5.el7                       base                  242 k
+ m4                              x86_64               1.4.16-10.el7                      base                  256 k
+ perl-Test-Harness               noarch               3.28-3.el7                         base                  302 k
+ perl-Thread-Queue               noarch               3.02-2.el7                         base                   17 k
+ php-pdo                         x86_64               5.4.16-36.3.el7_2                  updates                97 k
+ t1lib                           x86_64               5.1.2-14.el7                       base                  166 k
+
+事务概要
+=====================================================================================================================
+安装  5 软件包 (+15 依赖软件包)
+
+总下载量：5.2 M
+安装大小：17 M
+
+已安装:
+  php-devel.x86_64 0:5.4.16-36.3.el7_2  php-gd.x86_64 0:5.4.16-36.3.el7_2   php-mbstring.x86_64 0:5.4.16-36.3.el7_2 
+  php-mysql.x86_64 0:5.4.16-36.3.el7_2  php-xml.x86_64 0:5.4.16-36.3.el7_2 
+
+作为依赖被安装:
+  autoconf.noarch 0:2.69-11.el7          automake.noarch 0:1.13.4-3.el7      libX11.x86_64 0:1.6.3-2.el7           
+  libX11-common.noarch 0:1.6.3-2.el7     libXau.x86_64 0:1.0.8-2.1.el7       libXpm.x86_64 0:3.5.11-3.el7          
+  libjpeg-turbo.x86_64 0:1.2.90-5.el7    libpng.x86_64 2:1.5.13-7.el7_2      libxcb.x86_64 0:1.11-4.el7            
+  libxslt.x86_64 0:1.1.28-5.el7          m4.x86_64 0:1.4.16-10.el7           perl-Test-Harness.noarch 0:3.28-3.el7 
+  perl-Thread-Queue.noarch 0:3.02-2.el7  php-pdo.x86_64 0:5.4.16-36.3.el7_2  t1lib.x86_64 0:5.1.2-14.el7           
+
+完毕！
+</code></pre><p>在这里可以发现上面有两个扩展没有安装成功，需要安装epel-release这个扩展更新包：</p>
+<pre tabindex="0"><code>[root@localhost html]# yum -y install php-mcrypt
+已加载插件：fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.aliyun.com
+ * extras: mirrors.cn99.com
+ * updates: mirrors.163.com
+没有可用软件包 php-mcrypt。
+错误：无须任何处理
+[root@localhost html]# yum  install epel-release
+已加载插件：fastestmirror
+已安装:
+  epel-release.noarch 0:7-6                                                                                          
+
+完毕！
+[root@localhost ~]# yum -y install php-mcrypt
+</code></pre><h3 id="45重启服务">4.5.重启服务</h3>
+<pre><code>[root@localhost httpd]# /usr/sbin/apachectl restart
+</code></pre>
+<h2 id="五测试一下">五、测试一下</h2>
+<h3 id="51新建测试php文件">5.1.新建测试php文件</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd]# cd /var/www/html/
+[root@localhost html]# ll
+总用量 0
+[root@localhost html]# vim php.php
+
+&lt;?php
+phpinfo();
+</code></pre><h3 id="52使用浏览器查看效果">5.2.使用浏览器查看效果</h3>
+<p><figure><a class="lightgallery" href="../images/phpinfo.jpg" data-thumbnail="../images/phpinfo.jpg" data-sub-html="<h2>查看安装效果</h2><p>查看安装效果</p>"><img loading="lazy" src="../images/phpinfo.jpg" srcset="../images/phpinfo.jpg, ../images/phpinfo.jpg 1.5x, ../images/phpinfo.jpg 2x" sizes="auto" data-title="查看安装效果" data-alt="查看安装效果" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">查看安装效果</figcaption>
+  </figure></p>
+<h3 id="53连接mysql的示例">5.3.连接MySql的示例</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# vim db.php
+
+$sql = &#34;a
+&lt;?php
+
+$con = mysql_connect(&#34;localhost&#34;,&#34;root&#34;,&#34;123456&#34;);
+if (!$con)
+  {
+  die(&#39;Could not connect: &#39; . mysql_error());
+  }
+
+mysql_select_db(&#39;mysql&#39;);
+$sql = &#34;select * from user;&#34;;
+$rs = mysql_query($sql);
+
+while($row = mysql_fetch_row($rs)){
+    echo $row[0].&#34;----&#34;.$row[1].&#34;-----&#34;.$row[2].&#34;&lt;br /&gt;&#34;;
+}
+
+mysql_close($con);
+</code></pre><p>输出如下所示：</p>
+<pre tabindex="0"><code>localhost----root-----*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9
+127.0.0.1----root-----*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9
+::1----root-----*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9
+</code></pre><h2 id="六安装memcached服务">六、安装memcached服务</h2>
+<h3 id="61安装服务">6.1.安装服务</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# yum -y install memcached
+已安装:
+  memcached.x86_64 0:1.4.15-9.el7_2.1                                                                                
+
+作为依赖被安装:
+  libevent.x86_64 0:2.0.21-4.el7                                                                                     
+
+完毕！
+</code></pre><h3 id="62查看配置">6.2.查看配置</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# vim /etc/sysconfig/memcached 
+
+PORT=&#34;11211&#34;
+USER=&#34;memcached&#34; #这里可以修改为root
+MAXCONN=&#34;1024&#34;
+CACHESIZE=&#34;64&#34;
+OPTIONS=&#34;&#34;
+</code></pre><h3 id="63启动服务">6.3.启动服务</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# ps -ef | grep memcache*
+root     10362 10011  0 15:29 pts/1    00:00:00 grep --color=auto memcache*
+[root@localhost html]# systemctl start memcached
+
+#或者这样启动
+[root@localhost html]# /usr/bin/memcached -d -l 127.0.0.1 -u root -p 11211 -m 64 -c 1024 -P /tmp/memcached.pid
+
+#或者这样启动
+[root@localhost memcached-1.4.15]# /usr/local/memcached/bin/memcached -d -m 300 -u root -l 127.0.0.1 -p 12000 -c 256 -P /tmp/memcached.pid
+
+[root@localhost html]# ps -ef | grep memcache*  
+memcach+ 10368     1  0 15:29 ?        00:00:00 /usr/bin/memcached -u memcached -p 11211 -m 64 -c 1024
+root     10375 10011  0 15:30 pts/1    00:00:00 grep --color=auto memcache*
+[root@localhost html]# 
+</code></pre><blockquote>
+<p>如云平台</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@AY131018133441986ba1Z ~]# ps -ef | grep memcached
+root      3016     1  2 Sep17 ?        01:00:06 /usr/local/memcached/bin/memcached -d -m 300 -u root -l 127.0.0.1 -p 12000 -c 256 -P /tmp/memcached.pid
+</code></pre><p>说明：</p>
+<pre><code># /usr/bin/memcached -b -l 127.0.0.1 -p 11211 -m 150 -u root
+</code></pre>
+<p>启动参数说明：</p>
+<blockquote>
+<p>-l 是监听的服务器IP地址，默认应该是本机，指定IP地址127.0.0.1
+-d 选项是启动一个守护进程。
+-m 是分配给Memcache使用的内存数量，单位是MB，默认64MB。
+-u 是运行Memcache的用户，如果当前为root 的话，需要使用此参数指定用户
+-p <!-- raw HTML omitted -->是设置Memcache的TCP监听的端口，默认是11211，最好是1024以上的端口。
+-c 选项是最大运行的并发连接数，默认是1024。
+-P <!-- raw HTML omitted --> 是设置保存Memcache的pid文件。
+-h 打印帮助信息
+-v 输出警告和错误信息
+-vv 打印客户端的请求和返回信息</p>
+</blockquote>
+<h3 id="64常用命令">6.4.常用命令</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# systemctl start memcached
+[root@localhost html]# systemctl stop memcached
+[root@localhost html]# systemctl restart memcached
+[root@localhost html]# systemctl enable memcached
+[root@localhost html]# systemctl status memcached
+[root@localhost html]# memcached -h # 查看帮助
+</code></pre><h3 id="65状态">6.5.状态</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# memcached-tool 127.0.0.1:11211 stats
+......
+</code></pre><blockquote>
+<p>下面这个不知道有啥作用</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# memcached-tool 127.0.0.1:11211 status
+Usage: memcached-tool &lt;host[:port] | /path/to/socket&gt; [mode]
+
+       memcached-tool 10.0.0.5:11211 display    # shows slabs
+       memcached-tool 10.0.0.5:11211            # same.  (default is display)
+       memcached-tool 10.0.0.5:11211 stats      # shows general stats
+       memcached-tool 10.0.0.5:11211 dump       # dumps keys and values
+</code></pre><h3 id="66安装memcache扩展">6.6.安装memcache扩展</h3>
+<p>使用如下命令安装扩展：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# yum -y install php-pecl-memcache
+
+已安装:
+  php-pecl-memcache.x86_64 0:3.0.8-4.el7                                                                             
+
+作为依赖被安装:
+  php-pear.noarch 1:1.9.4-21.el7                        php-process.x86_64 0:5.4.16-36.3.el7_2                       
+
+完毕！
+</code></pre><p>注意：如果是PHP56版本的应该运行<strong>yum -y install php56w-pecl-memcache</strong>。</p>
+<p>查看memcache.ini文件第一行是否有“extension=memcache.so”</p>
+<pre><code>[root@localhost html]# vim /etc/php.d/memcache.ini 
+extension=memcache.so
+</code></pre>
+<p>验证是否安装成功：</p>
+<pre><code>[root@localhost ~]# php -m|grep memcache 
+memcache
+</code></pre>
+<p>如果出现类似的错误：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# php -m | grep memcache*     
+PHP Warning:  PHP Startup: Unable to load dynamic library &#39;/usr/lib64/php/modules/memcached.so&#39; - /usr/lib64/php/modules/memcached.so: cannot open shared object file: No such file or directory in Unknown on line 0
+memcache
+</code></pre><p>那可以把php.ini新增加的extension=memcached.so删除或注释掉</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# vim /etc/php.ini
+;extension=memcached.so
+&#34;/etc/php.ini&#34; 1798L, 64969C 已写入 
+</code></pre><h3 id="67使用memcache生效">6.7.使用memcache生效</h3>
+<p>配置php支持memcache：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# whereis php.ini
+[root@localhost ~]# vim /etc/php.ini
+extension=memcached.so
+&#34;/etc/php.ini&#34; 1798L, 64968C 已写入                                                                
+[root@localhost ~]# systemctl restart httpd.service
+[root@localhost ~]# 
+</code></pre><p>重启服务后，使用phpinfo查看，就可以看到memcache选项了：</p>
+<p><figure><a class="lightgallery" href="../images/memcache.jpg" data-thumbnail="../images/memcache.jpg" data-sub-html="<h2>使用phpinfo查看memcache是否正常使用</h2><p>使用phpinfo查看memcache是否正常使用</p>"><img loading="lazy" src="../images/memcache.jpg" srcset="../images/memcache.jpg, ../images/memcache.jpg 1.5x, ../images/memcache.jpg 2x" sizes="auto" data-title="使用phpinfo查看memcache是否正常使用" data-alt="使用phpinfo查看memcache是否正常使用" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">使用phpinfo查看memcache是否正常使用</figcaption>
+  </figure></p>
+<h3 id="68错误解决">6.8.错误解决</h3>
+<p>到这里发现，memcached已启动，php -m或phpinfo中也有memcache，但是在php使用memcache就是不行：</p>
+<blockquote>
+<p>php使用memcache错误</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost memcache-3.0.6]# vim /etc/php.ini 
+display_errors = On   # 开户php错误提示
+[root@localhost html]# vim b.php
+&lt;?php
+$memcache = new Memcache();
+//var_dump($memcache-&gt;connect(&#39;localhost&#39;, 11211));die;
+if (!$memcache-&gt;connect(&#39;127.0.0.1&#39;, 11211))  die(&#39;could not connect&#39;);
+$memcache-&gt;set(&#39;key&#39;, &#39;test&#39;);
+$get_value = $memcache-&gt;get(&#39;key&#39;);
+echo $get_value;
+echo &#34;&lt;br /&gt;&#34;;  
+echo $memcache-&gt;getVersion();
+</code></pre><p><figure><a class="lightgallery" href="../images/php_memcache_error.jpg" data-thumbnail="../images/php_memcache_error.jpg" data-sub-html="<h2>服务器无法连接</h2><p>服务器无法连接</p>"><img loading="lazy" src="../images/php_memcache_error.jpg" srcset="../images/php_memcache_error.jpg, ../images/php_memcache_error.jpg 1.5x, ../images/php_memcache_error.jpg 2x" sizes="auto" data-title="服务器无法连接" data-alt="服务器无法连接" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">服务器无法连接</figcaption>
+  </figure></p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">Notice: Memcache::connect(): Server 127.0.0.1 (tcp 11211, udp 0) failed with: Permission denied (13) in /var/www/html/b.php on line 4
+
+Warning: Memcache::connect(): Can&#39;t connect to 127.0.0.1:11211, Permission denied (13) in /var/www/html/b.php on line 4
+could not connect
+</code></pre><p>使用memadmin也是有问题的：</p>
+<blockquote>
+<p>memadmin连接memcache错误</p>
+</blockquote>
+<p><figure><a class="lightgallery" href="../images/memadminerror.jpg" data-thumbnail="../images/memadminerror.jpg" data-sub-html="<h2>服务器无法连接</h2><p>服务器无法连接</p>"><img loading="lazy" src="../images/memadminerror.jpg" srcset="../images/memadminerror.jpg, ../images/memadminerror.jpg 1.5x, ../images/memadminerror.jpg 2x" sizes="auto" data-title="服务器无法连接" data-alt="服务器无法连接" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">服务器无法连接</figcaption>
+  </figure></p>
+<p>但是在linux命令行却是可以的</p>
+<pre><code>php -c /etc/php.ini mem.php || php mem.php
+\# 开始是直接输出结果的，后面因为关闭了SELinux等等一些修改之后，命令行也输出错误了。知道就行了。
+</code></pre>
+<blockquote>
+<p><strong>解决方案</strong>：原因：<code>原来是SELinux限制了httpd对外访问的权限。将其开启即可</code>：</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# sestatus -v  
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          disabled
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      28
+
+Process contexts:
+Current context:                unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+Init context:                   system_u:system_r:init_t:s0
+/usr/sbin/sshd                  system_u:system_r:sshd_t:s0-s0:c0.c1023
+
+File contexts:
+Controlling terminal:           unconfined_u:object_r:user_devpts_t:s0
+/etc/passwd                     system_u:object_r:passwd_file_t:s0
+/etc/shadow                     system_u:object_r:shadow_t:s0
+/bin/bash                       system_u:object_r:shell_exec_t:s0
+/bin/login                      system_u:object_r:login_exec_t:s0
+/bin/sh                         system_u:object_r:bin_t:s0 -&gt; system_u:object_r:shell_exec_t:s0
+/sbin/agetty                    system_u:object_r:getty_exec_t:s0
+/sbin/init                      system_u:object_r:bin_t:s0 -&gt; system_u:object_r:init_exec_t:s0
+/usr/sbin/sshd                  system_u:object_r:sshd_exec_t:s0
+[root@localhost html]# 
+
+[root@localhost html]# vim /etc/selinux/config
+[root@localhost html]# vim /etc/sysconfig/selinux
+SELINUX=disabled　＃关掉selinux
+</code></pre><p>或者敲击如下命令后重启电脑也是可以的：</p>
+<pre><code>[root@localhost ~]# setsebool -P httpd_can_network_connect 1　＃打开http网络访问
+#或者setsebool -P httpd_can_network_connect=1
+</code></pre>
+<p>或者这样（没有试过）？</p>
+<pre><code>[root@localhost ~]# /usr/sbin/setenforce 0 #实时关闭selinux
+</code></pre>
+<p>多说一句，查看http 是否network：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# /usr/sbin/getsebool -a | grep httpd_can_network_connect
+httpd_can_network_connect --&gt; on
+httpd_can_network_connect_cobbler --&gt; off
+httpd_can_network_connect_db --&gt; off
+</code></pre><p>效果预览：</p>
+<p><figure><a class="lightgallery" href="../images/php_memcache_ok.jpg" data-thumbnail="../images/php_memcache_ok.jpg" data-sub-html="<h2>php调用memcached正常</h2><p>php调用memcached正常</p>"><img loading="lazy" src="../images/php_memcache_ok.jpg" srcset="../images/php_memcache_ok.jpg, ../images/php_memcache_ok.jpg 1.5x, ../images/php_memcache_ok.jpg 2x" sizes="auto" data-title="php调用memcached正常" data-alt="php调用memcached正常" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">php调用memcached正常</figcaption>
+  </figure></p>
+<p><strong>番外</strong></p>
+<p>一个装有CentOs的VPS不知道为什么重启之后，出现网站无法连接数据库的现象：</p>
+<pre><code>Can't connect to MySQL server on 'www.itcss.cn' (13)
+</code></pre>
+<p>本地通过数据库管理工具如：Navicat for MySql却是能够正常连接！发现又是SELinux（Linux上的强制访问控制安全模块）惹得祸，据说他是系统被攻破后的最后一道防线。</p>
+<p>此问题的原因是SELinux阻止httpd进程&ndash;httpd_can_network_connect_db 连接数据库&ndash;不管是哪种类型的数据库。</p>
+<p>使用getsebool 查看此选项的状态</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# /usr/sbin/getsebool httpd_can_network_connect_db
+httpd_can_network_connect_db --&gt; off
+</code></pre><p>使用setsebool命令改变该布尔变量的状态，从而使得httpd进程能够访问数据库服务器：</p>
+<pre><code>[root@localhost ~]# /usr/sbin/setsebool httpd_can_network_connect_db on
+</code></pre>
+<p>上述状态改变只是暂时性的，一旦系统重启，该变量状态将改变回初始状态，因此，可以使用如下命令永久性改变状态：</p>
+<pre><code>[root@localhost ~]# /usr/sbin/setsebool -P httpd_can_network_connect_db on
+</code></pre>
+<h2 id="七开机自启动">七、开机自启动</h2>
+<h3 id="71下面这个应该是centos6系列的">7.1.下面这个应该是centos6系列的：</h3>
+<p>将mysqld设置为开机自动启动：</p>
+<pre><code>chkconfig mysqld on
+</code></pre>
+<p>消掉某个服务自动启动:</p>
+<pre><code>chkconfig mysqld off
+</code></pre>
+<p>值得注意的是，如果这个服务尚未被添加到 chkconfig 列表中，则现需要使用 –-add 参数将其添加进去：</p>
+<pre><code>chkconfig –-add postfix
+</code></pre>
+<p>查询当前所有自动启动的服务:</p>
+<pre><code>chkconfig –-list httpd
+</code></pre>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># /sbin/chkconfig httpd on [设置apache开启启动]
+# /sbin/chkconfig –-add mysqld [mysql服务]
+# /sbin/chkconfig mysqld on [设置mysqld服务开启启动]
+</code></pre><h3 id="72centos7自启动">7.2.centos7自启动</h3>
+<p>下面是centos7的，在centos7中chkconfig httpd on 被替换成 systemctl enable httpd：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# systemctl enable httpd.service
+Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
+</code></pre><h3 id="73memcached启动">7.3.memcached启动</h3>
+<p>在这里不使用<code># systemctl start|enable memcached</code></p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost html]# vim /etc/rc.d/rc.local
+# 添加下面这一行
+/usr/bin/memcached -d -l 127.0.0.1 -u root -p 11211 -m 64 -c 1024 -P /tmp/memcached.pid
+/usr/sbin/apachectl start
+/etc/rc.d/init.d/mysqld start
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-01-09 20:33:19">更新于 2016-01-09&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/lamp/' class="post-tag">LAMP</a><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" class="post-nav-item" rel="prev" title="Linux-LAMP-源码安装"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux-LAMP-源码安装</a>
+      <a href="/posts/linux/centos/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0/" class="post-nav-item" rel="next" title="CentOS7一些常用笔记">CentOS7一些常用笔记<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

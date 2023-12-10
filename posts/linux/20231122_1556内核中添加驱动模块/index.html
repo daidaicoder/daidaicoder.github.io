@@ -10,7 +10,7 @@
 <meta name="description" content="在linux内核中添加驱动模块" /><meta name="keywords" content='日志, 原创, 内核添加模块, 驱动模块' /><meta itemprop="name" content="内核中添加驱动模块">
 <meta itemprop="description" content="在linux内核中添加驱动模块"><meta itemprop="datePublished" content="2023-11-22T15:56:00+08:00" />
 <meta itemprop="dateModified" content="2023-11-22T15:56:00+08:00" />
-<meta itemprop="wordCount" content="4433">
+<meta itemprop="wordCount" content="4389">
 <meta itemprop="keywords" content="原创,android,内核添加模块,驱动模块," /><meta property="og:title" content="内核中添加驱动模块" />
 <meta property="og:description" content="在linux内核中添加驱动模块" />
 <meta property="og:type" content="article" />
@@ -23,7 +23,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" /><link rel="prev" href="https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" /><link rel="next" href="https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/daizelai.github.io\/posts\/linux\/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97\/"
-    },"genre": "posts","keywords": "原创, android, 内核添加模块, 驱动模块","wordcount":  4433 ,
+    },"genre": "posts","keywords": "原创, android, 内核添加模块, 驱动模块","wordcount":  4389 ,
     "url": "https:\/\/daizelai.github.io\/posts\/linux\/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97\/","datePublished": "2023-11-22T15:56:00+08:00","dateModified": "2023-11-22T15:56:00+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -175,7 +175,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       Anonymous</span></span>
           <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E5%86%85%E6%A0%B8%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9D%97/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 内核添加模块</a>&ensp;<a href="/categories/%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 驱动模块</a></span></div>
-      <div class="post-meta-line"><span title="发布于 2023-11-22 15:56:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-22">2023-11-22</time></span>&nbsp;<span title="更新于 2023-11-22 15:56:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-22">2023-11-22</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 4433 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 21 分钟</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="发布于 2023-11-22 15:56:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-22">2023-11-22</time></span>&nbsp;<span title="更新于 2023-11-22 15:56:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-22">2023-11-22</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 4389 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 21 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -230,14 +230,14 @@
     <li><a href="#十三完整版本的读写配置功能代码">十三、完整版本的读写配置功能代码</a></li>
   </ul>
 </nav></div>
-      </div><div class="content" id="content"><h1 id="20231122_1556内核中添加驱动模块">20231122_1556内核中添加驱动模块</h1>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
-<p>by daizelai on 2023/11/22 15:56
-成功在内核中添加一个模块。</p>
-<p>设备树目录在 arch/arm/boot/dts目录。
-设备树插件目录在 arch/arm/boot/dts/overlays 目录
-驱动目录在kernel/drivers下</p>
-<p>在drivers中我们将在这个目录下添加新的驱动模块， 在char目录下新建hello目录，并在hello目录下新建 hello.c 以及Makefile文件</p>
+<p>by daizelai on 2023/11/22 15:56</p>
+<p>成功在内核中添加一个模块。</p>
+<p>设备树目录在<code>arch/arm/boot/dts</code>目录。</p>
+<p>设备树插件目录在<code>arch/arm/boot/dts/overlays</code>目录</p>
+<p>驱动目录在kernel/drivers下</p>
+<p>在<code>drivers</code>中我们将在这个目录下添加新的驱动模块， 在char目录下新建hello目录，并在<code>hello目录</code>下新建<code>hello.c</code>以及<code>Makefile</code>文件</p>
 <h2 id="二创建模块">二、创建模块</h2>
 <p>在肉松驱动目录<code>/kernel/msm-3.18/drivers</code>中创建一个模块<code>hellotmp</code>目录。</p>
 <pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost drivers]$ date
@@ -282,9 +282,9 @@ hellotmp/
 <p>makefile文件内容如下</p>
 <pre tabindex="0"><code>obj-$(CONFIG_HELLO_MODULE) := hello.o
 </code></pre><h2 id="五修改上层makefile">五、修改上层Makefile</h2>
-<p>除了hello/Makefile文件之外还需要修改上一层Makefile的文件的内容， 不然编译的时候不会去编译新添加的模块了。</p>
-<p>添加内容如下。
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/Makefile</p>
+<p>除了<code>hello/Makefile</code>文件之外还需要修改上一层<code>Makefile</code>的文件的内容， 不然编译的时候不会去编译新添加的模块了。</p>
+<p>添加内容如下。</p>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/Makefile</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#033">obj-y</span>  <span style="color:#555">+=</span> gpioclk/
 </span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span><span style="color:#033">obj-y</span>  <span style="color:#555">+=</span> hello/
 </span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span><span style="color:#033">obj-y</span>  <span style="color:#555">+=</span> hellotmp/
@@ -481,8 +481,8 @@ insmod: failed to load hellotmp.ko: Exec format error
 </span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_LICENSE</span>(<span style="color:#c30">&#34;GPL&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_AUTHOR</span>(<span style="color:#c30">&#34;Your Name&#34;</span>);
 </span></span></code></pre></div><h3 id="102文件二">10.2.文件二</h3>
-<p>下面是一个ko驱动的文件，真实可以写也可以读的驱动文件。by daizelai on 2023/11/23 15:38
-路径：kernel/msm-3.18/drivers/hellotmp/hellotmp.c</p>
+<p>下面是一个ko驱动的文件，真实可以写也可以读的驱动文件。by daizelai on 2023/11/23 15:38</p>
+<p>路径：kernel/msm-3.18/drivers/hellotmp/hellotmp.c</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/module.h&gt;</span><span style="color:#099">
 </span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/init.h&gt;</span><span style="color:#099">
 </span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/fs.h&gt;</span><span style="color:#099">
@@ -599,8 +599,8 @@ error, forbidden warning: hellotmp.c:67
 make[3]: *** [drivers/hellotmp/hellotmp.o] Error 1
 make[2]: *** [drivers/hellotmp] Error 2
 make[2]: *** Waiting for unfinished jobs....
-</code></pre><p>这个警告是由于在 hello_init 函数中有变量声明和代码混合在一起，而 ISO C90 不允许这样的语法。为了解决这个问题，您可以将变量的声明移到函数的开头。
-只要把函数中，声明的<code>struct ConfigData myConfig;</code>和<code>u8 reg_e5 = 0;</code>放到函数最前面，再编译就没有这个问题了。</p>
+</code></pre><p>这个警告是由于在 hello_init 函数中有变量声明和代码混合在一起，而 ISO C90 不允许这样的语法。为了解决这个问题，您可以将变量的声明移到函数的开头。</p>
+<p>只要把函数中，声明的<code>struct ConfigData myConfig;</code>和<code>u8 reg_e5 = 0;</code>放到函数最前面，再编译就没有这个问题了。</p>
 <h3 id="113c99-or-c11-mode">11.3.C99 or C11 mode</h3>
 <p>编译ko源码遇到以下错误。</p>
 <pre tabindex="0"><code class="language-log" data-lang="log">/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c: In function &#39;contains_value&#39;:
@@ -614,11 +614,11 @@ make[2]: *** [drivers/hellotmp] Error 2
 </code></pre><blockquote>
 <p>解决办法</p>
 </blockquote>
-<p>错误提示是因为在 C 语言的标准中（C89/90），不支持在 for 循环中声明变量。而在 C99 标准及之后的版本中，允许在 for 循环中声明变量。
-为了解决这个问题，你可以在编译时添加 -std=c99 选项，告诉编译器使用 C99 标准。修改你的 Makefile 或编译命令，添加 -std=c99 选项，如下：</p>
+<p>错误提示是因为在 C 语言的标准中（C89/90），不支持在 for 循环中声明变量。而在 C99 标准及之后的版本中，允许在 for 循环中声明变量。</p>
+<p>为了解决这个问题，你可以在编译时添加 -std=c99 选项，告诉编译器使用 C99 标准。修改你的 Makefile 或编译命令，添加 -std=c99 选项，如下：</p>
 <pre tabindex="0"><code class="language-linux" data-lang="linux">gcc -std=c99 -o your_output_file your_source_file.c
-</code></pre><p>确保在你的 Makefile 中也包含了 -std=c99 选项。
-在 Makefile 中使用 -std=c99 选项通常通过修改 CFLAGS 变量来实现。在你的 Makefile 中找到 CFLAGS 变量的设置，然后添加 -std=c99。例如：</p>
+</code></pre><p>确保在你的 Makefile 中也包含了 -std=c99 选项。</p>
+<p>在 Makefile 中使用 -std=c99 选项通常通过修改 CFLAGS 变量来实现。在你的 Makefile 中找到 CFLAGS 变量的设置，然后添加 -std=c99。例如：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#033">CC</span> <span style="color:#555">=</span> gcc
 </span></span><span style="display:flex;"><span><span style="color:#033">CFLAGS</span> <span style="color:#555">=</span> -Wall -std<span style="color:#555">=</span>c99
 </span></span><span style="display:flex;"><span>
@@ -630,7 +630,7 @@ make[2]: *** [drivers/hellotmp] Error 2
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#c0f">clean</span><span style="color:#555">:</span>
 </span></span><span style="display:flex;"><span>	rm -f your_program your_program.o
-</span></span></code></pre></div><p>如果不方便添加 -std=c99 选项，你还可以使用传统的 C 风格的 for 循环初始化方式。在旧的 C 标准（如 ANSI C89）中，for 循环的变量声明必须在代码块的开头。</p>
+</span></span></code></pre></div><p>如果不方便添加<code>-std=c99</code>选项，你还可以使用传统的<code>C</code>风格的<code>for</code>循环初始化方式。在旧的<code>C</code>标准（如<code>ANSI C89</code>）中，<code>for</code>循环的变量声明必须在代码块的开头。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;stddef.h&gt;</span><span style="color:#099">
 </span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
 </span></span><span style="display:flex;"><span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">contains_value</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>arr, <span style="color:#078;font-weight:bold">size_t</span> size, <span style="color:#078;font-weight:bold">int</span> value) {
@@ -642,7 +642,7 @@ make[2]: *** [drivers/hellotmp] Error 2
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>; <span style="color:#09f;font-style:italic">// 没找到
 </span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>}
-</span></span></code></pre></div><p>这种方式会在更早的 C 标准中起作用，但需要注意的是，这会将变量的作用域限制在 for 循环内。</p>
+</span></span></code></pre></div><p>这种方式会在更早的<code>C</code>标准中起作用，但需要注意的是，这会将变量的作用域限制在<code>for</code>循环内。</p>
 <h3 id="114iso-c90-forbids-mixed-declarations">11.4.ISO C90 forbids mixed declarations</h3>
 <p>编译ko源码错误时遇到以下错误：</p>
 <pre tabindex="0"><code class="language-log" data-lang="log">/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c: In function &#39;parse_config&#39;:
@@ -651,7 +651,7 @@ error, forbidden warning: hellotmp.c:286
 make[3]: *** [drivers/hellotmp/hellotmp.o] Error 1
 make[2]: *** [drivers/hellotmp] Error 2
 make[2]: *** Waiting for unfinished jobs....
-</code></pre><p>问题原因为代码中的white循环没有结束}大括号。</p>
+</code></pre><p>问题原因为代码中的<code>white</code>循环没有结束<code>}</code>大括号。</p>
 <p>添加内容</p>
 <pre tabindex="0"><code class="language-linux" data-lang="linux">130|msm8953_64:/custom/metro/system # cat system_config.ini
 [system]
@@ -671,7 +671,7 @@ Code2 = 0xb5
 Code3 = 0x31
 msm8953_64:/custom/metro/system #
 </code></pre><h3 id="115passing-argument-1-of-strim">11.5.passing argument 1 of &lsquo;strim&rsquo;</h3>
-<p>编译ko源码时遇到下面的问题。【此问题验证失败，后面再遇到可以这样尝试】</p>
+<p>编译<code>ko</code>源码时遇到下面的问题。【此问题验证失败，后面再遇到可以这样尝试】</p>
 <pre tabindex="0"><code class="language-log" data-lang="log">/home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c: In function &#39;parse_config&#39;:
 /home/test/po/kernel/msm-3.18/drivers/hellotmp/hellotmp.c:207:22: warning: passing argument 1 of &#39;strim&#39; discards &#39;const&#39; qualifier from pointer target type
 error, forbidden warning: hellotmp.c:207
@@ -683,10 +683,10 @@ make[2]: *** Waiting for unfinished jobs....
 </span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>line, <span style="color:#555">*</span>key, <span style="color:#555">*</span>value;
 </span></span><span style="display:flex;"><span>    <span style="color:#09f;font-style:italic">// 去除空格
 </span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span>    line <span style="color:#555">=</span> <span style="color:#c0f">strim</span>(line);
-</span></span></code></pre></div><p>错误提示表明在 hellotmp.c 文件的 parse_config 函数中，传递给 strim 函数的参数是 const 类型的，而 strim 函数期望的是非 const 类型。</p>
-<p>strim 函数的原型通常是这样的：char *strim(char *s)。它用于删除字符串开头和结尾的空格符、制表符、换行符等。</p>
-<p>在你的 parse_config 函数中，看起来你在调用 strim 时使用了 const char *line，但 strim 函数的参数类型是 char *，所以编译器发出了警告。</p>
-<p>解决这个问题的方法是创建一个可修改的字符串拷贝，然后将其传递给 strim 函数。你可以使用 kstrdup 来创建可修改的字符串拷贝。</p>
+</span></span></code></pre></div><p>错误提示表明在<code>hellotmp.c</code>文件的<code>parse_config</code>函数中，传递给<code>strim</code>函数的参数是<code>const</code>类型的，而<code>strim</code>函数期望的是非<code>const</code>类型。</p>
+<p><code>strim</code>函数的原型通常是这样的：<code>char *strim(char *s)</code>。它用于删除字符串开头和结尾的空格符、制表符、换行符等。</p>
+<p>在你的<code>parse_config</code>函数中，看起来你在调用<code>strim</code>时使用了<code>const char *line</code>，但<code>strim</code>函数的参数类型是<code>char *</code>，所以编译器发出了警告。</p>
+<p>解决这个问题的方法是创建一个可修改的字符串拷贝，然后将其传递给<code>strim</code>函数。你可以使用<code>kstrdup</code> 来创建可修改的字符串拷贝。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#09f;font-style:italic">// 在头文件中包含 kstrdup 的声明
 </span></span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"></span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/slab.h&gt;</span><span style="color:#099">
 </span></span></span><span style="display:flex;"><span><span style="color:#099"></span>
@@ -791,8 +791,8 @@ make[3]: *** Waiting for unfinished jobs....
 </span></span></code></pre></div><h3 id="118继续expects-argument">11.8.继续expects argument</h3>
 <p>编译遇到以下错误</p>
 <pre tabindex="0"><code class="language-log" data-lang="log">/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c:902:9: warning: format &#39;%d&#39; expects argument of type &#39;int&#39;, but argument 2 has type &#39;ktime_t&#39; [-Wformat=]
-</code></pre><p>修改如下：
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c</p>
+</code></pre><p>修改如下：</p>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/mipi_convert.c</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">thread_func</span>(<span style="color:#078;font-weight:bold">void</span> <span style="color:#555">*</span>data)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">struct</span> convert_platform_data <span style="color:#555">*</span>pdata <span style="color:#555">=</span> data;
@@ -861,7 +861,7 @@ error, forbidden warning: mipi_convert.c:250
 error, forbidden warning: kernel.h:21
 make[3]: *** [drivers/video/mipi_convert.o] Error 1
 make[3]: *** Waiting for unfinished jobs....
-</code></pre><p>警告是因为你在parse_config函数中将一个整数值传递给strlen函数，而strlen函数期望接收一个以null结尾的字符串。为了解决这个问题，你可以将整数值转换为字符串，然后再使用strlen。</p>
+</code></pre><p>警告是因为你在<code>parse_config</code>函数中将一个整数值传递给<code>strlen</code>函数，而<code>strlen</code>函数期望接收一个以null结尾的字符串。为了解决这个问题，你可以将整数值转换为字符串，然后再使用<code>strlen</code>。</p>
 <p>可以如下解决：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">else</span> <span style="color:#c0f">if</span> (<span style="color:#c0f">strcmp</span>(key, <span style="color:#c30">&#34;period_time&#34;</span>) <span style="color:#555">==</span> <span style="color:#f60">0</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">int</span> period_time_value;
@@ -893,26 +893,38 @@ make[3]: *** Waiting for unfinished jobs....
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="十二整个流程记录">十二、整个流程记录</h2>
 <p>下面这样的测试方法是可行的，来就是这么做的。
-SC60模块编译，SC60编译模块，SC60中编译ko，ko测试方法：
-编译
-1.在台式机vscode中修改hellotmp.c代码。
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c
-2.在台式机中的CRT中“make bootimage -j 20”
-3.在台式机中的CRT中“cp out/target/product/msm8953_64/obj/kernel/msm-3.18/drivers/hellotmp/hellotmp.ko  ./daizelai/”
-4.在台式机中的CRT中“perl kernel/msm-3.18/scripts/sign-file sha512 ./daizelai/signing_key.priv ./daizelai/signing_key.x509 ./daizelai/hellotmp.ko ”
-测试
-5.在笔记本电脑中开四个窗口。
-6.在笔记中的第一个窗口是目录，用来打开编译机并找到刚刚编译的的ko
-7.在笔记中的第二个窗口是目录，存放从编译机上拿下来的ko
-8.在笔记本中的第三个窗口CMD命令行，先adb push文件ko到msm8953_64/custom/metro/system
-方法：E:\SC60\wuhan19_fx_20231030_1645\os&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\hellotmp.ko /custom/metro/system/
-继续执行：adb shell &ldquo;logcat -c &amp;&amp; logcat -b kernel -b main -b system&rdquo;</p>
-<p>9.在笔记本中的第四个窗口CMD命令行。</p>
+SC60模块编译，SC60编译模块，SC60中编译ko，ko测试方法：</p>
+<blockquote>
+<p>编译</p>
+</blockquote>
+<ol>
+<li>在台式机vscode中修改hellotmp.c代码。
+路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/hellotmp/hellotmp.c</li>
+<li>在台式机中的CRT中“make bootimage -j 20”</li>
+<li>在台式机中的CRT中“cp out/target/product/msm8953_64/obj/kernel/msm-3.18/drivers/hellotmp/hellotmp.ko  ./daizelai/”</li>
+<li>在台式机中的CRT中“perl kernel/msm-3.18/scripts/sign-file sha512 ./daizelai/signing_key.priv ./daizelai/signing_key.x509 ./daizelai/hellotmp.ko ”</li>
+</ol>
+<blockquote>
+<p>测试</p>
+</blockquote>
+<ol start="5">
+<li>在笔记本电脑中开四个窗口。</li>
+<li>在笔记中的第一个窗口是目录，用来打开编译机并找到刚刚编译的的ko</li>
+<li>在笔记中的第二个窗口是目录，存放从编译机上拿下来的ko</li>
+<li>在笔记本中的第三个窗口CMD命令行，先adb push文件ko到msm8953_64/custom/metro/system</li>
+</ol>
+<p>方法：E:\SC60\wuhan19_fx_20231030_1645\os&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\hellotmp.ko /custom/metro/system/</p>
+<p>继续执行：adb shell &ldquo;logcat -c &amp;&amp; logcat -b kernel -b main -b system&rdquo;</p>
+<ol start="9">
+<li>在笔记本中的第四个窗口CMD命令行。</li>
+</ol>
 <pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/custom/metro/system # rm -f hellotmp.ko
 msm8953_64:/custom/metro/system # rmmod hellotmp
 msm8953_64:/custom/metro/system # insmod hellotmp.ko
-</code></pre><p>10.同时观察第三个串口CMD命令中的日志打印，看ko是否正常执行。</p>
-<p><strong>重点：</strong> 功能可用后，把代码合到mipi_convert.c文件中，这个文件修改后，需要编译内核，然后把编译出来的boot.img直接放到emmc镜像中去，直接刷机就可以了。</p>
+</code></pre><ol start="10">
+<li>同时观察第三个串口CMD命令中的日志打印，看ko是否正常执行。</li>
+</ol>
+<p><strong>重点：</strong> 功能可用后，把代码合到<code>mipi_convert.c</code>文件中，这个文件修改后，需要编译内核，然后把编译出来的<code>boot.img</code>直接放到emmc镜像中去，直接刷机就可以了。</p>
 <h2 id="十三完整版本的读写配置功能代码">十三、完整版本的读写配置功能代码</h2>
 <p>本次配置文件中的内容如下：</p>
 <pre tabindex="0"><code class="language-log" data-lang="log">msm8953_64:/custom/metro/system # cat system_config.ini
@@ -1202,8 +1214,8 @@ msm8953_64:/custom/metro/system #
 </span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_AUTHOR</span>(<span style="color:#c30">&#34;Zelai Dai &lt;daizelai@gbcom.com.cn&gt;&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_DESCRIPTION</span>(<span style="color:#c30">&#34;read system ini main module&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#c0f">MODULE_LICENSE</span>(<span style="color:#c30">&#34;GPL&#34;</span>);
-</span></span></code></pre></div><p>下面是2023/11/24 18:21完全可用的一个<code>hellotmp.c</code>版本，接近完工了。
-<a href="./file/hellotmp_20231124_1824.7z">hellotmp_20231124_1824.7z</a></p>
+</span></span></code></pre></div><p>下面是2023/11/24 18:21完全可用的一个<code>hellotmp.c</code>版本，接近完工了。</p>
+<p><a href="./file/hellotmp_20231124_1824.7z">hellotmp_20231124_1824.7z</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/module.h&gt;</span><span style="color:#099">
 </span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/kernel.h&gt;</span><span style="color:#099">
 </span></span></span><span style="display:flex;"><span><span style="color:#099">#include</span> <span style="color:#099">&lt;linux/init.h&gt;</span><span style="color:#099">
@@ -1447,7 +1459,7 @@ msm8953_64:/custom/metro/system #
     </section>
   </div>
 
-  <div class="post-nav"><a href="/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/" class="post-nav-item" rel="prev" title="编译android系统user版本时默认开启adb模式"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>编译android系统user版本时默认开启adb模式</a>
+  <div class="post-nav"><a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/" class="post-nav-item" rel="prev" title="内核中添加驱动模块"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>内核中添加驱动模块</a>
       <a href="/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-nav-item" rel="next" title="终端屏幕自动修复配置的使用">终端屏幕自动修复配置的使用<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">

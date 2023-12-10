@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>html - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/html/</link>
+    <description>html - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 19 Oct 2016 21:14:10 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/html/" rel="self" type="application/rss+xml" /><item>
+  <title>html框架内页刷新页面</title>
+  <link>https://daizelai.github.io/posts/web/html/html%E6%A1%86%E6%9E%B6%E5%86%85%E9%A1%B5%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/</link>
+  <pubDate>Wed, 19 Oct 2016 21:14:10 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/web/html/html%E6%A1%86%E6%9E%B6%E5%86%85%E9%A1%B5%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/</guid>
+  <description><![CDATA[一、html框架内页刷新页面 在使用html写后台布局的时候，经常会用到iframe框架，而在iframe框架中经常会用到刷新内页数据的情况，下面就记录一下刷新的js代码。
+语句1. window.parent.frames[1].location.reload(); 语句2. window.parent.frames.bottom.location.reload(); 语句3. window.parent.frames[&#34;bottom&#34;].location.reload(); 语句4. window.parent.frames.item(1).location.reload(); 语句5. window.parent.frames.item(&#39;bottom&#39;).location.reload(); 语句6. window.parent.bottom.location.reload(); 语句7. window.parent[&#39;bottom&#39;].location.reload(); ]]></description>
+</item>
+</channel>
+</rss>

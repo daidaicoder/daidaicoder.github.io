@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>android打流测试 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="在android终端里进行打流测试" /><meta name="keywords" content='msm8953_64, 原创, android' /><meta itemprop="name" content="android打流测试">
+<meta itemprop="description" content="在android终端里进行打流测试"><meta itemprop="datePublished" content="2023-09-18T17:31:00+08:00" />
+<meta itemprop="dateModified" content="2023-09-18T17:31:00+08:00" />
+<meta itemprop="wordCount" content="1612">
+<meta itemprop="keywords" content="原创,android,msm8953_64,打流," /><meta property="og:title" content="android打流测试" />
+<meta property="og:description" content="在android终端里进行打流测试" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/android/20230918_1731android%E6%89%93%E6%B5%81%E6%B5%8B%E8%AF%95/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-18T17:31:00+08:00" />
+<meta property="article:modified_time" content="2023-09-18T17:31:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="android打流测试"/>
+<meta name="twitter:description" content="在android终端里进行打流测试"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/20230918_1731android%E6%89%93%E6%B5%81%E6%B5%8B%E8%AF%95/" /><link rel="prev" href="https://daizelai.github.io/posts/android/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/" /><link rel="next" href="https://daizelai.github.io/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "android打流测试",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/android\/20230918_1731android%E6%89%93%E6%B5%81%E6%B5%8B%E8%AF%95\/"
+    },"genre": "posts","keywords": "原创, android, msm8953_64, 打流","wordcount":  1612 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/android\/20230918_1731android%E6%89%93%E6%B5%81%E6%B5%8B%E8%AF%95\/","datePublished": "2023-09-18T17:31:00+08:00","dateModified": "2023-09-18T17:31:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "在android终端里进行打流测试"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>android打流测试</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/msm8953_64/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> msm8953_64</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/%E6%89%93%E6%B5%81/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 打流</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2023-09-18 17:31:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-09-18">2023-09-18</time></span>&nbsp;<span title="更新于 2023-09-18 17:31:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-09-18">2023-09-18</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1612 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 8 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a>
+      <ul>
+        <li><a href="#11前言">1.1.前言</a></li>
+        <li><a href="#12iperf工具参数">1.2.iperf工具参数</a></li>
+        <li><a href="#13iperf工具基础使用">1.3.iperf工具基础使用</a></li>
+        <li><a href="#14iperf3工具基础使用">1.4.iperf3工具基础使用</a></li>
+        <li><a href="#15区别">1.5.区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#二下载">二、下载</a></li>
+    <li><a href="#三安装">三、安装</a>
+      <ul>
+        <li><a href="#31上传文件到终端">3.1.上传文件到终端</a></li>
+        <li><a href="#32添加软链接和权限">3.2.添加软链接和权限</a></li>
+      </ul>
+    </li>
+    <li><a href="#四使用">四、使用</a>
+      <ul>
+        <li><a href="#41查看参数">4.1.查看参数</a></li>
+        <li><a href="#42测试命令运行">4.2.测试命令运行</a></li>
+        <li><a href="#43iperf39版本太高">4.3.iperf3.9版本太高</a></li>
+        <li><a href="#44iperf33版本可用">4.4.iperf3.3版本可用</a></li>
+      </ul>
+    </li>
+    <li><a href="#五测试">五、测试</a>
+      <ul>
+        <li><a href="#51服务湍使用说明">5.1.服务湍使用说明</a></li>
+        <li><a href="#52服务端使用示例">5.2.服务端使用示例</a></li>
+        <li><a href="#53客户端使用说明">5.3.客户端使用说明</a></li>
+        <li><a href="#54客户端使示例">5.4.客户端使示例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>在android终端设备中命令与服务器之间进行打流操作，本文主要记录的是车载台终端（Android7.1）系统的打流使用。</p>
+<h3 id="12iperf工具参数">1.2.iperf工具参数</h3>
+<p>常用参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-B</td>
+<td style="text-align:left">设置绑定的接口</td>
+</tr>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:left">显示调试信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-f</td>
+<td style="text-align:left">格式化带宽输出</td>
+</tr>
+<tr>
+<td style="text-align:center">-F</td>
+<td style="text-align:left">传输或接收指定文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-h</td>
+<td style="text-align:left">显示帮助信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-i</td>
+<td style="text-align:left">设置周期性输出带宽报告（秒）</td>
+</tr>
+<tr>
+<td style="text-align:center">-J</td>
+<td style="text-align:left">使用JSON格式显示信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:left">设置服务端监听端口</td>
+</tr>
+<tr>
+<td style="text-align:center">-s</td>
+<td style="text-align:left">启动服务端监听功能</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:left">显示版本信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-V</td>
+<td style="text-align:left">显示执行过程详细信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13iperf工具基础使用">1.3.iperf工具基础使用</h3>
+<p>server端</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">iperf -s -p 25001 -B 192.168.33.103 (-u)
+- s  指定server端
+- p 指定端口（要和客户端一致）
+- B 绑定ip地址 
+- u  udp协议，，默认是tcp协议
+</code></pre><p>client端</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">iperf -c -p 25001 -B 192.168.33.104 -4 -f K -n 10M -b 10M （-u）
+- c 指定client端
+- p 指定端口（要和服务器端一致）
+- B 绑定客户端的ip地址
+- 4 指定ipv4
+- f 格式化带宽数输出
+- n 指定传输的字节数
+- b 使用带宽数量 
+- u 指定udp协议
+</code></pre><h3 id="14iperf3工具基础使用">1.4.iperf3工具基础使用</h3>
+<blockquote>
+<p>server端</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">iperf3 -s -p 25001
+- s 指定服务器端
+- p 指定端口号   
+
+iperf3的server端不支持“-u”参数，，默认可以测试tcp和udp
+</code></pre><blockquote>
+<p>client端</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">iperf3 -c -p 25001 -B 192.168.33.104 -4 -f K -n 10M -b 10M --get-server-output（-u）
+- c 指定client端
+- p 指定端口（要和服务器端一致）
+- B 绑定客户端的ip地址
+- 4 指定ipv4
+- f 格式化带宽数输出
+- n 指定传输的字节数
+- b 使用带宽数量 
+- u 指定udp协议
+--get-server-output 获取来自服务器端的结果
+</code></pre><h3 id="15区别">1.5.区别</h3>
+<p>iperf3不支持双工模式测试。</p>
+<h2 id="二下载">二、下载</h2>
+<p>android iperf3.9下载
+从<a href="https://github.com/KnightWhoSayNi/android-iperf"target="_blank" rel="external nofollow noopener noreferrer">KnightWhoSayNi/android-iperf</a>下载arm64-v8a的android版本。</p>
+<p>在武汉19号线车载台终端里面使用<code>iperf3.9</code>是失败的，推荐使用<code>iperf3.3</code>。</p>
+<p><a href="https://github.com/KnightWhoSayNi/android-iperf/blob/gh-pages/libs/arm64-v8a/iperf3.9"target="_blank" rel="external nofollow noopener noreferrer">iperf3.9下载</a></p>
+<p>可能由于Android版本较低的原因，所以使用<code>iperf3.3</code>是可以正常执行的。</p>
+<p><a href="https://github.com/KnightWhoSayNi/android-iperf/blob/gh-pages/libs/arm64-v8a/iperf3.3"target="_blank" rel="external nofollow noopener noreferrer">iperf3.3网络下载</a></p>
+<p><a href="./file/iperf3.3">iperf3.3本地下载</a></p>
+<h2 id="三安装">三、安装</h2>
+<h3 id="31上传文件到终端">3.1.上传文件到终端</h3>
+<p>16：31，测试把iperf3放到车载台终端里面去。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\log\20230918&gt;adb connect 192.168.19.3:5566
+connected to 192.168.19.3:5566
+
+D:\log\20230918&gt;adb push D:\log\20230918\iperf3.9 /sdcard/
+D:\log\20230918\iperf3.9: 1 file pushed, 0 skipped. 143.4 MB/s (110480 bytes in 0.001s)
+
+D:\log\20230918&gt;
+</code></pre><h3 id="32添加软链接和权限">3.2.添加软链接和权限</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\log\20230918&gt;adb root
+adbd is already running as root
+
+D:\log\20230918&gt;adb remount
+remount succeeded
+
+D:\log\20230918&gt;adb shell
+msm8953_64:/ # date
+Mon Sep 18 16:33:35 CST 2023
+msm8953_64:/ # ln -s /sdcard/iperf3.9 iperf
+ln: cannot create symbolic link from &#39;/sdcard/iperf3.9&#39; to &#39;iperf&#39;: Read-only file system
+1|msm8953_64:/ #
+1|msm8953_64:/ # cd /sdcard/
+msm8953_64:/sdcard # cd /data/local/tmp
+msm8953_64:/data/local/tmp # ls -l
+total 0
+msm8953_64:/data/local/tmp # mv /sdcard/iperf3.9 .
+msm8953_64:/data/local/tmp # ls -l
+total 216
+-rw-rw---- 1 root sdcard_rw 110480 2023-09-18 16:34 iperf3.9
+msm8953_64:/data/local/tmp # chmod +x iperf3.9
+msm8953_64:/data/local/tmp # ls -lh
+total 108K
+-rwxrwx--x 1 root sdcard_rw 108K 2023-09-18 16:34 iperf3.9
+msm8953_64:/data/local/tmp #
+msm8953_64:/data/local/tmp # ln -s iperf3.9 iperf3
+msm8953_64:/data/local/tmp # ls -l
+total 216
+lrwxrwxrwx 1 root root           8 2023-09-18 16:37 iperf3 -&gt; iperf3.9
+-rwxrwx--x 1 root sdcard_rw 110480 2023-09-18 16:34 iperf3.9
+msm8953_64:/data/local/tmp #
+</code></pre><h2 id="四使用">四、使用</h2>
+<h3 id="41查看参数">4.1.查看参数</h3>
+<p>执行命令查看<code>iperf3</code>的参数。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">msm8953_64:/data/local/tmp # date
+Mon Sep 18 16:37:30 CST 2023
+msm8953_64:/data/local/tmp #
+127|msm8953_64:/data/local/tmp # ./iperf3
+iperf3: parameter error - must either be a client (-c) or server (-s)
+
+Usage: iperf3 [-s|-c host] [options]
+       iperf3 [-h|--help] [-v|--version]
+
+Server or Client:
+  -p, --port      #         server port to listen on/connect to
+  -f, --format   [kmgtKMGT] format to report: Kbits, Mbits, Gbits, Tbits
+  -i, --interval  #         seconds between periodic throughput reports
+  -F, --file name           xmit/recv the specified file
+  -A, --affinity n/n,m      set CPU affinity
+  -B, --bind      &lt;host&gt;    bind to the interface associated with the address &lt;host&gt;
+  -V, --verbose             more detailed output
+  -J, --json                output in JSON format
+  --logfile f               send output to a log file
+  --forceflush              force flushing output at every interval
+  --timestamps    &lt;format&gt;  emit a timestamp at the start of each output line
+                            (using optional format string as per strftime(3))
+  -d, --debug               emit debugging output
+  -v, --version             show version information and quit
+  -h, --help                show this message and quit
+Server specific:
+  -s, --server              run in server mode
+  -D, --daemon              run the server as a daemon
+  -I, --pidfile file        write PID file
+  -1, --one-off             handle one client connection then exit
+  --server-bitrate-limit #[KMG][/#]   server&#39;s total bit rate limit (default 0 = no limit)
+                            (optional slash and number of secs interval for averaging
+                            total data rate.  Default is 5 seconds)
+Client specific:
+  -c, --client    &lt;host&gt;    run in client mode, connecting to &lt;host&gt;
+  -u, --udp                 use UDP rather than TCP
+  --connect-timeout #       timeout for control connection setup (ms)
+  -b, --bitrate #[KMG][/#]  target bitrate in bits/sec (0 for unlimited)
+                            (default 1 Mbit/sec for UDP, unlimited for TCP)
+                            (optional slash and packet count for burst mode)
+  --pacing-timer #[KMG]     set the timing for pacing, in microseconds (default 1000)
+  --fq-rate #[KMG]          enable fair-queuing based socket pacing in
+                            bits/sec (Linux only)
+  -t, --time      #         time in seconds to transmit for (default 10 secs)
+  -n, --bytes     #[KMG]    number of bytes to transmit (instead of -t)
+  -k, --blockcount #[KMG]   number of blocks (packets) to transmit (instead of -t or -n)
+  -l, --length    #[KMG]    length of buffer to read or write
+                            (default 128 KB for TCP, dynamic or 1460 for UDP)
+  --cport         &lt;port&gt;    bind to a specific client port (TCP and UDP, default: ephemeral port)
+  -P, --parallel  #         number of parallel client streams to run
+  -R, --reverse             run in reverse mode (server sends, client receives)
+  --bidir                   run in bidirectional mode.
+                            Client and server send and receive data.
+  -w, --window    #[KMG]    set window size / socket buffer size
+  -C, --congestion &lt;algo&gt;   set TCP congestion control algorithm (Linux and FreeBSD only)
+  -M, --set-mss   #         set TCP/SCTP maximum segment size (MTU - 40 bytes)
+  -N, --no-delay            set TCP/SCTP no delay, disabling Nagle&#39;s Algorithm
+  -4, --version4            only use IPv4
+  -6, --version6            only use IPv6
+  -S, --tos N               set the IP type of service, 0-255.
+                            The usual prefixes for octal and hex can be used,
+                            i.e. 52, 064 and 0x34 all specify the same value.
+  --dscp N or --dscp val    set the IP dscp value, either 0-63 or symbolic.
+                            Numeric values can be specified in decimal,
+                            octal and hex (see --tos above).
+  -L, --flowlabel N         set the IPv6 flow label (only supported on Linux)
+  -Z, --zerocopy            use a &#39;zero copy&#39; method of sending data
+  -O, --omit N              omit the first n seconds
+  -T, --title str           prefix every output line with this string
+  --extra-data str          data string to include in client and server JSON
+  --get-server-output       get results from server
+  --udp-counters-64bit      use 64-bit counters in UDP test packets
+  --repeating-payload       use repeating pattern in payload, instead of
+                            randomized payload (like in iperf2)
+
+[KMG] indicates options that support a K/M/G suffix for kilo-, mega-, or giga-
+
+iperf3 homepage at: https://software.es.net/iperf/
+Report bugs to:     https://github.com/esnet/iperf
+1|msm8953_64:/data/local/tmp # 
+</code></pre><h3 id="42测试命令运行">4.2.测试命令运行</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">1|msm8953_64:/data/local/tmp # ./iperf3 -s --cport 8888
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------
+^Ciperf3: interrupt - the server has terminated
+1|msm8953_64:/data/local/tmp #
+</code></pre><h3 id="43iperf39版本太高">4.3.iperf3.9版本太高</h3>
+<p>但是使用iperf3.9客户端不行。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">1|msm8953_64:/data/local/tmp # ./iperf3 -c 192.168.19.3
+iperf3: error - unable to send control message: Bad file descriptor
+1|msm8953_64:/data/local/tmp #
+1|msm8953_64:/data/local/tmp # ./iperf3 -c -p 25001 -B 192.168.19.3 -4 -f K -n 10M -b 10M
+iperf3: error - unable to send control message: Bad file descriptor
+1|msm8953_64:/data/local/tmp #
+1|msm8953_64:/data/local/tmp # ./iperf3 -c -p 25001 -B 192.168.33.104 -4 -f K -n 10M -b 10M --get-server-output
+iperf3: error - unable to send control message: Bad file descriptor
+1|msm8953_64:/data/local/tmp #
+</code></pre><h3 id="44iperf33版本可用">4.4.iperf3.3版本可用</h3>
+<p>上面的版本一直不行，在2023/09/18 16:50又下载了iperf3.3版本</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">D:\log\20230918&gt;adb push D:\log\20230918\iperf3.3 /data/local/tmp/
+D:\log\20230918\iperf3.3: 1 file pushed, 0 skipped. 291.6 MB/s (102128 bytes in 0.000s)
+
+D:\log\20230918&gt;adb shell date
+Mon Sep 18 16:53:51 CST 2023
+
+D:\log\20230918&gt;adb shell
+msm8953_64:/ # cd /data/local/tmp
+msm8953_64:/data/local/tmp # ls -ol
+total 416
+lrwxrwxrwx 1 root      8 2023-09-18 16:37 iperf3 -&gt; iperf3.9
+-rw-rw-rw- 1 root 102128 2023-09-18 16:53 iperf3.3
+-rwxrwx--x 1 root 110480 2023-09-18 16:34 iperf3.9
+msm8953_64:/data/local/tmp # chmod +x iperf3.3
+msm8953_64:/data/local/tmp # ls -l
+total 416
+lrwxrwxrwx 1 root root           8 2023-09-18 16:37 iperf3 -&gt; iperf3.9
+-rwxrwxrwx 1 root root      102128 2023-09-18 16:53 iperf3.3
+-rwxrwx--x 1 root sdcard_rw 110480 2023-09-18 16:34 iperf3.9
+msm8953_64:/data/local/tmp # ./iperf3.3 -c 192.168.19.3
+iperf3: error - unable to connect to server: Connection refused
+1|msm8953_64:/data/local/tmp #
+</code></pre><h2 id="五测试">五、测试</h2>
+<h3 id="51服务湍使用说明">5.1.服务湍使用说明</h3>
+<p>17:11，打流测试</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># 这将启动一个反向传输的iperf3服务器。
+# 测试服务器上传带宽
+iperf3 -s
+# 测试服务器下载带宽
+iperf3 -s -R
+</code></pre><h3 id="52服务端使用示例">5.2.服务端使用示例</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">130|msm8953_64:/data/local/tmp # date
+Mon Sep 18 17:08:25 CST 2023
+msm8953_64:/data/local/tmp # ./iperf3.3 -s  -p 45654
+-----------------------------------------------------------
+Server listening on 45654
+-----------------------------------------------------------
+Accepted connection from 192.168.19.3, port 40693
+[  5] local 192.168.19.3 port 45654 connected to 192.168.19.3 port 40694
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  99.5 MBytes   834 Mbits/sec
+[  5]   1.00-2.00   sec   108 MBytes   904 Mbits/sec
+[  5]   2.00-3.00   sec  97.3 MBytes   816 Mbits/sec
+[  5]   3.00-4.00   sec   106 MBytes   886 Mbits/sec
+[  5]   4.00-5.00   sec   111 MBytes   929 Mbits/sec
+[  5]   5.00-6.00   sec  99.0 MBytes   831 Mbits/sec
+[  5]   6.00-7.00   sec   108 MBytes   903 Mbits/sec
+[  5]   7.00-8.00   sec  99.1 MBytes   832 Mbits/sec
+[  5]   8.00-9.00   sec   109 MBytes   915 Mbits/sec
+[  5]   9.00-10.00  sec   109 MBytes   913 Mbits/sec
+[  5]  10.00-11.00  sec  99.1 MBytes   831 Mbits/sec
+[  5]  11.00-12.00  sec   108 MBytes   906 Mbits/sec
+[  5]  12.00-13.00  sec  93.9 MBytes   788 Mbits/sec
+[  5]  13.00-14.00  sec   109 MBytes   911 Mbits/sec
+[  5]  14.00-15.00  sec   106 MBytes   890 Mbits/sec
+[  5]  15.00-16.00  sec  93.9 MBytes   788 Mbits/sec
+[  5]  16.00-17.00  sec   107 MBytes   900 Mbits/sec
+[  5]  17.00-18.00  sec   101 MBytes   843 Mbits/sec
+[  5]  18.00-19.00  sec   105 MBytes   878 Mbits/sec
+[  5]  19.00-20.00  sec   109 MBytes   912 Mbits/sec
+[  5]  20.00-21.00  sec   102 MBytes   853 Mbits/sec
+[  5]  21.00-22.00  sec   101 MBytes   850 Mbits/sec
+[  5]  22.00-23.00  sec  98.4 MBytes   826 Mbits/sec
+^C[  5]  23.00-23.31  sec  35.4 MBytes   962 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-23.31  sec  2.36 GBytes   868 Mbits/sec                  receiver
+iperf3: interrupt - the server has terminated
+1|msm8953_64:/data/local/tmp #
+</code></pre><h3 id="53客户端使用说明">5.3.客户端使用说明</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># 测试客户端上传带宽
+iperf3 -c 192.168.0.1 -i 1 -t 10 -b 10M
+# 测试客户端下载带宽，其中，-R选项表示反向传输，即下载带宽。其他参数的含义与前面的示例相同。
+iperf3 -c &lt;服务器IP地址&gt; -i 1 -t 10 -R -b &lt;带宽&gt;
+</code></pre><h3 id="54客户端使示例">5.4.客户端使示例</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">1|msm8953_64:/data/local/tmp # date
+Mon Sep 18 17:08:29 CST 2023
+msm8953_64:/data/local/tmp # ./iperf3.3 -c 192.168.19.3 -p 45654  -i 5 ib 5M -t 180
+Connecting to host 192.168.19.3, port 45654
+[  5] local 192.168.19.3 port 40694 connected to 192.168.19.3 port 45654
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-5.00   sec   521 MBytes   874 Mbits/sec    0    270 KBytes
+[  5]   5.00-10.00  sec   524 MBytes   879 Mbits/sec    0    270 KBytes
+[  5]  10.00-15.00  sec   516 MBytes   865 Mbits/sec    0    270 KBytes
+[  5]  15.00-20.00  sec   515 MBytes   864 Mbits/sec    0    270 KBytes
+[  5]  15.00-20.00  sec   515 MBytes   864 Mbits/sec    0    270 KBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-20.00  sec  2.36 GBytes  1.01 Gbits/sec    0             sender
+[  5]   0.00-20.00  sec  0.00 Bytes  0.00 bits/sec                  receiver
+iperf3: error - the server has terminated
+1|msm8953_64:/data/local/tmp #
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2023-09-18 17:31:00">更新于 2023-09-18&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/msm8953_64/' class="post-tag">msm8953_64</a><a href='/tags/%E6%89%93%E6%B5%81/' class="post-tag">打流</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/android/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/" class="post-nav-item" rel="prev" title="adb网络命令记录"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>adb网络命令记录</a>
+      <a href="/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="post-nav-item" rel="next" title="android音频配置文件详解">android音频配置文件详解<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

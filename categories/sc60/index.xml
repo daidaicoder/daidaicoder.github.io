@@ -9,18 +9,10 @@
   <pubDate>Thu, 30 Nov 2023 11:15:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80/</guid>
-  <description><![CDATA[20231130_1115系统启动后修改usb网卡的mac地址 一、描述 由于无法通过工具直接修改usb网卡的mac地址，所以做了个变通的方法，通过在系统启动后来修改mac地址。
-配置文件样本： system_config.ini
-二、配置文件 2.1.配置文件内容 也是在配置文件中配置参数。如下所示：
-[system] self_mac=11:aa:bb:cc:dd 注意，配置时请使用合法的mac地址，非法的mac地址就不会生效。
-2.2.配置文件说明 配置文件中的[system]只是为了区分，最主要的配置项是self_mac。
-其中，self_mac表示修改后的mac地址，请设置合法mac地址。 配置项中=号前后不需要空格。 当系统在启动时，检测到self_mac值时，将会修改eth0的mac地址。
-2.3.配置文件路径 配置文件存放在/custom/metro/system路径下。
-msm8953_64:/custom/metro/system # pwd/custom/metro/systemmsm8953_64:/custom/metro/system # ls -ltotal 8-rw-rw-rw- 1 root root 100 2023-11-29 19:17 system_config.inimsm8953_64:/custom/metro/system # 三、基本逻辑 修改mac地址的基本逻辑如下：
-端口eth0不在，不会设置mac地址。 无配置文件，不会设置mac地址。 有self_mac=但未设置值，不会设置mac地址。 配置了self_mac地址，但是mac不合法，不会设置mac地址。 正确的设置了合法的mac地址，会设置mac地址。 四、操作说明 4.1.编辑配置文件 可以根据需要配置正确的配置项。
-4.2.替换配置文件 使用adb命令替换配置文件，如果终端系统刷机后，此默认是没有配置项的，需要人工去替换配置文件。
-本配置文件一般会有产测的时候需要做这一步，后期可根据需要做好维护工作。
-C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.iniadb.exe: push requires an argumentC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini /custom/metro/system/E:\SC60\wuhan19_fx_20231030_1645\os\system_config.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>由于无法通过工具直接修改usb网卡的mac地址，所以做了个变通的方法，通过在系统启动后来修改mac地址。</p>
+<p>配置文件样本： <a href="./file/system_config.ini">system_config.ini</a></p>]]></description>
 </item>
 <item>
   <title>终端屏幕自动修复配置的使用</title>
@@ -28,19 +20,9 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Thu, 30 Nov 2023 09:00:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-  <description><![CDATA[20231130_0900终端屏幕自动修复配置的使用 一、描述 本文记录了如何在终端上配置屏幕自动修复的方法，以及如何查看是否执行了修复操作。
-版本路径： \10.1.1.154\00-网络u盘\地铁集群二开项目\版本\SC60\E220\WH19\TX\20231130\userdebug_emmc_20231130_1135.7z 配置文件样本： system_config.ini
-二、配置文件 2.1.配置文件内容 配置文件内容如下所示：
-[system] self_mac=11:aa:bb:cc:dd [screen] reset_code=0xb1,0xb5,0x31,0xbd period_time=5000 2.2.配置文件说明 配置文件中的[screen]只是为了区分，最主要的配置项是reset_code和period_time。
-其中reset_code表示检测码，period_time表示单次修复的间隔时间。 配置项中=号前后不需要空格。 配置文件中的period_time字段单位是毫秒，即如果是5秒，需要配置5000，如果1天需要配置86400000。 当系统检测到配置项中的某个reset_code时，会在达到period_time时间时修复一次，period_time项配置的时间不是绝对值，是一个大概区间值。
-2.3.配置文件路径 配置文件存放在/custom/metro/system路径下。
-msm8953_64:/custom/metro/system # pwd/custom/metro/systemmsm8953_64:/custom/metro/system # ls -ltotal 8-rw-rw-rw- 1 root root 100 2023-11-29 19:17 system_config.inimsm8953_64:/custom/metro/system # 三、自动修复基本逻辑 基本逻辑如下：
-无配置文件，默认修复时间为5秒检测一次，当遇到异常时，且是在默认的错误码[0xb1/0x31/0xb5/0xbd]中时会修复一次，没有检查到检测码，继续下一次。 有配置文件，以配置文件中配置的检测码为准。 有配置文件，以配置文件中的检查时间为准，但未配置或配置小于5秒，以5秒为间隔，配置超过或等于INT范围时，以一天86400秒为准。 下面是屏幕修复的主要流程：
-四、操作说明 4.1.编辑配置文件 可以根据需要配置正确的配置项。
-4.2.替换配置文件 使用adb命令替换配置文件，如果终端系统刷机后，此默认是没有配置项的，需要人工去替换配置文件。
-后期会做到上层应用中，通过服务器下发此配置项来覆盖人工操作。
-下面是一次成功的替换配置文件的操作记录。
-C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.iniadb.exe: push requires an argumentC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>本文记录了如何在终端上配置屏幕自动修复的方法，以及如何查看是否执行了修复操作。</p>]]></description>
 </item>
 <item>
   <title>中兴SDK多端口配置的使用记录</title>
@@ -48,12 +30,10 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Sat, 08 Oct 2022 10:52:26 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/wzs2/20221011_1049%E4%B8%AD%E5%85%B4sdk%E5%A4%9A%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</guid>
-  <description><![CDATA[20221011_1049中兴SDK多端口配置的使用记录 一、描述 by daizelai on 2022/10/11 10:52 中兴GM605/GM655+多端口配置。
-二、多端口使用 2.1.配置主机telnet访问 多端口配置主机telnet连接。
-多端口配置主机telnet连接的操作示例。
-2.1.配置主机web访问 未配置主机的web多端口时是无法访问主机的web界面的
-配置主机web访问的多端口
-成功配置主机web访问的多端口效果]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2022/10/11 10:52
+中兴GM605/GM655+多端口配置。</p>]]></description>
 </item>
 <item>
   <title>屏幕黑屏问题记录</title>
@@ -61,11 +41,12 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Fri, 16 Sep 2022 13:38:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/20220916_1316sc60%E5%B1%8F%E5%B9%95%E9%BB%91%E5%B1%8F%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
-  <description><![CDATA[20220916_1316SC60屏幕黑屏问题记录 一、描述 1.1.现象 by daizelai on 2022/09/16 13:16
-由于深圳14号线车载台现场出现好几次屏幕黑屏的问题了，现出黑屏时，从侧面看屏幕还是有光的，并且使用虚拟屏连接进入后，系统其实一切是正常的。
-1.2.首次修改 然后我在实验室复现了一次后，取了串口日志给移远看了后也没有找到具体的问题。然后让把屏幕驱动的初始化时间提到开启背光之前。
-二、屏幕驱动修改 2.1.删除原有屏幕驱动实始化 把原有的屏幕驱动初始化删除掉。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff bootable/bootloader/lk/target/msm8953/target_display.cdiff --git a/bootable/bootloader/lk/target/msm8953/target_display.c b/bootable/bootloader/lk/target/msm8953/target_display.cindex ffb18f8..776b214 100755--- a/bootable/bootloader/lk/target/msm8953/target_display.c+++ b/bootable/bootloader/lk/target/msm8953/target_display.c@@ -299,7 +299,7 @@ static int mipi_convert_i2c_read(uint8_t slave_addr, uint8_t reg, uint8_t *val)}//#define DBG_MIPI_CONVERT-static int mipi_convert_init(void)+int mipi_convert_init(void){int i = 0;#ifdef DBG_MIPI_CONVERT@@ -401,9 +401,9 @@ int target_panel_reset(uint8_t enable, struct panel_reset_sequence *resetseq,if (enable) {/*--&gt;add by danny*/- printf(&#34;danny init\n&#34;);- mipi_convert_init();- printf(&#34;danny init end\n&#34;);+ /*printf(&#34;danny init\n&#34;);*/+ /*mipi_convert_init();*/+ /*printf(&#34;danny init end\n&#34;);*//*&lt;--add by danny*/if (pinfo-&gt;mipi.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11现象">1.1.现象</h3>
+<p>by daizelai on 2022/09/16 13:16</p>
+<p>由于深圳14号线车载台现场出现好几次屏幕黑屏的问题了，现出黑屏时，从侧面看屏幕还是有光的，并且使用虚拟屏连接进入后，系统其实一切是正常的。</p>]]></description>
 </item>
 <item>
   <title>源码编译单个系统app</title>
@@ -73,9 +54,10 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Mon, 06 Sep 2021 16:48:27 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%8D%95%E4%B8%AA%E7%B3%BB%E7%BB%9Fapp/</guid>
-  <description><![CDATA[源码编译单个系统app 一、描述 在SC60源码中直接编译单个系统app。 by daizelai on 2021/09/06 16:48
-二、编译方法 路径 [android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14 编译 使用mmm命令编译，但有一个前提，必须是完整编译过一次系统才能使用mmm，如果没有编译过，或者使用过make clean立即执行mmm file命令是无法执行的。
-......BUILD_ID=N2G47HOUT_DIR=out============================================Unknown option: -Cusage: git [--version] [--help] [-c name=value][--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path][-p|--paginate|--no-pager] [--no-replace-objects] [--bare][--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]&lt;command&gt; [&lt;args&gt;]make: Entering directory `/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14&#39;Running kati to generate build-efc28e71d8f1fdd3f3f8f083ddc7d1fe.ninja...No need to regenerate ninja fileStarting build with ninjaninja: Entering directory `.&#39; ninja: error: &#39;out/target/common/obj/JAVA_LIBRARIES/core-junit_intermediates/classes.dex.toc&#39;, needed by &#39;out/target/common/obj/JAVA_LIBRARIES/settings-logtags_intermediates/classes.]]></description>
+  <description><![CDATA[<h1 id="源码编译单个系统app">源码编译单个系统app</h1>
+<h2 id="一描述">一、描述</h2>
+<p>在SC60源码中直接编译单个系统app。
+by daizelai on 2021/09/06 16:48</p>]]></description>
 </item>
 <item>
   <title>版本包升级注意事项</title>
@@ -83,10 +65,10 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Wed, 11 Aug 2021 14:00:56 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/sc60%E7%89%88%E6%9C%AC%E5%8C%85%E5%8D%87%E7%BA%A7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
-  <description><![CDATA[SC60版本包升级注意事项 一、描述 by daizelai on 2021/08/11 14:00 本文主要记录了SC60制作版本时需要注意的几点，比如如何修改版本号、产品型号、默认的软件集成列表等。
-二、编译前的源码修改【老】 2.1.系统版本号 当前系统的版本号，固定台和车载台的版本号是不一样的。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff build/tools/buildinfo.shdiff --git a/build/tools/buildinfo.sh b/build/tools/buildinfo.shindex 406ce53..1ef8f22 100755--- a/build/tools/buildinfo.sh+++ b/build/tools/buildinfo.sh@@ -15,7 +15,7 @@ echo &#34;ro.build.version.sdk=$PLATFORM_SDK_VERSION&#34;echo &#34;ro.build.version.preview_sdk=$PLATFORM_PREVIEW_SDK_VERSION&#34;echo &#34;ro.build.version.codename=$PLATFORM_VERSION_CODENAME&#34;echo &#34;ro.build.version.all_codenames=$PLATFORM_VERSION_ALL_CODENAMES&#34;-echo &#34;ro.build.version.release=FX300-ANDROID-7.1-R0001&#34;+echo &#34;ro.build.version.release=FX300-ANDROID-7.1-R0002&#34;echo &#34;ro.build.quectelversion.release=01.$QUECTEL_VERSION&#34;echo &#34;ro.build.version.security_patch=$PLATFORM_SECURITY_PATCH&#34;echo &#34;ro.build.version.base_os=$PLATFORM_BASE_OS&#34;[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ 2.2.产品型号 产品型号，分为车载台和固定台，并且每条SC60产品线可能型号不同。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ git diff device/qcom/msm8953_64/msm8953_64.mk diff --git a/device/qcom/msm8953_64/msm8953_64.mk b/device/qcom/msm8953_64/msm8953_64.mkindex 8c69907..1dbcb4b 100755--- a/device/qcom/msm8953_64/msm8953_64.mk+++ b/device/qcom/msm8953_64/msm8953_64.mk@@ -34,7 +34,9 @@ $(call inherit-product, device/qcom/common/common64.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2021/08/11 14:00</p>
+<p>本文主要记录了SC60制作版本时需要注意的几点，比如如何修改版本号、产品型号、默认的软件集成列表等。</p>]]></description>
 </item>
 <item>
   <title>制作OTA升级包二</title>
@@ -94,11 +76,9 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Mon, 07 Jun 2021 09:50:27 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/6.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C/</guid>
-  <description><![CDATA[6. 制作OTA升级包二 一、描述 本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。
-关键字： 制作update包，制作update.zip包，编译update包，编译update.zip包。 SC60制作update包，制作update升级包，制作update.zip升级包,SC60系统OTA包。
-二、编译前工作 制作OTA升级包之前，需要全编译系统。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20 三、编译OTA升级包 3.1.编译OTA版本 其实通过命令make dist -j 20编译出来下面的路径中的文件就是OTA升级包，可以直接拿去系统升级。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20......using prebuilt boot.img from IMAGES...boot size (28646696) is 42.69% of limit (67108864)Loading radio filesmap...Loading radio target...warning radio-update: no radio images in input target_filesrunning: openssl pkcs8 -in build/target/product/security/testkey.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。</p>]]></description>
 </item>
 <item>
   <title>制作OTA升级包</title>
@@ -106,11 +86,12 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Tue, 01 Jun 2021 11:22:27 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/5.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85/</guid>
-  <description><![CDATA[5. 制作OTA升级包 一、描述 本文记录了如何制作SC60系统的OTA升级包，以前制作OTA升级包的全过程。
-关键字：
-制作update包，制作update.zip包，编译update包，编译update.zip包。 SC60制作update包，制作update升级包，制作update.zip升级包。
-二、编译前工作 [android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20 三、编译版本 编译版本
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20......max stashed blocks: 0 (0 bytes), limit: 214748364 bytes (0.00%)using prebuilt boot.img from IMAGES...boot size (28642600) is 42.68% of limit (67108864)Loading radio filesmap...Loading radio target...warning radio-update: no radio images in input target_filesrunning: openssl pkcs8 -in build/target/product/security/testkey.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>本文记录了如何制作SC60系统的OTA升级包，以前制作OTA升级包的全过程。</p>
+<p><strong>关键字：</strong></p>
+<p>制作update包，制作update.zip包，编译update包，编译update.zip包。
+SC60制作update包，制作update升级包，制作update.zip升级包。</p>]]></description>
 </item>
 <item>
   <title>SC60添加实体按键</title>
@@ -118,14 +99,10 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Tue, 18 May 2021 13:10:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/20210518_1310sc60%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BD%93%E6%8C%89%E9%94%AE/</guid>
-  <description><![CDATA[20210518_1310SC60添加实体按键 一、描述 添加按键功能开发。
-android系统增加按键功能。
-二、首次添加一个PTT按键 2.1.文件列表 实现（由下往上-&gt;(kernel-&gt;frameworks)） 先列举下该功能实现所涉及到的文件
-device/qcom/msm8953_64/gpio-keys.kl frameworks/base/core/java/android/view/KeyEvent.java frameworks/base/core/res/res/values/attrs.xml frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java frameworks/native/include/android/keycodes.h b/include/android/keycodes.h frameworks/native/include/input/InputEventLabels.h kernel/msm-3.18/arch/arm/boot/dts/qcom/msm8953-mtp.dtsi kernel/msm-3.18/include/uapi/linux/input.h 2.2.kernel注册gpio_key上报的key_value 2.2.1配置一个PTT按钮 找到平台对应内核dtsi配置文件，我这里的路径如下。 路径：\sc60_android_7.1.2_qcom_sz14\kernel\msm-3.18\arch\arm\boot\dts\qcom\msm8953-mtp.dtsi 在文件中的gpio_keys里面增加如下代码。
-ptt_button {label = &#34;ptt_button&#34;;gpios = &lt;&amp;tlmm 96 0x1&gt;;linux,input-type = &lt;1&gt;;linux,code = &lt;603&gt;;debounce-interval = &lt;15&gt;;}; 2.2.2.新增key value 路径：\sc60_android_7.1.2_qcom_sz14\kernel\msm-3.18\include\uapi\linux\input.h
-#define KEY_CUSTOM_PTT	603 2.3.frameworks native层转换kernel上报的key value值 路径：sc60_android_7.1.2_qcom_sz14\frameworks\native\include\android\keycodes.h 在枚举中增加
-enum { ...... AKEYCODE_PTT = 603 } 路径：sc60_android_7.1.2_qcom_sz14\frameworks\native\include\input\InputEventLabels.h 在static const InputEventLabel KEYCODES[] = {中增加
-static const InputEventLabel KEYCODES[] = { .]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>添加按键功能开发。</p>
+<p>android系统增加按键功能。</p>]]></description>
 </item>
 </channel>
 </rss>

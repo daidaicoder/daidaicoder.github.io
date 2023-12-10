@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>centos7下tcpdump抓包 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="centos7下tcpdump抓包" /><meta name="keywords" content='原创, linux, tcpdump, 抓包' /><meta itemprop="name" content="centos7下tcpdump抓包">
+<meta itemprop="description" content="centos7下tcpdump抓包"><meta itemprop="datePublished" content="2016-10-20T13:35:51+08:00" />
+<meta itemprop="dateModified" content="2016-10-20T13:35:51+08:00" />
+<meta itemprop="wordCount" content="793">
+<meta itemprop="keywords" content="原创,linux,tcpdump,抓包," /><meta property="og:title" content="centos7下tcpdump抓包" />
+<meta property="og:description" content="centos7下tcpdump抓包" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-10-20T13:35:51+08:00" />
+<meta property="article:modified_time" content="2016-10-20T13:35:51+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="centos7下tcpdump抓包"/>
+<meta name="twitter:description" content="centos7下tcpdump抓包"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/" /><link rel="prev" href="https://daizelai.github.io/posts/web/html/html%E6%A1%86%E6%9E%B6%E5%86%85%E9%A1%B5%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/" /><link rel="next" href="https://daizelai.github.io/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "centos7下tcpdump抓包",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/centos\/centos7%E4%B8%8Btcpdump\/tcpdump\/"
+    },"genre": "posts","keywords": "原创, linux, tcpdump, 抓包","wordcount":  793 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/centos\/centos7%E4%B8%8Btcpdump\/tcpdump\/","datePublished": "2016-10-20T13:35:51+08:00","dateModified": "2016-10-20T13:35:51+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "centos7下tcpdump抓包"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>centos7下tcpdump抓包</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/tcpdump/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> tcpdump</a>&ensp;<a href="/categories/%E6%8A%93%E5%8C%85/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 抓包</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-10-20 13:35:51"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-20">2016-10-20</time></span>&nbsp;<span title="更新于 2016-10-20 13:35:51"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-20">2016-10-20</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 793 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一tcpdump安装">一、tcpdump安装</a>
+      <ul>
+        <li><a href="#11tcpdump官方下载地址">1.1.tcpdump官方下载地址：</a></li>
+        <li><a href="#12配置">1.2.配置</a></li>
+        <li><a href="#13加入环境变量">1.3.加入环境变量</a></li>
+        <li><a href="#14查看版本">1.4.查看版本</a></li>
+      </ul>
+    </li>
+    <li><a href="#二tcpdump命令">二、tcpdump命令</a>
+      <ul>
+        <li><a href="#21tcpdump参数介绍">2.1.tcpdump参数介绍</a></li>
+        <li><a href="#22tcpdump主要选项">2.2.tcpdump主要选项</a></li>
+      </ul>
+    </li>
+    <li><a href="#三使用示例">三、使用示例</a>
+      <ul>
+        <li><a href="#监视指定网络接口的数据包">监视指定网络接口的数据包</a></li>
+        <li><a href="#tcpdump-与wireshark">tcpdump 与wireshark</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="一tcpdump安装">一、tcpdump安装</h2>
+<h3 id="11tcpdump官方下载地址">1.1.tcpdump官方下载地址：</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">http://www.tcpdump.org/release
+</code></pre><p>下载软件</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost tcpdump]# wget http://www.tcpdump.org/release/tcpdump-4.8.0.tar.gz
+[root@localhost tcpdump]# wget http://www.tcpdump.org/release/libpcap-1.8.0.tar.gz
+http://www.tcpdump.org/release
+</code></pre><h3 id="12配置">1.2.配置</h3>
+<p>1.配置时出现<code>Neither flex nor lex was found</code>错误</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linux
+......
+checking for lex... no
+configure: error: Neither flex nor lex was found.
+</code></pre><p>解决办法，安装flex</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost libpcap-1.8.0]# yum -y install flex
+......
+已安装:
+  flex.x86_64 0:2.5.37-3.el7                                                                                         
+
+完毕！
+</code></pre><p>2.配置时出现<code>yacc is insufficient to compile libpcap</code>错误</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linux
+checking for capable yacc/bison... insufficient
+configure: error: yacc is insufficient to compile libpcap.
+ libpcap requires Bison, Berkeley YACC, or another YACC compatible with them.
+</code></pre><p><code>bison</code>错误的解决办法，下载<a href="http://ftp.gnu.org/gnu/bison/" title="下载bison"target="_blank" rel="external nofollow noopener noreferrer">bison</a>，安装bison</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost libpcap-1.8.0]# yum -y install bison
+</code></pre><p>3.配置编译安装libpcap</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linux
+[root@localhost libpcap-1.8.0]# make
+[root@localhost libpcap-1.8.0]# make install
+</code></pre><p>4.安装tcpdump</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost tcpdump-4.8.0]# ./configure --prefix=/usr/local/tcpdump
+[root@localhost tcpdump-4.8.0]# make
+[root@localhost tcpdump-4.8.0]# make install
+</code></pre><h3 id="13加入环境变量">1.3.加入环境变量</h3>
+<p>把tcpdump命令加入环境变量</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost sbin]# vim /etc/profile
+PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:/usr/local/php/bin:/usr/local/tcpdump/sbin:$NODE_HOME/bin:$PATH
+[root@localhost sbin]#
+[root@localhost sbin]# . /etc/profile
+</code></pre><h3 id="14查看版本">1.4.查看版本</h3>
+<p>查看tcpdump安装版本</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost lai]# tcpdump --version
+tcpdump version 4.8.0
+libpcap version 1.8.0
+OpenSSL 1.0.1e-fips 11 Feb 2013
+</code></pre><h2 id="二tcpdump命令">二、tcpdump命令</h2>
+<h3 id="21tcpdump参数介绍">2.1.tcpdump参数介绍</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-a:将网络地址和广播地址转变成名字；
+-d:将匹配信息包的代码以人们能够理解的汇编格式给出；
+-dd:将匹配信息包的代码以c语言程序段的格式给出；
+-ddd:将匹配信息包的代码以十进制的形式给出；
+-e:在输出行打印出数据链路层的头部信息；
+-f:将外部的Internet地址以数字的形式打印出来；
+-l:使标准输出变为缓冲行形式；
+-n:不把网络地址转换成名字；
+-t:在输出的每一行不打印时间戳；
+-v:输出一个稍微详细的信息，例如在ip包中可以包括ttl和服务类型的信息；
+-vv:输出详细的报文信息；
+-c:在收到指定的包的数目后，tcpdump就会停止；
+-F:从指定的文件中读取表达式,忽略其它的表达式；
+-i:指定监听的网络接口，这在计算机具有多个网络界面时非常有用；
+-r:从指定的文件中读取包(这些包一般通过-w选项产生)；
+-w:直接将包写入文件中，并不分析和打印出来；
+-T:将监听到的包直接解释为指定的类型的报文，常见的类型有rpc （远程过程 调用）和snmp（简单网络管理协议）
+-s:从每个报文中截取snaplen字节的数据,而不是缺省的68(如果是SunOS的NIT,最小值是96).68个字节适用于IP,ICMP,
+   TCP和UDP,但是有可能截掉名字服务器和NFS报文的协议信息(见下面).输出时如果指定``[|proto]&#39;&#39;, tcpdump可以
+   指出那些捕捉量过小的数据报,这里的proto是截断发生处的协议层名称.注意,采用更大的捕捉范围既增加了处理报
+   文的时间,又相应的减少了报文的缓冲数量,可能导致报文的丢失。你应该把snaplen设的尽量小,只要能够容纳你需
+   要的协议信息就可以了.
+-S:显示绝对的,而不是相对的TCP序列号
+</code></pre><h3 id="22tcpdump主要选项">2.2.tcpdump主要选项</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td style="text-align:center">host, net, port</td>
+</tr>
+<tr>
+<td>方向</td>
+<td style="text-align:center">src, dst, src or   dst, src and dst</td>
+</tr>
+<tr>
+<td>协议</td>
+<td style="text-align:center">ip, tcp, udp,   arp, rarp, ether, fddi</td>
+</tr>
+<tr>
+<td>逻辑</td>
+<td style="text-align:center">and, or, not 或者 &amp;&amp;,  || , !</td>
+</tr>
+<tr>
+<td>选项</td>
+<td style="text-align:center">-i指定网卡, -n显示ip, -A文本显示<!-- raw HTML omitted -->-c抓包数, -x/-xx/-X/-XX二进制显示, -r读, -w写</td>
+</tr>
+</tbody>
+</table>
+<p><strong>类型</strong></p>
+<ul>
+<li>host指定主机或目的地址。</li>
+<li>net制定网络地址。net可以用来指定子网。</li>
+<li>port指定监听端口。</li>
+<li>如果要制定多种类型，用逻辑运算符号连接。</li>
+<li>tcpdump net 192.168.1。监听子网192.168.1.0</li>
+<li>tcpdump net 192.168.1.0/24</li>
+<li>tcpdump host 192.168.1.124 and port 80。监听指定主机的80端口。</li>
+</ul>
+<p><strong>方向</strong></p>
+<ul>
+<li>src指定源地址，dst指定目的地址。</li>
+<li>监听来自192.168.1.10 或 192.168.1.11的80端口：</li>
+<li>tcpdump port 80 and /(src 192.168.1.10 or src 192.168.1.11/)</li>
+</ul>
+<p><strong>协议</strong></p>
+<ul>
+<li>用来捕获特定协议的数据包有：ether(ethernet), tcp, udp, icmp, ip, ip6(ipv6), arp, rarp(reverse arp)等。</li>
+</ul>
+<p><strong>逻辑</strong></p>
+<ul>
+<li>tcpdump port 80 and /(host 192.168.1.10 or host 192.168.1.11/)。监听主机192.168.1.10或 192.168.1.11的80端口。</li>
+<li>使用()一定要用/转义。</li>
+<li>获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包：</li>
+</ul>
+<p>tcpdump ip host 210.27.48.1 and ! 210.27.48.2</p>
+<p><strong>选项</strong></p>
+<ul>
+<li>
+<p>-i：指定网卡。</p>
+</li>
+<li>
+<p>-n：显示ip，而不是主机名。</p>
+</li>
+<li>
+<p>-c：指定抓多少个包后退出。</p>
+</li>
+<li>
+<p>-A：以ASCII方式显示包内容，这个选项对文本格式的协议包非常有用。</p>
+</li>
+<li>
+<p>-s：指定抓包显示一行的宽度，-s0表示显示完整的包，经常和-A一起用。</p>
+</li>
+<li>
+<p>-x/-xx/-X/-XX：以十六进制显示包内容，几个选项只有细微的差别，详见man手册。</p>
+</li>
+<li>
+<p>-vv：详细信息。</p>
+</li>
+<li>
+<p>-r：从文件中读取。</p>
+</li>
+<li>
+<p>-w：导出到指定文件。</p>
+</li>
+<li>
+<p>监听来自172.25.38.145到端口7012的数据，并到处到指定文件：</p>
+</li>
+<li>
+<p>tcpdump tcp dst port 7012 and src host 172.25.38.145 -vv –w output.dat</p>
+</li>
+<li>
+<p>从指定文件加载监听数据：</p>
+</li>
+<li>
+<p>tcpdump -r output.dat</p>
+</li>
+<li>
+<p>监听网卡eth1端口7012的数据：</p>
+</li>
+<li>
+<p>tcpdump tcp port 7012 -ieth1 –n</p>
+</li>
+</ul>
+<h2 id="三使用示例">三、使用示例</h2>
+<h3 id="监视指定网络接口的数据包">监视指定网络接口的数据包</h3>
+<p>这里的enp0s8相当于eth0，可以自己根据需要修改。 普通情况下，<code>直接启动tcpdump</code>将监视第一个网络接口上所有流过的数据包。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost lai]# tcpdump -i enp0s8
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on enp0s8, link-type EN10MB (Ethernet), capture size 262144 bytes
+11:04:52.350757 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 759434395:759434591, ack 2468673807, win 622, length 196
+11:04:52.351159 IP 10.60.0.83.50275 &gt; localhost.localdomain.ssh: Flags [.], ack 196, win 251, length 0
+11:04:52.351857 IP localhost.localdomain.58933 &gt; dc.gbcom.com.cn.domain: 63716+ PTR? 83.0.60.10.in-addr.arpa. (41)
+11:04:52.352972 IP dc.gbcom.com.cn.domain &gt; localhost.localdomain.58933: 63716 NXDomain* 0/1/0 (103)
+11:04:52.354867 IP localhost.localdomain.48141 &gt; dc.gbcom.com.cn.domain: 5278+ PTR? 85.0.60.10.in-addr.arpa. (41)
+11:04:52.355886 IP dc.gbcom.com.cn.domain &gt; localhost.localdomain.48141: 5278 NXDomain* 0/1/0 (118)
+11:04:52.356364 IP localhost.localdomain.49630 &gt; dc.gbcom.com.cn.domain: 61157+ PTR? 249.1.1.10.in-addr.arpa. (41)
+11:04:52.356661 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 196:488, ack 1, win 622, length 292
+11:04:52.357351 IP dc.gbcom.com.cn.domain &gt; localhost.localdomain.49630: 61157* 1/0/0 PTR dc.gbcom.com.cn. (70)
+11:04:52.357875 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 488:1308, ack 1, win 622, length 820
+11:04:52.358296 IP 10.60.0.83.50275 &gt; localhost.localdomain.ssh: Flags [.], ack 1308, win 256, length 0
+11:04:52.358613 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 1308:1584, ack 1, win 622, length 276
+11:04:52.358770 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 1584:1748, ack 1, win 622, length 164
+11:04:52.358917 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 1748:1912, ack 1, win 622, length 164
+11:04:52.359364 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 1912:2076, ack 1, win 622, length 164
+11:04:52.359390 IP 10.60.0.83.50275 &gt; localhost.localdomain.ssh: Flags [.], ack 1748, win 254, length 0
+11:04:52.359685 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 2076:2352, ack 1, win 622, length 276
+11:04:52.359752 IP 10.60.0.83.50275 &gt; localhost.localdomain.ssh: Flags [.], ack 2076, win 253, length 0
+11:04:52.359995 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 2352:2628, ack 1, win 622, length 276
+11:04:52.360148 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 2628:2792, ack 1, win 622, length 164
+11:04:52.360292 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 2792:2956, ack 1, win 622, length 164
+11:04:52.360693 IP 10.60.0.83.50275 &gt; localhost.localdomain.ssh: Flags [.], ack 2628, win 251, length 0
+11:04:52.360707 IP 10.60.0.83.50275 &gt; localhost.localdomain.ssh: Flags [.], ack 2956, win 256, length 0
+11:04:52.360871 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 2956:3328, ack 1, win 622, length 372
+11:04:52.361020 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 3328:3492, ack 1, win 622, length 164
+11:04:52.361164 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 3492:3656, ack 1, win 622, length 164
+11:04:52.361306 IP localhost.localdomain.ssh &gt; 10.60.0.83.50275: Flags [P.], seq 3656:3820, ack 1, win 622, length 164
+11:04:52.361740 IP 10.60.0.83.50275 &gt; localhost.localdomain.ssh: Flags [.], ack 3492, win 254, length 0
+11:04:52.361754 IP 10.60.0.83.50275 &gt; localhost.localdomain.ssh: Flags [.], ack 3820, win 253, length 0
+</code></pre><h3 id="tcpdump-与wireshark">tcpdump 与wireshark</h3>
+<p>在Linux下很难找到一个好用的图形化抓包工具，可以用Tcpdump + Wireshark 的完美组合实现：在 Linux 里抓包，然后在Windows 里分析包。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">tcpdump tcp -i eth1 -t -s 0 -c 100 and dst port ! 22 and src net 192.168.1.0/24 -w ./target.cap
+</code></pre><pre tabindex="0"><code>(1)tcp: ip icmp arp rarp 和 tcp、udp、icmp这些选项等都要放到第一个参数的位置，用来过滤数据报的类型
+(2)-i eth1 : 只抓经过接口eth1的包
+(3)-t : 不显示时间戳
+(4)-s 0 : 抓取数据包时默认抓取长度为68字节。加上-S 0 后可以抓到完整的数据包
+(5)-c 100 : 只抓取100个数据包
+(6)dst port ! 22 : 不抓取目标端口是22的数据包
+(7)src net 192.168.1.0/24 : 数据包的源网络地址为192.168.1.0/24
+(8)-w ./target.cap : 保存成cap文件，方便用ethereal(即wireshark)分析
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-10-20 13:35:51">更新于 2016-10-20&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/tcpdump/' class="post-tag">tcpdump</a><a href='/tags/%E6%8A%93%E5%8C%85/' class="post-tag">抓包</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/web/html/html%E6%A1%86%E6%9E%B6%E5%86%85%E9%A1%B5%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/" class="post-nav-item" rel="prev" title="html框架内页刷新页面"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>html框架内页刷新页面</a>
+      <a href="/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/" class="post-nav-item" rel="next" title="vmbox扩容">vmbox扩容<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

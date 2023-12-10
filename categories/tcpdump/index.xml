@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>tcpdump - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/tcpdump/</link>
+    <description>tcpdump - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 20 Oct 2016 13:35:51 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/tcpdump/" rel="self" type="application/rss+xml" /><item>
+  <title>centos7下tcpdump抓包</title>
+  <link>https://daizelai.github.io/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/</link>
+  <pubDate>Thu, 20 Oct 2016 13:35:51 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/</guid>
+  <description><![CDATA[一、tcpdump安装 1.1.tcpdump官方下载地址： http://www.tcpdump.org/release 下载软件
+[root@localhost tcpdump]# wget http://www.tcpdump.org/release/tcpdump-4.8.0.tar.gz[root@localhost tcpdump]# wget http://www.tcpdump.org/release/libpcap-1.8.0.tar.gzhttp://www.tcpdump.org/release 1.2.配置 1.配置时出现Neither flex nor lex was found错误
+[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linux......checking for lex... noconfigure: error: Neither flex nor lex was found. 解决办法，安装flex
+[root@localhost libpcap-1.8.0]# yum -y install flex......已安装:flex.x86_64 0:2.5.37-3.el7 完毕！ 2.配置时出现yacc is insufficient to compile libpcap错误
+[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linuxchecking for capable yacc/bison... insufficientconfigure: error: yacc is insufficient to compile libpcap.]]></description>
+</item>
+</channel>
+</rss>

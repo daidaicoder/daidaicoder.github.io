@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>撤销push - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E6%92%A4%E9%94%80push/</link>
+    <description>撤销push - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Feb 2023 12:11:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E6%92%A4%E9%94%80push/" rel="self" type="application/rss+xml" /><item>
+  <title>本地命令行删除分支</title>
+  <link>https://daizelai.github.io/posts/git/git/</link>
+  <pubDate>Wed, 01 Feb 2023 12:11:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>记录一下已经push到服务器端的代码回退方法，撤销操作包括：</p>
+<ol>
+<li>撤销push提交</li>
+<li>撤销push代码</li>
+<li>回退push提交</li>
+</ol>]]></description>
+</item>
+</channel>
+</rss>

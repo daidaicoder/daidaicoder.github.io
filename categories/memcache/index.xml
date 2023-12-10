@@ -3,23 +3,32 @@
     <title>memcache - 分类 - 来来往往</title>
     <link>https://daizelai.github.io/categories/memcache/</link>
     <description>memcache - 分类 - 来来往往</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 15 Dec 2014 18:44:29 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/categories/memcache/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 24 Sep 2016 14:36:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/memcache/" rel="self" type="application/rss+xml" /><item>
+  <title>Windows安装配置php&#43;memcached的方法</title>
+  <link>https://daizelai.github.io/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+  <pubDate>Sat, 24 Sep 2016 14:36:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
+  <description><![CDATA[一、软件列表 下面是涉及到的软件列表。
+Apache2.2+php5.2.5+mysql5.5.19memcached:memcached-win32-1.4.4-14.zipmemcache_dll/php5.2/php_memcache.dll二、Windows下Memcached的安装配置方法 将第一个包解压放某个盘下面，比如在c:\memcached。 在终端（也即cmd命令界面）下输入 &lsquo;c:\memcached\memcached.exe -d install&rsquo; 安装。 再输入： &lsquo;c:\memcached\memcached.exe -d start&rsquo; 启动。 需要注意的: 以后memcached将作为windows的一个服务每次开机时自动启动。这样服务器端已经安装完毕了。
+在控制台输入命令安装：c:/memcached/memcached.exe -d install 启动：c:/memcached/memcached.exe -d start 或：net start &#34;memcached Server&#34; 下载php_memcache.dll 文件，把它放入php文件夹的ext目录中。
+在php.ini加入一行引用扩展，代码如下：
+extension=php_memcache.dll
+接着在 php.ini 文件里加上:
+[Memcache] memcache.allow_failover = 1 memcache.max_failover_attempts=20 memcache.chunk_size =8192 memcache.default_port = 11211 最好就放在刚才写 &ldquo;extension=php_memcache.dll&rdquo; 的下面。（这是默认的一些配置）
+重新启动Apache，然后查看一下phpinfo，如果有 memcache 的说明，那么就说明安装成功啦！ 三、简单使用 3.1.示例 写一个 example.php 文件（更多使用方法可以参看 PHP 手册里的 Memcache Functions 使用说明），测试代码如下：
+&lt;?php $memcache = new Memcache; $memcache-&gt;connect(&#39;localhost&#39;, 11211) or die (&#34;Could not connect&#34;); $version = $memcache-&gt;getVersion(); echo &#34;Server&#39;s version: &#34;.]]></description>
+</item>
+<item>
   <title>Windows下memcache操作手记</title>
   <link>https://daizelai.github.io/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
   <pubDate>Mon, 15 Dec 2014 18:44:29 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-  <description><![CDATA[Windows下memcache常用操作
-一、修改memcache端口 1.memcache的默认端口11211
-2.直接指定端口启动是无效的。
-memcached -p 15000 -d start // 这样做是无效的 3.于是直接修改注册表
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server 其中的ImagePath项的值为：
-&#34;c:\memcached\memcached.exe&#34; -d runservice 改成：
-&#34;c:\memcached\memcached.exe&#34; -p 15000 -d runservice 二、清除memcache中的缓存 1.在本地进入dos命令行
-2.进入控制台
-C:\Users\Administrator&gt;telnet localhost 11211（12000） 3.清除
-flush_all OK 4.最后退出telnet使用quit命令,再exit退出远程主机
-quit 遗失对主机的连接。 ]]></description>
+  <description><![CDATA[<p>Windows下memcache常用操作</p>
+<h2 id="一修改memcache端口">一、修改memcache端口</h2>
+<p>1.memcache的默认端口11211</p>
+<p>2.直接指定端口启动是无效的。</p>]]></description>
 </item>
 </channel>
 </rss>

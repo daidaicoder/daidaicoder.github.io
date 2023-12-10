@@ -1,0 +1,52 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>网关 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E7%BD%91%E5%85%B3/</link>
+    <description>网关 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 17 Oct 2016 21:20:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E7%BD%91%E5%85%B3/" rel="self" type="application/rss+xml" /><item>
+  <title>CGW500网关抓包</title>
+  <link>https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/</link>
+  <pubDate>Mon, 17 Oct 2016 21:20:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/</guid>
+  <description><![CDATA[一、CGW500网关抓包 1.使用tftp连接网关 在电脑和网关间进行文件传输，这里使用tftp工具，这里的网关为CGW500，IP地址为10.60.0.37，注意一点，哪里打开运行了tftp.exe，那么这里就是服务器，比如这里是在10.60.0.95上面打开的，10.60.0.95本地电脑就是服务器。
+使用tftp连接网关 2.切换到tmp目录下 因为CGW500只有/tmp目录才能读写保存，所以切换到该目录下。
+# cd /tmp 3.把tcpdump导入网关 Tftp导入tcpdump，语法格式如下：
+# tftp –gr tcpdump xx.xx.xx.xx 从tftp服务器端也就是本地电脑（10.60.0.95）上传文件tcpdump到网关（10.60.0.37）
+/tmp # tftp -gr tcpdump 10.60.0.95 /tmp # ls -lh tcpdump -rw-r--r-- 1 root root 2.1M Oct 14 16:45 tcpdump 4.修改权限 /tmp # chmod u+x tcpdump 5.抓包 抓包语法格式：
+/tmp # ./tcpdump –i br0 –w pingan.cap 查看要抓的SSID所在网口名称
+/tmp # iwconfigap0_5 IEEE 802.11ng ESSID:&#34;00000003&#34; 抓包
+/tmp # ./tcpdump -i ap0_5 -w pingan.captcpdump: WARNING: ap0_5: no IPv4 address assignedtcpdump: listening on ap0_5, link-type EN10MB (Ethernet), capture size 65535 bytes^C339 packets captured339 packets received by filter0 packets dropped by kernel 提示： 如果想判断报文有没有发出去，比如平安APP发送的数据到test上面去，可以抓一下ech0的包，看看有没有数据，当然这个eth0也要根据情况得到的。]]></description>
+</item>
+<item>
+  <title>网关ping外网问题</title>
+  <link>https://daizelai.github.io/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B02%E4%B9%8Bping%E5%A4%96%E7%BD%91%E9%97%AE%E9%A2%98/</link>
+  <pubDate>Mon, 17 Oct 2016 19:26:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B02%E4%B9%8Bping%E5%A4%96%E7%BD%91%E9%97%AE%E9%A2%98/</guid>
+  <description><![CDATA[一、问题描述 通过厂园网关使用手记操作后，已经可以通过SSH连接CGW3000T了，于是就想把网关用起来。
+把大网关接上AP后，挂到本地平台，却总是上不了网，接AP这里注意一下，需要使用POE 供电。
+于是登录网关发现ping外网拼不通。
+[root@CGW3000T ~]# ping baidu.comping: unknown host baidu.com ping我本地的IP也拼不通。
+[root@CGW3000T ~]# ping 10.60.0.95PING 10.60.0.95 (10.60.0.95) 56(84) bytes of data.^C--- 10.60.0.95 ping statistics ---4 packets transmitted, 0 received, 100% packet loss, time 3894ms 二、问题解决 折腾了1，2个小时后，还是无能为力，于是找了网关大神郭，终于弄清楚了原因了。
+2.1.ping外网拼不通的问题解决 [root@CGW3000T ~]# route -nKernel IP routing tableDestination Gateway Genmask Flags Metric Ref Use Iface10.60.0.0 0.0.0.0 255.255.0.0 U 0 0 0 eth0172.16.0.0 0.0.0.0 255.]]></description>
+</item>
+<item>
+  <title>网关操作手记</title>
+  <link>https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/</link>
+  <pubDate>Thu, 30 Jul 2015 14:56:12 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/</guid>
+  <description><![CDATA[一、登录网关 登录网关一般使用SSH就可以了，AP则使用telnet，当然也可以通过串登录。
+1.网关登录
+填写名称和选择通信协议，协议为SSH2
+网关登录 配置主机地址及连接端口，SSH连接端口默认为22
+网关登录 2.AP登录
+填写名称和选择通信协议，AP登录的话协议为Telnet
+AP登录 配置主机地址及连接端口，Telnet连接端口默认为23
+AP登录 二、常用命令 2.1.两大武器pactl和gctl 直接敲入pactl和gctl，默认显示的是帮助，可以查看有哪些参数及如何使用。
+1.pactl
+~ # pactlParameters invalid!help -- [subcmd]Show help information. {} means &#34;Required&#34;; [] means &#34;Optional&#34;; | means &#34;One of&#34;version -- Get Current/Dependent version of application and moduledebuglevel -- [0-7]Set or get debug level of kernel module. Set 7 to print the most informationauth_state -- {xx:xx:xx:xx:xx:xx} {xxx.xxx.xxx.xxx} [0|1|2]Set or get authentication state,0-not_auth,1-being_auth,2-authhost_ip -- [xxx.]]></description>
+</item>
+</channel>
+</rss>

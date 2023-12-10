@@ -9,19 +9,9 @@
   <pubDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/windows/windowsntp/</guid>
-  <description><![CDATA[windows10搭建本地NTP服务器 一、描述 因二开业务需要，将在本地Windows10笔记本上面搭建一个本地NTP服务器，用于车载台SC60终端中的车载台APP的NTP时间同步服务器。
-by daizelai on 2021/12/1 11:03
-二、搭建 2.1.启用NTP服务器 先打开注册表，使用win+r命令并输入regedit。
-打开注册表[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\NtpServer]
-Enabled值修改为1，这里默认值为0，1为启用NTP服务器。
-2.2.修改时间源可靠性 打开注册表中[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Config\AnnounceFlags]
-把AnnounceFlags默认的值10修改为5，5的意思就是自身为可靠的时间源，注意这里的10是十进制，如果是十六进制的话是字母a。
-2.3.设置NTP服务器为开机启动 使用Win+r命令打开服务窗口，输入services.msc，找到Windows Time服务，启动并设置开机启动
-2.4.重启NTP服务 使用快捷键Win+X，打开Windows PowerShell(管理员)，然后输入命令重启NTP服务器，让修改生效。
-Windows PowerShell版权所有 (C) Microsoft Corporation。保留所有权利。尝试新的跨平台 PowerShell https://aka.ms/pscore6PS C:\WINDOWS\system32&gt; net stop w32timeWindows Time 服务正在停止.Windows Time 服务已成功停止。PS C:\WINDOWS\system32&gt; net start w32timeWindows Time 服务正在启动 .Windows Time 服务已经启动成功。PS C:\WINDOWS\system32&gt; 当然也可以直接在services.msc服务窗口，停止启动NTP服务。
-2.5.检测命令 检测命令
-w32tm /stripchart /computer:ntp_server_address 检测NTP服务器是否可用。
-PS C:\WINDOWS\system32&gt; w32tm /stripchart /computer:127.0.0.1正在跟踪 127.0.0.1 [127.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>因二开业务需要，将在本地Windows10笔记本上面搭建一个本地NTP服务器，用于车载台SC60终端中的车载台APP的NTP时间同步服务器。</p>]]></description>
 </item>
 </channel>
 </rss>

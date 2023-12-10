@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>CentOS7一些常用笔记 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="CentOS7一些常用笔记" /><meta name="keywords" content='linux, netstat, 原创' /><meta itemprop="name" content="CentOS7一些常用笔记">
+<meta itemprop="description" content="CentOS7一些常用笔记"><meta itemprop="datePublished" content="2016-01-09T20:33:19+08:00" />
+<meta itemprop="dateModified" content="2016-01-09T20:33:19+08:00" />
+<meta itemprop="wordCount" content="1049">
+<meta itemprop="keywords" content="linux,netstat,原创," /><meta property="og:title" content="CentOS7一些常用笔记" />
+<meta property="og:description" content="CentOS7一些常用笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-01-09T20:33:19+08:00" />
+<meta property="article:modified_time" content="2016-01-09T20:33:19+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CentOS7一些常用笔记"/>
+<meta name="twitter:description" content="CentOS7一些常用笔记"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/linux-lamp-yum%E5%AE%89%E8%A3%85/linux-lamp-yum%E5%AE%89%E8%A3%85/" /><link rel="next" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "CentOS7一些常用笔记",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0\/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0\/"
+    },"genre": "posts","keywords": "linux, netstat, 原创","wordcount":  1049 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0\/centos7%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AC%94%E8%AE%B0\/","datePublished": "2016-01-09T20:33:19+08:00","dateModified": "2016-01-09T20:33:19+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "CentOS7一些常用笔记"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>CentOS7一些常用笔记</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/netstat/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> netstat</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-01-09 20:33:19"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-01-09">2016-01-09</time></span>&nbsp;<span title="更新于 2016-01-09 20:33:19"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-01-09">2016-01-09</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1049 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 5 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一centos7中启动停止重启服务命令">一、CentOS7中启动/停止/重启服务命令</a>
+      <ul>
+        <li><a href="#11简要">1.1、简要</a></li>
+        <li><a href="#12使用systemctl来启动停止重启服务">1.2、使用systemctl来启动/停止/重启服务</a></li>
+        <li><a href="#13检查服务状态">1.3、检查服务状态</a></li>
+        <li><a href="#14使用启用禁用服务来控制开机启动">1.4、使用启用/禁用服务来控制开机启动</a></li>
+      </ul>
+    </li>
+    <li><a href="#二centos7防火墙配置">二、centos7防火墙配置</a>
+      <ul>
+        <li><a href="#21简要">2.1.简要</a></li>
+        <li><a href="#22配置">2.2.配置</a></li>
+        <li><a href="#23常用命令">2.3.常用命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#三centos7之telnet">三、centos7之telnet</a>
+      <ul>
+        <li><a href="#31检查">3.1.检查</a></li>
+        <li><a href="#32安装">3.2.安装</a></li>
+        <li><a href="#33查询安装情况">3.3.查询安装情况</a></li>
+        <li><a href="#34服务管理">3.4.服务管理</a></li>
+      </ul>
+    </li>
+    <li><a href="#四centos7之开机etcrclocal-不执行的问题">四、centos7之开机/etc/rc.local 不执行的问题</a>
+      <ul>
+        <li><a href="#41问题发现">4.1.问题发现</a></li>
+        <li><a href="#42问题解决">4.2.问题解决</a></li>
+      </ul>
+    </li>
+    <li><a href="#五centos7突然变成ipv6并ssh没有ip连接了">五、centos7突然变成IPV6并SSH没有IP连接了。</a>
+      <ul>
+        <li><a href="#51简要">5.1.简要</a></li>
+        <li><a href="#52排查">5.2.排查</a></li>
+        <li><a href="#53解决方案">5.3.解决方案</a></li>
+      </ul>
+    </li>
+    <li><a href="#六centos7安装mysql缺乏yum源怎么安装">六、Centos7安装mysql缺乏yum源怎么安装</a>
+      <ul>
+        <li><a href="#61确保centos安装了wget没有的话安装wget">6.1.确保centos安装了wget，没有的话安装wget</a></li>
+        <li><a href="#62下载mysql的repo源">6.2.下载mysql的repo源</a></li>
+        <li><a href="#63安装mysql-community-release-el7-5noarchrpm包">6.3.安装mysql-community-release-el7-5.noarch.rpm包</a></li>
+        <li><a href="#64安装这个包后会获得两个mysql的yum-repo源">6.4.安装这个包后，会获得两个mysql的yum repo源</a></li>
+        <li><a href="#65然后安装mysql">6.5.然后安装mysql</a></li>
+      </ul>
+    </li>
+    <li><a href="#七centos7图形界面与命令行相互切换的方法">七、centos7图形界面与命令行相互切换的方法</a>
+      <ul>
+        <li><a href="#71打开系统启动顺序的配置文件">7.1.打开系统启动顺序的配置文件</a></li>
+        <li><a href="#72编辑配置文件">7.2.编辑配置文件</a></li>
+        <li><a href="#73修改启动数字">7.3.修改启动数字</a></li>
+        <li><a href="#74编辑完成后保存即可">7.4.编辑完成后保存即可</a></li>
+        <li><a href="#75重启系统">7.5.重启系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#八centos7配置更新国内yum源">八、Centos7配置更新国内yum源</a></li>
+    <li><a href="#九centos7-rpm安装mysql60数据库">九、centos7 RPM安装MySQL6.0数据库</a>
+      <ul>
+        <li><a href="#91文件准备">9.1.文件准备</a></li>
+        <li><a href="#92安装">9.2.安装</a></li>
+        <li><a href="#93mysql启动停止">9.3.MySQL启动、停止</a></li>
+        <li><a href="#94设置mysql用户密码">9.4.设置MySQL用户密码</a></li>
+        <li><a href="#95修改root密码">9.5.修改root密码</a></li>
+        <li><a href="#96其它">9.6.其它</a></li>
+      </ul>
+    </li>
+    <li><a href="#十rpm卸载多个有依赖的rpm包">十、rpm卸载多个有依赖的rpm包</a>
+      <ul>
+        <li><a href="#101rpm卸载时同时匹配多个包">10.1.rpm卸载时同时匹配多个包：</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h2 id="一centos7中启动停止重启服务命令">一、CentOS7中启动/停止/重启服务命令</h2>
+<h3 id="11简要">1.1、简要</h3>
+<p>CentOS7.0中一个最主要的改变，就是切换到了systemd。它用于替代红帽企业版Linux前任版本中的SysV和Upstart，对系统和服务进行管理。systemd兼容SysV和Linux标准组的启动脚本。</p>
+<p>Systemd是一个Linux操作系统下的系统和服务管理器。它被设计成向后兼容SysV启动脚本，并提供了大量的特性，如开机时平行启动系统服务，按需启动守护进程，支持系统状态快照，或者基于依赖的服务控制逻辑。</p>
+<p>先前的使用SysV初始化或Upstart的红帽企业版Linux版本中，使用位于/etc/rc.d/init.d/目录中的bash初始化脚本进行管理。而在RHEL 7/CentOS 7中，这些启动脚本被服务单元取代了。服务单元以.service文件扩展结束，提供了与初始化脚本同样的用途。要查看、启动、停止、重启、启用或者禁用系统服务，你要使用systemctl来代替旧的service命令。</p>
+<pre><code>注：为了向后兼容，旧的service命令在CentOS 7中仍然可用，它会重定向所有命令到新的systemctl工具。
+</code></pre>
+<h3 id="12使用systemctl来启动停止重启服务">1.2、使用systemctl来启动/停止/重启服务</h3>
+<p>启动一个服务：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# systemctl start httpd.service  
+[root@localhost ~]# ps -ef | grep httpd          
+root      9856     1  0 11:10 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    9857  9856  0 11:10 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    9858  9856  0 11:10 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    9859  9856  0 11:10 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    9860  9856  0 11:10 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    9861  9856  0 11:10 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+root      9863  9761  0 11:10 pts/0    00:00:00 grep --color=auto httpd
+</code></pre><p>停掉它，需要以root身份使用该命令：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# systemctl stop httpd.service 
+[root@localhost ~]# ps -ef | grep httpd         
+root      9877  9761  0 11:22 pts/0    00:00:00 grep --color=auto httpd
+</code></pre><blockquote>
+<p>要重启，你可以使用restart选项，如果服务在运行中，它将重启服务；如果服务不在运行中，它将会启动。你也可以使用try-start选项，它只会在服务已经在运行中的时候重启服务。同时，reload选项你也可以有，它会重新加载配置文件。</p>
+</blockquote>
+<pre tabindex="0"><code>[root@localhost ~]# systemctl restart httpd.service
+[root@localhost ~]# systemctl try-restart httpd.service
+[root@localhost ~]# systemctl reload httpd.service
+</code></pre><h3 id="13检查服务状态">1.3、检查服务状态</h3>
+<p>要检查服务状态，你可以使用status选项:</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# systemctl status httpd.service
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since 日 2016-09-18 11:23:47 CST; 3min 59s ago
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 9896 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=0/SUCCESS)
+  Process: 9913 ExecReload=/usr/sbin/httpd $OPTIONS -k graceful (code=exited, status=0/SUCCESS)
+ Main PID: 9900 (httpd)
+   Status: &#34;Total requests: 0; Current requests/sec: 0; Current traffic:   0 B/sec&#34;
+   CGroup: /system.slice/httpd.service
+           ├─9900 /usr/sbin/httpd -DFOREGROUND
+           ├─9914 /usr/sbin/httpd -DFOREGROUND
+           ├─9915 /usr/sbin/httpd -DFOREGROUND
+           ├─9916 /usr/sbin/httpd -DFOREGROUND
+           ├─9917 /usr/sbin/httpd -DFOREGROUND
+           └─9918 /usr/sbin/httpd -DFOREGROUND
+</code></pre><h3 id="14使用启用禁用服务来控制开机启动">1.4、使用启用/禁用服务来控制开机启动</h3>
+<p>你也可以使用enable/disable选项来控制一个服务是否开机启动，命令如下：</p>
+<pre><code># systemctl enable httpd.service
+# systemctl disable httpd.service
+</code></pre>
+<h2 id="二centos7防火墙配置">二、centos7防火墙配置</h2>
+<h3 id="21简要">2.1.简要</h3>
+<p>CentOS7使用的是Linux Kernel 3.10.0的内核版本，新版的Kernel内核已经有了防火墙netfilter，并且firewalld的使用效能更高，稳定性更好。</p>
+<h3 id="22配置">2.2.配置</h3>
+<p>CentOS7配置防火墙的两种方法：</p>
+<p>方法一，使用xml配置文件的方式配置：</p>
+<pre><code>cp /usr/lib/firewalld/services/http.xml /etc/firewalld/services/firewall-cmd --reload
+</code></pre>
+<p>方法二，使用命令的方式配置：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">##Add
+firewall-cmd --permanent --zone=public --add-port=80/tcp
+##Remove
+firewall-cmd --permanent --zone=public --remove-port=80/tcp
+##Reload
+firewall-cmd --reload
+</code></pre><p>其中，方法二的配置方式是间接修改/etc/firewalld/zones/public.xml文件，方案一也需要在public.xml里面新增，否则http的防火墙规则不会生效，而且两种配置方式都需要重新载入防火墙。</p>
+<h3 id="23常用命令">2.3.常用命令</h3>
+<p>查看防火墙状态</p>
+<pre><code>systemctl status firewalld.service
+</code></pre>
+<p>启动防火墙</p>
+<pre><code>systemctl start firewalld.service
+</code></pre>
+<p>关闭防火墙</p>
+<pre><code>systemctl stop firewalld.service
+</code></pre>
+<p>重新启动防火墙</p>
+<pre><code>systemctl restart firewalld.service
+</code></pre>
+<h2 id="三centos7之telnet">三、centos7之telnet</h2>
+<h3 id="31检查">3.1.检查</h3>
+<p>首先要检查CentOS上是否装有三个软件—telnet、telnet-server、xinetd</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd]# rpm -qa telnet-server
+[root@localhost httpd]# rpm -qa telnet
+[root@localhost httpd]# rpm -qa xinetd
+[root@localhost httpd]# yum list | grep telnet
+dcap-tunnel-telnet.x86_64               2.47.10-3.el7                  epel     
+libtelnet.x86_64                        0.21-5.el7                     epel     
+libtelnet-devel.x86_64                  0.21-5.el7                     epel     
+libtelnet-utils.x86_64                  0.21-5.el7                     epel     
+telnet.x86_64                           1:0.17-59.el7                  base     
+telnet-server.x86_64                    1:0.17-59.el7                  base     
+</code></pre><h3 id="32安装">3.2.安装</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd]# yum -y install telnet-server
+已安装:
+  telnet-server.x86_64 1:0.17-59.el7                                                                                 
+
+完毕！
+
+[root@localhost httpd]# yum -y install telnet
+已安装:
+  telnet.x86_64 1:0.17-59.el7                                                                                        
+
+完毕！
+
+[root@localhost httpd]# yum -y install xinetd
+已安装:
+  xinetd.x86_64 2:2.3.15-12.el7                                                                                      
+
+完毕！
+</code></pre><h3 id="33查询安装情况">3.3.查询安装情况</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd]# rpm -qa telnet-server 
+telnet-server-0.17-59.el7.x86_64
+[root@localhost httpd]# rpm -qa telnet
+telnet-0.17-59.el7.x86_64
+[root@localhost httpd]# rpm -qa xinetd
+xinetd-2.3.15-12.el7.x86_64 
+</code></pre><h3 id="34服务管理">3.4.服务管理</h3>
+<p>将xinetd服务加入开机自启动:</p>
+<pre><code>[root@localhost httpd]# systemctl enable xinetd.service
+</code></pre>
+<p>将telnet服务加入开机自启动：</p>
+<pre><code>[root@localhost httpd]# systemctl enable telnet.socket
+</code></pre>
+<p>启动以上两个服务：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost httpd]# systemctl start telnet.socket 
+[root@localhost httpd]# systemctl start xinetd
+</code></pre><h2 id="四centos7之开机etcrclocal-不执行的问题">四、centos7之开机/etc/rc.local 不执行的问题</h2>
+<h3 id="41问题发现">4.1.问题发现</h3>
+<p>在centos7 的/etc/rc.local设置了memcached开机自启动，但机器重启后却没有执行，于是认真看了下/etc/rc.local文件内容的就发现了问题的原因了。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">#!/bin/bash
+# THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES
+#
+# It is highly advisable to create own systemd services or udev rules
+# to run scripts during boot instead of using this file.
+#
+# In constrast to previous versions due to parallel execution during boot
+# this script will NOT be run after all other services.
+#
+# Please note that you must run &#39;chmod +x /etc/rc.d/rc.local&#39; to ensure
+# that this script will be executed during boot.
+</code></pre><p>翻译：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">#这个文件是为了兼容性的问题而添加的。
+#
+#强烈建议创建自己的systemd服务或udev规则来在开机时运行脚本而不是使用这个文件。
+#
+#与以前的版本引导时的并行执行相比较，这个脚本将不会在其他所有的服务后执行。
+#
+#请记住，你必须执行“chmod +x /etc/rc.d/rc.local”来确保确保这个脚本在引导时执行。
+</code></pre><h3 id="42问题解决">4.2.问题解决</h3>
+<p>看了一下/etc/rc.local的权限:</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ll /etc/rc.local 
+lrwxrwxrwx. 1 root root 13 9月  18 17:54 /etc/rc.local -&gt; rc.d/rc.local
+[root@localhost ~]# ll /etc/rc.d/rc.local 
+-rw-r--r--. 1 root root 562 9月  19 16:14 /etc/rc.d/rc.local
+</code></pre><p>为/etc/rc.local添加权限：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# chmod +x /etc/rc.d/rc.local
+[root@localhost ~]# ll /etc/rc.d/rc.local
+-rwxr-xr-x. 1 root root 562 9月  19 16:14 /etc/rc.d/rc.local
+</code></pre><h2 id="五centos7突然变成ipv6并ssh没有ip连接了">五、centos7突然变成IPV6并SSH没有IP连接了。</h2>
+<h3 id="51简要">5.1.简要</h3>
+<p>本身装好系统后，使用ssh通过IP10.60.0.229是可以连接的。但安装完LAMP后，不知道这中间干了些什么，SSH不能连接了。</p>
+<h3 id="52排查">5.2.排查</h3>
+<p>使用ifconfig发现enp0s8没有IP了。进入到配置文件中发出怎么变成IPV6了。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# vim /etc/sysconfig/network-scripts/ifcfg-enp0s8
+TYPE=Ethernet
+BOOTPROTO=dhcp
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+IPV6_FAILURE_FATAL=no
+NAME=enp0s8
+UUID=fe5cab10-0c51-4502-adff-438f209ae74b
+DEVICE=enp0s8
+ONBOOT=yes
+</code></pre><h3 id="53解决方案">5.3.解决方案</h3>
+<p>在最后一行添加IP项并重启机器就可以了。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">TYPE=Ethernet
+BOOTPROTO=dhcp
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+IPV6_FAILURE_FATAL=no
+NAME=enp0s8
+UUID=fe5cab10-0c51-4502-adff-438f209ae74b
+DEVICE=enp0s8
+ONBOOT=yes
+IPADDR0=10.60.0.229 # 添加了这一行后重启机器
+</code></pre><h2 id="六centos7安装mysql缺乏yum源怎么安装">六、Centos7安装mysql缺乏yum源怎么安装</h2>
+<blockquote>
+<p>找到mysql5.6的centos的repo源，解决mysql的安装问题：</p>
+</blockquote>
+<h3 id="61确保centos安装了wget没有的话安装wget">6.1.确保centos安装了wget，没有的话安装wget</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># yum install wget
+</code></pre><h3 id="62下载mysql的repo源">6.2.下载mysql的repo源</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+</code></pre><h3 id="63安装mysql-community-release-el7-5noarchrpm包">6.3.安装mysql-community-release-el7-5.noarch.rpm包</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># rpm -ivh mysql-community-release-el7-5.noarch.rpm
+</code></pre><h3 id="64安装这个包后会获得两个mysql的yum-repo源">6.4.安装这个包后，会获得两个mysql的yum repo源</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost ~]# ll /etc/yum.repos.d/mysql-community*
+/etc/yum.repos.d/mysql-community.repo
+/etc/yum.repos.d/mysql-community-source.repo
+</code></pre><h3 id="65然后安装mysql">6.5.然后安装mysql</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">yum install mysql-server
+</code></pre><p>根据步骤安装就可以了，不过安装完成后，没有密码，需要充值密码：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># mysql_secure_installation
+</code></pre><p>或登录后再设置：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># mysql -u root
+
+mysql&gt; use mysql;
+mysql&gt; update user set password=PASSWORD(&#34;GIVE-NEW-ROOT-PASSWORD&#34;) where User=&#39;root&#39;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre><h2 id="七centos7图形界面与命令行相互切换的方法">七、centos7图形界面与命令行相互切换的方法</h2>
+<blockquote>
+<p>centos命令行模式和图形化界面切换步骤</p>
+</blockquote>
+<h3 id="71打开系统启动顺序的配置文件">7.1.打开系统启动顺序的配置文件</h3>
+<p>在centos终端中执行“vi /etc/inittab”并回车确定。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@worker4 ~]# vi /etc/inittab
+</code></pre><h3 id="72编辑配置文件">7.2.编辑配置文件</h3>
+<p>在打开的inittab文件中，使用方向键一直向下拉动，一直拉到最底部直到看到“id:5:initdefault:”为止。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@worker4 ~]# vi /etc/inittab
+
+      1 # inittab is only used by upstart for the default runlevel.
+      2 #
+      3 # ADDING OTHER CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.
+      4 #
+      5 # System initialization is started by /etc/init/rcS.conf
+      6 #
+      7 # Individual runlevels are started by /etc/init/rc.conf
+      8 #
+      9 # Ctrl-Alt-Delete is handled by /etc/init/control-alt-delete.conf
+     10 #
+     11 # Terminal gettys are handled by /etc/init/tty.conf and /etc/init/serial.conf,
+     12 # with configuration in /etc/sysconfig/init.
+     13 #
+     14 # For information on how to write upstart event handlers, or how
+     15 # upstart works, see init(5), init(8), and initctl(8).
+     16 #
+     17 # Default runlevel. The runlevels used are:
+     18 #   0 - halt (Do NOT set initdefault to this)
+     19 #   1 - Single user mode
+     20 #   2 - Multiuser, without NFS (The same as 3, if you do not have networking)
+     21 #   3 - Full multiuser mode
+     22 #   4 - unused
+     23 #   5 - X11
+     24 #   6 - reboot (Do NOT set initdefault to this)
+     25 #
+     26 id:3:initdefault:
+</code></pre><h3 id="73修改启动数字">7.3.修改启动数字</h3>
+<p>输入字母“I”，进入到vi编辑模式，把数字5改成3。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">0：关机
+
+1：单用户模式，不需要root密码直接用root登陆，忘记密码时可以用来直接修改管理员密码。
+
+2：多用户模式但是不启用网络
+
+3：多用户命令行模式
+
+4：未启用原文网址http://www.pc811.com/6/1/26097.html
+
+5：centos图形化界面模式，gnome或者kde等等
+
+6：重启
+</code></pre><h3 id="74编辑完成后保存即可">7.4.编辑完成后保存即可</h3>
+<p>按一下键盘中的”esc”键，退出vi编辑模式，然后输入“:wq!”并回车确定。</p>
+<h3 id="75重启系统">7.5.重启系统</h3>
+<p>完成操作之后，执行”shutdown -r now”并回车确定，centos系统就开始重启系统，重启之后，我们就可以发现centos进入系统后就是命令行模式的centos了。</p>
+<h2 id="八centos7配置更新国内yum源">八、Centos7配置更新国内yum源</h2>
+<blockquote>
+<p>Centos7配置国内yum源。网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错，将yum源设置为163yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到。具体设置方法如下：</p>
+</blockquote>
+<p>1.进入yum源配置目录 cd /etc/yum.repos.d</p>
+<p>2.备份系统自带的yum源 mv CentOS-Base.repo CentOS-Base.repo.bk 下载163网易的yum源</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># wget http://mirrors.163.com/.help/CentOS-Base-163.repo
+</code></pre><p>3.更新玩yum源后，执行下边命令更新yum配置，使操作立即生效</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># yum clean all  ???????
+# yum makecache
+</code></pre><p>4.除了网易之外，国内还有其他不错的yum源，比如中科大和搜狐的，大家可以根据自己需求下载</p>
+<p>阿里云的源：
+CentOS 5</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS5-Base-163.repo
+</code></pre><p>CentOS 6</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
+</code></pre><p>中科大的yum源：
+Centos 6</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># wget -O CentOS-Base.repo https://lug.ustc.edu.cn/wiki/_export/code/mirrors/help/centos?codeblock=2
+</code></pre><p>Centos 7</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># wget -O CentOS-Base.repo https://lug.ustc.edu.cn/wiki/_export/code/mirrors/help/centos?codeblock=3
+</code></pre><p>sohu的yum源</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># wget http://mirrors.sohu.com/help/CentOS-Base-sohu.repo
+</code></pre><p>理论上讲，这些yum源redhat系统以及fedora也是可以用 的，但是没有经过测试，需要的站长可以自己测试一下。</p>
+<p>PS： 有时候会出现错误，现象：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">Loading “installonlyn” plugin Existing lock /var/run/yum.pid: another copy is running. Aborting.
+</code></pre><p>这是因为yum在更新， 此时是kill不掉的该进程的， 正确的解决方法是让它停止更新即可。 可以直接输入</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># rm -f /var/run/yum.pid
+</code></pre><p>也可以</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># /etc/init.d/yum-updatesd stop
+</code></pre><h2 id="九centos7-rpm安装mysql60数据库">九、centos7 RPM安装MySQL6.0数据库</h2>
+<h3 id="91文件准备">9.1.文件准备</h3>
+<blockquote>
+<p>MySQL-server-community-6.0.11-0.rhel5.i386.rpm
+MySQL-client-community-6.0.11-0.rhel5.i386.rpm</p>
+</blockquote>
+<h3 id="92安装">9.2.安装</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># rpm -ivh MySQL-server-community-6.0.11-0.rhel5.i386.rpm
+# rpm -ivh MySQL-client-community-6.0.11-0.rhel5.i386.rpm
+</code></pre><h3 id="93mysql启动停止">9.3.MySQL启动、停止</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># service mysql start
+# service mysql stop
+# service mysql restart
+</code></pre><h3 id="94设置mysql用户密码">9.4.设置MySQL用户密码</h3>
+<p>安装完成后会自动创建mysql:mysql用户，需要自己设置密码。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># passwd mysql
+</code></pre><h3 id="95修改root密码">9.5.修改root密码</h3>
+<p>安装完成后，默认root的密码是空的，可以自己设置root密码</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># su -l mysql
+$ mysqladmin -u root password &#39;123456&#39;
+</code></pre><h3 id="96其它">9.6.其它</h3>
+<p>用Navicat for MySQL访问如果提示：Can’t get hostname for your address，除了授权其它主机可访问MYSQL外还需要如下设置：
+编辑/etc/my.cnf，在：[mysqld]内添加一行：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">skip-name-resolve
+</code></pre><p>如果要在外部访问，记得在Linux的防火墙设置中添加3306端口。</p>
+<p>MySQL忽略数据库表名大小写，修改/etc/my.cnf，在[mysqld]内添加一行：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">lower_case_table_names= 1
+</code></pre><p>如果没有/etc/my.cnf文件：
+在/usr/share/mysql目录下根据自己需要找一下my-*.cnf文件，复制为/etc/my.cnf</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">$cp /usr/share/mysql/my-medium.cnf /etc/my.cnf
+</code></pre><h2 id="十rpm卸载多个有依赖的rpm包">十、rpm卸载多个有依赖的rpm包</h2>
+<h3 id="101rpm卸载时同时匹配多个包">10.1.rpm卸载时同时匹配多个包：</h3>
+<p>示例1：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># rpm -qa |grep libxml2
+libxml2-python-2.6.26-2.1.12
+libxml2-devel-2.6.26-2.1.12
+libxml2-2.6.26
+libxml2-devel-2.6.26-2.1.12
+
+// --allmatches 匹配多个，--nodeps 不检查依赖
+# rpm -e --allmatches libxml2-2.6.26-2.1.12 --nodeps
+</code></pre><p>示例2：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost src]# rpm -qa | grep apr
+apr-1.2.7-11
+apr-util-1.2.7-6
+apr-util-1.2.7-6
+apr-1.2.7-11
+
+[root@localhost src]# rpm -e apr-util-1.2.7-6
+error: &#34;apr-util-1.2.7-6&#34; specifies multiple packages
+
+# rpm -e --allmatches --nodeps apr-util-1.2.7-6
+</code></pre><p>一起卸载：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># rpm -e `rpm -qa | grep libxml2`
+# rpm -e `rpm -qa | grep openoffice` `rpm -qa | grep ooobasis`
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-01-09 20:33:19">更新于 2016-01-09&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/netstat/' class="post-tag">netstat</a><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/linux-lamp-yum%E5%AE%89%E8%A3%85/linux-lamp-yum%E5%AE%89%E8%A3%85/" class="post-nav-item" rel="prev" title="Linux-LAMP-yum安装"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux-LAMP-yum安装</a>
+      <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" class="post-nav-item" rel="next" title="Linux之磁盘管理">Linux之磁盘管理<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

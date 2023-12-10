@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>厂园网关连接手记 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="厂园CGW3000T大网关的配置和使用，该网关是新拿来的，不知道IP，文章中写到如何配置IP并使用SSH访问。" /><meta name="keywords" content='原创, linux, 大网关, CGW3000T, 网络配置' /><meta itemprop="name" content="厂园网关连接手记">
+<meta itemprop="description" content="厂园CGW3000T大网关的配置和使用，该网关是新拿来的，不知道IP，文章中写到如何配置IP并使用SSH访问。"><meta itemprop="datePublished" content="2016-10-10T11:39:04+08:00" />
+<meta itemprop="dateModified" content="2016-10-10T11:39:04+08:00" />
+<meta itemprop="wordCount" content="1179">
+<meta itemprop="keywords" content="原创,linux,大网关,CGW3000T,网络配置," /><meta property="og:title" content="厂园网关连接手记" />
+<meta property="og:description" content="厂园CGW3000T大网关的配置和使用，该网关是新拿来的，不知道IP，文章中写到如何配置IP并使用SSH访问。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E8%BF%9E%E6%8E%A5%E6%89%8B%E8%AE%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-10-10T11:39:04+08:00" />
+<meta property="article:modified_time" content="2016-10-10T11:39:04+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="厂园网关连接手记"/>
+<meta name="twitter:description" content="厂园CGW3000T大网关的配置和使用，该网关是新拿来的，不知道IP，文章中写到如何配置IP并使用SSH访问。"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E8%BF%9E%E6%8E%A5%E6%89%8B%E8%AE%B0/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" /><link rel="next" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "厂园网关连接手记",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/linux\/gateway\/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0\/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E8%BF%9E%E6%8E%A5%E6%89%8B%E8%AE%B0\/"
+    },"genre": "posts","keywords": "原创, linux, 大网关, CGW3000T, 网络配置","wordcount":  1179 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/gateway\/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0\/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E8%BF%9E%E6%8E%A5%E6%89%8B%E8%AE%B0\/","datePublished": "2016-10-10T11:39:04+08:00","dateModified": "2016-10-10T11:39:04+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "厂园CGW3000T大网关的配置和使用，该网关是新拿来的，不知道IP，文章中写到如何配置IP并使用SSH访问。"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>厂园网关连接手记</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%BD%91%E5%85%B3/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网关</a>&ensp;<a href="/categories/cgw3000t/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> CGW3000T</a>&ensp;<a href="/categories/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网络配置</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2016-10-10 11:39:04"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-10">2016-10-10</time></span>&nbsp;<span title="更新于 2016-10-10 11:39:04"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-10">2016-10-10</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1179 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 6 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一获取厂园网关ip地址">一、获取厂园网关IP地址</a>
+      <ul>
+        <li><a href="#11使用串口连接网关">1.1.使用串口连接网关</a></li>
+        <li><a href="#12查看所有网卡">1.2.查看所有网卡</a></li>
+        <li><a href="#13找到正在使用的running口">1.3.找到正在使用的RUNNING口</a></li>
+        <li><a href="#14获取ip及端口">1.4.获取IP及端口</a></li>
+      </ul>
+    </li>
+    <li><a href="#二修改eth对应关系">二、修改eth对应关系</a>
+      <ul>
+        <li><a href="#21web配置ip">2.1.web配置IP</a></li>
+        <li><a href="#22查看一下是否有eth0">2.2.查看一下是否有eth0。</a></li>
+        <li><a href="#23设置网关使用dhcp获取ip">2.3.设置网关使用DHCP获取IP</a></li>
+      </ul>
+    </li>
+    <li><a href="#三查看eth0的ip时错误问题解决">三、查看eth0的IP时错误问题解决</a></li>
+    <li><a href="#四网桥配置命令brctl">四、网桥配置命令brctl</a>
+      <ul>
+        <li><a href="#41网桥安装">4.1.网桥安装</a></li>
+        <li><a href="#41常用命令">4.1.常用命令</a></li>
+        <li><a href="#42查看">4.2.查看</a></li>
+        <li><a href="#43关闭网桥命令">4.3.关闭网桥命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#五其它使用">五、其它使用</a>
+      <ul>
+        <li><a href="#51查看网关的版本">5.1.查看网关的版本</a></li>
+        <li><a href="#52在网关中查看系统中的配置">5.2.在网关中查看系统中的配置</a></li>
+        <li><a href="#53查看eth0的ip地址">5.3.查看eth0的IP地址</a></li>
+        <li><a href="#54查看进程id">5.4.查看进程ID</a></li>
+        <li><a href="#55查看路由列表">5.5.查看路由列表</a></li>
+        <li><a href="#56网关云平台下沉路径">5.6.网关云平台下沉路径</a></li>
+        <li><a href="#57查看日志">5.7.查看日志</a></li>
+        <li><a href="#58配置eth0的ip地址-同时激活该设备">5.8.配置eth0的IP地址， 同时激活该设备</a></li>
+        <li><a href="#59添加默认网关">5.9.添加默认网关</a></li>
+        <li><a href="#510配置dns">5.10.配置DNS</a></li>
+        <li><a href="#511确定网口位置---工具ethtool">5.11.确定网口位置&mdash;工具ethtool</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="一获取厂园网关ip地址">一、获取厂园网关IP地址</h2>
+<h3 id="11使用串口连接网关">1.1.使用串口连接网关</h3>
+<p>通常情况下可以这样连接，一根网线连接网关的WLAN接口，另一头连接网络，另一根网线连接网关网口，另一头连接到笔记本，此时得到IP后，就可以通过<code>SSH</code>连接网关访问了。</p>
+<p>因为这里查询后，还是不不知道IP地址，不能通过<code>SSH</code>直接连接大网关，所以使用串口连接网关，CGW3000T网关正面最左边第一个网口是串口，第二个网口是<code>WLAN</code>外网接口。
+使用串口线把网线口接入第一个网口，然后另一端接口连接台式机，并在win7系统的管理工具中查看使用的是哪个com端口。</p>
+<p><figure><a class="lightgallery" href="/images/gwifi_chuankou.jpg" data-thumbnail="/images/gwifi_chuankou.jpg" data-sub-html="<h2>查看com端口</h2><p>查看com端口</p>"><img loading="lazy" src="/images/gwifi_chuankou.jpg" srcset="/images/gwifi_chuankou.jpg, /images/gwifi_chuankou.jpg 1.5x, /images/gwifi_chuankou.jpg 2x" sizes="auto" data-title="查看com端口" data-alt="查看com端口" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">查看com端口</figcaption>
+  </figure></p>
+<p>使用SSH连接时，<code>Protocol</code>就不能选择<code>SSH2了</code> ,选择<code>Serial</code>，然后看下在图片连接。</p>
+<p><figure><a class="lightgallery" href="/images/gwifi_chuankou_ssh.jpg" data-thumbnail="/images/gwifi_chuankou_ssh.jpg" data-sub-html="<h2>使用串口SSH连接大网关</h2><p>使用串口SSH连接大网关</p>"><img loading="lazy" src="/images/gwifi_chuankou_ssh.jpg" srcset="/images/gwifi_chuankou_ssh.jpg, /images/gwifi_chuankou_ssh.jpg 1.5x, /images/gwifi_chuankou_ssh.jpg 2x" sizes="auto" data-title="使用串口SSH连接大网关" data-alt="使用串口SSH连接大网关" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">使用串口SSH连接大网关</figcaption>
+  </figure></p>
+<h3 id="12查看所有网卡">1.2.查看所有网卡</h3>
+<p>首先查看所有的网卡情况，把未激活的全部激活</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# ifconfig -a
+-bash-4.1# ifconfig eth6 up // 激活eth6
+-bash-4.1# ifconfig eth7 up // 激活eth7
+-bash-4.1# ifconfig eth2.200 down // 禁用eth2.200
+</code></pre><h3 id="13找到正在使用的running口">1.3.找到正在使用的RUNNING口</h3>
+<p>想要正常访问大网关CGW3000T的话，必须给它设置一个IP，设置IP时需要给RUNNING口设置，下面先找到正在使用的<code>RUNNING</code>口。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# ifconfig -a
+br0       Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  
+          inet addr:172.16.1.1  Bcast:172.16.255.255  Mask:255.255.0.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+br1       Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  
+          inet addr:172.17.1.1  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+eth7      Link encap:Ethernet  HWaddr 28:51:32:10:91:E2  
+          inet addr:192.168.0.1  Bcast:10.60.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::2a51:32ff:fe10:91e2/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:58986 errors:0 dropped:1014 overruns:0 frame:0
+          TX packets:5185 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:6381303 (6.0 MiB)  TX bytes:804263 (785.4 KiB)
+          Interrupt:16 Memory:dfe00000-dfe20000 
+
+eth6      Link encap:Ethernet  HWaddr 28:51:32:10:91:E5  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+          Interrupt:19 Memory:dfb00000-dfb20000 
+
+eth5      Link encap:Ethernet  HWaddr 28:51:32:10:91:E5  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+          Interrupt:19 Memory:dfb00000-dfb20000 
+
+eth4      Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+          Interrupt:17 Memory:dfd00000-dfd20000 
+</code></pre><p>上面的结果看到，正在使用的<code>RUNNING</code>口为<code>eth7</code>。</p>
+<h3 id="14获取ip及端口">1.4.获取IP及端口</h3>
+<p>此时eth7的IP是不对的，下面使用命令<code>dhclient eth7</code>来获取eth7的地址。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# dhclient eth7 // 获取地址
+/sbin/dhclient-script: line 450: /*如果不是eth0，则不添加默认路由，add@2015.06.15*/: No such file or directory
+</code></pre><p>查看eth7的IP</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">ifconfig eth7 // 查看IP
+</code></pre><p>查看端口</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# netstat -anp | grep boa
+tcp        0      0 0.0.0.0:88                  0.0.0.0:*                   LISTEN      2036/boa
+</code></pre><h2 id="二修改eth对应关系">二、修改eth对应关系</h2>
+<h3 id="21web配置ip">2.1.web配置IP</h3>
+<p>使用刚刚获取的IP地址10.60.0.158:88访问web，进行端口配置。</p>
+<p><figure><a class="lightgallery" href="/images/gwifi_ui.jpg" data-thumbnail="/images/gwifi_ui.jpg" data-sub-html="<h2>厂园网关端口配置</h2><p>厂园网关端口配置</p>"><img loading="lazy" src="/images/gwifi_ui.jpg" srcset="/images/gwifi_ui.jpg, /images/gwifi_ui.jpg 1.5x, /images/gwifi_ui.jpg 2x" sizes="auto" data-title="厂园网关端口配置" data-alt="厂园网关端口配置" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">厂园网关端口配置</figcaption>
+  </figure></p>
+<p>可以看到端口是从端口1、端口2、端口3、端口4来的，而ifconfig可以看到是从eth4、eth5、eth6、eth7来的，而设置时是从eth0开始对应，这样的话，就永远不会生效了。下面来修改一下eth的对应关系</p>
+<h3 id="22查看一下是否有eth0">2.2.查看一下是否有eth0。</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# ls /etc/sysconfig/network-scripts/
+ifcfg-lo     ifdown-ppp     ifup-ippp    ifup-sit
+ifdown       ifdown-routes  ifup-ipv6    ifup-tunnel
+ifdown-bnep  ifdown-sit     ifup-isdn    ifup-wireless
+ifdown-eth   ifdown-tunnel  ifup-plip    init.ipv6-global
+ifdown-ippp  ifup           ifup-plusb   net.hotplug
+ifdown-ipv6  ifup-aliases   ifup-post    network-functions
+ifdown-isdn  ifup-bnep      ifup-ppp     network-functions-ipv6
+ifdown-post  ifup-eth       ifup-routes
+</code></pre><p>没有，那么进行手动修改对应关系，下面是修改后的结果。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# vi /etc/udev/rules.d/70-persistent-net.rules
+-bash-4.1# 
+# This file was automatically generated by the /lib/udev/write_net_rules
+# program, run by the persistent-net-generator.rules rules file.
+#
+# You can modify it, as long as you keep each rule on a single
+# line, and change only the value of the NAME= key.
+
+# PCI device 0x8086:0x150c (e1000e)
+#SUBSYSTEM==&#34;net&#34;, ACTION==&#34;add&#34;, DRIVERS==&#34;?*&#34;, ATTR{address}==&#34;28:51:32:0e:42::
+0d&#34;, ATTR{type}==&#34;1&#34;, KERNEL==&#34;eth*&#34;, NAME=&#34;eth2&#34;
+
+# PCI device 0x8086:0x150c (e1000e)
+#SUBSYSTEM==&#34;net&#34;, ACTION==&#34;add&#34;, DRIVERS==&#34;?*&#34;, ATTR{address}==&#34;28:51:32:0e:42::
+0c&#34;, ATTR{type}==&#34;1&#34;, KERNEL==&#34;eth*&#34;, NAME=&#34;eth1&#34;
+
+# PCI device 0x8086:0x150c (e1000e)
+#SUBSYSTEM==&#34;net&#34;, ACTION==&#34;add&#34;, DRIVERS==&#34;?*&#34;, ATTR{address}==&#34;28:51:32:0e:42::
+0b&#34;, ATTR{type}==&#34;1&#34;, KERNEL==&#34;eth*&#34;, NAME=&#34;eth0&#34;
+
+# PCI device 0x8086:0x150c (e1000e)
+#SUBSYSTEM==&#34;net&#34;, ACTION==&#34;add&#34;, DRIVERS==&#34;?*&#34;, ATTR{address}==&#34;28:51:32:0e:42::
+0e&#34;, ATTR{type}==&#34;1&#34;, KERNEL==&#34;eth*&#34;, NAME=&#34;eth3&#34;
+
+# PCI device 0x8086:0x150c (e1000e)
+SUBSYSTEM==&#34;net&#34;, ACTION==&#34;add&#34;, DRIVERS==&#34;?*&#34;, ATTR{address}==&#34;28:51:32:10:91:ee
+4&#34;, ATTR{type}==&#34;1&#34;, KERNEL==&#34;eth*&#34;, NAME=&#34;eth3&#34;
+
+# PCI device 0x8086:0x150c (e1000e)
+SUBSYSTEM==&#34;net&#34;, ACTION==&#34;add&#34;, DRIVERS==&#34;?*&#34;, ATTR{address}==&#34;28:51:32:10:91:ee
+3&#34;, ATTR{type}==&#34;1&#34;, KERNEL==&#34;eth*&#34;, NAME=&#34;eth2&#34;
+
+# PCI device 0x8086:0x150c (e1000e)
+SUBSYSTEM==&#34;net&#34;, ACTION==&#34;add&#34;, DRIVERS==&#34;?*&#34;, ATTR{address}==&#34;28:51:32:10:91:ee
+5&#34;, ATTR{type}==&#34;1&#34;, KERNEL==&#34;eth*&#34;, NAME=&#34;eth1&#34;
+
+# PCI device 0x8086:0x150c (e1000e)
+SUBSYSTEM==&#34;net&#34;, ACTION==&#34;add&#34;, DRIVERS==&#34;?*&#34;, ATTR{address}==&#34;28:51:32:10:91:ee
+2&#34;, ATTR{type}==&#34;1&#34;, KERNEL==&#34;eth*&#34;, NAME=&#34;eth0&#34;
+</code></pre><p>如果已经有了eth0的话，把禁用掉，因为从大网关硬件后面的接口看了下，接口是坏的。此时就需要把其它口修改为eth0，使用它们能够对应上。</p>
+<p>查看RUNNING MULTICAST</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# ifconfig
+br0       Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  
+          inet addr:172.16.1.1  Bcast:172.16.255.255  Mask:255.255.0.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+br1       Link encap:Ethernet  HWaddr 28:51:32:10:91:E3  
+          inet addr:172.17.1.1  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+eth0      Link encap:Ethernet  HWaddr 28:51:32:10:91:E2  
+          inet addr:10.60.0.158  Bcast:10.60.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::2a51:32ff:fe10:91e2/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:69642 errors:0 dropped:10 overruns:0 frame:0
+          TX packets:36430 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:64719805 (61.7 MiB)  TX bytes:3252114 (3.1 MiB)
+          Interrupt:16 Memory:dfe00000-dfe20000 
+</code></pre><h3 id="23设置网关使用dhcp获取ip">2.3.设置网关使用DHCP获取IP</h3>
+<p><figure><a class="lightgallery" href="/images/gwifi_set_wan.jpg" data-thumbnail="/images/gwifi_set_wan.jpg" data-sub-html="<h2>设置网关使用DHCP获取IP</h2><p>设置网关使用DHCP获取IP</p>"><img loading="lazy" src="/images/gwifi_set_wan.jpg" srcset="/images/gwifi_set_wan.jpg, /images/gwifi_set_wan.jpg 1.5x, /images/gwifi_set_wan.jpg 2x" sizes="auto" data-title="设置网关使用DHCP获取IP" data-alt="设置网关使用DHCP获取IP" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">设置网关使用DHCP获取IP</figcaption>
+  </figure></p>
+<p>设置使用DHCP后重启后IP地址还是不对，下面把IP设置为静态IP后，重启后可以了，注意这里的数据是从网关上使用<code>ifconfig eth0</code>查看获取的。</p>
+<p><figure><a class="lightgallery" href="/images/gwifi_set_statuc_ip.jpg" data-thumbnail="/images/gwifi_set_statuc_ip.jpg" data-sub-html="<h2>设置网关IP为静态IP</h2><p>设置网关IP为静态IP</p>"><img loading="lazy" src="/images/gwifi_set_statuc_ip.jpg" srcset="/images/gwifi_set_statuc_ip.jpg, /images/gwifi_set_statuc_ip.jpg 1.5x, /images/gwifi_set_statuc_ip.jpg 2x" sizes="auto" data-title="设置网关IP为静态IP" data-alt="设置网关IP为静态IP" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></a><figcaption class="image-caption">设置网关IP为静态IP</figcaption>
+  </figure></p>
+<p>点击配置按钮后重启网关生效。</p>
+<h2 id="三查看eth0的ip时错误问题解决">三、查看eth0的IP时错误问题解决</h2>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# dhclient eth0
+/sbin/dhclient-script: line 450: /*如果不是eth0，则不添加默认路由，add@2015.06.15*/: No such file or directory
+-bash-4.1# ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 28:51:32:10:91:E2  
+          inet addr:192.168.0.1  Bcast:192.168.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::2a51:32ff:fe10:91e2/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2315 errors:0 dropped:10 overruns:0 frame:0
+          TX packets:1641 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:2595946 (2.4 MiB)  TX bytes:128111 (125.1 KiB)
+          Interrupt:16 Memory:dfe00000-dfe20000 
+
+-bash-4.1# [   69.748621] bpctl[2836]: segfault at 656c6961 ip 656c6961 sp bf9d4d10 error 4
+
+-bash-4.1# ip addr show eth0
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 28:51:32:10:91:e2 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.1/24 brd 192.168.0.255 scope global eth0
+    inet 10.60.0.158/16 brd 10.60.255.255 scope global eth0
+    inet6 fe80::2a51:32ff:fe10:91e2/64 scope link 
+       valid_lft forever preferred_lft forever
+</code></pre><p>这里会发现IP有一个192.168.0.1和10.60.0.158这样的错误，解决方法如下：</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">-bash-4.1# ifconfig eth0 0
+-bash-4.1# dhclient eth0
+/sbin/dhclient-script: line 450: /*如果不是eth0，则不添加默认路由，add@2015.06.15*/: No such file or directory
+-bash-4.1# ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 28:51:32:10:91:E2  
+          inet addr:10.60.0.158  Bcast:10.60.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::2a51:32ff:fe10:91e2/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:15228 errors:0 dropped:10 overruns:0 frame:0
+          TX packets:12945 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:21840821 (20.8 MiB)  TX bytes:1073306 (1.0 MiB)
+          Interrupt:16 Memory:dfe00000-dfe20000
+</code></pre><h2 id="四网桥配置命令brctl">四、网桥配置命令brctl</h2>
+<p>网桥是一种在链路层实现中继，对帧进行转发的技术，根据MAC分区块，可隔离碰撞，将网络的多个网段在数据链路层连接起来的网络设备。</p>
+<h3 id="41网桥安装">4.1.网桥安装</h3>
+<p>安装bridge-utils软件包，并加载bridge模块和开启内核转发。</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># apt-get install bridge-utils
+# modprobe bridge
+# echo &#34;1&#34;&gt;/proc/sys/net/ipv4/ip_forward
+</code></pre><h3 id="41常用命令">4.1.常用命令</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T htdocs]# brctl addif br0 eth0 // 让eth0成为br0的一个端口
+[root@CGW3000T htdocs]# ifconfig br0 192.168.1.1 // 给br0的虚拟网卡配置IP：192.168.1.1。那样就能远程管理网桥。
+[root@CGW3000T htdocs]# brctl --help // 帮助
+[root@CGW3000T htdocs]# brctl addbr br0 // 增加网桥
+[root@CGW3000T htdocs]# brctl delif br0 eth0 eth1 // 删除网桥
+</code></pre><h3 id="42查看">4.2.查看</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T htdocs]# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br0             8000.2851321091e3       no              eth1
+                                                        eth2
+                                                        eth3
+br1             8000.2851321091e3       no              eth1.200
+                                                        eth2.200
+                                                        eth3.200
+</code></pre><h3 id="43关闭网桥命令">4.3.关闭网桥命令</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux"># brctl delif ena eth1;
+# brctl delif ena eth0;
+# ifconfig ena down;
+# brctl delbr ena;
+</code></pre><h2 id="五其它使用">五、其它使用</h2>
+<h3 id="51查看网关的版本">5.1.查看网关的版本</h3>
+<pre tabindex="0"><code>[root@CGW3000T ~]# vlist
+ Version  : 1.3.3.3
+ Revision : 5403
+ BuildTime: 2016-03-03 10:53:07
+</code></pre><h3 id="52在网关中查看系统中的配置">5.2.在网关中查看系统中的配置</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T ~]# nvramcli show | grep eth
+eth_speed=0
+eth_duplex_mode=0
+eth_arp_time=300
+real_wan_1_ip_method=0
+real_wan_2_ip_method=0
+real_wan_3_ip_method=0
+real_wan_1_interface_name=eth1
+real_wan_2_interface_name=eth2
+real_wan_3_interface_name=eth3
+vap_32_ssid_name=eth0
+vap_32_vap_name=eth0
+vap_33_ssid_name=eth1
+vap_33_vap_name=eth1
+vap_34_ssid_name=eth2
+vap_34_vap_name=eth2
+vap_35_ssid_name=eth3
+vap_35_vap_name=eth3
+vrrp_interface=eth2
+eth0_mode=0
+eth1_mode=1
+eth2_mode=1
+eth3_mode=1
+real_wan_0_interface_name=eth0
+real_wan_0_ip_method=0
+eth0_trunk_mode=0
+</code></pre><h3 id="53查看eth0的ip地址">5.3.查看eth0的IP地址</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T ~]# ip addr show eth0
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 28:51:32:10:91:e2 brd ff:ff:ff:ff:ff:ff
+    inet 10.60.0.158/16 brd 10.60.255.255 scope global eth0
+    inet6 fe80::2a51:32ff:fe10:91e2/64 scope link 
+       valid_lft forever preferred_lft forever
+</code></pre><h3 id="54查看进程id">5.4.查看进程ID</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T ~]# pidof dhcpd
+2168
+</code></pre><h3 id="55查看路由列表">5.5.查看路由列表</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T ~]# route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+10.60.0.0       0.0.0.0         255.255.0.0     U     0      0        0 eth0
+172.16.0.0      0.0.0.0         255.255.0.0     U     0      0        0 br0
+172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 br1
+192.168.0.0     0.0.0.0         255.255.255.0   U     0      0        0 eth3
+</code></pre><h3 id="56网关云平台下沉路径">5.6.网关云平台下沉路径</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T ~]# cd /mnt/sd/www/htdocs/ // 真实地址
+[root@CGW3000T ~]# ll /appfs/web/webpages/cmps // 这个其实是软件的地址
+total 1
+drwxr-xr-x 5 root root 1024 Mar 22  2016 static
+</code></pre><h3 id="57查看日志">5.7.查看日志</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@CGW3000T htdocs]# tail -n 100 /var/log/messages
+</code></pre><h3 id="58配置eth0的ip地址-同时激活该设备">5.8.配置eth0的IP地址， 同时激活该设备</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">sudo ifconfig eth0 192.168.1.10 netmask 255.255.255.0 up // up激活
+sudo ifconfig eth0 200.200.222.222 netmask 255.255.0.0 // 设置eth0的IP和子网掩码不激活
+</code></pre><h3 id="59添加默认网关">5.9.添加默认网关</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">sudo route add default gw 192.168.1.1
+</code></pre><h3 id="510配置dns">5.10.配置DNS</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">$ sudo vi /etc/resolv.conf
+nameserver 202.96.134.133
+nameserver 202.96.128.68
+nameserver 202.96.128.166
+</code></pre><h3 id="511确定网口位置---工具ethtool">5.11.确定网口位置&mdash;工具ethtool</h3>
+<p>1）、查看相应设备名称对应的设备信息</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost lai]# ethtool enp0s8
+Settings for enp0s8:
+        Supported ports: [ TP ]
+        Supported link modes:   10baseT/Half 10baseT/Full 
+                                100baseT/Half 100baseT/Full 
+                                1000baseT/Full 
+        Supported pause frame use: No
+        Supports auto-negotiation: Yes
+        Advertised link modes:  10baseT/Half 10baseT/Full 
+                                100baseT/Half 100baseT/Full 
+                                1000baseT/Full 
+        Advertised pause frame use: No
+        Advertised auto-negotiation: Yes
+        Speed: 1000Mb/s
+        Duplex: Full
+        Port: Twisted Pair
+        PHYAD: 0
+        Transceiver: internal
+        Auto-negotiation: on
+        MDI-X: off (auto)
+        Supports Wake-on: umbg
+        Wake-on: d
+        Current message level: 0x00000007 (7)
+                               drv probe link
+        Link detected: yes
+</code></pre><p>最后一行会显示Link detected: yes/no</p>
+<p>2）、查看相应设备名称对应的设备位置</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">[root@localhost lai]# ethtool -p enp0s8
+</code></pre><p>回车后与eth0 相对应的网卡接口旁边的指示灯就会闪烁，这样你就能很快确定eth0 网口的位置啦。</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2016-10-10 11:39:04">更新于 2016-10-10&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E5%A4%A7%E7%BD%91%E5%85%B3/' class="post-tag">大网关</a><a href='/tags/cgw3000t/' class="post-tag">CGW3000T</a><a href='/tags/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/' class="post-tag">网络配置</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" class="post-nav-item" rel="prev" title="lsyncd实时同步搭建指南"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>lsyncd实时同步搭建指南</a>
+      <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" class="post-nav-item" rel="next" title="linux之进程管理">linux之进程管理<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

@@ -9,13 +9,19 @@
   <pubDate>Wed, 08 Nov 2023 13:53:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/</guid>
-  <description><![CDATA[<h1 id="20231108_1353android实现浮动窗口记录">20231108_1353Android实现浮动窗口记录</h1>
+  <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <p>实现浮动窗口。</p>
-<p>难点
-1、悬浮窗的穿透点击
-当悬浮窗悬浮的时候，理想状态，应该是悬浮窗里面的按钮和悬浮窗底层点击触摸事件不冲突。
-2、需要注意，悬浮窗的可能会出现黑色背景，需要加params.format = PixelFormat.RGBA_8888;</p>]]></description>
+<blockquote>
+<p>难点</p>
+</blockquote>
+<ol>
+<li>悬浮窗的穿透点击</li>
+</ol>
+<p>当悬浮窗悬浮的时候，理想状态，应该是悬浮窗里面的按钮和悬浮窗底层点击触摸事件不冲突。</p>
+<ol start="2">
+<li>需要注意，悬浮窗的可能会出现黑色背景，需要加params.format = PixelFormat.RGBA_8888;</li>
+</ol>]]></description>
 </item>
 </channel>
 </rss>

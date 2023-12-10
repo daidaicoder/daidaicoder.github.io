@@ -9,12 +9,19 @@
   <pubDate>Sat, 08 Oct 2022 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysqlcreateuser/</guid>
-  <description><![CDATA[20221008_1513mysql创建用户 一、描述 by daizelai on 2022/10/08 16:23 创建MYSQL账号的方法记录。
-二、创建mysql账号 2.1.使用CREATE USER语句创建新用户 mysql&gt; CREATE USER &#39;daizelai&#39;@&#39;192.168.42.55&#39; IDENTIFIED BY &#39;123456&#39;; 如果创建失败，提示当前密码不满足策略要求。
-修改密码策略
-mysql&gt; SELECT @@VALIDATE_PASSWORD_POLICY; mysql&gt; set global validate_password_policy = 0; GRANT ALL ON *.* TO &#39;daizelai&#39;@&#39;192.168.42.55&#39;; 在 MySQL 中，可以使用 password() 函数获取密码的哈希值，查看 test1 哈希值的 SQL 语句和执行过程如下：
-mysql&gt; SELECT password(&#39;test1&#39;); +-------------------------------------------+ | password(&#39;test1&#39;) | +-------------------------------------------+ | *06C0BF5B64ECE2F648B5F048A71903906BA08E5C | +-------------------------------------------+ 1 row in set, 1 warning (0.00 sec) 创建用户 test1，SQL 语句和执行过程如下：
-mysql&gt; CREATE USER &#39;daizelai&#39;@&#39;192.]]></description>
+  <description><![CDATA[<h1 id="20221008_1513mysql创建用户">20221008_1513mysql创建用户</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2022/10/08 16:23
+创建MYSQL账号的方法记录。</p>]]></description>
+</item>
+<item>
+  <title>centos7安装mysql</title>
+  <link>https://daizelai.github.io/posts/mysql/character/</link>
+  <pubDate>Fri, 06 Jan 2017 10:34:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/mysql/character/</guid>
+  <description><![CDATA[<h2 id="一描述">一、描述</h2>
+<p>在centos7系统上面安装mysql。</p>]]></description>
 </item>
 <item>
   <title>mysql乱码</title>
@@ -22,9 +29,9 @@ mysql&gt; CREATE USER &#39;daizelai&#39;@&#39;192.]]></description>
   <pubDate>Fri, 28 Oct 2016 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/character/</guid>
-  <description><![CDATA[一、查看mysql服务端情况 1.查看mysql默认的编码配置
-mysql&gt; show variables like &#39;char%&#39;; mysql&gt; SHOW VARIABLES LIKE &#39;character%&#39;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | latin1 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | latin1 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 8 rows in set (0.00 sec) 2.查看某(we7)数据库的编码格式
-mysql&gt; show create database we7; +----------+--------------------------------------------------------------+ | Database | Create Database | +----------+--------------------------------------------------------------+ | we7 | CREATE DATABASE `we7` /*!]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一查看mysql服务端情况">一、查看mysql服务端情况</h2>
+<p>1.查看mysql默认的编码配置</p>]]></description>
 </item>
 <item>
   <title>mysql之存储过程</title>
@@ -32,8 +39,10 @@ mysql&gt; show create database we7; +----------+--------------------------------
   <pubDate>Sun, 09 Oct 2016 14:02:09 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/procedure/</guid>
-  <description><![CDATA[ 查看存储过程 mysql&gt; show procedure status; 查看存储过程内容 查看某一个存储过程的内容
-mysql&gt; show create procedure updateHotspot_pro; ]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="查看存储过程">查看存储过程</h2>
+<pre><code>mysql&gt; show procedure status;
+</code></pre>]]></description>
 </item>
 <item>
   <title>mysql数据库导入导出</title>
@@ -54,16 +63,10 @@ mysql&gt; show create procedure updateHotspot_pro; ]]></description>
   <pubDate>Tue, 13 Sep 2016 09:43:04 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql%E6%8F%90%E7%A4%BAperformance-schema-session-status/</guid>
-  <description><![CDATA[Mysql提示“performance_schema.session_status doesn&rsquo;t exist” 一、问题的前世今生 开始Web环境为XP 32位系统中的php5.3.5+Apache2.2+mysql5.6.24组合，后来因为换成Win7 64位，Web环境又换成了php5625+Apache2.4+mysql5.7.14。 为了图方便，直接把之前的Mysql5.6的data拷贝过来Mysql5.7使用，于是出现此问题。
-二、问题说明 在php中使用代码执行SQL语句是没有问题的，但在navicat工具中使用查询语句就会有以下问题：
-截图效果：
-查询语句提示performance_schema.session_status doesn&rsquo;t exist问题 错误如下所示：
-[Err] 1146 - Table 'performance_schema.session_status' doesn't exist 三、解决方案 经过一系列的深究发现是因为mysql5.6的data和mysql5.7的data因为版本不一致导致。
-解决方法：
-1.执行“mysql_upgrade.exe -u root -p &ndash;force”
-D:\server\mysql5714\bin&gt;mysql_upgrade.exe -u root -p --force ........ ucenter.uc_sqlcache OK ucenter.uc_tags OK ucenter.uc_vars OK Upgrade process completed successfully. Checking if update is needed. 2.然后再重启Mysql服务
-重启Mysql服务 D:\server\mysql5714\bin&gt;net stop mysql MySQL 服务正在停止.. MySQL 服务已成功停止。 D:\server\mysql5714\bin&gt;net start mysql MySQL 服务正在启动 . MySQL 服务已经启动成功。 3.查看执行query效果
-修复后的效果 ]]></description>
+  <description><![CDATA[<h1 id="mysql提示performance_schemasession_status-doesnt-exist">Mysql提示“performance_schema.session_status doesn&rsquo;t exist”</h1>
+<h2 id="一问题的前世今生">一、问题的前世今生</h2>
+<p>开始Web环境为XP 32位系统中的php5.3.5+Apache2.2+mysql5.6.24组合，后来因为换成Win7 64位，Web环境又换成了php5625+Apache2.4+mysql5.7.14。
+为了图方便，直接把之前的Mysql5.6的data拷贝过来Mysql5.7使用，于是出现此问题。</p>]]></description>
 </item>
 <item>
   <title>mysql创建utf8字符集数据库</title>
@@ -71,7 +74,8 @@ D:\server\mysql5714\bin&gt;mysql_upgrade.exe -u root -p --force ........ ucenter
   <pubDate>Wed, 07 Sep 2016 13:19:50 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql/</guid>
-  <description><![CDATA[ 一、MySQL新建数据库语法 CREATE DATABASE 的语法： CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name [create_specification [, create_specification] ...] create_specification: [DEFAULT] CHARACTER SET charset_name | [DEFAULT] COLLATE collation_name 二、新建数据使用示例 CREATE DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 三、更改数据库的字符编码 ALTER DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一mysql新建数据库语法">一、MySQL新建数据库语法</h2>]]></description>
 </item>
 <item>
   <title>mysql_attr_init_command错误</title>
@@ -79,11 +83,8 @@ D:\server\mysql5714\bin&gt;mysql_upgrade.exe -u root -p --force ........ ucenter
   <pubDate>Tue, 06 Sep 2016 19:39:15 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql_attr_init_command%E9%94%99%E8%AF%AF/</guid>
-  <description><![CDATA[一、问题描述 1.1.打开Web时出现如下问题：mysql_attr_init_command Mysql错误-MSYQL_ATTR_INIT_COMMAND 1.2.看了一下项目的配置，是使用mysqli配置的 项目中连接mysql配置 二、查看服务器的环境配置 2.1.首先看了一下phpinfo中的配置 phpinfo配置 在配置中没有看到mysqli这一项扩展。
-2.2.在服务器中查看php的扩展 [root@edu local]# php -m [PHP Modules] bz2 calendar Core ctype curl date dom ereg exif fileinfo filter ftp gd gettext gmp hash iconv json libxml mbstring memcache mysql 在这里也没有看到mysqli扩展，意思就是没有这个扩展，需要安装了。
-三、安装php扩展 3.1.命令行安装扩展 在命令行中安装扩展，如下所示：
-[root@edu html]# yum install php5-mysqli 第一次使用这种命令时出现错误：
-[root@edu html]# yum install php5-mysqli Loaded plugins: fastestmirror Setting up Install Process Loading mirror speeds from cached hostfile * base: mirrors.163.com * epel: ftp.]]></description>
+  <description><![CDATA[<h2 id="一问题描述">一、问题描述</h2>
+<h3 id="11打开web时出现如下问题mysql_attr_init_command">1.1.打开Web时出现如下问题：mysql_attr_init_command</h3>]]></description>
 </item>
 <item>
   <title>mysql导入数据库后乱码的问题</title>
@@ -91,13 +92,9 @@ D:\server\mysql5714\bin&gt;mysql_upgrade.exe -u root -p --force ........ ucenter
   <pubDate>Tue, 06 Sep 2016 17:02:13 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
-  <description><![CDATA[Mysql导入数据库后乱码问题 一、Web乱码 在容器中install好les项目后，打开Web却发现菜单是乱码
-数据乱码 二、修改Mysql配置 1）、修改mysql配置 找到数据库的配置文件，增加**[client]配置编码utf8**，[mysqld]中同时增加init_connect=&lsquo;SET NAMES utf8&rsquo;，修改如下：
-[root@les /]# vim /etc/my.cnf [client] default-character-set=utf8 [mysqld] character_set_server=utf8 init_connect=&#39;SET NAMES utf8&#39; datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock user=mysql # Disabling symbolic-links is recommended to prevent assorted security risks symbolic-links=0 [mysqld_safe] log-error=/var/log/mysqld.log pid-file=/var/run/mysqld/mysqld.pid 2）、重启服务
-/etc/init.d/mysqld restart /etc/init.d/httpd restart 三、解决乱码 1.这个时候刷新Web发现还是乱码，那就是数据源有问题了，说明导入到数据库里的数据就是乱码，打开数据库一看果然如此，接着往下走。
-2.卸载掉les项目，重新安装。
-./gbc100_v1.1.bin uninstall lebds_UI /var/www/html lebds ./gbc100_v1.1.bin install lebds_UI /var/www/html lebds 3.打开Web页面，发现问题已解决。
-数据乱码 ]]></description>
+  <description><![CDATA[<h1 id="mysql导入数据库后乱码问题">Mysql导入数据库后乱码问题</h1>
+<h2 id="一web乱码">一、Web乱码</h2>
+<p>在容器中install好les项目后，打开Web却发现菜单是乱码</p>]]></description>
 </item>
 <item>
   <title>MySql服务突然没有了</title>
@@ -105,28 +102,9 @@ D:\server\mysql5714\bin&gt;mysql_upgrade.exe -u root -p --force ........ ucenter
   <pubDate>Mon, 05 Sep 2016 19:43:15 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/</guid>
-  <description><![CDATA[一、打开Web界面发现如下错误 看下图的意思是sql连接的错误，后面会单独连接MySql试试看。
-MySql连接不上了 二、使用命令连接不上了，如下图： 1.截图如下：
-MySql连接不上了 2.代码如下：
-D:\server\mysql5714\bin&gt;mysql -h127.0.0.1 -uroot -p Enter password: ****** ERROR 2003 (HY000): Can&#39;t connect to MySQL server on &#39;127.0.0.1&#39; (10061) D:\server\mysql5714\bin&gt;net start mysql 服务名无效。 请键入 NET HELPMSG 2185 以获得更多的帮助。 D:\server\mysql5714\bin&gt;net mysql start 此命令的语法是: NET [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP | HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START | STATISTICS | STOP | TIME | USE | USER | VIEW ] 三、计算机服务中去看，也没有MySql服务 服务中看不到MySql 四、解决办法 1.]]></description>
-</item>
-<item>
-  <title>mysql之密码学</title>
-  <link>https://daizelai.github.io/posts/mysql/mysqlpassword/</link>
-  <pubDate>Tue, 09 Aug 2016 14:13:05 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/mysql/mysqlpassword/</guid>
   <description><![CDATA[<!-- raw HTML omitted -->
-<h2 id="一mysql命令行重置密码">一、mysql命令行重置密码</h2>
-<h3 id="11首先需要连接进入mysql">1.1.首先需要连接进入mysql</h3>
-<pre tabindex="0"><code>mysql&gt; select user();  
-+---------------+  
-| user()        |  
-+---------------+  
-| root@localhost |  
-+---------------+  
-1 row in set (0.00 sec) 
-</code></pre>]]></description>
+<h3 id="一打开web界面发现如下错误">一、打开Web界面发现如下错误</h3>
+<p>看下图的意思是sql连接的错误，后面会单独连接MySql试试看。</p>]]></description>
 </item>
 </channel>
 </rss>

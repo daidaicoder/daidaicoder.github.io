@@ -7,39 +7,31 @@
     <meta name="robots" content="noodp" />
     <title>制作OTA升级包二 - 来来往往</title><meta name="author" content="">
 <meta name="author-link" content="">
-<meta name="description" content="6. 制作OTA升级包二 一、描述 本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。
-关键字： 制作update包，制作update.zip包，编译update包，编译update.zip包。 SC60制作update包，制作update升级包，制作update.zip升级包,SC60系统OTA包。
-二、编译前工作 制作OTA升级包之前，需要全编译系统。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20 三、编译OTA升级包 3.1.编译OTA版本 其实通过命令make dist -j 20编译出来下面的路径中的文件就是OTA升级包，可以直接拿去系统升级。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20......using prebuilt boot.img from IMAGES...boot size (28646696) is 42.69% of limit (67108864)Loading radio filesmap...Loading radio target...warning radio-update: no radio images in input target_filesrunning: openssl pkcs8 -in build/target/product/security/testkey." /><meta name="keywords" content='原创, SC60, 制作安装包, OTA版本包, OTA升级包, 制作升级包' /><meta itemprop="name" content="制作OTA升级包二">
-<meta itemprop="description" content="6. 制作OTA升级包二 一、描述 本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。
-关键字： 制作update包，制作update.zip包，编译update包，编译update.zip包。 SC60制作update包，制作update升级包，制作update.zip升级包,SC60系统OTA包。
-二、编译前工作 制作OTA升级包之前，需要全编译系统。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20 三、编译OTA升级包 3.1.编译OTA版本 其实通过命令make dist -j 20编译出来下面的路径中的文件就是OTA升级包，可以直接拿去系统升级。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20......using prebuilt boot.img from IMAGES...boot size (28646696) is 42.69% of limit (67108864)Loading radio filesmap...Loading radio target...warning radio-update: no radio images in input target_filesrunning: openssl pkcs8 -in build/target/product/security/testkey."><meta itemprop="datePublished" content="2021-06-07T09:50:27+08:00" />
+<meta name="description" content="
+一、描述
+本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。" /><meta name="keywords" content='原创, SC60, 制作安装包, OTA版本包, OTA升级包, 制作升级包' /><meta itemprop="name" content="制作OTA升级包二">
+<meta itemprop="description" content="
+一、描述
+本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。"><meta itemprop="datePublished" content="2021-06-07T09:50:27+08:00" />
 <meta itemprop="dateModified" content="2021-06-07T09:50:27+08:00" />
-<meta itemprop="wordCount" content="1292">
+<meta itemprop="wordCount" content="1290">
 <meta itemprop="keywords" content="原创,SC60,制作安装包,OTA版本包,OTA升级包,制作升级包," /><meta property="og:title" content="制作OTA升级包二" />
-<meta property="og:description" content="6. 制作OTA升级包二 一、描述 本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。
-关键字： 制作update包，制作update.zip包，编译update包，编译update.zip包。 SC60制作update包，制作update升级包，制作update.zip升级包,SC60系统OTA包。
-二、编译前工作 制作OTA升级包之前，需要全编译系统。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20 三、编译OTA升级包 3.1.编译OTA版本 其实通过命令make dist -j 20编译出来下面的路径中的文件就是OTA升级包，可以直接拿去系统升级。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20......using prebuilt boot.img from IMAGES...boot size (28646696) is 42.69% of limit (67108864)Loading radio filesmap...Loading radio target...warning radio-update: no radio images in input target_filesrunning: openssl pkcs8 -in build/target/product/security/testkey." />
+<meta property="og:description" content="
+一、描述
+本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://daizelai.github.io/posts/sc60/6.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-07T09:50:27+08:00" />
 <meta property="article:modified_time" content="2021-06-07T09:50:27+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="制作OTA升级包二"/>
-<meta name="twitter:description" content="6. 制作OTA升级包二 一、描述 本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。
-关键字： 制作update包，制作update.zip包，编译update包，编译update.zip包。 SC60制作update包，制作update升级包，制作update.zip升级包,SC60系统OTA包。
-二、编译前工作 制作OTA升级包之前，需要全编译系统。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ source build/envsetup.sh[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ lunch msm8953_64-userdebug[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make clean &amp;&amp; make -j 20 三、编译OTA升级包 3.1.编译OTA版本 其实通过命令make dist -j 20编译出来下面的路径中的文件就是OTA升级包，可以直接拿去系统升级。
-[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ make dist -j 20......using prebuilt boot.img from IMAGES...boot size (28646696) is 42.69% of limit (67108864)Loading radio filesmap...Loading radio target...warning radio-update: no radio images in input target_filesrunning: openssl pkcs8 -in build/target/product/security/testkey."/>
+<meta name="twitter:description" content="
+一、描述
+本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。"/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/sc60/6.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C/" /><link rel="prev" href="https://daizelai.github.io/posts/sc60/5.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85/" /><link rel="next" href="https://daizelai.github.io/posts/sc60/sc60%E7%89%88%E6%9C%AC%E5%8C%85%E5%8D%87%E7%BA%A7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/sc60/6.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C/" /><link rel="prev" href="https://daizelai.github.io/posts/sc60/5.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85/" /><link rel="next" href="https://daizelai.github.io/posts/git/git/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -48,7 +40,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/daizelai.github.io\/posts\/sc60\/6.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C\/"
-    },"genre": "posts","keywords": "原创, SC60, 制作安装包, OTA版本包, OTA升级包, 制作升级包","wordcount":  1292 ,
+    },"genre": "posts","keywords": "原创, SC60, 制作安装包, OTA版本包, OTA升级包, 制作升级包","wordcount":  1290 ,
     "url": "https:\/\/daizelai.github.io\/posts\/sc60\/6.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85%E4%BA%8C\/","datePublished": "2021-06-07T09:50:27+08:00","dateModified": "2021-06-07T09:50:27+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -191,7 +183,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       daizelai</span></span>
           <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/sc60/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> SC60</a>&ensp;<a href="/categories/%E5%88%B6%E4%BD%9C%E5%AE%89%E8%A3%85%E5%8C%85/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 制作安装包</a></span></div>
-      <div class="post-meta-line"><span title="发布于 2021-06-07 09:50:27"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2021-06-07">2021-06-07</time></span>&nbsp;<span title="更新于 2021-06-07 09:50:27"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2021-06-07">2021-06-07</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1292 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 7 分钟</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="发布于 2021-06-07 09:50:27"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2021-06-07">2021-06-07</time></span>&nbsp;<span title="更新于 2021-06-07 09:50:27"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2021-06-07">2021-06-07</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1290 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 7 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -210,13 +202,12 @@
     <li><a href="#四安装版本">四、安装版本</a></li>
   </ul>
 </nav></div>
-      </div><div class="content" id="content"><h1 id="6-制作ota升级包二">6. 制作OTA升级包二</h1>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <p>本文第二次记录了SC60系统的OTA升级包，以前制作OTA升级包的全过程，最后把制作好的update.zip通过命令的形式升级到SC60终端设备上去。</p>
 <p><strong>关键字：</strong>
 制作update包，制作update.zip包，编译update包，编译update.zip包。
 SC60制作update包，制作update升级包，制作update.zip升级包,SC60系统OTA包。</p>
-<!-- raw HTML omitted -->
 <h2 id="二编译前工作">二、编译前工作</h2>
 <p>制作OTA升级包之前，需要全编译系统。</p>
 <pre tabindex="0"><code class="language-linux" data-lang="linux">[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd
@@ -428,7 +419,7 @@ reboot recovery
   </div>
 
   <div class="post-nav"><a href="/posts/sc60/5.-%E5%88%B6%E4%BD%9Cota%E5%8D%87%E7%BA%A7%E5%8C%85/" class="post-nav-item" rel="prev" title="制作OTA升级包"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>制作OTA升级包</a>
-      <a href="/posts/sc60/sc60%E7%89%88%E6%9C%AC%E5%8C%85%E5%8D%87%E7%BA%A7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-nav-item" rel="next" title="版本包升级注意事项">版本包升级注意事项<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+      <a href="/posts/git/git/" class="post-nav-item" rel="next" title="提取已提交到gitlab的文件">提取已提交到gitlab的文件<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

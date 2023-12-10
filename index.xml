@@ -6,16 +6,36 @@
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</lastBuildDate>
       <atom:link href="https://daizelai.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-  <title>Android中XLog框架的使用</title>
+  <title>android中XLog框架的使用</title>
   <link>https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</link>
   <pubDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</guid>
-  <description><![CDATA[<h1 id="20231130_1631武汉19号线使用新日志框架">20231130_1631武汉19号线使用新日志框架</h1>
+  <description><![CDATA[<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
-<p>怀疑武汉19号线最近出现的固定台APP异常退出的内存溢出，回到桌面是因为大量写数据到日志文件导致的，项目中使用的写日志到文件，是我自己写的工具类，性能堪忧。</p>
+<p>怀疑武汉19号线最近出现的固定台APP异常退出到桌面是因为内存溢出，通过看日志发现回到桌面是因为大量写数据到日志文件导致的，项目中使用的写日志到文件，是我自己写的工具类，性能堪忧。</p>
 <p>本文主要是把日志工具类替换为XLog日志框架，此框架之前也在此项目中使用过，现在正式启用它看看。</p>]]></description>
+</item>
+<item>
+  <title>在linux中使用grep的几种技巧</title>
+  <link>https://daizelai.github.io/posts/linux/linuxgrep/</link>
+  <pubDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linuxgrep/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>在linux系统中，有一个非常强大的命令行文本搜索工具，它就是grep，本文主要介绍grep的几种使用方法。</p>]]></description>
+</item>
+<item>
+  <title>在linux中使用grep的几种技巧</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxgrep/</link>
+  <pubDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxgrep/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>在linux系统中，有一个非常强大的命令行文本搜索工具，它就是grep，本文主要介绍grep的几种使用方法。</p>]]></description>
 </item>
 <item>
   <title>系统启动后修改usb网卡的mac地址</title>
@@ -23,18 +43,10 @@
   <pubDate>Thu, 30 Nov 2023 11:15:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/20231130_1115%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%90%8E%E4%BF%AE%E6%94%B9usb%E7%BD%91%E5%8D%A1%E7%9A%84mac%E5%9C%B0%E5%9D%80/</guid>
-  <description><![CDATA[20231130_1115系统启动后修改usb网卡的mac地址 一、描述 由于无法通过工具直接修改usb网卡的mac地址，所以做了个变通的方法，通过在系统启动后来修改mac地址。
-配置文件样本： system_config.ini
-二、配置文件 2.1.配置文件内容 也是在配置文件中配置参数。如下所示：
-[system] self_mac=11:aa:bb:cc:dd 注意，配置时请使用合法的mac地址，非法的mac地址就不会生效。
-2.2.配置文件说明 配置文件中的[system]只是为了区分，最主要的配置项是self_mac。
-其中，self_mac表示修改后的mac地址，请设置合法mac地址。 配置项中=号前后不需要空格。 当系统在启动时，检测到self_mac值时，将会修改eth0的mac地址。
-2.3.配置文件路径 配置文件存放在/custom/metro/system路径下。
-msm8953_64:/custom/metro/system # pwd/custom/metro/systemmsm8953_64:/custom/metro/system # ls -ltotal 8-rw-rw-rw- 1 root root 100 2023-11-29 19:17 system_config.inimsm8953_64:/custom/metro/system # 三、基本逻辑 修改mac地址的基本逻辑如下：
-端口eth0不在，不会设置mac地址。 无配置文件，不会设置mac地址。 有self_mac=但未设置值，不会设置mac地址。 配置了self_mac地址，但是mac不合法，不会设置mac地址。 正确的设置了合法的mac地址，会设置mac地址。 四、操作说明 4.1.编辑配置文件 可以根据需要配置正确的配置项。
-4.2.替换配置文件 使用adb命令替换配置文件，如果终端系统刷机后，此默认是没有配置项的，需要人工去替换配置文件。
-本配置文件一般会有产测的时候需要做这一步，后期可根据需要做好维护工作。
-C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.iniadb.exe: push requires an argumentC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.ini /custom/metro/system/E:\SC60\wuhan19_fx_20231030_1645\os\system_config.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>由于无法通过工具直接修改usb网卡的mac地址，所以做了个变通的方法，通过在系统启动后来修改mac地址。</p>
+<p>配置文件样本： <a href="./file/system_config.ini">system_config.ini</a></p>]]></description>
 </item>
 <item>
   <title>终端屏幕自动修复配置的使用</title>
@@ -42,19 +54,9 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Thu, 30 Nov 2023 09:00:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/20231130_0900%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-  <description><![CDATA[20231130_0900终端屏幕自动修复配置的使用 一、描述 本文记录了如何在终端上配置屏幕自动修复的方法，以及如何查看是否执行了修复操作。
-版本路径： \10.1.1.154\00-网络u盘\地铁集群二开项目\版本\SC60\E220\WH19\TX\20231130\userdebug_emmc_20231130_1135.7z 配置文件样本： system_config.ini
-二、配置文件 2.1.配置文件内容 配置文件内容如下所示：
-[system] self_mac=11:aa:bb:cc:dd [screen] reset_code=0xb1,0xb5,0x31,0xbd period_time=5000 2.2.配置文件说明 配置文件中的[screen]只是为了区分，最主要的配置项是reset_code和period_time。
-其中reset_code表示检测码，period_time表示单次修复的间隔时间。 配置项中=号前后不需要空格。 配置文件中的period_time字段单位是毫秒，即如果是5秒，需要配置5000，如果1天需要配置86400000。 当系统检测到配置项中的某个reset_code时，会在达到period_time时间时修复一次，period_time项配置的时间不是绝对值，是一个大概区间值。
-2.3.配置文件路径 配置文件存放在/custom/metro/system路径下。
-msm8953_64:/custom/metro/system # pwd/custom/metro/systemmsm8953_64:/custom/metro/system # ls -ltotal 8-rw-rw-rw- 1 root root 100 2023-11-29 19:17 system_config.inimsm8953_64:/custom/metro/system # 三、自动修复基本逻辑 基本逻辑如下：
-无配置文件，默认修复时间为5秒检测一次，当遇到异常时，且是在默认的错误码[0xb1/0x31/0xb5/0xbd]中时会修复一次，没有检查到检测码，继续下一次。 有配置文件，以配置文件中配置的检测码为准。 有配置文件，以配置文件中的检查时间为准，但未配置或配置小于5秒，以5秒为间隔，配置超过或等于INT范围时，以一天86400秒为准。 下面是屏幕修复的主要流程：
-四、操作说明 4.1.编辑配置文件 可以根据需要配置正确的配置项。
-4.2.替换配置文件 使用adb命令替换配置文件，如果终端系统刷机后，此默认是没有配置项的，需要人工去替换配置文件。
-后期会做到上层应用中，通过服务器下发此配置项来覆盖人工操作。
-下面是一次成功的替换配置文件的操作记录。
-C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.iniadb.exe: push requires an argumentC:\Users\daizelai&gt;adb push E:\SC60\wuhan19_fx_20231030_1645\os\system_config.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>本文记录了如何在终端上配置屏幕自动修复的方法，以及如何查看是否执行了修复操作。</p>]]></description>
 </item>
 <item>
   <title>内核中添加驱动模块</title>
@@ -62,13 +64,27 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Wed, 22 Nov 2023 15:56:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/linux/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/</guid>
-  <description><![CDATA[<h1 id="20231122_1556内核中添加驱动模块">20231122_1556内核中添加驱动模块</h1>
+  <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
-<p>by daizelai on 2023/11/22 15:56
-成功在内核中添加一个模块。</p>
-<p>设备树目录在 arch/arm/boot/dts目录。
-设备树插件目录在 arch/arm/boot/dts/overlays 目录
-驱动目录在kernel/drivers下</p>]]></description>
+<p>by daizelai on 2023/11/22 15:56</p>
+<p>成功在内核中添加一个模块。</p>
+<p>设备树目录在<code>arch/arm/boot/dts</code>目录。</p>
+<p>设备树插件目录在<code>arch/arm/boot/dts/overlays</code>目录</p>
+<p>驱动目录在kernel/drivers下</p>]]></description>
+</item>
+<item>
+  <title>内核中添加驱动模块</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/</link>
+  <pubDate>Wed, 22 Nov 2023 15:56:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/20231122_1556%E5%86%85%E6%A0%B8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2023/11/22 15:56</p>
+<p>成功在内核中添加一个模块。</p>
+<p>设备树目录在<code>arch/arm/boot/dts</code>目录。</p>
+<p>设备树插件目录在<code>arch/arm/boot/dts/overlays</code>目录</p>
+<p>驱动目录在kernel/drivers下</p>]]></description>
 </item>
 <item>
   <title>编译android系统user版本时默认开启adb模式</title>
@@ -76,7 +92,7 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Tue, 21 Nov 2023 19:10:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/android/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/20231121_1910%E7%BC%96%E8%AF%91android%E7%B3%BB%E7%BB%9Fuser%E7%89%88%E6%9C%AC%E6%97%B6%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AFadb%E6%A8%A1%E5%BC%8F/</guid>
-  <description><![CDATA[<h1 id="20231121_1910编译android系统user版本时默认开启adb模式">20231121_1910编译android系统user版本时默认开启adb模式</h1>
+  <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <p>默认编译user系统后，是不能直接adb和root的，但有时候为了方便又必须要这样做，怎么办呢？</p>
 <p>本文给出了msm8953_64+Android7.1环境下，如何解决这个问题。</p>]]></description>
@@ -87,7 +103,7 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Thu, 16 Nov 2023 19:41:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/android/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/</guid>
-  <description><![CDATA[<h1 id="20231114_2028添加系统启动脚本">20231114_2028添加系统启动脚本</h1>
+  <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <h3 id="11功能描述">1.1.功能描述</h3>
 <p>动态修改网卡地址。</p>
@@ -111,46 +127,19 @@ C:\Users\daizelai&gt;adb rootadbd is already running as rootC:\Users\daizelai&
   <pubDate>Wed, 08 Nov 2023 13:53:00 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/android/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/20231108_1353android%E5%AE%9E%E7%8E%B0%E6%B5%AE%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%B0%E5%BD%95/</guid>
-  <description><![CDATA[<h1 id="20231108_1353android实现浮动窗口记录">20231108_1353Android实现浮动窗口记录</h1>
+  <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <p>实现浮动窗口。</p>
-<p>难点
-1、悬浮窗的穿透点击
-当悬浮窗悬浮的时候，理想状态，应该是悬浮窗里面的按钮和悬浮窗底层点击触摸事件不冲突。
-2、需要注意，悬浮窗的可能会出现黑色背景，需要加params.format = PixelFormat.RGBA_8888;</p>]]></description>
-</item>
-<item>
-  <title>JSON数据int超过取值范围问题解决</title>
-  <link>https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</link>
-  <pubDate>Thu, 26 Oct 2023 17:59:00 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/android/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/20231026_1759%E8%A7%A3%E5%86%B3json%E6%95%B0%E6%8D%AE%E6%97%B6int%E5%8F%98%E9%87%8F%E6%8E%A5%E6%94%B6%E8%B6%85%E8%BF%87int%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%E7%9A%84%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</guid>
-  <description><![CDATA[<h1 id="20231026_1759解决json数据时int变量接收超过int取值范围的异常问题">20231026_1759解决JSON数据时int变量接收超过int取值范围的异常问题</h1>
-<h2 id="一描述">一、描述</h2>
-<p>在android或java中，与服务器进行接口交互的时候，如果本地变量是Int类型的，但是由于服务器的错误，传递了一个long型的数据过来，本地程序就是出现异常，如下所示：</p>]]></description>
-</item>
-<item>
-  <title>android音频配置文件详解</title>
-  <link>https://daizelai.github.io/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
-  <pubDate>Sun, 08 Oct 2023 13:40:00 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/android/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/20231008_1340android%E9%9F%B3%E9%A2%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
-  <description><![CDATA[<h1 id="20231008_1340android音频配置文件详解">20231008_1340Android音频配置文件详解</h1>
-<h2 id="描述">描述</h2>
-<p>本文主要记录了一下音频配置文件的简单理解，会慢慢更新。</p>]]></description>
-</item>
-<item>
-  <title>adb网络命令记录</title>
-  <link>https://daizelai.github.io/posts/android/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</link>
-  <pubDate>Sun, 03 Sep 2023 20:02:00 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/android/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/adb%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</guid>
-  <description><![CDATA[<h1 id="adb网络命令记录">adb网络命令记录</h1>
-<h2 id="一常用命令">一、常用命令</h2>
-<p>在<code>ADB Shell root</code>用户下，添加IP地址为<code>10.0.1.2</code>，子网掩码为<code>255.255.255.0</code>，对应的指令如下：</p>
-<pre tabindex="0"><code class="language-linux" data-lang="linux"># eth0 为有线网络 wlan0 为无线网络
-ip address add 10.0.1.2/24 dev eth0
-</code></pre>]]></description>
+<blockquote>
+<p>难点</p>
+</blockquote>
+<ol>
+<li>悬浮窗的穿透点击</li>
+</ol>
+<p>当悬浮窗悬浮的时候，理想状态，应该是悬浮窗里面的按钮和悬浮窗底层点击触摸事件不冲突。</p>
+<ol start="2">
+<li>需要注意，悬浮窗的可能会出现黑色背景，需要加params.format = PixelFormat.RGBA_8888;</li>
+</ol>]]></description>
 </item>
 </channel>
 </rss>

@@ -9,8 +9,8 @@
   <pubDate>Tue, 18 Oct 2016 11:27:46 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/php/php%E7%94%9F%E6%88%908%E4%BD%8D%E9%9A%8F%E6%9C%BA%E6%95%B0/</guid>
-  <description><![CDATA[一、描述 在php中使用随机数
-二、随机数 2.1.使用str_shuffle+substr产生8位随机数 $rand = substr(str_shuffle(&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890&#39;),0,8); echo $rand; F97VObtg 2.2.使用rand+pow生成8位随机数 function generate_code($length = 4) { return rand(pow(10,($length-1)), pow(10,$length)-1); } echo generate_code(8); echo &#34;&lt;br /&gt;&#34;; echo rand(pow(10,(8-1)), pow(10, 8)-1); 56469421 70479736 2.3.使用mt_rand生成8位随机数 echo &#34;&lt;br /&gt;&#34;; echo &#34;&lt;br /&gt;&#34;; $a = mt_rand(10000000,99999999); $b = mt_rand(10000000,99999999); echo $a; echo &#34;&lt;br /&gt;&#34;; echo $a.$b; 36816416 3681641615139555 2.4.使用range生成不定长度的随机数 $tmp = range(1,30); echo implode(&#34;&#34;, array_rand($tmp,10)); 051319212225262829 2.5.使用rand生成不定长度的位随机数 echo rand(); echo &#34;&lt;br /&gt;&#34;; echo rand(5, 15); 6135 8 ]]></description>
+  <description><![CDATA[<h2 id="一描述">一、描述</h2>
+<p>在php中使用随机数</p>]]></description>
 </item>
 <item>
   <title>php获取不到post的json数据的问题</title>
@@ -18,14 +18,24 @@
   <pubDate>Mon, 17 Oct 2016 15:56:43 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/php/php%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0post%E7%9A%84json%E6%95%B0%E6%8D%AE%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
-  <description><![CDATA[一、描述 php获取post方式的json数据
-二、开始 2.1.在做平安wifi认证时，对方说会首先post过来数据，请求格式为json： { &#34;openid&#34;: &#34;4100009820006&#34;, &#34;openkey&#34;: &#34;331224145d4a4bdb8e239cc57e6e010e&#34;, &#34;ip&#34;: &#34;127.0.0.1&#34;, &#34;ssid&#34;: &#34;testSSID&#34; } 2.2.但在test服务器看日志是没有数据的 [ 2016-10-17T15:27:49+08:00 ] /cmps/admin.php/api/login | ERR: array ( ) 2.3.在网关中抓包又是可以看到数据的 网关查看post报文 2.4.问题解决 经过好长一段时间才找到了问题所在，原来在PHP中是不能直接获取post过来的json数据的，PHP 默认只识别 application/x-www.form-urlencoded 标准的数据类型，因此对型如 text/xml 或者 soap 或者 application/octet-stream 之类的内容无法解析，如果用 $_POST 数组来接收就会失败，故保留原型，交给 $GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;] 来接收。
-可以通过下面两种方式来获取。 1.使用file_get_contents(&quot;php://input&quot;)
-$post = file_get_contents(&#34;php://input&#34;); log::write(var_export($post,true)); 日志中查看结果：
-[ 2016-10-17T15:27:49+08:00 ] /cmps/admin.php/api/login | ERR: &#39;{&#34;openid&#34;:&#34;410003803000 8&#34;,&#34;openkey&#34;:&#34;b983a837a3204b89bc6585905cd7f6ef&#34;,&#34;ip&#34;:&#34;172.16.135.140&#34;,&#34;ssid&#34;:&#34;00000003&#34;}&#39; 2.使用$GLOBALS['HTTP_RAW_POST_DATA']
-log::write(var_export($GLOBALS[&#39;HTTP_RAW_POST_DATA&#39;],true)); 日志中查看结果：
-[ 2016-10-17T15:27:49+08:00 ] /cmps/admin.php/api/login | ERR: &#39;{&#34;openid&#34;:&#34;410003803000 8&#34;,&#34;openkey&#34;:&#34;b983a837a3204b89bc6585905cd7f6ef&#34;,&#34;ip&#34;:&#34;172.16.135.140&#34;,&#34;ssid&#34;:&#34;00000003&#34;}&#39; 2.5.正常post数据 正常的post方式的报文和上面json格式查看是不一样的，可以看到报文是在url下面那一行查看到的。
-105	4.]]></description>
+  <description><![CDATA[<h2 id="一描述">一、描述</h2>
+<p>php获取post方式的json数据</p>]]></description>
+</item>
+<item>
+  <title>Windows安装配置php&#43;memcached的方法</title>
+  <link>https://daizelai.github.io/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+  <pubDate>Sat, 24 Sep 2016 14:36:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
+  <description><![CDATA[一、软件列表 下面是涉及到的软件列表。
+Apache2.2+php5.2.5+mysql5.5.19memcached:memcached-win32-1.4.4-14.zipmemcache_dll/php5.2/php_memcache.dll二、Windows下Memcached的安装配置方法 将第一个包解压放某个盘下面，比如在c:\memcached。 在终端（也即cmd命令界面）下输入 &lsquo;c:\memcached\memcached.exe -d install&rsquo; 安装。 再输入： &lsquo;c:\memcached\memcached.exe -d start&rsquo; 启动。 需要注意的: 以后memcached将作为windows的一个服务每次开机时自动启动。这样服务器端已经安装完毕了。
+在控制台输入命令安装：c:/memcached/memcached.exe -d install 启动：c:/memcached/memcached.exe -d start 或：net start &#34;memcached Server&#34; 下载php_memcache.dll 文件，把它放入php文件夹的ext目录中。
+在php.ini加入一行引用扩展，代码如下：
+extension=php_memcache.dll
+接着在 php.ini 文件里加上:
+[Memcache] memcache.allow_failover = 1 memcache.max_failover_attempts=20 memcache.chunk_size =8192 memcache.default_port = 11211 最好就放在刚才写 &ldquo;extension=php_memcache.dll&rdquo; 的下面。（这是默认的一些配置）
+重新启动Apache，然后查看一下phpinfo，如果有 memcache 的说明，那么就说明安装成功啦！ 三、简单使用 3.1.示例 写一个 example.php 文件（更多使用方法可以参看 PHP 手册里的 Memcache Functions 使用说明），测试代码如下：
+&lt;?php $memcache = new Memcache; $memcache-&gt;connect(&#39;localhost&#39;, 11211) or die (&#34;Could not connect&#34;); $version = $memcache-&gt;getVersion(); echo &#34;Server&#39;s version: &#34;.]]></description>
 </item>
 </channel>
 </rss>

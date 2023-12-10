@@ -9,9 +9,26 @@
   <pubDate>Thu, 13 Oct 2016 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</guid>
-  <description><![CDATA[windows下netstat命令的简单使用记录。
-一、windows下使用 windows下面查看所有端口，然后找到对应的端口和PID。
-1.1.查看netstat的帮助信息# D:\server\php5625&gt;netstat /? 显示协议统计和当前 TCP/IP 网络连接。 NETSTAT [-a] [-b] [-e] [-f] [-n] [-o] [-p proto] [-r] [-s] [-t] [interval] -a 显示所有连接和侦听端口。 -b 显示在创建每个连接或侦听端口时涉及的可执行程序。 在某些情况下，已知可执行程序承载多个独立的 组件，这些情况下，显示创建连接或侦听端口时涉 及的组件序列。此情况下，可执行程序的名称 位于底部[]中，它调用的组件位于顶部，直至达 到 TCP/IP。注意，此选项可能很耗时，并且在您没有 足够权限时可能失败。 -e 显示以太网统计。此选项可以与 -s 选项结合使用。 -f 显示外部地址的完全限定域名(FQDN)。 -n 以数字形式显示地址和端口号。 -o 显示拥有的与每个连接关联的进程 ID。 -p proto 显示 proto 指定的协议的连接；proto 可以是下列任 何一个: TCP、UDP、TCPv6 或 UDPv6。如果与 -s 选 项一起用来显示每个协议的统计，proto 可以是下列任 何一个: IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP 或 UDPv6。 -r 显示路由表。 -s 显示每个协议的统计。默认情况下，显示 IP、IPv6、ICMP、ICMPv6、TCP、TCPv6、UDP 和 UDPv6 的统计；-p 选项可用于指定默认的子网。 -t 显示当前连接卸载状态。 interval 重新显示选定的统计，各个显示间暂停的间隔秒数。 按 CTRL+C 停止重新显示统计。如果省略，则 netstat 将打印当前的配置信息一次。 1.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<p>windows下netstat命令的简单使用记录。</p>
+<h2 id="一windows下使用">一、windows下使用</h2>
+<p>windows下面查看所有端口，然后找到对应的端口和PID。</p>]]></description>
+</item>
+<item>
+  <title>Windows安装配置php&#43;memcached的方法</title>
+  <link>https://daizelai.github.io/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+  <pubDate>Sat, 24 Sep 2016 14:36:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
+  <description><![CDATA[一、软件列表 下面是涉及到的软件列表。
+Apache2.2+php5.2.5+mysql5.5.19memcached:memcached-win32-1.4.4-14.zipmemcache_dll/php5.2/php_memcache.dll二、Windows下Memcached的安装配置方法 将第一个包解压放某个盘下面，比如在c:\memcached。 在终端（也即cmd命令界面）下输入 &lsquo;c:\memcached\memcached.exe -d install&rsquo; 安装。 再输入： &lsquo;c:\memcached\memcached.exe -d start&rsquo; 启动。 需要注意的: 以后memcached将作为windows的一个服务每次开机时自动启动。这样服务器端已经安装完毕了。
+在控制台输入命令安装：c:/memcached/memcached.exe -d install 启动：c:/memcached/memcached.exe -d start 或：net start &#34;memcached Server&#34; 下载php_memcache.dll 文件，把它放入php文件夹的ext目录中。
+在php.ini加入一行引用扩展，代码如下：
+extension=php_memcache.dll
+接着在 php.ini 文件里加上:
+[Memcache] memcache.allow_failover = 1 memcache.max_failover_attempts=20 memcache.chunk_size =8192 memcache.default_port = 11211 最好就放在刚才写 &ldquo;extension=php_memcache.dll&rdquo; 的下面。（这是默认的一些配置）
+重新启动Apache，然后查看一下phpinfo，如果有 memcache 的说明，那么就说明安装成功啦！ 三、简单使用 3.1.示例 写一个 example.php 文件（更多使用方法可以参看 PHP 手册里的 Memcache Functions 使用说明），测试代码如下：
+&lt;?php $memcache = new Memcache; $memcache-&gt;connect(&#39;localhost&#39;, 11211) or die (&#34;Could not connect&#34;); $version = $memcache-&gt;getVersion(); echo &#34;Server&#39;s version: &#34;.]]></description>
 </item>
 </channel>
 </rss>

@@ -9,9 +9,10 @@
   <pubDate>Sun, 31 Mar 2019 12:54:26 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/room/20220929_1505%E5%BF%AB%E9%80%9F%E8%A7%A3%E5%86%B3room%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%A1%A8sql%E8%AF%AD%E5%8F%A5%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/room/</guid>
-  <description><![CDATA[一、描述 1.1.前言 创建一张ROOM新表在升级数据库解决冲突问题。
-1.2.表实体类 调度命令DispatchOrder表实体类。
-package com.gbcom.library_base.db import androidx.room.ColumnInfo import androidx.room.Entity import androidx.room.PrimaryKey /** * 调度命令表 * @author daizelai@gbcom.com.cn * @date 2022/09/29 13:45 */ @Entity(tableName = &#34;metro_dispatch_order&#34;) data class DispatchOrder( /** * 主键 */ @PrimaryKey(autoGenerate = true) @ColumnInfo(name = &#34;id&#34;) val id: Long = 0 ) { /** * 发令处所编号 */ @ColumnInfo(name = &#34;sender_id&#34;) var senderID: Int = 0 /** * 发令人姓名 */ @ColumnInfo(name = &#34;sender&#34;) var sender: String? = null /** * 调度命令内容 */ @ColumnInfo(name = &#34;order_info&#34;) var orderInfo: String?]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>创建一张ROOM新表在升级数据库解决冲突问题。</p>]]></description>
 </item>
 </channel>
 </rss>

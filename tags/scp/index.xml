@@ -19,5 +19,21 @@
 <h3 id="二从-本地-复制到-远程">二、从 本地 复制到 远程</h3>
 <p>复制文件：</p>]]></description>
 </item>
+<item>
+  <title>Linux之scp复制远程文件</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/room/</link>
+  <pubDate>Wed, 10 Aug 2016 08:56:57 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/room/</guid>
+  <description><![CDATA[<h3 id="一语法">一、语法</h3>
+<p>1.linux 的 scp 命令 可以 在 linux 之间复制 文件 和 目录；<br>
+2.scp 可以在 2个 linux 主机间复制文件；<br>
+3.命令基本格式：</p>
+<blockquote>
+<p>scp [可选参数] file_source file_target</p>
+</blockquote>
+<h3 id="二从-本地-复制到-远程">二、从 本地 复制到 远程</h3>
+<p>复制文件：</p>]]></description>
+</item>
 </channel>
 </rss>

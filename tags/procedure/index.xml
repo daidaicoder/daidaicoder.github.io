@@ -9,8 +9,10 @@
   <pubDate>Sun, 09 Oct 2016 14:02:09 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/procedure/</guid>
-  <description><![CDATA[ 查看存储过程 mysql&gt; show procedure status; 查看存储过程内容 查看某一个存储过程的内容
-mysql&gt; show create procedure updateHotspot_pro; ]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="查看存储过程">查看存储过程</h2>
+<pre><code>mysql&gt; show procedure status;
+</code></pre>]]></description>
 </item>
 </channel>
 </rss>

@@ -3,17 +3,78 @@
     <title>linux - 分类 - 来来往往</title>
     <link>https://daizelai.github.io/categories/linux/</link>
     <description>linux - 分类 - 来来往往</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 19 Aug 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://daizelai.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 08 Oct 2022 13:33:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+  <title>比较两个文件是否是同一个</title>
+  <link>https://daizelai.github.io/posts/knowledge/20221008_1318%E6%AF%94%E8%BE%83%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%98%AF%E5%90%8C%E4%B8%80%E4%B8%AA/</link>
+  <pubDate>Sat, 08 Oct 2022 13:33:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/knowledge/20221008_1318%E6%AF%94%E8%BE%83%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%98%AF%E5%90%8C%E4%B8%80%E4%B8%AA/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2022/10/08 13:33</p>
+<p>比较两个文件是否完全相等。</p>]]></description>
+</item>
+<item>
+  <title>搜索查找记录</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxsearch/</link>
+  <pubDate>Fri, 19 Aug 2022 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxsearch/</guid>
+  <description><![CDATA[<h1 id="搜索查找记录">搜索查找记录</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2021/08/19 16:08</p>
+<p>在SC60中搜索和查找相关文件。</p>
+<p><strong>关键字：</strong> 日志搜索、搜索日志、linux搜索</p>]]></description>
+</item>
+<item>
   <title>搜索查找记录</title>
   <link>https://daizelai.github.io/posts/linux/linuxsearch/</link>
   <pubDate>Fri, 19 Aug 2022 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/linux/linuxsearch/</guid>
-  <description><![CDATA[搜索查找记录 一、描述 by daizelai on 2021/08/19 16:08
-在SC60中搜索和查找相关文件。 关键字：日志搜索、搜索日志、linux搜索
-二、在文件内容中查找 $ grep &#34;code&#34; -rni ./$ grep &#34;sdcard u:object_r:rootfs:s0&#34; -nr ./system/[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ grep &#34;code&#34; -rni ././kernel/msm-3.18/kernel/power/snapshot.c:837: * initialization code)./kernel/msm-3.18/kernel/power/snapshot.c:1880: info-&gt;version_code = LINUX_VERSION_CODE; 四、gpio查找 gpio查找其实也是在文件内容中查找。
-# grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/# grep -rn &#34;tlmm 99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/# grep -rn &#34;&amp;msm_gpio&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/ 查找示例：
-$ grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:470: /*pins = &#34;gpio99&#34;;*/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:475: /*pins = &#34;gpio99&#34;;*/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:936: /*pins = &#34;gpio98&#34;, &#34;gpio99&#34;;*/kernel/msm-3.]]></description>
+  <description><![CDATA[<h1 id="搜索查找记录">搜索查找记录</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2021/08/19 16:08</p>
+<p>在SC60中搜索和查找相关文件。</p>
+<p><strong>关键字：</strong> 日志搜索、搜索日志、linux搜索</p>]]></description>
+</item>
+<item>
+  <title>通过命令升级主机版本</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</link>
+  <pubDate>Tue, 05 Jul 2022 14:55:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一启动tftp">一、启动tftp</h2>
+<p>使用tftp传送文件升级</p>
+<p>by daizelai on 2021/07/05 14:55</p>
+<p>在笔记本电脑中启动tftp，并配置Tftpd32的Server interface地址为172.16.173.20。</p>
+<p>需要注意一点的是，需要把将要上传到主机的文件放到tftp软件的根目录下。</p>]]></description>
+</item>
+<item>
+  <title>通过命令升级主机版本</title>
+  <link>https://daizelai.github.io/posts/linux/master/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</link>
+  <pubDate>Tue, 05 Jul 2022 14:55:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/master/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一启动tftp">一、启动tftp</h2>
+<p>使用tftp传送文件升级</p>
+<p>by daizelai on 2021/07/05 14:55</p>
+<p>在笔记本电脑中启动tftp，并配置Tftpd32的Server interface地址为172.16.173.20。</p>
+<p>需要注意一点的是，需要把将要上传到主机的文件放到tftp软件的根目录下。</p>]]></description>
+</item>
+<item>
+  <title>centos中安装rz和sz命令lrzsz</title>
+  <link>https://daizelai.github.io/posts/linux/centos/centos%E5%AE%89%E8%A3%85rz%E5%92%8Csz%E5%91%BD%E4%BB%A4lrzsz/</link>
+  <pubDate>Tue, 28 Dec 2021 15:28:10 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/centos/centos%E5%AE%89%E8%A3%85rz%E5%92%8Csz%E5%91%BD%E4%BB%A4lrzsz/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<!-- raw HTML omitted -->
+<p>lrzsz在linux里可代替ftp上传和下载。</p>]]></description>
 </item>
 <item>
   <title>linux之磁盘sdc变为sdb后</title>
@@ -21,11 +82,29 @@ $ grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/kernel/msm
   <pubDate>Tue, 01 Nov 2016 10:50:28 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</guid>
-  <description><![CDATA[一、场景 vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。
-启动系统后变乱码的问题 使用df查看发现磁盘sdb和磁盘sdc都看不到了。
-磁盘sda和sdb都看不到了 整个就不能使用了。
-二、分析 网上的解决方案(没试过，因为我是centos7)：
-查询磁盘设备的UUID标识代码 [root@localhost wwwroot]# ls -la /dev/disk/by-id 总用量 0 drwxr-xr-x. 2 root root 280 11月 1 11:12 . drwxr-xr-x. 5 root root 100 11月 1 11:12 .. lrwxrwxrwx. 1 root root 9 11月 1 11:12 ata-VBOX_CD-ROM_VB2-01700376 -&gt; ../../sr0 lrwxrwxrwx. 1 root root 9 11月 1 11:12 ata-VBOX_HARDDISK_VB56600bb8-22ac4f1f -&gt; ../../sda lrwxrwxrwx. 1 root root 10 11月 1 11:12 ata-VBOX_HARDDISK_VB56600bb8-22ac4f1f-part1 -&gt; .]]></description>
+  <description><![CDATA[<h2 id="一场景">一、场景</h2>
+<p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p>]]></description>
+</item>
+<item>
+  <title>linux之磁盘sdc变为sdb后</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</link>
+  <pubDate>Tue, 01 Nov 2016 10:50:28 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</guid>
+  <description><![CDATA[<h2 id="一场景">一、场景</h2>
+<p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p>]]></description>
+</item>
+<item>
+  <title>centos7下tcpdump抓包</title>
+  <link>https://daizelai.github.io/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/</link>
+  <pubDate>Thu, 20 Oct 2016 13:35:51 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/</guid>
+  <description><![CDATA[一、tcpdump安装 1.1.tcpdump官方下载地址： http://www.tcpdump.org/release 下载软件
+[root@localhost tcpdump]# wget http://www.tcpdump.org/release/tcpdump-4.8.0.tar.gz[root@localhost tcpdump]# wget http://www.tcpdump.org/release/libpcap-1.8.0.tar.gzhttp://www.tcpdump.org/release 1.2.配置 1.配置时出现Neither flex nor lex was found错误
+[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linux......checking for lex... noconfigure: error: Neither flex nor lex was found. 解决办法，安装flex
+[root@localhost libpcap-1.8.0]# yum -y install flex......已安装:flex.x86_64 0:2.5.37-3.el7 完毕！ 2.配置时出现yacc is insufficient to compile libpcap错误
+[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linuxchecking for capable yacc/bison... insufficientconfigure: error: yacc is insufficient to compile libpcap.]]></description>
 </item>
 <item>
   <title>linux之lsof的使用</title>
@@ -41,101 +120,6 @@ $ grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/kernel/msm
 [root@localhost lai]# whereis lsof
 lsof:
 </code></pre>]]></description>
-</item>
-<item>
-  <title>Linux下netstat使用手记</title>
-  <link>https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</link>
-  <pubDate>Fri, 14 Oct 2016 15:45:51 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</guid>
-  <description><![CDATA[Linux下netstat命令的简单使用记录，这里以CentOS7为基础。
-一、netstat命令说明 1.1.netstat常用参数介绍 netstat有很多参数，下面列表每个参数的说明。
--a或--all：显示所有连线中的Socket； -A&lt;网络类型&gt;或--&lt;网络类型&gt;：列出该网络类型连线中的相关地址； -c或--continuous：持续列出网络状态； -C或--cache：显示路由器配置的快取信息； -e或--extend：显示网络其他相关信息； -F或--fib：显示FIB； -g或--groups：显示多重广播功能群组组员名单； -h或--help：在线帮助； -i或--interfaces：显示网络界面信息表单； -l或--listening：显示监控中的服务器的Socket； -M或--masquerade：显示伪装的网络连线； -n或--numeric：直接使用ip地址，而不通过域名服务器； -N或--netlink或--symbolic：显示网络硬件外围设备的符号连接名称； -o或--timers：显示计时器； -p或--programs：显示正在使用Socket的程序识别码和程序名称； -r或--route：显示Routing Table； -s或--statistice：显示网络工作信息统计表； -t或--tcp：显示TCP传输协议的连线状况； -u或--udp：显示UDP传输协议的连线状况； -v或--verbose：显示指令执行过程； -V或--version：显示版本信息； -w或--raw：显示RAW传输协议的连线状况； -x或--unix：此参数的效果和指定&#34;-A unix&#34;参数相同； --ip或--inet：此参数的效果和指定&#34;-A inet&#34;参数相同。 二、netstat常用命令介绍 2.1.列出所有端口 netstat -a列出所有的端口，包括监听和未监听的，这里lai因为觉得太多了，只选其中一部分。
-[root@localhost _posts]# netstat -a Active Internet connections (servers and established) Proto Recv-Q Send-Q Local Address Foreign Address State tcp 0 0 0.0.0.0:http 0.0.0.0:* LISTEN tcp 0 0 0.0.0.0:ssh 0.0.0.0:* LISTEN tcp 0 0 localhost:smtp 0.0.0.0:* LISTEN tcp 0 52 localhost.]]></description>
-</item>
-<item>
-  <title>linux之进程管理</title>
-  <link>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
-  <pubDate>Tue, 11 Oct 2016 08:43:25 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</guid>
-  <description><![CDATA[一、查看进程 1.1.ps之aux查看所有进程 在这里直接使用ps aux查看当前系统中所有的进程情况，当然ps -ef也是可以使用的。
-[root@localhost lai]# ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.0 0.3 43904 2672 ? Ss 08:58 0:01 /usr/lib/systemd/systemd --switched-root --system -- root 2 0.0 0.0 0 0 ? S 08:58 0:00 [kthreadd] root 3 0.0 0.0 0 0 ? S 08:58 0:00 [ksoftirqd/0] root 6 0.0 0.0 0 0 ? S 08:58 0:00 [kworker/u2:0] root 7 0.0 0.]]></description>
-</item>
-<item>
-  <title>Linux之sftp使用</title>
-  <link>https://daizelai.github.io/posts/linux/sftp/</link>
-  <pubDate>Sat, 08 Oct 2016 14:39:04 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/sftp/</guid>
-  <description><![CDATA[<h2 id="一下载文件">一、下载文件</h2>
-<blockquote>
-<p>将从远程主机的 <code>/var/www/layne/</code> 目录下将 <code>index.php</code> 下载到本地 <code>/home/layne/</code> 目录下。</p>
-</blockquote>
-<pre tabindex="0"><code class="language-linux" data-lang="linux">sftp&gt; get /var/www/layne/index.php  /home/layne/
-</code></pre>]]></description>
-</item>
-<item>
-  <title>VMware安装CentOS后配置SSH远程连接的问题</title>
-  <link>https://daizelai.github.io/posts/virtualbox/vmware%E5%AE%89%E8%A3%85centos%E5%90%8E%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/</link>
-  <pubDate>Mon, 05 Sep 2016 19:57:48 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/virtualbox/vmware%E5%AE%89%E8%A3%85centos%E5%90%8E%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
-  <description><![CDATA[可以SSH连接，但虚拟机CentOS不能连接外网，呜呜呜呜！！！
-一、安装VM的虚拟网卡（网络连接） 1.安装绿色版的VMware，安装好后，网络连接里是只有**本地连接**的。
-&ldquo;默认的本地连接&rdquo; 2.在VMware中安装CentOS系统
-&ldquo;VM的网络设置&rdquo; 3.安装系统后，在看网络连接还是只有本地连接，这时候这样VM的虚拟网络编辑设置一下
-点击VMware顶部的菜单，如下所示：
-&ldquo;VM的虚拟网络编辑&rdquo; 点击**“还原默认设置”**设置
-&ldquo;还原默认设置&rdquo; 4.点击以后，就会有上面图片中的三个连接了。同时，网络连接也多了两块VM的网络连接：
-&ldquo;VM的虚拟网络&rdquo; **VMnet1：**Host-only共享用的虚拟连接； **VMnet8：**NAT共享用的虚拟连接。VMnet8虚拟网卡就相当于连接到内网的网卡，Host主机上的物理网卡就相当于连接到外网的网卡，而虚拟机本身则相当于运行在内网上的计算机，虚拟机内的虚拟网卡则独立于Virtual Ethernet Switch（VMnet8）。
-二、配置VM虚拟连接并SSH连接 1.右击网络连接中“VMnet8”选择“属性”
-2.查看（没有就设置）TCP/IPv4的相应的IP地址和子网掩码，这里可以配置任意网段，然后点击确定按钮。
-&ldquo;设置VMnet8&rdquo; 3.查看windows主机的具体IP地址，输入ipconfig
-这里查看VMnet8的网络参数如上：IP：192.168.80.1 掩码：255.255.255.0
-&ldquo;查看VMnet8的参数&rdquo; 4.回到配置VMware中的网络参数，选择NAT模式，并点击右侧的NAT设置
-&ldquo;配置NAT参数&rdquo; 在弹出的对话框中进行网络的设置，这里的子网必须和windows主机中VMnet8的IP地址处于同一个网段，即192.168.80.0网段
-&ldquo;配置NAT参数&rdquo; 这里的网关可以选择windows主机中VMnet8的IP地址处于同一个网段的任意IP地址，然后点击确定。
-5.配置CentOS中的网络配置
-[root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0 DEVICE=eth0 HWADDR=00:0C:29:CA:3C:42 TYPE=Ethernet UUID=5bd32e4a-23c2-4c5a-be0f-26ffe1297a9d ONBOOT=yes NM_CONTROLLED=yes BOOTPROTO=none NETMASK=255.255.255.0 IPADDR=192.168.80.11 DNS1=10.60.1.254 主要需要设置下面的参数：
-ONBOOT=yes NETMASK=255.255.255.0 // 子网掩码 IPADDR=192.168.80.11 // IP地址和VMnet8的IP地址在同一个网段 DNS1=10.60.1.254 // 主DNS服务器IP地址为windows中主机真实网关 重启网络服务
-[root@localhost ~]# /etc/init.d/network restart 正在关闭接口 eth0： [确定] 关闭环回接口： [确定] 弹出环回接口： [确定] 弹出界面 eth0： Determining if ip address 192.]]></description>
-</item>
-<item>
-  <title>Linux之scp复制远程文件</title>
-  <link>https://daizelai.github.io/posts/linux/room/</link>
-  <pubDate>Wed, 10 Aug 2016 08:56:57 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/room/</guid>
-  <description><![CDATA[<h3 id="一语法">一、语法</h3>
-<p>1.linux 的 scp 命令 可以 在 linux 之间复制 文件 和 目录；<br>
-2.scp 可以在 2个 linux 主机间复制文件；<br>
-3.命令基本格式：</p>
-<blockquote>
-<p>scp [可选参数] file_source file_target</p>
-</blockquote>
-<h3 id="二从-本地-复制到-远程">二、从 本地 复制到 远程</h3>
-<p>复制文件：</p>]]></description>
-</item>
-<item>
-  <title>Linux之磁盘管理</title>
-  <link>https://daizelai.github.io/posts/linux/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</link>
-  <pubDate>Fri, 29 Jul 2016 20:35:07 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/</guid>
-  <description><![CDATA[一、描述 在linux下查看磁盘使用情况。
-二、开始 2.1.查看硬盘使用情况 [root@MTX /]# df -h Filesystem Size Used Avail Use% Mounted on /dev/xvda1 20G 8.7G 10G 47% / tmpfs 1.9G 0 1.9G 0% /dev/shm /dev/xvdb1 20G 4.7G 15G 25% /alidata 2.2.查看当前目录大小 [root@MTX html]# du -sh ./* | sort -n 1.3G ./cmps 2.1M ./jc-website 4.0K ./index.html 32K ./t.tar 60K ./zydc ]]></description>
-</item>
-<item>
-  <title>Linux之zip和unzip的使用</title>
-  <link>https://daizelai.github.io/posts/linux/zip/</link>
-  <pubDate>Sat, 08 Aug 2015 14:44:28 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/zip/</guid>
-  <description><![CDATA[一、zip/unzip命令说明 1.1.功能说明 将一般的文件或者目录进行压缩或者解压，默认生成以“.zip”为后缀的压缩包。zip命令类似于Windows中的winzip压缩程序。其格式如下：
-zip [选项] 压缩文件名 需要压缩的文档列表 unzip [选项] 压缩文件名 1.2.zip选项含义 zip选项含义
--r 递归压缩，将指定目录下的所有文件以及子目录全部压缩 -d 从压缩文件内删除指定的文件 -i “文件列表” 只压缩文件列表中的文件 -x “文件列表” 压缩时排除文件列表中指定的文件 -u 更新文件到压缩文件中 -m 将文件加入压缩文件压缩后，删除原始文件，即把文件移到压缩文件中 -F 尝试修复损坏的压缩文件 -T 检查压缩文件内的每个文件是否正确无误 - 压缩级别 压缩级别是一个1～9的数字 1.3.unzip选项含义 unzip选项含义
--x &#34;文件列表&#34; 解压文件，但不包含文件列表中指定的文件 -t 测试压缩文件有无损坏，并不解压 -v 查看压缩文件的详细信息，具体包括压缩文件中包含的文件大小、文件名和压缩比等，并不解压 -n 解压时不覆盖已经存在的文件 -o 解压时覆盖已经存在的文件，并且不要求用户确认 -d 目录名 把压缩文件解压到指定目录下 二、示例 2.1.将lai目录下所有的文件和目录压缩，压缩级别为最高，压缩的文件保存到/root/lai.zip。 [root@localhost lai]# pwd /root/lai [root@localhost lai]# ll 总用量 1024 -rwxr--r--. 1 root root 0 10月 18 11:35 index.php drwxr-xr-x.]]></description>
 </item>
 </channel>
 </rss>

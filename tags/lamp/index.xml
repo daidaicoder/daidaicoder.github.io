@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>LAMP - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/lamp/</link>
+    <description>LAMP - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 09 Jan 2016 20:33:19 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/lamp/" rel="self" type="application/rss+xml" /><item>
+  <title>Linux-LAMP-yum安装</title>
+  <link>https://daizelai.github.io/posts/linux/linux-lamp-yum%E5%AE%89%E8%A3%85/linux-lamp-yum%E5%AE%89%E8%A3%85/</link>
+  <pubDate>Sat, 09 Jan 2016 20:33:19 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux-lamp-yum%E5%AE%89%E8%A3%85/linux-lamp-yum%E5%AE%89%E8%A3%85/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一检查软件是否安装">一、检查软件是否安装</h2>
+<h3 id="11查询apache是否安装">1.1.查询Apache是否安装</h3>]]></description>
+</item>
+<item>
+  <title>Linux-LAMP-源码安装</title>
+  <link>https://daizelai.github.io/posts/linux/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</link>
+  <pubDate>Sat, 09 Jan 2016 20:33:19 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一前言">一、前言</h2>
+<h3 id="11软件下载的方法">1.1.软件下载的方法</h3>
+<p>1）、下载方式有两种：</p>
+<ul>
+<li>第一种：wget -c。</li>
+<li>第二种：axel。（支持断点续传）</li>
+</ul>]]></description>
+</item>
+</channel>
+</rss>

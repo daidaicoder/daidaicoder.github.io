@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>商业WIFI - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E5%95%86%E4%B8%9Awifi/</link>
+    <description>商业WIFI - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 30 Jul 2015 14:56:12 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E5%95%86%E4%B8%9Awifi/" rel="self" type="application/rss+xml" /><item>
+  <title>网关操作手记</title>
+  <link>https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/</link>
+  <pubDate>Thu, 30 Jul 2015 14:56:12 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/</guid>
+  <description><![CDATA[一、登录网关 登录网关一般使用SSH就可以了，AP则使用telnet，当然也可以通过串登录。
+1.网关登录
+填写名称和选择通信协议，协议为SSH2
+网关登录 配置主机地址及连接端口，SSH连接端口默认为22
+网关登录 2.AP登录
+填写名称和选择通信协议，AP登录的话协议为Telnet
+AP登录 配置主机地址及连接端口，Telnet连接端口默认为23
+AP登录 二、常用命令 2.1.两大武器pactl和gctl 直接敲入pactl和gctl，默认显示的是帮助，可以查看有哪些参数及如何使用。
+1.pactl
+~ # pactlParameters invalid!help -- [subcmd]Show help information. {} means &#34;Required&#34;; [] means &#34;Optional&#34;; | means &#34;One of&#34;version -- Get Current/Dependent version of application and moduledebuglevel -- [0-7]Set or get debug level of kernel module. Set 7 to print the most informationauth_state -- {xx:xx:xx:xx:xx:xx} {xxx.xxx.xxx.xxx} [0|1|2]Set or get authentication state,0-not_auth,1-being_auth,2-authhost_ip -- [xxx.]]></description>
+</item>
+</channel>
+</rss>

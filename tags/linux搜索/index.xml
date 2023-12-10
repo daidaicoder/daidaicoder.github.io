@@ -9,12 +9,22 @@
   <pubDate>Sat, 08 Oct 2022 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysqlcreateuser/</guid>
-  <description><![CDATA[20221008_1513mysql创建用户 一、描述 by daizelai on 2022/10/08 16:23 创建MYSQL账号的方法记录。
-二、创建mysql账号 2.1.使用CREATE USER语句创建新用户 mysql&gt; CREATE USER &#39;daizelai&#39;@&#39;192.168.42.55&#39; IDENTIFIED BY &#39;123456&#39;; 如果创建失败，提示当前密码不满足策略要求。
-修改密码策略
-mysql&gt; SELECT @@VALIDATE_PASSWORD_POLICY; mysql&gt; set global validate_password_policy = 0; GRANT ALL ON *.* TO &#39;daizelai&#39;@&#39;192.168.42.55&#39;; 在 MySQL 中，可以使用 password() 函数获取密码的哈希值，查看 test1 哈希值的 SQL 语句和执行过程如下：
-mysql&gt; SELECT password(&#39;test1&#39;); +-------------------------------------------+ | password(&#39;test1&#39;) | +-------------------------------------------+ | *06C0BF5B64ECE2F648B5F048A71903906BA08E5C | +-------------------------------------------+ 1 row in set, 1 warning (0.00 sec) 创建用户 test1，SQL 语句和执行过程如下：
-mysql&gt; CREATE USER &#39;daizelai&#39;@&#39;192.]]></description>
+  <description><![CDATA[<h1 id="20221008_1513mysql创建用户">20221008_1513mysql创建用户</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2022/10/08 16:23
+创建MYSQL账号的方法记录。</p>]]></description>
+</item>
+<item>
+  <title>搜索查找记录</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxsearch/</link>
+  <pubDate>Fri, 19 Aug 2022 00:00:00 &#43;0000</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxsearch/</guid>
+  <description><![CDATA[<h1 id="搜索查找记录">搜索查找记录</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2021/08/19 16:08</p>
+<p>在SC60中搜索和查找相关文件。</p>
+<p><strong>关键字：</strong> 日志搜索、搜索日志、linux搜索</p>]]></description>
 </item>
 <item>
   <title>搜索查找记录</title>
@@ -22,11 +32,11 @@ mysql&gt; CREATE USER &#39;daizelai&#39;@&#39;192.]]></description>
   <pubDate>Fri, 19 Aug 2022 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/linux/linuxsearch/</guid>
-  <description><![CDATA[搜索查找记录 一、描述 by daizelai on 2021/08/19 16:08
-在SC60中搜索和查找相关文件。 关键字：日志搜索、搜索日志、linux搜索
-二、在文件内容中查找 $ grep &#34;code&#34; -rni ./$ grep &#34;sdcard u:object_r:rootfs:s0&#34; -nr ./system/[android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ grep &#34;code&#34; -rni ././kernel/msm-3.18/kernel/power/snapshot.c:837: * initialization code)./kernel/msm-3.18/kernel/power/snapshot.c:1880: info-&gt;version_code = LINUX_VERSION_CODE; 四、gpio查找 gpio查找其实也是在文件内容中查找。
-# grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/# grep -rn &#34;tlmm 99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/# grep -rn &#34;&amp;msm_gpio&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/ 查找示例：
-$ grep -rn &#34;gpio99&#34; kernel/msm-3.18/arch/arm64/boot/dts/qcom/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:470: /*pins = &#34;gpio99&#34;;*/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:475: /*pins = &#34;gpio99&#34;;*/kernel/msm-3.18/arch/arm64/boot/dts/qcom/msm8953-pinctrl.dtsi:936: /*pins = &#34;gpio98&#34;, &#34;gpio99&#34;;*/kernel/msm-3.]]></description>
+  <description><![CDATA[<h1 id="搜索查找记录">搜索查找记录</h1>
+<h2 id="一描述">一、描述</h2>
+<p>by daizelai on 2021/08/19 16:08</p>
+<p>在SC60中搜索和查找相关文件。</p>
+<p><strong>关键字：</strong> 日志搜索、搜索日志、linux搜索</p>]]></description>
 </item>
 </channel>
 </rss>

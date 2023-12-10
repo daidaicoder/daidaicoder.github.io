@@ -23,7 +23,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/zip/" /><link rel="next" href="https://daizelai.github.io/posts/linux/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/" /><link rel="next" href="https://daizelai.github.io/posts/linux/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -189,14 +189,14 @@
 </nav></div>
       </div><div class="content" id="content"><h2 id="一netstat命令介绍">一、netstat命令介绍</h2>
 <p>在Linux使用过程中，需要了解当前系统开放了哪些端口，并且要查看开放这些端口的具体进程和用户，可以通过netstat命令进行简单查询。</p>
-<!-- raw HTML omitted -->
 <pre tabindex="0"><code>netstat命令各个参数说明如下：
 　　-t : 指明显示TCP端口
 　　-u : 指明显示UDP端口
 　　-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)
 　　-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。
 　　-n : 不进行DNS轮询，显示IP(可以加速操作)
-</code></pre><h2 id="二netstat命令简单使用">二、netstat命令简单使用</h2>
+</code></pre><!-- raw HTML omitted -->
+<h2 id="二netstat命令简单使用">二、netstat命令简单使用</h2>
 <p>使用netstat命令即可显示当前服务器上所有端口及进程服务，于grep结合可查看某个具体端口及服务情况··</p>
 <pre tabindex="0"><code>netstat -ntlp // 查看当前所有tcp端口·
 netstat -ntulp |grep 80 // 查看所有80端口使用情况·
@@ -234,8 +234,8 @@ ps -aux | grep pid 查看
     </section>
   </div>
 
-  <div class="post-nav"><a href="/posts/linux/zip/" class="post-nav-item" rel="prev" title="Linux之zip和unzip的使用"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux之zip和unzip的使用</a>
-      <a href="/posts/linux/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/" class="post-nav-item" rel="next" title="Linux之磁盘管理">Linux之磁盘管理<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  <div class="post-nav"><a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/" class="post-nav-item" rel="prev" title="Linux之netstat命令"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux之netstat命令</a>
+      <a href="/posts/linux/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/linux-lamp-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" class="post-nav-item" rel="next" title="Linux-LAMP-源码安装">Linux-LAMP-源码安装<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

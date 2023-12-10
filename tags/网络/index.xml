@@ -3,16 +3,17 @@
     <title>网络 - 标签 - 来来往往</title>
     <link>https://daizelai.github.io/tags/%E7%BD%91%E7%BB%9C/</link>
     <description>网络 - 标签 - 来来往往</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://daizelai.github.io/tags/%E7%BD%91%E7%BB%9C/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 14 Sep 2022 18:13:56 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E7%BD%91%E7%BB%9C/" rel="self" type="application/rss+xml" /><item>
   <title>温州S2号线车载台与DIS等连接一会好一会断的问题</title>
   <link>https://daizelai.github.io/posts/wzs2/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/</link>
-  <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+  <pubDate>Wed, 14 Sep 2022 18:13:56 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/wzs2/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
-  <description><![CDATA[20220914_1646温州S2号线车载台与DIS等连接一会好一会断的问题 一、描述 1.1.问题描述 在开发并运行温州S2号线APP的时候，突然发现，一会能正常收到DIS回复的报文，一会又收不到，APP这边每次正常发送报文，比如心跳是每3秒准时发送。
-去DIS服务器192.168.42.177上面抓包发现，APP一会上线，一会下线，并且收到的APP心跳一会是3秒，一会卫了10秒才收到。
-1.2.DIS服务器日志 下面是DIS服务器的日志，可以看到有一个m_Socket contains app_id(10.255.0.2) old:strOldIP(10.255.0.2):64003 -&gt; new:strNewIP(192.168.42.130):64003这样的提示，后面问题找到了这里就好理解了，是app_id为10.255.0.2的设备，一会以10.255.0.2IP连接，一会以192.168.42.130连接。其实就是两台终端都向DIS服务器发的，一台是我自己的下挂在GM655+下的终端，一台是我今天下午换到深圳14号线的EV751下的终端。
-18:13:56.049 [INFO ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 192.168.42.130. Port: 6400318:13:56.049 [WARN ] [dis_wz2] [TaskAPP.cpp:899, OnAppGetATSInfo, pid: 6220, tid: 18044] : app is not online! app_id(10.255.0.2)18:13:56.998 [WARN ] [dis_wz2] [TaskAPP.cpp:899, OnAppGetATSInfo, pid: 6220, tid: 18044] : app is not online! app_id(10.255.0.2)18:13:56.999 [INFO ] [dis_wz2] [AppRegisterManager.cpp:87, AppOnline, pid: 6220, tid: 18044] : app id: 10.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11问题描述">1.1.问题描述</h3>
+<p>在开发并运行温州S2号线APP的时候，突然发现，一会能正常收到DIS回复的报文，一会又收不到，APP这边每次正常发送报文，比如心跳是每3秒准时发送。</p>
+<p>去DIS服务器192.168.42.177上面抓包发现，APP一会上线，一会下线，并且收到的APP心跳一会是3秒，一会卫了10秒才收到。</p>]]></description>
 </item>
 </channel>
 </rss>

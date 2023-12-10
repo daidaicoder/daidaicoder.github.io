@@ -9,9 +9,10 @@
   <pubDate>Mon, 06 Sep 2021 16:48:27 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/sc60/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%8D%95%E4%B8%AA%E7%B3%BB%E7%BB%9Fapp/</guid>
-  <description><![CDATA[源码编译单个系统app 一、描述 在SC60源码中直接编译单个系统app。 by daizelai on 2021/09/06 16:48
-二、编译方法 路径 [android_SC20@localhost sc60_android_7.1.2_qcom_sz14]$ pwd/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14 编译 使用mmm命令编译，但有一个前提，必须是完整编译过一次系统才能使用mmm，如果没有编译过，或者使用过make clean立即执行mmm file命令是无法执行的。
-......BUILD_ID=N2G47HOUT_DIR=out============================================Unknown option: -Cusage: git [--version] [--help] [-c name=value][--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path][-p|--paginate|--no-pager] [--no-replace-objects] [--bare][--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]&lt;command&gt; [&lt;args&gt;]make: Entering directory `/home/android_SC20/daizelai/androidsc60/sc60_android_7.1.2_qcom_sz14&#39;Running kati to generate build-efc28e71d8f1fdd3f3f8f083ddc7d1fe.ninja...No need to regenerate ninja fileStarting build with ninjaninja: Entering directory `.&#39; ninja: error: &#39;out/target/common/obj/JAVA_LIBRARIES/core-junit_intermediates/classes.dex.toc&#39;, needed by &#39;out/target/common/obj/JAVA_LIBRARIES/settings-logtags_intermediates/classes.]]></description>
+  <description><![CDATA[<h1 id="源码编译单个系统app">源码编译单个系统app</h1>
+<h2 id="一描述">一、描述</h2>
+<p>在SC60源码中直接编译单个系统app。
+by daizelai on 2021/09/06 16:48</p>]]></description>
 </item>
 </channel>
 </rss>

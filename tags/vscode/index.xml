@@ -5,17 +5,14 @@
     <description>vscode - 标签 - 来来往往</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 03 Jun 2023 15:47:03 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/vscode/" rel="self" type="application/rss+xml" /><item>
   <title>本地命令行删除分支</title>
-  <link>https://daizelai.github.io/posts/git/room/</link>
+  <link>https://daizelai.github.io/posts/git/20230603_1547%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF/</link>
   <pubDate>Sat, 03 Jun 2023 15:47:03 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/room/</guid>
-  <description><![CDATA[一、删除本地仓库中的分支 git branch -d &lt;branch-name&gt; 删除多个本地分支
-git branch -d &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 二、强制删除分支 如果要强制删除分支，即使它的更改尚未合并到其他分支中，可以使用以下命令：
-git branch -D &lt;branch-name&gt; 强制删除多个分支
-git branch -D &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 请确保在删除分支之前，已经将其上的任何重要更改合并到其他分支中或以其他方式进行了备份。
-三、删除远程仓库中的分支 如果你想删除远程仓库中的分支，可以使用以下命令：
-git push origin --delete &lt;branch-name&gt; 删除多个远程分支
-git push origin --delete &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 这将从远程仓库 origin 删除指定的分支。]]></description>
+  <guid>https://daizelai.github.io/posts/git/20230603_1547%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一删除本地仓库中的分支">一、删除本地仓库中的分支</h2>
+<pre tabindex="0"><code class="language-git" data-lang="git">git branch -d &lt;branch-name&gt;
+</code></pre><p>删除多个本地分支</p>]]></description>
 </item>
 <item>
   <title>使用vscode合并分支提交到主分支</title>
@@ -23,9 +20,10 @@ git push origin --delete &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 这
   <pubDate>Sat, 03 Jun 2023 12:55:26 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/git/20230603_1255%E4%BD%BF%E7%94%A8vscode%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E6%8F%90%E4%BA%A4%E5%88%B0%E4%B8%BB%E5%88%86%E6%94%AF/gitmerge/</guid>
-  <description><![CDATA[一、描述 1.1.前言 git多commit合并提交到主分支过程记录，本文记录了类似于1.2小节的整个过程。
-1.2.在develop分支 git log 现有提交60714ec、fa0fbe5和6a54429。
-daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/test/wzs2_android_app (develop)$ git reflog -n 106a54429 (HEAD -&gt; develop) HEAD@{0}: commit: 修改了版本号为11fa0fbe5 HEAD@{1}: commit: 修改版本号为1060714ec HEAD@{2}: commit: 修改版本号为98cbf57e (origin/develop) HEAD@{3}: merge feature/login: Merge made by the &#39;recursive&#39; strategy.8791add HEAD@{4}: checkout: moving from feature/login to develop0108492 (origin/feature/login, feature/login) HEAD@{5}: commit: 修改了版本号为88bf847c HEAD@{6}: commit: 修改了版本号为7695c95c HEAD@{7}: checkout: moving from develop to feature/login8791add HEAD@{8}: merge feature/login: Merge made by the &#39;recursive&#39; strategy.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>git多commit合并提交到主分支过程记录，本文记录了类似于<strong>1.2小节</strong>的整个过程。</p>]]></description>
 </item>
 </channel>
 </rss>

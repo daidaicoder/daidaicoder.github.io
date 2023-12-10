@@ -1,0 +1,151 @@
+----------------------------------------
+网关设备进去
+查看白名单列表
+pactl white_list ip show
+pactl white_list url show
+pactl free_auth_list ip show
+pactl free_auth_list url show
+----------------------------------------
+CGW1200	修改平台URL
+
+查看：
+nvramcli show |grep hotspot
+修改操作：
+nvramcli set device_hotspot_url=10.60.0.108
+nvramcli commit
+
+查看 ：
+nvramcli show |grep hotspo
+
+修改后重启生效
+reboot
+----------------------------------------
+CGW3000T网关修改网络地址
+
+在CGW3000T的WEB界面，把LAN_IP设置错了，导致无法SSH连接网关了。修复方法为：
+通过串口连接网关。
+[root@CGW3000T ~]# nvramcli show | grep lan_ip
+lan_ip=10.60.100.10
+
+修改为以前的正确地址：
+[root@CGW3000T ~]# nvramcli set lan_ip=172.16.1.1
+[root@CGW3000T ~]# nvramcli commit
+[root@CGW3000T ~]# nvramcli show | grep lan_ip
+lan_ip=172.16.1.1
+
+其它配置也是这样的做法。
+----------------------------------------
+设置大网关设置默认网关地址
+
+route add default gw 10.60.1.254
+
+或者可以指定设备，如这里的eth0
+
+route add default gw 10.60.1.254 dev eth0
+
+删除置认网关
+route del default gw 10.60.1.254
+
+或者可以指定设备，如这里的eth0
+route del default gw 10.60.1.254 dev eth0
+----------------------------------------
+删除IP地址
+
+[root@CGW3000T ~]# route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         10.60.1.254     0.0.0.0         UG    0      0        0 eth0
+10.60.0.0       *               255.255.0.0     U     0      0        0 eth0
+172.16.0.0      *               255.255.0.0     U     0      0        0 br0
+172.17.0.0      *               255.255.0.0     U     0      0        0 br1
+192.168.0.0     *               255.255.255.0   U     0      0        0 eth3
+
+[root@CGW3000T ~]# route del -net 192.168.0.0 netmask 255.255.255.0
+----------------------------------------
+配置IP和掩码
+~ # ifconfig eth0 10.60.110.10 netmask 255.255.0.0
+----------------------------------------
+~ # cat /tmp/ap_work_mode 
+ap_work_mode=fat // 胖模式
+
+----------------------------------------
+手机弹protal并认证过程中的日志
+
+打开日志
+# gctl debug 7
+打开日志后，接着看日志
+# tail -f /var/log/messages.txt
+----------------------------------------
+网关设备进去
+1.cd /tmp
+2.查看网关日志：cat wd_srv.log
+3.vlist相看版本号
+4.# gctl global 查看下发的配置，如-热点的最大连接数- max_client:200
+
+
+# gctl
+# gctl global
+
+正常剔除在线
+# gctl sta-auth (ip mac 0|2)
+# gctl sta-auth 172.16.75.125 c4:6a:b7:d8:93:c7 0
+----------------------------------------
+查看终端上下线的记录
+
+# tail -n 100 /tmp/wd_usr.log
+----------------------------------------
+# pactl
+
+查看网关终端设备在线列表
+# pactl stalist
+
+剔除在线，但会导致云平台和网关的token不一致
+# pactl stalist flush
+
+----------------------------------------
+cat wd_srv.log
+
+[2016-02-18 10:39:53]  
+[Ping_response] form server: [HTTP/1.1 200 OK
+Date: Thu, 18 Feb 2016 02:39:55 GMT
+Server: Apache/2.4.2 (Unix) PHP/5.4.23
+X-Powered-By: ThinkPHP
+Set-Cookie: PHPSESSID=cs4g7rn862ikv3aqu7ini91a11; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: private
+Pragma: no-cache
+Access-Control-Allow-Origin: *
+Content-Length: 122
+Connection: close
+Content-Type: text/html; charset=utf-8
+
+Pong
+conf_ver=144
+cmd_ver=0
+client_num=all
+client_list=
+res_tpl_version=440030
+res_product_version=93
+res_adver_version=1
+]
+----------------------------------------
+大网关下沉路径
+cd /appfs/web/webpages/cmps/static
+
+查看网关下面的ap列表
+arp -n
+gctl showap
+
+iwconfig
+----------------------------------------
+从大网关telnet到AP上去查看AP的SSID
+
+[root@CGW3000T ~]# telnet 172.16.66.91
+Trying 172.16.66.91...
+Connected to 172.16.66.91.
+Escape character is '^]'.
+
+Access login: admin
+Password: admin
+~ # iwconfig
+----------------------------------------

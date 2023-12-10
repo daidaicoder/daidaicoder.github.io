@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>gitlab - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/gitlab/</link>
+    <description>gitlab - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 27 Sep 2022 13:29:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/gitlab/" rel="self" type="application/rss+xml" /><item>
+  <title>git配置多用户管理</title>
+  <link>https://daizelai.github.io/posts/git/gitconfig/git/</link>
+  <pubDate>Tue, 27 Sep 2022 13:29:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/gitconfig/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11文档背景">1.1.文档背景</h3>
+<p>by daizelai on 2022/09/27 17:38</p>
+<p>现在一般公司都是使用git进行管理，有可能是gitlab，也有可能是github或gitee等。但是如果多个项目使用不同的托管平台，那么这个时候就需要git多账号切换的功能。</p>]]></description>
+</item>
+</channel>
+</rss>

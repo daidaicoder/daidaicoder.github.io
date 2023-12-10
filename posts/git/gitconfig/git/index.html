@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>git配置多用户管理 - 来来往往</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="git配置多用户管理" /><meta name="keywords" content='原创, git多用户, gitlab, git, git配置' /><meta itemprop="name" content="git配置多用户管理">
+<meta itemprop="description" content="git配置多用户管理"><meta itemprop="datePublished" content="2022-09-27T13:29:00+08:00" />
+<meta itemprop="dateModified" content="2022-09-27T13:29:00+08:00" />
+<meta itemprop="wordCount" content="1054">
+<meta itemprop="keywords" content="原创,git多用户,gitlab,git,git配置," /><meta property="og:title" content="git配置多用户管理" />
+<meta property="og:description" content="git配置多用户管理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daizelai.github.io/posts/git/gitconfig/git/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-27T13:29:00+08:00" />
+<meta property="article:modified_time" content="2022-09-27T13:29:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="git配置多用户管理"/>
+<meta name="twitter:description" content="git配置多用户管理"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/git/gitconfig/git/" /><link rel="prev" href="https://daizelai.github.io/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/" /><link rel="next" href="https://daizelai.github.io/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "git配置多用户管理",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/daizelai.github.io\/posts\/git\/gitconfig\/git\/"
+    },"genre": "posts","keywords": "原创, git多用户, gitlab, git, git配置","wordcount":  1054 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/git\/gitconfig\/git\/","datePublished": "2022-09-27T13:29:00+08:00","dateModified": "2022-09-27T13:29:00+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "daizelai"
+      },"description": "git配置多用户管理"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="来来往往" data-alt="来来往往" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="来来往往"><img loading="lazy" src="/img/logo.png" srcset="/img/logo.png, /img/logo.png 1.5x, /img/logo.png 2x" sizes="auto" data-title="/img/logo.png" data-alt="/img/logo.png" class="logo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/><span class="header-title-text">来来往往</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 归档</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 关于我</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container container-reverse"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>git配置多用户管理</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/git%E5%A4%9A%E7%94%A8%E6%88%B7/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> git多用户</a>&ensp;<a href="/categories/gitlab/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> gitlab</a>&ensp;<a href="/categories/git/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> git</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2022-09-27 13:29:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-09-27">2022-09-27</time></span>&nbsp;<span title="更新于 2022-09-27 13:29:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-09-27">2022-09-27</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1054 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 5 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一描述">一、描述</a>
+      <ul>
+        <li><a href="#11文档背景">1.1.文档背景</a></li>
+        <li><a href="#12需求分析">1.2.需求分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#二配置">二、配置</a>
+      <ul>
+        <li><a href="#21全局配置">2.1.全局配置</a></li>
+        <li><a href="#22清除全局配置">2.2.清除全局配置</a></li>
+        <li><a href="#33删除秘钥">3.3.删除秘钥</a></li>
+        <li><a href="#34生成新的密钥">3.4.生成新的密钥</a></li>
+        <li><a href="#35添加公钥到远端仓库">3.5.添加公钥到远端仓库</a></li>
+        <li><a href="#36配置密钥管理文件">3.6.配置密钥管理文件</a></li>
+        <li><a href="#37使用效果">3.7.使用效果</a></li>
+        <li><a href="#38配置项目账号">3.8.配置项目账号</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11文档背景">1.1.文档背景</h3>
+<p>by daizelai on 2022/09/27 17:38</p>
+<p>现在一般公司都是使用git进行管理，有可能是gitlab，也有可能是github或gitee等。但是如果多个项目使用不同的托管平台，那么这个时候就需要git多账号切换的功能。</p>
+<p>关键字：git多账号配置,git多平台管理,git多用户配置,gitlab多账号配置,github多平台管理,gitee多用户配置。</p>
+<h3 id="12需求分析">1.2.需求分析</h3>
+<ul>
+<li>如果配置了全局git账号设置，需要清除全局配置。</li>
+<li>需要不同账号对应不同的git托管平台进行项目维护管理。</li>
+</ul>
+<h2 id="二配置">二、配置</h2>
+<h3 id="21全局配置">2.1.全局配置</h3>
+<p>查看是否已经配置了全局git账号</p>
+<p><img loading="lazy" src="./images/git_user_global_config_2022-09-27_132840.png" srcset="./images/git_user_global_config_2022-09-27_132840.png, ./images/git_user_global_config_2022-09-27_132840.png 1.5x, ./images/git_user_global_config_2022-09-27_132840.png 2x" sizes="auto" data-title="全局git账号" data-alt="全局git账号" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="22清除全局配置">2.2.清除全局配置</h3>
+<p>先把全局的配置给清除掉。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ date
+Tue Sep 27 13:32:26     2022
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git config --global --unset user.name
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git config --global --unset user.email
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git config --global --list
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+</code></pre><p>查看文件内容，可以看到，文件里面是没有内容的。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">PS C:\Users\daizelai&gt; dir .gitconfig
+
+
+    目录: C:\Users\daizelai
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2022/9/27     13:32              0 .gitconfig
+
+
+PS C:\Users\daizelai&gt; cat .gitconfig
+PS C:\Users\daizelai&gt;
+</code></pre><h3 id="33删除秘钥">3.3.删除秘钥</h3>
+<p>果你已经全局配置过git账号，那么你一定生成过全局ssh密钥。 这个密钥通常<code>~/.ssh</code>目录下，windows是在<code>C:\Users\daizelai\.ssh</code>。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">PS C:\Users\daizelai\.ssh&gt; dir
+
+
+    目录: C:\Users\daizelai\.ssh
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2022/9/9      9:20            231 config
+-a----         2022/5/12     15:59           2610 id_rsa
+-a----         2022/5/12     15:59            575 id_rsa.pub
+-a----          2022/9/6     15:25           1149 known_hosts
+-a----         2021/6/21     10:27            101 known_hosts.old
+
+
+PS C:\Users\daizelai\.ssh&gt; cat config
+# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+Host dockerUbuntu
+    HostName 192.168.13.56
+    User root
+    Port 10042
+Host dockerCentos8
+    HostName 192.168.13.56
+    User root
+    Port 10052
+PS C:\Users\daizelai\.ssh&gt; cat id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrFoxo2dvSnikNsXi+zmPYsK7WyNVajwHqWXf2sKZcGijOH/HMUcKcppa3kGgbB906HYyS34PwwYSggUhEw99GC7cuNZPThTHBAEC2+G6Z84z4vm713sYEEj3XPK00TTlNxXBK+EYtCy7zf6jmFm9/4vgkDCfkqBteuuftpSILcBV0uNvqALSvXbimvFQVzRFBXwjNRZHMOLvocYWk/hQLCHj18/ey7OZSIUE/YczIqzH99i4U65Aec+9S9/S3SICUs3KhV8oRm+pk9M7N71Sap52jjvKqIkIokzTqFDRXHUUwRoNTEkMOF9Xdiy9vjROf5kAmb3/+586PGS0XbWTenwV8F/NiMaHLlx9R62PRWOW7eCtroCawdUkWAbs5MVRyBH5q/EYT7jbQRcLJ4Xi6Mtnjp3ojiaZCfBqU7cZG5oCScrVa4Q/BTHybRrayTONu/CNQHKYBZA9tuIaR2+KgOcFUpcXDUkhZeI6ENY3jThp3UlQXEdzcbXHELUabdMU= daizelai@gbcom.com.cn
+PS C:\Users\daizelai\.ssh&gt;
+</code></pre><p>我这里<strong>没有删除全局的ssh秘钥</strong>，默认公司的gitlab使用这个，另一个git平台使用新创建的，后面也是能够正常使用的。</p>
+<p><img loading="lazy" src="./images/git_user_global_config_2022-09-27_134001.png" srcset="./images/git_user_global_config_2022-09-27_134001.png, ./images/git_user_global_config_2022-09-27_134001.png 1.5x, ./images/git_user_global_config_2022-09-27_134001.png 2x" sizes="auto" data-title="全局的ssh秘钥" data-alt="全局的ssh秘钥" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<pre tabindex="0"><code class="language-git" data-lang="git">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrFoxo2dvSnikNsXi+zmPYsK7WyNVajwHqWXf2sKZcGijOH/HMUcKcppa3kGgbB906HYyS34PwwYSggUhEw99GC7cuNZPThTHBAEC2+G6Z84z4vm713sYEEj3XPK00TTlNxXBK+EYtCy7zf6jmFm9/4vgkDCfkqBteuuftpSILcBV0uNvqALSvXbimvFQVzRFBXwjNRZHMOLvocYWk/hQLCHj18/ey7OZSIUE/YczIqzH99i4U65Aec+9S9/S3SICUs3KhV8oRm+pk9M7N71Sap52jjvKqIkIokzTqFDRXHUUwRoNTEkMOF9Xdiy9vjROf5kAmb3/+586PGS0XbWTenwV8F/NiMaHLlx9R62PRWOW7eCtroCawdUkWAbs5MVRyBH5q/EYT7jbQRcLJ4Xi6Mtnjp3ojiaZCfBqU7cZG5oCScrVa4Q/BTHybRrayTONu/CNQHKYBZA9tuIaR2+KgOcFUpcXDUkhZeI6ENY3jThp3UlQXEdzcbXHELUabdMU= daizelai@gbcom.com.cn
+</code></pre><h3 id="34生成新的密钥">3.4.生成新的密钥</h3>
+<p>因为你需要关联多个账号，所以同理也需要生成多个ssh密钥。</p>
+<p>注意：需在.ssh目录下操作，否则会生成的密钥默认会存放至system的位置。</p>
+<p>生成gitee的密钥</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">ssh-keygen -t rsa -C &#34;dzl2005328@163.com&#34; // 根据该邮箱生成新的SSH密钥
+</code></pre><p>开始生成</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ date
+Tue Sep 27 13:49:24     2022
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ ssh-keygen -t rsa -C &#34;dzl2005328@163.com&#34;
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/daizelai/.ssh/id_rsa): id_rsa_itcss_gitlab
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in id_rsa_itcss_gitlab
+Your public key has been saved in id_rsa_itcss_gitlab.pub
+The key fingerprint is:
+SHA256:mD8/CCJ2Ic5taSRFRvaEh6QI0h0I54vZeqAL2vnVlx8 dzl2005328@163.com
+The key&#39;s randomart image is:
++---[RSA 3072]----+
+|+o.*B+.          |
+|o+o+=o.          |
+|. o. ..          |
+| +o.o  o         |
+|+oo= oo S        |
+|.o= B .o   .     |
+|+..= ...+.o E    |
+|o+ . .  .+.. .   |
+|o o..     ...    |
++----[SHA256]-----+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+</code></pre><p>生成的文件名为<code>id_rsa_itcss_gitlab</code>，是为了区分默认的<code>id_rsa.pub</code></p>
+<p>但是这里生成的<code>id_rsa_itcss_gitlab.pub</code>文件不在用户目录下，而是在执行生成命令时所在目录。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ ls
+README.md     config.gradle  gradle.properties  id_rsa_itcss_gitlab      library_common/  local.properties  module_index/    module_mine/
+app/          doc/           gradlew*           id_rsa_itcss_gitlab.pub  library_main/    module_call/      module_login/    settings.gradle
+build.gradle  gradle/        gradlew.bat        library_base/            library_res/     module_check/     module_message/  version/
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ cat ~/.ssh/id_rsa
+id_rsa      id_rsa.pub
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ cat ~/.ssh/id_rsa
+id_rsa      id_rsa.pub
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+</code></pre><p>其实这里也可以把生成的两个文件剪切到<code>C:\Users\daizelai\.ssh</code>目录应该也是可以的。</p>
+<p>正确的方式，指定路径生成，如果是在cmd命令行，下面的-f指定路径可以是<code>C:\Users\daizelai\.ssh\id_rsa_itcss_gitlab</code>。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ ssh-keygen -t rsa -C &#34;dzl2005328@163.com&#34; -f /c/Users/daizelai/.ssh/id_rsa_itcss_gitlab
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/daizelai/.ssh/id_rsa_itcss_gitlab
+Your public key has been saved in /c/Users/daizelai/.ssh/id_rsa_itcss_gitlab.pub
+The key fingerprint is:
+SHA256:4+yXthVSuNo2oqEoIyuKPIf0uzQQS9URLzOlr5ltQ+0 dzl2005328@163.com
+The key&#39;s randomart image is:
++---[RSA 3072]----+
+|   ..oo.         |
+|  .  .+    .     |
+| o   = .  . .    |
+|. o   = .  o     |
+| o     oS.o .    |
+| ..   *o.+ . .   |
+|. oo +.+=E+..    |
+|Bo.+...+.o+o     |
+|B=+o+ . .o..     |
++----[SHA256]-----+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ cat id_rsa_itcss_gitlab.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCibyzX1CukJ5srpfjh3f8ExyNXQJMC+MtU2AGCkVknsCsYtnkcN4Kzm9o4VZBvYX5nAK1tPw48R9hDac+RdJoe7mmiXt1GviPlBiKV3+fFYlgA/WDNR+CJdWnyEv3fYF3SgmLUREHbK8loVPC9E2weIlDOrcAQMNa5sHhevkjNF8OpyIVCRGVdQ0/EZdbzlldiCNkCfOaakPo2wyCTXIOA533MbUMYIY2E0/9YlA0yQrYyKpIsc4qibVcGQO61CmhrFHAaHbqDBj4jcwAJ/lDKEXE/wxS1OSu/skT9A1qQGnyRJfc8jQp8CvNfjXewEiGO6ZRspwdJg564LWDhkiz2IsYdVTuMB0RJwa/PlvbiwvlUnr7AMMsi0lGdAyghvFn67Y2YPunQqtyuEjP6ZyIx4nSRu/frnmEBXINi+Tza4a3WdCl9GKaXF/BkVQPlUU+0HSolqSYd5RXEJ/wdl0tpBUKgRyB+VpaJLFqRgb6tnzetrsiBYgcu4xwPu2/VWHU= dzl2005328@163.com
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ date
+Tue Sep 27 14:04:13     2022
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+</code></pre><h3 id="35添加公钥到远端仓库">3.5.添加公钥到远端仓库</h3>
+<p>读取取刚刚生成的公钥<code>id_rsa_itcss_gitlab.pub</code>内容，然后把内容添加到itcss|gitlab里面去。</p>
+<p><img loading="lazy" src="./images/git_user_global_config_2022-09-27_140909.png" srcset="./images/git_user_global_config_2022-09-27_140909.png, ./images/git_user_global_config_2022-09-27_140909.png 1.5x, ./images/git_user_global_config_2022-09-27_140909.png 2x" sizes="auto" data-title="gitlab配置公钥" data-alt="gitlab配置公钥" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p><img loading="lazy" src="./images/git_user_global_config_2022-09-27_141108.png" srcset="./images/git_user_global_config_2022-09-27_141108.png, ./images/git_user_global_config_2022-09-27_141108.png 1.5x, ./images/git_user_global_config_2022-09-27_141108.png 2x" sizes="auto" data-title="公钥配置成功之后" data-alt="公钥配置成功之后" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="36配置密钥管理文件">3.6.配置密钥管理文件</h3>
+<p>为了更方便的管理多个git账号，我们需要一个config的配置文件，用来集中配置。
+在.ssh目录下，创建config文件，我这里因为之前使用vs code远程连接创建过，所以直接在里面配置就可以了。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git"># Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+Host dockerUbuntu
+    HostName 192.168.13.56
+    User root
+    Port 10042
+Host dockerCentos8
+    HostName 192.168.13.56
+    User root
+    Port 10052
+# gbcom.gitlab account
+Host gbcom.gitlab.com
+HostName gitlab.gbcom.com.cn
+User daizelai
+IdentitiesOnly yes
+PreferredAuthentications publickey
+IdentityFile C:\\Users\\daizelai\\.ssh\\id_rsa
+
+# itcss account
+Host itcss.cn.gitlab
+# HostName 127.0.0.1 配置这个地址也是可以的
+HostName 192.168.13.55
+User daizelai
+IdentitiesOnly yes
+PreferredAuthentications publickey
+IdentityFile C:\\Users\\daizelai\\.ssh\\id_rsa_itcss_gitlab
+Port 9010
+</code></pre><p>配置图解：</p>
+<pre tabindex="0"><code class="language-dos" data-lang="dos">Host ---------远端仓库的别名，简写 例如： 配置后 git@gitee.com 可以写为 git@gitee
+HostName ---------远端仓库地址或IP（不支持配置端口）
+User ---------仓库上的用户名
+PreferredAuthentications ---------强制使用Publickey验证
+IdentityFile ---------指向仓库私钥的绝对路径
+Port ---------远端仓库端口，一般不需要设置，特殊情况除外
+</code></pre><h3 id="37使用效果">3.7.使用效果</h3>
+<p>现在就可以通过clone命令下载项目了。</p>
+<p><img loading="lazy" src="./images/git_user_config_clone_2022-09-27_171632.png" srcset="./images/git_user_config_clone_2022-09-27_171632.png, ./images/git_user_config_clone_2022-09-27_171632.png 1.5x, ./images/git_user_config_clone_2022-09-27_171632.png 2x" sizes="auto" data-title="clone项目" data-alt="clone项目" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>git查看各个项目状态</p>
+<p><img loading="lazy" src="./images/2022-09-git_user_config_clone_27_172824.png" srcset="./images/2022-09-git_user_config_clone_27_172824.png, ./images/2022-09-git_user_config_clone_27_172824.png 1.5x, ./images/2022-09-git_user_config_clone_27_172824.png 2x" sizes="auto" data-title="git查看各个项目状态" data-alt="git查看各个项目状态" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<h3 id="38配置项目账号">3.8.配置项目账号</h3>
+<p>这个时候虽然可以clone下来，但是如果想要push，还是不行的，需要配置项目账号信息。</p>
+<p>主要代码如下：</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">git config user.name &#34;daizelai&#34;
+git config user.email &#34;daizelai@gbcom.com.cn&#34;
+</code></pre><p>这是温州项目配置的账号信息，可以看到在.git/config文件中有user节点，里面是账号信息。</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ date
+Tue Sep 27 18:31:11     2022
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ cat .git/config
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+[remote &#34;origin&#34;]
+        url = git@gitlab.gbcom.com.cn:daizelai/wzs2_android_app.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &#34;master&#34;]
+        remote = origin
+        merge = refs/heads/master
+[branch &#34;develop&#34;]
+        remote = origin
+        merge = refs/heads/develop
+[user]
+        name = daizelai
+        email = daizelai@gbcom.com.cn
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+</code></pre><p>完整的配置账号代码如下：</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ date
+Tue Sep 27 18:06:21     2022
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git status
+On branch develop
+Your branch is up to date with &#39;origin/develop&#39;.
+
+Changes not staged for commit:
+  (use &#34;git add &lt;file&gt;...&#34; to update what will be committed)
+  (use &#34;git restore &lt;file&gt;...&#34; to discard changes in working directory)
+        modified:   app/src/main/res/layout/activity_splash.xml
+        modified:   library_base/src/main/java/com/gbcom/library_base/constant/BaseConstant.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/repository/UdpDcRepository.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/utils/CallActivity.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/zte/ZTEUtils.kt
+        modified:   library_base/src/main/res/values/string.xml
+        modified:   library_common/src/main/java/com/gbcom/library_common/dialog/WindowUtils.kt
+        modified:   library_main/src/main/java/com/gbcom/library_main/mvvm/view/MainActivity.kt
+        modified:   library_res/src/main/res/values/strings.xml
+
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        library_base/src/main/java/com/gbcom/library_base/utils/SoundPoolUtil.kt
+        library_base/src/main/res/raw/
+        library_res/src/main/res/drawable/metro_sos_test.xml
+
+no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git add .
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git status
+On branch develop
+Your branch is up to date with &#39;origin/develop&#39;.
+
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        modified:   app/src/main/res/layout/activity_splash.xml
+        modified:   library_base/src/main/java/com/gbcom/library_base/constant/BaseConstant.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/repository/UdpDcRepository.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/utils/CallActivity.kt
+        new file:   library_base/src/main/java/com/gbcom/library_base/utils/SoundPoolUtil.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/zte/ZTEUtils.kt
+        new file:   library_base/src/main/res/raw/alarm.wav
+        modified:   library_base/src/main/res/values/string.xml
+        modified:   library_common/src/main/java/com/gbcom/library_common/dialog/WindowUtils.kt
+        modified:   library_main/src/main/java/com/gbcom/library_main/mvvm/view/MainActivity.kt
+        new file:   library_res/src/main/res/drawable/metro_sos_test.xml
+        modified:   library_res/src/main/res/values/strings.xml
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git commit -m &#34;紧急请呼功能&#34;
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email &#34;you@example.com&#34;
+  git config --global user.name &#34;Your Name&#34;
+
+to set your account&#39;s default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got &#39;daizelai@GBCOM-20210524I.(none)&#39;)
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git config user.name &#34;daizelai&#34;
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git config user.email &#34;daizelai@gbcom.com.cn&#34;
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git status
+On branch develop
+Your branch is up to date with &#39;origin/develop&#39;.
+
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        modified:   app/src/main/res/layout/activity_splash.xml
+        modified:   library_base/src/main/java/com/gbcom/library_base/constant/BaseConstant.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/repository/UdpDcRepository.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/utils/CallActivity.kt
+        new file:   library_base/src/main/java/com/gbcom/library_base/utils/SoundPoolUtil.kt
+        modified:   library_base/src/main/java/com/gbcom/library_base/zte/ZTEUtils.kt
+        new file:   library_base/src/main/res/raw/alarm.wav
+        modified:   library_base/src/main/res/values/string.xml
+        modified:   library_common/src/main/java/com/gbcom/library_common/dialog/WindowUtils.kt
+        modified:   library_main/src/main/java/com/gbcom/library_main/mvvm/view/MainActivity.kt
+        new file:   library_res/src/main/res/drawable/metro_sos_test.xml
+        modified:   library_res/src/main/res/values/strings.xml
+
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git commit -m &#34;紧急请呼功能&#34;
+[develop 7164055] 紧急请呼功能
+ 12 files changed, 434 insertions(+), 112 deletions(-)
+ create mode 100644 library_base/src/main/java/com/gbcom/library_base/utils/SoundPoolUtil.kt
+ create mode 100644 library_base/src/main/res/raw/alarm.wav
+ create mode 100644 library_res/src/main/res/drawable/metro_sos_test.xml
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$ git push origin develop
+Enumerating objects: 100, done.
+Counting objects: 100% (100/100), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (42/42), done.
+Writing objects: 100% (56/56), 807.81 KiB | 6.85 MiB/s, done.
+Total 56 (delta 27), reused 0 (delta 0), pack-reused 0
+remote:
+remote: To create a merge request for develop, visit:
+remote:   http://gitlab.gbcom.com.cn/daizelai/wzs2_android_app/-/merge_requests/new?merge_request%5Bsource_branch%5D=develop
+remote:
+To gitlab.gbcom.com.cn:daizelai/wzs2_android_app.git
+   3f84ba2..7164055  develop -&gt; develop
+
+daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)
+$
+</code></pre></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2022-09-27 13:29:00">更新于 2022-09-27&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/git%E5%A4%9A%E7%94%A8%E6%88%B7/' class="post-tag">git多用户</a><a href='/tags/gitlab/' class="post-tag">gitlab</a><a href='/tags/git/' class="post-tag">git</a><a href='/tags/git%E9%85%8D%E7%BD%AE/' class="post-tag">git配置</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/springboot/20221008_1655springboot%E6%89%93%E5%8C%85%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%90%8D/springboot/" class="post-nav-item" rel="prev" title="springboot打包自定义文件名"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>springboot打包自定义文件名</a>
+      <a href="/posts/as/20220930_1207as%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E4%B8%8A%E4%B8%80%E6%AC%A1%E7%9A%84%E7%8A%B6%E6%80%81/" class="post-nav-item" rel="next" title="as默认打开上一次的状态">as默认打开上一次的状态<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2013 - 2023</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/lib/lunr/lunr.zh.min.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

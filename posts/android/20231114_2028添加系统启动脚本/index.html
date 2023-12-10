@@ -10,7 +10,7 @@
 <meta name="description" content="android系统开机启动脚本" /><meta name="keywords" content='msm8953_64, 原创, android' /><meta itemprop="name" content="android系统开机启动脚本">
 <meta itemprop="description" content="android系统开机启动脚本"><meta itemprop="datePublished" content="2023-11-16T19:41:00+08:00" />
 <meta itemprop="dateModified" content="2023-11-16T19:41:00+08:00" />
-<meta itemprop="wordCount" content="2260">
+<meta itemprop="wordCount" content="2259">
 <meta itemprop="keywords" content="原创,android,msm8953_64," /><meta property="og:title" content="android系统开机启动脚本" />
 <meta property="og:description" content="android系统开机启动脚本" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/daizelai.github.io\/posts\/android\/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC\/"
-    },"genre": "posts","keywords": "原创, android, msm8953_64","wordcount":  2260 ,
+    },"genre": "posts","keywords": "原创, android, msm8953_64","wordcount":  2259 ,
     "url": "https:\/\/daizelai.github.io\/posts\/android\/20231114_2028%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC\/","datePublished": "2023-11-16T19:41:00+08:00","dateModified": "2023-11-16T19:41:00+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -175,7 +175,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       daizelai</span></span>
           <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创原创</a>&ensp;<a href="/categories/msm8953_64/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> msm8953_64</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a></span></div>
-      <div class="post-meta-line"><span title="发布于 2023-11-16 19:41:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-16">2023-11-16</time></span>&nbsp;<span title="更新于 2023-11-16 19:41:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-16">2023-11-16</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2260 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 11 分钟</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="发布于 2023-11-16 19:41:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-16">2023-11-16</time></span>&nbsp;<span title="更新于 2023-11-16 19:41:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-16">2023-11-16</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2259 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 11 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -209,7 +209,7 @@
     <li><a href="#五查看脚本文件">五、查看脚本文件</a></li>
   </ul>
 </nav></div>
-      </div><div class="content" id="content"><h1 id="20231114_2028添加系统启动脚本">20231114_2028添加系统启动脚本</h1>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <h3 id="11功能描述">1.1.功能描述</h3>
 <p>动态修改网卡地址。</p>
@@ -230,8 +230,8 @@
 <p><a href="./file/modify_mac_when_android_starts.patch">modify_mac_when_android_starts.patch</a></p>
 <h2 id="二开始">二、开始</h2>
 <h3 id="21新建一个shell脚本">2.1.新建一个shell脚本</h3>
-<p>新建shell脚本文件。by daizelai on 2023/11/15 09:45
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/etc/init.gbcom.mac.script.sh</p>
+<p>新建shell脚本文件。by daizelai on 2023/11/15 09:45</p>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/etc/init.gbcom.mac.script.sh</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#099">#!/system/bin/sh
 </span></span></span><span style="display:flex;"><span><span style="color:#099"></span><span style="color:#09f;font-style:italic">#</span>
 </span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># update gbcom mac address.</span>
@@ -244,14 +244,14 @@
 </span></span><span style="display:flex;"><span>/system/bin/ifconfig eth0 hw ether 00:e0:99:8e:38:0f
 </span></span><span style="display:flex;"><span>/system/bin/ifconfig eth0 up
 </span></span></code></pre></div><h3 id="22增加脚本初始化">2.2.增加脚本初始化</h3>
-<p>配置脚本提交。by daizelai on 2023/11/15 09:20
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/base.mk</p>
+<p>配置脚本提交。by daizelai on 2023/11/15 09:20</p>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/base.mk</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span><span style="color:#033">INIT</span> <span style="color:#555">+=</span> fstab.qcom
 </span></span><span style="display:flex;"><span><span style="color:#033">INIT</span> <span style="color:#555">+=</span> init.qcom.sensors.sh
 </span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">+</span><span style="color:#033">INIT</span> <span style="color:#555">+=</span> init.gbcom.mac.script.sh
 </span></span></code></pre></div><h3 id="23编译拷贝">2.3.编译拷贝</h3>
-<p>配置。by daizelai on 2023/11/15 09:27
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/Android.mk</p>
+<p>配置。by daizelai on 2023/11/15 09:27</p>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/Android.mk</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">include</span> <span style="color:#069;font-weight:bold">$(</span><span style="color:#033">CLEAR_VARS</span><span style="color:#069;font-weight:bold">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE</span>       <span style="color:#555">:=</span> init.qcom.sensors.sh
 </span></span><span style="display:flex;"><span><span style="color:#033">LOCAL_MODULE_TAGS</span>  <span style="color:#555">:=</span> optional eng
@@ -277,8 +277,8 @@
 </span></span><span style="display:flex;"><span>    include <span style="color:#069;font-weight:bold">$(</span>BUILD_PREBUILT<span style="color:#069;font-weight:bold">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#a00;background-color:#faa">endif</span>
 </span></span></code></pre></div><h3 id="24系统启动时调用">2.4.系统启动时调用</h3>
-<p>系统启动后调用脚本。
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/etc/init.qcom.rc</p>
+<p>系统启动后调用脚本。</p>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/common/rootdir/etc/init.qcom.rc</p>
 <pre tabindex="0"><code class="language-rc" data-lang="rc">on property:sys.boot_completed=1
     write /dev/kmsg &#34;Boot completed &#34;
     #Reset read ahead for dm-0 and dm-1 to 512kb
@@ -320,8 +320,8 @@ service ptt_socket_app /system/bin/ptt_socket_app -d
     group root
     oneshot
 </code></pre><h3 id="25配置shell脚本执行权限">2.5.配置shell脚本执行权限</h3>
-<p>脚本执行权限。
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/sepolicy/common/file_contexts</p>
+<p>脚本执行权限。</p>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/sepolicy/common/file_contexts</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#09f;font-style:italic">###################################</span>
 </span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># cache files</span>
 </span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic">#</span>
@@ -335,8 +335,8 @@ service ptt_socket_app /system/bin/ptt_socket_app -d
 </span></span><span style="display:flex;"><span><span style="color:#309">+#</span>
 </span></span><span style="display:flex;"><span><span style="color:#309">+/system/bin/init.gbcom.mac.script\.sh                                           u:object_r:qti_init_shell_exec:s0</span>
 </span></span></code></pre></div><h3 id="26配置shell脚本执行权限二">2.6.配置shell脚本执行权限二</h3>
-<p>shell权限继续配置。
-路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/sepolicy/common/init_shell.te</p>
+<p>shell权限继续配置。</p>
+<p>路径：/home/android_SC20/daizelai/androidsc60/wh19/sz14_android_7.1.2_qcom/device/qcom/sepolicy/common/init_shell.te</p>
 <pre tabindex="0"><code class="language-te" data-lang="te"># Restricted domain for shell processes spawned by init.
 # Normally these are shell commands or scripts invoked via sh
 # from an init*.rc file.  No service should ever run in this domain.
@@ -368,9 +368,9 @@ allow qti_init_shell sysfs_kgsl:file r_file_perms;
 </code></pre><h2 id="三编译拷贝文件到某路径">三、编译拷贝文件到某路径</h2>
 <h3 id="31方案一之前拷贝其它文件已使用过只要这一步就可以实现适配拷贝一个app用的配置文件">3.1.方案一【之前拷贝其它文件已使用过，只要这一步就可以实现，适配拷贝一个APP用的配置文件】</h3>
 <p>关键字：预置文件，拷贝文件，默认文件，默认配置文件。</p>
-<p>在msm8953_64 android7.1中，默认放入文件。
-将该脚本从编译路径下拷贝到生成系统文件的指定路径下，此方法可以在刷机包中预放配置文件了。
-路径：device/qcom/msm8953_64/msm8953_64.mk</p>
+<p>在msm8953_64 android7.1中，默认放入文件。</p>
+<p>将该脚本从编译路径下拷贝到生成系统文件的指定路径下，此方法可以在刷机包中预放配置文件了。</p>
+<p>路径：device/qcom/msm8953_64/msm8953_64.mk</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mk" data-lang="mk"><span style="display:flex;"><span> <span style="color:#033">PRODUCT_COPY_FILES</span> <span style="color:#555">+=</span> <span style="color:#c30;font-weight:bold">\
 </span></span></span><span style="display:flex;"><span><span style="color:#c30;font-weight:bold"></span> 	device/qcom/common/rootdir/etc/init.gbcom.mac.script.sh:system/etc/init.gbcom.mac.script.sh
 </span></span></code></pre></div><h3 id="32方案二本次采用">3.2.方案二【本次采用】</h3>

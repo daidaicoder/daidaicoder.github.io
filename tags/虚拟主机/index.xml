@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>虚拟主机 - 标签 - 来来往往</title>
+    <link>https://daizelai.github.io/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</link>
+    <description>虚拟主机 - 标签 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Sep 2016 20:58:09 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/" rel="self" type="application/rss+xml" /><item>
+  <title>apache配置localhost虚拟主机步骤</title>
+  <link>https://daizelai.github.io/posts/php/apache%E9%85%8D%E7%BD%AElocalhost%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E6%AD%A5%E9%AA%A4/</link>
+  <pubDate>Thu, 01 Sep 2016 20:58:09 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/php/apache%E9%85%8D%E7%BD%AElocalhost%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E6%AD%A5%E9%AA%A4/</guid>
+  <description><![CDATA[一、apache配置localhost虚拟主机步骤 1.1.配置httpd 打开apache目录下httpd文件(如：C:\apache\Apache2.2.17\conf\httpd.conf)，找到如下模块：
+#Virtual hosts#Include conf/extra/httpd-vhosts.conf去掉前面的#，这样就开启了httpd-vhosts虚拟主机文件。
+1.2.httpd-vhosts 打开httpd-vhosts文件(如：C:\apache\Apache2.2.17\conf\extra\httpd-vhosts.conf)，配置好localhost虚拟主机，参照httpd-vhosts文件中实例，修改成如下：
+&lt;VirtualHost *:80&gt;ServerAdmin webmaster@dummy-host.hleclerc-PC.ingenidevDocumentRoot &#34;C:/www/web&#34;ServerName www.test.comServerAlias www.dummy-host.hleclerc-PC.ingenidevErrorLog &#34;logs/dummy-host.hleclerc-PC.ingenidev-error.log&#34;CustomLog &#34;logs/dummy-host.hleclerc-PC.ingenidev-access.log&#34; common&lt;Directory C:\www\web&gt;Options FollowSymLinksAllowOverride NoneOrder deny,allowAllow from all&lt;/Directory&gt;&lt;/VirtualHost&gt; 修改配置如下：
+DocumentRoot 修改为本地wamp环境下的www目录(如：C:\www\web) ServerName 改为localhost 重启Apache，这样就配置好了，本地可以用www.test.com来访问C:/www/web 这个站点。 注意事项：
+httpd文件，打开Include conf/extra/httpd-vhosts.conf模块 目录路径，如 C:/wamp/www/a 访问权限，如上Deny from all修改为Allow from all hosts文件，配置虚拟域名host指向 httpd-vhosts文件，配置虚拟主机 二、在windows下面配置apache虚拟主机 2.1.配置虚拟主机需要3个文件 Apache/conf/httpd.conf Apache/conf/extra/httpd-vhosts.conf (这个地版本的apache可能没有，可自己创建，也可以不要此文件，而将配置直接写在httpd.conf里面，写在extra/httpd-vhosts.conf只是为了管理方便，不让httpd.conf文件内容很多而已)。 C:\WINDOWS\system32\drivers\etc\hosts 2.2.配置 2.1.httpd.conf 找到VirtualHost example，在后面引入httpd-vhosts.conf文件：
+Include conf/extra/httpd-vhosts.conf这个句话，高版本的apache里面已经写有了，只需吧Include前面的#号去掉就OK]]></description>
+</item>
+</channel>
+</rss>

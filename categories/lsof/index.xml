@@ -18,5 +18,20 @@
 lsof:
 </code></pre>]]></description>
 </item>
+<item>
+  <title>linux之lsof的使用</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsof/</link>
+  <pubDate>Wed, 19 Oct 2016 20:02:17 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsof/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一安装lsof">一、安装lsof</h2>
+<p>先查看一下<code>lsof</code>命令是否存在。</p>
+<pre tabindex="0"><code>[root@localhost lai]# lsof
+-bash: lsof: command not found
+[root@localhost lai]# whereis lsof
+lsof:
+</code></pre>]]></description>
+</item>
 </channel>
 </rss>

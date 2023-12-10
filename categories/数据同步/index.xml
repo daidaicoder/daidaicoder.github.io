@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>数据同步 - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/</link>
+    <description>数据同步 - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 09 Oct 2016 20:53:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/" rel="self" type="application/rss+xml" /><item>
+  <title>lsyncd实时同步搭建指南</title>
+  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/</link>
+  <pubDate>Sun, 09 Oct 2016 20:53:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/</guid>
+  <description><![CDATA[<h1 id="lsyncd实时同步搭建指南">lsyncd实时同步搭建指南</h1>
+<h2 id="一介绍">一、介绍</h2>
+<p>github地址：<a href="https://github.com/axkibe/lsyncd"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/axkibe/lsyncd</a></p>
+<p>Lysncd 实际上是lua语言封装了 inotify 和 rsync 工具，采用了 Linux 内核（2.6.13 及以后）里的 inotify 触发机制，然后通过rsync去差异同步，达到实时的效果。我认为它最令人称道的特性是，完美解决了 inotify + rsync海量文件同步带来的文件频繁发送文件列表的问题 —— 通过时间延迟或累计触发事件次数实现。另外，它的配置方式很简单，lua本身就是一种配置语言，可读性非常强。lsyncd也有多种工作模式可以选择，本地目录cp，本地目录rsync，远程目录rsyncssh。</p>]]></description>
+</item>
+</channel>
+</rss>

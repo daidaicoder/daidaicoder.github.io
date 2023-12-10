@@ -183,18 +183,14 @@
         </div>
         <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#一mysql新建数据库语法">一、MySQL新建数据库语法</a></li>
-        <li><a href="#二新建数据使用示例">二、新建数据使用示例</a></li>
-        <li><a href="#三更改数据库的字符编码">三、更改数据库的字符编码</a></li>
-      </ul>
-    </li>
+    <li><a href="#一mysql新建数据库语法">一、MySQL新建数据库语法</a></li>
+    <li><a href="#二新建数据使用示例">二、新建数据使用示例</a></li>
+    <li><a href="#三更改数据库的字符编码">三、更改数据库的字符编码</a></li>
   </ul>
 </nav></div>
       </div><div class="content" id="content"><!-- raw HTML omitted -->
-<h3 id="一mysql新建数据库语法">一、MySQL新建数据库语法</h3>
-<pre tabindex="0"><code>CREATE DATABASE 的语法：
+<h2 id="一mysql新建数据库语法">一、MySQL新建数据库语法</h2>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">CREATE DATABASE 的语法：
 
 CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name
 [create_specification [, create_specification] ...]
@@ -202,10 +198,10 @@ CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name
 create_specification:
 [DEFAULT] CHARACTER SET charset_name
 | [DEFAULT] COLLATE collation_name
-</code></pre><h3 id="二新建数据使用示例">二、新建数据使用示例</h3>
-<pre tabindex="0"><code>CREATE DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-</code></pre><h3 id="三更改数据库的字符编码">三、更改数据库的字符编码</h3>
-<pre tabindex="0"><code>ALTER DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
+</code></pre><h2 id="二新建数据使用示例">二、新建数据使用示例</h2>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">CREATE DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+</code></pre><h2 id="三更改数据库的字符编码">三、更改数据库的字符编码</h2>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">ALTER DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
 </code></pre></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">

@@ -5,40 +5,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>mysql乱码 - 来来往往</title><meta name="author" content="">
+    <title>centos7安装mysql - 来来往往</title><meta name="author" content="">
 <meta name="author-link" content="">
-<meta name="description" content="mysql数据库乱码解决方案，修改mysql数据编码。" /><meta name="keywords" content='原创, mysql, 数据库, 数据库乱码' /><meta itemprop="name" content="mysql乱码">
-<meta itemprop="description" content="mysql数据库乱码解决方案，修改mysql数据编码。"><meta itemprop="datePublished" content="2016-10-28T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2016-10-28T00:00:00+00:00" />
-<meta itemprop="wordCount" content="239">
-<meta itemprop="keywords" content="原创,mysql,数据库,数据库乱码," /><meta property="og:title" content="mysql乱码" />
-<meta property="og:description" content="mysql数据库乱码解决方案，修改mysql数据编码。" />
+<meta name="description" content="centos7安装mysql" /><meta name="keywords" content='原创, mysql, mysql安装, 数据库, centos' /><meta itemprop="name" content="centos7安装mysql">
+<meta itemprop="description" content="centos7安装mysql"><meta itemprop="datePublished" content="2017-01-06T10:34:00+08:00" />
+<meta itemprop="dateModified" content="2017-01-06T10:34:00+08:00" />
+<meta itemprop="wordCount" content="60">
+<meta itemprop="keywords" content="原创,mysql,mysql安装,数据库,centos," /><meta property="og:title" content="centos7安装mysql" />
+<meta property="og:description" content="centos7安装mysql" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://daizelai.github.io/posts/mysql/character/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2016-10-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2016-10-28T00:00:00+00:00" />
+<meta property="article:published_time" content="2017-01-06T10:34:00+08:00" />
+<meta property="article:modified_time" content="2017-01-06T10:34:00+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="mysql乱码"/>
-<meta name="twitter:description" content="mysql数据库乱码解决方案，修改mysql数据编码。"/>
+<meta name="twitter:title" content="centos7安装mysql"/>
+<meta name="twitter:description" content="centos7安装mysql"/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/mysql/character/" /><link rel="prev" href="https://daizelai.github.io/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/" /><link rel="next" href="https://daizelai.github.io/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/mysql/character/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/ubuntu/ubuntu%E7%9A%84%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5ssh%E9%97%AE%E9%A2%98/" /><link rel="next" href="https://daizelai.github.io/posts/as/%E6%96%B0windows%E5%AE%89%E8%A3%85as%E5%90%8E%E8%BF%90%E8%A1%8C%E5%B7%B2%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E6%8F%90%E7%A4%BAjava%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/as/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "mysql乱码",
+    "headline": "centos7安装mysql",
     "inLanguage": "zh-CN",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/daizelai.github.io\/posts\/mysql\/character\/"
-    },"genre": "posts","keywords": "原创, mysql, 数据库, 数据库乱码","wordcount":  239 ,
-    "url": "https:\/\/daizelai.github.io\/posts\/mysql\/character\/","datePublished": "2016-10-28T00:00:00+00:00","dateModified": "2016-10-28T00:00:00+00:00","publisher": {
+    },"genre": "posts","keywords": "原创, mysql, mysql安装, 数据库, centos","wordcount":  60 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/mysql\/character\/","datePublished": "2017-01-06T10:34:00+08:00","dateModified": "2017-01-06T10:34:00+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
         "name": "daizelai"
-      },"description": "mysql数据库乱码解决方案，修改mysql数据编码。"
+      },"description": "centos7安装mysql"
   }
   </script></head>
   <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
@@ -170,12 +170,12 @@
     </aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>mysql乱码</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>centos7安装mysql</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       daizelai</span></span>
-          <span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a></span></div>
-      <div class="post-meta-line"><span title="发布于 2016-10-28 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-28">2016-10-28</time></span>&nbsp;<span title="更新于 2016-10-28 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2016-10-28">2016-10-28</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 239 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 2 分钟</span>&nbsp;</div>
+          <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/mysql%E5%AE%89%E8%A3%85/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql安装</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a>&ensp;<a href="/categories/centos/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> centos</a></span></div>
+      <div class="post-meta-line"><span title="发布于 2017-01-06 10:34:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2017-01-06">2017-01-06</time></span>&nbsp;<span title="更新于 2017-01-06 10:34:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2017-01-06">2017-01-06</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 60 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 1 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -183,89 +183,55 @@
         </div>
         <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#一查看mysql服务端情况">一、查看mysql服务端情况</a></li>
-    <li><a href="#二修改mysql编码">二、修改mysql编码</a></li>
-    <li><a href="#三代码端">三、代码端</a></li>
+    <li><a href="#一描述">一、描述</a></li>
+    <li><a href="#二安装mysql">二、安装mysql</a>
+      <ul>
+        <li><a href="#21下载mysql的repo源">2.1、下载mysql的repo源</a></li>
+        <li><a href="#22安装mysql-community-release-el7-5noarchrpm包">2.2.安装mysql-community-release-el7-5.noarch.rpm包</a></li>
+        <li><a href="#23安装mysql">2.3.安装mysql</a></li>
+        <li><a href="#24修改中文字符集">2.4.修改中文字符集</a></li>
+        <li><a href="#25成功安装之后重启mysql服务">2.5.成功安装之后重启mysql服务</a></li>
+        <li><a href="#26初始化密码">2.6.初始化密码</a></li>
+        <li><a href="#27查询mysql数据库">2.7.查询mysql数据库</a></li>
+        <li><a href="#28卸载">2.8.卸载</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-      </div><div class="content" id="content"><!-- raw HTML omitted -->
-<h2 id="一查看mysql服务端情况">一、查看mysql服务端情况</h2>
-<p>1.查看mysql默认的编码配置</p>
-<pre tabindex="0"><code>mysql&gt; show variables like &#39;char%&#39;;
-mysql&gt; SHOW VARIABLES LIKE &#39;character%&#39;;
-+--------------------------+----------------------------+
-| Variable_name            | Value                      |
-+--------------------------+----------------------------+
-| character_set_client     | utf8                       |
-| character_set_connection | utf8                       |
-| character_set_database   | latin1                     |
-| character_set_filesystem | binary                     |
-| character_set_results    | utf8                       |
-| character_set_server     | latin1                     |
-| character_set_system     | utf8                       |
-| character_sets_dir       | /usr/share/mysql/charsets/ |
-+--------------------------+----------------------------+
-8 rows in set (0.00 sec)
-</code></pre><p>2.查看某(we7)数据库的编码格式</p>
-<pre tabindex="0"><code>mysql&gt; show create database we7;
-+----------+--------------------------------------------------------------+
-| Database | Create Database                                              |
-+----------+--------------------------------------------------------------+
-| we7      | CREATE DATABASE `we7` /*!40100 DEFAULT CHARACTER SET utf8 */ | 
-+----------+--------------------------------------------------------------+
-1 row in set (0.01 sec)
-</code></pre><p>默认创建数据库时指定编码，强烈建议使用utf8。</p>
-<pre tabindex="0"><code>CREATE DATABASE `we7`  
-CHARACTER SET &#39;utf8&#39;  
-COLLATE &#39;utf8_general_ci&#39;; 
-</code></pre><p>3.查看某(ims_rule)表的编码格式</p>
-<pre tabindex="0"><code>mysql&gt; show create table ims_rule;
-
-CREATE TABLE `ims_rule` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `uniacid` int(10) unsigned NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `module` varchar(50) NOT NULL,
-  `displayorder` int(10) unsigned NOT NULL,
-  `status` tinyint(1) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=216 DEFAULT CHARSET=utf8
-1 row in set (0.03 sec)
-</code></pre><p>创建表时使用utf8编码</p>
-<pre tabindex="0"><code>CREATE TABLE `ims_rule` (  
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;  
-</code></pre><h2 id="二修改mysql编码">二、修改mysql编码</h2>
-<p>1.设置mysql编码</p>
-<pre tabindex="0"><code>SET NAMES utf8
-SET NAMES gbk
-</code></pre><p>相当于</p>
-<pre tabindex="0"><code>SET character_set_client=&#39;utf8&#39;;
-SET character_set_connection=&#39;utf8&#39;;
-SET character_set_results=&#39;utf8&#39;;
-</code></pre><p>2.或者修改mysql配置文件
-我这次是这样修改成功的，因为确定了是服务端的问题，修改后记得要重启mysql服务哦。</p>
-<pre tabindex="0"><code># vi /etc/my.inf
-[client]
-default-character-set=utf8
-[mysql]
+      </div><div class="content" id="content"><h2 id="一描述">一、描述</h2>
+<p>在centos7系统上面安装mysql。</p>
+<h2 id="二安装mysql">二、安装mysql</h2>
+<h3 id="21下载mysql的repo源">2.1、下载mysql的repo源</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+</code></pre><h3 id="22安装mysql-community-release-el7-5noarchrpm包">2.2.安装mysql-community-release-el7-5.noarch.rpm包</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">$ rpm -ivh mysql-community-release-el7-5.noarch.rpm
+</code></pre><h3 id="23安装mysql">2.3.安装mysql</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">$ yum install mysql-server
+</code></pre><h3 id="24修改中文字符集">2.4.修改中文字符集</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">$ vi /etc/my.cnf 
+</code></pre><p>添加如下：</p>
+<pre tabindex="0"><code class="language-cnf" data-lang="cnf">[client]
 default-character-set=utf8
 [mysqld]
-default-character-set=utf8
-</code></pre><p>3.修改数据库的编码</p>
-<pre tabindex="0"><code>// 修改数据库的编码
-ALTER DATABASE `we7` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-// 修改表的编码
-ALTER TABLE `ims_rule` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-// 修改数据库为gbk
-ALTER DATABASE `db_name` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;
-</code></pre><h2 id="三代码端">三、代码端</h2>
-<p>记得在代码端也要使用相同的编码格式，这里需要使用utf8，否则还是乱码的。</p>
-</div><div class="post-footer" id="post-footer">
+character_set_server=utf8
+init_connect=&#39;SET NAMES utf8&#39;
+</code></pre><h3 id="25成功安装之后重启mysql服务">2.5.成功安装之后重启mysql服务</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">$ service mysqld restart
+</code></pre><h3 id="26初始化密码">2.6.初始化密码</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">mysql -u root
+use mysql
+update user set password=password(&#39;123456&#39;) where user=&#39;root&#39;; 
+flush privileges;
+</code></pre><h3 id="27查询mysql数据库">2.7.查询mysql数据库</h3>
+<p>这个命令就会查看该操作系统上是否已经安装了mysql数据库</p>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">rpm -qa | grep mysql
+</code></pre><h3 id="28卸载">2.8.卸载</h3>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">rpm -e --nodeps ***
+</code></pre></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="更新于 2016-10-28 00:00:00">更新于 2016-10-28&nbsp;</span>
+        <span title="更新于 2017-01-06 10:34:00">更新于 2017-01-06&nbsp;</span>
       </div><div class="post-info-license">
           <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
         </div></div>
@@ -278,14 +244,14 @@ ALTER DATABASE `db_name` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;
   </div>
 
   <div class="post-info-more">
-    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%B1%E7%A0%81/' class="post-tag">数据库乱码</a></section>
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/mysql%E5%AE%89%E8%A3%85/' class="post-tag">mysql安装</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/centos/' class="post-tag">centos</a></section>
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
     </section>
   </div>
 
-  <div class="post-nav"><a href="/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/" class="post-nav-item" rel="prev" title="vmbox扩容"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>vmbox扩容</a>
-      <a href="/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/" class="post-nav-item" rel="next" title="linux之磁盘sdc变为sdb后">linux之磁盘sdc变为sdb后<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  <div class="post-nav"><a href="/posts/linux/ubuntu/ubuntu%E7%9A%84%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5ssh%E9%97%AE%E9%A2%98/" class="post-nav-item" rel="prev" title="ubuntu的不能连接SSH问题"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>ubuntu的不能连接SSH问题</a>
+      <a href="/posts/as/%E6%96%B0windows%E5%AE%89%E8%A3%85as%E5%90%8E%E8%BF%90%E8%A1%8C%E5%B7%B2%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE%E6%8F%90%E7%A4%BAjava%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/as/" class="post-nav-item" rel="next" title="新Windows安装AS后运行已开发项目提示JAVA兼容问题">新Windows安装AS后运行已开发项目提示JAVA兼容问题<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

@@ -5,17 +5,14 @@
     <description>git - 分类 - 来来往往</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 03 Jun 2023 15:47:03 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/git/" rel="self" type="application/rss+xml" /><item>
   <title>本地命令行删除分支</title>
-  <link>https://daizelai.github.io/posts/git/room/</link>
+  <link>https://daizelai.github.io/posts/git/20230603_1547%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF/</link>
   <pubDate>Sat, 03 Jun 2023 15:47:03 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/room/</guid>
-  <description><![CDATA[一、删除本地仓库中的分支 git branch -d &lt;branch-name&gt; 删除多个本地分支
-git branch -d &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 二、强制删除分支 如果要强制删除分支，即使它的更改尚未合并到其他分支中，可以使用以下命令：
-git branch -D &lt;branch-name&gt; 强制删除多个分支
-git branch -D &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 请确保在删除分支之前，已经将其上的任何重要更改合并到其他分支中或以其他方式进行了备份。
-三、删除远程仓库中的分支 如果你想删除远程仓库中的分支，可以使用以下命令：
-git push origin --delete &lt;branch-name&gt; 删除多个远程分支
-git push origin --delete &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 这将从远程仓库 origin 删除指定的分支。]]></description>
+  <guid>https://daizelai.github.io/posts/git/20230603_1547%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一删除本地仓库中的分支">一、删除本地仓库中的分支</h2>
+<pre tabindex="0"><code class="language-git" data-lang="git">git branch -d &lt;branch-name&gt;
+</code></pre><p>删除多个本地分支</p>]]></description>
 </item>
 <item>
   <title>使用vscode合并分支提交到主分支</title>
@@ -23,9 +20,10 @@ git push origin --delete &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt; ... 这
   <pubDate>Sat, 03 Jun 2023 12:55:26 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/git/20230603_1255%E4%BD%BF%E7%94%A8vscode%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E6%8F%90%E4%BA%A4%E5%88%B0%E4%B8%BB%E5%88%86%E6%94%AF/gitmerge/</guid>
-  <description><![CDATA[一、描述 1.1.前言 git多commit合并提交到主分支过程记录，本文记录了类似于1.2小节的整个过程。
-1.2.在develop分支 git log 现有提交60714ec、fa0fbe5和6a54429。
-daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/test/wzs2_android_app (develop)$ git reflog -n 106a54429 (HEAD -&gt; develop) HEAD@{0}: commit: 修改了版本号为11fa0fbe5 HEAD@{1}: commit: 修改版本号为1060714ec HEAD@{2}: commit: 修改版本号为98cbf57e (origin/develop) HEAD@{3}: merge feature/login: Merge made by the &#39;recursive&#39; strategy.8791add HEAD@{4}: checkout: moving from feature/login to develop0108492 (origin/feature/login, feature/login) HEAD@{5}: commit: 修改了版本号为88bf847c HEAD@{6}: commit: 修改了版本号为7695c95c HEAD@{7}: checkout: moving from develop to feature/login8791add HEAD@{8}: merge feature/login: Merge made by the &#39;recursive&#39; strategy.]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11前言">1.1.前言</h3>
+<p>git多commit合并提交到主分支过程记录，本文记录了类似于<strong>1.2小节</strong>的整个过程。</p>]]></description>
 </item>
 <item>
   <title>git代码提交规范</title>
@@ -33,9 +31,9 @@ daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/test/wzs2_android_app (dev
   <pubDate>Sun, 28 May 2023 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/git/gitcommit/</guid>
-  <description><![CDATA[一、描述 说明 为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。
-本次安装过程：
-npm install -g commitizennpm install -g cz-conventional-changelogecho &#39;{ &#34;path&#34;: &#34;cz-conventional-changelog&#34; }&#39; &gt; .czrcnpx commitizen init cz-conventional-changelog --save-dev --save-exactnpx commitizen init cz-conventional-changelog --save-dev --save-exact --forcenpm install -g conventional-changelog-clinpm ls -g -depth=0# 为了Git Bash命令行中也可以使用上下箭头选择git type，安装下面这个。npm install -g git-cz#下面是changlog#追加conventional-changelog -p angular -i CHANGELOG.md -s#全量生成conventional-changelog -p angular -i CHANGELOG.md -s -r 0 windows命令行环境 nvm-windows commitizen-windows.md]]></description>
+  <description><![CDATA[<h2 id="一描述">一、描述</h2>
+<h3 id="说明">说明</h3>
+<p>为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。</p>]]></description>
 </item>
 <item>
   <title>vscode提交代码交合并分支</title>
@@ -43,14 +41,9 @@ npm install -g commitizennpm install -g cz-conventional-changelogecho &#39;{ &
   <pubDate>Tue, 23 May 2023 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/git/20230523_1540%E4%BD%BF%E7%94%A8vscode%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E4%BA%A4%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF/gitvscode/</guid>
-  <description><![CDATA[20230523_1540使用vscode提交代码交合并分支 一、描述 使用Visual Studio Code对代码进行提交和分支合并。
-二、提交 2.1.添加到暂存区 选把feature分支修改的代码添加到暂存区，点击Changes下文件后面的加号就可以把需要commit的文件添加到暂存区Staged Chages，实际执行的是git add 文件名命令。
-2.2.提交代码 三、合并分支 3.1.切换到devlop分支 要把在开发分支feature的修改代码合并到develop分支的话，需要先切换到develop分支。
-3.2.pull最新代码到本地 合并之前选择执行pull命令，让本地的develop分支代码保持最新。
-3.3.选择合并分支 选择合并分支菜单。
-选择要合并的分支，我们要把feature分支的代码合并到develop分支，所以这里选择feature分支。
-合并成功，可以看到本地的develop分支代码已经更新了。
-推送到远程 本地的develop分支推送到远程的develop分支。]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>使用Visual Studio Code对代码进行提交和分支合并。</p>]]></description>
 </item>
 <item>
   <title>gitflow记录</title>
@@ -58,9 +51,68 @@ npm install -g commitizennpm install -g cz-conventional-changelogecho &#39;{ &
   <pubDate>Fri, 14 Apr 2023 16:11:56 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/git/20230414_1304gitflow%E8%AE%B0%E5%BD%95/gitflow/</guid>
-  <description><![CDATA[一、描述 记录git flow的使用
-1.2.总结 1.dev-开发分支是从master分支派生的。2.feature-特性分支是从dev-开发分支派生的，feature只是本地分支，不会被上传远端，特殊环境例外。3.feature-特性分支完成时，它被合并到dev-开发分支中。4.feature-特性分支合并完成后删除。4.release-发布分支是从dev-开发分支派生的。5.release-发布分支发布完成时，它被合并到master分支和dev-开发分支中（前提是保证版本的稳定性后再合并到master分支上）。6.release-发布分支合并完成后删除。7.版本出现问题时候则通过master分支派生出hotfixes-紧急分支进行修复，修复完成后将它合并到master分支和dev-开发分支中。8.hotfixes-紧急分支合并完成后删除。 二、常用分支git命令 2.1.新开分支 $ git branch 新分支名#新建分支 develop$ git branch develop 2.2.切换到另一个分支 $ git checkout 分支名#切换到 develop 分支$ git checkout develop 2.3.新开分支并切换到新分支 $ git checkout -b 新分支名#新开 develop 分支，并切换到此分支$ git checkout -b develop 2.4.查看分支列表 头部带 remotes/origin 的，表示远程分支
-$ git branch -a 2.5.查看远程分支列表 $ git branch -r daizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)$ git branch -rorigin/HEAD -&gt; origin/masterorigin/developorigin/masterdaizelai@GBCOM-20210524I MINGW64 /d/code/gbcom_gitlab/WZS2_Android_APP (develop)$ 下面是查看所有分支：]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>记录git flow的使用</p>]]></description>
+</item>
+<item>
+  <title>本地命令行删除分支</title>
+  <link>https://daizelai.github.io/posts/git/git/</link>
+  <pubDate>Wed, 01 Feb 2023 12:11:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>记录一下已经push到服务器端的代码回退方法，撤销操作包括：</p>
+<ol>
+<li>撤销push提交</li>
+<li>撤销push代码</li>
+<li>回退push提交</li>
+</ol>]]></description>
+</item>
+<item>
+  <title>git配置多用户管理</title>
+  <link>https://daizelai.github.io/posts/git/gitconfig/git/</link>
+  <pubDate>Tue, 27 Sep 2022 13:29:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/gitconfig/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<h3 id="11文档背景">1.1.文档背景</h3>
+<p>by daizelai on 2022/09/27 17:38</p>
+<p>现在一般公司都是使用git进行管理，有可能是gitlab，也有可能是github或gitee等。但是如果多个项目使用不同的托管平台，那么这个时候就需要git多账号切换的功能。</p>]]></description>
+</item>
+<item>
+  <title>git之log日志记录</title>
+  <link>https://daizelai.github.io/posts/git/git/</link>
+  <pubDate>Mon, 20 Dec 2021 22:30:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>用git命令，可以看到自己之前的操作记录，使用的命令是<code>git log</code>和<code>git reflog</code>，它们的区别是：</p>]]></description>
+</item>
+<item>
+  <title>git一个本地分支同时向多个远程分支提交代码</title>
+  <link>https://daizelai.github.io/posts/git/git/</link>
+  <pubDate>Mon, 20 Dec 2021 10:56:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>本文网上学习记录，by daizelai on 2021/12/20 10:56</p>
+<p>一个项目同时绑定多个分支，比如同时向码云和gitlab提交。</p>]]></description>
+</item>
+<item>
+  <title>git一个本地分支向多个远程分支提交代码</title>
+  <link>https://daizelai.github.io/posts/git/git/</link>
+  <pubDate>Fri, 12 Nov 2021 10:56:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<p>一个本地库能不能既关联gitab，又关联码云呢?</p>]]></description>
 </item>
 </channel>
 </rss>

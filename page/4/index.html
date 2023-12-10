@@ -152,156 +152,189 @@
   <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
   </div><main class="container container-reverse"><div class="page home posts"><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/mysql/mysql%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/">mysql导入数据库后乱码的问题</a>
+    <a href="/posts/mysql/character/">centos7安装mysql</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-09-06 17:02:13'>发布于 <time datetime="2016-09-06">2016-09-06</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a></span></div><div class="content">Mysql导入数据库后乱码问题 一、Web乱码 在容器中install好les项目后，打开Web却发现菜单是乱码
-数据乱码 二、修改Mysql配置 1）、修改mysql配置 找到数据库的配置文件，增加**[client]配置编码utf8**，[mysqld]中同时增加init_connect=&lsquo;SET NAMES utf8&rsquo;，修改如下：
-[root@les /]# vim /etc/my.cnf [client] default-character-set=utf8 [mysqld] character_set_server=utf8 init_connect=&#39;SET NAMES utf8&#39; datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock user=mysql # Disabling symbolic-links is recommended to prevent assorted security risks symbolic-links=0 [mysqld_safe] log-error=/var/log/mysqld.log pid-file=/var/run/mysqld/mysqld.pid 2）、重启服务
-/etc/init.d/mysqld restart /etc/init.d/httpd restart 三、解决乱码 1.这个时候刷新Web发现还是乱码，那就是数据源有问题了，说明导入到数据库里的数据就是乱码，打开数据库一看果然如此，接着往下走。
-2.卸载掉les项目，重新安装。
-./gbc100_v1.1.bin uninstall lebds_UI /var/www/html lebds ./gbc100_v1.1.bin install lebds_UI /var/www/html lebds 3.打开Web页面，发现问题已解决。
-数据乱码 </div><div class="post-footer">
-    <a href="/posts/mysql/mysql%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%B1%E7%A0%81/' class="post-tag">数据库乱码</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2017-01-06 10:34:00'>发布于 <time datetime="2017-01-06">2017-01-06</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/mysql%E5%AE%89%E8%A3%85/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql安装</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a>&ensp;<a href="/categories/centos/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> centos</a></span></div><div class="content"><h2 id="一描述">一、描述</h2>
+<p>在centos7系统上面安装mysql。</p></div><div class="post-footer">
+    <a href="/posts/mysql/character/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/mysql%E5%AE%89%E8%A3%85/' class="post-tag">mysql安装</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/centos/' class="post-tag">centos</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/virtualbox/vmware%E5%AE%89%E8%A3%85centos%E5%90%8E%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/">VMware安装CentOS后配置SSH远程连接的问题</a>
+    <a href="/posts/linux/ubuntu/ubuntu%E7%9A%84%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5ssh%E9%97%AE%E9%A2%98/">ubuntu的不能连接SSH问题</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-09-05 19:57:48'>发布于 <time datetime="2016-09-05">2016-09-05</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/centos/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> centos</a></span></div><div class="content">可以SSH连接，但虚拟机CentOS不能连接外网，呜呜呜呜！！！
-一、安装VM的虚拟网卡（网络连接） 1.安装绿色版的VMware，安装好后，网络连接里是只有**本地连接**的。
-&ldquo;默认的本地连接&rdquo; 2.在VMware中安装CentOS系统
-&ldquo;VM的网络设置&rdquo; 3.安装系统后，在看网络连接还是只有本地连接，这时候这样VM的虚拟网络编辑设置一下
-点击VMware顶部的菜单，如下所示：
-&ldquo;VM的虚拟网络编辑&rdquo; 点击**“还原默认设置”**设置
-&ldquo;还原默认设置&rdquo; 4.点击以后，就会有上面图片中的三个连接了。同时，网络连接也多了两块VM的网络连接：
-&ldquo;VM的虚拟网络&rdquo; **VMnet1：**Host-only共享用的虚拟连接； **VMnet8：**NAT共享用的虚拟连接。VMnet8虚拟网卡就相当于连接到内网的网卡，Host主机上的物理网卡就相当于连接到外网的网卡，而虚拟机本身则相当于运行在内网上的计算机，虚拟机内的虚拟网卡则独立于Virtual Ethernet Switch（VMnet8）。
-二、配置VM虚拟连接并SSH连接 1.右击网络连接中“VMnet8”选择“属性”
-2.查看（没有就设置）TCP/IPv4的相应的IP地址和子网掩码，这里可以配置任意网段，然后点击确定按钮。
-&ldquo;设置VMnet8&rdquo; 3.查看windows主机的具体IP地址，输入ipconfig
-这里查看VMnet8的网络参数如上：IP：192.168.80.1 掩码：255.255.255.0
-&ldquo;查看VMnet8的参数&rdquo; 4.回到配置VMware中的网络参数，选择NAT模式，并点击右侧的NAT设置
-&ldquo;配置NAT参数&rdquo; 在弹出的对话框中进行网络的设置，这里的子网必须和windows主机中VMnet8的IP地址处于同一个网段，即192.168.80.0网段
-&ldquo;配置NAT参数&rdquo; 这里的网关可以选择windows主机中VMnet8的IP地址处于同一个网段的任意IP地址，然后点击确定。
-5.配置CentOS中的网络配置
-[root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0 DEVICE=eth0 HWADDR=00:0C:29:CA:3C:42 TYPE=Ethernet UUID=5bd32e4a-23c2-4c5a-be0f-26ffe1297a9d ONBOOT=yes NM_CONTROLLED=yes BOOTPROTO=none NETMASK=255.255.255.0 IPADDR=192.168.80.11 DNS1=10.60.1.254 主要需要设置下面的参数：
-ONBOOT=yes NETMASK=255.255.255.0 // 子网掩码 IPADDR=192.168.80.11 // IP地址和VMnet8的IP地址在同一个网段 DNS1=10.60.1.254 // 主DNS服务器IP地址为windows中主机真实网关 重启网络服务
-[root@localhost ~]# /etc/init.d/network restart 正在关闭接口 eth0： [确定] 关闭环回接口： [确定] 弹出环回接口： [确定] 弹出界面 eth0： Determining if ip address 192.</div><div class="post-footer">
-    <a href="/posts/virtualbox/vmware%E5%AE%89%E8%A3%85centos%E5%90%8E%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/centos/' class="post-tag">centos</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-04 19:59:15'>发布于 <time datetime="2016-11-04">2016-11-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/ubuntu/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ubuntu</a>&ensp;<a href="/categories/ssh/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ssh</a></span></div><div class="content">一、问题描述 ubuntu的不能连接SSH问题。
+安装好ubuntu系统中，网络也配置好可以ping通主机。使用SSH不能连接，提示：
+The remote system refused the connection. 二、获取root权限 为了方便配置，先取得系统的root权限。
+sudo su - root 获取root用户权限 三、安装ssh 使用如下命令安装ssh
+apt-get install openssh-server apt-get install openssh-client 安装openssh-server 我这边不用安装openssh-client了。
+安装openssh-server 安装ssh时出现问题：
+dpkg 被中断,您必须手工运行 sudo dpkg --configure -a解决此问题。 提示截图：
+安装openssh-server 导致这个问题的主要原因是因为/var/lib/dpkg/updates文件下的文件有问题，可能是其他软件安装过程或是其他原因导致的，这里删除掉然后重建即可。
+sudo rm /var/lib/dpkg/updates/* sudo apt-get update sudo apt-get upgrade update操作 upgrade操作 sudo apt-get update 指令会重新建立这些资料，所以不必担心删除后会出问题； sudo apt-get upgrade 会更新你的电脑里面已安装的软件的明细，根据软件的明细更新软件到最新版。 PS：“dpkg ”是“Debian Packager ”的简写。为 “Debian” 专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自“Debian”的“Linux ”发行版都使用 “dpkg”
+普通用法：
+1、dpkg -i 安装一个 Debian 包裹文件，如你手动下载的文件。 2、dpkg -c 列出 的内容。 3、dpkg -I 从 中提取包裹信息。 4、dpkg -r 移除一个已安装的包裹。 5、dpkg -P 完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。 6、dpkg -L 列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .</div><div class="post-footer">
+    <a href="/posts/linux/ubuntu/ubuntu%E7%9A%84%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5ssh%E9%97%AE%E9%A2%98/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/ubuntu/' class="post-tag">ubuntu</a><a href='/tags/ssh/' class="post-tag">ssh</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/">MySql服务突然没有了</a>
+    <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%85%A8%E5%B1%8F%E6%98%BE%E7%A4%BA/">virtualbox之ubuntu全屏显示</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-09-05 19:43:15'>发布于 <time datetime="2016-09-05">2016-09-05</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a></span></div><div class="content">一、打开Web界面发现如下错误 看下图的意思是sql连接的错误，后面会单独连接MySql试试看。
-MySql连接不上了 二、使用命令连接不上了，如下图： 1.截图如下：
-MySql连接不上了 2.代码如下：
-D:\server\mysql5714\bin&gt;mysql -h127.0.0.1 -uroot -p Enter password: ****** ERROR 2003 (HY000): Can&#39;t connect to MySQL server on &#39;127.0.0.1&#39; (10061) D:\server\mysql5714\bin&gt;net start mysql 服务名无效。 请键入 NET HELPMSG 2185 以获得更多的帮助。 D:\server\mysql5714\bin&gt;net mysql start 此命令的语法是: NET [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP | HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START | STATISTICS | STOP | TIME | USE | USER | VIEW ] 三、计算机服务中去看，也没有MySql服务 服务中看不到MySql 四、解决办法 1.</div><div class="post-footer">
-    <a href="/posts/mysql/mysql%E6%9C%8D%E5%8A%A1%E7%AA%81%E7%84%B6%E6%B2%A1%E6%9C%89%E4%BA%86/cantconntent/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-02 18:07:32'>发布于 <time datetime="2016-11-02">2016-11-02</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/ubuntu/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ubuntu</a>&ensp;<a href="/categories/virtualbox/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> virtualbox</a></span></div><div class="content"><h2 id="一描述">一、描述</h2>
+<p>virtualbox安装好ubuntu后调分辨率</p></div><div class="post-footer">
+    <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%85%A8%E5%B1%8F%E6%98%BE%E7%A4%BA/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/ubuntu/' class="post-tag">ubuntu</a><a href='/tags/virtualbox/' class="post-tag">virtualbox</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/room/">Linux之scp复制远程文件</a>
+    <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/">virtualbox之ubuntu安装</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-08-10 08:56:57'>发布于 <time datetime="2016-08-10">2016-08-10</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/scp/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> scp</a></span></div><div class="content"><h3 id="一语法">一、语法</h3>
-<p>1.linux 的 scp 命令 可以 在 linux 之间复制 文件 和 目录；<br>
-2.scp 可以在 2个 linux 主机间复制文件；<br>
-3.命令基本格式：</p>
-<blockquote>
-<p>scp [可选参数] file_source file_target</p>
-</blockquote>
-<h3 id="二从-本地-复制到-远程">二、从 本地 复制到 远程</h3>
-<p>复制文件：</p></div><div class="post-footer">
-    <a href="/posts/linux/room/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/scp/' class="post-tag">scp</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/mysql/mysqlpassword/">mysql之密码学</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-08-09 14:13:05'>发布于 <time datetime="2016-08-09">2016-08-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a></span></div><div class="content"><!-- raw HTML omitted -->
-<h2 id="一mysql命令行重置密码">一、mysql命令行重置密码</h2>
-<h3 id="11首先需要连接进入mysql">1.1.首先需要连接进入mysql</h3>
-<pre tabindex="0"><code>mysql&gt; select user();  
-+---------------+  
-| user()        |  
-+---------------+  
-| root@localhost |  
-+---------------+  
-1 row in set (0.00 sec) 
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-01 11:22:28'>发布于 <time datetime="2016-11-01">2016-11-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/ubuntu/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ubuntu</a>&ensp;<a href="/categories/virtualbox/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> virtualbox</a></span></div><div class="content"><h2 id="一ubuntu版本介绍">一、ubuntu版本介绍</h2>
+<pre tabindex="0"><code>Desktop是桌面操作系统版本;
+Server是服务器端操作系统版本;
+Cloud应该是云端操作系统版本。
 </code></pre></div><div class="post-footer">
-    <a href="/posts/mysql/mysqlpassword/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81/' class="post-tag">忘记密码</a></div></div>
+    <a href="/posts/virtualbox/virtualbox%E4%B9%8Bubuntu%E5%AE%89%E8%A3%85/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/ubuntu/' class="post-tag">ubuntu</a><a href='/tags/virtualbox/' class="post-tag">virtualbox</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">Linux之磁盘管理</a>
+    <a href="/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/">linux之磁盘sdc变为sdb后</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-07-29 20:35:07'>发布于 <time datetime="2016-07-29">2016-07-29</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content">一、描述 在linux下查看磁盘使用情况。
-二、开始 2.1.查看硬盘使用情况 [root@MTX /]# df -h Filesystem Size Used Avail Use% Mounted on /dev/xvda1 20G 8.7G 10G 47% / tmpfs 1.9G 0 1.9G 0% /dev/shm /dev/xvdb1 20G 4.7G 15G 25% /alidata 2.2.查看当前目录大小 [root@MTX html]# du -sh ./* | sort -n 1.3G ./cmps 2.1M ./jc-website 4.0K ./index.html 32K ./t.tar 60K ./zydc </div><div class="post-footer">
-    <a href="/posts/linux/linnux%E4%B9%8B%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-01 10:50:28'>发布于 <time datetime="2016-11-01">2016-11-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 磁盘挂载</a></span></div><div class="content"><h2 id="一场景">一、场景</h2>
+<p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p></div><div class="post-footer">
+    <a href="/posts/linux/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/' class="post-tag">磁盘挂载</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/">Linux之netstat命令</a>
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/">linux之磁盘sdc变为sdb后</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-01-09 20:33:19'>发布于 <time datetime="2016-01-09">2016-01-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/netstat/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> netstat</a></span></div><div class="content"><h2 id="一netstat命令介绍">一、netstat命令介绍</h2>
-<p>在Linux使用过程中，需要了解当前系统开放了哪些端口，并且要查看开放这些端口的具体进程和用户，可以通过netstat命令进行简单查询。</p>
-<!-- raw HTML omitted -->
-<pre tabindex="0"><code>netstat命令各个参数说明如下：
-　　-t : 指明显示TCP端口
-　　-u : 指明显示UDP端口
-　　-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)
-　　-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。
-　　-n : 不进行DNS轮询，显示IP(可以加速操作)
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-11-01 10:50:28'>发布于 <time datetime="2016-11-01">2016-11-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 磁盘挂载</a></span></div><div class="content"><h2 id="一场景">一、场景</h2>
+<p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p></div><div class="post-footer">
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/' class="post-tag">磁盘挂载</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/mysql/character/">mysql乱码</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-28 00:00:00'>发布于 <time datetime="2016-10-28">2016-10-28</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a></span></div><div class="content"><!-- raw HTML omitted -->
+<h2 id="一查看mysql服务端情况">一、查看mysql服务端情况</h2>
+<p>1.查看mysql默认的编码配置</p></div><div class="post-footer">
+    <a href="/posts/mysql/character/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%B1%E7%A0%81/' class="post-tag">数据库乱码</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/">vmbox扩容</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-27 15:42:51'>发布于 <time datetime="2016-10-27">2016-10-27</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 虚拟机</a>&ensp;<a href="/categories/virtualbox/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> virtualbox</a></span></div><div class="content"><h1 id="windows下面命令扩容虚拟机容量这一招没用">windows下面命令扩容虚拟机容量（这一招没用）</h1>
+<p>使用VM VirtualBox安装的CentOS最近空间满了， 想要添加一些空间。使用VBoxManage命令来添加空间。</p>
+<p>首先cmd来到VirtualBox的安装目录，发现有VBoxManage.exe命令文件，就可以按下面的命令来操作。</p></div><div class="post-footer">
+    <a href="/posts/virtualbox/vmbox%E6%89%A9%E5%AE%B9/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/virtualbox/' class="post-tag">virtualbox</a><a href='/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/' class="post-tag">虚拟机</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/">centos7下tcpdump抓包</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-20 13:35:51'>发布于 <time datetime="2016-10-20">2016-10-20</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/tcpdump/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> tcpdump</a>&ensp;<a href="/categories/%E6%8A%93%E5%8C%85/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 抓包</a></span></div><div class="content">一、tcpdump安装 1.1.tcpdump官方下载地址： http://www.tcpdump.org/release 下载软件
+[root@localhost tcpdump]# wget http://www.tcpdump.org/release/tcpdump-4.8.0.tar.gz[root@localhost tcpdump]# wget http://www.tcpdump.org/release/libpcap-1.8.0.tar.gzhttp://www.tcpdump.org/release 1.2.配置 1.配置时出现Neither flex nor lex was found错误
+[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linux......checking for lex... noconfigure: error: Neither flex nor lex was found. 解决办法，安装flex
+[root@localhost libpcap-1.8.0]# yum -y install flex......已安装:flex.x86_64 0:2.5.37-3.el7 完毕！ 2.配置时出现yacc is insufficient to compile libpcap错误
+[root@localhost libpcap-1.8.0]# ./configure --prefix=/usr/local/libpcap --with-pcap=linuxchecking for capable yacc/bison... insufficientconfigure: error: yacc is insufficient to compile libpcap.</div><div class="post-footer">
+    <a href="/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/tcpdump/' class="post-tag">tcpdump</a><a href='/tags/%E6%8A%93%E5%8C%85/' class="post-tag">抓包</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/web/html/html%E6%A1%86%E6%9E%B6%E5%86%85%E9%A1%B5%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/">html框架内页刷新页面</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      Anonymous</span></span>&nbsp;<span class="post-publish" title='2016-10-19 21:14:10'>发布于 <time datetime="2016-10-19">2016-10-19</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/html/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> html</a>&ensp;<a href="/categories/netstat/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> netstat</a></span></div><div class="content">一、html框架内页刷新页面 在使用html写后台布局的时候，经常会用到iframe框架，而在iframe框架中经常会用到刷新内页数据的情况，下面就记录一下刷新的js代码。
+语句1. window.parent.frames[1].location.reload(); 语句2. window.parent.frames.bottom.location.reload(); 语句3. window.parent.frames[&#34;bottom&#34;].location.reload(); 语句4. window.parent.frames.item(1).location.reload(); 语句5. window.parent.frames.item(&#39;bottom&#39;).location.reload(); 语句6. window.parent.bottom.location.reload(); 语句7. window.parent[&#39;bottom&#39;].location.reload(); </div><div class="post-footer">
+    <a href="/posts/web/html/html%E6%A1%86%E6%9E%B6%E5%86%85%E9%A1%B5%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/html/' class="post-tag">html</a><a href='/tags/netstat/' class="post-tag">netstat</a><a href='/tags/iframe%E6%A1%86%E6%9E%B6/' class="post-tag">iframe框架</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/lsof/">linux之lsof的使用</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-19 20:02:17'>发布于 <time datetime="2016-10-19">2016-10-19</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/lsof/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> lsof</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><!-- raw HTML omitted -->
+<h2 id="一安装lsof">一、安装lsof</h2>
+<p>先查看一下<code>lsof</code>命令是否存在。</p>
+<pre tabindex="0"><code>[root@localhost lai]# lsof
+-bash: lsof: command not found
+[root@localhost lai]# whereis lsof
+lsof:
 </code></pre></div><div class="post-footer">
-    <a href="/posts/linux/linux%E4%B9%8Bnetstat%E5%91%BD%E4%BB%A4/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/netstat/' class="post-tag">netstat</a><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a></div></div>
+    <a href="/posts/linux/lsof/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/lsof/' class="post-tag">lsof</a><a href='/tags/linux/' class="post-tag">linux</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/zip/">Linux之zip和unzip的使用</a>
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsof/">linux之lsof的使用</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2015-08-08 14:44:28'>发布于 <time datetime="2015-08-08">2015-08-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/zip/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> zip</a>&ensp;<a href="/categories/%E5%8E%8B%E7%BC%A9/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 压缩</a></span></div><div class="content">一、zip/unzip命令说明 1.1.功能说明 将一般的文件或者目录进行压缩或者解压，默认生成以“.zip”为后缀的压缩包。zip命令类似于Windows中的winzip压缩程序。其格式如下：
-zip [选项] 压缩文件名 需要压缩的文档列表 unzip [选项] 压缩文件名 1.2.zip选项含义 zip选项含义
--r 递归压缩，将指定目录下的所有文件以及子目录全部压缩 -d 从压缩文件内删除指定的文件 -i “文件列表” 只压缩文件列表中的文件 -x “文件列表” 压缩时排除文件列表中指定的文件 -u 更新文件到压缩文件中 -m 将文件加入压缩文件压缩后，删除原始文件，即把文件移到压缩文件中 -F 尝试修复损坏的压缩文件 -T 检查压缩文件内的每个文件是否正确无误 - 压缩级别 压缩级别是一个1～9的数字 1.3.unzip选项含义 unzip选项含义
--x &#34;文件列表&#34; 解压文件，但不包含文件列表中指定的文件 -t 测试压缩文件有无损坏，并不解压 -v 查看压缩文件的详细信息，具体包括压缩文件中包含的文件大小、文件名和压缩比等，并不解压 -n 解压时不覆盖已经存在的文件 -o 解压时覆盖已经存在的文件，并且不要求用户确认 -d 目录名 把压缩文件解压到指定目录下 二、示例 2.1.将lai目录下所有的文件和目录压缩，压缩级别为最高，压缩的文件保存到/root/lai.zip。 [root@localhost lai]# pwd /root/lai [root@localhost lai]# ll 总用量 1024 -rwxr--r--. 1 root root 0 10月 18 11:35 index.php drwxr-xr-x.</div><div class="post-footer">
-    <a href="/posts/linux/zip/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/zip/' class="post-tag">zip</a><a href='/tags/unzip/' class="post-tag">unzip</a><a href='/tags/%E5%8E%8B%E7%BC%A9/' class="post-tag">压缩</a><a href='/tags/%E8%A7%A3%E5%8E%8B%E7%BC%A9/' class="post-tag">解压缩</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-19 20:02:17'>发布于 <time datetime="2016-10-19">2016-10-19</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/lsof/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> lsof</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><!-- raw HTML omitted -->
+<h2 id="一安装lsof">一、安装lsof</h2>
+<p>先查看一下<code>lsof</code>命令是否存在。</p>
+<pre tabindex="0"><code>[root@localhost lai]# lsof
+-bash: lsof: command not found
+[root@localhost lai]# whereis lsof
+lsof:
+</code></pre></div><div class="post-footer">
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsof/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/lsof/' class="post-tag">lsof</a><a href='/tags/linux/' class="post-tag">linux</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">Windows下memcache操作手记</a>
+    <a href="/posts/php/php%E7%94%9F%E6%88%908%E4%BD%8D%E9%9A%8F%E6%9C%BA%E6%95%B0/">php生成8位随机数</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2014-12-15 18:44:29'>发布于 <time datetime="2014-12-15">2014-12-15</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/memcache/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> memcache</a></span></div><div class="content">Windows下memcache常用操作
-一、修改memcache端口 1.memcache的默认端口11211
-2.直接指定端口启动是无效的。
-memcached -p 15000 -d start // 这样做是无效的 3.于是直接修改注册表
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server 其中的ImagePath项的值为：
-&#34;c:\memcached\memcached.exe&#34; -d runservice 改成：
-&#34;c:\memcached\memcached.exe&#34; -p 15000 -d runservice 二、清除memcache中的缓存 1.在本地进入dos命令行
-2.进入控制台
-C:\Users\Administrator&gt;telnet localhost 11211（12000） 3.清除
-flush_all OK 4.最后退出telnet使用quit命令,再exit退出远程主机
-quit 遗失对主机的连接。 </div><div class="post-footer">
-    <a href="/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/memcache/' class="post-tag">memcache</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-18 11:27:46'>发布于 <time datetime="2016-10-18">2016-10-18</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/php/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> php</a>&ensp;<a href="/categories/%E9%9A%8F%E6%9C%BA%E6%95%B0/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 随机数</a></span></div><div class="content"><h2 id="一描述">一、描述</h2>
+<p>在php中使用随机数</p></div><div class="post-footer">
+    <a href="/posts/php/php%E7%94%9F%E6%88%908%E4%BD%8D%E9%9A%8F%E6%9C%BA%E6%95%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/php/' class="post-tag">php</a><a href='/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0/' class="post-tag">随机数</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/wzs2/%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0app%E5%8F%91%E8%B5%B7%E8%AF%B7%E5%91%BC%E4%B8%9A%E5%8A%A1%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E9%97%AE%E9%A2%98/">温州S2号线车载台APP发起请呼业务不成功的问题</a>
+    <a href="/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/">CGW500网关抓包</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='0001-01-01 00:00:00'>发布于 <time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%BD%A6%E8%BD%BD%E5%8F%B0/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 车载台</a></span></div><div class="content">温州S2号线车载台APP发起请呼业务不成功的问题 一、描述 问题描述 by daizelai on 2022/09/15 16:03 在车载台APP上面发起请呼调度业务，没有效果。 时间：2022/09/15 14:37
-另外，昨天第一次测试车载台的请呼就没有成功的，因为上午时间有限，中午就下车了，所以今天再抓包看。
-抓包 请呼时在DIS上面的抓包
-请呼抓包
-日志 这是第二次请呼抓的日志，不是和上面抓包一起的
-二、分析 2.1.从抓包看 请呼问题抓包分析。
-2.2.从日志上看 从日志上看可以看到，APP发起请呼后，一直等待DIS服务器的响应，直到超时都没有收到DIS的响应。
-2.3.结论 DIS服务器没有回复APP的请呼业务请求。</div><div class="post-footer">
-    <a href="/posts/wzs2/%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0app%E5%8F%91%E8%B5%B7%E8%AF%B7%E5%91%BC%E4%B8%9A%E5%8A%A1%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E8%BD%A6%E8%BD%BD%E5%8F%B0/' class="post-tag">车载台</a><a href='/tags/%E8%BD%A6%E8%BD%BD%E5%8F%B0app/' class="post-tag">车载台app</a><a href='/tags/%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF/' class="post-tag">温州S2号线</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-17 21:20:00'>发布于 <time datetime="2016-10-17">2016-10-17</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E7%BD%91%E5%85%B3/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网关</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/cgw500/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> CGW500</a></span></div><div class="content">一、CGW500网关抓包 1.使用tftp连接网关 在电脑和网关间进行文件传输，这里使用tftp工具，这里的网关为CGW500，IP地址为10.60.0.37，注意一点，哪里打开运行了tftp.exe，那么这里就是服务器，比如这里是在10.60.0.95上面打开的，10.60.0.95本地电脑就是服务器。
+使用tftp连接网关 2.切换到tmp目录下 因为CGW500只有/tmp目录才能读写保存，所以切换到该目录下。
+# cd /tmp 3.把tcpdump导入网关 Tftp导入tcpdump，语法格式如下：
+# tftp –gr tcpdump xx.xx.xx.xx 从tftp服务器端也就是本地电脑（10.60.0.95）上传文件tcpdump到网关（10.60.0.37）
+/tmp # tftp -gr tcpdump 10.60.0.95 /tmp # ls -lh tcpdump -rw-r--r-- 1 root root 2.1M Oct 14 16:45 tcpdump 4.修改权限 /tmp # chmod u+x tcpdump 5.抓包 抓包语法格式：
+/tmp # ./tcpdump –i br0 –w pingan.cap 查看要抓的SSID所在网口名称
+/tmp # iwconfigap0_5 IEEE 802.11ng ESSID:&#34;00000003&#34; 抓包
+/tmp # ./tcpdump -i ap0_5 -w pingan.captcpdump: WARNING: ap0_5: no IPv4 address assignedtcpdump: listening on ap0_5, link-type EN10MB (Ethernet), capture size 65535 bytes^C339 packets captured339 packets received by filter0 packets dropped by kernel 提示： 如果想判断报文有没有发出去，比如平安APP发送的数据到test上面去，可以抓一下ech0的包，看看有没有数据，当然这个eth0也要根据情况得到的。</div><div class="post-footer">
+    <a href="/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/cgw500/' class="post-tag">CGW500</a><a href='/tags/%E7%BD%91%E5%85%B3/' class="post-tag">网关</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/wzs2/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/">温州S2号线车载台与DIS等连接一会好一会断的问题</a>
+    <a href="/posts/ap/ap%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/ap%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">ap使用手记</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='0001-01-01 00:00:00'>发布于 <time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E8%BD%A6%E8%BD%BD%E5%8F%B0/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 车载台</a></span></div><div class="content">20220914_1646温州S2号线车载台与DIS等连接一会好一会断的问题 一、描述 1.1.问题描述 在开发并运行温州S2号线APP的时候，突然发现，一会能正常收到DIS回复的报文，一会又收不到，APP这边每次正常发送报文，比如心跳是每3秒准时发送。
-去DIS服务器192.168.42.177上面抓包发现，APP一会上线，一会下线，并且收到的APP心跳一会是3秒，一会卫了10秒才收到。
-1.2.DIS服务器日志 下面是DIS服务器的日志，可以看到有一个m_Socket contains app_id(10.255.0.2) old:strOldIP(10.255.0.2):64003 -&gt; new:strNewIP(192.168.42.130):64003这样的提示，后面问题找到了这里就好理解了，是app_id为10.255.0.2的设备，一会以10.255.0.2IP连接，一会以192.168.42.130连接。其实就是两台终端都向DIS服务器发的，一台是我自己的下挂在GM655+下的终端，一台是我今天下午换到深圳14号线的EV751下的终端。
-18:13:56.049 [INFO ] [dis_wz2] [AppNetworkManager.cpp:191, UpdateAppIP, pid: 6220, tid: 18044] : app save socket! app_id(10.255.0.2) IP: 192.168.42.130. Port: 6400318:13:56.049 [WARN ] [dis_wz2] [TaskAPP.cpp:899, OnAppGetATSInfo, pid: 6220, tid: 18044] : app is not online! app_id(10.255.0.2)18:13:56.998 [WARN ] [dis_wz2] [TaskAPP.cpp:899, OnAppGetATSInfo, pid: 6220, tid: 18044] : app is not online! app_id(10.255.0.2)18:13:56.999 [INFO ] [dis_wz2] [AppRegisterManager.cpp:87, AppOnline, pid: 6220, tid: 18044] : app id: 10.</div><div class="post-footer">
-    <a href="/posts/wzs2/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/%E8%BD%A6%E8%BD%BD%E5%8F%B0/' class="post-tag">车载台</a><a href='/tags/%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF/' class="post-tag">温州S2号线</a><a href='/tags/%E7%BD%91%E7%BB%9C/' class="post-tag">网络</a><a href='/tags/gm655&#43;/' class="post-tag">GM655&#43;</a><a href='/tags/%E8%BD%A6%E8%BD%BD%E5%8F%B0app/' class="post-tag">车载台app</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-17 19:26:00'>发布于 <time datetime="2016-10-17">2016-10-17</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/ap/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ap</a></span></div><div class="content"><h2 id="一ap通电">一、AP通电</h2>
+<p>AP线连接方式，一根连接外网的网线插入POE供电的Data插口，再拿一根连接吸顶AP的网线插入POE供电的 Data &amp; Power Out插口。</p></div><div class="post-footer">
+    <a href="/posts/ap/ap%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/ap%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/ap/' class="post-tag">ap</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/linuxgrep/">在linux中使用grep的几种技巧</a>
+    <a href="/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B02%E4%B9%8Bping%E5%A4%96%E7%BD%91%E9%97%AE%E9%A2%98/">网关ping外网问题</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='0001-01-01 00:00:00'>发布于 <time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/grep%E6%8A%80%E5%B7%A7/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> grep技巧</a>&ensp;<a href="/categories/grep%E4%BD%BF%E7%94%A8/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> grep使用</a></span></div><div class="content"><h1 id="20231105_1738在linux中使用grep的几种技巧">20231105_1738在linux中使用grep的几种技巧</h1>
-<h2 id="一描述">一、描述</h2>
-<p>在linux系统中，有一个非常强大的命令行文本搜索工具，它就是grep，本文主要介绍grep的几种使用方法。</p></div><div class="post-footer">
-    <a href="/posts/linux/linuxgrep/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/android/' class="post-tag">android</a><a href='/tags/grep%E6%8A%80%E5%B7%A7/' class="post-tag">grep技巧</a><a href='/tags/grep%E4%BD%BF%E7%94%A8/' class="post-tag">grep使用</a></div></div>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-17 19:26:00'>发布于 <time datetime="2016-10-17">2016-10-17</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/%E7%BD%91%E5%85%B3/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网关</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content">一、问题描述 通过厂园网关使用手记操作后，已经可以通过SSH连接CGW3000T了，于是就想把网关用起来。
+把大网关接上AP后，挂到本地平台，却总是上不了网，接AP这里注意一下，需要使用POE 供电。
+于是登录网关发现ping外网拼不通。
+[root@CGW3000T ~]# ping baidu.comping: unknown host baidu.com ping我本地的IP也拼不通。
+[root@CGW3000T ~]# ping 10.60.0.95PING 10.60.0.95 (10.60.0.95) 56(84) bytes of data.^C--- 10.60.0.95 ping statistics ---4 packets transmitted, 0 received, 100% packet loss, time 3894ms 二、问题解决 折腾了1，2个小时后，还是无能为力，于是找了网关大神郭，终于弄清楚了原因了。
+2.1.ping外网拼不通的问题解决 [root@CGW3000T ~]# route -nKernel IP routing tableDestination Gateway Genmask Flags Metric Ref Use Iface10.60.0.0 0.0.0.0 255.255.0.0 U 0 0 0 eth0172.16.0.0 0.0.0.0 255.</div><div class="post-footer">
+    <a href="/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B02%E4%B9%8Bping%E5%A4%96%E7%BD%91%E9%97%AE%E9%A2%98/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E7%BD%91%E5%85%B3/' class="post-tag">网关</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/php/php%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0post%E7%9A%84json%E6%95%B0%E6%8D%AE%E7%9A%84%E9%97%AE%E9%A2%98/">php获取不到post的json数据的问题</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-17 15:56:43'>发布于 <time datetime="2016-10-17">2016-10-17</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/php/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> php</a>&ensp;<a href="/categories/json/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> json</a></span></div><div class="content"><h2 id="一描述">一、描述</h2>
+<p>php获取post方式的json数据</p></div><div class="post-footer">
+    <a href="/posts/php/php%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0post%E7%9A%84json%E6%95%B0%E6%8D%AE%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/php/' class="post-tag">php</a><a href='/tags/json/' class="post-tag">json</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">Linux下netstat使用手记</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-14 15:45:51'>发布于 <time datetime="2016-10-14">2016-10-14</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><p>Linux下netstat命令的简单使用记录，这里以CentOS7为基础。</p>
+<h2 id="一netstat命令说明">一、netstat命令说明</h2>
+<h3 id="11netstat常用参数介绍">1.1.netstat常用参数介绍</h3>
+<p>netstat有很多参数，下面列表每个参数的说明。</p></div><div class="post-footer">
+    <a href="/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/netstat/' class="post-tag">netstat</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">Linux下netstat使用手记</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-14 15:45:51'>发布于 <time datetime="2016-10-14">2016-10-14</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><p>Linux下netstat命令的简单使用记录，这里以CentOS7为基础。</p>
+<h2 id="一netstat命令说明">一、netstat命令说明</h2>
+<h3 id="11netstat常用参数介绍">1.1.netstat常用参数介绍</h3>
+<p>netstat有很多参数，下面列表每个参数的说明。</p></div><div class="post-footer">
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/netstat/' class="post-tag">netstat</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">windows下netstat使用手记</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-13 00:00:00'>发布于 <time datetime="2016-10-13">2016-10-13</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/windows/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> windows</a>&ensp;<a href="/categories/netstat/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> netstat</a></span></div><div class="content"><!-- raw HTML omitted -->
+<p>windows下netstat命令的简单使用记录。</p>
+<h2 id="一windows下使用">一、windows下使用</h2>
+<p>windows下面查看所有端口，然后找到对应的端口和PID。</p></div><div class="post-footer">
+    <a href="/posts/windows/windows%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/windows/' class="post-tag">windows</a><a href='/tags/netstat/' class="post-tag">netstat</a></div></div>
 </article>
 <ul class="pagination"><li class="page-item">
           <span class="page-link">
@@ -318,6 +351,14 @@ quit 遗失对主机的连接。 </div><div class="post-footer">
         </li><li class="page-item active">
           <span class="page-link">
             <a href="/page/4/">4</a>
+          </span>
+        </li><li class="page-item">
+          <span class="page-link">
+            <a href="/page/5/">5</a>
+          </span>
+        </li><li class="page-item">
+          <span class="page-link">
+            <a href="/page/6/">6</a>
           </span>
         </li></ul></div></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

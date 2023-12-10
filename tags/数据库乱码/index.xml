@@ -9,9 +9,9 @@
   <pubDate>Fri, 28 Oct 2016 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/character/</guid>
-  <description><![CDATA[一、查看mysql服务端情况 1.查看mysql默认的编码配置
-mysql&gt; show variables like &#39;char%&#39;; mysql&gt; SHOW VARIABLES LIKE &#39;character%&#39;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | latin1 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | latin1 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 8 rows in set (0.00 sec) 2.查看某(we7)数据库的编码格式
-mysql&gt; show create database we7; +----------+--------------------------------------------------------------+ | Database | Create Database | +----------+--------------------------------------------------------------+ | we7 | CREATE DATABASE `we7` /*!]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一查看mysql服务端情况">一、查看mysql服务端情况</h2>
+<p>1.查看mysql默认的编码配置</p>]]></description>
 </item>
 <item>
   <title>mysql导入数据库后乱码的问题</title>
@@ -19,13 +19,9 @@ mysql&gt; show create database we7; +----------+--------------------------------
   <pubDate>Tue, 06 Sep 2016 17:02:13 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8E%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
-  <description><![CDATA[Mysql导入数据库后乱码问题 一、Web乱码 在容器中install好les项目后，打开Web却发现菜单是乱码
-数据乱码 二、修改Mysql配置 1）、修改mysql配置 找到数据库的配置文件，增加**[client]配置编码utf8**，[mysqld]中同时增加init_connect=&lsquo;SET NAMES utf8&rsquo;，修改如下：
-[root@les /]# vim /etc/my.cnf [client] default-character-set=utf8 [mysqld] character_set_server=utf8 init_connect=&#39;SET NAMES utf8&#39; datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock user=mysql # Disabling symbolic-links is recommended to prevent assorted security risks symbolic-links=0 [mysqld_safe] log-error=/var/log/mysqld.log pid-file=/var/run/mysqld/mysqld.pid 2）、重启服务
-/etc/init.d/mysqld restart /etc/init.d/httpd restart 三、解决乱码 1.这个时候刷新Web发现还是乱码，那就是数据源有问题了，说明导入到数据库里的数据就是乱码，打开数据库一看果然如此，接着往下走。
-2.卸载掉les项目，重新安装。
-./gbc100_v1.1.bin uninstall lebds_UI /var/www/html lebds ./gbc100_v1.1.bin install lebds_UI /var/www/html lebds 3.打开Web页面，发现问题已解决。
-数据乱码 ]]></description>
+  <description><![CDATA[<h1 id="mysql导入数据库后乱码问题">Mysql导入数据库后乱码问题</h1>
+<h2 id="一web乱码">一、Web乱码</h2>
+<p>在容器中install好les项目后，打开Web却发现菜单是乱码</p>]]></description>
 </item>
 </channel>
 </rss>

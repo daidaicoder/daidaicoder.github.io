@@ -9,7 +9,8 @@
   <pubDate>Wed, 07 Sep 2016 13:19:50 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql/</guid>
-  <description><![CDATA[ 一、MySQL新建数据库语法 CREATE DATABASE 的语法： CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name [create_specification [, create_specification] ...] create_specification: [DEFAULT] CHARACTER SET charset_name | [DEFAULT] COLLATE collation_name 二、新建数据使用示例 CREATE DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 三、更改数据库的字符编码 ALTER DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ]]></description>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一mysql新建数据库语法">一、MySQL新建数据库语法</h2>]]></description>
 </item>
 </channel>
 </rss>

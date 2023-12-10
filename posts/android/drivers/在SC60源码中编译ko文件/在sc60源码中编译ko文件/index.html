@@ -7,35 +7,35 @@
     <meta name="robots" content="noodp" />
     <title>在SC60源码中编译ko文件 - 来来往往</title><meta name="author" content="">
 <meta name="author-link" content="">
-<meta name="description" content="在SC60源码中编译ko文件 一、描述 1.1.前言 本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。
-1.2.uevent简介 在Linux内核中，可以使用kobject_uevent函数向用户空间发送事件。这个函数用于生成uevent，并通知用户空间应用程序有关设备和硬件相关事件的信息。
-二、创建内核模块 创建一个简单的内核模块，使用kobject_uevent函数触发uevent。 路径：/mnt/android/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/display_event.c
-#include &lt;linux/init.h&gt; #include &lt;linux/kernel.h&gt; #include &lt;linux/module.h&gt; #include &lt;linux/kobject.h&gt; static struct kobject *kobj; static int __init uevent_example_init(void) { // 创建一个内核对象（kobject） kobj = kobject_create_and_add(&#34;my_uevent_obj&#34;, kernel_kobj); if (!kobj) return -ENOMEM; // 使用kobject_uevent函数发送uevent kobject_uevent(kobj, KOBJ_ADD); printk(KERN_INFO &#34;Uevent example module loaded\n&#34;); return 0; } static void __exit uevent_example_exit(void) { // 使用kobject_uevent函数发送uevent，这里发送移除事件 kobject_uevent(kobj, KOBJ_REMOVE); kobject_put(kobj); // 释放内核对象（kobject） printk(KERN_INFO &#34;Uevent example module unloaded\n&#34;); } module_init(uevent_example_init); module_exit(uevent_example_exit); MODULE_LICENSE(&#34;GPL&#34;); MODULE_DESCRIPTION(&#34;Uevent example&#34;); MODULE_AUTHOR(&#34;Zelai Dai&#34;); 三、编译ko 3." /><meta name="keywords" content='内核模块编译, ko编译, 内核编译ko, SC60编译ko, SC60使用ko, ko签名' /><meta itemprop="name" content="在SC60源码中编译ko文件">
-<meta itemprop="description" content="在SC60源码中编译ko文件 一、描述 1.1.前言 本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。
-1.2.uevent简介 在Linux内核中，可以使用kobject_uevent函数向用户空间发送事件。这个函数用于生成uevent，并通知用户空间应用程序有关设备和硬件相关事件的信息。
-二、创建内核模块 创建一个简单的内核模块，使用kobject_uevent函数触发uevent。 路径：/mnt/android/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/display_event.c
-#include &lt;linux/init.h&gt; #include &lt;linux/kernel.h&gt; #include &lt;linux/module.h&gt; #include &lt;linux/kobject.h&gt; static struct kobject *kobj; static int __init uevent_example_init(void) { // 创建一个内核对象（kobject） kobj = kobject_create_and_add(&#34;my_uevent_obj&#34;, kernel_kobj); if (!kobj) return -ENOMEM; // 使用kobject_uevent函数发送uevent kobject_uevent(kobj, KOBJ_ADD); printk(KERN_INFO &#34;Uevent example module loaded\n&#34;); return 0; } static void __exit uevent_example_exit(void) { // 使用kobject_uevent函数发送uevent，这里发送移除事件 kobject_uevent(kobj, KOBJ_REMOVE); kobject_put(kobj); // 释放内核对象（kobject） printk(KERN_INFO &#34;Uevent example module unloaded\n&#34;); } module_init(uevent_example_init); module_exit(uevent_example_exit); MODULE_LICENSE(&#34;GPL&#34;); MODULE_DESCRIPTION(&#34;Uevent example&#34;); MODULE_AUTHOR(&#34;Zelai Dai&#34;); 三、编译ko 3."><meta itemprop="datePublished" content="2023-07-28T19:39:21+08:00" />
+<meta name="description" content="
+一、描述
+1.1.前言
+本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。" /><meta name="keywords" content='内核模块编译, ko编译, 内核编译ko, SC60编译ko, SC60使用ko, ko签名' /><meta itemprop="name" content="在SC60源码中编译ko文件">
+<meta itemprop="description" content="
+一、描述
+1.1.前言
+本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。"><meta itemprop="datePublished" content="2023-07-28T19:39:21+08:00" />
 <meta itemprop="dateModified" content="2023-07-28T19:39:21+08:00" />
-<meta itemprop="wordCount" content="6010">
+<meta itemprop="wordCount" content="6009">
 <meta itemprop="keywords" content="原创,内核模块编译,ko编译,内核编译ko,SC60编译ko,SC60使用ko,ko签名," /><meta property="og:title" content="在SC60源码中编译ko文件" />
-<meta property="og:description" content="在SC60源码中编译ko文件 一、描述 1.1.前言 本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。
-1.2.uevent简介 在Linux内核中，可以使用kobject_uevent函数向用户空间发送事件。这个函数用于生成uevent，并通知用户空间应用程序有关设备和硬件相关事件的信息。
-二、创建内核模块 创建一个简单的内核模块，使用kobject_uevent函数触发uevent。 路径：/mnt/android/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/display_event.c
-#include &lt;linux/init.h&gt; #include &lt;linux/kernel.h&gt; #include &lt;linux/module.h&gt; #include &lt;linux/kobject.h&gt; static struct kobject *kobj; static int __init uevent_example_init(void) { // 创建一个内核对象（kobject） kobj = kobject_create_and_add(&#34;my_uevent_obj&#34;, kernel_kobj); if (!kobj) return -ENOMEM; // 使用kobject_uevent函数发送uevent kobject_uevent(kobj, KOBJ_ADD); printk(KERN_INFO &#34;Uevent example module loaded\n&#34;); return 0; } static void __exit uevent_example_exit(void) { // 使用kobject_uevent函数发送uevent，这里发送移除事件 kobject_uevent(kobj, KOBJ_REMOVE); kobject_put(kobj); // 释放内核对象（kobject） printk(KERN_INFO &#34;Uevent example module unloaded\n&#34;); } module_init(uevent_example_init); module_exit(uevent_example_exit); MODULE_LICENSE(&#34;GPL&#34;); MODULE_DESCRIPTION(&#34;Uevent example&#34;); MODULE_AUTHOR(&#34;Zelai Dai&#34;); 三、编译ko 3." />
+<meta property="og:description" content="
+一、描述
+1.1.前言
+本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://daizelai.github.io/posts/android/drivers/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-28T19:39:21+08:00" />
 <meta property="article:modified_time" content="2023-07-28T19:39:21+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在SC60源码中编译ko文件"/>
-<meta name="twitter:description" content="在SC60源码中编译ko文件 一、描述 1.1.前言 本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。
-1.2.uevent简介 在Linux内核中，可以使用kobject_uevent函数向用户空间发送事件。这个函数用于生成uevent，并通知用户空间应用程序有关设备和硬件相关事件的信息。
-二、创建内核模块 创建一个简单的内核模块，使用kobject_uevent函数触发uevent。 路径：/mnt/android/sz14_android_7.1.2_qcom/kernel/msm-3.18/drivers/video/display_event.c
-#include &lt;linux/init.h&gt; #include &lt;linux/kernel.h&gt; #include &lt;linux/module.h&gt; #include &lt;linux/kobject.h&gt; static struct kobject *kobj; static int __init uevent_example_init(void) { // 创建一个内核对象（kobject） kobj = kobject_create_and_add(&#34;my_uevent_obj&#34;, kernel_kobj); if (!kobj) return -ENOMEM; // 使用kobject_uevent函数发送uevent kobject_uevent(kobj, KOBJ_ADD); printk(KERN_INFO &#34;Uevent example module loaded\n&#34;); return 0; } static void __exit uevent_example_exit(void) { // 使用kobject_uevent函数发送uevent，这里发送移除事件 kobject_uevent(kobj, KOBJ_REMOVE); kobject_put(kobj); // 释放内核对象（kobject） printk(KERN_INFO &#34;Uevent example module unloaded\n&#34;); } module_init(uevent_example_init); module_exit(uevent_example_exit); MODULE_LICENSE(&#34;GPL&#34;); MODULE_DESCRIPTION(&#34;Uevent example&#34;); MODULE_AUTHOR(&#34;Zelai Dai&#34;); 三、编译ko 3."/>
+<meta name="twitter:description" content="
+一、描述
+1.1.前言
+本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。"/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/drivers/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/" /><link rel="prev" href="https://daizelai.github.io/posts/git/room/" /><link rel="next" href="https://daizelai.github.io/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/android/drivers/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6/" /><link rel="prev" href="https://daizelai.github.io/posts/git/20230603_1547%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF/" /><link rel="next" href="https://daizelai.github.io/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -44,7 +44,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/daizelai.github.io\/posts\/android\/drivers\/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6\/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6\/"
-    },"genre": "posts","keywords": "原创, 内核模块编译, ko编译, 内核编译ko, SC60编译ko, SC60使用ko, ko签名","wordcount":  6010 ,
+    },"genre": "posts","keywords": "原创, 内核模块编译, ko编译, 内核编译ko, SC60编译ko, SC60使用ko, ko签名","wordcount":  6009 ,
     "url": "https:\/\/daizelai.github.io\/posts\/android\/drivers\/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6\/%E5%9C%A8sc60%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BC%96%E8%AF%91ko%E6%96%87%E4%BB%B6\/","datePublished": "2023-07-28T19:39:21+08:00","dateModified": "2023-07-28T19:39:21+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -187,7 +187,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       Anonymous</span></span>
           <span class="post-category">收录于 <a href="/categories/ko%E7%AD%BE%E5%90%8D/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> ko签名</a></span></div>
-      <div class="post-meta-line"><span title="发布于 2023-07-28 19:39:21"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-28">2023-07-28</time></span>&nbsp;<span title="更新于 2023-07-28 19:39:21"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-28">2023-07-28</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 6010 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 29 分钟</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="发布于 2023-07-28 19:39:21"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-28">2023-07-28</time></span>&nbsp;<span title="更新于 2023-07-28 19:39:21"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-28">2023-07-28</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 6009 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 29 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -218,7 +218,7 @@
     </li>
   </ul>
 </nav></div>
-      </div><div class="content" id="content"><h1 id="在sc60源码中编译ko文件">在SC60源码中编译ko文件</h1>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <h3 id="11前言">1.1.前言</h3>
 <p>本文记录了如何在本地SC60源码环境中，不直接编译到kernel中，而是直接编译出来个ko文件，手动加载ko及排查问题。</p>
@@ -1887,7 +1887,7 @@ msm8953_64:/sdcard #
     </section>
   </div>
 
-  <div class="post-nav"><a href="/posts/git/room/" class="post-nav-item" rel="prev" title="本地命令行删除分支"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>本地命令行删除分支</a>
+  <div class="post-nav"><a href="/posts/git/20230603_1547%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF/" class="post-nav-item" rel="prev" title="本地命令行删除分支"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>本地命令行删除分支</a>
       <a href="/posts/ffmpeg/20230820_1102%E6%90%AD%E5%BB%BAhttp%E6%96%B9%E5%BC%8F%E7%9A%84nginx%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-nav-item" rel="next" title="搭建HTTP方式的nginx视频推流服务器">搭建HTTP方式的nginx视频推流服务器<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">

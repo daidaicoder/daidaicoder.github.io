@@ -8,22 +8,22 @@
     <title>在linux中使用grep的几种技巧 - 来来往往</title><meta name="author" content="">
 <meta name="author-link" content="">
 <meta name="description" content="在linux中使用grep的几种技巧" /><meta name="keywords" content='原创, android, grep技巧, grep使用' /><meta itemprop="name" content="在linux中使用grep的几种技巧">
-<meta itemprop="description" content="在linux中使用grep的几种技巧">
-
-<meta itemprop="wordCount" content="141">
+<meta itemprop="description" content="在linux中使用grep的几种技巧"><meta itemprop="datePublished" content="2023-11-30T16:31:00+08:00" />
+<meta itemprop="dateModified" content="2023-11-30T16:31:00+08:00" />
+<meta itemprop="wordCount" content="140">
 <meta itemprop="keywords" content="原创,android,grep技巧,grep使用," /><meta property="og:title" content="在linux中使用grep的几种技巧" />
 <meta property="og:description" content="在linux中使用grep的几种技巧" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://daizelai.github.io/posts/linux/linuxgrep/" /><meta property="article:section" content="posts" />
-
-
+<meta property="article:published_time" content="2023-11-30T16:31:00+08:00" />
+<meta property="article:modified_time" content="2023-11-30T16:31:00+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在linux中使用grep的几种技巧"/>
 <meta name="twitter:description" content="在linux中使用grep的几种技巧"/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linuxgrep/" /><link rel="next" href="https://daizelai.github.io/posts/wzs2/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://daizelai.github.io/posts/linux/linuxgrep/" /><link rel="prev" href="https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxgrep/" /><link rel="next" href="https://daizelai.github.io/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -32,8 +32,8 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/daizelai.github.io\/posts\/linux\/linuxgrep\/"
-    },"genre": "posts","keywords": "原创, android, grep技巧, grep使用","wordcount":  141 ,
-    "url": "https:\/\/daizelai.github.io\/posts\/linux\/linuxgrep\/","publisher": {
+    },"genre": "posts","keywords": "原创, android, grep技巧, grep使用","wordcount":  140 ,
+    "url": "https:\/\/daizelai.github.io\/posts\/linux\/linuxgrep\/","datePublished": "2023-11-30T16:31:00+08:00","dateModified": "2023-11-30T16:31:00+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -175,7 +175,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       daizelai</span></span>
           <span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/android/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> android</a>&ensp;<a href="/categories/grep%E6%8A%80%E5%B7%A7/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> grep技巧</a>&ensp;<a href="/categories/grep%E4%BD%BF%E7%94%A8/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> grep使用</a></span></div>
-      <div class="post-meta-line"><span title="发布于 0001-01-01 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span title="更新于 0001-01-01 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 141 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 1 分钟</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="发布于 2023-11-30 16:31:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-30">2023-11-30</time></span>&nbsp;<span title="更新于 2023-11-30 16:31:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-11-30">2023-11-30</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 140 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 1 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -200,7 +200,7 @@
     </li>
   </ul>
 </nav></div>
-      </div><div class="content" id="content"><h1 id="20231105_1738在linux中使用grep的几种技巧">20231105_1738在linux中使用grep的几种技巧</h1>
+      </div><div class="content" id="content"><!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <p>在linux系统中，有一个非常强大的命令行文本搜索工具，它就是grep，本文主要介绍grep的几种使用方法。</p>
 <h2 id="二grep">二、grep</h2>
@@ -272,7 +272,7 @@ log ---- end
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="更新于 0001-01-01 00:00:00">更新于 0001-01-01&nbsp;</span>
+        <span title="更新于 2023-11-30 16:31:00">更新于 2023-11-30&nbsp;</span>
       </div><div class="post-info-license">
           <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
         </div></div>
@@ -291,8 +291,8 @@ log ---- end
     </section>
   </div>
 
-  <div class="post-nav">
-      <a href="/posts/wzs2/20220914_1646%E6%B8%A9%E5%B7%9Es2%E5%8F%B7%E7%BA%BF%E8%BD%A6%E8%BD%BD%E5%8F%B0%E4%B8%8Edis%E7%AD%89%E8%BF%9E%E6%8E%A5%E4%B8%80%E4%BC%9A%E5%A5%BD%E4%B8%80%E4%BC%9A%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-nav-item" rel="next" title="温州S2号线车载台与DIS等连接一会好一会断的问题">温州S2号线车载台与DIS等连接一会好一会断的问题<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  <div class="post-nav"><a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxgrep/" class="post-nav-item" rel="prev" title="在linux中使用grep的几种技巧"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>在linux中使用grep的几种技巧</a>
+      <a href="/posts/android/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/20231130_1631%E6%AD%A6%E6%B1%8919%E5%8F%B7%E7%BA%BF%E4%BD%BF%E7%94%A8%E6%96%B0%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" class="post-nav-item" rel="next" title="android中XLog框架的使用">android中XLog框架的使用<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

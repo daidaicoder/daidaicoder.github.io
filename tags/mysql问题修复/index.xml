@@ -9,11 +9,8 @@
   <pubDate>Tue, 06 Sep 2016 19:39:15 &#43;0800</pubDate>
   <author>作者</author>
   <guid>https://daizelai.github.io/posts/mysql/mysql_attr_init_command%E9%94%99%E8%AF%AF/</guid>
-  <description><![CDATA[一、问题描述 1.1.打开Web时出现如下问题：mysql_attr_init_command Mysql错误-MSYQL_ATTR_INIT_COMMAND 1.2.看了一下项目的配置，是使用mysqli配置的 项目中连接mysql配置 二、查看服务器的环境配置 2.1.首先看了一下phpinfo中的配置 phpinfo配置 在配置中没有看到mysqli这一项扩展。
-2.2.在服务器中查看php的扩展 [root@edu local]# php -m [PHP Modules] bz2 calendar Core ctype curl date dom ereg exif fileinfo filter ftp gd gettext gmp hash iconv json libxml mbstring memcache mysql 在这里也没有看到mysqli扩展，意思就是没有这个扩展，需要安装了。
-三、安装php扩展 3.1.命令行安装扩展 在命令行中安装扩展，如下所示：
-[root@edu html]# yum install php5-mysqli 第一次使用这种命令时出现错误：
-[root@edu html]# yum install php5-mysqli Loaded plugins: fastestmirror Setting up Install Process Loading mirror speeds from cached hostfile * base: mirrors.163.com * epel: ftp.]]></description>
+  <description><![CDATA[<h2 id="一问题描述">一、问题描述</h2>
+<h3 id="11打开web时出现如下问题mysql_attr_init_command">1.1.打开Web时出现如下问题：mysql_attr_init_command</h3>]]></description>
 </item>
 </channel>
 </rss>

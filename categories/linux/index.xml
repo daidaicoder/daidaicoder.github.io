@@ -17,18 +17,6 @@
 </item>
 <item>
   <title>搜索查找记录</title>
-  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxsearch/</link>
-  <pubDate>Fri, 19 Aug 2022 00:00:00 &#43;0000</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxsearch/</guid>
-  <description><![CDATA[<h1 id="搜索查找记录">搜索查找记录</h1>
-<h2 id="一描述">一、描述</h2>
-<p>by daizelai on 2021/08/19 16:08</p>
-<p>在SC60中搜索和查找相关文件。</p>
-<p><strong>关键字：</strong> 日志搜索、搜索日志、linux搜索</p>]]></description>
-</item>
-<item>
-  <title>搜索查找记录</title>
   <link>https://daizelai.github.io/posts/linux/linuxsearch/</link>
   <pubDate>Fri, 19 Aug 2022 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
@@ -38,19 +26,6 @@
 <p>by daizelai on 2021/08/19 16:08</p>
 <p>在SC60中搜索和查找相关文件。</p>
 <p><strong>关键字：</strong> 日志搜索、搜索日志、linux搜索</p>]]></description>
-</item>
-<item>
-  <title>通过命令升级主机版本</title>
-  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</link>
-  <pubDate>Tue, 05 Jul 2022 14:55:00 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E5%8D%87%E7%BA%A7%E4%B8%BB%E6%9C%BA%E7%89%88%E6%9C%AC/</guid>
-  <description><![CDATA[<!-- raw HTML omitted -->
-<h2 id="一启动tftp">一、启动tftp</h2>
-<p>使用tftp传送文件升级</p>
-<p>by daizelai on 2021/07/05 14:55</p>
-<p>在笔记本电脑中启动tftp，并配置Tftpd32的Server interface地址为172.16.173.20。</p>
-<p>需要注意一点的是，需要把将要上传到主机的文件放到tftp软件的根目录下。</p>]]></description>
 </item>
 <item>
   <title>通过命令升级主机版本</title>
@@ -86,15 +61,6 @@
 <p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p>]]></description>
 </item>
 <item>
-  <title>linux之磁盘sdc变为sdb后</title>
-  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</link>
-  <pubDate>Tue, 01 Nov 2016 10:50:28 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linux%E4%B9%8B%E7%A3%81%E7%9B%98sdc%E5%8F%98%E4%B8%BAsdb%E5%90%8E/</guid>
-  <description><![CDATA[<h2 id="一场景">一、场景</h2>
-<p>vm virtualBox安装了centos系统后，因为空间满了，就添加了块新磁盘，通过fdisk可看可以得到为sdb、sdc，后来因为不需要sdb磁盘把移除了，哪知道系统启动后，就不能上网了，SSH也不能连接了，使用df -h查看sdc挂载的/diskc也没有了，通过fdisk -l 查看sdc变为sdb了。</p>]]></description>
-</item>
-<item>
   <title>centos7下tcpdump抓包</title>
   <link>https://daizelai.github.io/posts/linux/centos/centos7%E4%B8%8Btcpdump/tcpdump/</link>
   <pubDate>Thu, 20 Oct 2016 13:35:51 &#43;0800</pubDate>
@@ -120,6 +86,45 @@
 [root@localhost lai]# whereis lsof
 lsof:
 </code></pre>]]></description>
+</item>
+<item>
+  <title>CGW500网关抓包</title>
+  <link>https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/</link>
+  <pubDate>Mon, 17 Oct 2016 21:20:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/%E7%BD%91%E5%85%B3%E6%8A%93%E5%8C%85/</guid>
+  <description><![CDATA[一、CGW500网关抓包 1.使用tftp连接网关 在电脑和网关间进行文件传输，这里使用tftp工具，这里的网关为CGW500，IP地址为10.60.0.37，注意一点，哪里打开运行了tftp.exe，那么这里就是服务器，比如这里是在10.60.0.95上面打开的，10.60.0.95本地电脑就是服务器。
+使用tftp连接网关 2.切换到tmp目录下 因为CGW500只有/tmp目录才能读写保存，所以切换到该目录下。
+# cd /tmp 3.把tcpdump导入网关 Tftp导入tcpdump，语法格式如下：
+# tftp –gr tcpdump xx.xx.xx.xx 从tftp服务器端也就是本地电脑（10.60.0.95）上传文件tcpdump到网关（10.60.0.37）
+/tmp # tftp -gr tcpdump 10.60.0.95 /tmp # ls -lh tcpdump -rw-r--r-- 1 root root 2.1M Oct 14 16:45 tcpdump 4.修改权限 /tmp # chmod u+x tcpdump 5.抓包 抓包语法格式：
+/tmp # ./tcpdump –i br0 –w pingan.cap 查看要抓的SSID所在网口名称
+/tmp # iwconfigap0_5 IEEE 802.11ng ESSID:&#34;00000003&#34; 抓包
+/tmp # ./tcpdump -i ap0_5 -w pingan.captcpdump: WARNING: ap0_5: no IPv4 address assignedtcpdump: listening on ap0_5, link-type EN10MB (Ethernet), capture size 65535 bytes^C339 packets captured339 packets received by filter0 packets dropped by kernel 提示： 如果想判断报文有没有发出去，比如平安APP发送的数据到test上面去，可以抓一下ech0的包，看看有没有数据，当然这个eth0也要根据情况得到的。]]></description>
+</item>
+<item>
+  <title>网关ping外网问题</title>
+  <link>https://daizelai.github.io/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B02%E4%B9%8Bping%E5%A4%96%E7%BD%91%E9%97%AE%E9%A2%98/</link>
+  <pubDate>Mon, 17 Oct 2016 19:26:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/gateway/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/%E5%8E%82%E5%9B%AD%E7%BD%91%E5%85%B3%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B02%E4%B9%8Bping%E5%A4%96%E7%BD%91%E9%97%AE%E9%A2%98/</guid>
+  <description><![CDATA[一、问题描述 通过厂园网关使用手记操作后，已经可以通过SSH连接CGW3000T了，于是就想把网关用起来。
+把大网关接上AP后，挂到本地平台，却总是上不了网，接AP这里注意一下，需要使用POE 供电。
+于是登录网关发现ping外网拼不通。
+[root@CGW3000T ~]# ping baidu.comping: unknown host baidu.com ping我本地的IP也拼不通。
+[root@CGW3000T ~]# ping 10.60.0.95PING 10.60.0.95 (10.60.0.95) 56(84) bytes of data.^C--- 10.60.0.95 ping statistics ---4 packets transmitted, 0 received, 100% packet loss, time 3894ms 二、问题解决 折腾了1，2个小时后，还是无能为力，于是找了网关大神郭，终于弄清楚了原因了。
+2.1.ping外网拼不通的问题解决 [root@CGW3000T ~]# route -nKernel IP routing tableDestination Gateway Genmask Flags Metric Ref Use Iface10.60.0.0 0.0.0.0 255.255.0.0 U 0 0 0 eth0172.16.0.0 0.0.0.0 255.]]></description>
+</item>
+<item>
+  <title>Linux下netstat使用手记</title>
+  <link>https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</link>
+  <pubDate>Fri, 14 Oct 2016 15:45:51 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/linux/linux%E4%B8%8Bnetstat%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/</guid>
+  <description><![CDATA[<p>Linux下netstat命令的简单使用记录，这里以CentOS7为基础。</p>
+<h2 id="一netstat命令说明">一、netstat命令说明</h2>
+<h3 id="11netstat常用参数介绍">1.1.netstat常用参数介绍</h3>
+<p>netstat有很多参数，下面列表每个参数的说明。</p>]]></description>
 </item>
 </channel>
 </rss>

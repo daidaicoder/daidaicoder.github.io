@@ -16,18 +16,5 @@
 <pre tabindex="0"><code class="language-linux" data-lang="linux">sftp&gt; get /var/www/layne/index.php  /home/layne/
 </code></pre>]]></description>
 </item>
-<item>
-  <title>Linux之sftp使用</title>
-  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/sftp/</link>
-  <pubDate>Sat, 08 Oct 2016 14:39:04 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/sftp/</guid>
-  <description><![CDATA[<h2 id="一下载文件">一、下载文件</h2>
-<blockquote>
-<p>将从远程主机的 <code>/var/www/layne/</code> 目录下将 <code>index.php</code> 下载到本地 <code>/home/layne/</code> 目录下。</p>
-</blockquote>
-<pre tabindex="0"><code class="language-linux" data-lang="linux">sftp&gt; get /var/www/layne/index.php  /home/layne/
-</code></pre>]]></description>
-</item>
 </channel>
 </rss>

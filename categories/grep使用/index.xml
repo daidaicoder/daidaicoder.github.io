@@ -13,15 +13,5 @@
 <h2 id="一描述">一、描述</h2>
 <p>在linux系统中，有一个非常强大的命令行文本搜索工具，它就是grep，本文主要介绍grep的几种使用方法。</p>]]></description>
 </item>
-<item>
-  <title>在linux中使用grep的几种技巧</title>
-  <link>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxgrep/</link>
-  <pubDate>Thu, 30 Nov 2023 16:31:00 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/linuxgrep/</guid>
-  <description><![CDATA[<!-- raw HTML omitted -->
-<h2 id="一描述">一、描述</h2>
-<p>在linux系统中，有一个非常强大的命令行文本搜索工具，它就是grep，本文主要介绍grep的几种使用方法。</p>]]></description>
-</item>
 </channel>
 </rss>

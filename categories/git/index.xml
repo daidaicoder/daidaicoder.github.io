@@ -27,10 +27,10 @@
 </item>
 <item>
   <title>git代码提交规范</title>
-  <link>https://daizelai.github.io/posts/git/gitcommit/</link>
+  <link>https://daizelai.github.io/posts/git/20230511_0930git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/gitcommit/</link>
   <pubDate>Sun, 28 May 2023 00:00:00 &#43;0000</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/gitcommit/</guid>
+  <guid>https://daizelai.github.io/posts/git/20230511_0930git%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/gitcommit/</guid>
   <description><![CDATA[<h2 id="一描述">一、描述</h2>
 <h3 id="说明">说明</h3>
 <p>为了规范我的git提交内容，提交的时候commit -m “备注的信息”，但是每个人的备注信息千奇百怪，为了统一，我们进行了git的规范。</p>]]></description>
@@ -56,7 +56,7 @@
 <p>记录git flow的使用</p>]]></description>
 </item>
 <item>
-  <title>本地命令行删除分支</title>
+  <title>git版本回退记录</title>
   <link>https://daizelai.github.io/posts/git/git/</link>
   <pubDate>Wed, 01 Feb 2023 12:11:00 &#43;0800</pubDate>
   <author>作者</author>
@@ -84,6 +84,16 @@
 <p>现在一般公司都是使用git进行管理，有可能是gitlab，也有可能是github或gitee等。但是如果多个项目使用不同的托管平台，那么这个时候就需要git多账号切换的功能。</p>]]></description>
 </item>
 <item>
+  <title>应用master分支的修改到develop分支</title>
+  <link>https://daizelai.github.io/posts/git/git/</link>
+  <pubDate>Wed, 22 Dec 2021 15:07:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="描述">描述</h2>
+<p>在<code>master</code>分支上修复了<code>bug</code>后，<code>evelop</code>分支最早期也是从<code>master</code>分支上分出来的，所以<code>develop</code>分支上也存在相同的<code>bug</code>。</p>]]></description>
+</item>
+<item>
   <title>git之log日志记录</title>
   <link>https://daizelai.github.io/posts/git/git/</link>
   <pubDate>Mon, 20 Dec 2021 22:30:00 &#43;0800</pubDate>
@@ -103,16 +113,6 @@
 <h2 id="一描述">一、描述</h2>
 <p>本文网上学习记录，by daizelai on 2021/12/20 10:56</p>
 <p>一个项目同时绑定多个分支，比如同时向码云和gitlab提交。</p>]]></description>
-</item>
-<item>
-  <title>git一个本地分支向多个远程分支提交代码</title>
-  <link>https://daizelai.github.io/posts/git/git/</link>
-  <pubDate>Fri, 12 Nov 2021 10:56:00 &#43;0800</pubDate>
-  <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/git/</guid>
-  <description><![CDATA[<!-- raw HTML omitted -->
-<h2 id="一描述">一、描述</h2>
-<p>一个本地库能不能既关联gitab，又关联码云呢?</p>]]></description>
 </item>
 </channel>
 </rss>

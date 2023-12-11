@@ -152,6 +152,46 @@
   <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
   </div><main class="container container-reverse"><div class="page home posts"><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/">lsyncd实时同步搭建指南</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-09 20:53:00'>发布于 <time datetime="2016-10-09">2016-10-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/lsyncd/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> lsyncd</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据同步</a></span></div><div class="content"><h1 id="lsyncd实时同步搭建指南">lsyncd实时同步搭建指南</h1>
+<h2 id="一介绍">一、介绍</h2>
+<p>github地址：<a href="https://github.com/axkibe/lsyncd"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/axkibe/lsyncd</a></p>
+<p>Lysncd 实际上是lua语言封装了 inotify 和 rsync 工具，采用了 Linux 内核（2.6.13 及以后）里的 inotify 触发机制，然后通过rsync去差异同步，达到实时的效果。我认为它最令人称道的特性是，完美解决了 inotify + rsync海量文件同步带来的文件频繁发送文件列表的问题 —— 通过时间延迟或累计触发事件次数实现。另外，它的配置方式很简单，lua本身就是一种配置语言，可读性非常强。lsyncd也有多种工作模式可以选择，本地目录cp，本地目录rsync，远程目录rsyncssh。</p></div><div class="post-footer">
+    <a href="/posts/linux/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/lsyncd%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/lsyncd/' class="post-tag">lsyncd</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/' class="post-tag">数据同步</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/mysql/procedure/">mysql之存储过程</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-09 14:02:09'>发布于 <time datetime="2016-10-09">2016-10-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/procedure/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> procedure</a></span></div><div class="content"><!-- raw HTML omitted -->
+<h2 id="查看存储过程">查看存储过程</h2>
+<pre><code>mysql&gt; show procedure status;
+</code></pre></div><div class="post-footer">
+    <a href="/posts/mysql/procedure/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/procedure/' class="post-tag">procedure</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux/sftp/">Linux之sftp使用</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-08 14:39:04'>发布于 <time datetime="2016-10-08">2016-10-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/sftp/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> sftp</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a></span></div><div class="content"><h2 id="一下载文件">一、下载文件</h2>
+<blockquote>
+<p>将从远程主机的 <code>/var/www/layne/</code> 目录下将 <code>index.php</code> 下载到本地 <code>/home/layne/</code> 目录下。</p>
+</blockquote>
+<pre tabindex="0"><code class="language-linux" data-lang="linux">sftp&gt; get /var/www/layne/index.php  /home/layne/
+</code></pre></div><div class="post-footer">
+    <a href="/posts/linux/sftp/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/sftp/' class="post-tag">sftp</a><a href='/tags/linux/' class="post-tag">linux</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/mysql/mysqldump/">mysql数据库导入导出</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      daizelai</span></span>&nbsp;<span class="post-publish" title='2016-10-08 00:00:00'>发布于 <time datetime="2016-10-08">2016-10-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysql</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a>&ensp;<a href="/categories/mysqldump/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> mysqldump</a></span></div><div class="content"><!-- raw HTML omitted -->
+<h2 id="一数据库导入导出">一、数据库导入导出</h2>
+<h3 id="1导出数据库">1.导出数据库</h3>
+<blockquote>
+<p># mysqldump -u root -p 数据库名&gt;文件名.sql</p>
+</blockquote></div><div class="post-footer">
+    <a href="/posts/mysql/mysqldump/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/mysql/' class="post-tag">mysql</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/' class="post-tag">数据库</a><a href='/tags/mysqldump/' class="post-tag">mysqldump</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
     <a href="/posts/php/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEphp&#43;memcached%E7%9A%84%E6%96%B9%E6%B3%95/">Windows安装配置php&#43;memcached的方法</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       daizelai</span></span>&nbsp;<span class="post-publish" title='2016-09-24 14:36:00'>发布于 <time datetime="2016-09-24">2016-09-24</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/php/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> php</a>&ensp;<a href="/categories/memcache/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> memcache</a>&ensp;<a href="/categories/windows/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> windows</a></span></div><div class="content">一、软件列表 下面是涉及到的软件列表。
@@ -308,30 +348,6 @@ Include conf/extra/httpd-vhosts.conf这个句话，高版本的apache里面已�
 <p>将一般的文件或者目录进行压缩或者解压，默认生成以“.zip”为后缀的压缩包。zip命令类似于Windows中的winzip压缩程序。其格式如下：</p></div><div class="post-footer">
     <a href="/posts/linux/zip/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/zip/' class="post-tag">zip</a><a href='/tags/unzip/' class="post-tag">unzip</a><a href='/tags/%E5%8E%8B%E7%BC%A9/' class="post-tag">压缩</a><a href='/tags/%E8%A7%A3%E5%8E%8B%E7%BC%A9/' class="post-tag">解压缩</a></div></div>
 </article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/">网关操作手记</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2015-07-30 14:56:12'>发布于 <time datetime="2015-07-30">2015-07-30</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> linux</a>&ensp;<a href="/categories/%E7%BD%91%E5%85%B3/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网关</a></span></div><div class="content">一、登录网关 登录网关一般使用SSH就可以了，AP则使用telnet，当然也可以通过串登录。
-1.网关登录
-填写名称和选择通信协议，协议为SSH2
-网关登录 配置主机地址及连接端口，SSH连接端口默认为22
-网关登录 2.AP登录
-填写名称和选择通信协议，AP登录的话协议为Telnet
-AP登录 配置主机地址及连接端口，Telnet连接端口默认为23
-AP登录 二、常用命令 2.1.两大武器pactl和gctl 直接敲入pactl和gctl，默认显示的是帮助，可以查看有哪些参数及如何使用。
-1.pactl
-~ # pactlParameters invalid!help -- [subcmd]Show help information. {} means &#34;Required&#34;; [] means &#34;Optional&#34;; | means &#34;One of&#34;version -- Get Current/Dependent version of application and moduledebuglevel -- [0-7]Set or get debug level of kernel module. Set 7 to print the most informationauth_state -- {xx:xx:xx:xx:xx:xx} {xxx.xxx.xxx.xxx} [0|1|2]Set or get authentication state,0-not_auth,1-being_auth,2-authhost_ip -- [xxx.</div><div class="post-footer">
-    <a href="/posts/linux/gateway/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/%E7%BD%91%E5%85%B3%E6%93%8D%E4%BD%9C%E6%89%8B%E8%AE%B0/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/linux/' class="post-tag">linux</a><a href='/tags/%E7%BD%91%E5%85%B3/' class="post-tag">网关</a><a href='/tags/%E5%95%86%E4%B8%9Awifi/' class="post-tag">商业WIFI</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">Windows下memcache操作手记</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      daizelai</span></span>&nbsp;<span class="post-publish" title='2014-12-15 18:44:29'>发布于 <time datetime="2014-12-15">2014-12-15</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%8E%9F%E5%88%9B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 原创</a>&ensp;<a href="/categories/memcache/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> memcache</a></span></div><div class="content"><p>Windows下memcache常用操作</p>
-<h2 id="一修改memcache端口">一、修改memcache端口</h2>
-<p>1.memcache的默认端口11211</p>
-<p>2.直接指定端口启动是无效的。</p></div><div class="post-footer">
-    <a href="/posts/windows/memcache/windows%E4%B8%8Bmemcache%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E5%8E%9F%E5%88%9B/' class="post-tag">原创</a><a href='/tags/memcache/' class="post-tag">memcache</a></div></div>
-</article>
 <ul class="pagination"><li class="page-item">
           <span class="page-link">
             <a href="/">1</a>
@@ -349,6 +365,10 @@ AP登录 二、常用命令 2.1.两大武器pactl和gctl 直接敲入pactl和gct
         </li><li class="page-item active">
           <span class="page-link">
             <a href="/page/5/">5</a>
+          </span>
+        </li><li class="page-item">
+          <span class="page-link">
+            <a href="/page/6/">6</a>
           </span>
         </li></ul></div></main><footer class="footer">
     <div class="footer-container"><div class="footer-line custom">学习数理化，走遍天下都不怕</div><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.114.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.18"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>

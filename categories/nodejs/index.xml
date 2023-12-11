@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>nodejs - 分类 - 来来往往</title>
+    <link>https://daizelai.github.io/categories/nodejs/</link>
+    <description>nodejs - 分类 - 来来往往</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 28 Dec 2021 11:18:00 &#43;0800</lastBuildDate><atom:link href="https://daizelai.github.io/categories/nodejs/" rel="self" type="application/rss+xml" /><item>
+  <title>centos7.9下安装nodejs</title>
+  <link>https://daizelai.github.io/posts/nodejs/git/</link>
+  <pubDate>Tue, 28 Dec 2021 11:18:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://daizelai.github.io/posts/nodejs/git/</guid>
+  <description><![CDATA[<!-- raw HTML omitted -->
+<h2 id="一描述">一、描述</h2>
+<!-- raw HTML omitted -->
+<p>本文讲解如下在<code>windows10</code>的<code>VirtualBox</code>虚拟机的<code>CentOS</code>系统中安装<code>nodejs</code>环境。</p>]]></description>
+</item>
+</channel>
+</rss>

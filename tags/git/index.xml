@@ -57,10 +57,10 @@
 </item>
 <item>
   <title>git版本回退记录</title>
-  <link>https://daizelai.github.io/posts/git/git/</link>
+  <link>https://daizelai.github.io/posts/git/git%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80%E8%AE%B0%E5%BD%95/</link>
   <pubDate>Wed, 01 Feb 2023 12:11:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <guid>https://daizelai.github.io/posts/git/git%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80%E8%AE%B0%E5%BD%95/</guid>
   <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <p>记录一下已经push到服务器端的代码回退方法，撤销操作包括：</p>
@@ -72,10 +72,10 @@
 </item>
 <item>
   <title>git配置多用户管理</title>
-  <link>https://daizelai.github.io/posts/git/gitconfig/git/</link>
+  <link>https://daizelai.github.io/posts/git/gitconfig/gitconfig/</link>
   <pubDate>Tue, 27 Sep 2022 13:29:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/gitconfig/git/</guid>
+  <guid>https://daizelai.github.io/posts/git/gitconfig/gitconfig/</guid>
   <description><![CDATA[<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
@@ -85,30 +85,30 @@
 </item>
 <item>
   <title>应用master分支的修改到develop分支</title>
-  <link>https://daizelai.github.io/posts/git/git/</link>
+  <link>https://daizelai.github.io/posts/git/%E5%BA%94%E7%94%A8master%E5%88%86%E6%94%AF%E7%9A%84%E4%BF%AE%E6%94%B9%E5%88%B0develop%E5%88%86%E6%94%AF/</link>
   <pubDate>Wed, 22 Dec 2021 15:07:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <guid>https://daizelai.github.io/posts/git/%E5%BA%94%E7%94%A8master%E5%88%86%E6%94%AF%E7%9A%84%E4%BF%AE%E6%94%B9%E5%88%B0develop%E5%88%86%E6%94%AF/</guid>
   <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="描述">描述</h2>
 <p>在<code>master</code>分支上修复了<code>bug</code>后，<code>evelop</code>分支最早期也是从<code>master</code>分支上分出来的，所以<code>develop</code>分支上也存在相同的<code>bug</code>。</p>]]></description>
 </item>
 <item>
   <title>git之log日志记录</title>
-  <link>https://daizelai.github.io/posts/git/git/</link>
+  <link>https://daizelai.github.io/posts/git/git%E4%B9%8Blog%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</link>
   <pubDate>Mon, 20 Dec 2021 22:30:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <guid>https://daizelai.github.io/posts/git/git%E4%B9%8Blog%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</guid>
   <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <p>用git命令，可以看到自己之前的操作记录，使用的命令是<code>git log</code>和<code>git reflog</code>，它们的区别是：</p>]]></description>
 </item>
 <item>
   <title>git一个本地分支同时向多个远程分支提交代码</title>
-  <link>https://daizelai.github.io/posts/git/git/</link>
+  <link>https://daizelai.github.io/posts/git/git%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E5%90%8C%E6%97%B6%E5%90%91%E5%A4%9A%E4%B8%AA%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/</link>
   <pubDate>Mon, 20 Dec 2021 10:56:00 &#43;0800</pubDate>
   <author>作者</author>
-  <guid>https://daizelai.github.io/posts/git/git/</guid>
+  <guid>https://daizelai.github.io/posts/git/git%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E5%90%8C%E6%97%B6%E5%90%91%E5%A4%9A%E4%B8%AA%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81/</guid>
   <description><![CDATA[<!-- raw HTML omitted -->
 <h2 id="一描述">一、描述</h2>
 <p>本文网上学习记录，by daizelai on 2021/12/20 10:56</p>
